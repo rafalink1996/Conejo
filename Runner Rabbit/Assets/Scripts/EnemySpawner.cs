@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         spawnTime = Random.Range(3f, 6f);
-        //enemyType = Random.Range(1, 5); ToDo
+        enemyType = Random.Range(1, 6); 
     }
 
     // Update is called once per frame
@@ -25,11 +25,26 @@ public class EnemySpawner : MonoBehaviour
                 GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Firebook") as GameObject);
                 enemy.transform.position = transform.position;
             }
-            /*if (enemyType == 2) ToDo
+            if (enemyType == 2) 
             {
-                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/OtroEnemigo") as GameObject);
+                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Slime") as GameObject);
                 enemy.transform.position = transform.position;
-            }*/
+            }
+            if (enemyType == 3)
+            {
+                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Enemies 3") as GameObject);
+                enemy.transform.position = transform.position;
+            }
+            if (enemyType == 4)
+            {
+                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Enemies 4") as GameObject);
+                enemy.transform.position = transform.position;
+            }
+            if (enemyType == 5)
+            {
+                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Enemies 5") as GameObject);
+                enemy.transform.position = transform.position;
+            }
             enemy = true;
         }
     }
@@ -38,6 +53,6 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnTime = Random.Range(3f, 6f);
         enemy = false;
-        //enemyType = Random.Range(1, 5); ToDo
+        enemyType = Random.Range(1, 6);
     }
 }

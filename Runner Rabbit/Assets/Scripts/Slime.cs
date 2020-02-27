@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Book : MonoBehaviour
+public class Slime : MonoBehaviour
 {
     Animator anim;
-    public int health = 5;
+    public int health = 3;
     EnemySpawner enemySpawner;
 
     // Start is called before the first frame update
@@ -27,15 +27,15 @@ public class Book : MonoBehaviour
     {
         health = health - 1;
     }
-    void FireBall()
+    void SlimeBall()
     {
-        GameObject fireBall = GameObject.Instantiate(Resources.Load("Prefabs/Fireball") as GameObject);
-        fireBall.transform.position = transform.position;
+        GameObject smileBall = GameObject.Instantiate(Resources.Load("Prefabs/Slime Ball") as GameObject);
+        smileBall.transform.position = transform.position;
     }
     void Over()
     {
         enemySpawner.RestartTime();
         Destroy(gameObject);
     }
-    
+
 }
