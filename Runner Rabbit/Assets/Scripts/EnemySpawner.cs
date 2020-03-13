@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         spawnTime = Random.Range(3f, 6f);
-        enemyType = Random.Range(1, 6); 
+        enemyType = Random.Range(1, 8); 
     }
 
     // Update is called once per frame
@@ -45,6 +45,16 @@ public class EnemySpawner : MonoBehaviour
                 GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Enemies 5") as GameObject);
                 enemy.transform.position = transform.position;
             }
+            if (enemyType == 6)
+            {
+                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Book (ice)") as GameObject);
+                enemy.transform.position = transform.position;
+            }
+            if(enemyType == 8)
+            {
+                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Book (Electriv)") as GameObject);
+                enemy.transform.position = transform.position;
+            }
             enemy = true;
         }
     }
@@ -53,6 +63,6 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnTime = Random.Range(3f, 6f);
         enemy = false;
-        enemyType = Random.Range(1, 6);
+        enemyType = Random.Range(1, 8);
     }
 }
