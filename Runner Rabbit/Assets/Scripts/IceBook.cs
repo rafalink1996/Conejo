@@ -10,6 +10,7 @@ public class IceBook : MonoBehaviour
     public int health;
     EnemySpawner enemySpawner;
     public Slider healthSlider;
+    float spawnTime;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +20,19 @@ public class IceBook : MonoBehaviour
         healthSlider = GetComponentInChildren<Slider>();
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
+        spawnTime = Random.Range(0.1f, 2f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        spawnTime -= Time.deltaTime;
+        if (spawnTime <= 0)
+        {
+            anim.SetTrigger("Spawn");
+            GetComponent<SpriteRenderer>().enabled = true;
+
+        }
         healthSlider.value = health;
         if (health <= 0)
         {

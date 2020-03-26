@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public float spawnTime;
     public bool enemy;
-    int enemyType = 1;
+    public int enemyType = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,9 +50,9 @@ public class EnemySpawner : MonoBehaviour
                 GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Book (ice)") as GameObject);
                 enemy.transform.position = transform.position;
             }
-            if(enemyType == 8)
+            if(enemyType == 7)
             {
-                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Book (Electriv)") as GameObject);
+                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Book (Electric)") as GameObject);
                 enemy.transform.position = transform.position;
             }
             enemy = true;
