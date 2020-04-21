@@ -52,7 +52,7 @@ public class ElectricBook : MonoBehaviour
     }
     void Over()
     {
-        enemySpawner.RestartTime();
+        enemySpawner.OneDown();
         Destroy(gameObject);
     }
 

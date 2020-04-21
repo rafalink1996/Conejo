@@ -8,13 +8,14 @@ public class ElectricBall : MonoBehaviour
     float speed = 7f;
     float rotateSpeed = 250f;
     Rigidbody2D rb;
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
-        Destroy(gameObject, 4f);
-    
+        anim = GetComponent<Animator>();
+        Invoke("Hit", 2.5f);
     }
 
     // Update is called once per frame
@@ -29,5 +30,13 @@ public class ElectricBall : MonoBehaviour
         rb.velocity = transform.right * -speed;
         }
        
+    }
+    public void Hit()
+    {
+        anim.SetTrigger("Hit");
+    }
+    public void Destroyed()
+    {
+        Destroy(gameObject);
     }
 }

@@ -50,7 +50,7 @@ public class Slime : MonoBehaviour
     }
     void Over()
     {
-        enemySpawner.RestartTime();
+        enemySpawner.OneDown();
         Destroy(gameObject);
     }
 
