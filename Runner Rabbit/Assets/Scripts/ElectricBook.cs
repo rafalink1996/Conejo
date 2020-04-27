@@ -11,6 +11,7 @@ public class ElectricBook : MonoBehaviour
     EnemySpawner enemySpawner;
     public Slider healthSlider;
     float spawnTime;
+    bool spawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +28,13 @@ public class ElectricBook : MonoBehaviour
     void Update()
     {
         spawnTime -= Time.deltaTime;
-        if (spawnTime <= 0)
+        if (spawnTime <= 0 && spawned == false)
         {
             anim.SetTrigger("Spawn");
             GetComponent<SpriteRenderer>().enabled = true;
+            FindObjectOfType<AudioManager>().Play("BookSpawn");
+            spawned = true;
+
 
         }
         healthSlider.value = health;
@@ -55,5 +59,12 @@ public class ElectricBook : MonoBehaviour
         enemySpawner.OneDown();
         Destroy(gameObject);
     }
+
+    void Despawned()
+    {
+        FindObjectOfType<AudioManager>().Play("BookDeSpawn");
+
+    }
+
 
 }

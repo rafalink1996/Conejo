@@ -11,6 +11,8 @@ public class Book : MonoBehaviour
     EnemySpawner enemySpawner;
     public Slider healthSlider;
     float spawnTime;
+    bool spawned = false;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -27,16 +29,21 @@ public class Book : MonoBehaviour
     void Update()
     {
         spawnTime -= Time.deltaTime;
-        if (spawnTime <= 0)
+        if (spawnTime <= 0 && spawned == false)
         {
             anim.SetTrigger("Spawn");
             GetComponent<SpriteRenderer>().enabled = true;
+            FindObjectOfType<AudioManager>().Play("BookSpawn");
+            spawned = true;
             
         }
         healthSlider.value = health;
         if (health <= 0)
         {
             anim.SetTrigger("Die");
+           
+         
+
         }
     }
     void Attack()
@@ -52,6 +59,12 @@ public class Book : MonoBehaviour
     {
         enemySpawner.OneDown();
         Destroy(gameObject);
+    }
+
+    void Despawned ()
+    {
+        FindObjectOfType<AudioManager>().Play("BookDeSpawn");
+       
     }
     
 }

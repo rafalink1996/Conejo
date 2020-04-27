@@ -11,6 +11,8 @@ public class Slime : MonoBehaviour
     EnemySpawner enemySpawner;
     public Slider healthSlider;
     float spawnTime;
+    bool spawned = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,16 +29,22 @@ public class Slime : MonoBehaviour
     void Update()
     {
         spawnTime -= Time.deltaTime;
-        if (spawnTime <= 0)
+        if (spawnTime <= 0 && spawned == false)
         {
+            
             anim.SetTrigger("Spawn");
             GetComponent<SpriteRenderer>().enabled = true;
+            FindObjectOfType<AudioManager>().Play("SlimePreSpawn");
+            spawned = true;
 
         }
         healthSlider.value = health;
         if (health <= 0)
         {
+            
             anim.SetTrigger("Die");
+            
+        
         }
     }
     void Attack()
@@ -51,7 +59,20 @@ public class Slime : MonoBehaviour
     void Over()
     {
         enemySpawner.OneDown();
+        
         Destroy(gameObject);
+
+
+    }
+
+    void PLaySpawnSound()
+    {
+        FindObjectOfType<AudioManager>().Play("SlimeSpawn");
+    }
+
+    void PLayDeathSound ()
+    {
+        FindObjectOfType<AudioManager>().Play("SlimeDeath");
     }
 
 }
