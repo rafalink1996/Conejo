@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EnemyGroup : MonoBehaviour
 {
+    public int myEnemyCount;
     // Start is called before the first frame update
     void Start()
     {
-        
+        FindObjectOfType<EnemySpawner>().SetEnemyCount(myEnemyCount);
     }
 
     // Update is called once per frame

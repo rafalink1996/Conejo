@@ -67,7 +67,7 @@ public class character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("rift entered");
+        
         Rotation();
         rb.gravityScale *= -1;
         upspeed *= -1;
@@ -86,12 +86,12 @@ public class character : MonoBehaviour
 
             if (top)
             {
-                print("left");
+                
                 mySpriteRenderer.flipY = true;
             }
             else
             {
-                print("right");
+               
                 mySpriteRenderer.flipY = false;
             }
 

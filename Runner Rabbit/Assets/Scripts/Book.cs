@@ -12,7 +12,9 @@ public class Book : MonoBehaviour
     public Slider healthSlider;
     float spawnTime;
     bool spawned = false;
-   
+    float attackTime;
+    bool attack;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +25,13 @@ public class Book : MonoBehaviour
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         spawnTime = Random.Range(0.1f, 2f);
+        attackTime = Random.Range(0.2f, 1.3f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         spawnTime -= Time.deltaTime;
         if (spawnTime <= 0 && spawned == false)
         {
@@ -35,15 +39,33 @@ public class Book : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = true;
             FindObjectOfType<AudioManager>().Play("BookSpawn");
             spawned = true;
-            
+
         }
+        if (attack)
+        {
+            attackTime -= Time.deltaTime;
+        }
+        if (attackTime <= 0)
+        {
+            anim.SetTrigger("Attack");
+            attackTime = Random.Range(0.2f, 1.3f);
+            attack = false;
+        }
+
         healthSlider.value = health;
         if (health <= 0)
         {
             anim.SetTrigger("Die");
-           
-         
 
+
+
+        }
+    }
+    void AttackTime()
+    {
+        if (!attack)
+        {
+            attack = true;
         }
     }
     void Attack()
@@ -54,6 +76,7 @@ public class Book : MonoBehaviour
     {
         GameObject fireBall = GameObject.Instantiate(Resources.Load("Prefabs/Fireball") as GameObject);
         fireBall.transform.position = transform.position;
+
     }
     void Over()
     {
@@ -61,10 +84,10 @@ public class Book : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void Despawned ()
+    void Despawned()
     {
         FindObjectOfType<AudioManager>().Play("BookDeSpawn");
-       
+
     }
-    
+
 }
