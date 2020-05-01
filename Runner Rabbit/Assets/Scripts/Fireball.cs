@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
+    public float speed = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,8 @@ public class Fireball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 temp = transform.position;
+        temp.x -= speed * Time.deltaTime;
+        transform.position = temp;
     }
 }
