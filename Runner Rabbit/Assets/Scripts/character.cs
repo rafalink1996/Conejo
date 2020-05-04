@@ -135,5 +135,17 @@ public class character : MonoBehaviour
 
         }   
     }
+    public void Missile()
+    {
+        animator.SetTrigger("Missile");
+        GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+        carrot.transform.position = transform.position + new Vector3 (1,0,0);
+    }
+    public void Defence()
+    {
+        animator.SetTrigger("Defence");
+        //GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+        //carrot.transform.position = transform.position + new Vector3(1, 0, 0);
+    }
 
 }
