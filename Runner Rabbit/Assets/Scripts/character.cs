@@ -1,6 +1,7 @@
 ﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class character : MonoBehaviour
 {
@@ -8,14 +9,21 @@ public class character : MonoBehaviour
     public Rigidbody2D rb;
     private SpriteRenderer mySpriteRenderer;
 
-
+    // Movement
     public float upspeed;
-    
     private float speed = 10f;
-
     public Animator animator;
-
     public bool top;
+
+    // Health System
+    public int Health;
+    public int NumOfHearts;
+
+    public Image[] hearts;
+    public Sprite FullHeart;
+    public Sprite EmptyHeart;
+
+
 
 
     // Start is called before the first frame update
@@ -32,8 +40,38 @@ public class character : MonoBehaviour
 
 
     {
+      //Health system
 
-      
+           // can't have more health than max hearts
+
+           if (Health > NumOfHearts)
+           {
+             Health = NumOfHearts;
+           }
+           // number of current hearts is established
+
+           for (int i = 0; i < hearts.Length; i++)
+           {
+              if (i < Health)
+              {
+                hearts[i].sprite = FullHeart;
+              }
+               else
+               {
+                  hearts[i].sprite = EmptyHeart;
+               }
+
+            // number of max hearts is established
+
+            if (i < NumOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
 
         // Jump Controller
 

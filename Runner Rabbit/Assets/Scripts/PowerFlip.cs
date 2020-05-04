@@ -7,7 +7,7 @@ public class PowerFlip : MonoBehaviour
     // Start is called before the first frame update
 
     private character Cha;
-    public Animator animator;
+    public Animator animator;   
 
 
     void Start()
@@ -24,8 +24,8 @@ public class PowerFlip : MonoBehaviour
         }
         if (Cha.top == false)
         {
-           
-            
+
+            animator.SetBool("Character Up", true);
         }
     }
 
@@ -35,9 +35,20 @@ public class PowerFlip : MonoBehaviour
         GameObject DarkPower = GameObject.Instantiate(Resources.Load("Prefabs/Power Dark") as GameObject);
         DarkPower.transform.SetParent(GameObject.FindGameObjectWithTag("UIpower").transform, false);
     }
-    public void CharacterDown()
+    public void CharacterFlip()
     {
         
         Destroy(gameObject);
     }
+
+    public void SpawnLightPower()
+    {
+        GameObject Lightpower = GameObject.Instantiate(Resources.Load("Prefabs/Power Light") as GameObject);
+        Lightpower.transform.SetParent(GameObject.FindGameObjectWithTag("UIpower").transform, false);
+    }
+   
+    
+
+ 
+
 }
