@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 114948075091485888}
   - component: {fileID: 82105334875714792}
   - component: {fileID: 2407069996213390621}
+  - component: {fileID: 58236670871500816}
   m_Layer: 0
   m_Name: Slime Ball
   m_TagString: Enemy proyectile
@@ -223,3 +224,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &58236670871500816
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2579007505430407806}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -7.942593, y: -2.5065436}
+  serializedVersion: 2
+  m_Radius: 0.7311931

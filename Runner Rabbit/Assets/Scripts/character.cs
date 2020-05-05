@@ -97,7 +97,7 @@ public class character : MonoBehaviour
 
         
 
-
+            // Character Moves forward
             Vector3 temp = transform.position;
             temp.x += speed * Time.deltaTime;
             transform.position = temp;
@@ -105,11 +105,23 @@ public class character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        Rotation();
-        rb.gravityScale *= -1;
-        upspeed *= -1;
-        rb.AddForce(new Vector2(0, (upspeed*10)));
+
+        // colission with rift
+
+        if (collision.tag  == "Rift")
+        {
+            Rotation();
+            rb.gravityScale *= -1;
+            upspeed *= -1;
+            rb.AddForce(new Vector2(0, (upspeed * 10)));
+        }
+
+        // colission with enemy proyectile
+
+        if (collision.tag == "Enemy proyectile")
+        {
+            Health -= 1;
+        }
 
     }
 
