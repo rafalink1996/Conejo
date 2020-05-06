@@ -14,6 +14,8 @@ public class character : MonoBehaviour
     private float speed = 10f;
     public Animator animator;
     public bool top;
+    private bool ForceFloat;
+   
 
     // Health System
     public int Health;
@@ -73,8 +75,8 @@ public class character : MonoBehaviour
             }
         }
 
-        // Jump Controller
-
+        // Jump Controller with keyboard
+/*
         if (Input.GetKey(KeyCode.Space))
         {
             rb.AddForce(new Vector2(0, upspeed));
@@ -94,11 +96,25 @@ public class character : MonoBehaviour
             }
 
 
+*/
 
-        
+        // Animation Controller
 
-            // Character Moves forward
-            Vector3 temp = transform.position;
+        if (ForceFloat)
+        {
+            animator.SetBool("IsFalling", true);
+        } else
+        {
+            animator.SetBool("IsFalling", false);
+        }
+
+
+
+
+
+
+        // Character Moves forward
+        Vector3 temp = transform.position;
             temp.x += speed * Time.deltaTime;
             transform.position = temp;
     }
@@ -160,4 +176,19 @@ public class character : MonoBehaviour
         //carrot.transform.position = transform.position + new Vector3(1, 0, 0);
     }
 
+    public void Float()
+    {
+
+        rb.AddForce(new Vector2(0, upspeed));
+       
+
+       ForceFloat = true;
+
+
+    }
+
+    public void Fall()
+    {
+        ForceFloat = false;
+    }
 }
