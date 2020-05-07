@@ -14,7 +14,7 @@ public class PowerFlip : MonoBehaviour
     Button button;
 
     int m_IndexNumber;
-
+    
 
     void Start()
     {
@@ -45,7 +45,7 @@ public class PowerFlip : MonoBehaviour
         GameObject DarkPower = GameObject.Instantiate(Resources.Load("Prefabs/Power Dark") as GameObject);
         DarkPower.transform.SetParent(GameObject.FindGameObjectWithTag("UIpower").transform, false);
         DarkPower.GetComponent<Button>().onClick.AddListener(Cha.Defence);
-        DarkPower.GetComponent<Button>().onClick.AddListener(ManaController.ReduceLightMana);
+        //DarkPower.GetComponent<Button>().onClick.AddListener(ManaController.ReduceLightMana);
        DarkPower.transform.SetSiblingIndex(0);
         
     }
@@ -59,7 +59,7 @@ public class PowerFlip : MonoBehaviour
        GameObject Lightpower = GameObject.Instantiate(Resources.Load("Prefabs/Power Light") as GameObject);
         Lightpower.transform.SetParent(GameObject.FindGameObjectWithTag("UIpower").transform, false);
         Lightpower.GetComponent<Button>().onClick.AddListener(Cha.Missile);
-        Lightpower.GetComponent<Button>().onClick.AddListener(ManaController.ReduceDarkMana);
+        //Lightpower.GetComponent<Button>().onClick.AddListener(ManaController.ReduceDarkMana);
         Lightpower.transform.SetSiblingIndex(0);
 
     }

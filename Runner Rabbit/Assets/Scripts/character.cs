@@ -1,4 +1,4 @@
-﻿    using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +16,8 @@ public class character : MonoBehaviour
     public bool top;
     private bool ForceFloat;
     public bool RiftColition;
-   
+    ManaHandle mana;
+
 
     // Health System
     public int Health;
@@ -34,7 +35,7 @@ public class character : MonoBehaviour
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         rb.AddForce(new Vector2(0, 200));
-
+        mana = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<ManaHandle>();
 
     }
 
@@ -43,26 +44,26 @@ public class character : MonoBehaviour
 
 
     {
-      //Health system
+        //Health system
 
-           // can't have more health than max hearts
+        // can't have more health than max hearts
 
-           if (Health > NumOfHearts)
-           {
-             Health = NumOfHearts;
-           }
-           // number of current hearts is established
+        if (Health > NumOfHearts)
+        {
+            Health = NumOfHearts;
+        }
+        // number of current hearts is established
 
-           for (int i = 0; i < hearts.Length; i++)
-           {
-              if (i < Health)
-              {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < Health)
+            {
                 hearts[i].sprite = FullHeart;
-              }
-               else
-               {
-                  hearts[i].sprite = EmptyHeart;
-               }
+            }
+            else
+            {
+                hearts[i].sprite = EmptyHeart;
+            }
 
             // number of max hearts is established
 
@@ -77,34 +78,35 @@ public class character : MonoBehaviour
         }
 
         // Jump Controller with keyboard
-/*
-        if (Input.GetKey(KeyCode.Space))
-        {
-            rb.AddForce(new Vector2(0, upspeed));
+        /*
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    rb.AddForce(new Vector2(0, upspeed));
 
-        }
+                }
 
-            // Animation Controller
+                    // Animation Controller
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                animator.SetBool("IsFalling", true);
-            }
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        animator.SetBool("IsFalling", true);
+                    }
 
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                animator.SetBool("IsFalling", false);
-            }
+                    if (Input.GetKeyUp(KeyCode.Space))
+                    {
+                        animator.SetBool("IsFalling", false);
+                    }
 
 
-*/
+        */
 
         // Animation Controller
 
         if (ForceFloat)
         {
             animator.SetBool("IsFalling", true);
-        } else
+        }
+        else
         {
             animator.SetBool("IsFalling", false);
         }
@@ -116,8 +118,8 @@ public class character : MonoBehaviour
 
         // Character Moves forward
         Vector3 temp = transform.position;
-            temp.x += speed * Time.deltaTime;
-            transform.position = temp;
+        temp.x += speed * Time.deltaTime;
+        transform.position = temp;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -125,19 +127,19 @@ public class character : MonoBehaviour
 
         // colission with rift
 
-        if (collision.tag  == "Rift")
+        if (collision.tag == "Rift")
         {
             Rotation();
-            
-          
+
+
             rb.gravityScale *= -1;
             upspeed *= -1;
             rb.AddForce(new Vector2(0, (upspeed * 10)));
             RiftColition = true;
-           
+
         }
 
-      
+
 
         // colission with enemy proyectile
 
@@ -152,7 +154,7 @@ public class character : MonoBehaviour
     {
         if (collision.tag == "Rift")
         {
-           
+
             RiftColition = false;
 
         }
@@ -170,41 +172,56 @@ public class character : MonoBehaviour
 
             if (top)
             {
-                
+
                 mySpriteRenderer.flipY = true;
             }
             else
             {
-               
+
                 mySpriteRenderer.flipY = false;
             }
 
-        }   
+        }
     }
 
-   
+
 
 
     public void Missile()
     {
-        animator.SetTrigger("Missile");
-        GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-        carrot.transform.position = transform.position + new Vector3 (1,0,0);
+        mana.RequiredDarkMana(10f);
+        if (mana.CurrentDarkMana >= mana.DarkManaUsed)
+        {
+            animator.SetTrigger("Missile");
+            GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+            carrot.transform.position = transform.position + new Vector3(1, 0, 0);
+            mana.ReduceDarkMana();
+        }
+
+
     }
     public void Defence()
     {
-        animator.SetTrigger("Defence");
-        //GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-        //carrot.transform.position = transform.position + new Vector3(1, 0, 0);
+        mana.RequiredLightMana(10f);
+        if (mana.CurrentLightMana >= mana.LightManaUsed)
+        {
+            animator.SetTrigger("Defence");
+            //GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+            //carrot.transform.position = transform.position + new Vector3(1, 0, 0);
+            mana.ReduceLightMana();
+        }
+        
+
+
     }
 
     public void Float()
     {
 
         rb.AddForce(new Vector2(0, upspeed));
-       
 
-       ForceFloat = true;
+
+        ForceFloat = true;
 
 
     }

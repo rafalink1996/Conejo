@@ -18,10 +18,12 @@ public class ManaHandle : MonoBehaviour
     public float DarkManaRegen;
     public float LightManaRegen;
 
-    private float CurrentDarkMana;
-    private float CurrentLightMana;
+    public float CurrentDarkMana;
+    public float CurrentLightMana;
 
     private character Cha;
+
+
 
 
     // Start is called before the first frame update
@@ -37,10 +39,12 @@ public class ManaHandle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DarkManaBar.value = CurrentDarkMana;
+        LightManaBar.value = CurrentLightMana;
         if (CurrentDarkMana < DarkMana && Cha.top == true)
         {
-           DarkManaBar.value = Mathf.MoveTowards(DarkManaBar.value, DarkManaBar.maxValue, Time.deltaTime * DarkManaRegen);
-           // CurrentDarkMana = Mathf.MoveTowards(CurrentDarkMana / DarkMana, 1f, Time.deltaTime * 0.1f) * DarkMana;
+            CurrentDarkMana = Mathf.MoveTowards(DarkManaBar.value, DarkManaBar.maxValue, Time.deltaTime * DarkManaRegen);
+            // CurrentDarkMana = Mathf.MoveTowards(CurrentDarkMana / DarkMana, 1f, Time.deltaTime * 0.1f) * DarkMana;
         }
 
         if (CurrentDarkMana < 0)
@@ -50,7 +54,7 @@ public class ManaHandle : MonoBehaviour
 
         if (CurrentLightMana < LightMana && Cha.top == false)
         {
-            LightManaBar.value = Mathf.MoveTowards(LightManaBar.value, LightManaBar.maxValue, Time.deltaTime * LightManaRegen);
+            CurrentLightMana = Mathf.MoveTowards(LightManaBar.value, LightManaBar.maxValue, Time.deltaTime * LightManaRegen);
             // CurrentDarkMana = Mathf.MoveTowards(CurrentDarkMana / DarkMana, 1f, Time.deltaTime * 0.1f) * DarkMana;
         }
 
@@ -59,18 +63,30 @@ public class ManaHandle : MonoBehaviour
             CurrentLightMana = 0;
         }
     }
-
+    public void RequiredDarkMana (float DarkManaRequired)
+    {
+        DarkManaUsed = DarkManaRequired;
+    }
+    public void RequiredLightMana(float LightManaRequired)
+    {
+        LightManaUsed = LightManaRequired;
+    }
     public void ReduceDarkMana()
 
     {
+        
         CurrentDarkMana -= DarkManaUsed;
-        DarkManaBar.value -= DarkManaUsed; 
+        DarkManaBar.value -= DarkManaUsed;
+
+
     }
 
     public void ReduceLightMana()
 
     {
+        
         CurrentLightMana -= LightManaUsed;
         LightManaBar.value -= LightManaUsed;
+
     }
 }
