@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class PowerFlip : MonoBehaviour
     public Animator animator;
     Button button;
 
+    int m_IndexNumber;
+
 
     void Start()
     {
@@ -19,6 +22,7 @@ public class PowerFlip : MonoBehaviour
         ManaController = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<ManaHandle>();
         button = GetComponent<Button>();
         //button.onClick.AddListener(Cha.Missile);
+        
     }
 
     // Update is called once per frame
@@ -42,24 +46,31 @@ public class PowerFlip : MonoBehaviour
         DarkPower.transform.SetParent(GameObject.FindGameObjectWithTag("UIpower").transform, false);
         DarkPower.GetComponent<Button>().onClick.AddListener(Cha.Defence);
         DarkPower.GetComponent<Button>().onClick.AddListener(ManaController.ReduceLightMana);
-    }
-    public void CharacterFlip()
-    {
+       DarkPower.transform.SetSiblingIndex(0);
         
-        Destroy(gameObject); 
     }
+  
+   
+
+    
 
     public void SpawnLightPower()
     {
-        GameObject Lightpower = GameObject.Instantiate(Resources.Load("Prefabs/Power Light") as GameObject);
+       GameObject Lightpower = GameObject.Instantiate(Resources.Load("Prefabs/Power Light") as GameObject);
         Lightpower.transform.SetParent(GameObject.FindGameObjectWithTag("UIpower").transform, false);
         Lightpower.GetComponent<Button>().onClick.AddListener(Cha.Missile);
         Lightpower.GetComponent<Button>().onClick.AddListener(ManaController.ReduceDarkMana);
+        Lightpower.transform.SetSiblingIndex(0);
 
     }
+
+
+
+    public void PowerOut()
+    {
+        Destroy(gameObject);
+
+    }
+
    
-    
-
- 
-
 }

@@ -15,6 +15,7 @@ public class character : MonoBehaviour
     public Animator animator;
     public bool top;
     private bool ForceFloat;
+    public bool RiftColition;
    
 
     // Health System
@@ -127,10 +128,16 @@ public class character : MonoBehaviour
         if (collision.tag  == "Rift")
         {
             Rotation();
+            
+          
             rb.gravityScale *= -1;
             upspeed *= -1;
             rb.AddForce(new Vector2(0, (upspeed * 10)));
+            RiftColition = true;
+           
         }
+
+      
 
         // colission with enemy proyectile
 
@@ -140,6 +147,17 @@ public class character : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Rift")
+        {
+           
+            RiftColition = false;
+
+        }
+    }
+
 
     void Rotation()
     {
@@ -163,6 +181,10 @@ public class character : MonoBehaviour
 
         }   
     }
+
+   
+
+
     public void Missile()
     {
         animator.SetTrigger("Missile");
