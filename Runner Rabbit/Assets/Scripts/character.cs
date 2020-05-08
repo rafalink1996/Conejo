@@ -27,6 +27,9 @@ public class character : MonoBehaviour
     public Sprite FullHeart;
     public Sprite EmptyHeart;
 
+    private Animator heartanimator;
+ 
+
 
 
 
@@ -36,6 +39,7 @@ public class character : MonoBehaviour
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         rb.AddForce(new Vector2(0, 200));
         mana = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<ManaHandle>();
+        heartanimator = GameObject.FindGameObjectWithTag("Heart").GetComponent<Animator>();
 
     }
 
@@ -146,6 +150,8 @@ public class character : MonoBehaviour
         if (collision.tag == "Enemy proyectile")
         {
             Health -= 1;
+            
+            
         }
 
     }
