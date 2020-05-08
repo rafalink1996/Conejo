@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7513062101448049805}
   - component: {fileID: 7513062101448049807}
   - component: {fileID: 7513062101448049804}
-  - component: {fileID: 7412620027043851814}
   - component: {fileID: 1046553031}
+  - component: {fileID: 2482704403317283876}
   - component: {fileID: 9145209932829286937}
   m_Layer: 5
   m_Name: Power Light
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.1000061, y: 0.1499939}
+  m_AnchoredPosition: {x: -0.1000061, y: 0.15002441}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &7513062101448049807
@@ -75,26 +75,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!95 &7412620027043851814
-Animator:
-  serializedVersion: 3
+--- !u!114 &1046553031
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7513062101448049802}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b3fcd23d73a14cb38cc1201f908aada, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1046553031
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be2a55b226384ff492ad9181002b349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2482704403317283876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,10 +96,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7513062101448049802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2be2a55b226384ff492ad9181002b349, type: 3}
+  m_Script: {fileID: 11500000, guid: b609c935feb9a4f62833352fcd5da831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 7412620027043851814}
 --- !u!114 &9145209932829286937
 MonoBehaviour:
   m_ObjectHideFlags: 0

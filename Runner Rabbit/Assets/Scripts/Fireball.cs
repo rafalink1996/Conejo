@@ -5,10 +5,13 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     public float speed = 10f;
+    public Animator Fireballanimator;
     // Start is called before the first frame update
     void Start()
     {
+       
         Destroy(gameObject, 4f);
+      
        // transform.position = GameObject.Find("Enemy Spawner").transform.position;
     }
 
@@ -19,4 +22,28 @@ public class Fireball : MonoBehaviour
         temp.x -= speed * Time.deltaTime;
         transform.position = temp;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+
+    {
+        if (collision.tag == "Player")
+        {
+            Fireballanimator.SetTrigger("hit");
+            FindObjectOfType<AudioManager>().Play("FireExplotion");
+            Debug.Log("player was hit");
+            speed = -3f;
+
+
+        }
+
+    }
+
+    public void HitEnd ()
+    {
+        
+        Destroy(gameObject);
+    }
+    
+    
+      
+    
 }

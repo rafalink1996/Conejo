@@ -92,7 +92,7 @@ public class TokenSpawner : MonoBehaviour
     public void SetTokenCount(int count)
     {
         TokenCount = count;
-        print("Token count");
+       // print("Token count");
     }
 
     public void OneDown()
