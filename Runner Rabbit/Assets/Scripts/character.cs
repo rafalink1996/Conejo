@@ -23,11 +23,11 @@ public class character : MonoBehaviour
     public int Health;
     public int NumOfHearts;
 
-    public Image[] hearts;
+    public GameObject[] hearts;
     public Sprite FullHeart;
     public Sprite EmptyHeart;
 
-    private Animator heartanimator;
+    //private Animator heartanimator;
  
 
 
@@ -39,7 +39,7 @@ public class character : MonoBehaviour
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         rb.AddForce(new Vector2(0, 200));
         mana = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<ManaHandle>();
-        heartanimator = GameObject.FindGameObjectWithTag("Heart").GetComponent<Animator>();
+        //heartanimator = GameObject.FindGameObjectWithTag("Heart").GetComponent<Animator>();
 
     }
 
@@ -62,22 +62,22 @@ public class character : MonoBehaviour
         {
             if (i < Health)
             {
-                hearts[i].sprite = FullHeart;
+                hearts[i].GetComponent<Animator>().SetBool("Full", true);
             }
             else
             {
-                hearts[i].sprite = EmptyHeart;
+                hearts[i].GetComponent<Animator>().SetBool("Full", false);
             }
 
             // number of max hearts is established
 
             if (i < NumOfHearts)
             {
-                hearts[i].enabled = true;
+                hearts[i].SetActive(true);
             }
             else
             {
-                hearts[i].enabled = false;
+                hearts[i].SetActive(false);
             }
         }
 
