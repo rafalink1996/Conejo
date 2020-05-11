@@ -48,47 +48,62 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0cfe64daea41c4a5cb6a483ca0b0969d, type: 3}
     volume: 0.3
     pitch: 1
+    priority: 1
     loop: 0
     source: {fileID: 0}
   - name: SlimePreSpawn
     clip: {fileID: 8300000, guid: fc87d92b6c15b4d7b88364444047c0f0, type: 3}
     volume: 0.2
     pitch: 1
+    priority: 1
     loop: 0
     source: {fileID: 0}
   - name: SlimeSpawn
     clip: {fileID: 8300000, guid: 421214461aded43d0b78405c22886ea0, type: 3}
     volume: 0.5
     pitch: 1.7
+    priority: 1
     loop: 0
     source: {fileID: 0}
   - name: BookSpawn
     clip: {fileID: 8300000, guid: de71c601c7d754dd78931b4192a122d5, type: 3}
     volume: 0.5
     pitch: 1
+    priority: 1
     loop: 0
     source: {fileID: 0}
   - name: BookDeSpawn
     clip: {fileID: 8300000, guid: 1dcbf668cacf248e98e4ad655ec74c0b, type: 3}
     volume: 0.5
     pitch: 1
+    priority: 1
     loop: 0
     source: {fileID: 0}
   - name: Coin
     clip: {fileID: 8300000, guid: 61da7426bb9bd4f84b341fbf236f7b28, type: 3}
     volume: 0.2
     pitch: 1.3
+    priority: 1
     loop: 0
     source: {fileID: 0}
   - name: FireExplotion
     clip: {fileID: 8300000, guid: 3d7f1d02f7fb64537be09fb3a81a8d82, type: 3}
     volume: 0.2
     pitch: 0.8
+    priority: 0
     loop: 0
     source: {fileID: 0}
   - name: RiftPass
     clip: {fileID: 8300000, guid: 4569f5b7009bc410f84d453713fe7e1b, type: 3}
     volume: 0.2
     pitch: 0.6
+    priority: 5
+    loop: 0
+    source: {fileID: 0}
+  - name: music
+    clip: {fileID: 8300000, guid: 294a09f5903f646379f8a73f13a91043, type: 3}
+    volume: 0.5
+    pitch: 1
+    priority: 0
     loop: 0
     source: {fileID: 0}

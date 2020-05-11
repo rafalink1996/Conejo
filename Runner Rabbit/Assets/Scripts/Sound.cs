@@ -12,6 +12,10 @@ public class Sound
     public float volume;
     [Range(.1f,3)]
     public float pitch;
+    [Range(0, 256)]
+    public int priority;
+
+
 
     public bool loop;
 
