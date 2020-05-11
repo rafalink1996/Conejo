@@ -164,8 +164,11 @@ public class character : MonoBehaviour
         if (collision.tag == "Enemy proyectile")
         {
             Health -= 1;
-            
-            
+            animator.SetTrigger("GotHit");
+            StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
+
+
+
         }
 
     }
@@ -176,6 +179,8 @@ public class character : MonoBehaviour
         {
 
             RiftColition = false;
+
+            
 
         }
     }
@@ -249,5 +254,30 @@ public class character : MonoBehaviour
     public void Fall()
     {
         ForceFloat = false;
+    }
+
+
+
+    IEnumerator DamageEffectSequence(SpriteRenderer mySpriteRenderer, Color dmgColor, float duration, float delay)
+    {
+        // save origin color
+        Color originColor = mySpriteRenderer.color;
+
+        // tint the sprite with damage color
+        mySpriteRenderer.color = dmgColor;
+
+        // you can delay the animation
+        yield return new WaitForSeconds(delay);
+
+        // lerp animation with given duration in seconds
+        for (float t = 0; t < 1.0f; t += Time.deltaTime / duration)
+        {
+            mySpriteRenderer.color = Color.Lerp(dmgColor, originColor, t);
+
+            yield return null;
+        }
+
+        // restore origin color
+        mySpriteRenderer.color = originColor;
     }
 }

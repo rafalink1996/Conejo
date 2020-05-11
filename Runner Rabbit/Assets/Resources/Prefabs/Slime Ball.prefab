@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 82105334875714792}
   - component: {fileID: 2407069996213390621}
   - component: {fileID: 58236670871500816}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Slime Ball
   m_TagString: Enemy proyectile
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -475757017
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b70f67d0149044902b3f5b36a699af7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  Fireballanimator: {fileID: 0}
 --- !u!82 &82105334875714792
 AudioSource:
   m_ObjectHideFlags: 0
