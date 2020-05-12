@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class character : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class character : MonoBehaviour
     public bool RiftColition;
     ManaHandle mana;
 
+
+    // Coin Collecting
+
+    private float coins = 0;
+    public TextMeshProUGUI CoinCounter;
      
  
      
@@ -155,6 +161,14 @@ public class character : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("RiftPass");
 
 
+        }
+
+        //collision with coins
+
+        if (collision.tag == "Coin")
+        {
+            coins ++;
+            CoinCounter.text = coins.ToString();
         }
 
 

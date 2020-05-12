@@ -40,6 +40,7 @@ public class TokenSpawner : MonoBehaviour
             GameObject Tokens = Instantiate(Resources.Load("Prefabs/" + TokenName[TokenType]) as GameObject);
             Tokens.transform.position = new Vector3 (transform.position.x, transform.position.y + Random.Range(-1f, 5f), transform.position.z);
             //Tokens.transform.position = new Vector2(0, Random.Range(0, 0));
+            
 
 
 
