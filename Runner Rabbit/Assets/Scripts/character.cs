@@ -181,6 +181,7 @@ public class character : MonoBehaviour
             Health -= 1;
             animator.SetTrigger("GotHit");
             StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
+            StartCoroutine(GetInvulnerable());
 
 
 
@@ -236,6 +237,7 @@ public class character : MonoBehaviour
             GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
             carrot.transform.position = transform.position + new Vector3(1, 0, 0);
             mana.ReduceDarkMana();
+            FindObjectOfType<AudioManager>().Play("MagicMissle");
         }
 
 
@@ -249,6 +251,8 @@ public class character : MonoBehaviour
             //GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
             //carrot.transform.position = transform.position + new Vector3(1, 0, 0);
             mana.ReduceLightMana();
+            FindObjectOfType<AudioManager>().Play("MagicDefence");
+
         }
         
 
@@ -298,5 +302,15 @@ public class character : MonoBehaviour
 
         // restore origin color
         mySpriteRenderer.color = originColor;
+    }
+
+
+    IEnumerator GetInvulnerable()
+    {
+        Physics2D.IgnoreLayerCollision(8, 9, true);
+        yield return new WaitForSeconds(1f);
+        Physics2D.IgnoreLayerCollision(8, 9, false);
+
+
     }
 }
