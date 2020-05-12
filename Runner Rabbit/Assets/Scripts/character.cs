@@ -24,9 +24,9 @@ public class character : MonoBehaviour
 
     private float coins = 0;
     public TextMeshProUGUI CoinCounter;
-     
- 
-     
+
+
+
 
 
     // Health System
@@ -37,8 +37,8 @@ public class character : MonoBehaviour
     public Sprite FullHeart;
     public Sprite EmptyHeart;
     bool hasPassedThroughRift;
- 
- 
+
+
 
 
 
@@ -53,7 +53,7 @@ public class character : MonoBehaviour
 
 
 
-       
+
         //heartanimator = GameObject.FindGameObjectWithTag("Heart").GetComponent<Animator>();
 
     }
@@ -77,7 +77,7 @@ public class character : MonoBehaviour
         {
             if (i < Health)
             {
-                hearts[i].GetComponent<Animator>().SetBool("Full", true);       
+                hearts[i].GetComponent<Animator>().SetBool("Full", true);
             }
             else
             {
@@ -119,7 +119,7 @@ public class character : MonoBehaviour
          */
 
 
-        
+
 
         // Animation Controller
 
@@ -141,6 +141,7 @@ public class character : MonoBehaviour
         Vector3 temp = transform.position;
         temp.x += speed * Time.deltaTime;
         transform.position = temp;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -152,15 +153,15 @@ public class character : MonoBehaviour
         {
             Rotation();
 
-
-            rb.gravityScale *= -1;
             upspeed *= -1;
             //dashSpeed *= -1;
             rb.velocity = Vector3.zero;
-            rb.AddForce(new Vector2(0, (upspeed * 21 * Time.deltaTime)));
+            rb.AddForce(new Vector2(0, (upspeed * 19 * Time.deltaTime)));
             RiftColition = true;
             FindObjectOfType<AudioManager>().Play("RiftPass");
-            hasPassedThroughRift = true;
+
+
+
 
         }
 
@@ -168,7 +169,7 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Coin")
         {
-            coins ++;
+            coins++;
             CoinCounter.text = coins.ToString();
         }
 
@@ -193,10 +194,10 @@ public class character : MonoBehaviour
     {
         if (collision.tag == "Rift")
         {
-
+            rb.gravityScale *= -1;
             RiftColition = false;
+            hasPassedThroughRift = true;
 
-            
 
         }
     }
@@ -254,7 +255,7 @@ public class character : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("MagicDefence");
 
         }
-        
+
 
 
     }

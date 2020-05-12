@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2579007505430407803}
   - component: {fileID: 2579007505430407800}
   - component: {fileID: 2579007505430407801}
-  - component: {fileID: 114948075091485888}
   - component: {fileID: 82105334875714792}
   - component: {fileID: 2407069996213390621}
   - component: {fileID: 58236670871500816}
@@ -50,6 +49,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -61,6 +61,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -103,20 +104,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114948075091485888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2579007505430407806}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecc6727dead0a40439f2c8830eb60413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  Fireballanimator: {fileID: 0}
 --- !u!82 &82105334875714792
 AudioSource:
   m_ObjectHideFlags: 0
