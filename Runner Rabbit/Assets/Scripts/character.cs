@@ -36,7 +36,7 @@ public class character : MonoBehaviour
     public GameObject[] hearts;
     public Sprite FullHeart;
     public Sprite EmptyHeart;
-
+    bool hasPassedThroughRift;
  
  
 
@@ -156,10 +156,11 @@ public class character : MonoBehaviour
             rb.gravityScale *= -1;
             upspeed *= -1;
             //dashSpeed *= -1;
-            rb.AddForce(new Vector2(0, (upspeed * 10)));
+            rb.velocity = Vector3.zero;
+            rb.AddForce(new Vector2(0, (upspeed * 21 * Time.deltaTime)));
             RiftColition = true;
             FindObjectOfType<AudioManager>().Play("RiftPass");
-
+            hasPassedThroughRift = true;
 
         }
 
@@ -256,8 +257,12 @@ public class character : MonoBehaviour
 
     public void Float()
     {
-
-        rb.AddForce(new Vector2(0, upspeed));
+        if (hasPassedThroughRift)
+        {
+            rb.velocity = Vector3.zero;
+            hasPassedThroughRift = false;
+        }
+        rb.AddForce(new Vector2(0, upspeed * Time.deltaTime));
 
 
         ForceFloat = true;

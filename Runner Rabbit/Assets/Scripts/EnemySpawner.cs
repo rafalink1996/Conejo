@@ -92,7 +92,7 @@ public class EnemySpawner : MonoBehaviour
     public void SetEnemyCount (int count)
     {
         enemyCount = count;
-        print("enemy count");
+        //print("enemy count");
     }
 
     public void OneDown()

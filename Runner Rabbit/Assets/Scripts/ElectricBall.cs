@@ -31,6 +31,19 @@ public class ElectricBall : MonoBehaviour
         }
        
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+
+    {
+        if (collision.tag == "Player")
+        {
+            Hit();
+            //FindObjectOfType<AudioManager>().Play("FireExplotion");
+
+            
+
+        }
+
+    }
     public void Hit()
     {
         anim.SetTrigger("Hit");

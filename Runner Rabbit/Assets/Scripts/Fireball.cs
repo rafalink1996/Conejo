@@ -5,11 +5,11 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     public float speed = 10f;
-    public Animator Fireballanimator;
+    Animator fireballAnimator;
     // Start is called before the first frame update
     void Start()
     {
-       
+        fireballAnimator = GetComponent<Animator>();
         Destroy(gameObject, 4f);
       
        // transform.position = GameObject.Find("Enemy Spawner").transform.position;
@@ -27,9 +27,9 @@ public class Fireball : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Fireballanimator.SetTrigger("hit");
+            fireballAnimator.SetTrigger("hit");
             FindObjectOfType<AudioManager>().Play("FireExplotion");
-            Debug.Log("player was hit");
+            
             speed = -3f;
 
 
