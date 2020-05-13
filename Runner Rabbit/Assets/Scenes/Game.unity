@@ -747,7 +747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &102801763
 Transform:
   m_ObjectHideFlags: 0
@@ -7575,7 +7575,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7724,6 +7724,7 @@ GameObject:
   - component: {fileID: 547098678}
   - component: {fileID: 547098677}
   - component: {fileID: 547098676}
+  - component: {fileID: 547098679}
   m_Layer: 0
   m_Name: Fire Portal
   m_TagString: Untagged
@@ -7814,6 +7815,18 @@ Transform:
   m_Father: {fileID: 1114724122}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &547098679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547098675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8461fac08b83a45d0a8c8cd9319ed370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &588361853
 GameObject:
   m_ObjectHideFlags: 0
@@ -7906,13 +7919,14 @@ GameObject:
   - component: {fileID: 607775400}
   - component: {fileID: 607775399}
   - component: {fileID: 607775398}
+  - component: {fileID: 607775401}
   m_Layer: 0
   m_Name: Ice Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &607775398
 Animator:
   serializedVersion: 3
@@ -7996,6 +8010,18 @@ Transform:
   m_Father: {fileID: 1114724122}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &607775401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607775397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8461fac08b83a45d0a8c8cd9319ed370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &680221098
 GameObject:
   m_ObjectHideFlags: 0
@@ -13509,7 +13535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &934656955
 Transform:
   m_ObjectHideFlags: 0
@@ -14860,6 +14886,7 @@ GameObject:
   - component: {fileID: 1246598661}
   - component: {fileID: 1246598660}
   - component: {fileID: 1246598663}
+  - component: {fileID: 1246598664}
   m_Layer: 0
   m_Name: Book Wyrm
   m_TagString: Untagged
@@ -15046,6 +15073,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1246598664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246598659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0850dd4fcb44c1582c3d518bd0e7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  element: 1
+  currentElement: 1
+  portals:
+  - {fileID: 547098675}
+  - {fileID: 607775397}
+  - {fileID: 1426843344}
+  ice: 0
+  iceTimer: 10
 --- !u!1 &1298986779
 GameObject:
   m_ObjectHideFlags: 0
@@ -15833,13 +15880,14 @@ GameObject:
   - component: {fileID: 1426843347}
   - component: {fileID: 1426843346}
   - component: {fileID: 1426843345}
+  - component: {fileID: 1426843348}
   m_Layer: 0
   m_Name: Electric Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1426843345
 Animator:
   serializedVersion: 3
@@ -15923,6 +15971,18 @@ Transform:
   m_Father: {fileID: 1114724122}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1426843348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426843344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8461fac08b83a45d0a8c8cd9319ed370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1434936359
 GameObject:
   m_ObjectHideFlags: 0
@@ -27929,7 +27989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1948533880
 Transform:
   m_ObjectHideFlags: 0
@@ -28322,7 +28382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2045639231
 Transform:
   m_ObjectHideFlags: 0
