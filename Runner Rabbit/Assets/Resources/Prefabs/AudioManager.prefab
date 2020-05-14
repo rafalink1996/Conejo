@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: SlimeDeath
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: 0cfe64daea41c4a5cb6a483ca0b0969d, type: 3}
     volume: 0.3
     pitch: 1
@@ -52,6 +54,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: SlimePreSpawn
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: fc87d92b6c15b4d7b88364444047c0f0, type: 3}
     volume: 0.2
     pitch: 1
@@ -59,6 +63,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: SlimeSpawn
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: 421214461aded43d0b78405c22886ea0, type: 3}
     volume: 0.5
     pitch: 1.7
@@ -66,6 +72,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: BookSpawn
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: de71c601c7d754dd78931b4192a122d5, type: 3}
     volume: 0.5
     pitch: 1
@@ -73,6 +81,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: BookDeSpawn
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: 1dcbf668cacf248e98e4ad655ec74c0b, type: 3}
     volume: 0.5
     pitch: 1
@@ -80,6 +90,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Coin
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: 61da7426bb9bd4f84b341fbf236f7b28, type: 3}
     volume: 0.2
     pitch: 1.3
@@ -87,6 +99,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: FireExplotion
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: 3d7f1d02f7fb64537be09fb3a81a8d82, type: 3}
     volume: 0.2
     pitch: 0.8
@@ -94,6 +108,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: RiftPass
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: 4569f5b7009bc410f84d453713fe7e1b, type: 3}
     volume: 0.2
     pitch: 0.6
@@ -101,6 +117,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: music
+    audioOutputMixer: {fileID: -3782309269719523556, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: 294a09f5903f646379f8a73f13a91043, type: 3}
     volume: 0.5
     pitch: 1
@@ -108,6 +126,8 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: MagicDefence
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: ffa942df46c6b4329a237bf597cb7262, type: 3}
     volume: 0.5
     pitch: 1.5
@@ -115,6 +135,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: MagicMissle
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: 2b661df8529ef4f16975d043aa510c62, type: 3}
     volume: 0.5
     pitch: 1
@@ -122,6 +144,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: MagicKick
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: 599abeb78e36a4735a6f668d07a98fa5, type: 3}
     volume: 0.5
     pitch: 1
@@ -129,6 +153,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: MagicRay
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
     clip: {fileID: 8300000, guid: 28aade9dacb974a029884bb7743a1dc2, type: 3}
     volume: 0.5
     pitch: 1

@@ -17,6 +17,9 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.priority = s.priority;
+            s.source.outputAudioMixerGroup = s.audioOutputMixer;
+
+
         }
     }
 
