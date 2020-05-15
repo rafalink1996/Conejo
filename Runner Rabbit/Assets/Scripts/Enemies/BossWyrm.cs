@@ -9,17 +9,25 @@ public class BossWyrm : MonoBehaviour
     public GameObject[] portals;
     public GameObject[] attacks;
     public bool ice;
-    public float iceTimer = 10f;
+    public float iceTimer = 30f;
     Animator anim;
+    public float timeToChange;
+    public bool isChanging;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        timeToChange = Random.Range(15f, 25f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isChanging)
+        {
+            timeToChange -= Time.deltaTime;
+            
+        }
         if (element == 1)
         {
             portals[0].SetActive(true);
@@ -46,7 +54,8 @@ public class BossWyrm : MonoBehaviour
         if (iceTimer <= 0)
         {
             ice = false;
-            iceTimer = 10f;
+            anim.SetBool("Ice", false);
+            //iceTimer = 30f;
         }
         /*if (Input.GetKeyDown(KeyCode.U)) //for testing
         {
@@ -119,4 +128,5 @@ public class BossWyrm : MonoBehaviour
             attacks[2].SetActive(true);
         }
     }
+    
 }

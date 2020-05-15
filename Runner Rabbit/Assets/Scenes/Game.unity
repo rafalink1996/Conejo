@@ -904,6 +904,7 @@ GameObject:
   - component: {fileID: 182894987}
   - component: {fileID: 182894986}
   - component: {fileID: 182894988}
+  - component: {fileID: 182894989}
   m_Layer: 0
   m_Name: WyrmIceRift
   m_TagString: Untagged
@@ -1020,6 +1021,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19.2, y: 0.9641564}
   m_EdgeRadius: 0
+--- !u!114 &182894989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182894984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a9cf3a5540348ba9cfc3557ab007af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &201235687
 GameObject:
   m_ObjectHideFlags: 0
@@ -15023,7 +15036,9 @@ MonoBehaviour:
   - {fileID: 2039145324}
   - {fileID: 2132081688}
   ice: 0
-  iceTimer: 10
+  iceTimer: 30
+  timeToChange: 0
+  isChanging: 0
 --- !u!1 &1298986779
 GameObject:
   m_ObjectHideFlags: 0
@@ -27883,6 +27898,7 @@ GameObject:
   - component: {fileID: 1948533882}
   - component: {fileID: 1948533881}
   - component: {fileID: 1948533883}
+  - component: {fileID: 1948533884}
   m_Layer: 0
   m_Name: WyrmFireRay
   m_TagString: Enemy proyectile
@@ -28070,6 +28086,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1948533884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948533879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886368dca91f5451a92e04a00e2debc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1956526149
 GameObject:
   m_ObjectHideFlags: 0
@@ -28139,6 +28167,7 @@ GameObject:
   - component: {fileID: 2039145327}
   - component: {fileID: 2039145326}
   - component: {fileID: 2039145328}
+  - component: {fileID: 2039145329}
   m_Layer: 0
   m_Name: WyrmIceShield
   m_TagString: Untagged
@@ -28325,6 +28354,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2039145329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039145324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a9cf3a5540348ba9cfc3557ab007af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2045639230
 GameObject:
   m_ObjectHideFlags: 0
@@ -28564,6 +28605,7 @@ GameObject:
   - component: {fileID: 2132081691}
   - component: {fileID: 2132081690}
   - component: {fileID: 2132081692}
+  - component: {fileID: 2132081693}
   m_Layer: 0
   m_Name: WyrmElectricRift
   m_TagString: Enemy proyectile
@@ -28680,6 +28722,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19.2, y: 0.9641564}
   m_EdgeRadius: 0
+--- !u!114 &2132081693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132081688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4b62ab4fb70418cb6f87ae84cad9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wyrmAnim: {fileID: 1246598660}
 --- !u!1001 &3253304539955839414
 PrefabInstance:
   m_ObjectHideFlags: 0
