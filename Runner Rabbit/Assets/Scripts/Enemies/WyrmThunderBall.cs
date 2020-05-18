@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElectricBall : MonoBehaviour
+public class WyrmThunderBall : MonoBehaviour
 {
     Transform target;
     float speed = 7f;
@@ -23,13 +23,13 @@ public class ElectricBall : MonoBehaviour
     {
         if (transform.position.x > target.transform.position.x)
         {
-        Vector2 direction = (Vector2)target.position - rb.position;
-        direction.Normalize();
-        float rotateAmount = Vector3.Cross(direction, transform.right).z;
-        rb.angularVelocity = rotateAmount * rotateSpeed;
-        rb.velocity = transform.right * -speed;
+            Vector2 direction = (Vector2)target.position - rb.position;
+            direction.Normalize();
+            float rotateAmount = Vector3.Cross(direction, transform.right).z;
+            rb.angularVelocity = rotateAmount * rotateSpeed;
+            rb.velocity = transform.right * -speed;
         }
-       
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
 
@@ -39,7 +39,7 @@ public class ElectricBall : MonoBehaviour
             Hit();
             //FindObjectOfType<AudioManager>().Play("FireExplotion");
 
-            
+
 
         }
 

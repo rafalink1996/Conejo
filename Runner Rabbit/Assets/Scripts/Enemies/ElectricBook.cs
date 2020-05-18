@@ -70,8 +70,8 @@ public class ElectricBook : MonoBehaviour
     void ElectricBall()
     {
         GameObject electricBall = GameObject.Instantiate(Resources.Load("Prefabs/Electric ball") as GameObject);
-        electricBall.transform.SetParent(transform, false);
-        //electricBall.transform.position = transform.position;
+        //electricBall.transform.SetParent(transform, false);
+        electricBall.transform.position = transform.position;
         
     }
     void Over()
