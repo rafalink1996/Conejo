@@ -10,6 +10,8 @@ public class LevelLoader : MonoBehaviour
     public GameObject loadingScreen;
     public Slider slider;
     public Animator transition;
+    public float transitiontime;
+    public GameObject playbuttontransition;
 
     public void LoadLevel( int SceneIndex)
 
@@ -17,9 +19,22 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(loadAsync(SceneIndex));
     }
 
+
+
     IEnumerator loadAsync (int SceneIndex)
 
     {
+        // play animation
+        transition.SetTrigger("Start");
+        FindObjectOfType<AudioManager>().Play("TransitionSound");
+
+
+        //wait
+        yield return new WaitForSeconds(transitiontime);
+
+        //loadScene
+        playbuttontransition.SetActive(false);
+
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneIndex);
 
         loadingScreen.SetActive(true);
