@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WyrmFireBall : MonoBehaviour
 {
+
     Transform target;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,6 @@ public class WyrmFireBall : MonoBehaviour
     void Update()
     {
 
-        transform.Translate(-13 * Time.deltaTime, 0, 0);
+        transform.Translate(-23 * Time.deltaTime, 0, 0);
     }
 }
