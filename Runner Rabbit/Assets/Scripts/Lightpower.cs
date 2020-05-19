@@ -14,6 +14,7 @@ public class Lightpower : MonoBehaviour
     {
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
         button = GetComponent<Button>();
+        button.onClick.AddListener(Cha.LightPower);
     }
 
     // Update is called once per frame

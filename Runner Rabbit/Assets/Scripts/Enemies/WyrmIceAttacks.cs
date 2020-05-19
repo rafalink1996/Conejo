@@ -19,7 +19,7 @@ public class WyrmIceAttacks : MonoBehaviour
         if (wyrm.iceTimer <= 0)
         {
             anim.SetTrigger("Shatter");
-            print("Shatter");
+            
         }
     }
     public void Deactivate()

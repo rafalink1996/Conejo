@@ -7,13 +7,13 @@ using TMPro;
 public class character : MonoBehaviour
 {
 
-    public Rigidbody2D rb;
+    Rigidbody2D rb;
     private SpriteRenderer mySpriteRenderer;
 
     // Movement
     public float upspeed;
     private float speed = 10f;
-    public Animator animator;
+    Animator animator;
     public bool top;
     private bool ForceFloat;
     public bool RiftColition;
@@ -26,17 +26,18 @@ public class character : MonoBehaviour
     public TextMeshProUGUI CoinCounter;
 
 
-
-
-
     // Health System
     public int Health;
     public int NumOfHearts;
-
     public GameObject[] hearts;
     public Sprite FullHeart;
     public Sprite EmptyHeart;
     bool hasPassedThroughRift;
+
+    //Power Management
+    public bool isUsingPower;
+    public string lightPower;
+    public string darkPower;
 
 
 
@@ -46,10 +47,13 @@ public class character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         rb.AddForce(new Vector2(0, 200));
         mana = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<ManaHandle>();
-
+        animator = GetComponent<Animator>();
+        darkPower = GameStats.stats.darkPower;
+        lightPower = GameStats.stats.lightPower;
 
 
 
@@ -197,7 +201,7 @@ public class character : MonoBehaviour
             rb.gravityScale *= -1;
             RiftColition = false;
             hasPassedThroughRift = true;
-
+            
 
         }
     }
@@ -229,30 +233,56 @@ public class character : MonoBehaviour
 
 
 
-    public void Missile()
+    public void LightPower()
     {
         mana.RequiredDarkMana(10f);
-        if (mana.CurrentDarkMana >= mana.DarkManaUsed)
+        if (mana.CurrentDarkMana >= mana.DarkManaUsed && !isUsingPower)
         {
-            animator.SetTrigger("Missile");
-            GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-            carrot.transform.position = transform.position + new Vector3(1, 0, 0);
-            mana.ReduceDarkMana();
-            FindObjectOfType<AudioManager>().Play("MagicMissle");
+            isUsingPower = true;
+            animator.SetBool("isUsingPower", true);
+            if (lightPower == "Missile")
+            {
+                animator.SetTrigger("Missile");
+                GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                carrot.transform.position = transform.position + new Vector3(1, 0, 0);
+                mana.ReduceDarkMana();
+                FindObjectOfType<AudioManager>().Play("MagicMissle");
+            }
+            if (lightPower == "Defence")
+            {
+                animator.SetTrigger("Defence");
+                GameObject shield = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                shield.transform.position = transform.position;
+                mana.ReduceDarkMana();
+                FindObjectOfType<AudioManager>().Play("MagicDefence");
+            }
         }
 
 
     }
-    public void Defence()
+    public void DarkPower()
     {
         mana.RequiredLightMana(10f);
-        if (mana.CurrentLightMana >= mana.LightManaUsed)
+        if (mana.CurrentLightMana >= mana.LightManaUsed && !isUsingPower)
         {
-            animator.SetTrigger("Defence");
-            //GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-            //carrot.transform.position = transform.position + new Vector3(1, 0, 0);
-            mana.ReduceLightMana();
-            FindObjectOfType<AudioManager>().Play("MagicDefence");
+            isUsingPower = true;
+            animator.SetBool("isUsingPower", true);
+            if (darkPower == "Missile")
+            {
+                animator.SetTrigger("Missile");
+                GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                carrot.transform.position = transform.position + new Vector3(1, 0, 0);
+                mana.ReduceLightMana();
+                FindObjectOfType<AudioManager>().Play("MagicMissle");
+            }
+            if (darkPower == "Defence")
+            {
+                animator.SetTrigger("Defence");
+                GameObject shield = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                shield.transform.position = transform.position;
+                mana.ReduceLightMana();
+                FindObjectOfType<AudioManager>().Play("MagicDefence");
+            }
 
         }
 
@@ -313,5 +343,11 @@ public class character : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 9, false);
 
 
+    }
+    public void ResetUsingPower()
+    {
+        isUsingPower = false;
+        animator.SetBool("isUsingPower", false);
+        
     }
 }

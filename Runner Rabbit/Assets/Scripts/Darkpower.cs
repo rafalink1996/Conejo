@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Darkpower : MonoBehaviour
 
-     
+
 {
     private character Cha;
     Button button;
@@ -14,8 +14,9 @@ public class Darkpower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
-    button = GetComponent<Button>();
+        Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
+        button = GetComponent<Button>();
+        button.onClick.AddListener(Cha.LightPower);
     }
 
     // Update is called once per frame
@@ -26,12 +27,13 @@ public class Darkpower : MonoBehaviour
             button.interactable = true;
             transform.SetSiblingIndex(1);
 
-        } else
+        }
+        else
         {
             button.interactable = false;
             transform.SetSiblingIndex(0);
         }
 
-        
+
     }
 }
