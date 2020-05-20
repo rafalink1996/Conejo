@@ -26,6 +26,8 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("music");
+        Play("musica alternativa XD");
+        Play("WindSFX");
     }
 
     public void Play (string name)

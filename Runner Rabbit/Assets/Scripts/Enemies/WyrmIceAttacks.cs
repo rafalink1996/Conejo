@@ -20,6 +20,7 @@ public class WyrmIceAttacks : MonoBehaviour
         {
             anim.SetTrigger("Shatter");
             
+
         }
     }
     public void Deactivate()
@@ -27,4 +28,10 @@ public class WyrmIceAttacks : MonoBehaviour
         wyrm.iceTimer = 30f;
         gameObject.SetActive(false);
     }
+
+    public void ShatterSound()
+    {
+        FindObjectOfType<AudioManager>().Play("IceShatter");
+    }
+   
 }

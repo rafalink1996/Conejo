@@ -94,7 +94,7 @@ MonoBehaviour:
       type: 2}
     clip: {fileID: 8300000, guid: 61da7426bb9bd4f84b341fbf236f7b28, type: 3}
     volume: 0.2
-    pitch: 1.3
+    pitch: 1
     priority: 1
     loop: 0
     source: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
     audioOutputMixer: {fileID: -3782309269719523556, guid: fc3f455b10db348d094da207e592d7c2,
       type: 2}
     clip: {fileID: 8300000, guid: 294a09f5903f646379f8a73f13a91043, type: 3}
-    volume: 0.5
+    volume: 0
     pitch: 1
     priority: 30
     loop: 1
@@ -169,4 +169,31 @@ MonoBehaviour:
     pitch: 1.2
     priority: 30
     loop: 0
+    source: {fileID: 0}
+  - name: IceShatter
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: ee6217b4527314b7b948595311c56386, type: 3}
+    volume: 0.2
+    pitch: 1.2
+    priority: 30
+    loop: 0
+    source: {fileID: 0}
+  - name: musica alternativa XD
+    audioOutputMixer: {fileID: -3782309269719523556, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 9ed437300b4da400f9afde2c6443f8f2, type: 3}
+    volume: 0.3
+    pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: WindSFX
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 8424287397328415b9f071355a22075c, type: 3}
+    volume: 1
+    pitch: 1
+    priority: 104
+    loop: 1
     source: {fileID: 0}
