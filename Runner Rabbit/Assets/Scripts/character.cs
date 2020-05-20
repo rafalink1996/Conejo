@@ -52,11 +52,12 @@ public class character : MonoBehaviour
         rb.AddForce(new Vector2(0, 200));
         mana = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<ManaHandle>();
         animator = GetComponent<Animator>();
-        darkPower = GameStats.stats.darkPower;
-        lightPower = GameStats.stats.lightPower;
-
-
-
+        darkPower = GameStats.stats.darkPowerName;
+        lightPower = GameStats.stats.lightPowerName;
+        coins = GameStats.stats.coins; //sets held coins to value stored
+        CoinCounter.text = coins.ToString();
+        NumOfHearts = GameStats.stats.numOfHearts;
+        Health = NumOfHearts;
 
         //heartanimator = GameObject.FindGameObjectWithTag("Heart").GetComponent<Animator>();
 
@@ -145,7 +146,8 @@ public class character : MonoBehaviour
         Vector3 temp = transform.position;
         temp.x += speed * Time.deltaTime;
         transform.position = temp;
-        
+
+        GameStats.stats.coins = coins;//updates stored coin value;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

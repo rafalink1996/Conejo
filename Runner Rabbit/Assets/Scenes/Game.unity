@@ -1345,6 +1345,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5460810205298964453, guid: b46cb89c0ae1f4548b57956af39e030d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0432c084dd5ce4ee3b4970098da4aea7,
+        type: 3}
     - target: {fileID: 5460810205298964455, guid: b46cb89c0ae1f4548b57956af39e030d,
         type: 3}
       propertyPath: m_Name
@@ -14154,8 +14160,8 @@ MonoBehaviour:
   FullHeart: {fileID: 21300000, guid: 5b39d9b7dac09463986b0ef5378103c2, type: 3}
   EmptyHeart: {fileID: 21300000, guid: f2d7f3091c15d4688a408f7f4bc9ce27, type: 3}
   isUsingPower: 0
-  lightPower: Missile
-  darkPower: Defence
+  lightPower: 
+  darkPower: 
 --- !u!58 &992125960
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -21857,6 +21863,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Power Light
       objectReference: {fileID: 0}
+    - target: {fileID: 7513062101448049804, guid: 0df66ce35249f4cd7b0fb0f613ea6c5b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f609d0d03fd24c6caee385943a9f3a8,
+        type: 3}
     - target: {fileID: 7513062101448049805, guid: 0df66ce35249f4cd7b0fb0f613ea6c5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29122,13 +29134,53 @@ PrefabInstance:
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: lightPower
+      value: 
+      objectReference: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020,
+        type: 2}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: darkPower
+      value: 
+      objectReference: {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907,
+        type: 2}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: coins
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: numOfHearts
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: lightPowers
+      value: 
+      objectReference: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020,
+        type: 2}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: lightPowerName
       value: Missile
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
-      propertyPath: darkPower
+      propertyPath: darkPowerName
       value: Defence
       objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: darkPowerSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e657d4fbebc0a46008c971344049dfb3,
+        type: 3}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: lightPowerSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bdab295c7fc6740968be4ca772e6cad4,
+        type: 3}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: m_LocalPosition.x
