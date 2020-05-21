@@ -229,13 +229,14 @@ public class character : MonoBehaviour
 
             if (top)
             {
+                transform.localEulerAngles = new Vector3(180, 0, 0);
 
-                mySpriteRenderer.flipY = true;
+                //mySpriteRenderer.flipY = true;
             }
             else
             {
-
-                mySpriteRenderer.flipY = false;
+                transform.localEulerAngles = new Vector3(0, 0, 0);
+                //mySpriteRenderer.flipY = false;
             }
 
         }

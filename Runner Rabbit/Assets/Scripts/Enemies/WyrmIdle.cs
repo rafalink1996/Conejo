@@ -8,15 +8,21 @@ public class WyrmIdle : StateMachineBehaviour
     float timeToAttack;
     public int attackType;
     bool isAttacking;
+    character Cha;
     
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         wyrm = FindObjectOfType<BossWyrm>();
-        
+        Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
         isAttacking = false;
         attackType = Random.Range(1, 101);
         timeToAttack = Random.Range(0.4f, 2f);
+        if (wyrm.bossTop != Cha.top)
+        {
+            animator.SetTrigger("Despawn");
+            wyrm.isChanging = true;
+        }
         if (wyrm.timeToChange <= 0)
         {
             animator.SetTrigger("Despawn");
@@ -26,6 +32,10 @@ public class WyrmIdle : StateMachineBehaviour
         {
             wyrm.isChanging = false;
             wyrm.timeToChange = Random.Range(15f, 25f);
+        }
+        if (wyrm.element == 2)
+        {
+            timeToAttack = 0.1f;
         }
     }
 
