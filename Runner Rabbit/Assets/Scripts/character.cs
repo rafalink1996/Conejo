@@ -12,12 +12,15 @@ public class character : MonoBehaviour
 
     // Movement
     public float upspeed;
-    private float speed = 10f;
+    private float speed = 2f;
     Animator animator;
     public bool top;
     private bool ForceFloat;
     public bool RiftColition;
     ManaHandle mana;
+    private float maxspeed = 10f;
+    private float acceleration = 2f;
+
 
 
     // Coin Collecting
@@ -143,6 +146,12 @@ public class character : MonoBehaviour
 
 
         // Character Moves forward
+
+        if (speed < maxspeed)
+        {
+            speed = speed + acceleration * Time.deltaTime;
+        }
+
         Vector3 temp = transform.position;
         temp.x += speed * Time.deltaTime;
         transform.position = temp;
