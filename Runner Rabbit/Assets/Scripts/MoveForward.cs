@@ -12,7 +12,10 @@ public class MoveForward : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+      if (gameObject.tag == "Enemy")
+        {
+            speed = maxspeed;
+        }
     }
 
     // Update is called once per frame

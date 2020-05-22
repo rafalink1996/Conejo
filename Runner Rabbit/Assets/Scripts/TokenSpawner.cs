@@ -10,11 +10,13 @@ public class TokenSpawner : MonoBehaviour
     public float TokenCount = 0;
     public string[] TokenName;
     bool currencies;
+    character Cha;
     // Start is called before the first frame update
     void Start()
     {
         spawnTime = Random.Range(3f, 6f);
         TokenType = Random.Range(0, TokenName.Length);
+        Cha = FindObjectOfType<character>();
     }
 
     // Update is called once per frame
@@ -88,6 +90,16 @@ public class TokenSpawner : MonoBehaviour
             }*/
             Currency = true;
             currencies = true;
+        }
+        if(Cha.top)
+        {
+            transform.position = new Vector3(transform.position.x, -5.48f, transform.position.z);
+
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, 5.48f, transform.position.z);
+
         }
 
     }
