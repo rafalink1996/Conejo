@@ -13,11 +13,14 @@ public class BossWyrm : MonoBehaviour
     Animator anim;
     public float timeToChange;
     public bool isChanging;
+    character Cha;
+    public bool bossTop;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         timeToChange = Random.Range(15f, 25f);
+        Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
     }
 
     // Update is called once per frame
@@ -39,7 +42,7 @@ public class BossWyrm : MonoBehaviour
             portals[0].SetActive(false);
             portals[1].SetActive(true);
             portals[2].SetActive(false);
-            ice = true;
+            //ice = true;
         }
         if (element == 3)
         {
@@ -77,7 +80,24 @@ public class BossWyrm : MonoBehaviour
                 anim.SetTrigger("Shoot");
             }
         }*/
-        
+        if (transform.parent.transform.position.y > 0)
+        {
+            bossTop = false;
+        }
+        else
+        {
+            bossTop = true;
+        }
+        /*if (Cha.top)
+        {
+            transform.parent.transform.localEulerAngles = new Vector3(180, 0, 0);
+            
+        }
+        else
+        {
+            transform.parent.transform.localEulerAngles = new Vector3(0, 0, 0);
+            
+        }*/
     }
     public void ChangeElement()
     {

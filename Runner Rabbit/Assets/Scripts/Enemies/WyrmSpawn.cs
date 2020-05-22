@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WyrmRay : StateMachineBehaviour
+public class WyrmSpawn : StateMachineBehaviour
 {
+    character Cha;
     BossWyrm wyrm;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
         wyrm = FindObjectOfType<BossWyrm>();
-        if (wyrm.element == 2)
+        if (Cha.top && !wyrm.bossTop)
         {
-            animator.SetBool("Ice", true);
-            wyrm.ice = true;
+            wyrm.transform.parent.transform.localEulerAngles = new Vector3(180, 0, 0);
+            wyrm.transform.parent.transform.position = new Vector3(wyrm.transform.parent.transform.position.x, -5.860454f, wyrm.transform.parent.transform.position.z);
+        }
+        if (!Cha.top && wyrm.bossTop)
+        {
+            wyrm.transform.parent.transform.localEulerAngles = new Vector3(0, 0, 0);
+            wyrm.transform.parent.transform.position = new Vector3(wyrm.transform.parent.transform.position.x, 5.860454f, wyrm.transform.parent.transform.position.z);
         }
     }
 
