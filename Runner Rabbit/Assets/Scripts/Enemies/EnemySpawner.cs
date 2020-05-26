@@ -10,11 +10,13 @@ public class EnemySpawner : MonoBehaviour
     public float enemyCount = 0;
     public string[] enemyName;
     bool enemies;
+    character Cha;
     // Start is called before the first frame update
     void Start()
     {
         spawnTime = Random.Range(3f, 6f);
         enemyType = Random.Range(0, enemyName.Length);
+        Cha = FindObjectOfType<character>();
     }
 
     // Update is called once per frame
@@ -87,7 +89,17 @@ public class EnemySpawner : MonoBehaviour
             enemy = true;
             enemies = true;
         }
-       
+        if (Cha.top)
+        {
+            transform.position = new Vector3(transform.position.x, -5.84f, transform.position.z);
+
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, 5.84f, transform.position.z);
+
+        }
+
     }
     public void SetEnemyCount (int count)
     {

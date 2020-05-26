@@ -198,11 +198,11 @@ public class character : MonoBehaviour
             animator.SetTrigger("GotHit");
             StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
             StartCoroutine(GetInvulnerable());
-
-
-
         }
-
+        if (collision.name == "jumpHeight")
+        {
+            hasPassedThroughRift = false;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -212,7 +212,7 @@ public class character : MonoBehaviour
             rb.gravityScale *= -1;
             RiftColition = false;
             hasPassedThroughRift = true;
-            
+
 
         }
     }
@@ -360,6 +360,6 @@ public class character : MonoBehaviour
     {
         isUsingPower = false;
         animator.SetBool("isUsingPower", false);
-        
+
     }
 }
