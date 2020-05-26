@@ -63,12 +63,12 @@ public class WyrmIdle : StateMachineBehaviour
             {
                 if (animator.GetBool("Ice") == false)
                 {
-                    animator.SetTrigger("Ray");
+                    animator.SetTrigger("Rift");
                     
                 }
                 if (animator.GetBool("Ice") == true)
                 {
-                    animator.SetTrigger("Rift");
+                    animator.SetTrigger("Ray");
                 }
             }
             if (wyrm.element == 3)

@@ -8,7 +8,7 @@ public class ElectricBook : MonoBehaviour
     Animator anim;
     public int maxHealth = 8;
     public int health;
-    EnemySpawner enemySpawner;
+    public EnemySpawner enemySpawner;
     public Slider healthSlider;
     float spawnTime;
     bool spawned = false;
@@ -19,7 +19,15 @@ public class ElectricBook : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        enemySpawner = FindObjectOfType<EnemySpawner>();
+        if (transform.position.y > 0)
+        {
+            enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
+        }
+        if (transform.position.y < 0)
+        {
+            enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
+        }
+        //enemySpawner = FindObjectOfType<EnemySpawner>();
         healthSlider = GetComponentInChildren<Slider>();
         health = maxHealth;
         healthSlider.maxValue = maxHealth;

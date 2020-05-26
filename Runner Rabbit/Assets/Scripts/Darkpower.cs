@@ -16,7 +16,7 @@ public class Darkpower : MonoBehaviour
     {
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
         button = GetComponent<Button>();
-        button.onClick.AddListener(Cha.LightPower);
+        button.onClick.AddListener(Cha.DarkPower);
         button.image.sprite = GameStats.stats.darkPowerSprite;
     }
 

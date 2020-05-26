@@ -11,8 +11,7 @@ public class WyrmRay : StateMachineBehaviour
         wyrm = FindObjectOfType<BossWyrm>();
         if (wyrm.element == 2)
         {
-            animator.SetBool("Ice", true);
-            wyrm.ice = true;
+            wyrm.timeToChange = 0;
         }
     }
 
@@ -23,10 +22,13 @@ public class WyrmRay : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (wyrm.element == 2)
+        {
+            animator.SetBool("Ice", false);
+        }
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

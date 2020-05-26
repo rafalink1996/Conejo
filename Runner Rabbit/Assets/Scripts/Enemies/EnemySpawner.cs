@@ -41,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
             enemyCount = 1;
             GameObject foes = Instantiate(Resources.Load("Prefabs/" + enemyName[enemyType]) as GameObject);
             foes.transform.position = transform.position;
+            
            
 
 
@@ -89,7 +90,7 @@ public class EnemySpawner : MonoBehaviour
             enemy = true;
             enemies = true;
         }
-        if (Cha.top)
+        /*if (Cha.top)
         {
             transform.position = new Vector3(transform.position.x, -5.84f, transform.position.z);
 
@@ -98,7 +99,7 @@ public class EnemySpawner : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, 5.84f, transform.position.z);
 
-        }
+        }*/
 
     }
     public void SetEnemyCount (int count)

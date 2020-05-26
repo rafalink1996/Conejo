@@ -9,9 +9,11 @@ public class WyrmRift : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         wyrm = FindObjectOfType<BossWyrm>();
+        
         if (wyrm.element == 2)
         {
-            wyrm.timeToChange = 0;
+            animator.SetBool("Ice", true);
+            wyrm.ice = true;
         }
     }
 
@@ -24,10 +26,7 @@ public class WyrmRift : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (wyrm.element == 2)
-        {
-            animator.SetBool("Ice", false);
-        }
+        
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
