@@ -14,7 +14,9 @@ public class WyrmRift : StateMachineBehaviour
         {
             animator.SetBool("Ice", true);
             wyrm.ice = true;
+            //animator.SetBool("iceRift", true);
         }
+        animator.SetBool("hasAttackedOnce", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

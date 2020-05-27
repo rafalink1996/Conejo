@@ -19,5 +19,6 @@ public class Portal : MonoBehaviour
     public void ChangePortal()
     {
         FindObjectOfType<BossWyrm>().ChangeElement();
+        GetComponent<Animator>().SetTrigger("Restart");
     }
 }

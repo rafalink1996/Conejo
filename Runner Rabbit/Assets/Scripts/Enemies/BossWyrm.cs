@@ -9,7 +9,7 @@ public class BossWyrm : MonoBehaviour
     public GameObject[] portals;
     public GameObject[] attacks;
     public bool ice;
-    public float iceTimer = 30f;
+    public float iceTimer;
     Animator anim;
     public float timeToChange;
     public bool isChanging;
@@ -20,6 +20,7 @@ public class BossWyrm : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         timeToChange = Random.Range(15f, 25f);
+        iceTimer = Random.Range(20f, 30f);
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
     }
 
@@ -29,7 +30,7 @@ public class BossWyrm : MonoBehaviour
         if (!isChanging)
         {
             timeToChange -= Time.deltaTime;
-            
+
         }
         if (element == 1)
         {
@@ -101,12 +102,17 @@ public class BossWyrm : MonoBehaviour
     }
     public void ChangeElement()
     {
-        
-        while (element == currentElement || element == 2 && ice)
+        if (element == 2 && anim.GetBool("Ice") == true)
         {
-            element = Random.Range(1, 4);
+            element = 2;
         }
-        
+        else
+
+            while (element == currentElement || element == 2 && ice)
+            {
+                element = Random.Range(1, 4);
+            }
+
         currentElement = element;
     }
     public void NewPortal()
@@ -139,7 +145,7 @@ public class BossWyrm : MonoBehaviour
     }
     public void Ray()
     {
-        if(element == 1)
+        if (element == 1)
         {
             attacks[1].SetActive(true);
         }
@@ -148,5 +154,5 @@ public class BossWyrm : MonoBehaviour
             attacks[2].SetActive(true);
         }
     }
-    
+
 }

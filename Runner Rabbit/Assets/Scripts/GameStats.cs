@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameStats : MonoBehaviour
 {
-    public Power powerdark;
+    public Power powerDark;
     public Power powerLight;
 
     public static GameStats stats;
@@ -16,8 +16,7 @@ public class GameStats : MonoBehaviour
     public int DarkpowerID;
     public float coins;
     public int numOfHearts;
-    //public Power lightPower;
-    //public Power darkPower;
+  
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,9 +36,9 @@ public class GameStats : MonoBehaviour
         lightPowerSprite = powerLight.iconLight;
         lightpowerID = powerLight.id;
 
-        darkPowerName = powerdark.name;
-        darkPowerSprite = powerdark.iconDark;
-        DarkpowerID = powerdark.id;
+        darkPowerName = powerDark.name;
+        darkPowerSprite = powerDark.iconDark;
+        DarkpowerID = powerDark.id;
 
 
 

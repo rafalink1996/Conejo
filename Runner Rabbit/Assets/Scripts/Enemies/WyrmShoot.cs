@@ -2,26 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WyrmSpawn : StateMachineBehaviour
+public class WyrmShoot : StateMachineBehaviour
 {
-    character Cha;
-    BossWyrm wyrm;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
-        wyrm = FindObjectOfType<BossWyrm>();
-        if (Cha.top && !wyrm.bossTop)
-        {
-            wyrm.transform.parent.transform.localEulerAngles = new Vector3(180, 0, 0);
-            wyrm.transform.parent.transform.position = new Vector3(wyrm.transform.parent.transform.position.x, -5.860454f, wyrm.transform.parent.transform.position.z);
-        }
-        if (!Cha.top && wyrm.bossTop)
-        {
-            wyrm.transform.parent.transform.localEulerAngles = new Vector3(0, 0, 0);
-            wyrm.transform.parent.transform.position = new Vector3(wyrm.transform.parent.transform.position.x, 5.860454f, wyrm.transform.parent.transform.position.z);
-        }
-        animator.SetBool("hasAttackedOnce", false);
+        animator.SetBool("hasAttackedOnce", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -255,7 +255,7 @@ public class character : MonoBehaviour
         {
             isUsingPower = true;
             animator.SetBool("isUsingPower", true);
-            usedpower(GameStats.stats.powerLight.id);
+            UsedPower(GameStats.stats.powerLight.id);
             mana.ReduceDarkMana();
             /*
             if (lightPower == "Missile")
@@ -289,7 +289,7 @@ public class character : MonoBehaviour
          {
              isUsingPower = true;
              animator.SetBool("isUsingPower", true);
-            usedpower(GameStats.stats.powerdark.id);
+            UsedPower(GameStats.stats.powerDark.id);
             mana.ReduceLightMana();
             /*
              if (darkPower == "Missile")
@@ -380,7 +380,7 @@ public class character : MonoBehaviour
 
     }
 
-    void usedpower(int id)
+    void UsedPower(int id)
     {
         switch (id)
         {

@@ -23354,7 +23354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1859497430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30022,12 +30022,12 @@ PrefabInstance:
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: lightPowerName
-      value: Missile
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: darkPowerName
-      value: Defence
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
@@ -30051,7 +30051,13 @@ PrefabInstance:
         type: 3}
       propertyPath: powerLight
       value: 
-      objectReference: {fileID: 11400000, guid: 9900566cfd48c4a819c81884e0f51405,
+      objectReference: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020,
+        type: 2}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: powerDark
+      value: 
+      objectReference: {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907,
         type: 2}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}

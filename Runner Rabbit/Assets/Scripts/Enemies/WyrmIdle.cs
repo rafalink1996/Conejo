@@ -18,7 +18,7 @@ public class WyrmIdle : StateMachineBehaviour
         isAttacking = false;
         attackType = Random.Range(1, 101);
         timeToAttack = Random.Range(0.4f, 2f);
-        if (wyrm.bossTop != Cha.top)
+        if (wyrm.bossTop != Cha.top && animator.GetBool("hasAttackedOnce") == true)
         {
             animator.SetTrigger("Despawn");
             wyrm.isChanging = true;

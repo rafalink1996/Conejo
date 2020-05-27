@@ -13,6 +13,7 @@ public class WyrmRay : StateMachineBehaviour
         {
             wyrm.timeToChange = 0;
         }
+        animator.SetBool("hasAttackedOnce", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -27,6 +28,7 @@ public class WyrmRay : StateMachineBehaviour
         if (wyrm.element == 2)
         {
             animator.SetBool("Ice", false);
+            
         }
     }
 
