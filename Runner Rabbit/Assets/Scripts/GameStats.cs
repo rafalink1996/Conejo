@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class GameStats : MonoBehaviour
 {
+    public Power powerdark;
+    public Power powerLight;
+
     public static GameStats stats;
     public string lightPowerName;
     public Sprite lightPowerSprite;
+    public int lightpowerID;
     public string darkPowerName;
     public Sprite darkPowerSprite;
+    public int DarkpowerID;
     public float coins;
     public int numOfHearts;
     //public Power lightPower;
@@ -28,13 +33,17 @@ public class GameStats : MonoBehaviour
     }
         void Start()
     {
-        
+        lightPowerName = powerLight.name;
+        lightPowerSprite = powerLight.iconLight;
+        lightpowerID = powerLight.id;
+
+        darkPowerName = powerdark.name;
+        darkPowerSprite = powerdark.iconDark;
+        DarkpowerID = powerdark.id;
+
+
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

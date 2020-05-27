@@ -247,11 +247,17 @@ public class character : MonoBehaviour
 
     public void LightPower()
     {
+
+        
+        
         mana.RequiredDarkMana(10f);
         if (mana.CurrentDarkMana >= mana.DarkManaUsed && !isUsingPower)
         {
             isUsingPower = true;
             animator.SetBool("isUsingPower", true);
+            usedpower(GameStats.stats.powerLight.id);
+            mana.ReduceDarkMana();
+            /*
             if (lightPower == "Missile")
             {
                 animator.SetTrigger("Missile");
@@ -268,41 +274,52 @@ public class character : MonoBehaviour
                 mana.ReduceDarkMana();
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
             }
+             */
         }
 
 
+
     }
-    public void DarkPower()
+        public void DarkPower()
     {
-        mana.RequiredLightMana(10f);
-        if (mana.CurrentLightMana >= mana.LightManaUsed && !isUsingPower)
-        {
-            isUsingPower = true;
-            animator.SetBool("isUsingPower", true);
-            if (darkPower == "Missile")
-            {
-                animator.SetTrigger("Missile");
-                GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-                carrot.transform.position = transform.position + new Vector3(1, 0, 0);
-                mana.ReduceLightMana();
-                FindObjectOfType<AudioManager>().Play("MagicMissle");
-            }
-            if (darkPower == "Defence")
-            {
-                animator.SetTrigger("Defence");
-                GameObject shield = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
-                shield.transform.position = transform.position;
-                mana.ReduceLightMana();
-                FindObjectOfType<AudioManager>().Play("MagicDefence");
-            }
+
+       
+         mana.RequiredLightMana(10f);
+         if (mana.CurrentLightMana >= mana.LightManaUsed && !isUsingPower)
+         {
+             isUsingPower = true;
+             animator.SetBool("isUsingPower", true);
+            usedpower(GameStats.stats.powerdark.id);
+            mana.ReduceLightMana();
+            /*
+             if (darkPower == "Missile")
+             {
+                 animator.SetTrigger("Missile");
+                 GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                 carrot.transform.position = transform.position + new Vector3(1, 0, 0);
+                 mana.ReduceLightMana();
+                 FindObjectOfType<AudioManager>().Play("MagicMissle");
+             }
+             if (darkPower == "Defence")
+             {
+                 animator.SetTrigger("Defence");
+                 GameObject shield = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                 shield.transform.position = transform.position;
+                 mana.ReduceLightMana();
+                 FindObjectOfType<AudioManager>().Play("MagicDefence");
+             }
+                */
 
         }
 
 
 
+
+
+
     }
 
-    public void Float()
+        public void Float()
     {
         if (hasPassedThroughRift)
         {
@@ -361,5 +378,46 @@ public class character : MonoBehaviour
         isUsingPower = false;
         animator.SetBool("isUsingPower", false);
 
+    }
+
+    void usedpower(int id)
+    {
+        switch (id)
+        {
+            case 0:
+
+                // missle
+                print("used missle");
+                animator.SetTrigger("Missile");
+                GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                carrot.transform.position = transform.position + new Vector3(1, 0, 0);
+                
+                FindObjectOfType<AudioManager>().Play("MagicMissle");
+                break;
+
+            case 1:
+                // eardefence
+                print("used spell 2");
+                animator.SetTrigger("Defence");
+                GameObject shield = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                shield.transform.position = transform.position;
+                
+                FindObjectOfType<AudioManager>().Play("MagicDefence");
+                break;
+
+            case 2:
+                print("used spell 3");
+                break;
+            case 3:
+                print("used spell 4");
+                break;
+            case 4:
+                print("used spell 5");
+                break;
+
+            default:
+                print("spell error");
+                break;
+        }
     }
 }

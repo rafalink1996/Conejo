@@ -9,6 +9,8 @@ public class Power : ScriptableObject
     new public string name = "new Item";
     public Sprite iconLight = null;
     public Sprite iconDark = null;
+    public string description;
+    public int id;
     //public bool isDefaultItem = false;
 
 
