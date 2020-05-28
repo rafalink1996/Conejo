@@ -42,6 +42,11 @@ public class character : MonoBehaviour
     public string lightPower;
     public string darkPower;
 
+    public GameObject DamageEffect;
+    public GameObject riftEffect;
+    public RipplePostProcessor CamRipple;
+
+
 
 
 
@@ -174,6 +179,7 @@ public class character : MonoBehaviour
             rb.AddForce(new Vector2(0, (upspeed * 19 * Time.deltaTime)));
             RiftColition = true;
             FindObjectOfType<AudioManager>().Play("RiftPass");
+            CamRipple.RippleEffect();
 
 
 
@@ -198,6 +204,8 @@ public class character : MonoBehaviour
             animator.SetTrigger("GotHit");
             StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
             StartCoroutine(GetInvulnerable());
+            gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.1f);
+            Instantiate(DamageEffect, transform.position, Quaternion.identity);
         }
         if (collision.name == "jumpHeight")
         {
@@ -212,6 +220,7 @@ public class character : MonoBehaviour
             rb.gravityScale *= -1;
             RiftColition = false;
             hasPassedThroughRift = true;
+            Instantiate(riftEffect, transform.position, Quaternion.identity);
 
 
         }
@@ -368,7 +377,7 @@ public class character : MonoBehaviour
     IEnumerator GetInvulnerable()
     {
         Physics2D.IgnoreLayerCollision(8, 9, true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Physics2D.IgnoreLayerCollision(8, 9, false);
 
 
