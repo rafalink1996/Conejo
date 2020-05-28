@@ -11,7 +11,8 @@ public class RipplePostProcessor : MonoBehaviour
     public float Friction = .9f;
 
     private float Amount = 0f;
-
+    
+    
     void Update()
     {
        /* if (Input.GetMouseButton(0))
@@ -30,7 +31,8 @@ public class RipplePostProcessor : MonoBehaviour
     public void RippleEffect()
     {
         this.Amount = this.MaxAmount;
-        Vector3 pos = Input.mousePosition;
+        //Vector3 pos = Input.mousePosition;
+        Vector3 pos = GameObject.FindWithTag("Player").transform.position;
         this.RippleMaterial.SetFloat("_CenterX", pos.x);
         this.RippleMaterial.SetFloat("_CenterY", pos.y);
     }
