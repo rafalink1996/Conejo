@@ -12,6 +12,13 @@ public class Power : ScriptableObject
     public float mana;
     public string description;
     public int id;
+    public int Cost;
+
+
+
+
+
+
     //public bool isDefaultItem = false;
 
 
