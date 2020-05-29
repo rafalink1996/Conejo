@@ -259,7 +259,7 @@ public class character : MonoBehaviour
 
         
         
-        mana.RequiredDarkMana(10f);
+        mana.RequiredDarkMana(GameStats.stats.lightMana);
         if (mana.CurrentDarkMana >= mana.DarkManaUsed && !isUsingPower)
         {
             isUsingPower = true;
@@ -293,7 +293,7 @@ public class character : MonoBehaviour
     {
 
        
-         mana.RequiredLightMana(10f);
+         mana.RequiredLightMana(GameStats.stats.darkMana);
          if (mana.CurrentLightMana >= mana.LightManaUsed && !isUsingPower)
          {
              isUsingPower = true;
@@ -395,7 +395,7 @@ public class character : MonoBehaviour
         {
             case 0:
 
-                // missle
+                // carrot missle
                 print("used missle");
                 animator.SetTrigger("Missile");
                 GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
@@ -415,10 +415,19 @@ public class character : MonoBehaviour
                 break;
 
             case 2:
+                // radish missile
                 print("used spell 3");
+                animator.SetTrigger("Missile");
+                GameObject radish = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                radish.transform.position = transform.position + new Vector3(1, 0, 0);
+
+                FindObjectOfType<AudioManager>().Play("MagicMissle");
+
                 break;
             case 3:
+                // kick
                 print("used spell 4");
+                animator.SetTrigger("Kick");
                 break;
             case 4:
                 print("used spell 5");

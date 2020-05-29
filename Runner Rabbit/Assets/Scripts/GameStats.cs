@@ -11,9 +11,11 @@ public class GameStats : MonoBehaviour
     public string lightPowerName;
     public Sprite lightPowerSprite;
     public int lightpowerID;
+    public float lightMana;
     public string darkPowerName;
     public Sprite darkPowerSprite;
     public int DarkpowerID;
+    public float darkMana; 
     public float coins;
     public int numOfHearts;
   
@@ -35,11 +37,12 @@ public class GameStats : MonoBehaviour
         lightPowerName = powerLight.name;
         lightPowerSprite = powerLight.iconLight;
         lightpowerID = powerLight.id;
+        lightMana = powerLight.mana;
 
         darkPowerName = powerDark.name;
         darkPowerSprite = powerDark.iconDark;
         DarkpowerID = powerDark.id;
-
+        darkMana = powerDark.mana;
 
 
     }
