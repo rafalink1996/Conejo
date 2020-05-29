@@ -56,7 +56,7 @@ public class Shop : MonoBehaviour
             // cost (textMeshProUGUI)
 
             //grab button, assign function to on click.
-            powerobject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(Po));
+            powerobject.GetComponent<Button>().onClick.AddListener(() => OnButtonClickLight(Po));
        
 
             powerobject.transform.GetChild(1).GetComponent<Image>().sprite = Po.iconLight;
@@ -84,7 +84,7 @@ public class Shop : MonoBehaviour
             // cost (textMeshProUGUI)
 
             //grab button, assign function to on click.
-            powerobject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(Po));
+            powerobject.GetComponent<Button>().onClick.AddListener(() => OnButtonClickDark(Po));
 
 
             powerobject.transform.GetChild(1).GetComponent<Image>().sprite = Po.iconDark;
@@ -94,9 +94,22 @@ public class Shop : MonoBehaviour
         }
     }
 
-    private void OnButtonClick(Power power)
+    private void OnButtonClickLight(Power power)
     {
         Debug.Log(power.name);
+
+        GameStats.stats.lightPowerSprite = power.iconLight;
+        GameStats.stats.lightpowerID = power.id;
+        GameStats.stats.coins -= power.Cost;
+    }
+
+    private void OnButtonClickDark(Power power)
+    {
+        Debug.Log(power.name);
+
+        GameStats.stats.darkPowerSprite = power.iconDark;
+        GameStats.stats.DarkpowerID = power.id;
+        GameStats.stats.coins -= power.Cost;
     }
 
 }
