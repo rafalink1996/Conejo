@@ -10,6 +10,8 @@ public class character : MonoBehaviour
     Rigidbody2D rb;
     private SpriteRenderer mySpriteRenderer;
 
+
+   
     // Movement
     public float upspeed;
     private float speed = 2f;
@@ -46,6 +48,16 @@ public class character : MonoBehaviour
     public GameObject riftEffect;
     public RipplePostProcessor CamRipple;
 
+    // End Of Level
+
+    public bool EndLevel;
+    public Transform EndlessHouse;
+    private float pulledspeed = 10f;
+    private float pulledmaxspeed = 40f;
+    public LevelLoader levelLoader;
+
+
+
 
 
 
@@ -76,74 +88,81 @@ public class character : MonoBehaviour
 
 
     {
-        //Health system
-
-        // can't have more health than max hearts
-
-        if (Health > NumOfHearts)
+        if (EndLevel == false)
         {
-            Health = NumOfHearts;
-        }
-        // number of current hearts is established
 
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i < Health)
-            {
-                hearts[i].GetComponent<Animator>().SetBool("Full", true);
-            }
-            else
-            {
-                hearts[i].GetComponent<Animator>().SetBool("Full", false);
-            }
+            //Health system
 
-            // number of max hearts is established
+            // can't have more health than max hearts
 
-            if (i < NumOfHearts)
+            if (Health > NumOfHearts)
             {
-                hearts[i].SetActive(true);
+                Health = NumOfHearts;
             }
-            else
-            {
-                hearts[i].SetActive(false);
-            }
-        }
+            // number of current hearts is established
 
-        // Jump Controller with keyboard
-        /*
-                if (Input.GetKey(KeyCode.Space))
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                if (i < Health)
                 {
-                    rb.AddForce(new Vector2(0, upspeed));
-
+                    hearts[i].GetComponent<Animator>().SetBool("Full", true);
+                }
+                else
+                {
+                    hearts[i].GetComponent<Animator>().SetBool("Full", false);
                 }
 
-                    // Animation Controller
+                // number of max hearts is established
 
-                    if (Input.GetKeyDown(KeyCode.Space))
+                if (i < NumOfHearts)
+                {
+                    hearts[i].SetActive(true);
+                }
+                else
+                {
+                    hearts[i].SetActive(false);
+                }
+            }
+
+            // Jump Controller with keyboard
+            /*
+                    if (Input.GetKey(KeyCode.Space))
                     {
-                        animator.SetBool("IsFalling", true);
+                        rb.AddForce(new Vector2(0, upspeed));
+
                     }
 
-                    if (Input.GetKeyUp(KeyCode.Space))
-                    {
-                        animator.SetBool("IsFalling", false);
-                    }
+                        // Animation Controller
 
-         */
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            animator.SetBool("IsFalling", true);
+                        }
+
+                        if (Input.GetKeyUp(KeyCode.Space))
+                        {
+                            animator.SetBool("IsFalling", false);
+                        }
+
+             */
 
 
 
 
-        // Animation Controller
+            // Animation Controller
 
-        if (ForceFloat)
-        {
-            animator.SetBool("IsFalling", true);
-        }
-        else
-        {
-            animator.SetBool("IsFalling", false);
-        }
+            if (ForceFloat)
+            {
+                animator.SetBool("IsFalling", true);
+            }
+            else
+            {
+                animator.SetBool("IsFalling", false);
+            }
+
+      
+
+     
 
 
 
@@ -153,15 +172,28 @@ public class character : MonoBehaviour
         // Character Moves forward
 
         if (speed < maxspeed)
+            {
+                speed = speed + acceleration * Time.deltaTime;
+            }
+
+            Vector3 temp = transform.position;
+            temp.x += speed * Time.deltaTime;
+            transform.position = temp;
+
+            GameStats.stats.coins = coins;//updates stored coin value;
+
+        }
+        else
         {
-            speed = speed + acceleration * Time.deltaTime;
+
+            Vector3 temp = transform.position;
+            temp.x += maxspeed * Time.deltaTime;
+            transform.position = temp;
+            StartCoroutine(EndLevelToHouse());
+
+
         }
 
-        Vector3 temp = transform.position;
-        temp.x += speed * Time.deltaTime;
-        transform.position = temp;
-
-        GameStats.stats.coins = coins;//updates stored coin value;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -211,6 +243,16 @@ public class character : MonoBehaviour
         {
             hasPassedThroughRift = false;
         }
+
+        if (collision.tag == "House")
+        {
+            Debug.Log("house hit");
+            levelLoader.changelevel();
+          
+
+        }
+
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -382,6 +424,24 @@ public class character : MonoBehaviour
 
 
     }
+
+    IEnumerator EndLevelToHouse()
+    {
+       
+        yield return new WaitForSeconds(2f);
+        rb.gravityScale = 0;
+        animator.SetBool("IsPulled", true);
+        if (pulledspeed < pulledmaxspeed)
+        {
+            pulledspeed = pulledspeed + acceleration * Time.deltaTime;
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, EndlessHouse.position, pulledspeed * Time.deltaTime);
+
+    }
+       
+
+
     public void ResetUsingPower()
     {
         isUsingPower = false;

@@ -11,7 +11,20 @@ public class LevelLoader : MonoBehaviour
     public Slider slider;
     public Animator transition;
     public float transitiontime;
+    public float levelTime;
     public GameObject playbuttontransition;
+    public HouseSpawner EndlessHosue;
+    public character cha;
+  
+
+
+
+    private void Start()
+    {
+        StartCoroutine(loadloader());
+       
+
+    }
 
     public void LoadLevel( int SceneIndex)
 
@@ -50,6 +63,32 @@ public class LevelLoader : MonoBehaviour
 
         }
     }
+
+    IEnumerator loadloader()
+    {
+
+       
+
+        yield return new WaitForSeconds(levelTime);
+
+        EndlessHosue.spawnhouse();
+        cha.EndLevel = true;
+
+        
+
+        
+
+
+    }
+
+
+    public void changelevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+   
+       
 
 
 }

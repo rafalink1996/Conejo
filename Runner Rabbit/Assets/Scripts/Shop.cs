@@ -7,30 +7,37 @@ using TMPro;
 public class Shop : MonoBehaviour
 {
 
-
-
+    private float coins;
+    public TextMeshProUGUI CoinCounter;
 
     [Header("list of items sold")]
-    [SerializeField] private Power[] LightpowerObject;
-    [SerializeField] private Power[] DarkpowerObject;
+    [SerializeField] public Power[] LightpowerObject;
+    [SerializeField] public Power[] DarkpowerObject;
 
 
     [Header("References")]
-    [SerializeField] private Transform shopcontainer;
-    [SerializeField] private GameObject ShopItemPrefab;
+    [SerializeField] public Transform shopcontainer;
+    [SerializeField] public GameObject ShopItemPrefab;
 
 
     
 
     private void Start()
     {
-        
 
-       
 
+        coins = GameStats.stats.coins;
+        CoinCounter.text = coins.ToString();
 
         PopulateShop();
         
+    }
+
+    private void Update()
+    {
+        coins = GameStats.stats.coins;
+        CoinCounter.text = coins.ToString();
+        //GameStats.stats.coins = coins;
     }
 
     private void PopulateShop()
