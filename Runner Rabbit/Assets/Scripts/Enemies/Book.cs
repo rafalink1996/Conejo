@@ -6,19 +6,21 @@ using UnityEngine.UI;
 public class Book : MonoBehaviour
 {
     Animator anim;
-    public int maxHealth = 5;
-    public int health;
+    //public int maxHealth = 5;
+    //public int health;
     public EnemySpawner enemySpawner;
-    public Slider healthSlider;
+    //public Slider healthSlider;
     float spawnTime;
     bool spawned = false;
     float attackTime;
     bool attack;
-
+    EnemyHealth health;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = GetComponent<EnemyHealth>();
+        health.maxHealth = 5;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
@@ -29,9 +31,9 @@ public class Book : MonoBehaviour
             enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
         }
         //enemySpawner = FindObjectOfType<EnemySpawner>();
-        healthSlider = GetComponentInChildren<Slider>();
-        health = maxHealth;
-        healthSlider.maxValue = maxHealth;
+        //healthSlider = GetComponentInChildren<Slider>();
+        //health = maxHealth;
+        //healthSlider.maxValue = maxHealth;
         spawnTime = Random.Range(0.1f, 2f);
         attackTime = Random.Range(0.2f, 1.3f);
     }
@@ -60,12 +62,10 @@ public class Book : MonoBehaviour
             attack = false;
         }
 
-        healthSlider.value = health;
-        if (health <= 0)
+        //healthSlider.value = health;
+        if (health.health <= 0)
         {
             anim.SetTrigger("Die");
-
-
 
         }
     }
@@ -78,7 +78,7 @@ public class Book : MonoBehaviour
     }
     void Attack()
     {
-        health = health - 1;
+        health.TakeDamage(1);
     }
     void FireBall()
     {

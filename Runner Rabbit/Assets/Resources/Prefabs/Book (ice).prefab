@@ -49,6 +49,8 @@ GameObject:
   - component: {fileID: 648216377211535493}
   - component: {fileID: 648216377211535488}
   - component: {fileID: 3643454591588662218}
+  - component: {fileID: 8231673920346723229}
+  - component: {fileID: 3130558020234127975}
   m_Layer: 9
   m_Name: Book (ice)
   m_TagString: Enemy
@@ -152,9 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3069891258c504e85abba3931dee6b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 7
-  health: 0
-  healthSlider: {fileID: 0}
+  enemySpawner: {fileID: 0}
 --- !u!114 &3643454591588662218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +167,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8231673920346723229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648216377211535492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619ea4ba85c954d37ae30a2ae47bb9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
+  healthSlider: {fileID: 0}
+--- !u!61 &3130558020234127975
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648216377211535492}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 5.5556307, y: 0.34722614}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 19.2, y: 10.8}
+    newSize: {x: 19.2, y: 10.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.5251827, y: 4.1530857}
+  m_EdgeRadius: 0
 --- !u!1 &1905424401845689947
 GameObject:
   m_ObjectHideFlags: 0

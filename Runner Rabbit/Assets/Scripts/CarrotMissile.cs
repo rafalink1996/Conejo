@@ -16,4 +16,13 @@ public class CarrotMissile : MonoBehaviour
     {
         transform.Translate(speed * Time.deltaTime, 0, 0); 
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(2);
+            print("hit " + collision.gameObject.name);
+            Destroy(gameObject);
+        }
+    }
 }
