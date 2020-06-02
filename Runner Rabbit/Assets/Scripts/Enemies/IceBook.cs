@@ -6,19 +6,21 @@ using UnityEngine.UI;
 public class IceBook : MonoBehaviour
 {
     Animator anim;
-    public int maxHealth = 7;
-    public int health;
+    //public int maxHealth = 7;
+    //public int health;
     public EnemySpawner enemySpawner;
-    public Slider healthSlider;
+    //public Slider healthSlider;
     float spawnTime;
     bool spawned = false;
     float attackTime;
     bool attack;
-
+    EnemyHealth health;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        health = GetComponent<EnemyHealth>();
+        health.maxHealth = 7;
         if (transform.position.y > 0)
         {
             enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
@@ -28,9 +30,9 @@ public class IceBook : MonoBehaviour
             enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
         }
         //enemySpawner = FindObjectOfType<EnemySpawner>();
-        healthSlider = GetComponentInChildren<Slider>();
-        health = maxHealth;
-        healthSlider.maxValue = maxHealth;
+        //healthSlider = GetComponentInChildren<Slider>();
+        //health = maxHealth;
+        //healthSlider.maxValue = maxHealth;
         spawnTime = Random.Range(0.1f, 2f);
         attackTime = Random.Range(0.2f, 1.3f);
     }
@@ -57,8 +59,8 @@ public class IceBook : MonoBehaviour
             attackTime = Random.Range(0.2f, 1.3f);
             attack = false;
         }
-        healthSlider.value = health;
-        if (health <= 0)
+        //healthSlider.value = health;
+        if (health.health <= 0)
         {
             anim.SetTrigger("Die");
         }
@@ -72,7 +74,7 @@ public class IceBook : MonoBehaviour
     }
     void Attack()
     {
-        health = health - 1;
+        health.TakeDamage(1);
     }
     void IceLance()
     {
