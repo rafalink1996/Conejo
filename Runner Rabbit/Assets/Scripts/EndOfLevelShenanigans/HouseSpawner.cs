@@ -4,16 +4,37 @@ using UnityEngine;
 
 public class HouseSpawner : MonoBehaviour
 {
+    public character cha;
+    public GameObject housePrefab;
+    public Transform spawn1;
+   public Transform spawn2;
 
-public GameObject housePrefab;
 
-public void spawnhouse()
+    private void Start()
+    {
+        spawn1 = this.gameObject.transform.GetChild(0);
+        spawn2 = this.gameObject.transform.GetChild(1);
+    }
+    public void spawnhouse()
 
     {
-        GameObject house = Instantiate(housePrefab);
-        house.transform.position = transform.position;
+        
+        if (cha.top)
+        {
+            GameObject house = Instantiate(housePrefab);
+            house.transform.position = spawn2.position;
+        } else
+        {
+            GameObject house = Instantiate(housePrefab);
+            house.transform.position = spawn1.position; 
+        }
+       
     }
 
   
+  
+
+
+
 
 }

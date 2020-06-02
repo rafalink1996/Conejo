@@ -51,10 +51,35 @@ public class character : MonoBehaviour
     // End Of Level
 
     public bool EndLevel;
-    public Transform EndlessHouse;
+    public Transform EndlessHouseTarget1;
+    public Transform EndlessHouseTarget2;
+
+
     private float pulledspeed = 10f;
     private float pulledmaxspeed = 40f;
     public LevelLoader levelLoader;
+
+    //start level
+    /*
+        public Transform startMarker;
+        public Transform endMarker;
+        public float outOfportalSpeed;
+        public float startTime;
+        public float journeyLength;
+        public bool gamestart;
+        public PauseStart pausestart;
+    */
+
+    private float deceleration;
+    public float outOfportalSpeed;
+    private float maxstartspeed;
+    public PauseStart pausestart;
+
+
+
+
+
+
 
 
 
@@ -81,6 +106,10 @@ public class character : MonoBehaviour
 
         //heartanimator = GameObject.FindGameObjectWithTag("Heart").GetComponent<Animator>();
 
+        //start variables
+        //startTime = Time.unscaledTime;
+       // journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
+        
     }
 
     // Update is called once per frame
@@ -88,110 +117,130 @@ public class character : MonoBehaviour
 
 
     {
-        if (EndLevel == false)
+      if (pausestart.pause == true)
         {
-
-            //Health system
-
-            // can't have more health than max hearts
-
-            if (Health > NumOfHearts)
-            {
-                Health = NumOfHearts;
-            }
-            // number of current hearts is established
-
-            for (int i = 0; i < hearts.Length; i++)
-            {
-                if (i < Health)
-                {
-                    hearts[i].GetComponent<Animator>().SetBool("Full", true);
-                }
-                else
-                {
-                    hearts[i].GetComponent<Animator>().SetBool("Full", false);
-                }
-
-                // number of max hearts is established
-
-                if (i < NumOfHearts)
-                {
-                    hearts[i].SetActive(true);
-                }
-                else
-                {
-                    hearts[i].SetActive(false);
-                }
-            }
-
-            // Jump Controller with keyboard
-            /*
-                    if (Input.GetKey(KeyCode.Space))
-                    {
-                        rb.AddForce(new Vector2(0, upspeed));
-
-                    }
-
-                        // Animation Controller
-
-                        if (Input.GetKeyDown(KeyCode.Space))
-                        {
-                            animator.SetBool("IsFalling", true);
-                        }
-
-                        if (Input.GetKeyUp(KeyCode.Space))
-                        {
-                            animator.SetBool("IsFalling", false);
-                        }
-
-             */
-
-
-
-
-            // Animation Controller
-
-            if (ForceFloat)
-            {
-                animator.SetBool("IsFalling", true);
-            }
-            else
-            {
-                animator.SetBool("IsFalling", false);
-            }
-
-      
-
-     
-
-
-
-
-
-
-        // Character Moves forward
-
-        if (speed < maxspeed)
-            {
-                speed = speed + acceleration * Time.deltaTime;
-            }
-
-            Vector3 temp = transform.position;
-            temp.x += speed * Time.deltaTime;
-            transform.position = temp;
-
-            GameStats.stats.coins = coins;//updates stored coin value;
-
+            animator.SetBool("start", true);
+            transform.Translate(Vector3.right * outOfportalSpeed * Time.unscaledDeltaTime);
         }
         else
         {
+            animator.SetBool("start", false);
+            if (EndLevel == false)
+        {
+           
 
+                //Health system
+
+                // can't have more health than max hearts
+
+                if (Health > NumOfHearts)
+                {
+                    Health = NumOfHearts;
+                }
+                // number of current hearts is established
+
+                for (int i = 0; i < hearts.Length; i++)
+                {
+                    if (i < Health)
+                    {
+                        hearts[i].GetComponent<Animator>().SetBool("Full", true);
+                    }
+                    else
+                    {
+                        hearts[i].GetComponent<Animator>().SetBool("Full", false);
+                    }
+
+                    // number of max hearts is established
+
+                    if (i < NumOfHearts)
+                    {
+                        hearts[i].SetActive(true);
+                    }
+                    else
+                    {
+                        hearts[i].SetActive(false);
+                    }
+                }
+
+                // Jump Controller with keyboard
+                /*
+                        if (Input.GetKey(KeyCode.Space))
+                        {
+                            rb.AddForce(new Vector2(0, upspeed));
+
+                        }
+
+                            // Animation Controller
+
+                            if (Input.GetKeyDown(KeyCode.Space))
+                            {
+                                animator.SetBool("IsFalling", true);
+                            }
+
+                            if (Input.GetKeyUp(KeyCode.Space))
+                            {
+                                animator.SetBool("IsFalling", false);
+                            }
+
+                 */
+
+
+
+
+                // Animation Controller
+
+                if (ForceFloat)
+                {
+                    animator.SetBool("IsFalling", true);
+                }
+                else
+                {
+                    animator.SetBool("IsFalling", false);
+                }
+
+
+
+
+
+
+
+
+
+
+                // Character Moves forward
+
+                if (speed < maxspeed)
+                {
+                    speed = speed + acceleration * Time.deltaTime;
+                }
+
+                Vector3 temp = transform.position;
+                temp.x += speed * Time.deltaTime;
+                transform.position = temp;
+
+                GameStats.stats.coins = coins;//updates stored coin value;
+
+
+
+
+            
+
+
+        }
+
+        // end level is activated
+        // end level is activated
+
+        else
+        {
+            rb.isKinematic = false;
             Vector3 temp = transform.position;
             temp.x += maxspeed * Time.deltaTime;
             transform.position = temp;
             StartCoroutine(EndLevelToHouse());
 
 
+        }
         }
 
     }
@@ -203,15 +252,20 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Rift")
         {
-            Rotation();
+            if (EndLevel == false)
 
-            upspeed *= -1;
-            //dashSpeed *= -1;
-            rb.velocity = Vector3.zero;
-            rb.AddForce(new Vector2(0, (upspeed * 19 * Time.deltaTime)));
-            RiftColition = true;
-            FindObjectOfType<AudioManager>().Play("RiftPass");
-            CamRipple.RippleEffect();
+            {
+
+                Rotation();
+
+                upspeed *= -1;
+                //dashSpeed *= -1;
+                rb.velocity = Vector3.zero;
+                rb.AddForce(new Vector2(0, (upspeed * 19 * Time.deltaTime)));
+                RiftColition = true;
+                FindObjectOfType<AudioManager>().Play("RiftPass");
+                CamRipple.RippleEffect();
+            }
 
 
 
@@ -246,9 +300,13 @@ public class character : MonoBehaviour
 
         if (collision.tag == "House")
         {
+            //EndLevel = false;
             Debug.Log("house hit");
             levelLoader.changelevel();
-          
+            animator.SetTrigger("HouseHit");
+            FindObjectOfType<AudioManager>().Play("TransitionSound");
+
+
 
         }
 
@@ -291,6 +349,7 @@ public class character : MonoBehaviour
             }
 
         }
+        
     }
 
 
@@ -372,15 +431,20 @@ public class character : MonoBehaviour
 
         public void Float()
     {
-        if (hasPassedThroughRift)
+
+        if (EndLevel == false)
         {
-            rb.velocity = Vector3.zero;
-            hasPassedThroughRift = false;
+            if (hasPassedThroughRift)
+            {
+                rb.velocity = Vector3.zero;
+                hasPassedThroughRift = false;
+            }
+            rb.AddForce(new Vector2(0, upspeed * Time.deltaTime));
+
+
+            ForceFloat = true;
         }
-        rb.AddForce(new Vector2(0, upspeed * Time.deltaTime));
-
-
-        ForceFloat = true;
+        
 
 
     }
@@ -427,17 +491,32 @@ public class character : MonoBehaviour
 
     IEnumerator EndLevelToHouse()
     {
-       
-        yield return new WaitForSeconds(2f);
+        
+        yield return new WaitForSeconds(0f);
         rb.gravityScale = 0;
         animator.SetBool("IsPulled", true);
-        if (pulledspeed < pulledmaxspeed)
+
+        if (top)
         {
-            pulledspeed = pulledspeed + acceleration * Time.deltaTime;
+            if (pulledspeed < pulledmaxspeed)
+            {
+                pulledspeed = pulledspeed + acceleration * Time.deltaTime;
+            }
+
+            transform.position = Vector3.MoveTowards(transform.position, EndlessHouseTarget2.position, pulledspeed * Time.deltaTime);
+
+        } else
+        {
+            if (pulledspeed < pulledmaxspeed)
+            {
+                pulledspeed = pulledspeed + acceleration * Time.deltaTime;
+            }
+
+            transform.position = Vector3.MoveTowards(transform.position, EndlessHouseTarget1.position, pulledspeed * Time.deltaTime);
+
         }
-
-        transform.position = Vector3.MoveTowards(transform.position, EndlessHouse.position, pulledspeed * Time.deltaTime);
-
+        yield return new WaitForSeconds(1f);
+        animator.SetBool("IsPulled", false);
     }
        
 
@@ -498,4 +577,9 @@ public class character : MonoBehaviour
                 break;
         }
     }
+
+
+  
 }
+
+
