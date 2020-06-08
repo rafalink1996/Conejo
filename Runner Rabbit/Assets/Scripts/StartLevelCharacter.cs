@@ -59,6 +59,7 @@ public class StartLevelCharacter : MonoBehaviour
             {
                 IsLerping = false;
                 animator.SetBool("start", false);
+                animator.SetTrigger("Start");
                 //levelecaracterscript.enabled = false;
 
             }

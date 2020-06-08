@@ -8,7 +8,9 @@ public class Shop : MonoBehaviour
 {
 
     private float coins;
+    private float heartCost;
     public TextMeshProUGUI CoinCounter;
+    public TextMeshProUGUI heartCostText;
 
     [Header("List of Items Sold")]
     [SerializeField] public Power[] LightpowerObject;
@@ -28,7 +30,7 @@ public class Shop : MonoBehaviour
 
         coins = GameStats.stats.coins;
         CoinCounter.text = coins.ToString();
-
+       
         PopulateShop();
 
     }
@@ -37,6 +39,8 @@ public class Shop : MonoBehaviour
     {
         coins = GameStats.stats.coins;
         CoinCounter.text = coins.ToString();
+        heartCost = GameStats.stats.numOfHearts * 50;
+        heartCostText.text = heartCost.ToString();
         //GameStats.stats.coins = coins;
     }
 
@@ -106,6 +110,7 @@ public class Shop : MonoBehaviour
         Debug.Log(power.name);
         if (GameStats.stats.coins >= power.Cost)
         {
+            GameStats.stats.powerLight = power;
             GameStats.stats.lightPowerSprite = power.iconLight;
             GameStats.stats.lightpowerID = power.id;
             GameStats.stats.coins -= power.Cost;
@@ -122,9 +127,24 @@ public class Shop : MonoBehaviour
         Debug.Log(power.name);
         if (GameStats.stats.coins >= power.Cost)
         {
+            GameStats.stats.powerDark = power;
             GameStats.stats.darkPowerSprite = power.iconDark;
             GameStats.stats.DarkpowerID = power.id;
             GameStats.stats.coins -= power.Cost;
+        }
+        else
+        {
+            print("You don't have enough coins!!!");
+            //Play sound
+        }
+    }
+    public void OnButtonClickHeart()
+    {
+        print("Bought heart");
+        if (GameStats.stats.coins >= heartCost)
+        {
+            GameStats.stats.numOfHearts += 1;
+            
         }
         else
         {
