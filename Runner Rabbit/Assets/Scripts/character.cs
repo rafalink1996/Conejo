@@ -51,13 +51,26 @@ public class character : MonoBehaviour
     // End Of Level
 
     public bool EndLevel;
-    public Transform EndlessHouseTarget1;
-    public Transform EndlessHouseTarget2;
+    public bool characterConstrains;
+  
+    
+  
+
+    /* 
+   public Transform EndlessHouseTarget1;
+   public Transform EndlessHouseTarget2;
 
 
-    private float pulledspeed = 10f;
-    private float pulledmaxspeed = 40f;
-    public LevelLoader levelLoader;
+   public float pulledspeed = 2f;
+   private float pulledmaxspeed = 40f;
+   public float pulledAcceleration = 0f;
+   public LevelLoader levelLoader;
+
+
+   [SerializeField]
+   [Range(0f, 1f)]
+   private float lerpPct = 0f;
+   */
 
     //start level
     /*
@@ -104,30 +117,36 @@ public class character : MonoBehaviour
         NumOfHearts = GameStats.stats.numOfHearts;
         Health = NumOfHearts;
 
+        characterConstrains = false;
+
+
+       
         //heartanimator = GameObject.FindGameObjectWithTag("Heart").GetComponent<Animator>();
 
-        //start variables
-        //startTime = Time.unscaledTime;
-       // journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
+
         
     }
 
     // Update is called once per frame
     void Update()
 
-
     {
-      if (pausestart.pause == true)
+        
+            if (EndLevel == true)
         {
-            animator.SetBool("start", true);
-            transform.Translate(Vector3.right * outOfportalSpeed * Time.unscaledDeltaTime);
+            characterConstrains = true;
         }
-        else
+       
+
+        if (EndLevel == false )
         {
-            animator.SetBool("start", false);
-            if (EndLevel == false)
-        {
-           
+            if (characterConstrains == false)
+            {
+
+                animator.SetBool("start", false);
+
+
+
 
                 //Health system
 
@@ -202,48 +221,32 @@ public class character : MonoBehaviour
 
 
 
+            }
 
 
 
 
+            // Character Moves forward
 
-                // Character Moves forward
+            if (speed < maxspeed)
+            {
+                speed = speed + acceleration * Time.deltaTime;
+            }
 
-                if (speed < maxspeed)
-                {
-                    speed = speed + acceleration * Time.deltaTime;
-                }
-
-                Vector3 temp = transform.position;
-                temp.x += speed * Time.deltaTime;
-                transform.position = temp;
-
-                GameStats.stats.coins = coins;//updates stored coin value;
-
-
-
-
-            
-
-
-        }
-
-        // end level is activated
-        // end level is activated
-
-        else
-        {
-            rb.isKinematic = false;
             Vector3 temp = transform.position;
-            temp.x += maxspeed * Time.deltaTime;
+            temp.x += speed * Time.deltaTime;
             transform.position = temp;
-            StartCoroutine(EndLevelToHouse());
 
+            GameStats.stats.coins = coins;//updates stored coin value;
 
         }
-        }
+
+
+           
 
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -252,7 +255,7 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Rift")
         {
-            if (EndLevel == false)
+            if (EndLevel == false && characterConstrains == false )
 
             {
 
@@ -298,6 +301,7 @@ public class character : MonoBehaviour
             hasPassedThroughRift = false;
         }
 
+/*
         if (collision.tag == "House")
         {
             //EndLevel = false;
@@ -309,6 +313,7 @@ public class character : MonoBehaviour
 
 
         }
+  */
 
 
     }
@@ -317,10 +322,14 @@ public class character : MonoBehaviour
     {
         if (collision.tag == "Rift")
         {
-            rb.gravityScale *= -1;
-            RiftColition = false;
-            hasPassedThroughRift = true;
-            Instantiate(riftEffect, transform.position, Quaternion.identity);
+            if (EndLevel == false  && characterConstrains == false)
+            {
+                rb.gravityScale *= -1;
+                RiftColition = false;
+                hasPassedThroughRift = true;
+                Instantiate(riftEffect, transform.position, Quaternion.identity);
+                StartCoroutine(GetInvulnerableRift());
+            }
 
 
         }
@@ -432,8 +441,10 @@ public class character : MonoBehaviour
         public void Float()
     {
 
-        if (EndLevel == false)
+        if (EndLevel == false && characterConstrains == false)
         {
+
+
             if (hasPassedThroughRift)
             {
                 rb.velocity = Vector3.zero;
@@ -444,6 +455,7 @@ public class character : MonoBehaviour
 
             ForceFloat = true;
         }
+        
         
 
 
@@ -489,36 +501,18 @@ public class character : MonoBehaviour
 
     }
 
-    IEnumerator EndLevelToHouse()
+    IEnumerator GetInvulnerableRift()
     {
-        
-        yield return new WaitForSeconds(0f);
-        rb.gravityScale = 0;
-        animator.SetBool("IsPulled", true);
+        Physics2D.IgnoreLayerCollision(8, 9, true);
+        yield return new WaitForSeconds(0.5f);
+        Physics2D.IgnoreLayerCollision(8, 9, false);
 
-        if (top)
-        {
-            if (pulledspeed < pulledmaxspeed)
-            {
-                pulledspeed = pulledspeed + acceleration * Time.deltaTime;
-            }
 
-            transform.position = Vector3.MoveTowards(transform.position, EndlessHouseTarget2.position, pulledspeed * Time.deltaTime);
-
-        } else
-        {
-            if (pulledspeed < pulledmaxspeed)
-            {
-                pulledspeed = pulledspeed + acceleration * Time.deltaTime;
-            }
-
-            transform.position = Vector3.MoveTowards(transform.position, EndlessHouseTarget1.position, pulledspeed * Time.deltaTime);
-
-        }
-        yield return new WaitForSeconds(1f);
-        animator.SetBool("IsPulled", false);
     }
-       
+
+    
+    
+
 
 
     public void ResetUsingPower()

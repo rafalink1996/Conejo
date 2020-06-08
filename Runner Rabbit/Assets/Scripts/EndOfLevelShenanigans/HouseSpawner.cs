@@ -23,6 +23,7 @@ public class HouseSpawner : MonoBehaviour
         {
             GameObject house = Instantiate(housePrefab);
             house.transform.position = spawn2.position;
+            house.GetComponent<SpriteRenderer>().flipY = true;
         } else
         {
             GameObject house = Instantiate(housePrefab);

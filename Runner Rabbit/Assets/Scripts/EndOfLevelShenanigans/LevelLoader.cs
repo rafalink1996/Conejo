@@ -43,7 +43,7 @@ public class LevelLoader : MonoBehaviour
 
 
         //wait
-        yield return new WaitForSeconds(transitiontime);
+        yield return new WaitForSecondsRealtime (transitiontime);
 
         //loadScene
         playbuttontransition.SetActive(false);
@@ -69,7 +69,7 @@ public class LevelLoader : MonoBehaviour
     {
 
         Debug.Log("gameChangeInitiated");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSecondsRealtime(1);
         // play animation
         transition.SetTrigger("Start");
       
@@ -78,7 +78,7 @@ public class LevelLoader : MonoBehaviour
 
 
         //wait
-        yield return new WaitForSeconds(transitiontime);
+        yield return new WaitForSecondsRealtime(transitiontime);
 
         //loadScene
        
@@ -104,7 +104,7 @@ public class LevelLoader : MonoBehaviour
 
        
 
-        yield return new WaitForSeconds(levelTime);
+        yield return new WaitForSecondsRealtime(levelTime);
 
         EndlessHosue.spawnhouse();
         cha.EndLevel = true;
