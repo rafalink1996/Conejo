@@ -12,6 +12,8 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI CoinCounter;
     public TextMeshProUGUI heartCostText;
 
+    private GameObject childObj;
+
     [Header("List of Items Sold")]
     [SerializeField] public Power[] LightpowerObject;
     [SerializeField] public Power[] DarkpowerObject;
@@ -56,6 +58,9 @@ public class Shop : MonoBehaviour
 
             Power Po = LightpowerObject[i];
             GameObject powerobject = Instantiate(ShopItemPrefab, shopcontainer);
+            GameObject childSoldout = powerobject.transform.GetChild(3).gameObject;
+            Button PowerButton = powerobject.GetComponent<Button>();
+
 
 
 
@@ -67,12 +72,14 @@ public class Shop : MonoBehaviour
             // cost (textMeshProUGUI)
 
             //grab button, assign function to on click.
-            powerobject.GetComponent<Button>().onClick.AddListener(() => OnButtonClickLight(Po));
+            powerobject.GetComponent<Button>().onClick.AddListener(() => OnButtonClickLight(Po, childSoldout, PowerButton));
+            
 
 
             powerobject.transform.GetChild(1).GetComponent<Image>().sprite = Po.iconLight;
             powerobject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = Po.Cost.ToString();
-
+            
+           
 
 
         }
@@ -86,6 +93,8 @@ public class Shop : MonoBehaviour
 
             Power Po = DarkpowerObject[i];
             GameObject powerobject = Instantiate(ShopItemPrefab, shopcontainer);
+            GameObject childSoldout = powerobject.transform.GetChild(3).gameObject;
+            Button PowerButton = powerobject.GetComponent<Button>();
 
 
 
@@ -95,17 +104,18 @@ public class Shop : MonoBehaviour
             // cost (textMeshProUGUI)
 
             //grab button, assign function to on click.
-            powerobject.GetComponent<Button>().onClick.AddListener(() => OnButtonClickDark(Po));
+            powerobject.GetComponent<Button>().onClick.AddListener(() => OnButtonClickDark(Po, childSoldout, PowerButton));
 
 
             powerobject.transform.GetChild(1).GetComponent<Image>().sprite = Po.iconDark;
             powerobject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = Po.Cost.ToString();
+           
 
 
         }
     }
 
-    private void OnButtonClickLight(Power power)
+    private void OnButtonClickLight(Power power, GameObject SoldOut, Button powerbutton)
     {
         Debug.Log(power.name);
         if (GameStats.stats.coins >= power.Cost)
@@ -114,6 +124,10 @@ public class Shop : MonoBehaviour
             GameStats.stats.lightPowerSprite = power.iconLight;
             GameStats.stats.lightpowerID = power.id;
             GameStats.stats.coins -= power.Cost;
+
+            SoldOut.SetActive (true);
+            powerbutton.interactable = false;
+
         }
         else
         {
@@ -122,7 +136,7 @@ public class Shop : MonoBehaviour
         }
     }
 
-    private void OnButtonClickDark(Power power)
+    private void OnButtonClickDark(Power power, GameObject SoldOut, Button powerbutton)
     {
         Debug.Log(power.name);
         if (GameStats.stats.coins >= power.Cost)
@@ -131,6 +145,9 @@ public class Shop : MonoBehaviour
             GameStats.stats.darkPowerSprite = power.iconDark;
             GameStats.stats.DarkpowerID = power.id;
             GameStats.stats.coins -= power.Cost;
+
+            SoldOut.SetActive(true);
+            powerbutton.interactable = false;
         }
         else
         {
