@@ -52,6 +52,10 @@ public class character : MonoBehaviour
 
     public bool EndLevel;
     public bool characterConstrains;
+
+    //death
+
+    public GameObject DeathScreen;
   
     
   
@@ -215,6 +219,14 @@ public class character : MonoBehaviour
                 else
                 {
                     animator.SetBool("IsFalling", false);
+                }
+
+
+                // Death
+
+            if (Health == 0)
+                {
+                    StartCoroutine(Death());
                 }
 
 
@@ -508,6 +520,17 @@ public class character : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 9, false);
 
 
+    }
+
+    IEnumerator Death()
+    {
+        Time.timeScale = 0;
+        animator.SetTrigger("Dead");
+
+        yield return new WaitForSecondsRealtime(1f);
+        
+
+        DeathScreen.SetActive(true);
     }
 
     

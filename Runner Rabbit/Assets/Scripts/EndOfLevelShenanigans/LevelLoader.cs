@@ -121,10 +121,51 @@ public class LevelLoader : MonoBehaviour
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         StartCoroutine(loadAsyncGame(SceneManager.GetActiveScene().buildIndex + 1));
+    }   
+
+    public void backToMainMenu ()
+
+    {
+        loadingScreen.SetActive(true);
+        StartCoroutine(loadAsyncMainMenu());
     }
 
-   
-       
 
 
+    IEnumerator loadAsyncMainMenu()
+
+    {
+
+        Debug.Log("gameChangeInitiated");
+        yield return new WaitForSecondsRealtime(1);
+        // play animation
+        transition.SetTrigger("Start");
+
+
+
+
+
+        //wait
+        yield return new WaitForSecondsRealtime(transitiontime);
+
+        //loadScene
+
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(0);
+
+        loadingScreen.SetActive(true);
+        Time.timeScale = 1;
+        
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            slider.value = progress;
+            Debug.Log(progress);
+
+            yield return null;
+
+
+        }
+    }
 }
