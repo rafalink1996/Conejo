@@ -18,6 +18,11 @@ public class GameStats : MonoBehaviour
     public float darkMana; 
     public float coins;
     public int numOfHearts;
+
+    // level indicator
+
+    public int LevelCount;
+    public int LevelIndicator;
   
     // Start is called before the first frame update
     void Awake()
@@ -34,6 +39,9 @@ public class GameStats : MonoBehaviour
     }
         void Start()
     {
+
+
+
         lightPowerName = powerLight.name;
         lightPowerSprite = powerLight.iconLight;
         lightpowerID = powerLight.id;
@@ -44,8 +52,23 @@ public class GameStats : MonoBehaviour
         DarkpowerID = powerDark.id;
         darkMana = powerDark.mana;
 
+        LevelCount = 1;
+        LevelIndicator = 2;
+
 
     }
 
-   
+    private void Update()
+    {
+        if (LevelCount == 4)
+        {
+            LevelIndicator += 1;
+            LevelCount -= 3;
+        }
+    }
+
+
+
+
+
 }

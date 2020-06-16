@@ -64,6 +64,9 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
+
+    // load next level
+
     IEnumerator loadAsyncGame(int SceneIndex)
 
     {
@@ -117,11 +120,15 @@ public class LevelLoader : MonoBehaviour
     }
 
 
+
     public void changelevel()
     {
+        //SceneManager.GetActiveScene().buildIndex + 1
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        StartCoroutine(loadAsyncGame(SceneManager.GetActiveScene().buildIndex + 1));
-    }   
+        StartCoroutine(loadAsyncGame(1));
+    }
+
+    //load main menu
 
     public void backToMainMenu ()
 

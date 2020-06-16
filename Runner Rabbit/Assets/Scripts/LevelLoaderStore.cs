@@ -19,6 +19,7 @@ public class LevelLoaderStore : MonoBehaviour
 
     {
         StartCoroutine(LoadAsync());
+        GameStats.stats.LevelCount += 1;
     }
 
 
@@ -32,7 +33,7 @@ public class LevelLoaderStore : MonoBehaviour
         //loadScene
 
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(GameStats.stats.LevelIndicator);
 
         loadingScreen.SetActive(true);
 
