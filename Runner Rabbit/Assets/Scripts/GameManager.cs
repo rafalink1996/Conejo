@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject spawnerUp;
     public GameObject SpawnerDown;
+    public GameObject SpawnerMiddle;
     public GameObject Boss;
 
    
@@ -22,9 +23,15 @@ public class GameManager : MonoBehaviour
         {
             spawnerUp.SetActive(false);
             SpawnerDown.SetActive(false);
+            SpawnerMiddle.SetActive(false);
+
+
             Boss.SetActive(true);
+
 
 
         }
     }
+
+   
 }

@@ -135,6 +135,7 @@ public class LevelLoader : MonoBehaviour
     {
         loadingScreen.SetActive(true);
         StartCoroutine(loadAsyncMainMenu());
+        Time.timeScale = 1;
     }
 
 

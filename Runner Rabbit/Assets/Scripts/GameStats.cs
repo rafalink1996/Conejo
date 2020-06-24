@@ -19,6 +19,12 @@ public class GameStats : MonoBehaviour
     public float coins;
     public int numOfHearts;
 
+    public int totalLightMana;
+    public int totalDarkMana;
+
+
+
+
     // level indicator
 
     public int LevelCount;
@@ -65,6 +71,8 @@ public class GameStats : MonoBehaviour
             LevelIndicator += 1;
             LevelCount -= 3;
         }
+
+        
     }
 
 

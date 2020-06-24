@@ -855,7 +855,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.00024414062, y: 0}
   m_SizeDelta: {x: -0.00050163, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -913,7 +913,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &102801763
 Transform:
   m_ObjectHideFlags: 0
@@ -2242,7 +2242,7 @@ GameObject:
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &253351650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8526,7 +8526,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &451898759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9996,6 +9996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnerUp: {fileID: 102801762}
   SpawnerDown: {fileID: 451898758}
+  SpawnerMiddle: {fileID: 253351649}
   Boss: {fileID: 934656954}
 --- !u!1 &677475416
 GameObject:
@@ -15830,7 +15831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &934656955
 Transform:
   m_ObjectHideFlags: 0
@@ -15839,7 +15840,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934656954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.245792, y: 5.860454, z: 52.422348}
+  m_LocalPosition: {x: -4.34, y: 5.860454, z: 52.422348}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1246598662}
@@ -18763,7 +18764,7 @@ MonoBehaviour:
   DarkManaBar: {fileID: 256597578}
   LightManaBar: {fileID: 1710901087}
   DarkMana: 30
-  LightMana: 30
+  LightMana: 60
   DarkManaUsed: 0
   LightManaUsed: 0
   DarkManaRegen: 5
@@ -25168,7 +25169,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 30
+  m_MaxValue: 60
   m_WholeNumbers: 0
   m_Value: 30
   m_OnValueChanged:
@@ -32167,7 +32168,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &2132081692
@@ -32563,6 +32564,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020,
         type: 2}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: LevelCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: totalLightMana
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: totalDarkMana
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: m_LocalPosition.x
