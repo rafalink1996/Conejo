@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManaUsingToChargingAnimLight : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class ManaUsingToChargingAnimLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Store")
+        {
+            return;
+        }
         if (Cha.top == true)
         {
             animator.SetBool("ManaIsUsing", true);
