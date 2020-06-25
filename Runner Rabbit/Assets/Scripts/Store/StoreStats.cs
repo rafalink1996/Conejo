@@ -17,11 +17,36 @@ public class StoreStats : MonoBehaviour
     public TextMeshProUGUI lightManaNumber;
     public TextMeshProUGUI DarkManaNumber;
 
+    public GameObject DarkManaPower;
+    public GameObject LightManaPower;
+
+    private Button DarkButton;
+    private Button LightButton;
+
+
+
+    // power stats display
+
+    public Image PowerImage;
+    public TextMeshProUGUI PowerName;
+    public TextMeshProUGUI Manacost;
+    public TextMeshProUGUI PowerDamage;
+    public TextMeshProUGUI powerDescription;
+        
+
+
     // Start is called before the first frame update
     void Start()
     {
         NumOfHearts = GameStats.stats.numOfHearts;
         Health = NumOfHearts;
+
+
+
+
+       LightButton=  LightManaPower.GetComponent<Button>();
+        DarkButton = DarkManaPower.GetComponent<Button>();
+
 
     }
 
@@ -63,6 +88,29 @@ public class StoreStats : MonoBehaviour
                 hearts[i].SetActive(false);
             }
         }
+
+        DarkButton.image.sprite = GameStats.stats.darkPowerSprite;
+        LightButton.image.sprite = GameStats.stats.lightPowerSprite;
+
     }
+
+    public void DarkPowerButton()
+    {
+        PowerImage.sprite = GameStats.stats.powerDark.iconDark;
+        PowerName.text = GameStats.stats.powerDark.name;
+        Manacost.text = GameStats.stats.powerDark.mana.ToString();
+        PowerDamage.text = GameStats.stats.powerDark.Damage.ToString();
+        powerDescription.text = GameStats.stats.powerDark.description;
+    }
+
+    public void LightPowerButton()
+    {
+        PowerImage.sprite = GameStats.stats.powerLight.iconLight;
+        PowerName.text = GameStats.stats.powerLight.name;
+        Manacost.text = GameStats.stats.powerLight.mana.ToString();
+        PowerDamage.text = GameStats.stats.powerLight.Damage.ToString();
+        powerDescription.text = GameStats.stats.powerLight.description;
+    }
+
 }
 

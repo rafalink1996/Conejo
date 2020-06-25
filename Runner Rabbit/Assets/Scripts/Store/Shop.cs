@@ -24,6 +24,22 @@ public class Shop : MonoBehaviour
     [SerializeField] public GameObject ShopItemPrefab;
 
 
+    // BuyPowerDisplay
+
+    public GameObject Display;
+    public Image PowerImage;
+    public TextMeshProUGUI PowerName;
+    public TextMeshProUGUI Manacost;
+    public TextMeshProUGUI PowerDamage;
+    public TextMeshProUGUI powerDescription;
+    public Button BuyButton;
+    public Button BackButton;
+
+
+
+    public GameObject noCoinsPopUp;
+    
+
 
 
     private void Start()
@@ -117,13 +133,23 @@ public class Shop : MonoBehaviour
 
     private void OnButtonClickLight(Power power, GameObject SoldOut, Button powerbutton)
     {
+
+        BuyButton.onClick.AddListener(() => OnLightButtonBuy(power, SoldOut, powerbutton));
+        Display.SetActive(true);
+
+        PowerImage.sprite = power.iconLight;
+        PowerName.text = power.name;
+        Manacost.text = power.mana.ToString();
+        PowerDamage.text = power.Damage.ToString();
+        powerDescription.text = power.description;
+        /*
         Debug.Log(power.name);
         if (GameStats.stats.coins >= power.Cost)
         {
             GameStats.stats.powerLight = power;
-            GameStats.stats.lightPowerSprite = power.iconLight;
-            GameStats.stats.lightpowerID = power.id;
-            GameStats.stats.coins -= power.Cost;
+            //GameStats.stats.lightPowerSprite = power.iconLight;
+            //GameStats.stats.lightpowerID = power.id;
+           // GameStats.stats.coins -= power.Cost;
 
             SoldOut.SetActive (true);
             powerbutton.interactable = false;
@@ -134,17 +160,28 @@ public class Shop : MonoBehaviour
             print("You don't have enough coins!!!");
             //Play sound
         }
+        */
     }
 
     private void OnButtonClickDark(Power power, GameObject SoldOut, Button powerbutton)
     {
+
+        BuyButton.onClick.AddListener(() => OnDarkButtonClicBuy(power, SoldOut, powerbutton));
+        Display.SetActive(true);
+
+        PowerImage.sprite = power.iconDark;
+        PowerName.text = power.name;
+        Manacost.text = power.mana.ToString();
+        PowerDamage.text = power.Damage.ToString();
+        powerDescription.text = power.description;
+        /*
         Debug.Log(power.name);
         if (GameStats.stats.coins >= power.Cost)
         {
             GameStats.stats.powerDark = power;
-            GameStats.stats.darkPowerSprite = power.iconDark;
-            GameStats.stats.DarkpowerID = power.id;
-            GameStats.stats.coins -= power.Cost;
+           // GameStats.stats.darkPowerSprite = power.iconDark;
+            //GameStats.stats.DarkpowerID = power.id;
+           // GameStats.stats.coins -= power.Cost;
 
             SoldOut.SetActive(true);
             powerbutton.interactable = false;
@@ -154,20 +191,95 @@ public class Shop : MonoBehaviour
             print("You don't have enough coins!!!");
             //Play sound
         }
+        */
     }
+
+
+    // buy power?
+
+    public void OnLightButtonBuy(Power power, GameObject SoldOut, Button powerbutton)
+    {
+        Debug.Log(power.name);
+        if (GameStats.stats.coins >= power.Cost)
+        {
+            GameStats.stats.powerLight = power;
+            //GameStats.stats.lightPowerSprite = power.iconLight;
+            //GameStats.stats.lightpowerID = power.id;
+            GameStats.stats.coins -= power.Cost;
+
+            SoldOut.SetActive(true);
+            powerbutton.interactable = false;
+            BuyButton.onClick.RemoveAllListeners();
+            Display.SetActive(false);
+
+        }
+        else
+        {
+            StartCoroutine(NotEnoughCoins());
+            print("You don't have enough coins!!!");
+            //Play sound
+        }
+
+    }
+
+
+ 
+    public void OnDarkButtonClicBuy(Power power, GameObject SoldOut, Button powerbutton)
+
+    {
+        if (GameStats.stats.coins >= power.Cost)
+        {
+            GameStats.stats.powerDark = power;
+            // GameStats.stats.darkPowerSprite = power.iconDark;
+            //GameStats.stats.DarkpowerID = power.id;
+             GameStats.stats.coins -= power.Cost;
+
+            SoldOut.SetActive(true);
+            powerbutton.interactable = false;
+            BuyButton.onClick.RemoveAllListeners();
+            Display.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(NotEnoughCoins());
+            print("You don't have enough coins!!!");
+            //Play sound
+        }
+    }
+
+    public void Back()
+    {
+        BuyButton.onClick.RemoveAllListeners();
+        Display.SetActive(false);
+
+    }
+
+
     public void OnButtonClickHeart()
     {
         print("Bought heart");
         if (GameStats.stats.coins >= heartCost)
         {
             GameStats.stats.numOfHearts += 1;
+            GameStats.stats.coins -= heartCost;
             
         }
         else
         {
+            StartCoroutine(NotEnoughCoins());
             print("You don't have enough coins!!!");
             //Play sound
         }
+    }
+
+    IEnumerator NotEnoughCoins()
+    {
+        noCoinsPopUp.SetActive(true);
+        yield return new WaitForSeconds(2);
+        noCoinsPopUp.SetActive(false);
+        
+
+
     }
 
 }

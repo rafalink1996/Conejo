@@ -72,7 +72,16 @@ public class GameStats : MonoBehaviour
             LevelCount -= 3;
         }
 
-        
+        lightPowerName = powerLight.name;
+        lightPowerSprite = powerLight.iconLight;
+        lightpowerID = powerLight.id;
+        lightMana = powerLight.mana;
+
+        darkPowerName = powerDark.name;
+        darkPowerSprite = powerDark.iconDark;
+        DarkpowerID = powerDark.id;
+        darkMana = powerDark.mana;
+
     }
 
 
