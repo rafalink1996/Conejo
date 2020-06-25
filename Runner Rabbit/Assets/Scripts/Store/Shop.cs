@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour
 {
 
     private float coins;
+
     
     public TextMeshProUGUI CoinCounter;
     
@@ -38,7 +39,10 @@ public class Shop : MonoBehaviour
 
 
     public GameObject noCoinsPopUp;
-    
+
+    public int heartCost;
+
+
 
 
 
@@ -252,7 +256,7 @@ public class Shop : MonoBehaviour
         Display.SetActive(false);
 
     }
-<<<<<<< HEAD:Runner Rabbit/Assets/Scripts/Store/Shop.cs
+
 
 
     public void OnButtonClickHeart()
@@ -271,9 +275,9 @@ public class Shop : MonoBehaviour
             //Play sound
         }
     }
-=======
+
  
->>>>>>> 83b9a425b78962a51efacbed99c4442841ae342b:Runner Rabbit/Assets/Scripts/Shop.cs
+
 
     IEnumerator NotEnoughCoins()
     {
