@@ -583,7 +583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &53517263
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9222,7 +9222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &533066034
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17691,6 +17691,10 @@ MonoBehaviour:
   timeToChange: 0
   isChanging: 0
   bossTop: 0
+  healthBar:
+  - {fileID: 1881736699}
+  - {fileID: 533066033}
+  - {fileID: 53517262}
 --- !u!114 &1246598665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17705,7 +17709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 40
   health: 0
-  healthSlider: {fileID: 0}
+  healthSlider: {fileID: 1061049522}
 --- !u!58 &1246598666
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -17713,7 +17717,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246598659}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -26003,7 +26007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1881736700
 RectTransform:
   m_ObjectHideFlags: 0

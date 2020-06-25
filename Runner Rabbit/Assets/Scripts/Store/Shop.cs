@@ -11,7 +11,7 @@ public class Shop : MonoBehaviour
 
     
     public TextMeshProUGUI CoinCounter;
-    
+    public TextMeshProUGUI heartCostText;
 
     private GameObject childObj;
 
@@ -40,7 +40,9 @@ public class Shop : MonoBehaviour
 
     public GameObject noCoinsPopUp;
 
-    public int heartCost;
+    public float heartCost;
+    public float lightManaCost;
+    public float darkManaCost;
 
 
 
@@ -61,7 +63,8 @@ public class Shop : MonoBehaviour
     {
         coins = GameStats.stats.coins;
         CoinCounter.text = coins.ToString();
-        
+        heartCost = GameStats.stats.numOfHearts * 50;
+        heartCostText.text = heartCost.ToString();
         //GameStats.stats.coins = coins;
     }
 
@@ -261,12 +264,48 @@ public class Shop : MonoBehaviour
 
     public void OnButtonClickHeart()
     {
-        print("Bought heart");
-        if (GameStats.stats.coins >= heartCost)
+        if (GameStats.stats.numOfHearts < 9)
         {
-            GameStats.stats.numOfHearts += 1;
-            GameStats.stats.coins -= heartCost;
-            
+            if (GameStats.stats.coins >= heartCost)
+            {
+                GameStats.stats.numOfHearts += 1;
+                GameStats.stats.coins -= heartCost;
+                print("Bought heart");
+            }
+            else
+            {
+                StartCoroutine(NotEnoughCoins());
+                print("You don't have enough coins!!!");
+                //Play sound
+            }
+        }
+        else
+        {
+            print("You have max hearts");
+        }
+    }
+    public void OnButtonLightMana()
+    {
+        if (GameStats.stats.coins >= lightManaCost)
+        {
+            GameStats.stats.totalLightMana += 10;
+            GameStats.stats.coins -= lightManaCost;
+            print("Bought Light Mana");
+        }
+        else
+        {
+            StartCoroutine(NotEnoughCoins());
+            print("You don't have enough coins!!!");
+            //Play sound
+        }
+    }
+    public void OnButtonDarkMana()
+    {
+        if (GameStats.stats.coins >= darkManaCost)
+        {
+            GameStats.stats.totalDarkMana += 10;
+            GameStats.stats.coins -= darkManaCost;
+            print("Bought Dark Mana");
         }
         else
         {
@@ -276,7 +315,7 @@ public class Shop : MonoBehaviour
         }
     }
 
- 
+
 
 
     IEnumerator NotEnoughCoins()

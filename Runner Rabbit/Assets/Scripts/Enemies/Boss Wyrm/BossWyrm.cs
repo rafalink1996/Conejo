@@ -17,6 +17,7 @@ public class BossWyrm : MonoBehaviour
     character Cha;
     public bool bossTop;
     EnemyHealth health;
+    public GameObject[] healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -162,6 +163,20 @@ public class BossWyrm : MonoBehaviour
         {
             attacks[2].SetActive(true);
         }
+    }
+    void DeactivateCollider()
+    {
+        GetComponent<CircleCollider2D>().enabled = false;
+        healthBar[0].SetActive(false);
+        healthBar[1].SetActive(false);
+        healthBar[2].SetActive(false);
+    }
+    void ActivateCollider()
+    {
+        GetComponent<CircleCollider2D>().enabled = true;
+        healthBar[0].SetActive(true);
+        healthBar[1].SetActive(true);
+        healthBar[2].SetActive(true);
     }
 
 }
