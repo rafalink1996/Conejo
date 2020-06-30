@@ -18,6 +18,7 @@ public class BossWyrm : MonoBehaviour
     public bool bossTop;
     EnemyHealth health;
     public GameObject[] healthBar;
+    public bool BossDead;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class BossWyrm : MonoBehaviour
         timeToChange = Random.Range(15f, 25f);
         iceTimer = Random.Range(20f, 30f);
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
+        BossDead = false;
     }
 
     // Update is called once per frame
@@ -107,6 +109,7 @@ public class BossWyrm : MonoBehaviour
         if (health.health <= 0)
         {
             anim.SetTrigger("Die");
+            BossDead = true;
 
         }
     }

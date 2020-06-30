@@ -854,7 +854,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.00024414062, y: 0}
   m_SizeDelta: {x: -0.00050163, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -912,7 +912,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &102801763
 Transform:
   m_ObjectHideFlags: 0
@@ -2241,7 +2241,7 @@ GameObject:
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &253351650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8525,7 +8525,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &451898759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15734,7 +15734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &934656955
 Transform:
   m_ObjectHideFlags: 0
@@ -17598,6 +17598,7 @@ MonoBehaviour:
   - {fileID: 1881736699}
   - {fileID: 533066033}
   - {fileID: 53517262}
+  BossDead: 0
 --- !u!114 &1246598665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17613,6 +17614,7 @@ MonoBehaviour:
   maxHealth: 40
   health: 0
   healthSlider: {fileID: 1061049522}
+  Hit: 0
 --- !u!58 &1246598666
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -18933,6 +18935,7 @@ MonoBehaviour:
   playbuttontransition: {fileID: 0}
   EndlessHosue: {fileID: 146997261}
   cha: {fileID: 992125959}
+  bossWyrm: {fileID: 0}
 --- !u!4 &1526805043
 Transform:
   m_ObjectHideFlags: 0

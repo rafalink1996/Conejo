@@ -15,6 +15,9 @@ public class ElectricBook : MonoBehaviour
     float attackTime;
     bool attack;
     EnemyHealth health;
+   
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,7 @@ public class ElectricBook : MonoBehaviour
         //healthSlider.maxValue = maxHealth;
         spawnTime = Random.Range(0.1f, 2f);
         attackTime = Random.Range(0.2f, 1.3f);
+        
     }
 
     // Update is called once per frame
@@ -64,6 +68,7 @@ public class ElectricBook : MonoBehaviour
         if (health.health <= 0)
         {
             anim.SetTrigger("Die");
+            
         }
     }
     void AttackTime()
@@ -88,6 +93,11 @@ public class ElectricBook : MonoBehaviour
     {
         enemySpawner.OneDown();
         Destroy(gameObject);
+        if (health.Hit == true)
+        {
+            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            healthHeal.transform.position = transform.position;
+        }
     }
 
     void Despawned()

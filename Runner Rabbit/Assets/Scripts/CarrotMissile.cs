@@ -21,6 +21,7 @@ public class CarrotMissile : MonoBehaviour
         if (collision.collider.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(2);
+            collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
             print("hit " + collision.gameObject.name);
             Destroy(gameObject);
         }

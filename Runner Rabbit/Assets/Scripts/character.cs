@@ -295,6 +295,11 @@ public class character : MonoBehaviour
             CoinCounter.text = coins.ToString();
         }
 
+        if (collision.tag == "Heart")
+        {
+            Health += 1;
+        }
+
 
 
         // colission with enemy proyectile

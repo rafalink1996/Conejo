@@ -8,12 +8,14 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth;
     public int health;
     public Slider healthSlider;
+    public bool Hit;
     // Start is called before the first frame update
     void Start()
     {
         healthSlider = GetComponentInChildren<Slider>();
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
+        Hit = false;
 
     }
 
@@ -25,5 +27,6 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+       
     }
 }

@@ -15,6 +15,7 @@ public class LevelLoader : MonoBehaviour
     public GameObject playbuttontransition;
     public HouseSpawner EndlessHosue;
     public character cha;
+    public BossWyrm bossWyrm;
   
 
 
@@ -105,16 +106,31 @@ public class LevelLoader : MonoBehaviour
     IEnumerator loadloader()
     {
 
-       
 
-        yield return new WaitForSecondsRealtime(levelTime);
+        if (GameStats.stats.LevelCount == 3)
+        {
+            if (bossWyrm.BossDead == true)
+            {
+                yield return new WaitForSecondsRealtime(3);
+                EndlessHosue.spawnhouse();
+                cha.EndLevel = true;
+            }
+           
+        }
+           else
+        {
+            yield return new WaitForSecondsRealtime(levelTime);
+            
+            yield return new WaitForSecondsRealtime(3);
+            EndlessHosue.spawnhouse();
+            cha.EndLevel = true;
 
-        EndlessHosue.spawnhouse();
-        cha.EndLevel = true;
+        }
 
-        
 
-        
+
+
+
 
 
     }

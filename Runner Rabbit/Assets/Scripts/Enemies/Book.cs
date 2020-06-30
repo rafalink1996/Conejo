@@ -90,6 +90,11 @@ public class Book : MonoBehaviour
     {
         enemySpawner.OneDown();
         Destroy(gameObject);
+        if (health.Hit == true)
+        {
+            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            healthHeal.transform.position = transform.position;
+        }
     }
 
     void Despawned()
