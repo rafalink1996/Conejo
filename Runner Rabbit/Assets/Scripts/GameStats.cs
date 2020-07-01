@@ -17,6 +17,7 @@ public class GameStats : MonoBehaviour
     public int DarkpowerID;
     public float darkMana; 
     public float coins;
+    public float crystals;
     public int numOfHearts;
 
     public int totalLightMana;

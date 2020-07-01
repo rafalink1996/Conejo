@@ -12,20 +12,44 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitiontime;
     public float levelTime;
+    public float levelcountdown;
+
     public GameObject playbuttontransition;
     public HouseSpawner EndlessHosue;
     public character cha;
     public BossWyrm bossWyrm;
-  
+
+    public GameObject EnemySpawner1;
+    public GameObject EnemySpawner2;
+    public GameObject EnemySpawnerHand;
+
+    public Slider TimerSlider;
+
+
 
 
 
     private void Start()
     {
         StartCoroutine(loadloader());
-       
+        levelcountdown = 0;
+
 
     }
+
+    private void Update()
+    {
+        levelcountdown += 1*Time.deltaTime;
+        TimerSlider.value = levelcountdown;
+
+        if (levelcountdown >= 90)
+        {
+            EnemySpawner1.SetActive(false);
+            EnemySpawner2.SetActive(false);
+            EnemySpawnerHand.SetActive(false);
+        }
+    }
+
 
     public void LoadLevel( int SceneIndex)
 
@@ -105,33 +129,33 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator loadloader()
     {
-
-
-        if (GameStats.stats.LevelCount == 3)
+        while (true)
         {
-            if (bossWyrm.BossDead == true)
+
+            if (GameStats.stats.LevelCount == 3)
             {
-                yield return new WaitForSecondsRealtime(3);
-                EndlessHosue.spawnhouse();
-                cha.EndLevel = true;
+
+                if (bossWyrm.BossDead == true)
+                {
+                    yield return new WaitForSecondsRealtime(3);
+                    EndlessHosue.spawnhouse();
+                    cha.EndLevel = true;
+                }
+
             }
-           
+            else
+            {
+
+                if (TimerSlider.value == levelTime)
+                {
+                    yield return new WaitForSecondsRealtime(1);
+                    EndlessHosue.spawnhouse();
+                    cha.EndLevel = true;
+                }
+
+            }
+            yield return null;
         }
-           else
-        {
-            yield return new WaitForSecondsRealtime(levelTime);
-            
-            yield return new WaitForSecondsRealtime(3);
-            EndlessHosue.spawnhouse();
-            cha.EndLevel = true;
-
-        }
-
-
-
-
-
-
 
     }
 

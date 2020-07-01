@@ -30,6 +30,11 @@ public class character : MonoBehaviour
     private float coins = 0;
     public TextMeshProUGUI CoinCounter;
 
+    // crystal Collecting
+
+    private float crystal = 0;
+    public TextMeshProUGUI CrystalCounter;
+
 
     // Health System
     public int Health;
@@ -117,6 +122,7 @@ public class character : MonoBehaviour
         darkPower = GameStats.stats.darkPowerName;
         lightPower = GameStats.stats.lightPowerName;
         coins = GameStats.stats.coins; //sets held coins to value stored
+        crystal = GameStats.stats.crystals; //sets held crystals to value stored
         CoinCounter.text = coins.ToString();
         NumOfHearts = GameStats.stats.numOfHearts;
         Health = NumOfHearts;
@@ -250,6 +256,7 @@ public class character : MonoBehaviour
             transform.position = temp;
 
             GameStats.stats.coins = coins;//updates stored coin value;
+            GameStats.stats.crystals = crystal;//updates stored crystal value;
 
         }
 
@@ -293,6 +300,12 @@ public class character : MonoBehaviour
         {
             coins++;
             CoinCounter.text = coins.ToString();
+        }
+
+        if (collision.tag == "Crystal")
+        {
+            crystal++;
+            CrystalCounter.text = crystal.ToString();
         }
 
         if (collision.tag == "Heart")

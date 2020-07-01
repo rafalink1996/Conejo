@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerMEnu : MonoBehaviour
 {
     public Animator powerbuttontransition;
-    public Animator bunny;
+    
         
 
     public GameObject mainmenu;
@@ -27,7 +27,7 @@ public class PowerMEnu : MonoBehaviour
     public void PowerMenuBack()
     {
         powerbuttontransition.SetTrigger("Powers Out");
-        bunny.SetTrigger("bunnnyOut");
+      
 
         StartCoroutine(backfromPowersMenu());
     }
@@ -38,7 +38,7 @@ public class PowerMEnu : MonoBehaviour
         yield return new WaitForSeconds(transitionTimein);
 
         powermenu.SetActive(true);
-        bunny.SetTrigger("bunnnyIn");
+        
         Debug.Log("powermenu!");
 
         yield return null;
