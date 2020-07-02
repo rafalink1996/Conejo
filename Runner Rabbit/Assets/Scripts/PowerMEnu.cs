@@ -10,7 +10,10 @@ public class PowerMEnu : MonoBehaviour
 
     public GameObject mainmenu;
     public GameObject powermenu;
-    
+    public GameObject TowerDark;
+    public GameObject TowerLight;
+
+
     public float transitionTimein;
     public float transitionTimeout;
 
@@ -38,6 +41,8 @@ public class PowerMEnu : MonoBehaviour
         yield return new WaitForSeconds(transitionTimein);
 
         powermenu.SetActive(true);
+        TowerDark.SetActive(false);
+        TowerDark.SetActive(false);
         
         Debug.Log("powermenu!");
 
@@ -50,6 +55,8 @@ public class PowerMEnu : MonoBehaviour
         yield return new WaitForSeconds(transitionTimeout);
 
         mainmenu.SetActive(true);
+        TowerDark.SetActive(true);
+        TowerDark.SetActive(true);
 
         yield return null;
     }
