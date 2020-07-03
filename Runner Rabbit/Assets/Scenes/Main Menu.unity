@@ -448,7 +448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &88540585
 Transform:
   m_ObjectHideFlags: 0
@@ -5326,10 +5326,10 @@ RectTransform:
   m_Father: {fileID: 681798095}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180.55241, y: -100}
+  m_SizeDelta: {x: 370, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &134325511
 MonoBehaviour:
@@ -5534,6 +5534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 177256717}
   - component: {fileID: 177256716}
+  - component: {fileID: 177256718}
   m_Layer: 0
   m_Name: LevelLoader
   m_TagString: Untagged
@@ -5548,7 +5549,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177256715}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82585f7caf0864d5da7a35ae02d12ab0, type: 3}
   m_Name: 
@@ -5582,6 +5583,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &177256718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177256715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cdd6fd77d494659a9073ee79d65fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 906061924}
+  slider: {fileID: 1362380819}
+  transition: {fileID: 1120639775}
+  transitiontime: 1
+  playbuttontransition: {fileID: 191503841}
 --- !u!1 &191503841
 GameObject:
   m_ObjectHideFlags: 0
@@ -6016,7 +6034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &258772268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6403,10 +6421,10 @@ RectTransform:
   m_Father: {fileID: 681798095}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180.55241, y: -300}
+  m_SizeDelta: {x: 370, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &285002715
 MonoBehaviour:
@@ -6731,6 +6749,11 @@ PrefabInstance:
         type: 3}
       propertyPath: totalDarkMana
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: crystals
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
@@ -11904,6 +11927,14 @@ MonoBehaviour:
   TowerLight: {fileID: 1467297344}
   transitionTimein: 1
   transitionTimeout: 1.2
+  FenixFeatherCost: 100
+  PortalBoostCost: 20
+  CoinTicketCost: 20
+  Level1toBossCost: 0
+  level2Cost: 0
+  FenixFeather: {fileID: 1298090137}
+  PortalBoost: {fileID: 530952762}
+  CoinTicket: {fileID: 2106721747}
 --- !u!4 &479342924
 Transform:
   m_ObjectHideFlags: 0
@@ -12831,7 +12862,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.0004272461}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 473.28387}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681798096
 MonoBehaviour:
@@ -13408,7 +13439,7 @@ GameObject:
   - component: {fileID: 795635981}
   - component: {fileID: 795635980}
   m_Layer: 5
-  m_Name: Button
+  m_Name: FenixFeather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13477,7 +13508,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 795635981}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 479342923}
+        m_MethodName: BuyItem
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 3
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &795635981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18968,7 +19010,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 975116489}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 479342923}
+        m_MethodName: BuyItem
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &975116489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19384,7 +19437,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 177256716}
+      - m_Target: {fileID: 177256718}
         m_MethodName: LoadLevel
         m_Mode: 3
         m_Arguments:
@@ -20858,10 +20911,10 @@ RectTransform:
   m_Father: {fileID: 681798095}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180.55241, y: -900}
+  m_SizeDelta: {x: 370, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1319307262
 MonoBehaviour:
@@ -21463,10 +21516,10 @@ RectTransform:
   m_Father: {fileID: 258772271}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 161, y: -130}
-  m_SizeDelta: {x: 18.589226, y: 18.589226}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -799, y: 410}
+  m_SizeDelta: {x: -1901.4108, y: -1061.4108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365835566
 MonoBehaviour:
@@ -21905,7 +21958,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1570467868}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 479342923}
+        m_MethodName: BuyItem
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1570467868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22338,10 +22402,10 @@ RectTransform:
   m_Father: {fileID: 681798095}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180.55241, y: -500}
+  m_SizeDelta: {x: 370, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1660875996
 MonoBehaviour:
@@ -29135,10 +29199,10 @@ RectTransform:
   m_Father: {fileID: 681798095}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180.55241, y: -700}
+  m_SizeDelta: {x: 370, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2064885326
 MonoBehaviour:

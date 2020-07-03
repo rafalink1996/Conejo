@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PowerMEnu : MonoBehaviour
 {
     public Animator powerbuttontransition;
     
         
-
+    // transition to power menu
     public GameObject mainmenu;
     public GameObject powermenu;
     public GameObject TowerDark;
@@ -16,6 +17,27 @@ public class PowerMEnu : MonoBehaviour
 
     public float transitionTimein;
     public float transitionTimeout;
+
+
+    // store manager
+    public float FenixFeatherCost;
+    public float PortalBoostCost;
+    public float CoinTicketCost;
+    public float Level1toBossCost;
+    public float level2Cost;
+
+    public TextMeshProUGUI FenixFeather;
+    public TextMeshProUGUI PortalBoost;
+    public TextMeshProUGUI CoinTicket;
+
+
+    private void Start()
+    {
+        FenixFeather.text = FenixFeatherCost.ToString();
+        PortalBoost.text = PortalBoostCost.ToString();
+        CoinTicket.text = CoinTicketCost.ToString();
+        
+    }
 
 
 
@@ -59,5 +81,52 @@ public class PowerMEnu : MonoBehaviour
         TowerDark.SetActive(true);
 
         yield return null;
+    }
+
+
+    public void BuyItem(float ItemID)
+    {
+        if (ItemID == 1)
+        {
+            if (GameStats.stats.crystals >= CoinTicketCost)
+            {
+                GameStats.stats.crystals -= CoinTicketCost;
+                GameStats.stats.CoinTicket = true;
+
+            }
+            else
+            {
+                Debug.Log("not enough crystals");
+            }
+
+        }
+
+        if (ItemID == 2)
+        {
+            if (GameStats.stats.crystals >= PortalBoostCost)
+            {
+                GameStats.stats.crystals -= PortalBoostCost;
+                GameStats.stats.PortalBoost = true;
+
+            }
+            else
+            {
+                Debug.Log("not enough crystals");
+            }
+        }
+
+        if (ItemID == 3)
+        {
+            if (GameStats.stats.crystals >= FenixFeatherCost)
+            {
+                GameStats.stats.crystals -= FenixFeatherCost;
+                GameStats.stats.fenixFeather = true;
+
+            }
+            else
+            {
+                Debug.Log("not enough crystals");
+            }
+        }
     }
 }

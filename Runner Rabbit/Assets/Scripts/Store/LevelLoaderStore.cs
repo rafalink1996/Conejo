@@ -13,6 +13,12 @@ public class LevelLoaderStore : MonoBehaviour
     public Slider slider;
     public int SceneIndex;
 
+    private void Start()
+    {
+        GameStats.stats.SaveStats();
+
+    }
+
 
     // Start is called before the first frame update
     public void ContinueButton()

@@ -23,6 +23,18 @@ public class GameStats : MonoBehaviour
     public int totalLightMana;
     public int totalDarkMana;
 
+    // crystal store
+
+    public bool CoinTicket = false;
+    public bool PortalBoost = false;
+    public bool fenixFeather = false;
+    public bool LevelBought = false;
+
+
+
+    public int leveBoughtID;
+
+
 
 
 
@@ -43,7 +55,11 @@ public class GameStats : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        LoadPlayer();
     }
+
+
         void Start()
     {
 
@@ -82,6 +98,25 @@ public class GameStats : MonoBehaviour
         darkPowerSprite = powerDark.iconDark;
         DarkpowerID = powerDark.id;
         darkMana = powerDark.mana;
+
+    }
+
+    public void SaveStats()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void LoadPlayer ()
+    {
+        PlayerData data = SaveSystem.loadPlayer();
+
+        CoinTicket = data.CoinTicketBought;
+        PortalBoost = data.PortalBoostBought;
+        fenixFeather = data.fenixfetherBought;
+
+        crystals = data.Crystals;
+        leveBoughtID = data.level;
+        
 
     }
 
