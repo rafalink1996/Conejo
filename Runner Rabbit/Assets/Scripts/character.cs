@@ -230,11 +230,16 @@ public class character : MonoBehaviour
 
                 // Death
 
-            if (Health == 0)
+            if (Health == 0 && GameStats.stats.fenixFeather == false)
                 {
                     StartCoroutine(Death());
                 }
 
+            if (Health == 0 && GameStats.stats.fenixFeather == true)
+                {
+                    Health = NumOfHearts;
+
+                }
 
 
 
@@ -298,7 +303,13 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Coin")
         {
-            coins++;
+           if (GameStats.stats.CoinTicket == false)
+            {
+                coins++;
+                CoinCounter.text = coins.ToString();
+            }
+           if (GameStats.stats.CoinTicket == true)
+            coins += 2;
             CoinCounter.text = coins.ToString();
         }
 
@@ -563,32 +574,116 @@ public class character : MonoBehaviour
 
     }
 
-    void UsedPower(int id)
+    public void UsedPower(int id)
     {
         switch (id)
         {
-            case 0:
+            case 1:
 
                 // carrot missle
-                print("used missle");
+                print("used missle T1");
                 animator.SetTrigger("Missile");
-                GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-                carrot.transform.position = transform.position + new Vector3(1, 0, 0);
+                GameObject carrotT1 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                carrotT1.transform.position = transform.position + new Vector3(1, 0, 0);
                 
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
 
-            case 1:
+            case 2:
+
+                // carrot missle
+                print("used missle T2");
+                animator.SetTrigger("Missile");
+                GameObject carrotT2 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                carrotT2.transform.position = transform.position + new Vector3(1, 0, 0);
+
+                FindObjectOfType<AudioManager>().Play("MagicMissle");
+                break;
+
+            case 3:
+
+                // carrot missle
+                print("used missle T3");
+                animator.SetTrigger("Missile");
+                GameObject carrotT3 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                CarrotMissile CarrotT3Stats = carrotT3.GetComponent<CarrotMissile>();
+                CarrotT3Stats.Piercing = true;
+
+                carrotT3.transform.position = transform.position + new Vector3(1, 0, 0);
+
+                FindObjectOfType<AudioManager>().Play("MagicMissle");
+                break;
+
+            case 4:
+
+                // carrot missle
+                print("used missle T4");
+                animator.SetTrigger("Missile");
+                GameObject carrotT4 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                carrotT4.transform.position = transform.position + new Vector3(1, 0.5f, 0);
+                GameObject carrotT4Clone = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                CarrotMissile CarrotT4Stats = carrotT4.GetComponent<CarrotMissile>();
+                CarrotT4Stats.Piercing = true;
+                CarrotMissile CarrotT4CloneStats = carrotT4Clone.GetComponent<CarrotMissile>();
+                CarrotT4CloneStats.Piercing = true;
+                carrotT4Clone.transform.position = transform.position + new Vector3(1, -0.5f, 0);
+
+
+                FindObjectOfType<AudioManager>().Play("MagicMissle");
+                break;
+
+
+
+
+
+            case 10:
                 // eardefence
-                print("used spell 2");
+                print("used Shield T1");
                 animator.SetTrigger("Defence");
-                GameObject shield = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
-                shield.transform.position = transform.position;
+                GameObject shieldT1 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                shieldT1.transform.position = transform.position;
                 
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
 
-            case 2:
+            case 11:
+                // eardefence
+                print("used Shield T2");
+                animator.SetTrigger("Defence");
+                GameObject shieldT2 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                shieldT2.transform.position = transform.position;
+
+                FindObjectOfType<AudioManager>().Play("MagicDefence");
+                break;
+
+            case 12:
+                // eardefence
+                print("used Shield T3");
+                animator.SetTrigger("Defence");
+                GameObject shieldT3 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                shieldT3.transform.position = transform.position;
+                Shield ShieldT3stats = shieldT3.GetComponent<Shield>();
+                ShieldT3stats.HealthAbsorb = true;
+
+                FindObjectOfType<AudioManager>().Play("MagicDefence");
+                break;
+
+            case 13:
+                // eardefence
+                print("used Shield T4");
+                animator.SetTrigger("Defence");
+                GameObject shieldT4 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                shieldT4.transform.position = transform.position;
+                Shield ShieldT4stats = shieldT4.GetComponent<Shield>();
+                ShieldT4stats.HealthAbsorb = true;
+
+                FindObjectOfType<AudioManager>().Play("MagicDefence");
+                break;
+
+
+
+
+            case 20:
                 // radish missile
                 print("used spell 3");
                 animator.SetTrigger("Missile");
@@ -598,12 +693,12 @@ public class character : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
 
                 break;
-            case 3:
+            case 30:
                 // kick
                 print("used spell 4");
                 animator.SetTrigger("Kick");
                 break;
-            case 4:
+            case 40:
                 print("used spell 5");
                 break;
 

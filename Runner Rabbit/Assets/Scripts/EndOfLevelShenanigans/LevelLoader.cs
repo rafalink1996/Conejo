@@ -32,7 +32,16 @@ public class LevelLoader : MonoBehaviour
     private void Start()
     {
         StartCoroutine(loadloader());
-        levelcountdown = 0;
+       
+
+        if (GameStats.stats.PortalBoost == false)
+        {
+            levelcountdown = 0;
+        }
+        if (GameStats.stats.PortalBoost == true)
+        {
+            levelcountdown = 50;
+        }
 
 
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CarrotMissile : MonoBehaviour
 {
     public float speed;
+    public bool Piercing;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,12 @@ public class CarrotMissile : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(2);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
             print("hit " + collision.gameObject.name);
-            Destroy(gameObject);
+
+            if (Piercing == false)
+            {
+                Destroy(gameObject);
+            } 
+               
         }
     }
 }

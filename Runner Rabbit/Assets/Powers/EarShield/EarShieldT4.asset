@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aabfce93f985144eabd2be4d95332b7e, type: 3}
-  m_Name: KickReflect
+  m_Name: EarShieldT4
   m_EditorClassIdentifier: 
-  name: KickReflect
-  iconLight: {fileID: 21300000, guid: 4be307398bf1c4d7e8abab3e421294a8, type: 3}
-  iconDark: {fileID: 21300000, guid: 48477c6af41b2423cb1fdb4aaf292958, type: 3}
+  name: EarShieldT3
+  iconLight: {fileID: 21300000, guid: d3868a22511e04eb893100a352453aca, type: 3}
+  iconDark: {fileID: 21300000, guid: e657d4fbebc0a46008c971344049dfb3, type: 3}
   mana: 10
   Damage: 0
-  description: 'Defence Power: reflect a proyectile back to the enemy!'
-  id: 30
-  Cost: 100
+  description: 'Defence power: gives you invulnerability for a short period of time.
+    If hit by proyectile while defence is up, heal 1.'
+  id: 13
+  Cost: 0
   Piercing: 0
-  doublecast: 0
+  HealthAbsorb: 1
+  DoubleCast: 0

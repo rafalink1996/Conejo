@@ -15,6 +15,11 @@ public class Power : ScriptableObject
     public int id;
     public int Cost;
 
+    public bool Piercing;
+    public bool HealthAbsorb;
+    public bool DoubleCast;
+    
+
 
 
 

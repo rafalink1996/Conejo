@@ -16,8 +16,8 @@ public class Shop : MonoBehaviour
     private GameObject childObj;
 
     [Header("List of Items Sold")]
-    [SerializeField] public Power[] LightpowerObject;
-    [SerializeField] public Power[] DarkpowerObject;
+    [SerializeField] public List<Power> LightpowerObject;
+    [SerializeField] public List<Power> DarkpowerObject;
 
 
     [Header("References")]
@@ -66,6 +66,10 @@ public class Shop : MonoBehaviour
         heartCost = GameStats.stats.numOfHearts * 50;
         heartCostText.text = heartCost.ToString();
         //GameStats.stats.coins = coins;
+
+
+        LightpowerObject = GameStats.stats.UnlockedPowers;
+        DarkpowerObject = GameStats.stats.UnlockedPowers;
     }
 
     private void PopulateShop()
@@ -73,7 +77,7 @@ public class Shop : MonoBehaviour
         for (int i = 0; i < 2; i++)
 
         {
-            var r = Random.Range(0, LightpowerObject.Length);
+            var r = Random.Range(0, LightpowerObject.Count);
             var tmp = LightpowerObject[i];
             LightpowerObject[i] = LightpowerObject[r];
             LightpowerObject[r] = tmp;
@@ -108,7 +112,7 @@ public class Shop : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
-            var r = Random.Range(0, DarkpowerObject.Length);
+            var r = Random.Range(0, DarkpowerObject.Count);
             var tmp = DarkpowerObject[i];
             DarkpowerObject[i] = DarkpowerObject[r];
             DarkpowerObject[r] = tmp;

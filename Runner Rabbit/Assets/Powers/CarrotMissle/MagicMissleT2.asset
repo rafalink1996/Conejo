@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aabfce93f985144eabd2be4d95332b7e, type: 3}
-  m_Name: MagicMissle
+  m_Name: MagicMissleT2
   m_EditorClassIdentifier: 
-  name: Missile
+  name: CarrotMissle T2
   iconLight: {fileID: 21300000, guid: bdab295c7fc6740968be4ca772e6cad4, type: 3}
   iconDark: {fileID: 21300000, guid: de6c990f6316f4961a149fb6517ee48c, type: 3}
   mana: 10
-  description: attack power
-  id: 0
-  Cost: 200
+  Damage: 15
+  description: 'attack power: fire a damaging missle. Incrised Damage'
+  id: 2
+  Cost: 100
+  Piercing: 0
+  doublecast: 0

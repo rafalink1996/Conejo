@@ -35,6 +35,14 @@ public class GameStats : MonoBehaviour
     public int leveBoughtID;
 
 
+    public int CarrotMissleLevel;
+    public int RadishMissleLevel;
+    public int EarDefenceLevel;
+    public int KickReflectLevel;
+
+    public List<Power> UnlockedPowers = new List<Power>();
+
+
 
 
 
@@ -98,6 +106,9 @@ public class GameStats : MonoBehaviour
         darkPowerSprite = powerDark.iconDark;
         DarkpowerID = powerDark.id;
         darkMana = powerDark.mana;
+
+
+     
 
     }
 

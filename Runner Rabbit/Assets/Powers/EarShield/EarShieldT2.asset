@@ -10,12 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aabfce93f985144eabd2be4d95332b7e, type: 3}
-  m_Name: EarShield
+  m_Name: EarShieldT2
   m_EditorClassIdentifier: 
-  name: Defence
+  name: EarShieldT2
   iconLight: {fileID: 21300000, guid: d3868a22511e04eb893100a352453aca, type: 3}
   iconDark: {fileID: 21300000, guid: e657d4fbebc0a46008c971344049dfb3, type: 3}
-  mana: 20
-  description: Defence power
-  id: 1
-  Cost: 150
+  mana: 10
+  Damage: 0
+  description: 'Defence power: gives you invulnerability for a short period of time.Reduced
+    Mana consumption.'
+  id: 11
+  Cost: 100
+  Piercing: 0
+  HealthAbsorb: 0
+  DoubleCast: 0
