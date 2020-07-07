@@ -87,6 +87,9 @@ public class GameStats : MonoBehaviour
         LevelIndicator = 2;
 
 
+        
+
+
     }
 
     private void Update()
@@ -127,6 +130,12 @@ public class GameStats : MonoBehaviour
 
         crystals = data.Crystals;
         leveBoughtID = data.level;
+
+        CarrotMissleLevel = data.CarrotMissleLevel;
+        EarDefenceLevel = data.EarDefenceLevel;
+        RadishMissleLevel = data.RadishMissleLevel;
+        KickReflectLevel = data.KickReflectLevel;
+
         
 
     }

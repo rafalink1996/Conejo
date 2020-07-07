@@ -148,7 +148,7 @@ public class LevelLoader : MonoBehaviour
                 {
                     yield return new WaitForSecondsRealtime(3);
                     EndlessHosue.spawnhouse();
-                    cha.EndLevel = true;
+                  
                 }
 
             }
@@ -159,7 +159,7 @@ public class LevelLoader : MonoBehaviour
                 {
                     yield return new WaitForSecondsRealtime(1);
                     EndlessHosue.spawnhouse();
-                    cha.EndLevel = true;
+                   
                 }
 
             }

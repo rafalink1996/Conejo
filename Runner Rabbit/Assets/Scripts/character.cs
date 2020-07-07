@@ -55,8 +55,8 @@ public class character : MonoBehaviour
 
     // End Of Level
 
-    public bool EndLevel;
-    public bool characterConstrains;
+    //public bool EndLevel;
+    //public bool characterConstrains;
 
     //death
 
@@ -127,7 +127,7 @@ public class character : MonoBehaviour
         NumOfHearts = GameStats.stats.numOfHearts;
         Health = NumOfHearts;
 
-        characterConstrains = false;
+        //characterConstrains = false;
 
 
        
@@ -141,21 +141,12 @@ public class character : MonoBehaviour
     void Update()
 
     {
-        
-            if (EndLevel == true)
-        {
-            characterConstrains = true;
-        }
        
-
-        if (EndLevel == false )
-        {
-            if (characterConstrains == false)
-            {
+         
 
                 animator.SetBool("start", false);
 
-
+      
 
 
                 //Health system
@@ -244,7 +235,7 @@ public class character : MonoBehaviour
 
 
 
-            }
+            
 
 
 
@@ -268,7 +259,7 @@ public class character : MonoBehaviour
 
            
 
-    }
+    
 
 
 
@@ -279,9 +270,7 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Rift")
         {
-            if (EndLevel == false && characterConstrains == false )
-
-            {
+            
 
                 Rotation();
 
@@ -292,7 +281,7 @@ public class character : MonoBehaviour
                 RiftColition = true;
                 FindObjectOfType<AudioManager>().Play("RiftPass");
                 CamRipple.RippleEffect();
-            }
+            
 
 
 
@@ -363,14 +352,14 @@ public class character : MonoBehaviour
     {
         if (collision.tag == "Rift")
         {
-            if (EndLevel == false  && characterConstrains == false)
-            {
+            
+            
                 rb.gravityScale *= -1;
                 RiftColition = false;
                 hasPassedThroughRift = true;
                 Instantiate(riftEffect, transform.position, Quaternion.identity);
                 StartCoroutine(GetInvulnerableRift());
-            }
+            
 
 
         }
@@ -482,8 +471,7 @@ public class character : MonoBehaviour
         public void Float()
     {
 
-        if (EndLevel == false && characterConstrains == false)
-        {
+        
 
 
             if (hasPassedThroughRift)
@@ -495,7 +483,7 @@ public class character : MonoBehaviour
 
 
             ForceFloat = true;
-        }
+        
         
         
 
@@ -551,6 +539,15 @@ public class character : MonoBehaviour
 
     }
 
+
+    IEnumerator GetInvulnerablePower()
+    {
+        Physics2D.IgnoreLayerCollision(8, 9, true);
+        yield return new WaitForSeconds(1f);
+        Physics2D.IgnoreLayerCollision(8, 9, false);
+
+
+    }
     IEnumerator Death()
     {
         Time.timeScale = 0;
@@ -642,6 +639,7 @@ public class character : MonoBehaviour
                 animator.SetTrigger("Defence");
                 GameObject shieldT1 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT1.transform.position = transform.position;
+                StartCoroutine(GetInvulnerablePower());
                 
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
@@ -652,7 +650,7 @@ public class character : MonoBehaviour
                 animator.SetTrigger("Defence");
                 GameObject shieldT2 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT2.transform.position = transform.position;
-
+                StartCoroutine(GetInvulnerablePower());
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
 
@@ -664,6 +662,7 @@ public class character : MonoBehaviour
                 shieldT3.transform.position = transform.position;
                 Shield ShieldT3stats = shieldT3.GetComponent<Shield>();
                 ShieldT3stats.HealthAbsorb = true;
+                StartCoroutine(GetInvulnerablePower());
 
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
@@ -676,6 +675,7 @@ public class character : MonoBehaviour
                 shieldT4.transform.position = transform.position;
                 Shield ShieldT4stats = shieldT4.GetComponent<Shield>();
                 ShieldT4stats.HealthAbsorb = true;
+                StartCoroutine(GetInvulnerablePower());
 
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;

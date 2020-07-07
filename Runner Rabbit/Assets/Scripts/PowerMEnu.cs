@@ -74,12 +74,90 @@ public class PowerMEnu : MonoBehaviour
         PortalBoost.text = PortalBoostCost.ToString();
         CoinTicket.text = CoinTicketCost.ToString();
 
+        // Saved data loder
+        // Save Data Carrot Missle
+        if (GameStats.stats.CarrotMissleLevel == 2)
+        {
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[1]);
+        } else if (GameStats.stats.CarrotMissleLevel == 3)
+        {
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[2]);
+        }   else if (GameStats.stats.CarrotMissleLevel == 4)
+        {
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[2]);
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[3]);
+        }
+
+        // Save data ear shield
+        if (GameStats.stats.EarDefenceLevel == 2)
+        {
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[1]);
+        }
+        else if (GameStats.stats.EarDefenceLevel == 3)
+        {
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[2]);
+        }
+        else if (GameStats.stats.EarDefenceLevel == 4)
+        {
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[2]);
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[3]);
+        }
+
+        // Save Data radish missle
+
+        if (GameStats.stats.RadishMissleLevel == 2)
+        {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
+        }
+        else if (GameStats.stats.RadishMissleLevel == 3)
+        {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[2]);
+        }
+        else if (GameStats.stats.RadishMissleLevel == 4)
+        {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[2]);
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[3]);
+        }
+
+        // save data KickReflect
+
+        if (GameStats.stats.KickReflectLevel == 2)
+        {
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[1]);
+        }
+        else if (GameStats.stats.KickReflectLevel == 3)
+        {
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[2]);
+        }
+        else if (GameStats.stats.KickReflectLevel == 4)
+        {
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[2]);
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[3]);
+        }
+
+
     }
 
 
 
     private void Update()
     {
+
+
+        // Update GameStats
+
+        GameStats.stats.CarrotMissleLevel = CarrotMissleTierID;
+        GameStats.stats.EarDefenceLevel = EarShieldTierID;
+        GameStats.stats.RadishMissleLevel = RadishMissleTierID;
+        GameStats.stats.KickReflectLevel = KickReflectTierID;
 
         // buy upgrades
 

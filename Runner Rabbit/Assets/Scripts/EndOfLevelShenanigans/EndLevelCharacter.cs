@@ -6,7 +6,7 @@ using UnityEngine;
 public class EndLevelCharacter : MonoBehaviour
 {
 
-    [SerializeField]
+    /*[SerializeField]
     public Transform endMarker1;
     [SerializeField]
     public Transform endMarker2;
@@ -155,6 +155,6 @@ public class EndLevelCharacter : MonoBehaviour
         Currentpos = transform.position;
     }
 
-
+    */
 
 }
