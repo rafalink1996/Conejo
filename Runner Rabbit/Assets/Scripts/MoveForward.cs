@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
-    private float speed = 2f;
-    private float maxspeed = 10f;
-    private float acceleration = 2f;
+    public float speed = 2f;
+    public float maxspeed = 10f;
+    public float acceleration = 2f;
 
  
     // Start is called before the first frame update
@@ -26,6 +26,10 @@ public class MoveForward : MonoBehaviour
         if (speed < maxspeed)
         {
             speed = speed + acceleration * Time.deltaTime;
+        }
+        if (speed > maxspeed)
+        {
+            speed = maxspeed;
         }
 
 

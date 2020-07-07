@@ -24,6 +24,7 @@ public class LevelLoaderGame : MonoBehaviour
     public float levelcountdown;
 
     public Slider TimerSlider;
+    bool timeOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,7 @@ public class LevelLoaderGame : MonoBehaviour
         levelcountdown += 1 * Time.deltaTime;
         TimerSlider.value = levelcountdown;
 
-        if (levelcountdown >= 93)
+        if (levelcountdown >= levelTime * 0.93f)
         {
             EnemySpawner1.SetActive(false);
             EnemySpawner2.SetActive(false);
@@ -75,8 +76,9 @@ public class LevelLoaderGame : MonoBehaviour
             else
             {
 
-                if (TimerSlider.value == levelTime)
+                if (TimerSlider.value >= levelTime && !timeOver)
                 {
+                    timeOver = true;
                     yield return new WaitForSecondsRealtime(1);
                     EndlessHosue.spawnhouse();
                     levelTime = 0;

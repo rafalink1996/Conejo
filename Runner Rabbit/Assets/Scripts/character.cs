@@ -11,7 +11,7 @@ public class character : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
 
 
-   
+
     // Movement
     public float upspeed;
     private float speed = 2f;
@@ -61,9 +61,9 @@ public class character : MonoBehaviour
     //death
 
     public GameObject DeathScreen;
-  
-    
-  
+
+
+
 
     /* 
    public Transform EndlessHouseTarget1;
@@ -130,136 +130,140 @@ public class character : MonoBehaviour
         //characterConstrains = false;
 
 
-       
+
         //heartanimator = GameObject.FindGameObjectWithTag("Heart").GetComponent<Animator>();
 
 
-        
+
     }
 
     // Update is called once per frame
     void Update()
 
     {
-       
-         
-
-                animator.SetBool("start", false);
-
-      
 
 
-                //Health system
 
-                // can't have more health than max hearts
-
-                if (Health > NumOfHearts)
-                {
-                    Health = NumOfHearts;
-                }
-                // number of current hearts is established
-
-                for (int i = 0; i < hearts.Length; i++)
-                {
-                    if (i < Health)
-                    {
-                        hearts[i].GetComponent<Animator>().SetBool("Full", true);
-                    }
-                    else
-                    {
-                        hearts[i].GetComponent<Animator>().SetBool("Full", false);
-                    }
-
-                    // number of max hearts is established
-
-                    if (i < NumOfHearts)
-                    {
-                        hearts[i].SetActive(true);
-                    }
-                    else
-                    {
-                        hearts[i].SetActive(false);
-                    }
-                }
-
-                // Jump Controller with keyboard
-                /*
-                        if (Input.GetKey(KeyCode.Space))
-                        {
-                            rb.AddForce(new Vector2(0, upspeed));
-
-                        }
-
-                            // Animation Controller
-
-                            if (Input.GetKeyDown(KeyCode.Space))
-                            {
-                                animator.SetBool("IsFalling", true);
-                            }
-
-                            if (Input.GetKeyUp(KeyCode.Space))
-                            {
-                                animator.SetBool("IsFalling", false);
-                            }
-
-                 */
+        animator.SetBool("start", false);
 
 
 
 
-                // Animation Controller
+        //Health system
 
-                if (ForceFloat)
-                {
-                    animator.SetBool("IsFalling", true);
-                }
-                else
-                {
-                    animator.SetBool("IsFalling", false);
-                }
+        // can't have more health than max hearts
 
+        if (Health > NumOfHearts)
+        {
+            Health = NumOfHearts;
+        }
+        // number of current hearts is established
 
-                // Death
-
-            if (Health == 0 && GameStats.stats.fenixFeather == false)
-                {
-                    StartCoroutine(Death());
-                }
-
-            if (Health == 0 && GameStats.stats.fenixFeather == true)
-                {
-                    Health = NumOfHearts;
-
-                }
-
-
-
-
-            
-
-
-
-
-            // Character Moves forward
-
-            if (speed < maxspeed)
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < Health)
             {
-                speed = speed + acceleration * Time.deltaTime;
+                hearts[i].GetComponent<Animator>().SetBool("Full", true);
+            }
+            else
+            {
+                hearts[i].GetComponent<Animator>().SetBool("Full", false);
             }
 
-            Vector3 temp = transform.position;
-            temp.x += speed * Time.deltaTime;
-            transform.position = temp;
+            // number of max hearts is established
 
-            GameStats.stats.coins = coins;//updates stored coin value;
-            GameStats.stats.crystals = crystal;//updates stored crystal value;
+            if (i < NumOfHearts)
+            {
+                hearts[i].SetActive(true);
+            }
+            else
+            {
+                hearts[i].SetActive(false);
+            }
+        }
+
+        // Jump Controller with keyboard
+        /*
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    rb.AddForce(new Vector2(0, upspeed));
+
+                }
+
+                    // Animation Controller
+
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        animator.SetBool("IsFalling", true);
+                    }
+
+                    if (Input.GetKeyUp(KeyCode.Space))
+                    {
+                        animator.SetBool("IsFalling", false);
+                    }
+
+         */
+
+
+
+
+        // Animation Controller
+
+        if (ForceFloat)
+        {
+            animator.SetBool("IsFalling", true);
+        }
+        else
+        {
+            animator.SetBool("IsFalling", false);
+        }
+
+
+        // Death
+
+        if (Health == 0 && GameStats.stats.fenixFeather == false)
+        {
+            StartCoroutine(Death());
+        }
+
+        if (Health == 0 && GameStats.stats.fenixFeather == true)
+        {
+            Health = NumOfHearts;
 
         }
 
 
-           
 
-    
+
+
+
+
+
+
+        // Character Moves forward
+
+        if (speed < maxspeed)
+        {
+            speed = speed + acceleration * Time.deltaTime;
+        }
+        if (speed > maxspeed)
+        {
+            speed = maxspeed;
+        }
+
+        Vector3 temp = transform.position;
+        temp.x += speed * Time.deltaTime;
+        transform.position = temp;
+
+        GameStats.stats.coins = coins;//updates stored coin value;
+        GameStats.stats.crystals = crystal;//updates stored crystal value;
+
+    }
+
+
+
+
+
 
 
 
@@ -270,18 +274,18 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Rift")
         {
-            
 
-                Rotation();
 
-                upspeed *= -1;
-                //dashSpeed *= -1;
-                rb.velocity = Vector3.zero;
-                rb.AddForce(new Vector2(0, (upspeed * 19 * Time.deltaTime)));
-                RiftColition = true;
-                FindObjectOfType<AudioManager>().Play("RiftPass");
-                CamRipple.RippleEffect();
-            
+            Rotation();
+
+            upspeed *= -1;
+            //dashSpeed *= -1;
+            rb.velocity = Vector3.zero;
+            rb.AddForce(new Vector2(0, (upspeed * 19 * Time.deltaTime)));
+            RiftColition = true;
+            FindObjectOfType<AudioManager>().Play("RiftPass");
+            CamRipple.RippleEffect();
+
 
 
 
@@ -292,13 +296,13 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Coin")
         {
-           if (GameStats.stats.CoinTicket == false)
+            if (GameStats.stats.CoinTicket == false)
             {
                 coins++;
                 CoinCounter.text = coins.ToString();
             }
-           if (GameStats.stats.CoinTicket == true)
-            coins += 2;
+            if (GameStats.stats.CoinTicket == true)
+                coins += 2;
             CoinCounter.text = coins.ToString();
         }
 
@@ -331,19 +335,19 @@ public class character : MonoBehaviour
             hasPassedThroughRift = false;
         }
 
-/*
-        if (collision.tag == "House")
-        {
-            //EndLevel = false;
-            Debug.Log("house hit");
-            levelLoader.changelevel();
-            animator.SetTrigger("HouseHit");
-            FindObjectOfType<AudioManager>().Play("TransitionSound");
+        /*
+                if (collision.tag == "House")
+                {
+                    //EndLevel = false;
+                    Debug.Log("house hit");
+                    levelLoader.changelevel();
+                    animator.SetTrigger("HouseHit");
+                    FindObjectOfType<AudioManager>().Play("TransitionSound");
 
 
 
-        }
-  */
+                }
+          */
 
 
     }
@@ -352,14 +356,14 @@ public class character : MonoBehaviour
     {
         if (collision.tag == "Rift")
         {
-            
-            
-                rb.gravityScale *= -1;
-                RiftColition = false;
-                hasPassedThroughRift = true;
-                Instantiate(riftEffect, transform.position, Quaternion.identity);
-                StartCoroutine(GetInvulnerableRift());
-            
+
+
+            rb.gravityScale *= -1;
+            RiftColition = false;
+            hasPassedThroughRift = true;
+            Instantiate(riftEffect, transform.position, Quaternion.identity);
+            StartCoroutine(GetInvulnerableRift());
+
 
 
         }
@@ -388,7 +392,7 @@ public class character : MonoBehaviour
             }
 
         }
-        
+
     }
 
 
@@ -397,8 +401,8 @@ public class character : MonoBehaviour
     public void LightPower()
     {
 
-        
-        
+
+
         mana.RequiredDarkMana(GameStats.stats.lightMana);
         if (mana.CurrentDarkMana >= mana.DarkManaUsed && !isUsingPower)
         {
@@ -429,15 +433,15 @@ public class character : MonoBehaviour
 
 
     }
-        public void DarkPower()
+    public void DarkPower()
     {
 
-       
-         mana.RequiredLightMana(GameStats.stats.darkMana);
-         if (mana.CurrentLightMana >= mana.LightManaUsed && !isUsingPower)
-         {
-             isUsingPower = true;
-             animator.SetBool("isUsingPower", true);
+
+        mana.RequiredLightMana(GameStats.stats.darkMana);
+        if (mana.CurrentLightMana >= mana.LightManaUsed && !isUsingPower)
+        {
+            isUsingPower = true;
+            animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id);
             mana.ReduceLightMana();
             /*
@@ -468,24 +472,24 @@ public class character : MonoBehaviour
 
     }
 
-        public void Float()
+    public void Float()
     {
 
-        
 
 
-            if (hasPassedThroughRift)
-            {
-                rb.velocity = Vector3.zero;
-                hasPassedThroughRift = false;
-            }
-            rb.AddForce(new Vector2(0, upspeed * Time.deltaTime));
+
+        if (hasPassedThroughRift)
+        {
+            rb.velocity = Vector3.zero;
+            hasPassedThroughRift = false;
+        }
+        rb.AddForce(new Vector2(0, upspeed * Time.deltaTime));
 
 
-            ForceFloat = true;
-        
-        
-        
+        ForceFloat = true;
+
+
+
 
 
     }
@@ -554,13 +558,13 @@ public class character : MonoBehaviour
         animator.SetTrigger("Dead");
 
         yield return new WaitForSecondsRealtime(1f);
-        
+
 
         DeathScreen.SetActive(true);
     }
 
-    
-    
+
+
 
 
 
@@ -582,7 +586,7 @@ public class character : MonoBehaviour
                 animator.SetTrigger("Missile");
                 GameObject carrotT1 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 carrotT1.transform.position = transform.position + new Vector3(1, 0, 0);
-                
+
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
 
@@ -640,7 +644,7 @@ public class character : MonoBehaviour
                 GameObject shieldT1 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT1.transform.position = transform.position;
                 StartCoroutine(GetInvulnerablePower());
-                
+
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
 
@@ -709,7 +713,7 @@ public class character : MonoBehaviour
     }
 
 
-  
+
 }
 
 
