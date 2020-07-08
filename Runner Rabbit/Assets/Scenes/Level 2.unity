@@ -353,6 +353,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!108 &21479903
 Light:
   m_ObjectHideFlags: 0
@@ -445,6 +448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!61 &27375753
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -553,7 +559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &51099159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,6 +1111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!1 &108651245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!1 &146997258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,6 +1383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!4 &146997260
 Transform:
   m_ObjectHideFlags: 0
@@ -2689,7 +2704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &304781104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3308,6 +3323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!199 &355618629
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -8465,6 +8483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!114 &451898760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8533,6 +8554,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!61 &453731653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9710,6 +9734,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!61 &588850120
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15942,6 +15969,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!1 &896450241
 GameObject:
   m_ObjectHideFlags: 0
@@ -16134,6 +16164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!61 &900671190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16301,6 +16334,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!1 &943673685
 GameObject:
   m_ObjectHideFlags: 0
@@ -16741,6 +16777,7 @@ MonoBehaviour:
   top: 0
   RiftColition: 0
   CoinCounter: {fileID: 1081997212}
+  CrystalCounter: {fileID: 0}
   Health: 4
   NumOfHearts: 4
   hearts:
@@ -16763,7 +16800,7 @@ MonoBehaviour:
   riftEffect: {fileID: 3215132811604800250, guid: 1846832cf1d94476f8b6fa8420da6d83,
     type: 3}
   CamRipple: {fileID: 519420034}
-  EndLevel: 0
+  DeathScreen: {fileID: 0}
   outOfportalSpeed: 10
   pausestart: {fileID: 672799253}
 --- !u!58 &992125960
@@ -16810,14 +16847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5536ad1f8947d4d75a7aeb7c647f8687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endMarker1: {fileID: 506390741}
-  endMarker2: {fileID: 850636370}
-  lerpPct: 0
-  Acceleration: 1
-  speed: 1
-  animator: {fileID: 992125955}
-  cha: {fileID: 992125959}
-  levelLoader: {fileID: 1526805042}
 --- !u!114 &992125963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17890,6 +17919,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!1 &1179606662
 GameObject:
   m_ObjectHideFlags: 0
@@ -18009,6 +18041,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!1 &1207430969
 GameObject:
   m_ObjectHideFlags: 0
@@ -18320,6 +18355,8 @@ MonoBehaviour:
   timeToChange: 0
   isChanging: 0
   bossTop: 0
+  healthBar: []
+  BossDead: 0
 --- !u!114 &1246598665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18335,6 +18372,7 @@ MonoBehaviour:
   maxHealth: 40
   health: 0
   healthSlider: {fileID: 0}
+  Hit: 0
 --- !u!58 &1246598666
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -18893,6 +18931,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!4 &1319522166
 Transform:
   m_ObjectHideFlags: 0
@@ -19981,6 +20022,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!108 &1443393491
 Light:
   m_ObjectHideFlags: 0
@@ -20205,6 +20249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!108 &1491747816
 Light:
   m_ObjectHideFlags: 0
@@ -20300,9 +20347,15 @@ MonoBehaviour:
   transition: {fileID: 1021159454}
   transitiontime: 1
   levelTime: 10
+  levelcountdown: 0
   playbuttontransition: {fileID: 0}
   EndlessHosue: {fileID: 146997261}
   cha: {fileID: 992125959}
+  bossWyrm: {fileID: 0}
+  EnemySpawner1: {fileID: 0}
+  EnemySpawner2: {fileID: 0}
+  EnemySpawnerHand: {fileID: 0}
+  TimerSlider: {fileID: 0}
 --- !u!4 &1526805043
 Transform:
   m_ObjectHideFlags: 0
@@ -20619,6 +20672,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!199 &1565223061
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -26508,6 +26564,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!108 &1741794954
 Light:
   m_ObjectHideFlags: 0
@@ -26918,6 +26977,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!108 &1816061274
 Light:
   m_ObjectHideFlags: 0
@@ -27245,6 +27307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!61 &1859497431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27613,6 +27678,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!199 &1903489099
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -32537,6 +32605,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!1 &1914604879
 GameObject:
   m_ObjectHideFlags: 0
@@ -32654,6 +32725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!1 &1931123749
 GameObject:
   m_ObjectHideFlags: 0

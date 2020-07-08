@@ -38,6 +38,7 @@ public class LevelLoaderGame : MonoBehaviour
         if (GameStats.stats.PortalBoost == true)
         {
             levelcountdown = 50;
+            GameStats.stats.PortalBoost = false;
         }
     }
 
