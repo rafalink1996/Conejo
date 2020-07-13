@@ -20,7 +20,7 @@ public class IceBook : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 7;
+        health.maxHealth = 70;
         if (transform.position.y > 0)
         {
             enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
@@ -74,7 +74,7 @@ public class IceBook : MonoBehaviour
     }
     void Attack()
     {
-        health.TakeDamage(1);
+        health.TakeDamage(10);
     }
     void IceLance()
     {

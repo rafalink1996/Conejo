@@ -586,7 +586,9 @@ public class character : MonoBehaviour
                 animator.SetTrigger("Missile");
                 GameObject carrotT1 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 carrotT1.transform.position = transform.position + new Vector3(1, 0, 0);
-
+                CarrotMissile CarrotT1Stats = carrotT1.GetComponent<CarrotMissile>();
+                CarrotT1Stats.Piercing = false;
+                CarrotT1Stats.damage = 10;
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
 
@@ -597,7 +599,9 @@ public class character : MonoBehaviour
                 animator.SetTrigger("Missile");
                 GameObject carrotT2 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 carrotT2.transform.position = transform.position + new Vector3(1, 0, 0);
-
+                CarrotMissile CarrotT2Stats = carrotT2.GetComponent<CarrotMissile>();
+                CarrotT2Stats.Piercing = false;
+                CarrotT2Stats.damage = 15;
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
 
@@ -609,7 +613,7 @@ public class character : MonoBehaviour
                 GameObject carrotT3 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 CarrotMissile CarrotT3Stats = carrotT3.GetComponent<CarrotMissile>();
                 CarrotT3Stats.Piercing = true;
-
+                CarrotT3Stats.damage = 20;
                 carrotT3.transform.position = transform.position + new Vector3(1, 0, 0);
 
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
@@ -625,8 +629,10 @@ public class character : MonoBehaviour
                 GameObject carrotT4Clone = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 CarrotMissile CarrotT4Stats = carrotT4.GetComponent<CarrotMissile>();
                 CarrotT4Stats.Piercing = true;
+                CarrotT4Stats.damage = 25;
                 CarrotMissile CarrotT4CloneStats = carrotT4Clone.GetComponent<CarrotMissile>();
                 CarrotT4CloneStats.Piercing = true;
+                CarrotT4CloneStats.damage = 25;
                 carrotT4Clone.transform.position = transform.position + new Vector3(1, -0.5f, 0);
 
 
@@ -637,7 +643,7 @@ public class character : MonoBehaviour
 
 
 
-            case 10:
+            case 11:
                 // eardefence
                 print("used Shield T1");
                 animator.SetTrigger("Defence");
@@ -648,7 +654,7 @@ public class character : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
 
-            case 11:
+            case 12:
                 // eardefence
                 print("used Shield T2");
                 animator.SetTrigger("Defence");
@@ -658,7 +664,7 @@ public class character : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
 
-            case 12:
+            case 13:
                 // eardefence
                 print("used Shield T3");
                 animator.SetTrigger("Defence");
@@ -671,7 +677,7 @@ public class character : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
 
-            case 13:
+            case 14:
                 // eardefence
                 print("used Shield T4");
                 animator.SetTrigger("Defence");
@@ -687,22 +693,76 @@ public class character : MonoBehaviour
 
 
 
-            case 20:
+            case 21:
                 // radish missile
                 print("used spell 3");
                 animator.SetTrigger("Missile");
-                GameObject radish = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
-                radish.transform.position = transform.position + new Vector3(1, 0, 0);
-
+                GameObject radishT1 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                radishT1.transform.position = transform.position + new Vector3(1, 0, 0);
+                RadishMissile RadishT1stats = radishT1.GetComponent<RadishMissile>();
+                RadishT1stats.damage = 15;
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
 
                 break;
-            case 30:
+            case 22:
+                // radish missile
+                print("used spell 3");
+                animator.SetTrigger("Missile");
+                GameObject radishT2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                radishT2.transform.position = transform.position + new Vector3(1, 0.3f, 0);
+                RadishMissile RadishT2stats = radishT2.GetComponent<RadishMissile>();
+                RadishT2stats.damage = 15;
+                GameObject radishT2clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                radishT2clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
+                RadishMissile RadishT2statsclone = radishT2clone.GetComponent<RadishMissile>();
+                RadishT2statsclone.damage = 15;
+                FindObjectOfType<AudioManager>().Play("MagicMissle");
+
+                break;
+            case 23:
+                // radish missile
+                print("used spell 3");
+                animator.SetTrigger("Missile");
+                GameObject radishT3 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                radishT3.transform.position = transform.position + new Vector3(1, 0.3f, 0);
+                RadishMissile RadishT3stats = radishT3.GetComponent<RadishMissile>();
+                RadishT3stats.damage = 15;
+                GameObject radishT3clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                radishT3clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
+                RadishMissile RadishT3statsclone = radishT3clone.GetComponent<RadishMissile>();
+                RadishT3statsclone.damage = 15;
+                GameObject radishT3clone2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                radishT3clone2.transform.position = transform.position + new Vector3(2, 0, 0);
+                RadishMissile RadishT3statsclone2 = radishT3clone2.GetComponent<RadishMissile>();
+                RadishT3statsclone2.damage = 15;
+                FindObjectOfType<AudioManager>().Play("MagicMissle");
+
+                break;
+            case 24:
+                // radish missile
+                print("used spell 3");
+                animator.SetTrigger("Missile");
+                GameObject radishT4 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                radishT4.transform.position = transform.position + new Vector3(1, 0.3f, 0);
+                RadishMissile RadishT4stats = radishT4.GetComponent<RadishMissile>();
+                RadishT4stats.damage = 25;
+                GameObject radishT4clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                radishT4clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
+                RadishMissile RadishT4statsclone = radishT4clone.GetComponent<RadishMissile>();
+                RadishT4statsclone.damage = 25;
+                GameObject radishT4clone2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                radishT4clone2.transform.position = transform.position + new Vector3(2, 0, 0);
+                RadishMissile RadishT4statsclone2 = radishT4clone2.GetComponent<RadishMissile>();
+                RadishT4statsclone2.damage = 25;
+                FindObjectOfType<AudioManager>().Play("MagicMissle");
+
+                break;
+            case 31:
                 // kick
                 print("used spell 4");
                 animator.SetTrigger("Kick");
                 break;
-            case 40:
+            case 41:
                 print("used spell 5");
                 break;
 

@@ -22,7 +22,7 @@ public class ElectricBook : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 8;
+        health.maxHealth = 80;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
@@ -80,7 +80,7 @@ public class ElectricBook : MonoBehaviour
     }
     void Attack()
     {
-        health.TakeDamage(1);
+        health.TakeDamage(10);
     }
     void ElectricBall()
     {

@@ -32,8 +32,8 @@ public class ManaHandle : MonoBehaviour
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
 
 
-        //CurrentDarkMana = DarkMana;
-        //CurrentLightMana = LightMana;
+        CurrentDarkMana = DarkMana;
+        CurrentLightMana = LightMana;
 
         DarkMana = GameStats.stats.totalDarkMana;
         LightMana = GameStats.stats.totalLightMana;

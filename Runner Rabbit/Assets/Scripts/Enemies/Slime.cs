@@ -20,7 +20,7 @@ public class Slime : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 3;
+        health.maxHealth = 30;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
@@ -79,7 +79,7 @@ public class Slime : MonoBehaviour
     }
     void Attack()
     {
-        health.TakeDamage(1);
+        health.TakeDamage(10);
     }
     void SlimeBall()
     {

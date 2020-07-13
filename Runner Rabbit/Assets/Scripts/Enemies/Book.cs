@@ -20,7 +20,7 @@ public class Book : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 5;
+        health.maxHealth = 50;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
@@ -78,7 +78,7 @@ public class Book : MonoBehaviour
     }
     void Attack()
     {
-        health.TakeDamage(1);
+        health.TakeDamage(10);
     }
     void FireBall()
     {
