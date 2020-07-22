@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 598762948993027961}
   - component: {fileID: 598762948993027960}
   - component: {fileID: 598762948993027956}
+  - component: {fileID: -1555661824027314161}
   m_Layer: 9
   m_Name: ShooterPlant
   m_TagString: Enemy
@@ -379,6 +380,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f539efeeee6324b7e8cd489cbdcb5484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 0}
+--- !u!114 &-1555661824027314161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598762948993027967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619ea4ba85c954d37ae30a2ae47bb9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  health: 0
+  healthSlider: {fileID: 598762949598812107}
+  Hit: 0
 --- !u!1 &598762949252609718
 GameObject:
   m_ObjectHideFlags: 0
