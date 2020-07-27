@@ -754,13 +754,15 @@ public class character : MonoBehaviour
                 radishT4clone2.transform.position = transform.position + new Vector3(2, 0, 0);
                 RadishMissile RadishT4statsclone2 = radishT4clone2.GetComponent<RadishMissile>();
                 RadishT4statsclone2.damage = 25;
-                FindObjectOfType<AudioManager>().Play("MagicMissle");
+               
 
                 break;
             case 31:
                 // kick
                 print("used spell 4");
                 animator.SetTrigger("Kick");
+                GameObject kickT1 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                kickT1.transform.position = transform.position;
                 break;
             case 41:
                 print("used spell 5");
