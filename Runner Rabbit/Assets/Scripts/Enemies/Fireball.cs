@@ -9,7 +9,9 @@ public class Fireball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         fireballAnimator = GetComponent<Animator>();
+        
         Destroy(gameObject, 4f);
       
        // transform.position = GameObject.Find("Enemy Spawner").transform.position;
@@ -34,6 +36,8 @@ public class Fireball : MonoBehaviour
 
 
         }
+
+
 
     }
 

@@ -286,6 +286,7 @@ public class character : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("RiftPass");
             CamRipple.RippleEffect();
 
+            StartCoroutine(GetInvulnerableRift());
 
 
 
