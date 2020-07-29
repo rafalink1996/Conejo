@@ -762,8 +762,11 @@ public class character : MonoBehaviour
                 // kick
                 print("used spell 4");
                 animator.SetTrigger("Kick");
-                GameObject kickT1 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                GameObject kickT1 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 kickT1.transform.position = transform.position;
+                kickT1.name = "Kick";
+                Kick kickT1Stats = kickT1.GetComponent<Kick>();
+                kickT1Stats.reflect = false;
                 break;
             case 41:
                 print("used spell 5");

@@ -22,7 +22,7 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = cha.transform.position; 
        
     }
 
