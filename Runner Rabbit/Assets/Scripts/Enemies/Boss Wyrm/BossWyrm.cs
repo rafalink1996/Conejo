@@ -137,7 +137,10 @@ public class BossWyrm : MonoBehaviour
         if (element == 1)
         {
             GameObject fireBall = Instantiate(Resources.Load("Prefabs/WyrmFireBall") as GameObject);
+            
             fireBall.transform.position = transform.position + new Vector3(-5.755793f, -0.2495456f, 0);
+            //fireBall.GetComponent<WyrmFireBall>().sourceTransform = this.transform;
+
         }
         if (element == 3)
         {

@@ -768,6 +768,36 @@ public class character : MonoBehaviour
                 Kick kickT1Stats = kickT1.GetComponent<Kick>();
                 kickT1Stats.reflect = false;
                 break;
+            case 32:
+                // kick
+                print("used spell 4");
+                animator.SetTrigger("Kick");
+                GameObject kickT2 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
+                kickT2.transform.position = transform.position;
+                kickT2.name = "Kick";
+                Kick kickT2Stats = kickT2.GetComponent<Kick>();
+                kickT2Stats.reflect = false;
+                break;
+            case 33:
+                // kick
+                print("used spell 4");
+                animator.SetTrigger("Kick");
+                GameObject kickT3 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
+                kickT3.transform.position = transform.position;
+                kickT3.name = "Kick";
+                Kick kickT3Stats = kickT3.GetComponent<Kick>();
+                kickT3Stats.reflect = true;
+                break;
+            case 34:
+                // kick
+                print("used spell 4");
+                animator.SetTrigger("Kick");
+                GameObject kickT4 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
+                kickT4.transform.position = transform.position;
+                kickT4.name = "Kick";
+                Kick kickT4Stats = kickT4.GetComponent<Kick>();
+                kickT4Stats.reflect = true;
+                break;
             case 41:
                 print("used spell 5");
                 break;

@@ -6,11 +6,13 @@ public class WyrmFireBall : MonoBehaviour
 {
 
     Transform target;
+    public Transform sourceTransform;
     float angle;
     float speed = -23;
     // Start is called before the first frame update
     void Start()
     {
+        sourceTransform = GameObject.Find("Book Wyrm").transform;
         target = GameObject.FindWithTag("Player").transform;
         //transform.LookAt(target, Vector3.up);
         Vector3 dir = target.position - transform.position;
@@ -30,9 +32,17 @@ public class WyrmFireBall : MonoBehaviour
     {
         if (collision.name == "Kick")
         {
-            print("kick");
-            transform.rotation = Quaternion.AngleAxis(Random.Range(150, 250), Vector3.forward);
-            //speed = 0;
+            if (collision.GetComponent<Kick>().reflect == true)
+            {
+                target = sourceTransform;
+                Vector3 dir = target.position - transform.position;
+                angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
+            }
+            else
+            {
+                transform.rotation = Quaternion.AngleAxis(Random.Range(120, 240), Vector3.forward);
+            }
 
         }
     }
