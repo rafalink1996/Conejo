@@ -18,7 +18,7 @@ public class WyrmThunderBall : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>();
-        Invoke("Hit", 2.5f);
+        Invoke("Hit", 4f);
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class WyrmThunderBall : MonoBehaviour
 
         if (transform.position.x > target.transform.position.x && !reflected)
         {
-            
+
             Vector2 direction = (Vector2)target.position - rb.position;
             direction.Normalize();
             float rotateAmount = Vector3.Cross(direction, transform.right).z;
@@ -36,18 +36,14 @@ public class WyrmThunderBall : MonoBehaviour
         }
         else if (reflected)
         {
-            print("reflecting");
+            transform.Translate(10 * Time.deltaTime, 0, 0);
         }
 
 
     }
     private void Update()
     {
-        if (reflected)
-        {
-            //Vector2.MoveTowards(transform.position, sourceTransform.position, 0);
-            transform.Translate(speed * Time.deltaTime, 0, 0);
-        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
 
@@ -55,21 +51,21 @@ public class WyrmThunderBall : MonoBehaviour
         if (collision.name == "Kick")
         {
             print("reflected");
-
             reflected = true;
-            
-            /*
-            if (collision.GetComponent<Kick>().reflect == true)
+            rb.angularVelocity = 0;
+            rb.velocity = Vector3.zero;
+            if (collision.GetComponent<Kick>().reflect == false)
+            {
+                transform.rotation = Quaternion.AngleAxis(Random.Range(-40, 40), Vector3.forward);
+            }
+            else
             {
                 target = sourceTransform;
                 Vector3 dir = target.position - transform.position;
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
-            else
-            {
-                transform.rotation = Quaternion.AngleAxis(Random.Range(120, 240), Vector3.forward);
-            }*/
+            
 
         }
         if (collision.tag == "Player")
@@ -81,7 +77,7 @@ public class WyrmThunderBall : MonoBehaviour
             //FindObjectOfType<AudioManager>().Play("FireExplotion");
 
         }
-        
+
 
     }
     public void Hit()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 20f;
     Animator fireballAnimator;
     // Start is called before the first frame update
     void Start()
@@ -20,23 +20,34 @@ public class Fireball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 temp = transform.position;
+        transform.Translate(-speed * Time.deltaTime, 0, 0);
+        /*Vector3 temp = transform.position;
         temp.x -= speed * Time.deltaTime;
-        transform.position = temp;
+        transform.position = temp;*/
     }
     private void OnTriggerEnter2D(Collider2D collision)
 
     {
+        if (collision.name == "Kick")
+        {
+            print("kick");
+            if (collision.GetComponent<Kick>().reflect == false)
+            {
+                transform.rotation = Quaternion.AngleAxis(Random.Range(120, 240), Vector3.forward);
+            }
+            else
+            {
+                transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+            }
+        }
         if (collision.tag == "Player")
         {
             fireballAnimator.SetTrigger("hit");
             FindObjectOfType<AudioManager>().Play("FireExplotion");
             
             speed = -3f;
-
-
         }
-
+       
 
 
     }
