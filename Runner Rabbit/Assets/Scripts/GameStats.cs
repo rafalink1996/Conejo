@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameStats : MonoBehaviour
 {
-    public Power powerDark;
     public Power powerLight;
+    public Power powerDark;
+    
 
     public static GameStats stats;
     public string lightPowerName;

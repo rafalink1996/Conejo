@@ -24,7 +24,6 @@ public class WyrmThunderBall : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
         if (transform.position.x > target.transform.position.x && !reflected)
         {
 
