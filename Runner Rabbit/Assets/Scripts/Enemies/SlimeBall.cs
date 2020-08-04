@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class SlimeBall : MonoBehaviour
 {
-    public float speed = 20f;
-    public Animator fireballAnimator;
+    public float speed = 10f;
     // Start is called before the first frame update
     void Start()
     {
 
-       // fireballAnimator = GetComponentInChildren<Animator>();
-        
+
         Destroy(transform.parent.gameObject, 4f);
-      
-       // transform.position = GameObject.Find("Enemy Spawner").transform.position;
+
+        // transform.position = GameObject.Find("Enemy Spawner").transform.position;
     }
 
     // Update is called once per frame
@@ -40,25 +38,9 @@ public class Fireball : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
             }
         }
-        if (collision.tag == "Player")
-        {
-            fireballAnimator.SetTrigger("hit");
-            FindObjectOfType<AudioManager>().Play("FireExplotion");
-            
-            speed = 3f;
-        }
-       
+
 
 
     }
 
-    public void HitEnd ()
-    {
-        
-        Destroy(transform.parent.gameObject);
-    }
-    
-    
-      
-    
 }
