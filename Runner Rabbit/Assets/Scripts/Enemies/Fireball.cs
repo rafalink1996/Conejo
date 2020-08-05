@@ -6,11 +6,12 @@ public class Fireball : MonoBehaviour
 {
     public float speed = 20f;
     public Animator fireballAnimator;
+    bool reflected;
     // Start is called before the first frame update
     void Start()
     {
 
-       // fireballAnimator = GetComponentInChildren<Animator>();
+     fireballAnimator = GetComponent<Animator>();
         
         Destroy(transform.parent.gameObject, 4f);
       
@@ -30,6 +31,7 @@ public class Fireball : MonoBehaviour
     {
         if (collision.name == "Kick")
         {
+            reflected = true;
             print("kick");
             if (collision.GetComponent<Kick>().reflect == false)
             {
@@ -39,6 +41,16 @@ public class Fireball : MonoBehaviour
             {
                 transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
             }
+        }
+        if(collision.tag == "Enemy" && reflected)
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
+            collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
+            print("hit " + collision.gameObject.name);
+            fireballAnimator.SetTrigger("hit");
+            FindObjectOfType<AudioManager>().Play("FireExplotion");
+
+            speed = 3f;
         }
         if (collision.tag == "Player")
         {
@@ -51,7 +63,7 @@ public class Fireball : MonoBehaviour
 
 
     }
-
+    
     public void HitEnd ()
     {
         

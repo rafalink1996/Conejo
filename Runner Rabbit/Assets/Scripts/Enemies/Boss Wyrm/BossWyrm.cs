@@ -23,7 +23,7 @@ public class BossWyrm : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 40;
+        health.maxHealth = 100;
         anim = GetComponent<Animator>();
         timeToChange = Random.Range(15f, 25f);
         iceTimer = Random.Range(20f, 30f);
@@ -106,7 +106,7 @@ public class BossWyrm : MonoBehaviour
             transform.parent.transform.localEulerAngles = new Vector3(0, 0, 0);
             
         }*/
-        if (health.health <= 0)
+        if (health.health <= 0 && !BossDead)
         {
             anim.SetTrigger("Die");
             BossDead = true;

@@ -67,6 +67,13 @@ public class WyrmThunderBall : MonoBehaviour
             
 
         }
+        if (collision.tag == "Enemy" && reflected)
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
+            collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
+            print("hit " + collision.gameObject.name);
+            Hit();
+        }
         if (collision.tag == "Player")
         {
             if (!reflected)

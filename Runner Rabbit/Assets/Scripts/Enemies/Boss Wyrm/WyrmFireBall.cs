@@ -9,6 +9,7 @@ public class WyrmFireBall : MonoBehaviour
     public Transform sourceTransform;
     float angle;
     float speed = -23;
+    bool reflected;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,7 @@ public class WyrmFireBall : MonoBehaviour
     {
         if (collision.name == "Kick")
         {
+            reflected = true;
             if (collision.GetComponent<Kick>().reflect == true)
             {
                 target = sourceTransform;
@@ -44,6 +46,13 @@ public class WyrmFireBall : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(Random.Range(120, 240), Vector3.forward);
             }
 
+        }
+        if (collision.tag == "Enemy" && reflected)
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
+            collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
+            print("hit " + collision.gameObject.name);
+            Destroy(gameObject);
         }
     }
 }

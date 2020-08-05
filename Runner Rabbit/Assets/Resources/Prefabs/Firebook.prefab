@@ -415,6 +415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!114 &8056762449003740782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +446,7 @@ MonoBehaviour:
   maxHealth: 5
   health: 0
   healthSlider: {fileID: 0}
+  Hit: 0
 --- !u!61 &5817702132647005272
 BoxCollider2D:
   m_ObjectHideFlags: 0

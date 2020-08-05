@@ -390,6 +390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!114 &7524148104362577730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +421,7 @@ MonoBehaviour:
   maxHealth: 0
   health: 0
   healthSlider: {fileID: 0}
+  Hit: 0
 --- !u!58 &3456106594303634381
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -431,9 +435,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.5262926, y: 0}
+  m_Offset: {x: -1.5262926, y: -0.3338778}
   serializedVersion: 2
-  m_Radius: 2.7316868
+  m_Radius: 3.0655646
 --- !u!1 &8550487593613659511
 GameObject:
   m_ObjectHideFlags: 0

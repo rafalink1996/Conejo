@@ -5,11 +5,13 @@ using UnityEngine;
 public class SlimeBall : MonoBehaviour
 {
     public float speed = 10f;
+    bool reflected;
+    public Transform sourceTransform;
     // Start is called before the first frame update
     void Start()
     {
 
-
+        sourceTransform = transform.parent.transform;
         Destroy(transform.parent.gameObject, 4f);
 
         // transform.position = GameObject.Find("Enemy Spawner").transform.position;
@@ -28,6 +30,7 @@ public class SlimeBall : MonoBehaviour
     {
         if (collision.name == "Kick")
         {
+            reflected = true;
             print("kick");
             if (collision.GetComponent<Kick>().reflect == false)
             {
@@ -35,10 +38,19 @@ public class SlimeBall : MonoBehaviour
             }
             else
             {
-                transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+
+                Vector3 dir = sourceTransform.position - transform.position;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
             }
         }
-
+        if (collision.tag == "Enemy" && reflected)
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
+            collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
+            print("hit " + collision.gameObject.name);
+            Destroy(gameObject);
+        }
 
 
     }

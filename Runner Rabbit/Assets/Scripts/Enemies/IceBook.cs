@@ -80,6 +80,7 @@ public class IceBook : MonoBehaviour
     {
         GameObject iceLance = GameObject.Instantiate(Resources.Load("Prefabs/Ice Lance") as GameObject);
         iceLance.transform.position = transform.position;
+        //iceLance.GetComponent<IceLance>().sourceTransform = gameObject.transform;
     }
     void Over()
     {
