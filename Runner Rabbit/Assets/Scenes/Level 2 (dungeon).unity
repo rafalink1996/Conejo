@@ -1060,7 +1060,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &102801763
 Transform:
   m_ObjectHideFlags: 0
@@ -1092,13 +1092,7 @@ MonoBehaviour:
   enemyType: 1
   enemyCount: 0
   enemyName:
-  - Book (Electric)
-  - Book (Ice)
-  - Enemies 3
-  - Enemies 4
-  - Enemies 5
-  - Firebook
-  - Slime
+  - ArcherGoblin
 --- !u!114 &102801765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19970,7 +19964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DarkManaBar: {fileID: 256597578}
   LightManaBar: {fileID: 1710901087}
-  DarkMana: 30
+  DarkMana: 500
   LightMana: 30
   DarkManaUsed: 0
   LightManaUsed: 0
@@ -27294,7 +27288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1859497430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27323,7 +27317,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.6968639, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -27334,7 +27328,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 8.386757, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &1859497432
 Transform:
@@ -34219,7 +34213,7 @@ PrefabInstance:
         type: 3}
       propertyPath: powerLight
       value: 
-      objectReference: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020,
+      objectReference: {fileID: 11400000, guid: 9900566cfd48c4a819c81884e0f51405,
         type: 2}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
@@ -34227,6 +34221,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020,
         type: 2}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: totalLightMana
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: totalDarkMana
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: m_LocalPosition.x
