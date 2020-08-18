@@ -47,7 +47,7 @@ public class ArcherGoblin : MonoBehaviour
         {
             anim.SetTrigger("Spawn");
             GetComponent<SpriteRenderer>().enabled = true;
-            FindObjectOfType<AudioManager>().Play("BookSpawn");
+            FindObjectOfType<AudioManager>().Play("Goblin Spawn");
             spawned = true;
 
         }
@@ -84,6 +84,7 @@ public class ArcherGoblin : MonoBehaviour
     {
         GameObject arrow = GameObject.Instantiate(Resources.Load("Prefabs/Arrow") as GameObject);
         arrow.transform.position = transform.position;
+        FindObjectOfType<AudioManager>().Play("Goblin Hit");
 
     }
     void Over()
@@ -99,7 +100,7 @@ public class ArcherGoblin : MonoBehaviour
 
     void Despawned()
     {
-        FindObjectOfType<AudioManager>().Play("BookDeSpawn");
+        FindObjectOfType<AudioManager>().Play("Goblin Death");
 
     }
 

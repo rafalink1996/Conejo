@@ -182,7 +182,7 @@ MonoBehaviour:
   - name: musica alternativa XD
     audioOutputMixer: {fileID: -3782309269719523556, guid: fc3f455b10db348d094da207e592d7c2,
       type: 2}
-    clip: {fileID: 8300000, guid: 9ed437300b4da400f9afde2c6443f8f2, type: 3}
+    clip: {fileID: 8300000, guid: 7dc0ed1da6dd940b9ba4cc8fabdb87d5, type: 3}
     volume: 0.3
     pitch: 1
     priority: 104
@@ -192,8 +192,98 @@ MonoBehaviour:
     audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
       type: 2}
     clip: {fileID: 8300000, guid: 8424287397328415b9f071355a22075c, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: Goblin arrow Shoot
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 5267c1479ac77479ab5c4890f77f8293, type: 3}
+    volume: 0.6
+    pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: Goblin Spawn
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: bc90ca78e89604dfc829868539f5d0d7, type: 3}
+    volume: 0.6
+    pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: Goblin Death
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: aab8b15865213488fb8b0a8df5c0e4d1, type: 3}
+    volume: 0.6
+    pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: Goblin Hit
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 58291055818b7419db28bcec6bc606b2, type: 3}
+    volume: 0.6
+    pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: Goblin Shield Hit
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 85bfa01960c8b41fd8695e640eea3fe2, type: 3}
+    volume: 0.6
+    pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: Troll Spawn
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 052889f6cf4654b5f86eadd5274e81dc, type: 3}
+    volume: 0.6
+    pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: Troll Attack
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: bac30678b5b3f4f009f9320eb694e392, type: 3}
+    volume: 0.6
+    pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: Troll Death
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 43594495703f64c74b08c0d0cd5ab046, type: 3}
+    volume: 0.6
+    pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: Troll Swing
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: ce322852a5a1c4648b23664af6b8966b, type: 3}
+    volume: 0.6
+    pitch: 1
+    priority: 104
+    loop: 1
+    source: {fileID: 0}
+  - name: Summon Spell
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 7fdecf44b992143c9bad4ba6b67116c2, type: 3}
+    volume: 0.6
+    pitch: 0.8
     priority: 104
     loop: 1
     source: {fileID: 0}
