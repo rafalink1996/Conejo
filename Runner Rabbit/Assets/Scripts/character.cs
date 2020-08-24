@@ -127,6 +127,7 @@ public class character : MonoBehaviour
         NumOfHearts = GameStats.stats.numOfHearts;
         Health = NumOfHearts;
 
+
         //characterConstrains = false;
 
 
@@ -229,6 +230,7 @@ public class character : MonoBehaviour
         if (Health == 0 && GameStats.stats.fenixFeather == true)
         {
             Health = NumOfHearts;
+            GameStats.stats.fenixFeather = false;
 
         }
 

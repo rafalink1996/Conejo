@@ -115,18 +115,22 @@ public class BossWyrm : MonoBehaviour
     }
     public void ChangeElement()
     {
-        if (element == 2 && anim.GetBool("Ice") == true)
+        if (BossDead == false)
         {
-            element = 2;
-        }
-        else
-
-            while (element == currentElement || element == 2 && ice)
+            if (element == 2 && anim.GetBool("Ice") == true)
             {
-                element = Random.Range(1, 4);
+                element = 2;
             }
+            else
 
-        currentElement = element;
+                while (element == currentElement || element == 2 && ice)
+                {
+                    element = Random.Range(1, 4);
+                }
+
+            currentElement = element;
+        }
+        
     }
     public void NewPortal()
     {
@@ -137,6 +141,7 @@ public class BossWyrm : MonoBehaviour
         if (element == 1)
         {
             GameObject fireBall = Instantiate(Resources.Load("Prefabs/WyrmFireBall") as GameObject);
+            health.health -= 2;
             
             fireBall.transform.position = transform.position + new Vector3(-5.755793f, -0.2495456f, 0);
             //fireBall.GetComponent<WyrmFireBall>().sourceTransform = this.transform;
@@ -146,6 +151,7 @@ public class BossWyrm : MonoBehaviour
         {
             GameObject thunderBall = Instantiate(Resources.Load("Prefabs/WyrmThunderBall") as GameObject);
             thunderBall.transform.position = transform.position + new Vector3(-5.755793f, -0.2495456f, 0);
+            health.health -= 2;
         }
     }
     public void RiftAttack()
@@ -153,10 +159,12 @@ public class BossWyrm : MonoBehaviour
         if (element == 2)
         {
             attacks[0].SetActive(true);
+            health.health -= 1;
         }
         if (element == 3)
         {
             attacks[3].SetActive(true);
+            health.health -= 1;
         }
     }
     public void Ray()
@@ -164,10 +172,12 @@ public class BossWyrm : MonoBehaviour
         if (element == 1)
         {
             attacks[1].SetActive(true);
+            health.health -= 3;
         }
         if (element == 2)
         {
             attacks[2].SetActive(true);
+            health.health -= 1;
         }
     }
     void DeactivateCollider()
@@ -183,6 +193,12 @@ public class BossWyrm : MonoBehaviour
         healthBar[0].SetActive(true);
         healthBar[1].SetActive(true);
         healthBar[2].SetActive(true);
+    }
+
+    public void DeactivatePortalAfterDeath()
+    {
+
+        portals[currentElement - 1].GetComponent<Animator>().SetTrigger("Change");
     }
 
 }

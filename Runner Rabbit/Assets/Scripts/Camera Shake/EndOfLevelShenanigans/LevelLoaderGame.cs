@@ -67,7 +67,7 @@ public class LevelLoaderGame : MonoBehaviour
 
                 if (bossWyrm.BossDead == true)
                 {
-                    yield return new WaitForSecondsRealtime(3);
+                    yield return new WaitForSecondsRealtime(5);
                     EndlessHosue.spawnhouse();
                     
                     StartCoroutine(loadAsyncGame(1));
@@ -93,9 +93,12 @@ public class LevelLoaderGame : MonoBehaviour
 
     }
 
+
+
     IEnumerator loadAsyncGame(int SceneIndex)
 
     {
+
 
         Debug.Log("gameChangeInitiated");
         yield return new WaitForSecondsRealtime(2);

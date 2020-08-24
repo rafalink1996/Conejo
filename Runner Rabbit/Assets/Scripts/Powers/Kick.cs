@@ -9,7 +9,7 @@ public class Kick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 20.61f);
+        Destroy(gameObject, 0.2f);//20.61
         cha = GameObject.Find("Character");
     }
 

@@ -10,6 +10,7 @@ public class PlayerData
     public bool PortalBoostBought;
     public bool CoinTicketBought;
     public int level;
+    public int MaxLevelReached;
 
 
     public int CarrotMissleLevel;
