@@ -31,6 +31,7 @@ public class ElectricBall : MonoBehaviour
             float rotateAmount = Vector3.Cross(direction, transform.right).z;
             rb.angularVelocity = rotateAmount * rotateSpeed;
             rb.velocity = transform.right * -speed;
+            
         }
         else if (reflected)
         {
