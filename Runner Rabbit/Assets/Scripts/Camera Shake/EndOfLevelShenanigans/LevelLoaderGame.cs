@@ -140,6 +140,8 @@ public class LevelLoaderGame : MonoBehaviour
         loadingScreen.SetActive(true);
         StartCoroutine(loadAsyncMainMenu());
         Time.timeScale = 1;
+        GameStats.stats.CoinTicket = false;
+
     }
 
 
