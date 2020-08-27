@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShamanGoblin : MonoBehaviour
 {
     public float spawnTime;
+    public float summonTime;
     public bool isPresent;
     Animator anim;
     // Start is called before the first frame update
@@ -26,5 +27,20 @@ public class ShamanGoblin : MonoBehaviour
                 isPresent = true;
             }
         }
+        if (isPresent)
+        {
+            summonTime -= Time.deltaTime;
+        }
+        if (summonTime <= 0)
+        {
+            anim.SetTrigger("Attack");
+           
+        }
+           
+    }
+
+    void SpawnEnemies()
+    {
+        //Spawn
     }
 }
