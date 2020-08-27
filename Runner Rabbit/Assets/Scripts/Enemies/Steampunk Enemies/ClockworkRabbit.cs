@@ -12,6 +12,8 @@ public class ClockworkRabbit : MonoBehaviour
     float attackTime;
     bool attack;
     EnemyHealth health;
+    public Transform ProyectileSpawner;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +35,8 @@ public class ClockworkRabbit : MonoBehaviour
         //healthSlider.maxValue = maxHealth;
         spawnTime = Random.Range(0.1f, 2f);
         attackTime = Random.Range(0.2f, 1.3f);
-    }
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -75,12 +77,12 @@ public class ClockworkRabbit : MonoBehaviour
     }
     void Attack()
     {
-        health.TakeDamage(10);
+        health.TakeDamage(20);
     }
-    void FireBall()
+    void EnergyBall()
     {
-        GameObject fireBall = GameObject.Instantiate(Resources.Load("Prefabs/Fireball") as GameObject);
-        fireBall.transform.position = transform.position;
+        GameObject EnergyBall = GameObject.Instantiate(Resources.Load("Prefabs/ClockworkBunnyProyectile") as GameObject);
+        EnergyBall.transform.position = transform.position - new Vector3(4, 0.5f , 0);
 
     }
     void Over()

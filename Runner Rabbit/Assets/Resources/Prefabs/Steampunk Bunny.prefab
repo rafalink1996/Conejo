@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 673213794051676977}
   - component: {fileID: 8739363290620652460}
   - component: {fileID: 4133970022898172169}
+  - component: {fileID: -5746362012430859472}
   m_Layer: 9
   m_Name: Steampunk Bunny
   m_TagString: Enemy
@@ -29,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 673213794051676978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 7227822453464582771}
   m_Father: {fileID: 0}
@@ -37,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.02, y: 5.33}
+  m_AnchoredPosition: {x: 6.61, y: 4.94}
   m_SizeDelta: {x: 5, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &673213794051676976
@@ -123,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 0}
+  ProyectileSpawner: {fileID: 0}
 --- !u!114 &4133970022898172169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +141,21 @@ MonoBehaviour:
   health: 100
   healthSlider: {fileID: 6617074788444327686}
   Hit: 0
+--- !u!114 &-5746362012430859472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673213794051676978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!1 &2166397316824414768
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 4.2299995, y: 1.7699997}
+  m_AnchoredPosition: {x: 2.52, y: 3.04}
   m_SizeDelta: {x: 8.138, y: 5.423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7897043728669574368
