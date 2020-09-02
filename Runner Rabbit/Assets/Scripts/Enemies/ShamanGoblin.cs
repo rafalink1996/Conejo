@@ -35,18 +35,23 @@ public class ShamanGoblin : MonoBehaviour
             summonTime -= Time.deltaTime;
             enemiespresent = true;
         }
-        if (summonTime <= 0)
+        if (summonTime <= 0 && !enemiespresent)
         {
             anim.SetTrigger("Attack");
+            enemiespresent = true;
             summonTime = Random.Range(2f, 4f);
            
         }
-           
+           if (transform.childCount == 0)
+        {
+            enemiespresent = false;
+        }
     }
 
     void SpawnEnemies()
     {
         GameObject summon = Instantiate(Resources.Load("Prefabs/ShamanSummons" + summonName[summonType]) as GameObject);
         summon.transform.position = transform.position;
+        summon.transform.SetParent(transform);
     }
 }
