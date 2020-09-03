@@ -15,7 +15,7 @@ public class ShieldGoblin : MonoBehaviour
         anim = GetComponent<Animator>();
         health = GetComponent<EnemyHealth>();
         health.maxHealth = myHealth;
-        spawnTime = Random.Range(0.1f, 2f);
+        spawnTime = Random.Range(0.1f, 1f);
         
     }
 
@@ -42,6 +42,7 @@ public class ShieldGoblin : MonoBehaviour
         if (collision.collider.tag == "character proyectile")
         {
             FindObjectOfType<AudioManager>().Play("Goblin Shield Hit");
+            health.TakeDamage(10);
         }
     }
     void LoseHealth()

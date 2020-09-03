@@ -15,6 +15,8 @@ public class ShamanGoblin : MonoBehaviour
     void Start()
     {
         spawnTime = Random.Range(0.5f, 2f);
+        anim = GetComponent<Animator>();
+        summonTime = 3f;
     }
 
     // Update is called once per frame
@@ -33,12 +35,13 @@ public class ShamanGoblin : MonoBehaviour
         if (isPresent && !enemiespresent)
         {
             summonTime -= Time.deltaTime;
-            enemiespresent = true;
+            //enemiespresent = true;
         }
         if (summonTime <= 0 && !enemiespresent)
         {
             anim.SetTrigger("Attack");
-            enemiespresent = true;
+            
+            summonType = Random.Range(0, summonName.Length);
             summonTime = Random.Range(2f, 4f);
            
         }
@@ -50,8 +53,10 @@ public class ShamanGoblin : MonoBehaviour
 
     void SpawnEnemies()
     {
-        GameObject summon = Instantiate(Resources.Load("Prefabs/ShamanSummons" + summonName[summonType]) as GameObject);
-        summon.transform.position = transform.position;
+        print("Summon");
+        GameObject summon = Instantiate(Resources.Load("Prefabs/" + summonName[summonType]) as GameObject);
+        summon.transform.position = transform.position + new Vector3 (0, 3, 0);
         summon.transform.SetParent(transform);
+        enemiespresent = true;
     }
 }

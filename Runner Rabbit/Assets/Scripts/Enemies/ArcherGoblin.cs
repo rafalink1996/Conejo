@@ -7,7 +7,7 @@ public class ArcherGoblin : MonoBehaviour
     Animator anim;
     //public int maxHealth = 5;
     //public int health;
-    public EnemySpawner enemySpawner;
+    //public EnemySpawner enemySpawner;
     //public Slider healthSlider;
     float spawnTime;
     bool spawned = false;
@@ -22,19 +22,19 @@ public class ArcherGoblin : MonoBehaviour
         health = GetComponent<EnemyHealth>();
         health.maxHealth = myHealth;
         anim = GetComponent<Animator>();
-        if (transform.position.y > 0)
+       /* if (transform.position.y > 0)
         {
             enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
         }
         if (transform.position.y < 0)
         {
             enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
-        }
+        }*/
         //enemySpawner = FindObjectOfType<EnemySpawner>();
         //healthSlider = GetComponentInChildren<Slider>();
         //health = maxHealth;
         //healthSlider.maxValue = maxHealth;
-        spawnTime = Random.Range(0.1f, 2f);
+        spawnTime = Random.Range(0.1f, 1f);
         attackTime = Random.Range(0.2f, 1.3f);
     }
 
@@ -89,7 +89,7 @@ public class ArcherGoblin : MonoBehaviour
     }
     void Over()
     {
-        enemySpawner.OneDown();
+        //enemySpawner.OneDown();
         Destroy(gameObject);
         if (health.Hit == true)
         {
