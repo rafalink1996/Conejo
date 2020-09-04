@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArcherGoblin : MonoBehaviour
 {
@@ -13,14 +14,15 @@ public class ArcherGoblin : MonoBehaviour
     bool spawned = false;
     float attackTime;
     bool attack;
-    EnemyHealth health;
+    public EnemyHealth health;
     public int myHealth;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = myHealth;
+        health.maxHealth = 30;
         anim = GetComponent<Animator>();
        /* if (transform.position.y > 0)
         {
