@@ -12,11 +12,13 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        print("start");
+        Hit = false;
         healthSlider = GetComponentInChildren<Slider>();
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
-        Hit = false;
-
+        
+        
     }
 
     // Update is called once per frame

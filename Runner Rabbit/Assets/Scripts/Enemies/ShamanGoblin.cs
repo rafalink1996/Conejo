@@ -35,7 +35,6 @@ public class ShamanGoblin : MonoBehaviour
         if (isPresent && !enemiespresent)
         {
             summonTime -= Time.deltaTime;
-            //enemiespresent = true;
         }
         if (summonTime <= 0 && !enemiespresent)
         {
