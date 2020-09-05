@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
     {
         print("start");
         Hit = false;
-        healthSlider = GetComponentInChildren<Slider>();
+        healthSlider = transform.Find("Canvas/Slider").GetComponent<Slider>();
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         
