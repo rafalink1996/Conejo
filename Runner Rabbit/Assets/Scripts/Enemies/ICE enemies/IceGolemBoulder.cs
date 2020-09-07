@@ -12,6 +12,8 @@ public class IceGolemBoulder : MonoBehaviour
     public float speed;
     public float Acceleration;
 
+    public bool BreakBoulder;
+
     [SerializeField] private float lerpPct = 0f;
     // Start is called before the first frame update
     void Start()
