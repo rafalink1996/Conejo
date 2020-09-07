@@ -984,13 +984,6 @@ MonoBehaviour:
   enemyType: 1
   enemyCount: 0
   enemyName:
-  - Book (Electric)
-  - Book (Ice)
-  - Enemies 3
-  - Enemies 4
-  - Enemies 5
-  - Firebook
-  - Slime
   - Ice Golem
 --- !u!114 &102801765
 MonoBehaviour:
@@ -30830,6 +30823,16 @@ PrefabInstance:
     - target: {fileID: 3742358350413364565, guid: 8ebc3001c231545048311eaaa6a0b52c,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975607320914590260, guid: 8ebc3001c231545048311eaaa6a0b52c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975607320914590260, guid: 8ebc3001c231545048311eaaa6a0b52c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
