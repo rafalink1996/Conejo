@@ -21,6 +21,11 @@ public class GyratoryPlant : MonoBehaviour
         transform.position = temp;
     }
 
+
+    public void SFXPLantBite ()
+    {
+        FindObjectOfType<AudioManager>().Play("Plant Bite");
+    }
     
 }
     

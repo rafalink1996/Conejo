@@ -249,7 +249,7 @@ MonoBehaviour:
     volume: 0.6
     pitch: 1
     priority: 104
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Troll Attack
     audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
@@ -258,7 +258,7 @@ MonoBehaviour:
     volume: 0.6
     pitch: 1
     priority: 104
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Troll Death
     audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
@@ -267,7 +267,7 @@ MonoBehaviour:
     volume: 0.6
     pitch: 1
     priority: 104
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Troll Swing
     audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
@@ -276,7 +276,7 @@ MonoBehaviour:
     volume: 0.6
     pitch: 1
     priority: 104
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Summon Spell
     audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
@@ -285,5 +285,32 @@ MonoBehaviour:
     volume: 0.6
     pitch: 0.8
     priority: 104
-    loop: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Plant Spawn
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 6216de9cdb4824fb1bee8896afd3586b, type: 3}
+    volume: 0.6
+    pitch: 0.8
+    priority: 104
+    loop: 0
+    source: {fileID: 0}
+  - name: PlantShoot
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: e51b8f1c39c4c4b0daed5ed09cae870a, type: 3}
+    volume: 0.6
+    pitch: 0.8
+    priority: 104
+    loop: 0
+    source: {fileID: 0}
+  - name: Plant Bite
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 94715f27cdce54c748f405c727a0cf3b, type: 3}
+    volume: 0.4
+    pitch: 0.8
+    priority: 104
+    loop: 0
     source: {fileID: 0}

@@ -99,6 +99,7 @@ public class IceGolem : MonoBehaviour
     {
         if (Boulder1.GoBack == false && Boulder2.GoBack == false && Boulder3.GoBack == false)
         {
+            FindObjectOfType<AudioManager>().Play("IceGolemAttack");
             Boulder1.attack = true;
             Boulder2.attack = true;
             Boulder3.attack = true;

@@ -30743,6 +30743,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
         type: 3}
+      propertyPath: sounds.Array.size
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
       propertyPath: sounds.Array.data[16].volume
       value: 0.6
       objectReference: {fileID: 0}
@@ -30751,6 +30756,37 @@ PrefabInstance:
       propertyPath: sounds.Array.data[15].clip
       value: 
       objectReference: {fileID: 8300000, guid: 7dc0ed1da6dd940b9ba4cc8fabdb87d5, type: 3}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[30].name
+      value: IceGolemAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[30].audioOutputMixer
+      value: 
+      objectReference: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+        type: 2}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[30].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5614d501d01c44fd5a2a54d51f998408, type: 3}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[30].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[30].pitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[30].priority
+      value: 104
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89343ff5d801f460daefffbbfb195a86, type: 3}
 --- !u!1001 &3742358351140108415

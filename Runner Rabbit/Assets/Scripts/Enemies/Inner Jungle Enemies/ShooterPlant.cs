@@ -47,7 +47,7 @@ public class ShooterPlant : MonoBehaviour
         {
             anim.SetTrigger("Spawn");
             GetComponent<SpriteRenderer>().enabled = true;
-            FindObjectOfType<AudioManager>().Play("BookSpawn");
+            FindObjectOfType<AudioManager>().Play("Plant Spawn");
             spawned = true;
 
         }
@@ -93,6 +93,8 @@ public class ShooterPlant : MonoBehaviour
     {
         GameObject peashooter = GameObject.Instantiate(Resources.Load("Prefabs/Peashooter") as GameObject);
         peashooter.transform.position = transform.position;
+        FindObjectOfType<AudioManager>().Play("PlantShoot");
+
 
     }
     void Over()
