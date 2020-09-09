@@ -50,7 +50,7 @@ public class IceGolem : MonoBehaviour
         {
             anim.SetTrigger("Spawn");
             GetComponent<SpriteRenderer>().enabled = true;
-            FindObjectOfType<AudioManager>().Play("BookSpawn");
+            FindObjectOfType<AudioManager>().Play("IceGolemspawn");
             spawned = true;
 
         }
@@ -121,7 +121,7 @@ public class IceGolem : MonoBehaviour
 
     void Despawned()
     {
-        FindObjectOfType<AudioManager>().Play("BookDeSpawn");
+        FindObjectOfType<AudioManager>().Play("IceGolemdeath");
 
     }
 }
