@@ -13,17 +13,34 @@ public class IceGolemBoulder : MonoBehaviour
     public float Acceleration;
 
     public bool BreakBoulder;
+    public bool spawnboulder;
+
+    Animator anim;
 
     [SerializeField] private float lerpPct = 0f;
     // Start is called before the first frame update
     void Start()
     {
         transform.position = StartPos.position;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (spawnboulder == true)
+        {
+            anim.SetTrigger("Spawn");
+        }
+
+        if (BreakBoulder == true && attack == false)
+        {
+
+            StartCoroutine(breakBoulder());
+        }
+
+
         if (attack == true)
         {
             if (lerpPct < 1)
@@ -70,4 +87,12 @@ public class IceGolemBoulder : MonoBehaviour
 
       
     }
+     IEnumerator breakBoulder ()
+    {
+        anim.SetTrigger("Break");
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+
+    }
+  
 }

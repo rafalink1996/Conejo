@@ -49,6 +49,10 @@ public class IceGolem : MonoBehaviour
         if (spawnTime <= 0 && spawned == false)
         {
             anim.SetTrigger("Spawn");
+            Boulder1.spawnboulder = true;
+            Boulder2.spawnboulder = true;
+            Boulder3.spawnboulder = true;
+
             GetComponent<SpriteRenderer>().enabled = true;
             FindObjectOfType<AudioManager>().Play("IceGolemspawn");
             spawned = true;

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject SpawnerDown;
     public GameObject SpawnerMiddle;
     public GameObject Boss;
+    public GameObject ProgressBar;
 
    
 
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
             spawnerUp.SetActive(false);
             SpawnerDown.SetActive(false);
             SpawnerMiddle.SetActive(false);
+            ProgressBar.SetActive(false);
 
 
             Boss.SetActive(true);

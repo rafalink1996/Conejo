@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964f1cc41f90a451e80ccf0474862b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerDark: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   powerLight: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
+  powerDark: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   lightPowerName: 
   lightPowerSprite: {fileID: 21300000, guid: bdab295c7fc6740968be4ca772e6cad4, type: 3}
   lightpowerID: 0
@@ -54,15 +54,19 @@ MonoBehaviour:
   DarkpowerID: 0
   darkMana: 0
   coins: 0
-  crystals: 200
-  numOfHearts: 4
-  totalLightMana: 30
-  totalDarkMana: 30
+  crystals: 0
+  numOfHearts: 3
+  totalLightMana: 10
+  totalDarkMana: 10
   CoinTicket: 0
   PortalBoost: 0
   fenixFeather: 0
   LevelBought: 0
   leveBoughtID: 0
+  CarrotMissleLevel: 0
+  RadishMissleLevel: 0
+  EarDefenceLevel: 0
+  KickReflectLevel: 0
   UnlockedPowers:
   - {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907, type: 2}
   - {fileID: 11400000, guid: 9900566cfd48c4a819c81884e0f51405, type: 2}
