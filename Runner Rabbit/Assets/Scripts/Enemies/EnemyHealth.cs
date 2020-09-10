@@ -18,8 +18,7 @@ public class EnemyHealth : MonoBehaviour
         healthSlider = transform.Find("Canvas/Slider").GetComponent<Slider>();
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
-        
-        
+
     }
 
     // Update is called once per frame

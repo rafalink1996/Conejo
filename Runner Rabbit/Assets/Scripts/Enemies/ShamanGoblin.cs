@@ -13,6 +13,7 @@ public class ShamanGoblin : MonoBehaviour
     Animator anim;
     public EnemyHealth health;
     public int myHealth;
+    public Transform summonContainer;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class ShamanGoblin : MonoBehaviour
         spawnTime = Random.Range(0.5f, 2f);
         anim = GetComponent<Animator>();
         summonTime = 3f;
-        
+        summonContainer = transform.Find("SummonContainer");
     }
 
     // Update is called once per frame
@@ -31,8 +32,9 @@ public class ShamanGoblin : MonoBehaviour
         if (spawnTime <= 0)
         {
             //spawnTime = 30f;
-            if (!isPresent)
+            if (!isPresent && !enemiespresent)
             {
+                health.health = myHealth;
                 anim.SetTrigger("Spawn");
                 isPresent = true;
             }
@@ -50,7 +52,7 @@ public class ShamanGoblin : MonoBehaviour
             summonTime = Random.Range(2f, 4f);
            
         }
-           if (transform.childCount == 0)
+           if (summonContainer.childCount == 0)
         {
             enemiespresent = false;
         }
@@ -73,7 +75,7 @@ public class ShamanGoblin : MonoBehaviour
     {
         GameObject summon = Instantiate(Resources.Load("Prefabs/" + summonName[summonType]) as GameObject);
         summon.transform.position = transform.position + new Vector3 (0, 3, 0);
-        summon.transform.SetParent(transform);
+        summon.transform.SetParent(summonContainer);
         enemiespresent = true;
         health.TakeDamage(10);
     }
