@@ -48,8 +48,10 @@ public class LevelLoaderGame : MonoBehaviour
         if (GameStats.stats.PortalBoost == true)
         {
             levelcountdown = levelTime/2;
-            GameStats.stats.PortalBoost = false;
+            //GameStats.stats.PortalBoost = false;
         }
+
+        TimerSlider.maxValue = levelTime;
 
         
     }
@@ -57,6 +59,7 @@ public class LevelLoaderGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         levelcountdown += 1 * Time.deltaTime;
         TimerSlider.value = levelcountdown;
 
