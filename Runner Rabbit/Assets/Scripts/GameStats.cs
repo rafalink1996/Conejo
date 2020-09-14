@@ -131,6 +131,7 @@ public class GameStats : MonoBehaviour
 
         crystals = data.Crystals;
         leveBoughtID = data.level;
+        
 
         CarrotMissleLevel = data.CarrotMissleLevel;
         EarDefenceLevel = data.EarDefenceLevel;

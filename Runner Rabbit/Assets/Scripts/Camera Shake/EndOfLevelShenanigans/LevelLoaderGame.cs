@@ -29,6 +29,16 @@ public class LevelLoaderGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(GameStats.stats.LevelCount == 1)
+        {
+            levelTime = 50;
+
+        }
+
+        if (GameStats.stats.LevelCount > 1)
+        {
+            levelTime = 100;
+        }
         StartCoroutine(loadloader());
 
         if (GameStats.stats.PortalBoost == false)
@@ -37,9 +47,11 @@ public class LevelLoaderGame : MonoBehaviour
         }
         if (GameStats.stats.PortalBoost == true)
         {
-            levelcountdown = 50;
+            levelcountdown = levelTime/2;
             GameStats.stats.PortalBoost = false;
         }
+
+        
     }
 
     // Update is called once per frame

@@ -15,6 +15,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
     private void Start()
     {
         GameStats.stats.SaveStats();
+        
 
     }
 
@@ -24,6 +25,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
         if (GameStats.stats.LevelBought == true)
         {
             StartCoroutine(loadAsync(GameStats.stats.leveBoughtID));
+            GameStats.stats.LevelIndicator = GameStats.stats.leveBoughtID;
         }
         else
         {
