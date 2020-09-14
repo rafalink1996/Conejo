@@ -13,7 +13,7 @@ public class WyrmFireBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sourceTransform = GameObject.Find("Book Wyrm").transform;
+        //sourceTransform = GameObject.Find("Book Wyrm").transform;
         target = GameObject.FindWithTag("Player").transform;
         //transform.LookAt(target, Vector3.up);
         Vector3 dir = target.position - transform.position;
