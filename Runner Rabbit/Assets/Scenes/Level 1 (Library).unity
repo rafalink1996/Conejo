@@ -487,7 +487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &51099159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2495,7 +2495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &304781104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32434,6 +32434,8 @@ GameObject:
   - component: {fileID: 2039145326}
   - component: {fileID: 2039145328}
   - component: {fileID: 2039145329}
+  - component: {fileID: 2039145331}
+  - component: {fileID: 2039145330}
   m_Layer: 0
   m_Name: WyrmIceShield
   m_TagString: Untagged
@@ -32633,6 +32635,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a9cf3a5540348ba9cfc3557ab007af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2039145330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039145324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b8212ec26dd457e99785713b666e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &2039145331
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039145324}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.54767156, y: 0.08763409}
+  m_Size: {x: 1.0169024, y: 8.333965}
+  m_Direction: 0
 --- !u!1 &2045639230
 GameObject:
   m_ObjectHideFlags: 0
@@ -33350,7 +33380,7 @@ PrefabInstance:
         type: 3}
       propertyPath: powerLight
       value: 
-      objectReference: {fileID: 11400000, guid: 9728db631a7cf4e5fb69010309dc4d94,
+      objectReference: {fileID: 11400000, guid: 985118124a7664d0897e1fc20a1d2a01,
         type: 2}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}

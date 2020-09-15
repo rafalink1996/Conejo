@@ -41,6 +41,9 @@ public class GameStats : MonoBehaviour
     public int EarDefenceLevel;
     public int KickReflectLevel;
 
+
+    public int LevelReached;
+
     public List<Power> UnlockedPowers = new List<Power>();
 
 
@@ -95,6 +98,40 @@ public class GameStats : MonoBehaviour
 
     private void Update()
     {
+        // detect mas level reached for level bought store
+
+        if (LevelIndicator == 2 && LevelReached <= 1)
+        {
+
+            LevelReached = 1;
+        }
+
+        if (LevelIndicator == 3 && LevelReached <= 2)
+        {
+
+            LevelReached = 2;
+        }
+
+        if (LevelIndicator == 4 && LevelReached <= 3)
+        {
+
+            LevelReached = 3;
+        }
+
+        if (LevelIndicator == 5 && LevelReached <= 4)
+        {
+
+            LevelReached = 4;
+        }
+        if (LevelIndicator == 6 && LevelReached <= 5)
+        {
+
+            LevelReached = 5;
+        }
+
+
+
+
         if (LevelCount == 4)
         {
             LevelIndicator += 1;
