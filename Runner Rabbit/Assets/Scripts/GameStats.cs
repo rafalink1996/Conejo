@@ -54,7 +54,10 @@ public class GameStats : MonoBehaviour
 
     public int LevelCount;
     public int LevelIndicator;
-  
+
+    //skins
+    public int topSkinID;
+    public int botSkinID;
     // Start is called before the first frame update
     void Awake()
     {

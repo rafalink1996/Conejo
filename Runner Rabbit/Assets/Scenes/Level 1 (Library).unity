@@ -16575,8 +16575,6 @@ MonoBehaviour:
   DeathScreen: {fileID: 447763767}
   outOfportalSpeed: 10
   pausestart: {fileID: 672799253}
-  activeskin: 1
-  nextskin: 3
 --- !u!58 &992125960
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16667,8 +16665,8 @@ MonoBehaviour:
   - {fileID: 22100000, guid: 75732048098754289ad9da11d21d0a5f, type: 2}
   - {fileID: 22100000, guid: e924d900b05a0463ca1e2f990c293019, type: 2}
   character: {fileID: 992125959}
-  TopHatSkinIDTop: 1
-  TopHatSkinIDBot: 0
+  SkinIDTop: 0
+  SkinIDBot: 0
 --- !u!1 &1005817911
 GameObject:
   m_ObjectHideFlags: 0
@@ -33433,6 +33431,11 @@ PrefabInstance:
         type: 3}
       propertyPath: LevelIndicator
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: topSkinID
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}

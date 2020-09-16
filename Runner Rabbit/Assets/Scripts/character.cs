@@ -100,14 +100,6 @@ public class character : MonoBehaviour
 
 
 
-    //skins temp
-    public int activeskin = 1;
-    public int nextskin = 2;
-
-
-
-
-
 
 
 
@@ -260,12 +252,7 @@ public class character : MonoBehaviour
         GameStats.stats.coins = coins;//updates stored coin value;
         GameStats.stats.crystals = crystal;//updates stored crystal value;
 
-        if (Input.GetKeyDown(KeyCode.M))//change skin. testing
-        {
-            animator.SetLayerWeight(activeskin, 0);
-            activeskin = 0;
-            animator.SetLayerWeight(activeskin, 1);
-        }
+      
     }
 
   

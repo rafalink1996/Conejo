@@ -9,19 +9,22 @@ public class SkinSystem : MonoBehaviour
 
 
 
-    public int TopHatSkinIDTop;
-    public int TopHatSkinIDBot;
+    public int SkinIDTop;
+    public int SkinIDBot;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        character = FindObjectOfType<character>();
+        SkinIDTop = GameStats.stats.topSkinID;
+        SkinIDBot = GameStats.stats.botSkinID;
      if (character.top)
         {
-            GetComponent<Animator>().runtimeAnimatorController = Skins[TopHatSkinIDTop] as RuntimeAnimatorController;
+            GetComponent<Animator>().runtimeAnimatorController = Skins[SkinIDTop] as RuntimeAnimatorController;
         } else
         {
-            GetComponent<Animator>().runtimeAnimatorController = Skins[TopHatSkinIDBot] as RuntimeAnimatorController;
+            GetComponent<Animator>().runtimeAnimatorController = Skins[SkinIDBot] as RuntimeAnimatorController;
         }
             
 
@@ -31,13 +34,13 @@ public class SkinSystem : MonoBehaviour
     void Update()
     {
 
-        if (character.top)
+        if (!character.top)
         {
-            GetComponent<Animator>().runtimeAnimatorController = Skins[TopHatSkinIDTop] as RuntimeAnimatorController;
+            GetComponent<Animator>().runtimeAnimatorController = Skins[SkinIDTop] as RuntimeAnimatorController;
         }
         else
         {
-            GetComponent<Animator>().runtimeAnimatorController = Skins[TopHatSkinIDBot] as RuntimeAnimatorController;
+            GetComponent<Animator>().runtimeAnimatorController = Skins[SkinIDBot] as RuntimeAnimatorController;
         }
 
     }
