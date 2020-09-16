@@ -16392,6 +16392,7 @@ GameObject:
   - component: {fileID: 992125963}
   - component: {fileID: 992125964}
   - component: {fileID: 992125962}
+  - component: {fileID: 992125965}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -16574,6 +16575,8 @@ MonoBehaviour:
   DeathScreen: {fileID: 447763767}
   outOfportalSpeed: 10
   pausestart: {fileID: 672799253}
+  activeskin: 1
+  nextskin: 3
 --- !u!58 &992125960
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16648,6 +16651,24 @@ MonoBehaviour:
   Acceleration: 1.4
   speed: 0.5
   animator: {fileID: 992125955}
+--- !u!114 &992125965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992125953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993a1cadceaef4922a82c7e939d34bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skins:
+  - {fileID: 22100000, guid: 75732048098754289ad9da11d21d0a5f, type: 2}
+  - {fileID: 22100000, guid: e924d900b05a0463ca1e2f990c293019, type: 2}
+  character: {fileID: 992125959}
+  TopHatSkinIDTop: 1
+  TopHatSkinIDBot: 0
 --- !u!1 &1005817911
 GameObject:
   m_ObjectHideFlags: 0
