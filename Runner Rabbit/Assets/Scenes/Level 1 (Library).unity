@@ -16664,9 +16664,11 @@ MonoBehaviour:
   Skins:
   - {fileID: 22100000, guid: 75732048098754289ad9da11d21d0a5f, type: 2}
   - {fileID: 22100000, guid: e924d900b05a0463ca1e2f990c293019, type: 2}
+  - {fileID: 22100000, guid: 139d1acc21a724a00a9cf6ccd8fc9bff, type: 2}
+  - {fileID: 22100000, guid: 243a0fa450bd94597a2395f301660c50, type: 2}
   character: {fileID: 992125959}
   SkinIDTop: 0
-  SkinIDBot: 0
+  SkinIDBot: 3
 --- !u!1 &1005817911
 GameObject:
   m_ObjectHideFlags: 0
@@ -33435,7 +33437,12 @@ PrefabInstance:
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: topSkinID
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: botSkinID
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
