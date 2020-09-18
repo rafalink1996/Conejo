@@ -144,13 +144,14 @@ public class BossWyrm : MonoBehaviour
             health.health -= 2;
             
             fireBall.transform.position = transform.position + new Vector3(-5.755793f, -0.2495456f, 0);
-            fireBall.GetComponent<WyrmFireBall>().sourceTransform = this.transform;
+            fireBall.GetComponentInChildren<WyrmFireBall>().sourceTransform = this.transform;
 
         }
         if (element == 3)
         {
             GameObject thunderBall = Instantiate(Resources.Load("Prefabs/WyrmThunderBall") as GameObject);
             thunderBall.transform.position = transform.position + new Vector3(-5.755793f, -0.2495456f, 0);
+            thunderBall.GetComponentInChildren<WyrmThunderBall>().sourceTransform = this.transform;
             health.health -= 2;
         }
     }

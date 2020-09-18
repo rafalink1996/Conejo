@@ -14,7 +14,7 @@ public class WyrmThunderBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sourceTransform = GameObject.Find("Book Wyrm").transform;
+        //sourceTransform = GameObject.Find("Book Wyrm").transform;
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>();
