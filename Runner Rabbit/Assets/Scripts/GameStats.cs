@@ -6,7 +6,7 @@ public class GameStats : MonoBehaviour
 {
     public Power powerLight;
     public Power powerDark;
-    
+
 
     public static GameStats stats;
     public string lightPowerName;
@@ -16,7 +16,7 @@ public class GameStats : MonoBehaviour
     public string darkPowerName;
     public Sprite darkPowerSprite;
     public int DarkpowerID;
-    public float darkMana; 
+    public float darkMana;
     public float coins;
     public float crystals;
     public int numOfHearts;
@@ -58,6 +58,19 @@ public class GameStats : MonoBehaviour
     //skins
     public int topSkinID;
     public int botSkinID;
+
+    public bool[] SkinConditions;
+    /*
+     0. tophat
+     1. Astral Traveler
+     2. Slime
+    */
+
+
+
+
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -171,6 +184,10 @@ public class GameStats : MonoBehaviour
 
         crystals = data.Crystals;
         leveBoughtID = data.level;
+
+        LevelReached = data.levelReached;
+        botSkinID = data.BotSkin;
+        topSkinID = data.TopSkin;
         
 
         CarrotMissleLevel = data.CarrotMissleLevel;

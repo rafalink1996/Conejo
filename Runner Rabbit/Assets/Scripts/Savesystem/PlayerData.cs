@@ -18,6 +18,11 @@ public class PlayerData
     public int RadishMissleLevel;
     public int KickReflectLevel;
 
+    public int levelReached;
+
+    public int BotSkin;
+    public int TopSkin;
+
     
 
     
@@ -29,6 +34,13 @@ public class PlayerData
         PortalBoostBought = gamestats.PortalBoost;
         CoinTicketBought = gamestats.CoinTicket;
         level = gamestats.leveBoughtID;
+
+        levelReached = gamestats.LevelReached;
+
+        BotSkin = gamestats.botSkinID;
+        TopSkin = gamestats.topSkinID;
+
+
 
 
         CarrotMissleLevel = gamestats.CarrotMissleLevel;
