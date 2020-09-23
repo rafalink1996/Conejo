@@ -7,6 +7,7 @@ public class Lightpower : MonoBehaviour
 {
     private character Cha;
     Button button;
+    
 
 
     // Start is called before the first frame update

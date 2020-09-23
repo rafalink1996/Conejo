@@ -4133,7 +4133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &590216889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8806,14 +8806,14 @@ MonoBehaviour:
   CoinCounter: {fileID: 1174373987}
   heartCostText: {fileID: 56537116}
   LightpowerObject:
+  - {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   - {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907, type: 2}
   - {fileID: 11400000, guid: 9900566cfd48c4a819c81884e0f51405, type: 2}
   - {fileID: 11400000, guid: 00ed85c9e9d684421bba7cea8d9aa2bd, type: 2}
-  - {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   DarkpowerObject:
+  - {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   - {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907, type: 2}
   - {fileID: 11400000, guid: 9900566cfd48c4a819c81884e0f51405, type: 2}
-  - {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   - {fileID: 11400000, guid: 00ed85c9e9d684421bba7cea8d9aa2bd, type: 2}
   shopcontainer: {fileID: 773807220}
   ShopItemPrefab: {fileID: 5428406457029395246, guid: cf7acbc9fef1d44f694b886553333e16,
@@ -8938,7 +8938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6392157}
   m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10833,6 +10833,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameStats
       objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: UnlockedPowers.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907,
+        type: 2}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: UnlockedPowers.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020,
+        type: 2}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: UnlockedPowers.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9900566cfd48c4a819c81884e0f51405,
+        type: 2}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: UnlockedPowers.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 00ed85c9e9d684421bba7cea8d9aa2bd,
+        type: 2}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -18,6 +18,10 @@ public class Power : ScriptableObject
     public bool Piercing;
     public bool HealthAbsorb;
     public bool DoubleCast;
+
+    public Sprite RarityDisplay;
+    public int Rarity;
+    public Color rarityColor;
     
 
 

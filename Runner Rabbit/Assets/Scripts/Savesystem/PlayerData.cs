@@ -23,6 +23,17 @@ public class PlayerData
     public int BotSkin;
     public int TopSkin;
 
+
+
+
+    public bool[] skinConditions = new[]
+    {
+        false,
+        false,
+        false
+    };
+    
+
     
 
     
@@ -39,6 +50,19 @@ public class PlayerData
 
         BotSkin = gamestats.botSkinID;
         TopSkin = gamestats.topSkinID;
+
+
+
+
+        
+        skinConditions[0] = gamestats.skinConditions[0];
+        skinConditions[1] = gamestats.skinConditions[1];
+        skinConditions[2] = gamestats.skinConditions[2];
+
+
+
+
+
 
 
 

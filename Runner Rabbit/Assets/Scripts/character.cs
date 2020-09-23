@@ -98,6 +98,8 @@ public class character : MonoBehaviour
     public PauseStart pausestart;
 
 
+   
+
 
 
 
@@ -252,6 +254,20 @@ public class character : MonoBehaviour
         GameStats.stats.coins = coins;//updates stored coin value;
         GameStats.stats.crystals = crystal;//updates stored crystal value;
 
+
+        // rarity of power;
+
+      
+        if (!top)
+            {
+               // powerRarity.color = GameStats.stats.powerDark.rarityColor;
+            }
+        else
+        {
+            //powerRarity.color = GameStats.stats.powerLight.rarityColor;
+        }
+        
+          
       
     }
 

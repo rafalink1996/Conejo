@@ -26,12 +26,34 @@ public class SkinMenuStore : MonoBehaviour
 
     public GameObject buybutton;
 
+    public GameStats GS;
+
+    
+
+
+    // skin IDs
+    /* 
+    0 - Default.
+    1 - Tophat.
+    2 - Dragonfire.
+    3 - Bone.
+    4 - Ice Golem.
+    5 - Plant.
+    6 - Clockwork.
+    7 - Astral traveler.
+    8 - Slime
+
+    */
+
+
 
 
     
     // Start is called before the first frame update
     void Start()
     {
+        GS = FindObjectOfType<GameStats>();
+        
         selectdisplayimage.sprite = SkinIcons[SelectedSkinID];
 
         SkinTopPreview.sprite = SkinIcons[GameStats.stats.topSkinID];
@@ -115,7 +137,7 @@ public class SkinMenuStore : MonoBehaviour
             buybutton.SetActive(false);
         }
 
-        else if (SelectedSkinID == 1 && GameStats.stats.SkinConditions[0] == true)
+        else if (SelectedSkinID == 1 && GameStats.stats.skinConditions[0] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
@@ -124,7 +146,7 @@ public class SkinMenuStore : MonoBehaviour
             buybutton.SetActive(false);
         }
 
-        else if (SelectedSkinID == 2 && GameStats.stats.SkinConditions[1] == true)
+        else if (SelectedSkinID == 7 && GameStats.stats.skinConditions[1] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
@@ -132,7 +154,7 @@ public class SkinMenuStore : MonoBehaviour
             UnlockDescription.text = "select skin position";
             buybutton.SetActive(false);
         }
-        else if (SelectedSkinID == 3 && GameStats.stats.SkinConditions[2] == true)
+        else if (SelectedSkinID == 8 && GameStats.stats.skinConditions[2] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
@@ -210,6 +232,32 @@ public class SkinMenuStore : MonoBehaviour
     {
         GameStats.stats.botSkinID = SelectedSkinID;
 
+    }
+
+    public void BuySkin()
+    {
+        if (SelectedSkinID == 1)
+        {
+            if (GameStats.stats.crystals >= 50)
+            {
+                GameStats.stats.crystals -= 50;
+                GameStats.stats.skinConditions[0] = true;
+                buybutton.SetActive(false);
+                buttonBot.SetActive(true);
+                buttonTop.SetActive(true);
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+        }
+
+        if (SelectedSkinID == 7)
+        {
+            // go to buy pack. Cuado pongamos lo de IN-APP purchases.
+        }
+        if (SelectedSkinID == 8)
+        {
+            // go to buy pack. Cuado pongamos lo de IN-APP purchases.
+        }
     }
 
 

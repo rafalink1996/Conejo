@@ -59,12 +59,20 @@ public class GameStats : MonoBehaviour
     public int topSkinID;
     public int botSkinID;
 
-    public bool[] SkinConditions;
-    /*
-     0. tophat
-     1. Astral Traveler
-     2. Slime
-    */
+    
+
+    public bool[] skinConditions = new [ ]
+    {
+        false,// 0. tophat
+        false,// 1. Astral Traveler
+        false // 2. Slime
+
+    };
+    
+     
+     
+     
+    
 
 
 
@@ -188,7 +196,11 @@ public class GameStats : MonoBehaviour
         LevelReached = data.levelReached;
         botSkinID = data.BotSkin;
         topSkinID = data.TopSkin;
-        
+
+        skinConditions[0] = data.skinConditions[0];
+        skinConditions[1] = data.skinConditions[1];
+        skinConditions[2] = data.skinConditions[2];
+
 
         CarrotMissleLevel = data.CarrotMissleLevel;
         EarDefenceLevel = data.EarDefenceLevel;

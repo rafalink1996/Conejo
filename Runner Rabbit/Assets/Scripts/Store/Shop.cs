@@ -50,7 +50,8 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
-
+        LightpowerObject = GameStats.stats.UnlockedPowers;
+        DarkpowerObject = GameStats.stats.UnlockedPowers;
 
         coins = GameStats.stats.coins;
         CoinCounter.text = coins.ToString();
@@ -84,7 +85,7 @@ public class Shop : MonoBehaviour
 
             Power Po = LightpowerObject[i];
             GameObject powerobject = Instantiate(ShopItemPrefab, shopcontainer);
-            GameObject childSoldout = powerobject.transform.GetChild(3).gameObject;
+            GameObject childSoldout = powerobject.transform.GetChild(4).gameObject;
             Button PowerButton = powerobject.GetComponent<Button>();
 
 
@@ -102,8 +103,9 @@ public class Shop : MonoBehaviour
             
 
 
-            powerobject.transform.GetChild(1).GetComponent<Image>().sprite = Po.iconLight;
-            powerobject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = Po.Cost.ToString();
+            powerobject.transform.GetChild(2).GetComponent<Image>().sprite = Po.iconLight;
+            powerobject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = Po.Cost.ToString();
+            powerobject.transform.GetChild(0).GetComponent<Image>().color = Po.rarityColor;
             
            
 
@@ -119,8 +121,9 @@ public class Shop : MonoBehaviour
 
             Power Po = DarkpowerObject[i];
             GameObject powerobject = Instantiate(ShopItemPrefab, shopcontainer);
-            GameObject childSoldout = powerobject.transform.GetChild(3).gameObject;
+            GameObject childSoldout = powerobject.transform.GetChild(4).gameObject;
             Button PowerButton = powerobject.GetComponent<Button>();
+
 
 
 
@@ -133,9 +136,10 @@ public class Shop : MonoBehaviour
             powerobject.GetComponent<Button>().onClick.AddListener(() => OnButtonClickDark(Po, childSoldout, PowerButton));
 
 
-            powerobject.transform.GetChild(1).GetComponent<Image>().sprite = Po.iconDark;
-            powerobject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = Po.Cost.ToString();
-           
+            powerobject.transform.GetChild(2).GetComponent<Image>().sprite = Po.iconDark;
+            powerobject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = Po.Cost.ToString();
+            powerobject.transform.GetChild(0).GetComponent<Image>().color = Po.rarityColor;
+
 
 
         }
