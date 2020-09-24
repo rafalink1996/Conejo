@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class BasicEnemyProyectile : MonoBehaviour
 {
     public float speed = 20f;
     bool reflected;

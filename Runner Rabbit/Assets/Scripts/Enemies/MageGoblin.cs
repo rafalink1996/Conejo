@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MageGoblin : MonoBehaviour
 {
+    public EnemyHealth health;
+    public int myHealth;
     float attackTime;
     float invokeTime;
     bool attack;
@@ -14,10 +16,12 @@ public class MageGoblin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = GetComponent<EnemyHealth>();
+        health.maxHealth = myHealth;
         anim = GetComponent<Animator>();
         attackTime = Random.Range(3f, 4f);
         invokeTime = Random.Range(8f, 15f);
-
+        
     }
 
     // Update is called once per frame
@@ -46,12 +50,16 @@ public class MageGoblin : MonoBehaviour
                 attack = true;
             }
         }
+        if (health.health <= 0)
+        {
+            anim.SetTrigger("Die");
+        }
     }
     void Attack()
     {
         GameObject fireball = Instantiate(Resources.Load("Prefabs/WyrmFireBall") as GameObject);
         fireball.GetComponentInChildren<WyrmFireBall>().sourceTransform = gameObject.transform;
-        fireball.transform.position = transform.position + new Vector3(-5.5f, -0.1f, 0);
+        fireball.transform.position = transform.position + new Vector3(-5.02f, -0.19f, 0);
         attackTime = Random.Range(3f, 5f);
         attack = false;
     }

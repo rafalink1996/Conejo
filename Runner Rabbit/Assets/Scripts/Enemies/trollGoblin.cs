@@ -7,9 +7,13 @@ public class trollGoblin : MonoBehaviour
     public float attackTime;
     bool attack;
     Animator anim;
+    public EnemyHealth health;
+    public int myHealth = 100;
     // Start is called before the first frame update
     void Start()
     {
+        health = GetComponent<EnemyHealth>();
+        health.maxHealth = myHealth;
         attackTime = Random.Range(1.3f, 4f);
         anim = GetComponent<Animator>();
     }
@@ -27,11 +31,21 @@ public class trollGoblin : MonoBehaviour
             anim.SetTrigger("Attack");
             attack = true;
         }
+        if (health.health <= 0)
+        {
+            anim.SetTrigger("Die");
+        }
     }
     void Attack()
     {
-        //instantiate thingy
+        GameObject proyectile = Instantiate(Resources.Load("Prefabs/TrollProyectile") as GameObject);
+        proyectile.transform.position = transform.position + new Vector3(-3.359951f, 1.431809f, 0);
         attackTime = Random.Range(1.3f, 4f);
         attack = false;
+        health.TakeDamage(10);
+    }
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }
