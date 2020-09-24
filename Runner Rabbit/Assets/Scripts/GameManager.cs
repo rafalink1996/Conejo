@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool GameIsPaused = false;
 
     public GameObject spawnerUp;
     public GameObject SpawnerDown;
@@ -18,12 +19,18 @@ public class GameManager : MonoBehaviour
     public Color darkcolor;
     public Color lightColor;
 
+    
+    public Button ThePauseButton;
+
+   
+
 
 
 
 
    private void Start()
     {
+        ThePauseButton.interactable = false;
         cha = FindObjectOfType<character>();
         darkcolor = GameStats.stats.powerDark.rarityColor;
         lightColor = GameStats.stats.powerLight.rarityColor;
@@ -36,6 +43,8 @@ public class GameManager : MonoBehaviour
         {
             PowerRarity.color = lightColor;
         }
+
+        StartCoroutine(WaitForInteractable());
     }
 
     // Update is called once per frame
@@ -66,6 +75,27 @@ public class GameManager : MonoBehaviour
 
         
     }
+
+    public void PauseButton()
+    {
+        Time.timeScale = 0;
+        GameIsPaused = true;
+    }
+    public void ResumeButton()
+    {
+        Time.timeScale = 1;
+        GameIsPaused = false;
+    }
+
+    IEnumerator WaitForInteractable()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        ThePauseButton.interactable = true;
+        
+
+
+    }
+        
 
    
 }

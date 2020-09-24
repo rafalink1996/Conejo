@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour
 {
-    public Image LibraryLock;
-    public Image DungeonLock;
-    public Image FrozenRoomLock;
-    public Image JungleLock;
-    public Image PortalRoomLock;
+    public GameObject LibraryLock;
+    public GameObject DungeonLock;
+    public GameObject FrozenRoomLock;
+    public GameObject JungleLock;
+    public GameObject PortalRoomLock;
 
     public Animator notEnoughCrystals;
 
@@ -19,42 +19,42 @@ public class LevelSelect : MonoBehaviour
     {
         if (GameStats.stats.LevelReached >= 1)
         {
-            LibraryLock.enabled = false;
+            LibraryLock.SetActive(false);
         }
         else
         {
-            LibraryLock.enabled = true;
+            LibraryLock.SetActive(true);
         }
 
         if (GameStats.stats.LevelReached >= 2)
         {
-            DungeonLock.enabled = false;
+            DungeonLock.SetActive(false);
         }
         else
         {
-            DungeonLock.enabled = true;
+            DungeonLock.SetActive(true);
         }
         if (GameStats.stats.LevelReached >= 3)
         {
-            FrozenRoomLock.enabled = false;
+            FrozenRoomLock.SetActive(false);
         } else
         {
-            FrozenRoomLock.enabled = true;
+            FrozenRoomLock.SetActive(true);
         }
         if (GameStats.stats.LevelReached >= 4)
         {
-            JungleLock.enabled = false;
+            JungleLock.SetActive(false);
         }
         else
         {
-            JungleLock.enabled = true;
+            JungleLock.SetActive(true);
         }
         if (GameStats.stats.LevelReached >= 5)
         {
-            PortalRoomLock.enabled = false;
+            PortalRoomLock.SetActive(false);
         }else
         {
-            PortalRoomLock.enabled = true;
+            PortalRoomLock.SetActive(true);
         }
     }
 

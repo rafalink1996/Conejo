@@ -348,12 +348,12 @@ GameObject:
   - component: {fileID: 59947449}
   - component: {fileID: 59947448}
   m_Layer: 5
-  m_Name: Locked
+  m_Name: Locked dungeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &59947447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5907,8 +5907,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 222.81, y: -121.56}
-  m_SizeDelta: {x: 104.98563, y: 40.557343}
+  m_AnchoredPosition: {x: 237.07, y: -119.35}
+  m_SizeDelta: {x: 133.503, y: 36.130585}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &101200424
 MonoBehaviour:
@@ -5959,7 +5959,7 @@ GameObject:
   - component: {fileID: 114722704}
   - component: {fileID: 114722703}
   m_Layer: 5
-  m_Name: Locked
+  m_Name: Locked portal room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7083,7 +7083,7 @@ RectTransform:
   m_Children:
   - {fileID: 100164745}
   m_Father: {fileID: 258772271}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7714,12 +7714,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 545160102}
-  - {fileID: 1365835565}
   - {fileID: 1342995405}
   - {fileID: 677035820}
   - {fileID: 176590592}
   - {fileID: 328706461}
   - {fileID: 1100725775}
+  - {fileID: 1365835565}
   m_Father: {fileID: 479342924}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8054,7 +8054,7 @@ GameObject:
   - component: {fileID: 279146646}
   - component: {fileID: 279146645}
   m_Layer: 5
-  m_Name: Locked
+  m_Name: Locked library
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8534,7 +8534,7 @@ PrefabInstance:
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: LevelReached
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
@@ -8938,7 +8938,7 @@ RectTransform:
   m_Children:
   - {fileID: 1521123454}
   m_Father: {fileID: 258772271}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14774,8 +14774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 230.96, y: -119.7}
-  m_SizeDelta: {x: 104.08435, y: 39.916748}
+  m_AnchoredPosition: {x: 239.8, y: -118.58}
+  m_SizeDelta: {x: 121.66553, y: 37.670303}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &398417238
 MonoBehaviour:
@@ -15673,10 +15673,6 @@ MonoBehaviour:
   EarShieldCrystalCost: 0
   RadishtMissleCrystalCost: 0
   KickReflectCrystalCost: 0
-  CarrotMissleTierID: 1
-  EarShieldTierID: 1
-  RadishMissleTierID: 1
-  KickReflectTierID: 1
   CarrotMissleTierUI:
   - {fileID: 1130989453}
   - {fileID: 468820498}
@@ -15728,11 +15724,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb36550b3ae424024a0555be792264de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LibraryLock: {fileID: 279146645}
-  DungeonLock: {fileID: 59947448}
-  FrozenRoomLock: {fileID: 1929352806}
-  JungleLock: {fileID: 1955976468}
-  PortalRoomLock: {fileID: 114722703}
+  LibraryLock: {fileID: 279146643}
+  DungeonLock: {fileID: 59947446}
+  FrozenRoomLock: {fileID: 1929352804}
+  JungleLock: {fileID: 1955976466}
+  PortalRoomLock: {fileID: 114722701}
   notEnoughCrystals: {fileID: 176590593}
 --- !u!1 &488922435
 GameObject:
@@ -17661,8 +17657,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 221.7, y: -119.17}
-  m_SizeDelta: {x: 98.29578, y: 36.483215}
+  m_AnchoredPosition: {x: 234.9, y: -119.17}
+  m_SizeDelta: {x: 124.78848, y: 36.483536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &582432146
 MonoBehaviour:
@@ -18891,7 +18887,7 @@ RectTransform:
   - {fileID: 1570467866}
   - {fileID: 795635979}
   m_Father: {fileID: 258772271}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -30205,7 +30201,7 @@ RectTransform:
   - {fileID: 284814130}
   - {fileID: 1937570189}
   m_Father: {fileID: 258772271}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -33297,7 +33293,7 @@ RectTransform:
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 258772271}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -33941,7 +33937,7 @@ RectTransform:
   m_Children:
   - {fileID: 1454960756}
   m_Father: {fileID: 258772271}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -37580,8 +37576,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57.98, y: -41.8}
-  m_SizeDelta: {x: 100.23746, y: 40.950256}
+  m_AnchoredPosition: {x: 73.7, y: -39.368}
+  m_SizeDelta: {x: 131.63222, y: 36.08702}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675475322
 MonoBehaviour:
@@ -40179,7 +40175,7 @@ GameObject:
   - component: {fileID: 1929352807}
   - component: {fileID: 1929352806}
   m_Layer: 5
-  m_Name: Locked
+  m_Name: Locked frozen room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40598,7 +40594,7 @@ GameObject:
   - component: {fileID: 1955976469}
   - component: {fileID: 1955976468}
   m_Layer: 5
-  m_Name: Locked
+  m_Name: Locked jungle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

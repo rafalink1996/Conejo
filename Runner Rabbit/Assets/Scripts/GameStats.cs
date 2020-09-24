@@ -177,6 +177,12 @@ public class GameStats : MonoBehaviour
 
     }
 
+
+    public void addSavedPowers()
+    {
+
+    }
+
     public void SaveStats()
     {
         SaveSystem.SavePlayer(this);

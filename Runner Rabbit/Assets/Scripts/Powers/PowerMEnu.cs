@@ -47,10 +47,10 @@ public class PowerMEnu : MonoBehaviour
     public float RadishtMissleCrystalCost;
     public float KickReflectCrystalCost;
 
-    public int CarrotMissleTierID;
-    public int EarShieldTierID;
-    public int RadishMissleTierID;
-    public int KickReflectTierID;
+    //public int CarrotMissleTierID;
+    //public int EarShieldTierID;
+   // public int RadishMissleTierID;
+   // public int KickReflectTierID;
 
     public GameObject[] CarrotMissleTierUI;
     public GameObject[] EarShieldTierUI;
@@ -74,6 +74,14 @@ public class PowerMEnu : MonoBehaviour
         PortalBoost.text = PortalBoostCost.ToString();
         CoinTicket.text = CoinTicketCost.ToString();
 
+        /*
+        CarrotMissleTierID = GameStats.stats.CarrotMissleLevel;
+        EarShieldTierID = GameStats.stats.EarDefenceLevel;
+        KickReflectTierID = GameStats.stats.KickReflectLevel;
+        RadishMissleTierID = GameStats.stats.RadishMissleLevel;
+        */
+
+        #region saved powers
         // Saved data loder
         // Save Data Carrot Missle
         if (GameStats.stats.CarrotMissleLevel == 2)
@@ -142,6 +150,108 @@ public class PowerMEnu : MonoBehaviour
             GameStats.stats.UnlockedPowers.Add(KickReflectTiers[2]);
             GameStats.stats.UnlockedPowers.Add(KickReflectTiers[3]);
         }
+        #endregion
+
+        #region SetPowerUI
+        // set power upgrade tier in UI
+        //CarrotMissle UI
+        if (GameStats.stats.CarrotMissleLevel == 1)
+        {
+            CarrotMissleTierUI[0].SetActive(true);
+        }
+        else if (GameStats.stats.CarrotMissleLevel <= 2)
+        {
+            CarrotMissleTierUI[0].SetActive(true);
+            CarrotMissleTierUI[1].SetActive(true);
+        }
+        else if (GameStats.stats.CarrotMissleLevel <= 3)
+        {
+            CarrotMissleTierUI[0].SetActive(true);
+            CarrotMissleTierUI[1].SetActive(true);
+            CarrotMissleTierUI[2].SetActive(true);
+        }
+        else if (GameStats.stats.CarrotMissleLevel <= 4)
+        {
+            CarrotMissleTierUI[0].SetActive(true);
+            CarrotMissleTierUI[1].SetActive(true);
+            CarrotMissleTierUI[2].SetActive(true);
+            CarrotMissleTierUI[3].SetActive(true);
+        }
+        //EarShieldUI
+
+        if (GameStats.stats.EarDefenceLevel <= 1)
+        {
+            EarShieldTierUI[0].SetActive(true);
+        }
+        else if (GameStats.stats.EarDefenceLevel <= 2)
+        {
+            EarShieldTierUI[0].SetActive(true);
+            EarShieldTierUI[1].SetActive(true);
+        }
+        else if (GameStats.stats.EarDefenceLevel <= 3)
+        {
+            EarShieldTierUI[0].SetActive(true);
+            EarShieldTierUI[1].SetActive(true);
+            EarShieldTierUI[2].SetActive(true);
+        }
+        else if (GameStats.stats.EarDefenceLevel <= 4)
+        {
+            EarShieldTierUI[0].SetActive(true);
+            EarShieldTierUI[1].SetActive(true);
+            EarShieldTierUI[2].SetActive(true);
+            EarShieldTierUI[3].SetActive(true);
+        }
+
+        // RadishMissle UI
+
+        if (GameStats.stats.RadishMissleLevel == 1)
+        {
+            RadishMissleTierUI[0].SetActive(true);
+        }
+        else if (GameStats.stats.RadishMissleLevel <= 2)
+        {
+            RadishMissleTierUI[0].SetActive(true);
+            RadishMissleTierUI[1].SetActive(true);
+        }
+        else if (GameStats.stats.RadishMissleLevel <= 3)
+        {
+            RadishMissleTierUI[0].SetActive(true);
+            RadishMissleTierUI[1].SetActive(true);
+            RadishMissleTierUI[2].SetActive(true);
+        }
+        else if (GameStats.stats.RadishMissleLevel <= 4)
+        {
+            RadishMissleTierUI[0].SetActive(true);
+            RadishMissleTierUI[1].SetActive(true);
+            RadishMissleTierUI[2].SetActive(true);
+            RadishMissleTierUI[3].SetActive(true);
+        }
+
+        // kickReflect Ui
+
+        if (GameStats.stats.KickReflectLevel <= 1)
+        {
+            KickReflectTierUI[0].SetActive(true);
+        }
+        else if (GameStats.stats.KickReflectLevel <= 2)
+        {
+            KickReflectTierUI[0].SetActive(true);
+            KickReflectTierUI[1].SetActive(true);
+        }
+        else if (GameStats.stats.KickReflectLevel <= 3)
+        {
+            KickReflectTierUI[0].SetActive(true);
+            KickReflectTierUI[1].SetActive(true);
+            KickReflectTierUI[2].SetActive(true);
+        }
+        else if (GameStats.stats.KickReflectLevel <= 4)
+        {
+            KickReflectTierUI[0].SetActive(true);
+            KickReflectTierUI[1].SetActive(true);
+            KickReflectTierUI[2].SetActive(true);
+            KickReflectTierUI[3].SetActive(true);
+        }
+        #endregion
 
 
     }
@@ -154,10 +264,30 @@ public class PowerMEnu : MonoBehaviour
 
         // Update GameStats
 
+        /*
         GameStats.stats.CarrotMissleLevel = CarrotMissleTierID;
         GameStats.stats.EarDefenceLevel = EarShieldTierID;
         GameStats.stats.RadishMissleLevel = RadishMissleTierID;
         GameStats.stats.KickReflectLevel = KickReflectTierID;
+        */
+
+
+        if (GameStats.stats.CarrotMissleLevel >= 4)
+        {
+            GameStats.stats.CarrotMissleLevel = 4;
+        }
+        if (GameStats.stats.EarDefenceLevel >= 4)
+        {
+            GameStats.stats.EarDefenceLevel = 4;
+        }
+        if(GameStats.stats.KickReflectLevel >= 4)
+        {
+            GameStats.stats.KickReflectLevel = 4;
+        }
+        if (GameStats.stats.RadishMissleLevel >= 4)
+        {
+            GameStats.stats.RadishMissleLevel = 4;
+        }
 
         // buy upgrades
 
@@ -192,166 +322,209 @@ public class PowerMEnu : MonoBehaviour
             CoinTicketSoldOut.SetActive(false);
         }
 
+        #region SetPowerUI
         // set power upgrade tier in UI
         //CarrotMissle UI
-        if (CarrotMissleTierID <= 1)
+        if (GameStats.stats.CarrotMissleLevel <= 1)
         {
             CarrotMissleTierUI[0].SetActive(true);
         }
-        else if (CarrotMissleTierID <= 2)
+        else if (GameStats.stats.CarrotMissleLevel <= 2)
         {
             CarrotMissleTierUI[1].SetActive(true);
         }
-        else if (CarrotMissleTierID <= 3)
+        else if (GameStats.stats.CarrotMissleLevel <= 3)
         {
             CarrotMissleTierUI[2].SetActive(true);
         }
-        else if (CarrotMissleTierID <= 4)
+        else if (GameStats.stats.CarrotMissleLevel <= 4)
         {
             CarrotMissleTierUI[3].SetActive(true);
         }
         //EarShieldUI
 
-        if (EarShieldTierID <= 1)
+        if (GameStats.stats.EarDefenceLevel <= 1)
         {
             EarShieldTierUI[0].SetActive(true);
         }
-        else if (EarShieldTierID <= 2)
+        else if (GameStats.stats.EarDefenceLevel <= 2)
         {
             EarShieldTierUI[1].SetActive(true);
         }
-        else if (EarShieldTierID <= 3)
+        else if (GameStats.stats.EarDefenceLevel <= 3)
         {
             EarShieldTierUI[2].SetActive(true);
         }
-        else if (EarShieldTierID <= 4)
+        else if (GameStats.stats.EarDefenceLevel <= 4)
         {
             EarShieldTierUI[3].SetActive(true);
         }
 
         // RadishMissle UI
 
-        if (RadishMissleTierID == 1)
+        if (GameStats.stats.RadishMissleLevel == 1)
         {
             RadishMissleTierUI[0].SetActive(true);
         }
-        else if (RadishMissleTierID <= 2)
+        else if (GameStats.stats.RadishMissleLevel <= 2)
         {
             RadishMissleTierUI[1].SetActive(true);
         }
-        else if (RadishMissleTierID <= 3)
+        else if (GameStats.stats.RadishMissleLevel <= 3)
         {
             RadishMissleTierUI[2].SetActive(true);
         }
-        else if (RadishMissleTierID <= 4)
+        else if (GameStats.stats.RadishMissleLevel <= 4)
         {
             RadishMissleTierUI[3].SetActive(true);
         }
 
         // kickReflect Ui
 
-        if (KickReflectTierID <= 1)
+        if (GameStats.stats.KickReflectLevel <= 1)
         {
             KickReflectTierUI[0].SetActive(true);
         }
-        else if (KickReflectTierID <= 2)
+        else if (GameStats.stats.KickReflectLevel <= 2)
         {
             KickReflectTierUI[1].SetActive(true);
         }
-        else if (KickReflectTierID <= 3)
+        else if (GameStats.stats.KickReflectLevel <= 3)
         {
             KickReflectTierUI[2].SetActive(true);
         }
-        else if (KickReflectTierID <= 4)
+        else if (GameStats.stats.KickReflectLevel <= 4)
         {
             KickReflectTierUI[3].SetActive(true);
         }
+        #endregion
 
+
+        #region Set Crystal Cost for Powers
 
         // set Crystal Cost for powers
         // CarrotMissle Crystal Cost
 
-        if (CarrotMissleTierID == 0)
+        if (GameStats.stats.CarrotMissleLevel == 0)
         {
             CarrotMissleCrystalCost = 10;
         }
-        else if (CarrotMissleTierID == 1)
+        else if (GameStats.stats.CarrotMissleLevel == 1)
         {
             CarrotMissleCrystalCost = 25;
         }
-        else if (CarrotMissleTierID == 2)
+        else if (GameStats.stats.CarrotMissleLevel == 2)
         {
             CarrotMissleCrystalCost = 40;
         }
-        else if (CarrotMissleTierID == 3)
+        else if (GameStats.stats.CarrotMissleLevel == 3)
         {
             CarrotMissleCrystalCost = 80;
         }
+       
 
         // EarDefence Crystal Cost
 
-        if (EarShieldTierID == 0)
+        if (GameStats.stats.EarDefenceLevel == 0)
         {
             EarShieldCrystalCost = 10;
         }
-        else if (EarShieldTierID == 1)
+        else if (GameStats.stats.EarDefenceLevel == 1)
         {
             EarShieldCrystalCost = 25;
         }
-        else if (EarShieldTierID == 2)
+        else if (GameStats.stats.EarDefenceLevel == 2)
         {
             EarShieldCrystalCost = 40;
         }
-        else if (EarShieldTierID == 3)
+        else if (GameStats.stats.EarDefenceLevel == 3)
         {
             EarShieldCrystalCost = 80;
         }
+        
 
 
         // radish Missle crystal cost
 
-        if (RadishMissleTierID == 0)
+        if (GameStats.stats.RadishMissleLevel == 0)
         {
             RadishtMissleCrystalCost = 15;
         }
-        else if (RadishMissleTierID == 1)
+        else if (GameStats.stats.RadishMissleLevel == 1)
         {
             RadishtMissleCrystalCost = 30;
         }
-        else if (RadishMissleTierID == 2)
+        else if (GameStats.stats.RadishMissleLevel == 2)
         {
             RadishtMissleCrystalCost = 50;
         }
-        else if (RadishMissleTierID == 3)
+        else if (GameStats.stats.RadishMissleLevel == 3)
         {
             RadishtMissleCrystalCost = 100;
         }
+       
 
         // KickReflect Crystal Cost
 
-        if (KickReflectTierID == 0)
+        if (GameStats.stats.KickReflectLevel == 0)
         {
             KickReflectCrystalCost = 15;
         }
-        else if (KickReflectTierID == 1)
+        else if (GameStats.stats.KickReflectLevel == 1)
         {
             KickReflectCrystalCost = 30;
         }
-        else if (KickReflectTierID == 2)
+        else if (GameStats.stats.KickReflectLevel == 2)
         {
             KickReflectCrystalCost = 50;
         }
-        else if (KickReflectTierID == 3)
+        else if (GameStats.stats.KickReflectLevel == 3)
         {
             KickReflectCrystalCost = 100;
         }
+        
+
+        #endregion
 
         // power Cost to text in UI
+        if (GameStats.stats.CarrotMissleLevel < 4)
+        {
+            CarrotMissleCostText.text = CarrotMissleCrystalCost.ToString();
+        } else
+        {
+            CarrotMissleCostText.text = "Max";
+        }
 
-        CarrotMissleCostText.text = CarrotMissleCrystalCost.ToString();
-        EarShieldCostText.text = EarShieldCrystalCost.ToString();
-        RadishMissleCostText.text = RadishtMissleCrystalCost.ToString();
-        KickReflectCostText.text = KickReflectCrystalCost.ToString();
+        if (GameStats.stats.EarDefenceLevel < 4)
+        {
+            EarShieldCostText.text = EarShieldCrystalCost.ToString();
+        }
+        else
+        {
+            EarShieldCostText.text = "Max";
+        }
+
+        if (GameStats.stats.KickReflectLevel < 4)
+        {
+            KickReflectCostText.text = KickReflectCrystalCost.ToString();
+        }
+        else
+        {
+            KickReflectCostText.text = "Max";
+        }
+
+        if (GameStats.stats.RadishMissleLevel < 4)
+        {
+            RadishMissleCostText.text = RadishtMissleCrystalCost.ToString();
+        }
+        else
+        {
+            RadishMissleCostText.text = "Max";
+        }
+
+
+        
+        
     }
 
 
@@ -461,20 +634,22 @@ public class PowerMEnu : MonoBehaviour
         {
             if (GameStats.stats.crystals >= CarrotMissleCrystalCost)
             {
+                
+                GameStats.stats.CarrotMissleLevel += 1;
+                
 
-                CarrotMissleTierID += 1;
-
-                if (CarrotMissleTierID == 2)
+                if (GameStats.stats.CarrotMissleLevel == 2)
                 {
+                    
                     GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[1]);
                     GameStats.stats.crystals -= CarrotMissleCrystalCost;
                 }
-                else if (CarrotMissleTierID == 3)
+                else if (GameStats.stats.CarrotMissleLevel == 3)
                 {
                     GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[2]);
                     GameStats.stats.crystals -= CarrotMissleCrystalCost;
                 }
-                else if (CarrotMissleTierID == 4)
+                else if (GameStats.stats.CarrotMissleLevel == 4)
                 {
                     GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[3]);
                     GameStats.stats.crystals -= CarrotMissleCrystalCost;
@@ -494,20 +669,21 @@ public class PowerMEnu : MonoBehaviour
         {
             if (GameStats.stats.crystals >= EarShieldCrystalCost)
             {
+               
+                GameStats.stats.EarDefenceLevel += 1;
+                
 
-                EarShieldTierID += 1;
-
-                if (EarShieldTierID == 2)
+                if (GameStats.stats.EarDefenceLevel == 2)
                 {
                     GameStats.stats.UnlockedPowers.Add(EarShieldTiers[1]);
                     GameStats.stats.crystals -= EarShieldCrystalCost;
                 }
-                else if (EarShieldTierID == 3)
+                else if (GameStats.stats.EarDefenceLevel == 3)
                 {
                     GameStats.stats.UnlockedPowers.Add(EarShieldTiers[2]);
                     GameStats.stats.crystals -= EarShieldCrystalCost;
                 }
-                else if (EarShieldTierID == 4)
+                else if (GameStats.stats.EarDefenceLevel == 4)
                 {
                     GameStats.stats.UnlockedPowers.Add(EarShieldTiers[3]);
                     GameStats.stats.crystals -= EarShieldCrystalCost;
@@ -523,9 +699,9 @@ public class PowerMEnu : MonoBehaviour
 
             if (PowerStoreID == 3)
             {
-                if (GameStats.stats.crystals >= FenixFeatherCost)
+                if (GameStats.stats.crystals >= KickReflectCrystalCost)
                 {
-                    GameStats.stats.crystals -= FenixFeatherCost;
+                   
 
 
                 }
@@ -538,9 +714,9 @@ public class PowerMEnu : MonoBehaviour
 
             if (PowerStoreID == 4)
             {
-                if (GameStats.stats.crystals >= FenixFeatherCost)
+                if (GameStats.stats.crystals >= RadishtMissleCrystalCost)
                 {
-                    GameStats.stats.crystals -= FenixFeatherCost;
+                    
 
 
                 }

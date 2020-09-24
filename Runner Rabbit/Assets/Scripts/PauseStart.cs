@@ -43,6 +43,7 @@ public class PauseStart : MonoBehaviour
         yield return new WaitForSecondsRealtime(timetilanimation);
         Debug.Log("time waited");
         Time.timeScale = 1f;
+
        
         pause = false;
     }
