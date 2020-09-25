@@ -2517,7 +2517,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 859644837}
-  - {fileID: 703548592}
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11981,15 +11980,15 @@ RectTransform:
   m_GameObject: {fileID: 703548591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.30699, y: 0.30699, z: 0.61398}
+  m_LocalScale: {x: 0.86062735, y: 0.86062735, z: 1.7212547}
   m_Children:
   - {fileID: 1676686}
-  m_Father: {fileID: 247375741}
-  m_RootOrder: 1
+  m_Father: {fileID: 859644837}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.94, y: 1.59}
+  m_AnchoredPosition: {x: 2.635231, y: 4.457467}
   m_SizeDelta: {x: 8.138, y: 5.423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &703548593
@@ -13006,7 +13005,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35670492, y: 0.35670492, z: 0.35670492}
-  m_Children: []
+  m_Children:
+  - {fileID: 703548592}
   m_Father: {fileID: 247375741}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13092,9 +13092,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
-  myHealth: 0
+  myHealth: 100
   troll1Object: {fileID: 0}
   troll2Object: {fileID: 0}
+  bossTop: 0
 --- !u!114 &859644841
 MonoBehaviour:
   m_ObjectHideFlags: 0

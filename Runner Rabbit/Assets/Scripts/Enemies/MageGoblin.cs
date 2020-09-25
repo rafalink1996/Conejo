@@ -13,6 +13,7 @@ public class MageGoblin : MonoBehaviour
     Animator anim;
     public GameObject troll1Object;
     public GameObject troll2Object;
+    public bool bossTop;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,14 +55,23 @@ public class MageGoblin : MonoBehaviour
         {
             anim.SetTrigger("Die");
         }
+        if (transform.parent.transform.position.y > 0)
+        {
+            bossTop = false;
+        }
+        else
+        {
+            bossTop = true;
+        }
     }
     void Attack()
     {
         GameObject fireball = Instantiate(Resources.Load("Prefabs/WyrmFireBall") as GameObject);
         fireball.GetComponentInChildren<WyrmFireBall>().sourceTransform = gameObject.transform;
-        fireball.transform.position = transform.position + new Vector3(-5.02f, -0.19f, 0);
+        fireball.transform.position = transform.position + new Vector3(-1.965444f, -0.1070113f, 0);
         attackTime = Random.Range(3f, 5f);
         attack = false;
+        anim.SetBool("hasAttackedOnce", true);
     }
     void Invoke()
     {
@@ -81,5 +91,6 @@ public class MageGoblin : MonoBehaviour
         attack = false;
         invokeTime = Random.Range(8f, 15f);
         invoke = false;
+        //anim.SetBool("hasAttackedOnce", true);
     }
 }
