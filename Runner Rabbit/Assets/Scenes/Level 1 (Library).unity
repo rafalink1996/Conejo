@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -3172,8 +3172,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312092970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 5, z: -6942.8574}
-  m_LocalScale: {x: 200.17682, y: 200.12465, z: 77.14286}
+  m_LocalPosition: {x: 4.7, y: 5.5, z: 0}
+  m_LocalScale: {x: 83.467255, y: 83.445496, z: 32.166077}
   m_Children: []
   m_Father: {fileID: 51099162}
   m_RootOrder: 1
@@ -3491,7 +3491,7 @@ GameObject:
   - component: {fileID: 347095239}
   - component: {fileID: 347095240}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Music Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3563,13 +3563,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 1839870357}
   m_HandleRect: {fileID: 1070933863}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672799255}
+        m_MethodName: SetMusicVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &355043308
 GameObject:
   m_ObjectHideFlags: 0
@@ -11404,6 +11415,9 @@ MonoBehaviour:
   darkcolor: {r: 0, g: 0, b: 0, a: 0}
   lightColor: {r: 0, g: 0, b: 0, a: 0}
   ThePauseButton: {fileID: 767270478}
+  MusicSlider: {fileID: 347095240}
+  SoundSlider: {fileID: 1459907614}
+  audioMixer: {fileID: 24100000, guid: fc3f455b10db348d094da207e592d7c2, type: 2}
 --- !u!1 &677475416
 GameObject:
   m_ObjectHideFlags: 0
@@ -11616,8 +11630,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -959.90234, y: -535.73846}
-  m_SizeDelta: {x: 10.370836, y: 5.8311596}
+  m_AnchoredPosition: {x: 0.4, y: 1.3}
+  m_SizeDelta: {x: 333.99976, y: 187.79639}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &693083445
 Animator:
@@ -17710,7 +17724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &934656955
 Transform:
   m_ObjectHideFlags: 0
@@ -19501,8 +19515,8 @@ RectTransform:
   m_Father: {fileID: 1548095573}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.00090009003, y: 0}
+  m_AnchorMax: {x: 0.00090009003, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21181,7 +21195,7 @@ GameObject:
   - component: {fileID: 1459907613}
   - component: {fileID: 1459907614}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Audio Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21253,13 +21267,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 1561912701}
   m_HandleRect: {fileID: 1192590674}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.001
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672799255}
+        m_MethodName: SetSoundVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1476553913
 GameObject:
   m_ObjectHideFlags: 0
@@ -21946,7 +21971,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.00090009003, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

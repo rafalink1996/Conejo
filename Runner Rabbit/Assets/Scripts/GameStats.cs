@@ -59,6 +59,10 @@ public class GameStats : MonoBehaviour
     public int topSkinID;
     public int botSkinID;
 
+
+    //audio saved stats
+    public float MusicVolume;
+    public float AudioVolume;
     
 
     public bool[] skinConditions = new [ ]
@@ -212,6 +216,9 @@ public class GameStats : MonoBehaviour
         EarDefenceLevel = data.EarDefenceLevel;
         RadishMissleLevel = data.RadishMissleLevel;
         KickReflectLevel = data.KickReflectLevel;
+
+        AudioVolume = data.AudioVolume;
+        MusicVolume = data.MusicVolume;
 
         
 

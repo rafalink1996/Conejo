@@ -23,6 +23,9 @@ public class PlayerData
     public int BotSkin;
     public int TopSkin;
 
+    public float AudioVolume;
+    public float MusicVolume;
+
 
 
 
@@ -50,6 +53,9 @@ public class PlayerData
 
         BotSkin = gamestats.botSkinID;
         TopSkin = gamestats.topSkinID;
+
+        AudioVolume = gamestats.AudioVolume;
+        MusicVolume = gamestats.MusicVolume;
 
 
 

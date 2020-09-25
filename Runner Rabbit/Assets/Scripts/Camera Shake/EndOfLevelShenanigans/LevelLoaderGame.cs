@@ -68,6 +68,8 @@ public class LevelLoaderGame : MonoBehaviour
             EnemySpawner1.SetActive(false);
             EnemySpawner2.SetActive(false);
             EnemySpawnerHand.SetActive(false);
+            cha.endlevel = true;
+            
         }
   
     }
@@ -85,6 +87,7 @@ public class LevelLoaderGame : MonoBehaviour
                     yield return new WaitForSecondsRealtime(5);
                     EndlessHosue.spawnhouse();
                     
+                    
                     StartCoroutine(loadAsyncGame(1));
                 }
 
@@ -100,6 +103,7 @@ public class LevelLoaderGame : MonoBehaviour
                     levelTime = 0;
                     
                     StartCoroutine(loadAsyncGame(1));
+                    
                 }
 
             }
@@ -156,6 +160,16 @@ public class LevelLoaderGame : MonoBehaviour
         StartCoroutine(loadAsyncMainMenu());
         Time.timeScale = 1;
         GameStats.stats.CoinTicket = false;
+
+    }
+
+    public void backtoMainMenuPauseButton()
+    {
+        loadingScreen.SetActive(true);
+        StartCoroutine(loadAsyncMainMenu());
+        Time.timeScale = 1;
+        // save level indicator and count for resume;
+
 
     }
 

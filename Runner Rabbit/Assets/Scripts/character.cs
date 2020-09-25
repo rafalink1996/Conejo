@@ -97,6 +97,8 @@ public class character : MonoBehaviour
     private float maxstartspeed;
     public PauseStart pausestart;
 
+    public bool endlevel = false;
+
 
    
 
@@ -121,12 +123,14 @@ public class character : MonoBehaviour
         NumOfHearts = GameStats.stats.numOfHearts;
         Health = NumOfHearts;
 
-
-        //characterConstrains = false;
-
+        endlevel = false;
 
 
-        //heartanimator = GameObject.FindGameObjectWithTag("Heart").GetComponent<Animator>();
+      
+
+
+
+       
 
 
 
@@ -255,18 +259,13 @@ public class character : MonoBehaviour
         GameStats.stats.crystals = crystal;//updates stored crystal value;
 
 
-        // rarity of power;
 
-      
-        if (!top)
-            {
-               // powerRarity.color = GameStats.stats.powerDark.rarityColor;
-            }
-        else
+
+
+        if (endlevel == true)
         {
-            //powerRarity.color = GameStats.stats.powerLight.rarityColor;
+            StartCoroutine(GetInvulnerableEndLevel());
         }
-        
           
       
     }
@@ -552,6 +551,13 @@ public class character : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 9, false);
 
 
+    }
+
+    IEnumerator GetInvulnerableEndLevel()
+    {
+        Physics2D.IgnoreLayerCollision(8, 9, true);
+        yield return new WaitForSeconds(20f);
+        Physics2D.IgnoreLayerCollision(8, 9, false);
     }
 
 
