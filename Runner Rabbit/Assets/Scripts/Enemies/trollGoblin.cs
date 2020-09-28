@@ -46,6 +46,6 @@ public class trollGoblin : MonoBehaviour
     }
     void Die()
     {
-        Destroy(gameObject);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 }

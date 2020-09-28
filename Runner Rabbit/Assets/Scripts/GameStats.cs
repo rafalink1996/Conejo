@@ -72,7 +72,7 @@ public class GameStats : MonoBehaviour
         false // 2. Slime
 
     };
-    
+    public bool bossDead;
      
      
      

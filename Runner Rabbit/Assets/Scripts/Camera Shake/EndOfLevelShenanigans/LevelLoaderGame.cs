@@ -17,7 +17,7 @@ public class LevelLoaderGame : MonoBehaviour
 
     public HouseSpawner EndlessHosue;
     public character cha;
-    public BossWyrm bossWyrm;
+    //public BossWyrm bossWyrm;
 
     public float transitiontime;
     public float levelTime;
@@ -82,7 +82,7 @@ public class LevelLoaderGame : MonoBehaviour
             if (GameStats.stats.LevelCount == 3)
             {
 
-                if (bossWyrm.BossDead == true)
+                if (GameStats.stats.bossDead == true)
                 {
                     yield return new WaitForSecondsRealtime(5);
                     EndlessHosue.spawnhouse();

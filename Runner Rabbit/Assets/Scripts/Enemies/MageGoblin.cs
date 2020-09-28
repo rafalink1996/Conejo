@@ -22,7 +22,7 @@ public class MageGoblin : MonoBehaviour
         anim = GetComponent<Animator>();
         attackTime = Random.Range(3f, 4f);
         invokeTime = Random.Range(8f, 15f);
-        
+        GameStats.stats.bossDead = false;
     }
 
     // Update is called once per frame
@@ -54,6 +54,7 @@ public class MageGoblin : MonoBehaviour
         if (health.health <= 0)
         {
             anim.SetTrigger("Die");
+            GameStats.stats.bossDead = true;
         }
         if (transform.parent.transform.position.y > 0)
         {
@@ -85,7 +86,7 @@ public class MageGoblin : MonoBehaviour
         {
             GameObject troll2 = Instantiate(Resources.Load("Prefabs/TrollGoblin") as GameObject);
             troll2Object = troll2;
-            troll2.transform.position = new Vector3(transform.position.x - 6.2f, -4.31f, 0);
+            troll2.transform.position = new Vector3(transform.position.x - 6.2f, -7.66f, 0);
         }
         attackTime = Random.Range(3f, 5f);
         attack = false;

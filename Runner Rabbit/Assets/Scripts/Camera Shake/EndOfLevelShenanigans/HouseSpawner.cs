@@ -12,6 +12,7 @@ public class HouseSpawner : MonoBehaviour
 
     private void Start()
     {
+        cha = FindObjectOfType<character>();
         spawn1 = this.gameObject.transform.GetChild(0);
         spawn2 = this.gameObject.transform.GetChild(1);
     }

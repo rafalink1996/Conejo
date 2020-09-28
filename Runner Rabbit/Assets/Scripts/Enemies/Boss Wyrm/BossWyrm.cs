@@ -29,6 +29,7 @@ public class BossWyrm : MonoBehaviour
         iceTimer = Random.Range(20f, 30f);
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
         BossDead = false;
+        GameStats.stats.bossDead = false;
     }
 
     // Update is called once per frame
@@ -110,7 +111,7 @@ public class BossWyrm : MonoBehaviour
         {
             anim.SetTrigger("Die");
             BossDead = true;
-
+            GameStats.stats.bossDead = true;
         }
     }
     public void ChangeElement()

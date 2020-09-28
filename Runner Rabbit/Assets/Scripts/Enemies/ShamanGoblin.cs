@@ -14,6 +14,7 @@ public class ShamanGoblin : MonoBehaviour
     public EnemyHealth health;
     public int myHealth;
     public Transform summonContainer;
+    public EnemySpawner enemySpawner;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,14 @@ public class ShamanGoblin : MonoBehaviour
         anim = GetComponent<Animator>();
         summonTime = 3f;
         summonContainer = transform.Find("SummonContainer");
+        if (transform.position.y > 0)
+        {
+            enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
+        }
+        if (transform.position.y < 0)
+        {
+            enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
+        }
     }
 
     // Update is called once per frame
@@ -78,5 +87,15 @@ public class ShamanGoblin : MonoBehaviour
         summon.transform.SetParent(summonContainer);
         enemiespresent = true;
         health.TakeDamage(10);
+    }
+    void Over()
+    {
+        //enemySpawner.OneDown();
+        //Destroy(gameObject);
+        if (health.Hit == true)
+        {
+            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            healthHeal.transform.position = transform.position;
+        }
     }
 }
