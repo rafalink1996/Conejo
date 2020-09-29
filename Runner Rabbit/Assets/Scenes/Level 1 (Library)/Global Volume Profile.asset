@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Line Profile
+  m_Name: Global Volume Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 3137088390426588867}
---- !u!114 &3137088390426588867
+  - {fileID: 7444959836183955969}
+--- !u!114 &7444959836183955969
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29,16 +29,16 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   threshold:
-    m_OverrideState: 0
-    m_Value: 0.9
+    m_OverrideState: 1
+    m_Value: 1
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 28.37
+    m_Value: 0.26
     min: 0
   scatter:
-    m_OverrideState: 0
-    m_Value: 0.7
+    m_OverrideState: 1
+    m_Value: 0.31
     min: 0
     max: 1
   clamp:
@@ -47,7 +47,7 @@ MonoBehaviour:
     min: 0
   tint:
     m_OverrideState: 0
-    m_Value: {r: 0.2783019, g: 0.88801724, b: 1, a: 1}
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1

@@ -99,8 +99,21 @@ public class character : MonoBehaviour
 
     public bool endlevel = false;
 
+    //laser
 
-   
+    public LineRenderer laser;
+    public Transform StartLaserPos;
+
+
+    public bool HoldPower = false;
+
+
+    int layerMask = 1 << 9;
+    
+
+
+
+
 
 
 
@@ -126,11 +139,11 @@ public class character : MonoBehaviour
         endlevel = false;
 
 
-      
 
 
 
-       
+
+
 
 
 
@@ -266,11 +279,11 @@ public class character : MonoBehaviour
         {
             StartCoroutine(GetInvulnerableEndLevel());
         }
-          
-      
+
+
     }
 
-  
+
 
 
 
@@ -443,6 +456,25 @@ public class character : MonoBehaviour
 
 
     }
+
+    public void DarkPowerHold()
+    {
+        //print("UsingPower");
+        animator.SetBool("isUsingPower", true);
+        UsedPower(GameStats.stats.powerDark.id);
+        mana.ReduceLightMana();
+        HoldPower = true;
+
+    }
+
+    public void DarkPowerHoldStop()
+    {
+        animator.SetBool("isUsingPower", false);
+        UsedPower(GameStats.stats.powerDark.id);
+        HoldPower = false;
+    }
+   
+
     public void DarkPower()
     {
 
@@ -454,6 +486,8 @@ public class character : MonoBehaviour
             animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id);
             mana.ReduceLightMana();
+
+           
             /*
              if (darkPower == "Missile")
              {
@@ -484,7 +518,7 @@ public class character : MonoBehaviour
 
     public void Float()
     {
-
+        
 
 
 
@@ -817,6 +851,31 @@ public class character : MonoBehaviour
             case 41:
                 print("used spell 5");
                 break;
+
+            case 51:
+                if (HoldPower == true)
+                {
+                    print("lasering");
+                    laser.enabled = true;
+                    laser.SetPosition(0, StartLaserPos.position);
+                    laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                    Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                    RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, layerMask);
+                    
+
+                    if (hit.collider != null)
+                    {
+                        laser.SetPosition(1, hit.point);
+                        Debug.Log("RayCast: " + hit.collider.gameObject.tag);
+                    }
+
+                } else if (HoldPower == false)
+                {
+                    laser.enabled = false;
+                }
+                
+                break;
+
 
             default:
                 print("spell error");
