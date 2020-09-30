@@ -105,6 +105,7 @@ public class character : MonoBehaviour
     public Transform StartLaserPos;
     public GameObject startVFX;
     public GameObject endVFX;
+    
 
 
 
@@ -136,6 +137,7 @@ public class character : MonoBehaviour
         coins = GameStats.stats.coins; //sets held coins to value stored
         crystal = GameStats.stats.crystals; //sets held crystals to value stored
         CoinCounter.text = coins.ToString();
+        CrystalCounter.text = crystal.ToString();
         NumOfHearts = GameStats.stats.numOfHearts;
         Health = NumOfHearts;
 
@@ -145,7 +147,9 @@ public class character : MonoBehaviour
         endVFX.GetComponent<ParticleSystem>().Stop();
 
 
-
+        startVFX.SetActive(false);
+        endVFX.SetActive(false);
+        laser.enabled = false;
 
 
 
@@ -315,7 +319,7 @@ public class character : MonoBehaviour
             CamRipple.RippleEffect();
 
             StartCoroutine(GetInvulnerableRift());
-            DarkPowerHoldStop();
+           
 
 
 
@@ -393,6 +397,7 @@ public class character : MonoBehaviour
             hasPassedThroughRift = true;
             Instantiate(riftEffect, transform.position, Quaternion.identity);
             StartCoroutine(GetInvulnerableRift());
+            HoldPower = false;
 
 
 
@@ -471,6 +476,8 @@ public class character : MonoBehaviour
         UsedPower(GameStats.stats.powerDark.id);
         mana.ReduceLightMana();
         HoldPower = true;
+        startVFX.SetActive(true);
+        endVFX.SetActive(true);
 
     }
 
@@ -849,6 +856,7 @@ public class character : MonoBehaviour
                 // kick
                 print("used spell 4");
                 animator.SetTrigger("Kick");
+                
                 GameObject kickT4 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 kickT4.transform.position = transform.position;
                 kickT4.name = "Kick";
@@ -862,8 +870,9 @@ public class character : MonoBehaviour
             case 51:
                 if (HoldPower == true)
                 {
-                    print("lasering");
+                    //print("lasering");
                     laser.enabled = true;
+                    animator.SetBool("Laser", true);
                     endVFX.transform.position = laser.GetPosition(1);
                     startVFX.GetComponent<ParticleSystem>().Play();
                     endVFX.GetComponent<ParticleSystem>().Play();
@@ -876,11 +885,17 @@ public class character : MonoBehaviour
                     if (hit.collider != null)
                     {
                         laser.SetPosition(1, hit.point);
-                        Debug.Log("RayCast: " + hit.collider.gameObject.tag);
+                        if (hit.transform.tag == "Enemy")
+                        {
+                            EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                            target.TakeDamage(1);
+                        }
+                       //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
                     }
 
                 } else if (HoldPower == false)
                 {
+                    animator.SetBool("Laser", false);
                     laser.enabled = false;
                     startVFX.GetComponent<ParticleSystem>().Stop();
                     endVFX.GetComponent<ParticleSystem>().Stop();

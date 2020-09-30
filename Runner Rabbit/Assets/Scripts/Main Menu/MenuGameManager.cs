@@ -13,6 +13,7 @@ public class MenuGameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        GameStats.stats.coins = 0;
     }
 
     // Update is called once per frame
