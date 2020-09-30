@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  maxspeed: 10
+  acceleration: 2
 --- !u!82 &4305298283374571350
 AudioSource:
   m_ObjectHideFlags: 0
@@ -155,7 +158,7 @@ GameObject:
   - component: {fileID: 2380794380610709047}
   - component: {fileID: 4750621422717335406}
   - component: {fileID: 1544377493765501457}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Ball
   m_TagString: Enemy proyectile
   m_Icon: {fileID: 0}
@@ -273,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627802a54815f4bcea64ed66a42245d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sourceTransform: {fileID: 0}
 --- !u!50 &1544377493765501457
 Rigidbody2D:
   serializedVersion: 4

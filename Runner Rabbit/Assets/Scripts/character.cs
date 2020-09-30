@@ -103,6 +103,9 @@ public class character : MonoBehaviour
 
     public LineRenderer laser;
     public Transform StartLaserPos;
+    public GameObject startVFX;
+    public GameObject endVFX;
+
 
 
     public bool HoldPower = false;
@@ -137,6 +140,9 @@ public class character : MonoBehaviour
         Health = NumOfHearts;
 
         endlevel = false;
+
+        startVFX.GetComponent<ParticleSystem>().Stop();
+        endVFX.GetComponent<ParticleSystem>().Stop();
 
 
 
@@ -309,6 +315,7 @@ public class character : MonoBehaviour
             CamRipple.RippleEffect();
 
             StartCoroutine(GetInvulnerableRift());
+            DarkPowerHoldStop();
 
 
 
@@ -857,6 +864,9 @@ public class character : MonoBehaviour
                 {
                     print("lasering");
                     laser.enabled = true;
+                    endVFX.transform.position = laser.GetPosition(1);
+                    startVFX.GetComponent<ParticleSystem>().Play();
+                    endVFX.GetComponent<ParticleSystem>().Play();
                     laser.SetPosition(0, StartLaserPos.position);
                     laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                     Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
@@ -872,6 +882,9 @@ public class character : MonoBehaviour
                 } else if (HoldPower == false)
                 {
                     laser.enabled = false;
+                    startVFX.GetComponent<ParticleSystem>().Stop();
+                    endVFX.GetComponent<ParticleSystem>().Stop();
+
                 }
                 
                 break;

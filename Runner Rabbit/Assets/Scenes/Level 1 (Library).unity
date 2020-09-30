@@ -1957,7 +1957,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -23362,6 +23362,8 @@ MonoBehaviour:
   endlevel: 0
   laser: {fileID: 149233374}
   StartLaserPos: {fileID: 868875917}
+  startVFX: {fileID: 179759419}
+  endVFX: {fileID: 1958767929}
   HoldPower: 0
 --- !u!58 &992125960
 CircleCollider2D:
@@ -40236,7 +40238,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1

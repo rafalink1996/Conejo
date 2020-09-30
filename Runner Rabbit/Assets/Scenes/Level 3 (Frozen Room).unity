@@ -17041,6 +17041,11 @@ MonoBehaviour:
   outOfportalSpeed: 10
   pausestart: {fileID: 672799253}
   endlevel: 0
+  laser: {fileID: 0}
+  StartLaserPos: {fileID: 0}
+  startVFX: {fileID: 0}
+  endVFX: {fileID: 0}
+  HoldPower: 0
 --- !u!58 &992125960
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -19494,7 +19499,6 @@ MonoBehaviour:
   EnemySpawnerHand: {fileID: 253351649}
   EndlessHosue: {fileID: 146997261}
   cha: {fileID: 992125959}
-  bossWyrm: {fileID: 0}
   transitiontime: 2.5
   levelTime: 100
   levelcountdown: 1
@@ -27073,7 +27077,8 @@ SpriteRenderer:
   m_SortingLayerID: -1405745039
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2d8a5320cdaa24ee58c80e7c77f01b18, type: 3}
+  m_Sprite: {fileID: -5979084174650651544, guid: 1a2eb88d7df3f4b58ad793f8a9e61e0b,
+    type: 3}
   m_Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -27092,8 +27097,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876118257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.99, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.3, z: 1}
+  m_LocalPosition: {x: 0.118, y: 0.181, z: 0}
+  m_LocalScale: {x: 2.6, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15

@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2529105175753496022}
   - component: {fileID: 4253135919444696213}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Graphics (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 7166377373617909471}
   - component: {fileID: 3391300054780400524}
   - component: {fileID: 5834151242176536563}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Lance Bottom
   m_TagString: Enemy proyectile
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 1}
-    oldSize: {x: 19.2, y: 5.4}
+    oldSize: {x: 19.199999, y: 5.3999996}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -386,6 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  sourceTransform: {fileID: 0}
 --- !u!50 &5834151242176536563
 Rigidbody2D:
   serializedVersion: 4
@@ -417,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8722414339229842416}
   - component: {fileID: 7693329031775236653}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +505,7 @@ GameObject:
   - component: {fileID: 5796324383497901089}
   - component: {fileID: 3081664106123663494}
   - component: {fileID: 5517753497773030468}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Lance Top
   m_TagString: Enemy proyectile
   m_Icon: {fileID: 0}
@@ -721,7 +722,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 19.2, y: 5.4}
+    oldSize: {x: 19.199999, y: 5.3999996}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -743,6 +744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  sourceTransform: {fileID: 0}
 --- !u!50 &5517753497773030468
 Rigidbody2D:
   serializedVersion: 4

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4339148051861028403}
   - component: {fileID: 3833194723210339935}
   - component: {fileID: 4693017325191311802}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: FireBall
   m_TagString: Enemy proyectile
   m_Icon: {fileID: 0}
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c889e13cf7a49ee8bd058ffec822c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sourceTransform: {fileID: 0}
 --- !u!50 &4693017325191311802
 Rigidbody2D:
   serializedVersion: 4
