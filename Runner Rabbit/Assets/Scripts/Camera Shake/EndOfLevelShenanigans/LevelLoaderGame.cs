@@ -52,7 +52,7 @@ public class LevelLoaderGame : MonoBehaviour
         }
 
         TimerSlider.maxValue = levelTime;
-
+        GameStats.stats.spawnHouse = false;
         
     }
 

@@ -74,7 +74,7 @@ public class GameStats : MonoBehaviour
 
     };
     public bool bossDead;
-     
+    public bool spawnHouse; 
      
      
     

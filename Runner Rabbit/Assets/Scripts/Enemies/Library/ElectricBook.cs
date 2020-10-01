@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IceBook : MonoBehaviour
+public class ElectricBook : MonoBehaviour
 {
     Animator anim;
-    //public int maxHealth = 7;
+    //public int maxHealth = 8;
     //public int health;
     public EnemySpawner enemySpawner;
     //public Slider healthSlider;
@@ -15,12 +15,15 @@ public class IceBook : MonoBehaviour
     float attackTime;
     bool attack;
     EnemyHealth health;
+   
+
+
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 70;
+        health.maxHealth = 80;
+        anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
             enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
@@ -35,6 +38,7 @@ public class IceBook : MonoBehaviour
         //healthSlider.maxValue = maxHealth;
         spawnTime = Random.Range(0.1f, 2f);
         attackTime = Random.Range(0.2f, 1.3f);
+        
     }
 
     // Update is called once per frame
@@ -48,8 +52,9 @@ public class IceBook : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("BookSpawn");
             spawned = true;
 
+
         }
-        if(attack)
+        if (attack)
         {
             attackTime -= Time.deltaTime;
         }
@@ -60,9 +65,10 @@ public class IceBook : MonoBehaviour
             attack = false;
         }
         //healthSlider.value = health;
-        if (health.health <= 0)
+        if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
             anim.SetTrigger("Die");
+            
         }
     }
     void AttackTime()
@@ -76,11 +82,13 @@ public class IceBook : MonoBehaviour
     {
         health.TakeDamage(10);
     }
-    void IceLance()
+    void ElectricBall()
     {
-        GameObject iceLance = GameObject.Instantiate(Resources.Load("Prefabs/Ice Lance") as GameObject);
-        iceLance.transform.position = transform.position;
-        //iceLance.GetComponent<IceLance>().sourceTransform = gameObject.transform;
+        GameObject electricBall = GameObject.Instantiate(Resources.Load("Prefabs/Electric ball") as GameObject);
+        //electricBall.GetComponent<ElectricBall>().sourceTransform = this.transform;
+        //electricBall.transform.SetParent(transform, false);
+        electricBall.transform.position = transform.position;
+        
     }
     void Over()
     {
@@ -99,5 +107,5 @@ public class IceBook : MonoBehaviour
 
     }
 
-}
 
+}

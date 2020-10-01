@@ -19,7 +19,7 @@ public class HouseSpawner : MonoBehaviour
     public void spawnhouse()
 
     {
-        
+        GameStats.stats.spawnHouse = true;
         if (cha.top)
         {
             GameObject house = Instantiate(housePrefab);

@@ -56,16 +56,16 @@ public class ShamanGoblin : MonoBehaviour
         if (summonTime <= 0 && !enemiespresent)
         {
             anim.SetTrigger("Attack");
-            
+
             summonType = Random.Range(0, summonName.Length);
             summonTime = Random.Range(2f, 4f);
-           
+
         }
-           if (summonContainer.childCount == 0)
+        if (summonContainer.childCount == 0)
         {
             enemiespresent = false;
         }
-           if (health.health <= 0 && isPresent)
+        if (health.health <= 0 && isPresent)
         {
             spawnTime = 8f;
             isPresent = false;
@@ -78,12 +78,16 @@ public class ShamanGoblin : MonoBehaviour
                 anim.SetTrigger("Despawn");
             }
         }
+        if (GameStats.stats.spawnHouse)
+        {
+            anim.SetTrigger("Despawn");
+        }
     }
 
     void SpawnEnemies()
     {
         GameObject summon = Instantiate(Resources.Load("Prefabs/" + summonName[summonType]) as GameObject);
-        summon.transform.position = transform.position + new Vector3 (0, 3, 0);
+        summon.transform.position = transform.position + new Vector3(0, 3, 0);
         summon.transform.SetParent(summonContainer);
         enemiespresent = true;
         health.TakeDamage(10);
@@ -96,6 +100,13 @@ public class ShamanGoblin : MonoBehaviour
         {
             GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
             healthHeal.transform.position = transform.position;
+        }
+    }
+    void LevelOver()
+    {
+        if (GameStats.stats.spawnHouse)
+        {
+            Destroy(transform.parent.gameObject);
         }
     }
 }

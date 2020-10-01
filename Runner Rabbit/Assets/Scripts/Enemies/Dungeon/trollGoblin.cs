@@ -31,7 +31,7 @@ public class trollGoblin : MonoBehaviour
             anim.SetTrigger("Attack");
             attack = true;
         }
-        if (health.health <= 0)
+        if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
             anim.SetTrigger("Die");
         }
@@ -46,6 +46,6 @@ public class trollGoblin : MonoBehaviour
     }
     void Die()
     {
-        Destroy(gameObject.transform.parent.gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }

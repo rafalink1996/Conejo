@@ -32,7 +32,7 @@ public class ShieldGoblin : MonoBehaviour
             spawned = true;
 
         }
-        if (health.health <= 0)
+        if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
             anim.SetTrigger("Despawn");
         }

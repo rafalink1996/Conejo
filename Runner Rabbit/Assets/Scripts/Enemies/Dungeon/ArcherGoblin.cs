@@ -65,7 +65,7 @@ public class ArcherGoblin : MonoBehaviour
         }
 
         //healthSlider.value = health;
-        if (health.health <= 0)
+        if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
             anim.SetTrigger("Die");
 
