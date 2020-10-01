@@ -40,6 +40,7 @@ public class GameStats : MonoBehaviour
     public int RadishMissleLevel;
     public int EarDefenceLevel;
     public int KickReflectLevel;
+    public int MagicLaserLevel;
 
 
     public int LevelReached;

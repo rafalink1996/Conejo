@@ -41,26 +41,30 @@ public class PowerMEnu : MonoBehaviour
     public Power[] EarShieldTiers;
     public Power[] RadishMissleTiers;
     public Power[] KickReflectTiers;
+    public Power[] MagicLaserTiers;
 
     public float CarrotMissleCrystalCost;
     public float EarShieldCrystalCost;
     public float RadishtMissleCrystalCost;
     public float KickReflectCrystalCost;
+    public float MagicLaserCrystalCost;
 
     //public int CarrotMissleTierID;
     //public int EarShieldTierID;
-   // public int RadishMissleTierID;
-   // public int KickReflectTierID;
+    // public int RadishMissleTierID;
+    // public int KickReflectTierID;
 
     public GameObject[] CarrotMissleTierUI;
     public GameObject[] EarShieldTierUI;
     public GameObject[] RadishMissleTierUI;
     public GameObject[] KickReflectTierUI;
+    public GameObject[] MagicLaserTierUI;
 
     public TextMeshProUGUI CarrotMissleCostText;
     public TextMeshProUGUI EarShieldCostText;
     public TextMeshProUGUI RadishMissleCostText;
     public TextMeshProUGUI KickReflectCostText;
+    public TextMeshProUGUI MagicLaserCostText;
 
 
 
@@ -116,40 +120,79 @@ public class PowerMEnu : MonoBehaviour
         }
 
         // Save Data radish missle
-
+        if (GameStats.stats.RadishMissleLevel == 1)
+        {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[0]);
+        }
         if (GameStats.stats.RadishMissleLevel == 2)
         {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[0]);
             GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
         }
         else if (GameStats.stats.RadishMissleLevel == 3)
         {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[0]);
             GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
             GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[2]);
         }
         else if (GameStats.stats.RadishMissleLevel == 4)
         {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[0]);
             GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
             GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[2]);
             GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[3]);
         }
 
         // save data KickReflect
-
-        if (GameStats.stats.KickReflectLevel == 2)
+        if (GameStats.stats.KickReflectLevel== 1)
+        {
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[0]);
+        }
+        else if (GameStats.stats.KickReflectLevel == 2)
         {
             GameStats.stats.UnlockedPowers.Add(KickReflectTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[0]);
         }
         else if (GameStats.stats.KickReflectLevel == 3)
         {
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[0]);
             GameStats.stats.UnlockedPowers.Add(KickReflectTiers[1]);
             GameStats.stats.UnlockedPowers.Add(KickReflectTiers[2]);
         }
         else if (GameStats.stats.KickReflectLevel == 4)
         {
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[0]);
             GameStats.stats.UnlockedPowers.Add(KickReflectTiers[1]);
             GameStats.stats.UnlockedPowers.Add(KickReflectTiers[2]);
             GameStats.stats.UnlockedPowers.Add(KickReflectTiers[3]);
         }
+
+        // save data laser 
+        if (GameStats.stats.MagicLaserLevel == 1)
+        {
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[0]);
+            
+        }
+        else if (GameStats.stats.MagicLaserLevel == 2)
+        {
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[1]);
+        }
+        else if (GameStats.stats.MagicLaserLevel == 3)
+        {
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[2]);
+        }
+        else if (GameStats.stats.MagicLaserLevel == 4)
+        {
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[2]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[3]);
+        }
+
+
         #endregion
 
         #region SetPowerUI
@@ -228,28 +271,59 @@ public class PowerMEnu : MonoBehaviour
         }
 
         // kickReflect Ui
-
-        if (GameStats.stats.KickReflectLevel <= 1)
+        if (GameStats.stats.KickReflectLevel == 0)
+        {
+            KickReflectTierUI[0].SetActive(false);
+            KickReflectTierUI[1].SetActive(false);
+            KickReflectTierUI[2].SetActive(false);
+            KickReflectTierUI[3].SetActive(false);
+        }
+        if (GameStats.stats.KickReflectLevel == 1)
         {
             KickReflectTierUI[0].SetActive(true);
         }
-        else if (GameStats.stats.KickReflectLevel <= 2)
+        else if (GameStats.stats.KickReflectLevel == 2)
         {
             KickReflectTierUI[0].SetActive(true);
             KickReflectTierUI[1].SetActive(true);
         }
-        else if (GameStats.stats.KickReflectLevel <= 3)
+        else if (GameStats.stats.KickReflectLevel == 3)
         {
             KickReflectTierUI[0].SetActive(true);
             KickReflectTierUI[1].SetActive(true);
             KickReflectTierUI[2].SetActive(true);
         }
-        else if (GameStats.stats.KickReflectLevel <= 4)
+        else if (GameStats.stats.KickReflectLevel == 4)
         {
             KickReflectTierUI[0].SetActive(true);
             KickReflectTierUI[1].SetActive(true);
             KickReflectTierUI[2].SetActive(true);
             KickReflectTierUI[3].SetActive(true);
+        }
+
+        // Magic Laser UI
+
+        if (GameStats.stats.MagicLaserLevel <= 1)
+        {
+            MagicLaserTierUI[0].SetActive(true);
+        }
+        else if (GameStats.stats.MagicLaserLevel <= 2)
+        {
+            MagicLaserTierUI[0].SetActive(true);
+            MagicLaserTierUI[1].SetActive(true);
+        }
+        else if (GameStats.stats.MagicLaserLevel <= 3)
+        {
+            MagicLaserTierUI[0].SetActive(true);
+            MagicLaserTierUI[1].SetActive(true);
+            MagicLaserTierUI[2].SetActive(true);
+        }
+        else if (GameStats.stats.MagicLaserLevel <= 4)
+        {
+            MagicLaserTierUI[0].SetActive(true);
+            MagicLaserTierUI[1].SetActive(true);
+            MagicLaserTierUI[2].SetActive(true);
+            MagicLaserTierUI[3].SetActive(true);
         }
         #endregion
 
@@ -287,6 +361,10 @@ public class PowerMEnu : MonoBehaviour
         if (GameStats.stats.RadishMissleLevel >= 4)
         {
             GameStats.stats.RadishMissleLevel = 4;
+        }
+        if (GameStats.stats.MagicLaserLevel >= 4)
+        {
+            GameStats.stats.MagicLaserLevel = 4;
         }
 
         // buy upgrades
@@ -381,7 +459,11 @@ public class PowerMEnu : MonoBehaviour
 
         // kickReflect Ui
 
-        if (GameStats.stats.KickReflectLevel <= 1)
+        if (GameStats.stats.KickReflectLevel == 0)
+        {
+            KickReflectTierUI[0].SetActive(false);
+        }
+        else if (GameStats.stats.KickReflectLevel == 1)
         {
             KickReflectTierUI[0].SetActive(true);
         }
@@ -396,6 +478,25 @@ public class PowerMEnu : MonoBehaviour
         else if (GameStats.stats.KickReflectLevel <= 4)
         {
             KickReflectTierUI[3].SetActive(true);
+        }
+
+        // magic laser UI
+
+        if (GameStats.stats.MagicLaserLevel <= 1)
+        {
+            MagicLaserTierUI[0].SetActive(true);
+        }
+        else if (GameStats.stats.MagicLaserLevel <= 2)
+        {
+            MagicLaserTierUI[1].SetActive(true);
+        }
+        else if (GameStats.stats.MagicLaserLevel <= 3)
+        {
+            MagicLaserTierUI[2].SetActive(true);
+        }
+        else if (GameStats.stats.MagicLaserLevel <= 4)
+        {
+            MagicLaserTierUI[3].SetActive(true);
         }
         #endregion
 
@@ -482,7 +583,26 @@ public class PowerMEnu : MonoBehaviour
         {
             KickReflectCrystalCost = 100;
         }
-        
+
+        // MagicLaser Crystal Cost
+
+        if (GameStats.stats.MagicLaserLevel == 0)
+        {
+            MagicLaserCrystalCost = 50;
+        }
+        else if (GameStats.stats.MagicLaserLevel == 1)
+        {
+            MagicLaserCrystalCost = 75;
+        }
+        else if (GameStats.stats.MagicLaserLevel == 2)
+        {
+            MagicLaserCrystalCost = 100;
+        }
+        else if (GameStats.stats.MagicLaserLevel == 3)
+        {
+            MagicLaserCrystalCost = 150;
+        }
+
 
         #endregion
 
@@ -522,9 +642,18 @@ public class PowerMEnu : MonoBehaviour
             RadishMissleCostText.text = "Max";
         }
 
+        if (GameStats.stats.MagicLaserLevel < 4)
+        {
+            MagicLaserCostText.text = MagicLaserCrystalCost.ToString();
+        }
+        else
+        {
+            MagicLaserCostText.text = "Max";
+        }
 
-        
-        
+
+
+
     }
 
 
@@ -697,29 +826,74 @@ public class PowerMEnu : MonoBehaviour
             }
             }
 
+        // kick reflect upgrade
+
             if (PowerStoreID == 3)
             {
                 if (GameStats.stats.crystals >= KickReflectCrystalCost)
                 {
-                   
-
+                GameStats.stats.KickReflectLevel += 1;
+                if (GameStats.stats.KickReflectLevel == 1)
+                {
+                    GameStats.stats.UnlockedPowers.Add(KickReflectTiers[0]);
+                    GameStats.stats.crystals -= KickReflectCrystalCost;
 
                 }
-                else
+                else if (GameStats.stats.KickReflectLevel == 2)
+                {
+                    GameStats.stats.UnlockedPowers.Add(KickReflectTiers[1]);
+                    GameStats.stats.crystals -= KickReflectCrystalCost;
+                }
+                else if (GameStats.stats.KickReflectLevel == 3)
+                {
+                    GameStats.stats.UnlockedPowers.Add(KickReflectTiers[2]);
+                    GameStats.stats.crystals -= KickReflectCrystalCost;
+                }
+                else if (GameStats.stats.KickReflectLevel == 4)
+                {
+                    GameStats.stats.UnlockedPowers.Add(KickReflectTiers[3]);
+                    GameStats.stats.crystals -= KickReflectCrystalCost;
+                }
+
+            }
+
+           else
                 {
                     Debug.Log("not enough crystals");
                     notEnoughCrystals.SetTrigger("NotEnoughCrystals");
                 }
             }
+
+            // radish missle upgrade
 
             if (PowerStoreID == 4)
             {
                 if (GameStats.stats.crystals >= RadishtMissleCrystalCost)
                 {
-                    
+                  GameStats.stats.RadishMissleLevel += 1;
+                  if (GameStats.stats.RadishMissleLevel == 1)
+                  {
+                    GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[0]);
+                    GameStats.stats.crystals -= RadishtMissleCrystalCost;
+                  }
+                  else if (GameStats.stats.RadishMissleLevel == 2)
+                  {
+                    GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
+                    GameStats.stats.crystals -= RadishtMissleCrystalCost;
+                  }
 
+                  else if (GameStats.stats.RadishMissleLevel == 3)
+                  {
+                    GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[2]);
+                    GameStats.stats.crystals -= RadishtMissleCrystalCost;
+                  }
+                  else if (GameStats.stats.RadishMissleLevel == 4)
+                  {
+                    GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[3]);
+                    GameStats.stats.crystals -= RadishtMissleCrystalCost;
+                  }
 
-                }
+            }
                 else
                 {
                     Debug.Log("not enough crystals");
@@ -727,8 +901,43 @@ public class PowerMEnu : MonoBehaviour
                 }
             }
 
-        }
+        // MagicLaser Upgrade
+        if (PowerStoreID == 5)
+        {
+            if (GameStats.stats.crystals >= MagicLaserCrystalCost)
+            {
+                GameStats.stats.MagicLaserLevel += 1;
+                if (GameStats.stats.MagicLaserLevel == 1)
+                {
+                    GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[0]);
+                    GameStats.stats.crystals -= MagicLaserCrystalCost;
+                }
+                else if (GameStats.stats.MagicLaserLevel == 2)
+                {
+                    GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[1]);
+                    GameStats.stats.crystals -= MagicLaserCrystalCost;
+                }
 
+                else if (GameStats.stats.MagicLaserLevel == 3)
+                {
+                    GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[2]);
+                    GameStats.stats.crystals -= MagicLaserCrystalCost;
+                }
+                else if (GameStats.stats.MagicLaserLevel == 4)
+                {
+                    GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[3]);
+                    GameStats.stats.crystals -= MagicLaserCrystalCost;
+                }
+
+            }
+            else
+            {
+                Debug.Log("not enough crystals");
+                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+            }
+        }
     }
+
+}
 
 

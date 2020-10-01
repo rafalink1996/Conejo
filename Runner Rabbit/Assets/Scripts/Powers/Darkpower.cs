@@ -24,11 +24,11 @@ public class Darkpower : MonoBehaviour
             button.onClick.AddListener(Cha.DarkPower);
         }
         
-        if (GameStats.stats.DarkpowerID == 51)
+        if (GameStats.stats.DarkpowerID == 51 || GameStats.stats.DarkpowerID == 52 || GameStats.stats.DarkpowerID == 53 || GameStats.stats.DarkpowerID == 54)
         {
             holdbutton.OnHoldDown.AddListener(Cha.DarkPowerHold);
             holdbutton.OnHoldUp.AddListener(Cha.DarkPowerHoldStop);
-            print("holdButtonWithLaser");
+            print("holdButtonWithLaserDark");
 
         }
        

@@ -47,7 +47,7 @@ public class ManaHandle : MonoBehaviour
     {
         DarkManaBar.value = CurrentDarkMana;
         LightManaBar.value = CurrentLightMana;
-        if (CurrentDarkMana < DarkMana && Cha.top == true)
+        if (CurrentDarkMana < DarkMana && Cha.top == true && Cha.HoldPower == false)
         {
             CurrentDarkMana = Mathf.MoveTowards(DarkManaBar.value, DarkManaBar.maxValue, Time.deltaTime * DarkManaRegen);
             // CurrentDarkMana = Mathf.MoveTowards(CurrentDarkMana / DarkMana, 1f, Time.deltaTime * 0.1f) * DarkMana;
@@ -58,7 +58,7 @@ public class ManaHandle : MonoBehaviour
             CurrentDarkMana = 0;
         }
 
-        if (CurrentLightMana < LightMana && Cha.top == false)
+        if (CurrentLightMana < LightMana && Cha.top == false && Cha.HoldPower == false)
         {
             CurrentLightMana = Mathf.MoveTowards(LightManaBar.value, LightManaBar.maxValue, Time.deltaTime * LightManaRegen);
             // CurrentDarkMana = Mathf.MoveTowards(CurrentDarkMana / DarkMana, 1f, Time.deltaTime * 0.1f) * DarkMana;
@@ -90,7 +90,7 @@ public class ManaHandle : MonoBehaviour
     public void ReduceLightMana()
 
     {
-        
+        print("light mana reduced");
         CurrentLightMana -= LightManaUsed;
         LightManaBar.value -= LightManaUsed;
 

@@ -102,6 +102,7 @@ public class character : MonoBehaviour
     //laser
 
     public LineRenderer laser;
+    
     public Transform StartLaserPos;
     public GameObject startVFX;
     public GameObject endVFX;
@@ -112,10 +113,12 @@ public class character : MonoBehaviour
     public bool HoldPower = false;
 
 
-    int layerMask = 1 << 9;
+    public int LaserlayerMask;
     
 
-
+    
+    
+   
 
 
 
@@ -397,7 +400,16 @@ public class character : MonoBehaviour
             hasPassedThroughRift = true;
             Instantiate(riftEffect, transform.position, Quaternion.identity);
             StartCoroutine(GetInvulnerableRift());
-            HoldPower = false;
+
+            if (GameStats.stats.powerDark.id >= 52)
+            {
+                DarkPowerHoldStop();
+            }
+            if (GameStats.stats.powerLight.id >= 52)
+            {
+                LightPowerHoldStop();
+            }
+
 
 
 
@@ -469,15 +481,52 @@ public class character : MonoBehaviour
 
     }
 
+    public void LightPowerHold()
+    {
+        mana.RequiredDarkMana(GameStats.stats.lightMana +5);
+        if (mana.CurrentDarkMana >= mana.DarkManaUsed)
+        {
+            
+            animator.SetBool("isUsingPower", true);
+            UsedPower(GameStats.stats.powerLight.id);
+            mana.ReduceDarkMana();
+            HoldPower = true;
+            startVFX.SetActive(true);
+            endVFX.SetActive(true);
+        }
+        else
+        {
+            LightPowerHoldStop();
+        }
+       
+       
+    }
+
+    public void LightPowerHoldStop()
+    {
+        animator.SetBool("isUsingPower", false);
+        UsedPower(GameStats.stats.powerLight.id);
+        HoldPower = false;
+    }
+
     public void DarkPowerHold()
     {
-        //print("UsingPower");
-        animator.SetBool("isUsingPower", true);
-        UsedPower(GameStats.stats.powerDark.id);
-        mana.ReduceLightMana();
-        HoldPower = true;
-        startVFX.SetActive(true);
-        endVFX.SetActive(true);
+        mana.RequiredLightMana(GameStats.stats.darkMana);
+        if (mana.CurrentLightMana >= mana.LightManaUsed +5)
+        {
+            //print("UsingPower");
+            animator.SetBool("isUsingPower", true);
+            UsedPower(GameStats.stats.powerDark.id);
+            mana.ReduceLightMana();
+            HoldPower = true;
+            startVFX.SetActive(true);
+           endVFX.SetActive(true);
+
+        }
+        else
+        {
+            DarkPowerHoldStop();
+        }
 
     }
 
@@ -871,7 +920,13 @@ public class character : MonoBehaviour
                 if (HoldPower == true)
                 {
                     //print("lasering");
+                    startVFX.SetActive(true);
+                    endVFX.SetActive(true);
                     laser.enabled = true;
+
+                    int layerMask = 1 << 9;
+                    LaserlayerMask = layerMask;
+
                     animator.SetBool("Laser", true);
                     endVFX.transform.position = laser.GetPosition(1);
                     startVFX.GetComponent<ParticleSystem>().Play();
@@ -879,7 +934,7 @@ public class character : MonoBehaviour
                     laser.SetPosition(0, StartLaserPos.position);
                     laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                     Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
-                    RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, layerMask);
+                    RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
                     
 
                     if (hit.collider != null)
@@ -902,6 +957,148 @@ public class character : MonoBehaviour
 
                 }
                 
+                break;
+
+            case 52:
+                if (HoldPower == true)
+                {
+                    //print("lasering");
+                   
+                    laser.enabled = true;
+
+                    int layerMask = 1 << 9;
+                    LaserlayerMask = layerMask;
+
+                    animator.SetBool("Laser", true);
+                    endVFX.transform.position = laser.GetPosition(1);
+                    startVFX.GetComponent<ParticleSystem>().Play();
+                    endVFX.GetComponent<ParticleSystem>().Play();
+                    laser.SetPosition(0, StartLaserPos.position);
+                    laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                    Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                    RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+
+                    if (hit.collider != null)
+                    {
+                        laser.SetPosition(1, hit.point);
+                        if (hit.transform.tag == "Enemy")
+                        {
+                            EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                            target.TakeDamage(1);
+                        } 
+                        //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
+                    }
+
+                }
+                else if (HoldPower == false)
+                {
+                    animator.SetBool("Laser", false);
+                    laser.enabled = false;
+                    startVFX.GetComponent<ParticleSystem>().Stop();
+                    endVFX.GetComponent<ParticleSystem>().Stop();
+
+                }
+                break;
+            case 53:
+                if (HoldPower == true)
+                {
+                    //print("lasering");
+                    startVFX.SetActive(true);
+                    endVFX.SetActive(true);
+                    laser.enabled = true;
+
+                    int layerMask1 = 1 << 9;
+                    int layerMask2 = 1 << 15;
+
+                    int CombiendLayerMask = layerMask1 | layerMask2;
+                    LaserlayerMask = CombiendLayerMask;
+
+                    animator.SetBool("Laser", true);
+                    endVFX.transform.position = laser.GetPosition(1);
+                    startVFX.GetComponent<ParticleSystem>().Play();
+                    endVFX.GetComponent<ParticleSystem>().Play();
+                    laser.SetPosition(0, StartLaserPos.position);
+                    laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                    Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                    RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+
+                    if (hit.collider != null)
+                    {
+                        laser.SetPosition(1, hit.point);
+                        if (hit.transform.tag == "Enemy")
+                        {
+                            EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                            target.TakeDamage(1);
+                        }
+
+                        if (hit.transform.tag == "Enemy proyectile")
+                        {
+                            print("destroyed" + hit.transform.gameObject.name);
+                            Destroy(hit.transform.gameObject);
+                        }
+                        //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
+                    }
+
+                }
+                else if (HoldPower == false)
+                {
+                    animator.SetBool("Laser", false);
+                    laser.enabled = false;
+                    startVFX.GetComponent<ParticleSystem>().Stop();
+                    endVFX.GetComponent<ParticleSystem>().Stop();
+
+                }
+                break;
+            case 54:
+                if (HoldPower == true)
+                {
+                    //print("lasering");
+                    startVFX.SetActive(true);
+                    endVFX.SetActive(true);
+                    laser.enabled = true;
+                    int layerMask1 = 1 << 9;
+                    int layerMask2 = 1 << 15;
+
+                    int CombiendLayerMask = layerMask1 | layerMask2;
+                    LaserlayerMask = CombiendLayerMask;
+
+                    animator.SetBool("Laser", true);
+                    endVFX.transform.position = laser.GetPosition(1);
+                    startVFX.GetComponent<ParticleSystem>().Play();
+                    endVFX.GetComponent<ParticleSystem>().Play();
+                    laser.SetPosition(0, StartLaserPos.position);
+                    laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                    Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                    RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+
+                    if (hit.collider != null)
+                    {
+                        laser.SetPosition(1, hit.point);
+                        if (hit.transform.tag == "Enemy")
+                        {
+                            EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                            target.TakeDamage(1);
+                        }
+
+                        if (hit.transform.tag == "Enemy proyectile")
+                        {
+                            Destroy(hit.transform.gameObject);
+                        }
+                        //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
+                    }
+
+                }
+                else if (HoldPower == false)
+                {
+                    animator.SetBool("Laser", false);
+                    laser.enabled = false;
+                    startVFX.GetComponent<ParticleSystem>().Stop();
+                    endVFX.GetComponent<ParticleSystem>().Stop();
+
+                }
                 break;
 
 

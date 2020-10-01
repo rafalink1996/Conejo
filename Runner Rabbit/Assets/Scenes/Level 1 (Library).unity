@@ -487,7 +487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &51099159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7976,7 +7976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &304781104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17096,7 +17096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1343187397}
   m_Layer: 8
-  m_Name: Laser
+  m_Name: 'Laser '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23365,6 +23365,7 @@ MonoBehaviour:
   startVFX: {fileID: 179759419}
   endVFX: {fileID: 1958767929}
   HoldPower: 0
+  LaserlayerMask: 0
 --- !u!58 &992125960
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -26613,8 +26614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DarkManaBar: {fileID: 256597578}
   LightManaBar: {fileID: 1710901087}
-  DarkMana: 500
-  LightMana: 500
+  DarkMana: 30
+  LightMana: 30
   DarkManaUsed: 0
   LightManaUsed: 0
   DarkManaRegen: 5
@@ -33547,7 +33548,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 60
+  m_MaxValue: 30
   m_WholeNumbers: 0
   m_Value: 30
   m_OnValueChanged:
@@ -46361,13 +46362,13 @@ PrefabInstance:
         type: 3}
       propertyPath: powerLight
       value: 
-      objectReference: {fileID: 11400000, guid: 2b5a3b8cdecdc4903bdaf103bdb1711e,
+      objectReference: {fileID: 11400000, guid: 9900566cfd48c4a819c81884e0f51405,
         type: 2}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: powerDark
       value: 
-      objectReference: {fileID: 11400000, guid: 8656a9eaa3a8e4c6286f3da1da37ac03,
+      objectReference: {fileID: 11400000, guid: 2cf58f844084e40e4be36c287a107a5b,
         type: 2}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
@@ -46382,7 +46383,7 @@ PrefabInstance:
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: totalDarkMana
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
