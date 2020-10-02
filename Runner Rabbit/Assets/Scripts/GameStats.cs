@@ -217,6 +217,7 @@ public class GameStats : MonoBehaviour
         EarDefenceLevel = data.EarDefenceLevel;
         RadishMissleLevel = data.RadishMissleLevel;
         KickReflectLevel = data.KickReflectLevel;
+        MagicLaserLevel = data.MagicLaserLevel;
 
         AudioVolume = data.AudioVolume;
         MusicVolume = data.MusicVolume;

@@ -17,6 +17,7 @@ public class PlayerData
     public int EarDefenceLevel;
     public int RadishMissleLevel;
     public int KickReflectLevel;
+    public int MagicLaserLevel;
 
     public int levelReached;
 
@@ -35,13 +36,13 @@ public class PlayerData
         false,
         false
     };
-    
 
-    
 
-    
 
-    public PlayerData (GameStats gamestats)
+
+
+
+    public PlayerData(GameStats gamestats)
     {
         Crystals = gamestats.crystals;
         fenixfetherBought = gamestats.fenixFeather;
@@ -60,7 +61,7 @@ public class PlayerData
 
 
 
-        
+
         skinConditions[0] = gamestats.skinConditions[0];
         skinConditions[1] = gamestats.skinConditions[1];
         skinConditions[2] = gamestats.skinConditions[2];
@@ -77,6 +78,7 @@ public class PlayerData
         EarDefenceLevel = gamestats.EarDefenceLevel;
         RadishMissleLevel = gamestats.RadishMissleLevel;
         KickReflectLevel = gamestats.KickReflectLevel;
-    }
+        MagicLaserLevel = gamestats.MagicLaserLevel;
 
+    }
 }
