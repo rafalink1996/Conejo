@@ -9,8 +9,9 @@ public class IceBat : MonoBehaviour
 
     float spawnTime;
     bool spawned = false;
-    float attackTime;
+    public float attackTime;
     public bool attack;
+    
     public bool GoBack;
     public float speed;
     public float Acceleration;
@@ -39,7 +40,7 @@ public class IceBat : MonoBehaviour
             enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
         }
         spawnTime = Random.Range(0.1f, 2f);
-        attackTime = Random.Range(0.2f, 1.3f);
+        attackTime = Random.Range(1.2f, 3.3f);
     }
 
     // Update is called once per frame
@@ -57,6 +58,17 @@ public class IceBat : MonoBehaviour
         {
 
             //StartCoroutine(breakBoulder());
+        }
+        if (!attack)
+        {
+            attackTime -= Time.deltaTime;
+        }
+        if (attackTime <= 0)
+        {
+            anim.SetTrigger("Attack");
+            attackTime = Random.Range(1.2f, 3.3f);
+           
+            attack = true;
         }
 
 
