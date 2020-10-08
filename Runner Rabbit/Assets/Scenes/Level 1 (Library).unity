@@ -16459,6 +16459,7 @@ GameObject:
   - component: {fileID: 672799254}
   - component: {fileID: 672799253}
   - component: {fileID: 672799255}
+  - component: {fileID: 672799256}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -16519,6 +16520,20 @@ MonoBehaviour:
   MusicSlider: {fileID: 347095240}
   SoundSlider: {fileID: 1459907614}
   audioMixer: {fileID: 24100000, guid: fc3f455b10db348d094da207e592d7c2, type: 2}
+--- !u!114 &672799256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672799252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182f41a75ffc642009d12a539811f551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTargetPlayStore: 0
+  isTestAd: 1
 --- !u!1 &677475416
 GameObject:
   m_ObjectHideFlags: 0
