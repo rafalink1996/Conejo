@@ -191,6 +191,7 @@ public class GameStats : MonoBehaviour
     public void SaveStats()
     {
         SaveSystem.SavePlayer(this);
+        Debug.Log("game saved");
     }
 
     public void LoadPlayer ()

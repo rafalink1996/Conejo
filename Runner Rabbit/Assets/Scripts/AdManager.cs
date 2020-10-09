@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.Audio;
+using TMPro;
 
 
 public class AdManager : MonoBehaviour, IUnityAdsListener
@@ -19,12 +20,56 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     public AudioMixer MainMixer;
 
-   
+    public int RewardCoins;
+
+    public GameObject rewardColect;
+
+    public TextMeshProUGUI RewardDisplay1;
+    public TextMeshProUGUI RewardDisplay2;
+    public TextMeshProUGUI RewardDisplay3;
+
+    public bool revive;
+    public character cha;
+    public GameObject deathscreen;
+
 
     // Start is called before the first frame update
     void Start()
     {
+
+        Advertisement.AddListener(this);
         IniziatlizeAdvertisement();
+
+        RewardCoins = 100 + (25 * (GameStats.stats.LevelIndicator - 2));
+        if (RewardDisplay1 != null)
+        {
+            RewardDisplay1.text = RewardCoins.ToString();
+        }
+        else
+        {
+            Debug.Log("no text");
+
+        }
+        if (RewardDisplay2 != null)
+        {
+            RewardDisplay2.text = RewardCoins.ToString();
+        }
+        else
+        {
+            Debug.Log("no text");
+
+        }
+
+        if (RewardDisplay3 != null)
+        {
+            RewardDisplay3.text = RewardCoins.ToString();
+        }
+        else
+        {
+            Debug.Log("no text");
+
+        }
+    
     }
 
     // Update is called once per frame
@@ -87,6 +132,59 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
+        switch (showResult)
+        {
+            case ShowResult.Failed:
+                break;
+            case ShowResult.Skipped:
+                break;
+            case ShowResult.Finished:
+                if (placementId == rewardedVideoAd)
+                {
+                    if (rewardColect != null)
+                    {
+                        rewardColect.SetActive(true);
+                    }
+                    else if (revive)
+                    {
+                        reviveCharacter();
+                    }
+                    
+                    Debug.Log("finished rewarded");
+                }
+                if (placementId == interstitialAd)
+                {
+                    Debug.Log("finished interstisial");
+                }
+                break;
+        }
         //throw new System.NotImplementedException();
     }
+
+    public void rewardPlayerCoins()
+    {
+        GameStats.stats.coins += RewardCoins;
+        GameStats.stats.SaveStats();
+
+    }
+
+    public void reviveCharacter()
+    {
+        cha.Health = cha.NumOfHearts;
+        deathscreen.SetActive(false);
+    }
+
+    public void toggleRevive()
+    {
+        if (revive == false)
+        {
+            revive = true;
+        }
+        else
+        {
+            revive = false;
+        }
+       
+    }
+
 }
