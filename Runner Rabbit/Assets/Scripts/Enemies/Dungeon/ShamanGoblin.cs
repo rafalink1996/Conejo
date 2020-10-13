@@ -87,7 +87,7 @@ public class ShamanGoblin : MonoBehaviour
     void SpawnEnemies()
     {
         GameObject summon = Instantiate(Resources.Load("Prefabs/" + summonName[summonType]) as GameObject);
-        summon.transform.position = transform.position + new Vector3(0, 3, 0);
+        summon.transform.position = transform.position + new Vector3(0, 0, 0);
         summon.transform.SetParent(summonContainer);
         enemiespresent = true;
         health.TakeDamage(10);

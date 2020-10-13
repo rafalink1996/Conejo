@@ -6,9 +6,13 @@ using UnityEngine;
 public class PlayerData
 {
     public float Crystals;
+
     public bool fenixfetherBought;
     public bool PortalBoostBought;
     public bool CoinTicketBought;
+    public bool ExtraHeartsBought;
+    public bool ManaJarBought;
+
     public int level;
     public int MaxLevelReached;
 
@@ -45,9 +49,13 @@ public class PlayerData
     public PlayerData(GameStats gamestats)
     {
         Crystals = gamestats.crystals;
+
         fenixfetherBought = gamestats.fenixFeather;
         PortalBoostBought = gamestats.PortalBoost;
         CoinTicketBought = gamestats.CoinTicket;
+        ExtraHeartsBought = gamestats.ExtraHearts;
+        ManaJarBought = gamestats.ManaJar;
+
         level = gamestats.leveBoughtID;
 
         levelReached = gamestats.LevelReached;

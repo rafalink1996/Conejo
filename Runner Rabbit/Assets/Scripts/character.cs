@@ -141,9 +141,20 @@ public class character : MonoBehaviour
         crystal = GameStats.stats.crystals; //sets held crystals to value stored
         CoinCounter.text = coins.ToString();
         CrystalCounter.text = crystal.ToString();
-        NumOfHearts = GameStats.stats.numOfHearts;
-        Health = NumOfHearts;
 
+        NumOfHearts = GameStats.stats.numOfHearts;
+       
+
+
+
+        if (GameStats.stats.ExtraHearts == true)
+        {
+            NumOfHearts += 2;
+            GameStats.stats.ExtraHearts = false;
+            GameStats.stats.SaveStats();
+        }
+
+        Health = NumOfHearts;
         endlevel = false;
 
         startVFX.GetComponent<ParticleSystem>().Stop();

@@ -24,16 +24,24 @@ public class PowerMEnu : MonoBehaviour
     public float FenixFeatherCost;
     public float PortalBoostCost;
     public float CoinTicketCost;
+    public float ExtraHeartsCost;
+    public float ManaJarCost;
+
+
     public float Level1toBossCost;
     public float level2Cost;
 
     public TextMeshProUGUI FenixFeather;
     public TextMeshProUGUI PortalBoost;
     public TextMeshProUGUI CoinTicket;
+    public TextMeshProUGUI ExtraHearts;
+    public TextMeshProUGUI ManaJar; 
 
     public GameObject FenixFeatherSoldOut;
     public GameObject PortalBoostSoldOut;
     public GameObject CoinTicketSoldOut;
+    public GameObject ExtraHeartsSoldOut;
+    public GameObject ManaJarSoldOut;
 
     public Animator notEnoughCrystals;
 
@@ -77,6 +85,9 @@ public class PowerMEnu : MonoBehaviour
         FenixFeather.text = FenixFeatherCost.ToString();
         PortalBoost.text = PortalBoostCost.ToString();
         CoinTicket.text = CoinTicketCost.ToString();
+        ExtraHearts.text = ExtraHeartsCost.ToString();
+        ManaJar.text = ManaJarCost.ToString();
+
 
         /*
         CarrotMissleTierID = GameStats.stats.CarrotMissleLevel;
@@ -400,6 +411,26 @@ public class PowerMEnu : MonoBehaviour
             CoinTicketSoldOut.SetActive(false);
         }
 
+        if (GameStats.stats.ExtraHearts == true)
+        {
+            ExtraHeartsSoldOut.SetActive(true);
+
+        }
+        else
+        {
+            ExtraHeartsSoldOut.SetActive(false);
+        }
+
+        if (GameStats.stats.ManaJar == true)
+        {
+            ManaJarSoldOut.SetActive(true);
+
+        }
+        else
+        {
+            ManaJarSoldOut.SetActive(false);
+        }
+
         #region SetPowerUI
         // set power upgrade tier in UI
         //CarrotMissle UI
@@ -705,7 +736,7 @@ public class PowerMEnu : MonoBehaviour
     {
         if (ItemID == 1)
         {
-            if (GameStats.stats.crystals >= CoinTicketCost)
+            if (GameStats.stats.crystals >= CoinTicketCost && GameStats.stats.CoinTicket == false)
             {
                 GameStats.stats.crystals -= CoinTicketCost;
                 GameStats.stats.CoinTicket = true;
@@ -714,15 +745,23 @@ public class PowerMEnu : MonoBehaviour
             }
             else
             {
-                Debug.Log("not enough crystals");
-                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                if (GameStats.stats.crystals >= CoinTicketCost)
+                {
+                    Debug.Log("not enough crystals");
+                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                } else if (GameStats.stats.CoinTicket == false)
+                {
+                    Debug.Log("already bought"); 
+                }
+
+               
             }
 
         }
 
         if (ItemID == 2)
         {
-            if (GameStats.stats.crystals >= PortalBoostCost)
+            if (GameStats.stats.crystals >= PortalBoostCost && GameStats.stats.PortalBoost == false)
             {
                 GameStats.stats.crystals -= PortalBoostCost;
                 GameStats.stats.PortalBoost = true;
@@ -731,14 +770,21 @@ public class PowerMEnu : MonoBehaviour
             }
             else
             {
-                Debug.Log("not enough crystals");
-                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                if (GameStats.stats.crystals >= PortalBoostCost)
+                {
+                    Debug.Log("not enough crystals");
+                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                }
+                else if (GameStats.stats.PortalBoost == false)
+                {
+                    Debug.Log("already bought");
+                }
             }
         }
 
         if (ItemID == 3)
         {
-            if (GameStats.stats.crystals >= FenixFeatherCost)
+            if (GameStats.stats.crystals >= FenixFeatherCost && GameStats.stats.fenixFeather == false)
             {
                 GameStats.stats.crystals -= FenixFeatherCost;
                 GameStats.stats.fenixFeather = true;
@@ -747,8 +793,60 @@ public class PowerMEnu : MonoBehaviour
             }
             else
             {
-                Debug.Log("not enough crystals");
-                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                if (GameStats.stats.crystals >= FenixFeatherCost)
+                {
+                    Debug.Log("not enough crystals");
+                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                }
+                else if (GameStats.stats.fenixFeather == false)
+                {
+                    Debug.Log("already bought");
+                }
+            }
+        }
+
+        if (ItemID == 4)
+        {
+            if (GameStats.stats.crystals >= ExtraHeartsCost && GameStats.stats.ExtraHearts == false)
+            {
+                GameStats.stats.crystals -= ExtraHeartsCost;
+                GameStats.stats.ExtraHearts = true;
+                GameStats.stats.SaveStats();
+
+            }
+            else
+            {
+                if (GameStats.stats.crystals >= ExtraHeartsCost)
+                {
+                    Debug.Log("not enough crystals");
+                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                }
+                else if (GameStats.stats.ExtraHearts == false)
+                {
+                    Debug.Log("already bought");
+                }
+            }
+        }
+        if (ItemID == 5)
+        {
+            if (GameStats.stats.crystals >= ManaJarCost && GameStats.stats.ManaJar == false)
+            {
+                GameStats.stats.crystals -= ManaJarCost;
+                GameStats.stats.ManaJar = true;
+                GameStats.stats.SaveStats();
+
+            }
+            else
+            {
+                if (GameStats.stats.crystals >= ManaJarCost)
+                {
+                    Debug.Log("not enough crystals");
+                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                }
+                else if (GameStats.stats.ManaJar == false)
+                {
+                    Debug.Log("already bought");
+                }
             }
         }
 

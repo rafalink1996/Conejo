@@ -29,6 +29,9 @@ public class GameStats : MonoBehaviour
     public bool CoinTicket = false;
     public bool PortalBoost = false;
     public bool fenixFeather = false;
+    public bool ExtraHearts = false;
+    public bool ManaJar = false;
+
     public bool LevelBought = false;
 
 
@@ -201,6 +204,8 @@ public class GameStats : MonoBehaviour
         CoinTicket = data.CoinTicketBought;
         PortalBoost = data.PortalBoostBought;
         fenixFeather = data.fenixfetherBought;
+        ExtraHearts = data.ExtraHeartsBought;
+        ManaJar = data.ManaJarBought;
 
         crystals = data.Crystals;
         leveBoughtID = data.level;
