@@ -4715,7 +4715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4813783658527170034, guid: baa4ae8a7b7db426988755d411f8d409,
+  m_Sprite: {fileID: -1110832853208769306, guid: bb01150153dcb4d49a8b54cea688b156,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -4744,7 +4744,7 @@ Animator:
   m_GameObject: {fileID: 571579693}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 29f8a8f4b625949c7b22298e8491e98c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 70ad6cc39b7134a7881ebf387840bfcf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6320,7 +6320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &769593464
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13105,6 +13105,9 @@ MonoBehaviour:
   RewardDisplay1: {fileID: 349581521}
   RewardDisplay2: {fileID: 1865790644}
   RewardDisplay3: {fileID: 1362433489}
+  revive: 0
+  cha: {fileID: 0}
+  deathscreen: {fileID: 0}
 --- !u!4 &1841330883
 Transform:
   m_ObjectHideFlags: 0
@@ -14632,7 +14635,7 @@ Animator:
   m_GameObject: {fileID: 2020240947}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 29f8a8f4b625949c7b22298e8491e98c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 70ad6cc39b7134a7881ebf387840bfcf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -14660,7 +14663,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4813783658527170034, guid: baa4ae8a7b7db426988755d411f8d409,
+  m_Sprite: {fileID: -1110832853208769306, guid: bb01150153dcb4d49a8b54cea688b156,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
