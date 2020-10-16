@@ -6,12 +6,17 @@ using TMPro;
 
 public class OfflineTimer : MonoBehaviour
 {
-    public TextMeshProUGUI counterText; // pauseText, resumeText, msgText;
+    public TextMeshProUGUI counterText;// pauseText, resumeText; msgText;
 
-    public int counterValue, focusCounter = 1, pauseCounter;
+    public int counterValue, focusCounter, pauseCounter;
     private DateTime lastMinimize;
     private double minimizedSeconds;
     private int TimerLenght = 18000;
+
+    
+
+
+    
     
     public Button GetCrystalsButton;
 
@@ -19,31 +24,37 @@ public class OfflineTimer : MonoBehaviour
     {
         if (isGamePause)
         {
-            pauseCounter++;
-           // pauseText.text = "Paused : " + pauseCounter;
+           
+            
+            // pauseText.text = "Paused : " + pauseCounter;
             GoToMinimize();
+            
+                
 
             Debug.Log("minimized");
         }
 
         if (!isGamePause)
         {
-            Debug.Log("appunpaused");
-        }
-    }
+           
 
-    void OnApplicationFocus(bool isGameFocus)
-    {
-        if (isGameFocus)
-        {
-            focusCounter++;
+            
             //resumeText.text = "Focused : " + focusCounter;
             GoToMaximize(1);
             GameStats.stats.SaveStats();
 
-           //Debug.Log("maximize");
+            
         }
     }
+/*
+    void OnApplicationFocus(bool isGameFocus)
+    {
+        if (isGameFocus)
+        {
+           
+        }
+    }
+*/
 
     // Use this for initialization
     void Start()
@@ -130,31 +141,38 @@ public class OfflineTimer : MonoBehaviour
 
         //Save last minmize into gamestas
         GameStats.stats.timedRewardLastDate = lastMinimize.ToBinary();
+        pauseCounter++;
+        //pauseText.text = "paused" + pauseCounter + "times";
     }
 
     public void GoToMaximize(int focusOrStart)
     {
         if (focusOrStart == 1)
         {
-            if (focusCounter >= 2) // first focus in on startup
-            {
+           // if (focusCounter >= 2) // first focus in on startup
+           // {
                 minimizedSeconds = (DateTime.Now - lastMinimize).TotalSeconds;
-                //msgText.text = "Total Minimized Seconds : " + ((Int32)minimizedSeconds).ToString();
-                // counterValue += (Int32)minimizedSeconds;
+               
                 TimerLenght -= (Int32)minimizedSeconds;
-                //Debug.Log("maximized on focus");
-            }
+                focusCounter++;
+                //resumeText.text = "resumed " + focusCounter + " times";
+
+            //}
         }
         if (focusOrStart == 2)
         {
-            if (focusCounter <= 2)
-            {
+            //if (focusCounter <= 2)
+           // {
                 minimizedSeconds = (DateTime.Now - lastMinimize).TotalSeconds;
-                //msgText.text = "Total Minimized Seconds : " + ((Int32)minimizedSeconds).ToString();
-                // counterValue += (Int32)minimizedSeconds;
+                
                 TimerLenght -= (Int32)minimizedSeconds;
                 Debug.Log("maximized on start");
-            }
+                focusCounter++;
+                //resumeText.text = "resumed " + focusCounter + " times";
+
+
+
+           // }
            
         }
         
