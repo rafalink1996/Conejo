@@ -16,6 +16,8 @@ public class PlayerData
     public int level;
     public int MaxLevelReached;
 
+    public int TimeReward;
+    public long TimedRewardLastDate;
 
     public int CarrotMissleLevel;
     public int EarDefenceLevel;
@@ -58,6 +60,8 @@ public class PlayerData
 
         level = gamestats.leveBoughtID;
 
+        
+
         levelReached = gamestats.LevelReached;
 
         BotSkin = gamestats.botSkinID;
@@ -68,7 +72,8 @@ public class PlayerData
 
 
 
-
+        TimeReward = gamestats.timedReward;
+        TimedRewardLastDate = gamestats.timedRewardLastDate;
 
         skinConditions[0] = gamestats.skinConditions[0];
         skinConditions[1] = gamestats.skinConditions[1];

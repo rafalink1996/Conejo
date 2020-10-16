@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLight: {fileID: 11400000, guid: 00ed85c9e9d684421bba7cea8d9aa2bd, type: 2}
-  powerDark: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
+  powerDark: {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907, type: 2}
   lightPowerName: 
   lightPowerSprite: {fileID: 21300000, guid: bdab295c7fc6740968be4ca772e6cad4, type: 3}
   lightpowerID: 0
@@ -53,24 +53,37 @@ MonoBehaviour:
   darkPowerSprite: {fileID: 21300000, guid: e657d4fbebc0a46008c971344049dfb3, type: 3}
   DarkpowerID: 0
   darkMana: 0
-  coins: 400
+  coins: 0
   crystals: 0
-  numOfHearts: 6
+  numOfHearts: 3
   totalLightMana: 60
   totalDarkMana: 30
   CoinTicket: 0
   PortalBoost: 0
   fenixFeather: 0
+  ExtraHearts: 0
+  ManaJar: 0
   LevelBought: 0
   leveBoughtID: 0
+  timedReward: 0
+  timedRewardLastDate: 0
   CarrotMissleLevel: 0
   RadishMissleLevel: 0
   EarDefenceLevel: 0
   KickReflectLevel: 0
+  MagicLaserLevel: 0
+  LevelReached: 1
   UnlockedPowers:
   - {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907, type: 2}
   - {fileID: 11400000, guid: 9900566cfd48c4a819c81884e0f51405, type: 2}
   - {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   - {fileID: 11400000, guid: 00ed85c9e9d684421bba7cea8d9aa2bd, type: 2}
-  LevelCount: 3
-  LevelIndicator: 2
+  LevelCount: 1
+  LevelIndicator: 1
+  topSkinID: 3
+  botSkinID: 5
+  MusicVolume: 0
+  AudioVolume: 0
+  skinConditions: 000000
+  bossDead: 0
+  spawnHouse: 0

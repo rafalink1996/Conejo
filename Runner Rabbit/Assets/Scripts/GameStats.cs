@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameStats : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class GameStats : MonoBehaviour
 
 
     public int leveBoughtID;
+
+    public int timedReward;
+    public long timedRewardLastDate;
 
 
     public int CarrotMissleLevel;
@@ -101,6 +105,8 @@ public class GameStats : MonoBehaviour
         }
 
         LoadPlayer();
+
+
     }
 
 
@@ -194,7 +200,7 @@ public class GameStats : MonoBehaviour
     public void SaveStats()
     {
         SaveSystem.SavePlayer(this);
-        Debug.Log("game saved");
+       // Debug.Log("game saved");
     }
 
     public void LoadPlayer ()
@@ -213,6 +219,9 @@ public class GameStats : MonoBehaviour
         LevelReached = data.levelReached;
         botSkinID = data.BotSkin;
         topSkinID = data.TopSkin;
+
+        timedReward = data.TimeReward;
+        timedRewardLastDate = data.TimedRewardLastDate;
 
         skinConditions[0] = data.skinConditions[0];
         skinConditions[1] = data.skinConditions[1];

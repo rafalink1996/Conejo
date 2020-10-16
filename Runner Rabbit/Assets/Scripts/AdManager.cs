@@ -21,6 +21,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     public AudioMixer MainMixer;
 
     public int RewardCoins;
+    public int RewardCrystals;
 
     public GameObject rewardColect;
 
@@ -29,7 +30,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     public TextMeshProUGUI RewardDisplay3;
 
     public bool revive;
-    public character cha;
+   // public character cha;
     public GameObject deathscreen;
 
 
@@ -147,7 +148,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
                     }
                     else if (revive)
                     {
-                        reviveCharacter();
+                        //reviveCharacter();
                     }
                     
                     Debug.Log("finished rewarded");
@@ -168,11 +169,18 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     }
 
-    public void reviveCharacter()
+    public void RewardPlayerCrystals()
+    {
+        GameStats.stats.crystals += RewardCrystals;
+        GameStats.stats.SaveStats();
+    }
+
+   /* public void reviveCharacter()
     {
         cha.Health = cha.NumOfHearts;
         deathscreen.SetActive(false);
     }
+
 
     public void toggleRevive()
     {
@@ -186,5 +194,6 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         }
        
     }
+   */
 
 }
