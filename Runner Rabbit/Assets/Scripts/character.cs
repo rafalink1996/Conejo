@@ -114,7 +114,11 @@ public class character : MonoBehaviour
 
 
     public int LaserlayerMask;
-    
+
+
+    // FenixFeather Used
+
+    public GameObject FenixFeatherAnim;
 
     
     
@@ -266,6 +270,9 @@ public class character : MonoBehaviour
         {
             Health = NumOfHearts;
             GameStats.stats.fenixFeather = false;
+            Animator FeatherAnimator = FenixFeatherAnim.GetComponent<Animator>();
+            FeatherAnimator.SetTrigger("FenixFeatherUsed");
+
 
         }
 

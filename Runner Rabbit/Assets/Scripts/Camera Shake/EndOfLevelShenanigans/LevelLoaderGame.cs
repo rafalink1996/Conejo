@@ -31,13 +31,13 @@ public class LevelLoaderGame : MonoBehaviour
     {
         if(GameStats.stats.LevelCount == 1)
         {
-            levelTime = 50;
+            levelTime = 50 + (25* (GameStats.stats.LevelIndicator -1));
 
         }
 
         if (GameStats.stats.LevelCount > 1)
         {
-            levelTime = 100;
+            levelTime = 100 + (25 * (GameStats.stats.LevelIndicator - 1));
         }
         StartCoroutine(loadloader());
 
@@ -86,6 +86,7 @@ public class LevelLoaderGame : MonoBehaviour
                 {
                     yield return new WaitForSecondsRealtime(5);
                     EndlessHosue.spawnhouse();
+                    GameStats.stats.PortalBoost = false;
                     
                     
                     StartCoroutine(loadAsyncGame(1));
@@ -101,6 +102,7 @@ public class LevelLoaderGame : MonoBehaviour
                     yield return new WaitForSecondsRealtime(1);
                     EndlessHosue.spawnhouse();
                     levelTime = 0;
+                    GameStats.stats.PortalBoost = false;
                     
                     StartCoroutine(loadAsyncGame(1));
                     
@@ -117,6 +119,7 @@ public class LevelLoaderGame : MonoBehaviour
     IEnumerator loadAsyncGame(int SceneIndex)
 
     {
+
 
 
         Debug.Log("gameChangeInitiated");

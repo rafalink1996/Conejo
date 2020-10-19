@@ -152,8 +152,11 @@ public class OfflineTimer : MonoBehaviour
            // if (focusCounter >= 2) // first focus in on startup
            // {
                 minimizedSeconds = (DateTime.Now - lastMinimize).TotalSeconds;
-               
+               if (minimizedSeconds >= 0 )
+            {
                 TimerLenght -= (Int32)minimizedSeconds;
+            }
+                
                 focusCounter++;
                 //resumeText.text = "resumed " + focusCounter + " times";
 
@@ -164,9 +167,13 @@ public class OfflineTimer : MonoBehaviour
             //if (focusCounter <= 2)
            // {
                 minimizedSeconds = (DateTime.Now - lastMinimize).TotalSeconds;
-                
+                if (minimizedSeconds >= 0)
+            {
                 TimerLenght -= (Int32)minimizedSeconds;
-                Debug.Log("maximized on start");
+            }
+           
+               
+               // Debug.Log("maximized on start");
                 focusCounter++;
                 //resumeText.text = "resumed " + focusCounter + " times";
 
