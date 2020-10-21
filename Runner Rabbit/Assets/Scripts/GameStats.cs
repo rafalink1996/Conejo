@@ -81,14 +81,30 @@ public class GameStats : MonoBehaviour
 
     };
     public bool bossDead;
-    public bool spawnHouse; 
-     
+    public bool spawnHouse;
+
+    // achievemnts
+    public bool[] AchivementConditions =  new[ ]{
+        false, // 1.Wyrm Defeated
+        false, // 2.MageGoblin Defeated
+        false, // 3.Yeti Defeated
+        false, // 4.CarnivorousPlant Defeated
+        false, // 5.ClockworkGriffin Defeated
+        false, // 6.Wizard Defeated
+        false, // 7.acumulated 1000 Gold
+        false, // 8.Acumulated 500 Crystals
+        false, // 9.Bought All PowerUps for one run
+        false, // 10.Have one legendary spell equiped
+        false, // 11.Have two legendary spells equiped
+        false, // 12.Killed 100 monsters
+        false, // 13.spend over 1000 gold
+        false, // 14.died 50 times
+        false, // 15.kill a boss while having full health
+
+        };
+  
      
     
-
-
-
-
 
 
     // Start is called before the first frame update
@@ -185,6 +201,14 @@ public class GameStats : MonoBehaviour
         darkPowerSprite = powerDark.iconDark;
         DarkpowerID = powerDark.id;
         darkMana = powerDark.mana;
+
+        // achivments
+
+        if (coins >= 1000)
+        {
+            AchivementConditions[6] = true;
+        }
+        
 
 
      
