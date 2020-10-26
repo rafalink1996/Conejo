@@ -35,6 +35,10 @@ public class ShieldGoblin : MonoBehaviour
         if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
             anim.SetTrigger("Despawn");
+            if (GameStats.stats.monstersKilled < 400)
+            {
+                GameStats.stats.monstersKilled++;
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

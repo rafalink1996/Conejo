@@ -68,6 +68,13 @@ public class AchivmentsMenu : MonoBehaviour
 
         }
 
+        if (GameStats.stats.MoneySpent >= 1000)
+        {
+            GameStats.stats.AchivementConditions[12] = true;
+            GameStats.stats.SaveStats();
+
+        }
+
         // update achivements
 
         if (GameStats.stats.AchivementConditions[0]== true)

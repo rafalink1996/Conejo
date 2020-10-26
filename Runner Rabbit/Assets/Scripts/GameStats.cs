@@ -96,12 +96,16 @@ public class GameStats : MonoBehaviour
         false, // 9.Bought All PowerUps for one run
         false, // 10.Have one legendary spell equiped
         false, // 11.Have two legendary spells equiped
-        false, // 12.Killed 100 monsters
+        false, // 12.Killed 400 monsters
         false, // 13.spend over 1000 gold
         false, // 14.died 50 times
         false, // 15.kill a boss while having full health
 
         };
+
+    public float monstersKilled, MoneySpent, diedTimes;
+   
+  
   
      
     
@@ -208,10 +212,18 @@ public class GameStats : MonoBehaviour
         {
             AchivementConditions[6] = true;
         }
-        
+        if (powerDark.id == 4 || powerDark.id == 14 || powerDark.id == 24 || powerDark.id == 34 || powerDark.id == 54 || powerLight.id == 4 || powerLight.id == 14 || powerLight.id == 24 || powerLight.id == 34 || powerLight.id == 54)
+        {
+            AchivementConditions[9] = true;
+        }
+
+        if ((powerDark.id == 4 || powerDark.id == 14 || powerDark.id == 24 || powerDark.id == 34 || powerDark.id == 54)&&(powerLight.id == 4 || powerLight.id == 14 || powerLight.id == 24 || powerLight.id == 34 || powerLight.id == 54))
+        {
+            AchivementConditions[10] = true;
+        }
 
 
-     
+
 
     }
 
@@ -261,7 +273,27 @@ public class GameStats : MonoBehaviour
         AudioVolume = data.AudioVolume;
         MusicVolume = data.MusicVolume;
 
-        
+        AchivementConditions[0] = data.AchivementConditions[0];
+        AchivementConditions[1] = data.AchivementConditions[1];
+        AchivementConditions[2] = data.AchivementConditions[2];
+        AchivementConditions[3] = data.AchivementConditions[3];
+        AchivementConditions[4] = data.AchivementConditions[4];
+        AchivementConditions[5] = data.AchivementConditions[5];
+        AchivementConditions[6] = data.AchivementConditions[6];
+        AchivementConditions[7] = data.AchivementConditions[7];
+        AchivementConditions[8] = data.AchivementConditions[8];
+        AchivementConditions[9] = data.AchivementConditions[9];
+        AchivementConditions[10] = data.AchivementConditions[10];
+        AchivementConditions[11] = data.AchivementConditions[11];
+        AchivementConditions[12] = data.AchivementConditions[12];
+        AchivementConditions[13] = data.AchivementConditions[13];
+       
+
+        MoneySpent = data.GoldSpent;
+        monstersKilled = data.monstersKilled;
+        diedTimes = data.diedTimes;
+
+
 
     }
 

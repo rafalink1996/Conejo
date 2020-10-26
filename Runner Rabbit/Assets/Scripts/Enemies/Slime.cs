@@ -66,8 +66,12 @@ public class Slime : MonoBehaviour
         {
             
             anim.SetTrigger("Die");
-            
-        
+            if (GameStats.stats.monstersKilled < 400)
+            {
+                GameStats.stats.monstersKilled++;
+            }
+
+
         }
     }
     void AttackTime()

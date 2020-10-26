@@ -68,7 +68,11 @@ public class ElectricBook : MonoBehaviour
         if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
             anim.SetTrigger("Die");
-            
+            if (GameStats.stats.monstersKilled < 400)
+            {
+                GameStats.stats.monstersKilled++;
+            }
+
         }
     }
     void AttackTime()

@@ -264,6 +264,10 @@ public class character : MonoBehaviour
         if (Health == 0 && GameStats.stats.fenixFeather == false)
         {
             StartCoroutine(Death());
+            if (GameStats.stats.diedTimes < 50)
+            {
+                GameStats.stats.diedTimes++;
+            }
         }
 
         if (Health == 0 && GameStats.stats.fenixFeather == true)

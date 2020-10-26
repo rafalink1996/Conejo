@@ -220,6 +220,11 @@ public class Shop : MonoBehaviour
             //GameStats.stats.lightPowerSprite = power.iconLight;
             //GameStats.stats.lightpowerID = power.id;
             GameStats.stats.coins -= power.Cost;
+            if (GameStats.stats.MoneySpent < 1000)
+            {
+                GameStats.stats.MoneySpent += power.Cost;
+            }
+            
 
             SoldOut.SetActive(true);
             powerbutton.interactable = false;
@@ -247,6 +252,10 @@ public class Shop : MonoBehaviour
             // GameStats.stats.darkPowerSprite = power.iconDark;
             //GameStats.stats.DarkpowerID = power.id;
              GameStats.stats.coins -= power.Cost;
+            if (GameStats.stats.MoneySpent < 1000)
+            {
+                GameStats.stats.MoneySpent += power.Cost;
+            }
 
             SoldOut.SetActive(true);
             powerbutton.interactable = false;
@@ -278,6 +287,10 @@ public class Shop : MonoBehaviour
             {
                 GameStats.stats.numOfHearts += 1;
                 GameStats.stats.coins -= heartCost;
+                if (GameStats.stats.MoneySpent < 1000)
+                {
+                    GameStats.stats.MoneySpent += heartCost;
+                }
                 print("Bought heart");
             }
             else
@@ -298,6 +311,10 @@ public class Shop : MonoBehaviour
         {
             GameStats.stats.totalLightMana += 10;
             GameStats.stats.coins -= lightManaCost;
+            if (GameStats.stats.MoneySpent < 1000)
+            {
+                GameStats.stats.MoneySpent += lightManaCost;
+            }
             print("Bought Light Mana");
         }
         else
@@ -313,6 +330,10 @@ public class Shop : MonoBehaviour
         {
             GameStats.stats.totalDarkMana += 10;
             GameStats.stats.coins -= darkManaCost;
+            if (GameStats.stats.MoneySpent < 1000)
+            {
+                GameStats.stats.MoneySpent += darkManaCost;
+            }
             print("Bought Dark Mana");
         }
         else

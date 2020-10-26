@@ -66,6 +66,10 @@ public class ShooterPlant : MonoBehaviour
         if (health.health <= 0)
         {
             anim.SetTrigger("Die");
+            if (GameStats.stats.monstersKilled < 400)
+            {
+                GameStats.stats.monstersKilled++;
+            }
 
         }
     }

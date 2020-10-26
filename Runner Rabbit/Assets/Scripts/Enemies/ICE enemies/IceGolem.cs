@@ -74,7 +74,10 @@ public class IceGolem : MonoBehaviour
         {
             anim.SetTrigger("Die");
             Boulder3.BreakBoulder = true;
-
+            if (GameStats.stats.monstersKilled < 400)
+            {
+                GameStats.stats.monstersKilled++;
+            }
         }
 
         if (health.health <= 75)

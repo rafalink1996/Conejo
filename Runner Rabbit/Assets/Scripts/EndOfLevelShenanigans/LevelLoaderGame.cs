@@ -87,6 +87,11 @@ public class LevelLoaderGame : MonoBehaviour
                     yield return new WaitForSecondsRealtime(5);
                     EndlessHosue.spawnhouse();
                     GameStats.stats.PortalBoost = false;
+                    if (cha.Health == cha.NumOfHearts)
+                    {
+                        GameStats.stats.AchivementConditions[14] = true;
+                        
+                    }
                     
                     
                     StartCoroutine(loadAsyncGame(1));

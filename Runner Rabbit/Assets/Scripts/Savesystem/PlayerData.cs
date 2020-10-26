@@ -43,6 +43,35 @@ public class PlayerData
         false
     };
 
+    //achivements
+
+    public bool[] AchivementConditions = new []
+    {
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+        
+    };
+
+
+    public float GoldSpent;
+    public float monstersKilled;
+    public float diedTimes;
+
 
 
 
@@ -80,6 +109,26 @@ public class PlayerData
         skinConditions[2] = gamestats.skinConditions[2];
 
 
+
+        AchivementConditions[0] = gamestats.AchivementConditions[0];
+        AchivementConditions[1] = gamestats.AchivementConditions[1];
+        AchivementConditions[2] = gamestats.AchivementConditions[2];
+        AchivementConditions[3] = gamestats.AchivementConditions[3];
+        AchivementConditions[4] = gamestats.AchivementConditions[4];
+        AchivementConditions[5] = gamestats.AchivementConditions[5];
+        AchivementConditions[6] = gamestats.AchivementConditions[6];
+        AchivementConditions[7] = gamestats.AchivementConditions[7];
+        AchivementConditions[8] = gamestats.AchivementConditions[8];
+        AchivementConditions[9] = gamestats.AchivementConditions[9];
+        AchivementConditions[10] = gamestats.AchivementConditions[10];
+        AchivementConditions[11] = gamestats.AchivementConditions[11];
+        AchivementConditions[12] = gamestats.AchivementConditions[12];
+        AchivementConditions[13] = gamestats.AchivementConditions[13];
+        
+
+        GoldSpent = gamestats.MoneySpent;
+        monstersKilled = gamestats.monstersKilled;
+        diedTimes = gamestats.diedTimes;
 
 
 

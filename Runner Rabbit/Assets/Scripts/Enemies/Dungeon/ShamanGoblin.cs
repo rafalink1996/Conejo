@@ -77,6 +77,10 @@ public class ShamanGoblin : MonoBehaviour
             {
                 anim.SetTrigger("Despawn");
             }
+            if (GameStats.stats.monstersKilled < 400)
+            {
+                GameStats.stats.monstersKilled++;
+            }
         }
         if (GameStats.stats.spawnHouse)
         {
