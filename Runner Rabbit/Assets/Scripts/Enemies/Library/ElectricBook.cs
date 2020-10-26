@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ElectricBook : MonoBehaviour
 {
@@ -24,13 +25,16 @@ public class ElectricBook : MonoBehaviour
         health = GetComponent<EnemyHealth>();
         health.maxHealth = 80;
         anim = GetComponent<Animator>();
-        if (transform.position.y > 0)
+        if (SceneManager.GetActiveScene().name != "Level 2 (dungeon)")
         {
-            enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
-        }
-        if (transform.position.y < 0)
-        {
-            enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
+            if (transform.position.y > 0)
+            {
+                enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
+            }
+            if (transform.position.y < 0)
+            {
+                enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
+            }
         }
         //enemySpawner = FindObjectOfType<EnemySpawner>();
         //healthSlider = GetComponentInChildren<Slider>();
@@ -44,6 +48,7 @@ public class ElectricBook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(SceneManager.GetActiveScene().name);
         spawnTime -= Time.deltaTime;
         if (spawnTime <= 0 && spawned == false)
         {
@@ -96,7 +101,10 @@ public class ElectricBook : MonoBehaviour
     }
     void Over()
     {
-        enemySpawner.OneDown();
+        if (SceneManager.GetActiveScene().name != "Level 2 (dungeon)")
+        {
+            enemySpawner.OneDown();
+        }
         Destroy(gameObject);
         if (health.Hit == true)
         {
