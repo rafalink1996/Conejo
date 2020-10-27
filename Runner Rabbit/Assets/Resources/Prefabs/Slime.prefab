@@ -385,7 +385,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7524148104362577742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
@@ -422,6 +422,7 @@ MonoBehaviour:
   health: 0
   healthSlider: {fileID: 0}
   Hit: 0
+  hitTime: 1
 --- !u!58 &3456106594303634381
 CircleCollider2D:
   m_ObjectHideFlags: 0

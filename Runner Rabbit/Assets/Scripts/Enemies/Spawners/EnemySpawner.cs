@@ -11,18 +11,23 @@ public class EnemySpawner : MonoBehaviour
     public string[] enemyName;
     bool enemies;
     character Cha;
+    public Transform enemyContainer;
     // Start is called before the first frame update
     void Start()
     {
         spawnTime = Random.Range(3f, 6f);
         enemyType = Random.Range(0, enemyName.Length);
         Cha = FindObjectOfType<character>();
+        GameStats.stats.bossDead = false;
+        //enemyContainer = transform.Find("EnemyContainer");
+        //enemyContainer.transform.SetParent(null);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemyCount <= 0 && enemies)
+        //enemyContainer.transform.position = transform.position;
+        if (enemyContainer.childCount == 0 && enemies)
         {
             spawnTime = Random.Range(3f, 6f);
             enemyType = Random.Range(0, enemyName.Length);
@@ -41,52 +46,9 @@ public class EnemySpawner : MonoBehaviour
             enemyCount = 1;
             GameObject foes = Instantiate(Resources.Load("Prefabs/" + enemyName[enemyType]) as GameObject);
             foes.transform.position = transform.position;
+            foes.transform.SetParent(enemyContainer);
             
            
-
-
-            /*if (enemyType == 1)
-            {
-                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Firebook") as GameObject);
-                enemy.transform.position = transform.position;
-                enemyCount = 1;
-            }
-            if (enemyType == 2)
-            {
-                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Slime") as GameObject);
-                enemy.transform.position = transform.position;
-                enemyCount = 1;
-            }
-            if (enemyType == 3)
-            {
-                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Enemies 3") as GameObject);
-                enemy.transform.position = transform.position;
-                enemyCount = 3;
-            }
-            if (enemyType == 4)
-            {
-                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Enemies 4") as GameObject);
-                enemy.transform.position = transform.position;
-                enemyCount = 4;
-            }
-            if (enemyType == 5)
-            {
-                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Enemies 5") as GameObject);
-                enemy.transform.position = transform.position;
-                enemyCount = 4;
-            }
-            if (enemyType == 6)
-            {
-                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Book (ice)") as GameObject);
-                enemy.transform.position = transform.position;
-                enemyCount = 1;
-            }
-            if (enemyType == 7)
-            {
-                GameObject enemy = GameObject.Instantiate(Resources.Load("Prefabs/Book (Electric)") as GameObject);
-                enemy.transform.position = transform.position;
-                enemyCount = 1;
-            }*/
             enemy = true;
             enemies = true;
         }

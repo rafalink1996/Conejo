@@ -410,7 +410,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8056762449003740779}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
@@ -447,6 +447,7 @@ MonoBehaviour:
   health: 0
   healthSlider: {fileID: 0}
   Hit: 0
+  hitTime: 1
 --- !u!61 &5817702132647005272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -464,7 +465,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.6, y: 5.4}
+    oldSize: {x: 9.602779, y: 5.4}
     newSize: {x: 9.6, y: 5.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
