@@ -202,5 +202,8 @@ public class BossWyrm : MonoBehaviour
 
         portals[currentElement - 1].GetComponent<Animator>().SetTrigger("Change");
     }
-
+    public void Death()
+    {
+        Destroy(transform.parent.gameObject);
+    }
 }
