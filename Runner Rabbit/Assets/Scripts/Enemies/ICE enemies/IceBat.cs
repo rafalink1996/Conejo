@@ -19,8 +19,9 @@ public class IceBat : MonoBehaviour
     public EnemySpawner enemySpawner;
     public bool BreakBoulder;
     public bool spawnboulder;
-
+    public bool batTop;
     Animator anim;
+    public character Cha;
   
 
     [SerializeField] private float lerpPct = 0f;
@@ -30,7 +31,7 @@ public class IceBat : MonoBehaviour
         health = GetComponent<EnemyHealth>();
         transform.position = StartPos.position;
         anim = GetComponent<Animator>();
-        health.maxHealth = 30;
+        //health.maxHealth = 30;
         if (transform.position.y > 0)
         {
             enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
@@ -41,11 +42,13 @@ public class IceBat : MonoBehaviour
         }
         spawnTime = Random.Range(0.1f, 2f);
         attackTime = Random.Range(1.2f, 3.3f);
+        Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         spawnTime -= Time.deltaTime;
         if (spawnTime <= 0 && spawned == false)
         {
@@ -59,9 +62,10 @@ public class IceBat : MonoBehaviour
 
             //StartCoroutine(breakBoulder());
         }
-        if (!attack)
+        if (!attack && batTop == Cha.top)
         {
             attackTime -= Time.deltaTime;
+            
         }
         if (attackTime <= 0)
         {
@@ -70,7 +74,10 @@ public class IceBat : MonoBehaviour
            
             attack = true;
         }
-
+        if (!attack && !GoBack)
+        {
+            EndMarker.position = Cha.transform.position;
+        }
 
         if (attack == true)
         {
@@ -115,7 +122,14 @@ public class IceBat : MonoBehaviour
         {
             lerpPct = 1;
         }
-
+        if (transform.parent.transform.position.y > 0)
+        {
+            batTop = false;
+        }
+        else
+        {
+            batTop = true;
+        }
 
     }
 }
