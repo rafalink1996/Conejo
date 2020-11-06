@@ -7,8 +7,8 @@ public class IceBat : MonoBehaviour
     public Transform StartPos;
     public Transform EndMarker;
 
-    float spawnTime;
-    bool spawned = false;
+    public float spawnTime;
+    public bool spawned = false;
     public float attackTime;
     public bool attack;
     
@@ -29,7 +29,7 @@ public class IceBat : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        transform.position = StartPos.position;
+        //transform.position = StartPos.position;
         anim = GetComponent<Animator>();
         //health.maxHealth = 30;
         if (transform.position.y > 0)
@@ -52,17 +52,20 @@ public class IceBat : MonoBehaviour
         spawnTime -= Time.deltaTime;
         if (spawnTime <= 0 && spawned == false)
         {
-            anim.SetTrigger("Spawn");
+            Vector2.MoveTowards(transform.position, StartPos.position, 0.1f * Time.deltaTime);
+            //anim.SetTrigger("Spawn");
+            print("move");
+        }
+        if (transform.position == StartPos.position)
+        {
             spawned = true;
         }
-
-
-        if (BreakBoulder == true && attack == false)
+        if (!spawned)
         {
-
-            //StartCoroutine(breakBoulder());
+            return;
         }
-        if (!attack && batTop == Cha.top)
+
+        if (!attack && batTop == Cha.top && spawned)
         {
             attackTime -= Time.deltaTime;
             
@@ -104,7 +107,7 @@ public class IceBat : MonoBehaviour
             GoBack = false;
         }
 
-        if (lerpPct < 0)
+        if (lerpPct < 0 && spawned)
         {
             lerpPct = 0;
         }
@@ -130,6 +133,6 @@ public class IceBat : MonoBehaviour
         {
             batTop = true;
         }
-
+        
     }
 }
