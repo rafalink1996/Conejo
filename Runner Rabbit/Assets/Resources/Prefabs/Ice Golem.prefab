@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 3742358350413364563}
   m_Layer: 0
   m_Name: Ice Golem
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,6 +278,7 @@ MonoBehaviour:
   speed: 0.5
   Acceleration: 1.4
   BreakBoulder: 0
+  spawnboulder: 0
   lerpPct: 0
 --- !u!95 &3742358350541262108
 Animator:
@@ -532,6 +533,7 @@ MonoBehaviour:
   speed: 0.5
   Acceleration: 1.4
   BreakBoulder: 0
+  spawnboulder: 0
   lerpPct: 0
 --- !u!95 &3742358351147006410
 Animator:
@@ -855,6 +857,7 @@ MonoBehaviour:
   health: 10
   healthSlider: {fileID: 6910594193366742147}
   Hit: 0
+  hitTime: 1
 --- !u!1 &3742358351990399920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1142,7 @@ MonoBehaviour:
   speed: 0.5
   Acceleration: 1.4
   BreakBoulder: 0
+  spawnboulder: 0
   lerpPct: 0
 --- !u!95 &3742358352222923926
 Animator:

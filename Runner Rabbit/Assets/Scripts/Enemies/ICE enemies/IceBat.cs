@@ -52,7 +52,7 @@ public class IceBat : MonoBehaviour
         spawnTime -= Time.deltaTime;
         if (spawnTime <= 0 && spawned == false)
         {
-            Vector2.MoveTowards(transform.position, StartPos.position, 0.1f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, StartPos.position, 9f * Time.deltaTime);
             //anim.SetTrigger("Spawn");
             print("move");
         }
