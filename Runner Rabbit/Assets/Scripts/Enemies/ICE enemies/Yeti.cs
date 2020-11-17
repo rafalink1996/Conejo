@@ -36,6 +36,26 @@ public class Yeti : MonoBehaviour
         {
             anim.SetTrigger("Attack");
             attack = true;
+            
         }
+        if (punchTime <= 0 && !punch)
+        {
+            punch = true;
+        }
+        if (punch)
+        {
+            print("punch");
+            //GameObject icePunch = GameObject.Instantiate(Resources.Load("Prefabs/IcePunch") as GameObject);
+            punch = false;
+            punchTime = Random.Range(5f, 7f);
+        }
+    }
+    public void Attack()
+    {
+        GameObject iceLances = GameObject.Instantiate(Resources.Load("Prefabs/IceLances") as GameObject);
+        iceLances.transform.position = transform.position + new Vector3(-1.57f, 0.27f, 0);
+        attackTime = Random.Range(2f, 3f);
+        attack = false;
+        anim.SetBool("hasAttackedOnce", true);
     }
 }

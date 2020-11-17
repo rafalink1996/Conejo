@@ -5,14 +5,14 @@ using UnityEngine;
 public class IceLance : MonoBehaviour
 {
     public float speed = 3f;
-    bool reflected;
+    public bool reflected;
     public Transform sourceTransform;
     // Start is called before the first frame update
     void Start()
     {
 
         sourceTransform = transform.parent.transform;
-        Destroy(transform.parent.gameObject, 4f);
+        Destroy(transform.parent.gameObject, 10f);
 
         // transform.position = GameObject.Find("Enemy Spawner").transform.position;
     }
