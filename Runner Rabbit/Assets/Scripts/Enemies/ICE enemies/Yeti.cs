@@ -44,8 +44,8 @@ public class Yeti : MonoBehaviour
         }
         if (punch)
         {
-            print("punch");
-            //GameObject icePunch = GameObject.Instantiate(Resources.Load("Prefabs/IcePunch") as GameObject);
+            
+            GameObject icePunch = GameObject.Instantiate(Resources.Load("Prefabs/IcePunch") as GameObject);
             punch = false;
             punchTime = Random.Range(5f, 7f);
         }
