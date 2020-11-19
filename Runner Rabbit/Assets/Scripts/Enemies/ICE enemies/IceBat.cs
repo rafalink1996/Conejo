@@ -28,9 +28,12 @@ public class IceBat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
         health = GetComponent<EnemyHealth>();
+        health.maxHealth = 30;
         //transform.position = StartPos.position;
         anim = GetComponent<Animator>();
+        anim.SetFloat("Type", Random.Range(0, 2));
         //health.maxHealth = 30;
         if (transform.position.y > 0)
         {
@@ -42,7 +45,7 @@ public class IceBat : MonoBehaviour
         }
         spawnTime = Random.Range(0.1f, 2f);
         attackTime = Random.Range(1.2f, 3.3f);
-        Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
+        
     }
 
     // Update is called once per frame
@@ -105,6 +108,7 @@ public class IceBat : MonoBehaviour
         if (lerpPct <= 0)
         {
             GoBack = false;
+            
         }
 
         if (lerpPct < 0 && spawned)
@@ -117,6 +121,7 @@ public class IceBat : MonoBehaviour
         {
             attack = false;
             GoBack = true;
+            health.TakeDamage(10);
         }
 
 
@@ -133,6 +138,9 @@ public class IceBat : MonoBehaviour
         {
             batTop = true;
         }
-        
+        if (health.health <= 0)
+        {
+            Destroy(transform.parent.gameObject);
+        }
     }
 }

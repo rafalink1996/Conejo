@@ -118,7 +118,7 @@ public class IceGolem : MonoBehaviour
     void Over()
     {
         enemySpawner.OneDown();
-        Destroy(gameObject);
+        Destroy(gameObject.transform.parent.gameObject);
         if (health.Hit == true)
         {
             GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);

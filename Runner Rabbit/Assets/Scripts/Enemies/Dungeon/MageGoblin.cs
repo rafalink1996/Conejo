@@ -14,6 +14,7 @@ public class MageGoblin : MonoBehaviour
     public GameObject troll1Object;
     public GameObject troll2Object;
     public bool bossTop;
+    public GameObject[] healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -93,5 +94,19 @@ public class MageGoblin : MonoBehaviour
         invokeTime = Random.Range(8f, 15f);
         invoke = false;
         //anim.SetBool("hasAttackedOnce", true);
+    }
+    void DeactivateCollider()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+        healthBar[0].SetActive(false);
+        healthBar[1].SetActive(false);
+        healthBar[2].SetActive(false);
+    }
+    void ActivateCollider()
+    {
+        GetComponent<BoxCollider2D>().enabled = true;
+        healthBar[0].SetActive(true);
+        healthBar[1].SetActive(true);
+        healthBar[2].SetActive(true);
     }
 }

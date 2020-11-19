@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Yeti : MonoBehaviour
 {
+    public EnemyHealth health;
+        public int myHealth;
     public bool bossTop;
     Animator anim;
     public float attackTime;
     public float punchTime;
     bool attack;
     bool punch;
+    public GameObject[] healthBar;
     // Start is called before the first frame update
     void Start()
     {
+        health = GetComponent<EnemyHealth>();
+        health.maxHealth = myHealth;
         GameStats.stats.bossDead = false;
         anim = GetComponent<Animator>();
         attackTime = Random.Range(3f, 4f);
@@ -49,6 +54,11 @@ public class Yeti : MonoBehaviour
             punch = false;
             punchTime = Random.Range(5f, 7f);
         }
+        if (health.health <= 0)
+        {
+            anim.SetTrigger("Die");
+            GameStats.stats.bossDead = true;
+        }
     }
     public void Attack()
     {
@@ -57,5 +67,19 @@ public class Yeti : MonoBehaviour
         attackTime = Random.Range(2f, 3f);
         attack = false;
         anim.SetBool("hasAttackedOnce", true);
+    }
+    void DeactivateCollider()
+    {
+        GetComponent<CircleCollider2D>().enabled = false;
+        healthBar[0].SetActive(false);
+        healthBar[1].SetActive(false);
+        healthBar[2].SetActive(false);
+    }
+    void ActivateCollider()
+    {
+        GetComponent<CircleCollider2D>().enabled = true;
+        healthBar[0].SetActive(true);
+        healthBar[1].SetActive(true);
+        healthBar[2].SetActive(true);
     }
 }
