@@ -380,7 +380,7 @@ public class character : MonoBehaviour
 
         // colission with enemy proyectile
 
-        if (collision.tag == "Enemy proyectile")
+        if (collision.tag == "Enemy proyectile" || collision.tag == "Enemy")
         {
             Health -= 1;
             animator.SetTrigger("GotHit");
