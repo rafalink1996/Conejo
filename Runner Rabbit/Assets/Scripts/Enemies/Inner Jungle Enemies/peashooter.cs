@@ -13,13 +13,20 @@ public class peashooter : MonoBehaviour
         Vector3 dir = target.position - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
-        Destroy(gameObject, 4f);
+        Destroy(transform.parent.gameObject, 4f);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        transform.Translate(-10 * Time.deltaTime, 0, 0);
+        transform.Translate(-13 * Time.deltaTime, 0, 0);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Rift")
+        {
+            Destroy(transform.parent.gameObject);
+        }
     }
 }

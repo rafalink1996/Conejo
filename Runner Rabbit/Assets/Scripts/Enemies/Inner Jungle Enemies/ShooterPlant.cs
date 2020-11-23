@@ -41,7 +41,7 @@ public class ShooterPlant : MonoBehaviour
     void Update()
     {
         RotateTowards(target.position);
-
+        transform.Find("Canvas").rotation = Quaternion.Euler(0, 0, 0);
         spawnTime -= Time.deltaTime;
         if (spawnTime <= 0 && spawned == false)
         {
@@ -96,7 +96,9 @@ public class ShooterPlant : MonoBehaviour
     void Peashooter()
     {
         GameObject peashooter = GameObject.Instantiate(Resources.Load("Prefabs/Peashooter") as GameObject);
-        peashooter.transform.position = transform.position;
+        peashooter.transform.SetParent(transform);
+        peashooter.transform.localPosition = new Vector3 (-2.07f, -0.79f, 0);
+        peashooter.transform.SetParent(null);
         FindObjectOfType<AudioManager>().Play("PlantShoot");
 
 
