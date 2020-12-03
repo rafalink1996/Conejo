@@ -84,8 +84,8 @@ public class ClockworkRabbit : MonoBehaviour
     }
     void EnergyBall()
     {
-        GameObject EnergyBall = GameObject.Instantiate(Resources.Load("Prefabs/ClockworkBunnyProyectile") as GameObject);
-        EnergyBall.transform.position = transform.position - new Vector3(4, 0.5f , 0);
+        GameObject EnergyBall = GameObject.Instantiate(Resources.Load("Prefabs/BunnySteampunkProyectile") as GameObject);
+        EnergyBall.transform.position = transform.position - new Vector3(0, 0 , 0);
 
     }
     void Over()

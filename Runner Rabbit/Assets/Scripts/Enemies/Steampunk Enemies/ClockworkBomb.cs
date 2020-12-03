@@ -49,7 +49,6 @@ public class ClockworkBomb : MonoBehaviour
         {
             ExplotionCollider.radius += 0.2f;
         }
-        FindObjectOfType<AudioManager>().Play("BombExplotion");
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
 
