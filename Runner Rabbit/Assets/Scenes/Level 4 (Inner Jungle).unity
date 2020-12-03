@@ -2021,7 +2021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &187042950
 Transform:
   m_ObjectHideFlags: 0
@@ -10775,15 +10775,15 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562325464}
   serializedVersion: 6
-  lengthInSec: 5
+  lengthInSec: 4.5
   simulationSpeed: 1.61
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -15593,6 +15593,7 @@ GameObject:
   - component: {fileID: 598806636}
   - component: {fileID: 598806635}
   - component: {fileID: 598806637}
+  - component: {fileID: 598806638}
   m_Layer: 9
   m_Name: Plant
   m_TagString: Enemy proyectile
@@ -15710,6 +15711,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7214775, y: 1.5361555}
   m_EdgeRadius: 0
+--- !u!114 &598806638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598806633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ab1cd447cb34c2a864bbeedb0c7cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poisonAttack: {fileID: 562325464}
+  leafAttack: {fileID: 1120671598}
+  poisonTime: 4
 --- !u!1 &607775397
 GameObject:
   m_ObjectHideFlags: 0
@@ -24185,7 +24201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1120671599
 Transform:
   m_ObjectHideFlags: 0
