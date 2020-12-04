@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 750185726621539115}
   - component: {fileID: 8364641684965142934}
   - component: {fileID: 4621213433411947103}
+  - component: {fileID: 8617520978852740351}
   m_Layer: 15
   m_Name: Pea
   m_TagString: Enemy proyectile
@@ -180,3 +181,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &8617520978852740351
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750185726621539114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9ffe2f9b0bbc4a12a35e214cd098808, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

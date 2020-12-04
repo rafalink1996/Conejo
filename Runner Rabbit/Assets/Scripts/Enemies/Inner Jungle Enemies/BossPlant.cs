@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossPlant : MonoBehaviour
 {
     public GameObject poisonAttack;
-    public GameObject leafAttack;
+    public CarnovorousPlantSpawner leafAttack;
     ParticleSystem poisonParticles;
     Animator anim;
     public float poisonTime;
@@ -49,11 +49,11 @@ public class BossPlant : MonoBehaviour
     }
     void ActivateLeaves()
     {
-        leafAttack.SetActive(true);
-        Invoke("DeactivateLeaves", 4f);
+        leafAttack.StartSpawning();
+        //Invoke("DeactivateLeaves", 4f);
     }
     void DeactivateLeaves()
     {
-        leafAttack.SetActive(false);
+        //leafAttack.StopSpawning();
     }
 }

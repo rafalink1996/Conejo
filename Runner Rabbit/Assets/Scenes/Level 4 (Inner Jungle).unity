@@ -469,6 +469,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &42425412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3542273375926598913, guid: 3e2965c6ceb114834b5b2a17c18421ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1105198837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &51099158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,7 +2525,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1643502920}
         m_MethodName: Float
         m_Mode: 1
         m_Arguments:
@@ -2582,7 +2588,7 @@ MonoBehaviour:
   OnHoldDown:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1643502920}
         m_MethodName: Float
         m_Mode: 1
         m_Arguments:
@@ -2596,7 +2602,7 @@ MonoBehaviour:
   OnHoldUp:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1643502920}
         m_MethodName: Fall
         m_Mode: 1
         m_Arguments:
@@ -10211,6 +10217,7 @@ MonoBehaviour:
     type: 3}
   respawnTime: 2
   respawnTimeRandom: 4
+  Spawn: 0
   DarkSide: 1
 --- !u!114 &534546712
 MonoBehaviour:
@@ -15724,7 +15731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poisonAttack: {fileID: 562325464}
-  leafAttack: {fileID: 1120671598}
+  leafAttack: {fileID: 1120671600}
   poisonTime: 4
 --- !u!1 &607775397
 GameObject:
@@ -24195,13 +24202,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1120671599}
   - component: {fileID: 1120671601}
+  - component: {fileID: 1120671600}
   m_Layer: 0
   m_Name: Attack 3spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1120671599
 Transform:
   m_ObjectHideFlags: 0
@@ -24216,7 +24224,7 @@ Transform:
   m_Father: {fileID: 633228697}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1120671601
+--- !u!114 &1120671600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24224,6 +24232,24 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120671598}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee867dc9143e2480cb50ac3060d60bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SimpleEnemy: {fileID: 4868721154786733000, guid: 964d3d49c73e34c4cb707d9d43aa65ef,
+    type: 3}
+  respawnTime: 0.5
+  respawnTimeRandom: 2
+  SpawnTimer: 4
+  DarkSide: 0
+--- !u!114 &1120671601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120671598}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9e06c6850a284933ae536288988e6a4, type: 3}
   m_Name: 
@@ -24233,6 +24259,7 @@ MonoBehaviour:
   SimpleEnemyStatic: {fileID: 0}
   respawnTime: 0.5
   respawnTimeRandom: 2
+  Spawn: 0
   DarkSide: 0
 --- !u!1 &1134647617
 GameObject:
@@ -26225,6 +26252,7 @@ MonoBehaviour:
     type: 3}
   respawnTime: 2
   respawnTimeRandom: 4
+  Spawn: 0
   DarkSide: 0
 --- !u!114 &1491312013
 MonoBehaviour:
@@ -31780,6 +31808,7 @@ MonoBehaviour:
   SimpleEnemyStatic: {fileID: 0}
   respawnTime: 2
   respawnTimeRandom: 4
+  Spawn: 0
   DarkSide: 0
 --- !u!114 &1590223413
 MonoBehaviour:
@@ -32420,7 +32449,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1105198837}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 42425412}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3617dc11b826e4a8db8297cee4ed1479, type: 3}
@@ -33034,7 +33063,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 42425412}
     - target: {fileID: 9145209932829286937, guid: 0df66ce35249f4cd7b0fb0f613ea6c5b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
