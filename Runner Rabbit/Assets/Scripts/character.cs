@@ -22,6 +22,7 @@ public class character : MonoBehaviour
     ManaHandle mana;
     private float maxspeed = 10f;
     private float acceleration = 2f;
+    public bool hit;
 
 
 
@@ -382,12 +383,13 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Enemy proyectile" || collision.tag == "Enemy")
         {
-            Health -= 1;
+            LoseHealth();
+            /*Health -= 1;
             animator.SetTrigger("GotHit");
             StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
             StartCoroutine(GetInvulnerable());
             gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.1f);
-            Instantiate(DamageEffect, transform.position, Quaternion.identity);
+            Instantiate(DamageEffect, transform.position, Quaternion.identity);*/
         }
         if (collision.name == "jumpHeight")
         {
@@ -627,7 +629,15 @@ public class character : MonoBehaviour
     {
         ForceFloat = false;
     }
-
+    public void LoseHealth()
+    {
+        Health -= 1;
+        animator.SetTrigger("GotHit");
+        StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
+        StartCoroutine(GetInvulnerable());
+        gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.1f);
+        Instantiate(DamageEffect, transform.position, Quaternion.identity);
+    }
 
 
     IEnumerator DamageEffectSequence(SpriteRenderer mySpriteRenderer, Color dmgColor, float duration, float delay)
@@ -657,8 +667,10 @@ public class character : MonoBehaviour
     IEnumerator GetInvulnerable()
     {
         Physics2D.IgnoreLayerCollision(8, 9, true);
+        hit = true;
         yield return new WaitForSeconds(2f);
         Physics2D.IgnoreLayerCollision(8, 9, false);
+        hit = false;
 
 
     }
@@ -710,6 +722,7 @@ public class character : MonoBehaviour
         animator.SetBool("isUsingPower", false);
 
     }
+    
 
     public void UsedPower(int id)
     {
