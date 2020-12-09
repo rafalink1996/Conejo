@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -22361,6 +22361,7 @@ MonoBehaviour:
   upspeed: 2000
   top: 0
   RiftColition: 0
+  hit: 0
   CoinCounter: {fileID: 1081997212}
   CrystalCounter: {fileID: 478511520}
   Health: 4
@@ -43731,6 +43732,7 @@ MonoBehaviour:
   SimpleEnemyStatic: {fileID: 0}
   respawnTime: 2
   respawnTimeRandom: 4
+  Spawn: 0
   DarkSide: 0
 --- !u!1 &1972642279
 GameObject:
