@@ -6,20 +6,29 @@ public class BossPlant : MonoBehaviour
 {
     public GameObject poisonAttack;
     public CarnovorousPlantSpawner leafAttack;
-    ParticleSystem poisonParticles;
+    //ParticleSystem poisonParticles;
     Animator anim;
     public float poisonTime;
     bool poison = false;
+    public EnemyHealth health;
     
     // Start is called before the first frame update
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        poisonParticles = poisonAttack.GetComponent<ParticleSystem>();
-        var main = poisonParticles.main;
-        main.duration = poisonTime;
-        
+        //poisonParticles = poisonAttack.GetComponent<ParticleSystem>();
+        //var main = poisonParticles.main;
+        //main.duration = poisonTime;
+        poisonTime = Random.Range(4f, 5f);
+        /*if (transform.parent.name == "Plant")
+        {
+            health = transform.parent.GetComponent<EnemyHealth>();
+        }
+        else
+        {
+            health = GetComponent<EnemyHealth>();
+        }*/
     }
 
     // Update is called once per frame
@@ -33,19 +42,24 @@ public class BossPlant : MonoBehaviour
     }
     void ActivatePosion()
     {
-        poisonParticles.Play();
-        //poisonAttack.SetActive(true);
+        //poisonParticles.Play();
+        poisonAttack.SetActive(true);
         poison = true;
-        Invoke("DeactivatePoison", poisonTime);
+        Invoke("EndPoison", poisonTime);
     }
 
-    void DeactivatePoison()
+    void EndPoison()
     {
         //poisonAttack.SetActive(false);
-        poisonParticles.Stop();
+        //poisonParticles.Stop();
+        poisonAttack.GetComponent<Animator>().SetTrigger("End");
         anim.SetTrigger("Attack1End");
-        //poisonTime = 4f;
+        poisonTime = Random.Range(4f, 5f);
         poison = false;
+    }
+    void DeactivatePoison()
+    {
+        poisonAttack.SetActive(false);
     }
     void ActivateLeaves()
     {

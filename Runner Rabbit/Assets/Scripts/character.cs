@@ -103,11 +103,11 @@ public class character : MonoBehaviour
     //laser
 
     public LineRenderer laser;
-    
+
     public Transform StartLaserPos;
     public GameObject startVFX;
     public GameObject endVFX;
-    
+
 
 
 
@@ -121,9 +121,9 @@ public class character : MonoBehaviour
 
     public GameObject FenixFeatherAnim;
 
-    
-    
-   
+
+
+
 
 
 
@@ -148,7 +148,7 @@ public class character : MonoBehaviour
         CrystalCounter.text = crystal.ToString();
 
         NumOfHearts = GameStats.stats.numOfHearts;
-       
+
 
 
 
@@ -319,12 +319,6 @@ public class character : MonoBehaviour
 
     }
 
-
-
-
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -345,7 +339,7 @@ public class character : MonoBehaviour
             CamRipple.RippleEffect();
 
             StartCoroutine(GetInvulnerableRift());
-           
+
 
 
 
@@ -507,10 +501,10 @@ public class character : MonoBehaviour
 
     public void LightPowerHold()
     {
-        mana.RequiredDarkMana(GameStats.stats.lightMana +5);
+        mana.RequiredDarkMana(GameStats.stats.lightMana + 5);
         if (mana.CurrentDarkMana >= mana.DarkManaUsed)
         {
-            
+
             animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerLight.id);
             mana.ReduceDarkMana();
@@ -522,8 +516,8 @@ public class character : MonoBehaviour
         {
             LightPowerHoldStop();
         }
-       
-       
+
+
     }
 
     public void LightPowerHoldStop()
@@ -536,7 +530,7 @@ public class character : MonoBehaviour
     public void DarkPowerHold()
     {
         mana.RequiredLightMana(GameStats.stats.darkMana);
-        if (mana.CurrentLightMana >= mana.LightManaUsed +5)
+        if (mana.CurrentLightMana >= mana.LightManaUsed + 5)
         {
             //print("UsingPower");
             animator.SetBool("isUsingPower", true);
@@ -544,7 +538,7 @@ public class character : MonoBehaviour
             mana.ReduceLightMana();
             HoldPower = true;
             startVFX.SetActive(true);
-           endVFX.SetActive(true);
+            endVFX.SetActive(true);
 
         }
         else
@@ -560,7 +554,7 @@ public class character : MonoBehaviour
         UsedPower(GameStats.stats.powerDark.id);
         HoldPower = false;
     }
-   
+
 
     public void DarkPower()
     {
@@ -574,7 +568,7 @@ public class character : MonoBehaviour
             UsedPower(GameStats.stats.powerDark.id);
             mana.ReduceLightMana();
 
-           
+
             /*
              if (darkPower == "Missile")
              {
@@ -605,7 +599,7 @@ public class character : MonoBehaviour
 
     public void Float()
     {
-        
+
 
 
 
@@ -722,7 +716,7 @@ public class character : MonoBehaviour
         animator.SetBool("isUsingPower", false);
 
     }
-    
+
 
     public void UsedPower(int id)
     {
@@ -903,7 +897,7 @@ public class character : MonoBehaviour
                 radishT4clone2.transform.position = transform.position + new Vector3(2, 0, 0);
                 RadishMissile RadishT4statsclone2 = radishT4clone2.GetComponent<RadishMissile>();
                 RadishT4statsclone2.damage = 25;
-               
+
 
                 break;
             case 31:
@@ -940,7 +934,7 @@ public class character : MonoBehaviour
                 // kick
                 print("used spell 4");
                 animator.SetTrigger("Kick");
-                
+
                 GameObject kickT4 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 kickT4.transform.position = transform.position;
                 kickT4.name = "Kick";
@@ -970,7 +964,7 @@ public class character : MonoBehaviour
                     laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                     Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
                     RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
-                    
+
 
                     if (hit.collider != null)
                     {
@@ -980,10 +974,11 @@ public class character : MonoBehaviour
                             EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
                             target.TakeDamage(1);
                         }
-                       //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
+                        //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
                     }
 
-                } else if (HoldPower == false)
+                }
+                else if (HoldPower == false)
                 {
                     animator.SetBool("Laser", false);
                     laser.enabled = false;
@@ -991,14 +986,14 @@ public class character : MonoBehaviour
                     endVFX.GetComponent<ParticleSystem>().Stop();
 
                 }
-                
+
                 break;
 
             case 52:
                 if (HoldPower == true)
                 {
                     //print("lasering");
-                   
+
                     laser.enabled = true;
 
                     int layerMask = 1 << 9;
@@ -1021,7 +1016,7 @@ public class character : MonoBehaviour
                         {
                             EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
                             target.TakeDamage(1);
-                        } 
+                        }
                         //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
                     }
 
