@@ -21,14 +21,7 @@ public class BossPlant : MonoBehaviour
         //var main = poisonParticles.main;
         //main.duration = poisonTime;
         poisonTime = Random.Range(4f, 5f);
-        /*if (transform.parent.name == "Plant")
-        {
-            health = transform.parent.GetComponent<EnemyHealth>();
-        }
-        else
-        {
-            health = GetComponent<EnemyHealth>();
-        }*/
+        health = GetComponent<EnemyHealth>();
     }
 
     // Update is called once per frame
@@ -39,6 +32,10 @@ public class BossPlant : MonoBehaviour
         //{
         //    Invoke("DeactivatePoison", poisonTime);
         //}
+        if (health.health <= 0)
+        {
+            anim.SetTrigger("Death");
+        }
     }
     void ActivatePosion()
     {

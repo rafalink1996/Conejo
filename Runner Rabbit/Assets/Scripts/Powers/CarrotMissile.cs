@@ -32,5 +32,20 @@ public class CarrotMissile : MonoBehaviour
             } 
                
         }
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+            collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
+            print("hit " + collision.gameObject.name);
+            if (Piercing == false)
+            {
+                Destroy(gameObject);
+            }
+
+        }
     }
 }
