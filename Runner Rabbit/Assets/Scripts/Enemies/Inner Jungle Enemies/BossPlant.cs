@@ -11,7 +11,9 @@ public class BossPlant : MonoBehaviour
     public float poisonTime;
     bool poison = false;
     public EnemyHealth health;
-    
+    public GameObject[] healthBar;
+    public bool BossDead;
+
     // Start is called before the first frame update
 
     void Start()
@@ -22,6 +24,8 @@ public class BossPlant : MonoBehaviour
         //main.duration = poisonTime;
         poisonTime = Random.Range(4f, 5f);
         health = GetComponent<EnemyHealth>();
+        BossDead = false;
+        GameStats.stats.bossDead = false;
     }
 
     // Update is called once per frame
@@ -32,9 +36,11 @@ public class BossPlant : MonoBehaviour
         //{
         //    Invoke("DeactivatePoison", poisonTime);
         //}
-        if (health.health <= 0)
+        if (health.health <= 0 && !BossDead)
         {
             anim.SetTrigger("Death");
+            BossDead = true;
+            GameStats.stats.bossDead = true;
         }
     }
     void ActivatePosion()
@@ -66,5 +72,19 @@ public class BossPlant : MonoBehaviour
     void DeactivateLeaves()
     {
         //leafAttack.StopSpawning();
+    }
+    void DeactivateCollider()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+        healthBar[0].SetActive(false);
+        healthBar[1].SetActive(false);
+        healthBar[2].SetActive(false);
+    }
+    void ActivateCollider()
+    {
+        GetComponent<BoxCollider2D>().enabled = true;
+        healthBar[0].SetActive(true);
+        healthBar[1].SetActive(true);
+        healthBar[2].SetActive(true);
     }
 }

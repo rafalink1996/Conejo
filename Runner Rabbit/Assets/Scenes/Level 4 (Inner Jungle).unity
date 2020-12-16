@@ -16035,7 +16035,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598806633}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -16070,6 +16070,11 @@ MonoBehaviour:
   leafAttack: {fileID: 1120671600}
   poisonTime: 4
   health: {fileID: 0}
+  healthBar:
+  - {fileID: 1390643187}
+  - {fileID: 1727627540}
+  - {fileID: 2034527414}
+  BossDead: 0
 --- !u!114 &598806639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16082,7 +16087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ea4ba85c954d37ae30a2ae47bb9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   health: 0
   healthSlider: {fileID: 0}
   Hit: 0
@@ -16684,7 +16689,7 @@ MonoBehaviour:
   spawnerUp: {fileID: 102801762}
   SpawnerDown: {fileID: 451898758}
   SpawnerMiddle: {fileID: 253351649}
-  Boss: {fileID: 934656954}
+  Boss: {fileID: 633228696}
   ProgressBar: {fileID: 1725316092}
   PowerRarity: {fileID: 1568351816}
   cha: {fileID: 1643502920}
@@ -26880,6 +26885,11 @@ MonoBehaviour:
   leafAttack: {fileID: 296652830}
   poisonTime: 4
   health: {fileID: 0}
+  healthBar:
+  - {fileID: 2039738158}
+  - {fileID: 1975720126}
+  - {fileID: 1182152353}
+  BossDead: 0
 --- !u!61 &1399407593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26887,7 +26897,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399407590}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -26988,7 +26998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ea4ba85c954d37ae30a2ae47bb9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   health: 0
   healthSlider: {fileID: 697915176}
   Hit: 0
