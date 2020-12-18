@@ -49,6 +49,7 @@ public class character : MonoBehaviour
     public bool isUsingPower;
     public string lightPower;
     public string darkPower;
+    public bool silenced;
 
     public GameObject DamageEffect;
     public GameObject riftEffect;
@@ -469,7 +470,7 @@ public class character : MonoBehaviour
 
 
         mana.RequiredDarkMana(GameStats.stats.lightMana);
-        if (mana.CurrentDarkMana >= mana.DarkManaUsed && !isUsingPower)
+        if (mana.CurrentDarkMana >= mana.DarkManaUsed && !isUsingPower && !silenced)
         {
             isUsingPower = true;
             animator.SetBool("isUsingPower", true);
@@ -502,7 +503,7 @@ public class character : MonoBehaviour
     public void LightPowerHold()
     {
         mana.RequiredDarkMana(GameStats.stats.lightMana + 5);
-        if (mana.CurrentDarkMana >= mana.DarkManaUsed)
+        if (mana.CurrentDarkMana >= mana.DarkManaUsed && !silenced)
         {
 
             animator.SetBool("isUsingPower", true);
@@ -530,7 +531,7 @@ public class character : MonoBehaviour
     public void DarkPowerHold()
     {
         mana.RequiredLightMana(GameStats.stats.darkMana);
-        if (mana.CurrentLightMana >= mana.LightManaUsed + 5)
+        if (mana.CurrentLightMana >= mana.LightManaUsed + 5 && !silenced)
         {
             //print("UsingPower");
             animator.SetBool("isUsingPower", true);
@@ -561,7 +562,7 @@ public class character : MonoBehaviour
 
 
         mana.RequiredLightMana(GameStats.stats.darkMana);
-        if (mana.CurrentLightMana >= mana.LightManaUsed && !isUsingPower)
+        if (mana.CurrentLightMana >= mana.LightManaUsed && !isUsingPower && !silenced)
         {
             isUsingPower = true;
             animator.SetBool("isUsingPower", true);

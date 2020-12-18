@@ -20,4 +20,28 @@ public class BossGriffin : MonoBehaviour
     {
         rayAttack.SetActive(true);
     }
+    void ShootOne()
+    {
+        GameObject energyBall = Instantiate(Resources.Load("Prefabs/EnergyBall") as GameObject);
+        //energyBall.transform.SetParent(transform);
+        energyBall.transform.position = transform.position + new Vector3(-1.87f, -0.55f, 0);
+        //energyBall.transform.SetParent(null);
+        energyBall.transform.rotation = Quaternion.AngleAxis(12.46f, Vector3.forward);
+    }
+    void ShootTwo()
+    {
+        GameObject energyBall = Instantiate(Resources.Load("Prefabs/EnergyBall") as GameObject);
+        //energyBall.transform.SetParent(transform);
+        energyBall.transform.position = transform.position + new Vector3(-2.16f, 0.06f, 0);
+        //energyBall.transform.SetParent(null);
+        //energyBall.transform.GetChild(0).rotation = Quaternion.AngleAxis(12.46f, Vector3.forward);
+    }
+    void ShootThree()
+    {
+        GameObject energyBall = Instantiate(Resources.Load("Prefabs/EnergyBall") as GameObject);
+        //energyBall.transform.SetParent(transform);
+        energyBall.transform.position = transform.position + new Vector3(-2.21f, 1.2f, 0);
+        //energyBall.transform.SetParent(null);
+        energyBall.transform.rotation = Quaternion.AngleAxis(-13.678f, Vector3.forward);
+    }
 }
