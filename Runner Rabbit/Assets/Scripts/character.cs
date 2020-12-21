@@ -390,6 +390,10 @@ public class character : MonoBehaviour
         {
             hasPassedThroughRift = false;
         }
+        if (collision.name == "Silence")
+        {
+            silenced = true;
+        }
 
         /*
                 if (collision.tag == "House")
@@ -430,8 +434,10 @@ public class character : MonoBehaviour
             }
 
 
-
-
+        }
+        if (collision.name == "Silence")
+        {
+            silenced = false;
         }
     }
 

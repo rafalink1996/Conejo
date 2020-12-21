@@ -5,6 +5,10 @@ using UnityEngine;
 public class BossGriffin : MonoBehaviour
 {
     public GameObject rayAttack;
+    public GameObject silenceTop;
+    public GameObject silenceBot;
+    bool bossTop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +47,16 @@ public class BossGriffin : MonoBehaviour
         energyBall.transform.position = transform.position + new Vector3(-2.21f, 1.2f, 0);
         //energyBall.transform.SetParent(null);
         energyBall.transform.rotation = Quaternion.AngleAxis(-13.678f, Vector3.forward);
+    }
+    void Silence()
+    {
+        if (bossTop)
+        {
+            silenceTop.SetActive(true);
+        }
+        else
+        {
+            silenceBot.SetActive(true);
+        }
     }
 }
