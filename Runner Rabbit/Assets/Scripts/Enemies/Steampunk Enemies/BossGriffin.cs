@@ -7,7 +7,7 @@ public class BossGriffin : MonoBehaviour
     public GameObject rayAttack;
     public GameObject silenceTop;
     public GameObject silenceBot;
-    bool bossTop;
+    public bool bossTop;
 
     // Start is called before the first frame update
     void Start()
