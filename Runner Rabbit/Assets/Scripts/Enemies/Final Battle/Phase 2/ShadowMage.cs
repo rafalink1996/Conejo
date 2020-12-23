@@ -103,6 +103,7 @@ public class ShadowMage : MonoBehaviour
 
     IEnumerator ShadwMagePhaseStart()
     {
+        FindObjectOfType<AudioManager>().Play("MageTransform");
         ShadowMageAnimator.SetTrigger("Transform");
         yield return new WaitForSeconds(5);
         HealthSlider.SetActive(true);
@@ -141,7 +142,8 @@ public class ShadowMage : MonoBehaviour
             {
                 yield return new WaitForSeconds(TimeBetweenLaserAttacks);
                 ShadowLaser.SetActive(true);
-                yield return new WaitForSeconds(Random.Range(3, 5));
+                FindObjectOfType<AudioManager>().Play("MageLaser");
+                yield return new WaitForSeconds(4.5f);
                 ShadowLaserAnimator.SetTrigger("EndLoop");
 
                 if (ShieldIsUp != true)

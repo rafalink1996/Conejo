@@ -11,6 +11,7 @@ public class ShadowHandPortal : MonoBehaviour
     void Start()
     {
         PortalAnimator = GetComponent<Animator>();
+        FindObjectOfType<AudioManager>().Play("MageHandPortal");
         PortalAnimator.SetTrigger("Spawn");
         ShadowHand = GetComponentInParent<ShadowMageHand>();
     }

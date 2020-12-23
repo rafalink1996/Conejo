@@ -182,7 +182,7 @@ MonoBehaviour:
   - name: musica alternativa XD
     audioOutputMixer: {fileID: -3782309269719523556, guid: fc3f455b10db348d094da207e592d7c2,
       type: 2}
-    clip: {fileID: 8300000, guid: 012123b17e68b4dfdbaee4f8beeda1d3, type: 3}
+    clip: {fileID: 8300000, guid: 7dc0ed1da6dd940b9ba4cc8fabdb87d5, type: 3}
     volume: 0.3
     pitch: 1
     priority: 104
@@ -366,5 +366,41 @@ MonoBehaviour:
     volume: 0.4
     pitch: 0.8
     priority: 104
+    loop: 0
+    source: {fileID: 0}
+  - name: MageTransform
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 735371c861f3b4fafb38aabc72aabdef, type: 3}
+    volume: 1
+    pitch: 1
+    priority: 104
+    loop: 0
+    source: {fileID: 0}
+  - name: MageHandPortal
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 5615a39bc0c024cd4bd06870fbe52295, type: 3}
+    volume: 0.4
+    pitch: 1
+    priority: 104
+    loop: 0
+    source: {fileID: 0}
+  - name: MagePortal
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 81b2245a529154665b93910775f2c2f7, type: 3}
+    volume: 0.4
+    pitch: 1
+    priority: 104
+    loop: 0
+    source: {fileID: 0}
+  - name: MageLaser
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 1c8675d0168a54cffb1323cca645992c, type: 3}
+    volume: 1
+    pitch: 1.73
+    priority: 84
     loop: 0
     source: {fileID: 0}
