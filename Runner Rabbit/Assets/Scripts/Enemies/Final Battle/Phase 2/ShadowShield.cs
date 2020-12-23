@@ -13,6 +13,7 @@ public class ShadowShield : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("MageShieldUp");
         Anim = GetComponent<Animator>();
         Col2D = GetComponent<CircleCollider2D>();
         isShielded = true;
@@ -34,6 +35,7 @@ public class ShadowShield : MonoBehaviour
     {
         if (collision.tag == "FinalBossToken")
         {
+            FindObjectOfType<AudioManager>().Play("MageShieldBreak");
             Anim.SetTrigger("Break");
             StartCoroutine(RestoreTime());
             isShielded = false;
@@ -48,7 +50,9 @@ public class ShadowShield : MonoBehaviour
 
     IEnumerator RestoreTime()
     {
+        
         yield return new WaitForSeconds(15);
+        FindObjectOfType<AudioManager>().Play("MageShieldUp");
         Anim.SetTrigger("Restore");
         isShielded = true;
     }

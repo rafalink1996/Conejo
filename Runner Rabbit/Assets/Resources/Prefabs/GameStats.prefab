@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerLight: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   powerDark: {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907, type: 2}
+  originalLightPower: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
+  originalDarkPower: {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907, type: 2}
   lightPowerName: 
   lightPowerSprite: {fileID: 21300000, guid: bdab295c7fc6740968be4ca772e6cad4, type: 3}
   lightpowerID: 0
@@ -88,3 +90,6 @@ MonoBehaviour:
   bossDead: 0
   spawnHouse: 0
   AchivementConditions: 000000000000000000000000000000
+  monstersKilled: 0
+  MoneySpent: 0
+  diedTimes: 0

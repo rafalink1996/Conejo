@@ -8,6 +8,9 @@ public class GameStats : MonoBehaviour
     public Power powerLight;
     public Power powerDark;
 
+    [SerializeField] private Power originalLightPower;
+    [SerializeField] private Power originalDarkPower;
+
 
     public static GameStats stats;
     public string lightPowerName;
@@ -293,11 +296,21 @@ public class GameStats : MonoBehaviour
         monstersKilled = data.monstersKilled;
         diedTimes = data.diedTimes;
 
+    }
+
+    public void ResetStats()
+    {
+       stats.LevelIndicator = 2;
+       stats.LevelCount = 1;
+       stats.numOfHearts = 3;
+       stats.ExtraHearts = false;
+       stats.ManaJar = false;
+       powerDark = originalDarkPower;
+       powerLight = originalLightPower;
+       coins = 0;
 
 
     }
-
-
 
 
 

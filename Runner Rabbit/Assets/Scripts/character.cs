@@ -636,7 +636,7 @@ public class character : MonoBehaviour
         animator.SetTrigger("GotHit");
         StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
         StartCoroutine(GetInvulnerable());
-        gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.1f);
+        gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.4f);
         Instantiate(DamageEffect, transform.position, Quaternion.identity);
     }
 
@@ -657,7 +657,7 @@ public class character : MonoBehaviour
         {
             mySpriteRenderer.color = Color.Lerp(dmgColor, originColor, t);
 
-            yield return null;
+            
         }
 
         // restore origin color

@@ -164,6 +164,8 @@ public class LevelLoaderGame : MonoBehaviour
     public void backToMainMenu()
 
     {
+        GameStats.stats.ResetStats();
+        GameStats.stats.SaveStats();
         loadingScreen.SetActive(true);
         StartCoroutine(loadAsyncMainMenu());
         Time.timeScale = 1;
@@ -173,6 +175,7 @@ public class LevelLoaderGame : MonoBehaviour
 
     public void backtoMainMenuPauseButton()
     {
+        GameStats.stats.SaveStats();
         loadingScreen.SetActive(true);
         StartCoroutine(loadAsyncMainMenu());
         Time.timeScale = 1;
