@@ -8,6 +8,7 @@ public class BossGriffin : MonoBehaviour
     public GameObject silenceTop;
     public GameObject silenceBot;
     public bool bossTop;
+    public bool silence;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,14 @@ public class BossGriffin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.parent.transform.position.y > 0)
+        {
+            bossTop = false;
+        }
+        else
+        {
+            bossTop = true;
+        }
     }
     void RayAttack()
     {
@@ -50,7 +58,7 @@ public class BossGriffin : MonoBehaviour
     }
     void Silence()
     {
-        if (bossTop)
+        if (!bossTop)
         {
             silenceTop.SetActive(true);
         }
@@ -58,5 +66,13 @@ public class BossGriffin : MonoBehaviour
         {
             silenceBot.SetActive(true);
         }
+        silence = true;
+        Invoke("DeactivateSilence", 10f);
+    }
+    void DeactivateSilence()
+    {
+        silenceTop.SetActive(false);
+        silenceBot.SetActive(false);
+        silence = false;
     }
 }

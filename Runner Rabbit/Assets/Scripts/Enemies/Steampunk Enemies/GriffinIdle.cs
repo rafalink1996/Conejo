@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GriffinIdle : StateMachineBehaviour
 {
-    float timeToAttack;
+    public float timeToAttack;
     public int attackType;
     bool isAttacking;
     character Cha;
@@ -33,7 +33,27 @@ public class GriffinIdle : StateMachineBehaviour
         }
         if (timeToAttack <= 0 && !isAttacking)
         {
+            if (attackType >= 1 && attackType <= 33)
+            {
+                animator.SetTrigger("RayAttack");
+            }
+            if (attackType >= 34 && attackType <= 66)
+            {
+                animator.SetTrigger("HandAttack");
+            }
+            if (attackType >= 67 && attackType <= 100)
+            {
+                if (!griffin.silence)
+                {
+                    animator.SetTrigger("Silence");
+                }
+                else
+                {
+                    attackType = Random.Range(1, 67);
+                }
+            }
             isAttacking = true;
+            animator.SetBool("hasAttackedOnce", true);
         }
     }
 
