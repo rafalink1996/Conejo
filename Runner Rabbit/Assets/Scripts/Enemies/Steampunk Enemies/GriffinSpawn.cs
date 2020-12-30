@@ -14,12 +14,12 @@ public class GriffinSpawn : StateMachineBehaviour
         if (Cha.top && !griffin.bossTop)
         {
             //wyrm.transform.parent.transform.localEulerAngles = new Vector3(180, 0, 0);
-            griffin.transform.parent.transform.position = new Vector3(griffin.transform.parent.transform.position.x, -4.82f, griffin.transform.parent.transform.position.z);
+            griffin.transform.position = new Vector3(griffin.transform.position.x, -5.58f, griffin.transform.position.z);
         }
         if (!Cha.top && griffin.bossTop)
         {
             //wyrm.transform.parent.transform.localEulerAngles = new Vector3(0, 0, 0);
-            griffin.transform.parent.transform.position = new Vector3(griffin.transform.parent.transform.position.x, 4.82f, griffin.transform.parent.transform.position.z);
+            griffin.transform.position = new Vector3(griffin.transform.position.x, 4.82f, griffin.transform.position.z);
         }
         animator.SetBool("hasAttackedOnce", false);
     }

@@ -6,7 +6,7 @@ public class GriffinIdle : StateMachineBehaviour
 {
     public float timeToAttack;
     public int attackType;
-    bool isAttacking;
+    public bool isAttacking;
     character Cha;
     BossGriffin griffin;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -36,23 +36,26 @@ public class GriffinIdle : StateMachineBehaviour
             if (attackType >= 1 && attackType <= 33)
             {
                 animator.SetTrigger("RayAttack");
+                isAttacking = true;
             }
             if (attackType >= 34 && attackType <= 66)
             {
                 animator.SetTrigger("HandAttack");
+                isAttacking = true;
             }
             if (attackType >= 67 && attackType <= 100)
             {
                 if (!griffin.silence)
                 {
                     animator.SetTrigger("Silence");
+                    isAttacking = true;
                 }
                 else
                 {
                     attackType = Random.Range(1, 67);
                 }
             }
-            isAttacking = true;
+            
             animator.SetBool("hasAttackedOnce", true);
         }
     }
