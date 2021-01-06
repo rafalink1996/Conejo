@@ -128,7 +128,9 @@ public class LevelLoaderGame : MonoBehaviour
 
 
         Debug.Log("gameChangeInitiated");
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(1);
+        FindObjectOfType<AudioManager>().Play("EndOfLevelSound");
+        yield return new WaitForSecondsRealtime(1);
         // play animation
         EndLevelAnimation.SetActive(true);
 

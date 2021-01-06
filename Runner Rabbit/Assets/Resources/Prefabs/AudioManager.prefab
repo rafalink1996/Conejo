@@ -182,8 +182,8 @@ MonoBehaviour:
   - name: musica alternativa XD
     audioOutputMixer: {fileID: -3782309269719523556, guid: fc3f455b10db348d094da207e592d7c2,
       type: 2}
-    clip: {fileID: 8300000, guid: 7dc0ed1da6dd940b9ba4cc8fabdb87d5, type: 3}
-    volume: 0.3
+    clip: {fileID: 8300000, guid: 4c9af888dcd0643af953fa7127fc76af, type: 3}
+    volume: 1
     pitch: 1
     priority: 104
     loop: 1
@@ -419,6 +419,69 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4c03db30e52a44766bec7daaa1485532, type: 3}
     volume: 1
     pitch: 1.73
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: RadishMissle
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: eeb692ce97e64482c8bd795f8f6135dd, type: 3}
+    volume: 1
+    pitch: 1
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: EndOfLevelSound
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: a5f651097befb4daba66c4ae63070054, type: 3}
+    volume: 1
+    pitch: 1
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: IceBatCrumble
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 10267b504a4b94c9f9e8d2fb5f0c07f3, type: 3}
+    volume: 0.569
+    pitch: 1.84
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: ClockworkGrififnSilence
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: ada128f99cd68464bb20ed9fadf2b3fc, type: 3}
+    volume: 1
+    pitch: 1.84
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: ClockworkGrififnSilenceOff
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: f9a1b4964d4ba4714ab50e0fe67d92de, type: 3}
+    volume: 1
+    pitch: 1.84
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: ClockworkGrififnLaser
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 248b9280551a446d1b6619c25bbf866f, type: 3}
+    volume: 1
+    pitch: 1.84
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: ClockworkBombExplode
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: a2bbe7eb620ef470e9c28c7e8cd3df40, type: 3}
+    volume: 1
+    pitch: 1.84
     priority: 84
     loop: 0
     source: {fileID: 0}

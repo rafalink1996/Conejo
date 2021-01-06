@@ -76,6 +76,7 @@ public class IceBat : MonoBehaviour
         if (attackTime <= 0)
         {
             anim.SetTrigger("Attack");
+
             attackTime = Random.Range(1.2f, 3.3f);
            
             attack = true;
@@ -140,7 +141,16 @@ public class IceBat : MonoBehaviour
         }
         if (health.health <= 0)
         {
-            Destroy(transform.parent.gameObject);
+            StartCoroutine(Die());
+           
         }
+    }
+
+    IEnumerator Die()
+    {
+        anim.SetTrigger("Die");
+        FindObjectOfType<AudioManager>().Play("IceBatCrumble");
+        yield return new WaitForSeconds(0.7f);
+        Destroy(transform.parent.gameObject);
     }
 }

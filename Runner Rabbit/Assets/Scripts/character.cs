@@ -851,7 +851,7 @@ public class character : MonoBehaviour
                 radishT1.transform.position = transform.position + new Vector3(1, 0, 0);
                 RadishMissile RadishT1stats = radishT1.GetComponent<RadishMissile>();
                 RadishT1stats.damage = 15;
-                FindObjectOfType<AudioManager>().Play("MagicMissle");
+                FindObjectOfType<AudioManager>().Play("RadishMissle");
 
                 break;
             case 22:
@@ -866,7 +866,7 @@ public class character : MonoBehaviour
                 radishT2clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
                 RadishMissile RadishT2statsclone = radishT2clone.GetComponent<RadishMissile>();
                 RadishT2statsclone.damage = 15;
-                FindObjectOfType<AudioManager>().Play("MagicMissle");
+                FindObjectOfType<AudioManager>().Play("RadishMissle");
 
                 break;
             case 23:
@@ -885,7 +885,7 @@ public class character : MonoBehaviour
                 radishT3clone2.transform.position = transform.position + new Vector3(2, 0, 0);
                 RadishMissile RadishT3statsclone2 = radishT3clone2.GetComponent<RadishMissile>();
                 RadishT3statsclone2.damage = 15;
-                FindObjectOfType<AudioManager>().Play("MagicMissle");
+                FindObjectOfType<AudioManager>().Play("RadishMissle");
 
                 break;
             case 24:
@@ -904,6 +904,7 @@ public class character : MonoBehaviour
                 radishT4clone2.transform.position = transform.position + new Vector3(2, 0, 0);
                 RadishMissile RadishT4statsclone2 = radishT4clone2.GetComponent<RadishMissile>();
                 RadishT4statsclone2.damage = 25;
+                FindObjectOfType<AudioManager>().Play("RadishMissle");
 
 
                 break;

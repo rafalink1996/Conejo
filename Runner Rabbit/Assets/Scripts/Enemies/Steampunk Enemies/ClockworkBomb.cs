@@ -44,6 +44,7 @@ public class ClockworkBomb : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToExplode);
         ExplotionCollider.enabled = true;
+        FindObjectOfType<AudioManager>().Play("ClockworkBombExplode");
         animator.SetTrigger("Explode!");
         if (ExplotionCollider.radius < 1.25f)
         {
