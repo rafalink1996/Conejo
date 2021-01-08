@@ -74,13 +74,17 @@ public class GameStats : MonoBehaviour
     //audio saved stats
     public float MusicVolume;
     public float AudioVolume;
-    
 
-    public bool[] skinConditions = new [ ]
+
+    public bool[] skinConditions = new[]
     {
         false,// 0. tophat
-        false,// 1. Astral Traveler
-        false // 2. Slime
+        false,// 1. skinpack1bought
+        false,// 2. Angel
+        false,// 3. Imp
+        false,// 4. Snowman
+        false,// 5. wizard
+       
 
     };
     public bool bossDead;
@@ -107,11 +111,34 @@ public class GameStats : MonoBehaviour
         };
 
     public float monstersKilled, MoneySpent, diedTimes;
-   
-  
-  
-     
-    
+
+    //passives - Runes
+
+    public enum Rune
+    {
+        Default,
+        ShieldRune, // prevents first time you take damage
+        FloatRune,// floats faster
+        FallRune,// falls Faster
+        GreedRune,// multiplies coins buy 1.1 when reaching the store
+        MagnetRune,// coins fly towards the character
+        DestructionRune,// enemies spawn with 75% health
+        MerchandRune,// the first item you buy from the store is 50% off
+        ManaRune,// recharge mana faster
+        AlternateWorldsRune,// start the game with a random powerup you dont own
+        SpellRune// spells cost les mana to cast
+
+    };
+
+    public Rune Rune1;
+    public Rune Rune2;
+
+    public int Rune1ID;
+    public int Rune2ID;
+
+
+
+
 
 
     // Start is called before the first frame update
@@ -151,8 +178,12 @@ public class GameStats : MonoBehaviour
         LevelCount = 1;
         LevelIndicator = 2;
 
+        Rune1 = (Rune)Rune1ID;
+        Rune2 = (Rune)Rune2ID;
 
-        
+
+
+
 
 
     }
@@ -225,7 +256,7 @@ public class GameStats : MonoBehaviour
             AchivementConditions[10] = true;
         }
 
-
+       
 
 
     }
@@ -265,6 +296,9 @@ public class GameStats : MonoBehaviour
         skinConditions[0] = data.skinConditions[0];
         skinConditions[1] = data.skinConditions[1];
         skinConditions[2] = data.skinConditions[2];
+        skinConditions[3] = data.skinConditions[3];
+        skinConditions[4] = data.skinConditions[4];
+        skinConditions[5] = data.skinConditions[5];
 
 
         CarrotMissleLevel = data.CarrotMissleLevel;
@@ -295,6 +329,9 @@ public class GameStats : MonoBehaviour
         MoneySpent = data.GoldSpent;
         monstersKilled = data.monstersKilled;
         diedTimes = data.diedTimes;
+
+        Rune1ID = data.Rune1Id;
+        Rune2ID = data.Rune2Id;
 
     }
 

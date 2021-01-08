@@ -50,8 +50,10 @@ public class character : MonoBehaviour
     public string lightPower;
     public string darkPower;
     public bool silenced;
+    public bool shielded;
 
     public GameObject DamageEffect;
+    public GameObject BlockEffect;
     public GameObject riftEffect;
     public RipplePostProcessor CamRipple;
 
@@ -378,13 +380,17 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Enemy proyectile" || collision.tag == "Enemy")
         {
-            LoseHealth();
-            /*Health -= 1;
-            animator.SetTrigger("GotHit");
-            StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
-            StartCoroutine(GetInvulnerable());
-            gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.1f);
-            Instantiate(DamageEffect, transform.position, Quaternion.identity);*/
+            if (!shielded)
+            {
+                LoseHealth();
+            }
+            else
+            {
+                Instantiate(BlockEffect, collision.transform.position, Quaternion.identity);
+            }
+            
+           
+           
         }
         if (collision.name == "jumpHeight")
         {
@@ -575,26 +581,6 @@ public class character : MonoBehaviour
             UsedPower(GameStats.stats.powerDark.id);
             mana.ReduceLightMana();
 
-
-            /*
-             if (darkPower == "Missile")
-             {
-                 animator.SetTrigger("Missile");
-                 GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-                 carrot.transform.position = transform.position + new Vector3(1, 0, 0);
-                 mana.ReduceLightMana();
-                 FindObjectOfType<AudioManager>().Play("MagicMissle");
-             }
-             if (darkPower == "Defence")
-             {
-                 animator.SetTrigger("Defence");
-                 GameObject shield = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
-                 shield.transform.position = transform.position;
-                 mana.ReduceLightMana();
-                 FindObjectOfType<AudioManager>().Play("MagicDefence");
-             }
-                */
-
         }
 
 
@@ -695,9 +681,9 @@ public class character : MonoBehaviour
 
     IEnumerator GetInvulnerablePower()
     {
-        Physics2D.IgnoreLayerCollision(8, 9, true);
+        shielded = true;
         yield return new WaitForSeconds(1f);
-        Physics2D.IgnoreLayerCollision(8, 9, false);
+        shielded = false;
 
 
     }
@@ -800,7 +786,6 @@ public class character : MonoBehaviour
                 GameObject shieldT1 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT1.transform.position = transform.position;
                 StartCoroutine(GetInvulnerablePower());
-
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
 
@@ -823,7 +808,6 @@ public class character : MonoBehaviour
                 Shield ShieldT3stats = shieldT3.GetComponent<Shield>();
                 ShieldT3stats.HealthAbsorb = true;
                 StartCoroutine(GetInvulnerablePower());
-
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
 

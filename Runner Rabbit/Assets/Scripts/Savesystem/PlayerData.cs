@@ -40,7 +40,11 @@ public class PlayerData
     {
         false,
         false,
+        false,
+        false,
+        false,
         false
+        
     };
 
     //achivements
@@ -71,6 +75,9 @@ public class PlayerData
     public float GoldSpent;
     public float monstersKilled;
     public float diedTimes;
+
+    public int Rune1Id;
+    public int Rune2Id;
 
 
 
@@ -141,6 +148,9 @@ public class PlayerData
         RadishMissleLevel = gamestats.RadishMissleLevel;
         KickReflectLevel = gamestats.KickReflectLevel;
         MagicLaserLevel = gamestats.MagicLaserLevel;
+
+        Rune1Id = gamestats.Rune1ID;
+        Rune2Id = gamestats.Rune2ID;
 
     }
 }
