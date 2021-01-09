@@ -117,17 +117,16 @@ public class GameStats : MonoBehaviour
     public enum Rune
     {
         Default,
-        ShieldRune, // prevents first time you take damage
         FloatRune,// floats faster
         FallRune,// falls Faster
-        GreedRune,// multiplies coins buy 1.1 when reaching the store
         MagnetRune,// coins fly towards the character
-        DestructionRune,// enemies spawn with 75% health
-        MerchandRune,// the first item you buy from the store is 50% off
         ManaRune,// recharge mana faster
-        AlternateWorldsRune,// start the game with a random powerup you dont own
-        SpellRune// spells cost les mana to cast
-
+        SpellRune,// spells cost les mana to cast
+        ShieldRune, // prevents first time you take damage
+        GreedRune,// multiplies coins buy 1.1 when reaching the store
+        MerchandRune,// the first item you buy from the store is 50% off
+        DestructionRune,// enemies spawn with 75% health
+        AlternateWorldsRune// start the game with a random powerup you dont own
     };
 
     public Rune Rune1;
@@ -135,6 +134,22 @@ public class GameStats : MonoBehaviour
 
     public int Rune1ID;
     public int Rune2ID;
+
+    public bool[] UnlockedRunes = new[]{
+
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    };
+
+    public Sprite[] runeSprites;
 
 
 
@@ -332,6 +347,17 @@ public class GameStats : MonoBehaviour
 
         Rune1ID = data.Rune1Id;
         Rune2ID = data.Rune2Id;
+
+        UnlockedRunes[0] = data.unlockedRunes[0];
+        UnlockedRunes[1] = data.unlockedRunes[1];
+        UnlockedRunes[2] = data.unlockedRunes[2];
+        UnlockedRunes[3] = data.unlockedRunes[3];
+        UnlockedRunes[4] = data.unlockedRunes[4];
+        UnlockedRunes[5] = data.unlockedRunes[5];
+        UnlockedRunes[6] = data.unlockedRunes[6];
+        UnlockedRunes[7] = data.unlockedRunes[7];
+        UnlockedRunes[8] = data.unlockedRunes[8];
+        UnlockedRunes[9] = data.unlockedRunes[9];
 
     }
 

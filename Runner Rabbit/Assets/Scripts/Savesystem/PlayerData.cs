@@ -79,6 +79,19 @@ public class PlayerData
     public int Rune1Id;
     public int Rune2Id;
 
+    public bool[] unlockedRunes = new[]{
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+    };
+
 
 
 
@@ -151,6 +164,17 @@ public class PlayerData
 
         Rune1Id = gamestats.Rune1ID;
         Rune2Id = gamestats.Rune2ID;
+
+        unlockedRunes[0] = gamestats.UnlockedRunes[0];
+        unlockedRunes[1] = gamestats.UnlockedRunes[1];
+        unlockedRunes[2] = gamestats.UnlockedRunes[2];
+        unlockedRunes[3] = gamestats.UnlockedRunes[3];
+        unlockedRunes[4] = gamestats.UnlockedRunes[4];
+        unlockedRunes[5] = gamestats.UnlockedRunes[5];
+        unlockedRunes[6] = gamestats.UnlockedRunes[6];
+        unlockedRunes[7] = gamestats.UnlockedRunes[7];
+        unlockedRunes[8] = gamestats.UnlockedRunes[8];
+        unlockedRunes[9] = gamestats.UnlockedRunes[9];
 
     }
 }
