@@ -127,7 +127,10 @@ public class character : MonoBehaviour
 
 
 
+    // Runes - Passives
 
+    private bool RuneShielded;
+    public GameObject RuneShield;
 
 
 
@@ -138,6 +141,7 @@ public class character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         rb.AddForce(new Vector2(0, 200));
@@ -152,7 +156,49 @@ public class character : MonoBehaviour
 
         NumOfHearts = GameStats.stats.numOfHearts;
 
+        if (GameStats.stats.Rune1 == GameStats.Rune.AlternateWorldsRune || GameStats.stats.Rune2 == GameStats.Rune.AlternateWorldsRune)
+        {
+            bool[] PowerUps = new bool[] { GameStats.stats.CoinTicket, GameStats.stats.fenixFeather, GameStats.stats.ManaJar, GameStats.stats.ExtraHearts, GameStats.stats.PortalBoost };
+            for (int i = 0; i < PowerUps.Length; i++)
+            {
+                List<int> PowerUpsNotActive = new List<int> { };
+                if (PowerUps[i] == false)
+                {
+                    PowerUpsNotActive.Add(i);
+                }
+                int RandomPowerUp = Random.Range(0, PowerUpsNotActive.Count);
+                int SelectedPowerup = PowerUpsNotActive[RandomPowerUp];
+                PowerUps[SelectedPowerup] = true;
+                if (SelectedPowerup == 0)
+                {
+                    GameStats.stats.CoinTicket = true;
+                }
+                else if (SelectedPowerup == 1)
+                {
+                    GameStats.stats.fenixFeather = true;
+                }
+                else if (SelectedPowerup == 2)
+                {
+                    GameStats.stats.ManaJar = true;
+                }
+                else if (SelectedPowerup == 3)
+                {
+                    GameStats.stats.ExtraHearts = true;
+                }
+                else if (SelectedPowerup == 4)
+                {
+                    GameStats.stats.PortalBoost = true;
+                }
+            }
+        }
 
+
+        // Set Rune Shield
+        if (GameStats.stats.Rune1 == GameStats.Rune.ShieldRune || GameStats.stats.Rune2 == GameStats.Rune.ShieldRune)
+        {
+            RuneShielded = true;
+            RuneShield.SetActive(true);
+        }
 
 
         if (GameStats.stats.ExtraHearts == true)
@@ -175,8 +221,7 @@ public class character : MonoBehaviour
 
 
 
-
-
+        
 
 
     }
@@ -380,9 +425,20 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Enemy proyectile" || collision.tag == "Enemy")
         {
+
             if (!shielded)
             {
-                LoseHealth();
+                if (RuneShielded)
+                {
+                    RuneShielded = false;
+                    Animator RuneShieldAnimator = RuneShield.GetComponent<Animator>();
+                    RuneShieldAnimator.SetTrigger("Break");
+                }
+                else
+                {
+                    LoseHealth();
+                }
+                
             }
             else
             {
@@ -594,18 +650,38 @@ public class character : MonoBehaviour
     {
 
 
-
-
         if (hasPassedThroughRift)
         {
             rb.velocity = Vector3.zero;
             hasPassedThroughRift = false;
         }
-        rb.AddForce(new Vector2(0, upspeed * Time.deltaTime));
 
 
-        ForceFloat = true;
+        if (GameStats.stats.Rune1 == GameStats.Rune.FloatRune || GameStats.stats.Rune2 == GameStats.Rune.FloatRune)
+        {
 
+            rb.AddForce(new Vector2(0, upspeed * Time.deltaTime));
+            rb.gravityScale = 0;
+
+            ForceFloat = true;
+        }
+        else
+        {
+
+            rb.AddForce(new Vector2(0, upspeed * Time.deltaTime));
+            if (!top)
+            {
+                rb.gravityScale = 2;
+            }
+            else
+            {
+                rb.gravityScale = -2;
+            }
+
+
+
+            ForceFloat = true;
+        }
 
 
 
@@ -614,7 +690,34 @@ public class character : MonoBehaviour
 
     public void Fall()
     {
-        ForceFloat = false;
+        if (!top)
+        {
+            if (GameStats.stats.Rune1 == GameStats.Rune.FallRune || GameStats.stats.Rune2 == GameStats.Rune.FallRune)
+            {
+                ForceFloat = false;
+                rb.gravityScale = 4;
+            }
+            else
+            {
+                ForceFloat = false;
+                rb.gravityScale = 2;
+
+            }
+
+        }
+        else
+        {
+            if (GameStats.stats.Rune1 == GameStats.Rune.FallRune || GameStats.stats.Rune2 == GameStats.Rune.FallRune)
+            {
+                rb.gravityScale = -4;
+            }
+            else
+            {
+
+                rb.gravityScale = -2;
+            }
+
+        }
     }
     public void LoseHealth()
     {

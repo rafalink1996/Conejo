@@ -151,6 +151,8 @@ public class GameStats : MonoBehaviour
 
     public Sprite[] runeSprites;
 
+    public bool MerchantRune;
+
 
 
 
@@ -196,9 +198,7 @@ public class GameStats : MonoBehaviour
         Rune1 = (Rune)Rune1ID;
         Rune2 = (Rune)Rune2ID;
 
-
-
-
+        
 
 
     }

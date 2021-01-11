@@ -44,12 +44,28 @@ public class Shop : MonoBehaviour
     public float lightManaCost;
     public float darkManaCost;
 
+    private List<GameObject> PowersInStore = new List<GameObject>();
+    [SerializeField] private List<Power> PowersInStorePower = new List<Power>();
+
+    public TextMeshProUGUI LightManaCostText;
+    public TextMeshProUGUI DarkManaCostText;
+
+
 
 
 
 
     private void Start()
     {
+        if (GameStats.stats.Rune1 == GameStats.Rune.GreedRune || GameStats.stats.Rune2 == GameStats.Rune.GreedRune)
+        {
+            GameStats.stats.coins = Mathf.FloorToInt(coins * 1.25f);
+        }
+
+        if (GameStats.stats.Rune1 == GameStats.Rune.MerchandRune || GameStats.stats.Rune2 == GameStats.Rune.MerchandRune)
+        {
+            GameStats.stats.MerchantRune = true;
+        }
         LightpowerObject = GameStats.stats.UnlockedPowers;
         DarkpowerObject = GameStats.stats.UnlockedPowers;
 
@@ -58,19 +74,66 @@ public class Shop : MonoBehaviour
        
         PopulateShop();
 
+        for (int i = 0; i < PowersInStore.Count; i++)
+        {
+            TextMeshProUGUI PowerObjectCostText = PowersInStore[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+            if(GameStats.stats.MerchantRune == true)
+            {
+                PowerObjectCostText.text = ((PowersInStorePower[i].Cost) / 2).ToString();
+            }
+            else
+            {
+                PowerObjectCostText.text = ((PowersInStorePower[i].Cost).ToString());
+            }
+            
+        }
+            
+
     }
 
     private void Update()
     {
         coins = GameStats.stats.coins;
         CoinCounter.text = coins.ToString();
-        heartCost = GameStats.stats.numOfHearts * 50;
-        heartCostText.text = heartCost.ToString();
-        //GameStats.stats.coins = coins;
 
+        if(GameStats.stats.MerchantRune)
+        heartCost = GameStats.stats.numOfHearts * 25;
+       
+        //GameStats.stats.coins = coins;
+        if (GameStats.stats.MerchantRune == true)
+        {
+            LightManaCostText.text = (lightManaCost/2).ToString();
+            DarkManaCostText.text = (darkManaCost / 2).ToString();
+            heartCostText.text = Mathf.FloorToInt(heartCost/2).ToString();
+           
+        }
+        else
+        {
+            LightManaCostText.text = lightManaCost.ToString();
+            DarkManaCostText.text = darkManaCost.ToString();
+            heartCostText.text = heartCost.ToString();
+        }
+
+        
 
         LightpowerObject = GameStats.stats.UnlockedPowers;
         DarkpowerObject = GameStats.stats.UnlockedPowers;
+
+        for (int i = 0; i < PowersInStore.Count; i++)
+        {
+            TextMeshProUGUI PowerObjectCostText = PowersInStore[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+            if (GameStats.stats.MerchantRune == true)
+            {
+                PowerObjectCostText.text = ((PowersInStorePower[i].Cost) / 2).ToString();
+                
+            }
+            else
+            {
+                PowerObjectCostText.text = ((PowersInStorePower[i].Cost).ToString());
+            }
+
+        }
+
     }
 
     private void PopulateShop()
@@ -85,6 +148,8 @@ public class Shop : MonoBehaviour
 
             Power Po = LightpowerObject[i];
             GameObject powerobject = Instantiate(ShopItemPrefab, shopcontainer);
+            PowersInStore.Add(powerobject);
+            PowersInStorePower.Add(Po);
             GameObject childSoldout = powerobject.transform.GetChild(4).gameObject;
             Button PowerButton = powerobject.GetComponent<Button>();
 
@@ -121,6 +186,8 @@ public class Shop : MonoBehaviour
 
             Power Po = DarkpowerObject[i];
             GameObject powerobject = Instantiate(ShopItemPrefab, shopcontainer);
+            PowersInStore.Add(powerobject);
+            PowersInStorePower.Add(Po);
             GameObject childSoldout = powerobject.transform.GetChild(4).gameObject;
             Button PowerButton = powerobject.GetComponent<Button>();
 
@@ -219,7 +286,16 @@ public class Shop : MonoBehaviour
             GameStats.stats.powerLight = power;
             //GameStats.stats.lightPowerSprite = power.iconLight;
             //GameStats.stats.lightpowerID = power.id;
-            GameStats.stats.coins -= power.Cost;
+            if (GameStats.stats.MerchantRune == true)
+            {
+                GameStats.stats.MerchantRune = false;
+                GameStats.stats.coins -= (power.Cost/2);
+            }
+            else
+            {
+                GameStats.stats.coins -= power.Cost;
+            }
+            
             if (GameStats.stats.MoneySpent < 1000)
             {
                 GameStats.stats.MoneySpent += power.Cost;
@@ -251,7 +327,16 @@ public class Shop : MonoBehaviour
             GameStats.stats.powerDark = power;
             // GameStats.stats.darkPowerSprite = power.iconDark;
             //GameStats.stats.DarkpowerID = power.id;
-             GameStats.stats.coins -= power.Cost;
+            if (GameStats.stats.MerchantRune)
+            {
+                GameStats.stats.MerchantRune = false;
+                GameStats.stats.coins -= (power.Cost / 2);
+            }
+            else
+            {
+                GameStats.stats.coins -= power.Cost;
+            }
+             
             if (GameStats.stats.MoneySpent < 1000)
             {
                 GameStats.stats.MoneySpent += power.Cost;
@@ -283,15 +368,66 @@ public class Shop : MonoBehaviour
     {
         if (GameStats.stats.numOfHearts < 9)
         {
-            if (GameStats.stats.coins >= heartCost)
+            if(GameStats.stats.MerchantRune == true)
             {
-                GameStats.stats.numOfHearts += 1;
-                GameStats.stats.coins -= heartCost;
+                if (GameStats.stats.coins >= heartCost/2)
+                {
+                    GameStats.stats.numOfHearts += 1;
+                    GameStats.stats.coins -= heartCost/2;
+                    GameStats.stats.MerchantRune = false;
+                    if (GameStats.stats.MoneySpent < 1000)
+                    {
+                        GameStats.stats.MoneySpent += heartCost/2;
+                    }
+                    print("Bought heart");
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughCoins());
+                    print("You don't have enough coins!!!");
+                    //Play sound
+                }
+            }
+            else
+            {
+                if (GameStats.stats.coins >= heartCost)
+                {
+                    GameStats.stats.numOfHearts += 1;
+                    GameStats.stats.coins -= heartCost;
+                    if (GameStats.stats.MoneySpent < 1000)
+                    {
+                        GameStats.stats.MoneySpent += heartCost;
+                    }
+                    print("Bought heart");
+                }
+                else
+                {
+                    StartCoroutine(NotEnoughCoins());
+                    print("You don't have enough coins!!!");
+                    //Play sound
+                }
+            }
+           
+        }
+        else
+        {
+            print("You have max hearts");
+        }
+    }
+    public void OnButtonLightMana()
+    {
+        if(GameStats.stats.MerchantRune == true)
+        {
+            if (GameStats.stats.coins >= lightManaCost/2)
+            {
+                GameStats.stats.totalLightMana += 10;
+                GameStats.stats.coins -= lightManaCost/2;
+                GameStats.stats.MerchantRune = false;
                 if (GameStats.stats.MoneySpent < 1000)
                 {
-                    GameStats.stats.MoneySpent += heartCost;
+                    GameStats.stats.MoneySpent += lightManaCost/2;
                 }
-                print("Bought heart");
+                print("Bought Light Mana");
             }
             else
             {
@@ -302,46 +438,67 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            print("You have max hearts");
-        }
-    }
-    public void OnButtonLightMana()
-    {
-        if (GameStats.stats.coins >= lightManaCost)
-        {
-            GameStats.stats.totalLightMana += 10;
-            GameStats.stats.coins -= lightManaCost;
-            if (GameStats.stats.MoneySpent < 1000)
+            if (GameStats.stats.coins >= lightManaCost)
             {
-                GameStats.stats.MoneySpent += lightManaCost;
+                GameStats.stats.totalLightMana += 10;
+                GameStats.stats.coins -= lightManaCost;
+                if (GameStats.stats.MoneySpent < 1000)
+                {
+                    GameStats.stats.MoneySpent += lightManaCost;
+                }
+                print("Bought Light Mana");
             }
-            print("Bought Light Mana");
+            else
+            {
+                StartCoroutine(NotEnoughCoins());
+                print("You don't have enough coins!!!");
+                //Play sound
+            }
         }
-        else
-        {
-            StartCoroutine(NotEnoughCoins());
-            print("You don't have enough coins!!!");
-            //Play sound
-        }
+       
     }
     public void OnButtonDarkMana()
     {
-        if (GameStats.stats.coins >= darkManaCost)
+        if (GameStats.stats.MerchantRune == true)
         {
-            GameStats.stats.totalDarkMana += 10;
-            GameStats.stats.coins -= darkManaCost;
-            if (GameStats.stats.MoneySpent < 1000)
+            if (GameStats.stats.coins >= darkManaCost/2)
             {
-                GameStats.stats.MoneySpent += darkManaCost;
+                GameStats.stats.totalDarkMana += 10;
+                GameStats.stats.coins -= darkManaCost/2;
+                GameStats.stats.MerchantRune = false;
+                if (GameStats.stats.MoneySpent < 1000)
+                {
+                    GameStats.stats.MoneySpent += darkManaCost/2;
+                }
+                print("Bought Dark Mana");
             }
-            print("Bought Dark Mana");
+            else
+            {
+                StartCoroutine(NotEnoughCoins());
+                print("You don't have enough coins!!!");
+                //Play sound
+            }
         }
         else
         {
-            StartCoroutine(NotEnoughCoins());
-            print("You don't have enough coins!!!");
-            //Play sound
+            if (GameStats.stats.coins >= darkManaCost)
+            {
+                GameStats.stats.totalDarkMana += 10;
+                GameStats.stats.coins -= darkManaCost;
+                if (GameStats.stats.MoneySpent < 1000)
+                {
+                    GameStats.stats.MoneySpent += darkManaCost;
+                }
+                print("Bought Dark Mana");
+            }
+            else
+            {
+                StartCoroutine(NotEnoughCoins());
+                print("You don't have enough coins!!!");
+                //Play sound
+            }
         }
+       
     }
 
 

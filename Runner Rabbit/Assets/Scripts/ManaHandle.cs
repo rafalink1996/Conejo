@@ -47,9 +47,18 @@ public class ManaHandle : MonoBehaviour
     {
         DarkManaBar.value = CurrentDarkMana;
         LightManaBar.value = CurrentLightMana;
+
         if (CurrentDarkMana < DarkMana && Cha.top == true && Cha.HoldPower == false)
         {
-            CurrentDarkMana = Mathf.MoveTowards(DarkManaBar.value, DarkManaBar.maxValue, Time.deltaTime * DarkManaRegen);
+            if (GameStats.stats.Rune1 == GameStats.Rune.ManaRune || GameStats.stats.Rune2 == GameStats.Rune.ManaRune)
+            {
+                CurrentDarkMana = Mathf.MoveTowards(DarkManaBar.value, DarkManaBar.maxValue, Time.deltaTime * (DarkManaRegen * 2));
+            }
+            else
+            {
+                CurrentDarkMana = Mathf.MoveTowards(DarkManaBar.value, DarkManaBar.maxValue, Time.deltaTime * DarkManaRegen);
+            }
+                
             // CurrentDarkMana = Mathf.MoveTowards(CurrentDarkMana / DarkMana, 1f, Time.deltaTime * 0.1f) * DarkMana;
         }
 
@@ -60,7 +69,14 @@ public class ManaHandle : MonoBehaviour
 
         if (CurrentLightMana < LightMana && Cha.top == false && Cha.HoldPower == false)
         {
-            CurrentLightMana = Mathf.MoveTowards(LightManaBar.value, LightManaBar.maxValue, Time.deltaTime * LightManaRegen);
+            if (GameStats.stats.Rune1 == GameStats.Rune.ManaRune || GameStats.stats.Rune2 == GameStats.Rune.ManaRune)
+            {
+                CurrentLightMana = Mathf.MoveTowards(LightManaBar.value, LightManaBar.maxValue, Time.deltaTime * (LightManaRegen * 2));
+            }
+            else
+            {
+                CurrentLightMana = Mathf.MoveTowards(LightManaBar.value, LightManaBar.maxValue, Time.deltaTime * LightManaRegen);
+            }  
             // CurrentDarkMana = Mathf.MoveTowards(CurrentDarkMana / DarkMana, 1f, Time.deltaTime * 0.1f) * DarkMana;
         }
 
@@ -80,9 +96,18 @@ public class ManaHandle : MonoBehaviour
     public void ReduceDarkMana()
 
     {
+        if (GameStats.stats.Rune1 == GameStats.Rune.SpellRune || GameStats.stats.Rune2 == GameStats.Rune.SpellRune)
+        {
+            CurrentDarkMana -= (DarkManaUsed * (1 / 4));
+            DarkManaBar.value -= (DarkManaUsed * (1 / 4));
+        }
+        else
+        {
+            CurrentDarkMana -= DarkManaUsed;
+            DarkManaBar.value -= DarkManaUsed;
+        }
         
-        CurrentDarkMana -= DarkManaUsed;
-        DarkManaBar.value -= DarkManaUsed;
+     
 
 
     }
@@ -90,9 +115,18 @@ public class ManaHandle : MonoBehaviour
     public void ReduceLightMana()
 
     {
-        print("light mana reduced");
-        CurrentLightMana -= LightManaUsed;
-        LightManaBar.value -= LightManaUsed;
+        if (GameStats.stats.Rune1 == GameStats.Rune.SpellRune || GameStats.stats.Rune2 == GameStats.Rune.SpellRune)
+        {
+            CurrentLightMana -= (LightManaUsed * (1 / 4));
+            LightManaBar.value -= (LightManaUsed * (1 / 4));
+        }
+        else
+        {
+            CurrentLightMana -= LightManaUsed;
+            LightManaBar.value -= LightManaUsed;
+        }
+       
+        
 
     }
 }
