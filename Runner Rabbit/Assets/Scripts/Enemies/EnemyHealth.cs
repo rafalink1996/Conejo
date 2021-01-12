@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealth;
-    public int health;
+    public float maxHealth;
+    public float health;
     public Slider healthSlider;
     public bool Hit;
     public float hitTime = 1f;
+    public bool isBoss = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,13 @@ public class EnemyHealth : MonoBehaviour
         healthSlider = transform.Find("Canvas/Slider").GetComponent<Slider>();
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
+        if(GameStats.stats.Rune1 == GameStats.Rune.DestructionRune || GameStats.stats.Rune2 == GameStats.Rune.DestructionRune)
+        {
+           if (!isBoss)
+            {
+                health = maxHealth * 0.75f;
+            }
+        }
 
     }
 
@@ -39,6 +47,6 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-       
+
     }
 }

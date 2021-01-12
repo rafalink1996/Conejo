@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -34657,6 +34657,7 @@ MonoBehaviour:
   healthSlider: {fileID: 204357150}
   Hit: 0
   hitTime: 1
+  isBoss: 1
 --- !u!58 &1914381720
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -35116,6 +35117,7 @@ MonoBehaviour:
   healthSlider: {fileID: 1836659622}
   Hit: 0
   hitTime: 1
+  isBoss: 1
 --- !u!95 &1986782442
 Animator:
   serializedVersion: 3

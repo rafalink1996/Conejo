@@ -121,9 +121,9 @@ public class GameStats : MonoBehaviour
         FallRune,// falls Faster
         MagnetRune,// coins fly towards the character
         ManaRune,// recharge mana faster
-        SpellRune,// spells cost les mana to cast
+        SpellRune,// spells cost less mana to cast
         ShieldRune, // prevents first time you take damage
-        GreedRune,// multiplies coins buy 1.1 when reaching the store
+        GreedRune,// multiplies coins by 1.1 when reaching the store
         MerchandRune,// the first item you buy from the store is 50% off
         DestructionRune,// enemies spawn with 75% health
         AlternateWorldsRune// start the game with a random powerup you dont own

@@ -6,8 +6,8 @@ public class ElectricBall : MonoBehaviour
 {
     Transform target;
     public Transform sourceTransform;
-    float speed = 7f;
-    float rotateSpeed = 250f;
+    float speed = 6f;
+    float rotateSpeed = 100f;
     Rigidbody2D rb;
     Animator anim;
     bool reflected;
