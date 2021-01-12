@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 649349811767930167}
   - component: {fileID: -1900932564755846653}
   - component: {fileID: 2806439704493580687}
+  - component: {fileID: 7920156219417565502}
   m_Layer: 14
   m_Name: Crystal
   m_TagString: Crystal
@@ -111,13 +112,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2150244439518303262}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 601e235227eec4316a0065a3ff39db7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
   myTokenCount: 0
+  PlayerTarget: {fileID: 0}
 --- !u!58 &2806439704493580687
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,3 +136,18 @@ CircleCollider2D:
   m_Offset: {x: -0.017338188, y: 0.06935275}
   serializedVersion: 2
   m_Radius: 2.2399294
+--- !u!114 &7920156219417565502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2150244439518303262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb295afd0b33047bfaace33061632301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  myTokenCount: 0
+  PlayerTarget: {fileID: 0}
