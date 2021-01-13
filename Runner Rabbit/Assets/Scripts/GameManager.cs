@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject spawnerUp;
     public GameObject SpawnerDown;
+    public GameObject spawnerUpTwo;
+    public GameObject spawnerDownTwo;
     public GameObject SpawnerMiddle;
     public GameObject Boss;
     public GameObject ProgressBar;
@@ -61,17 +63,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameStats.stats.LevelCount == 2)
+        {
+            spawnerUp.SetActive(false);
+            SpawnerDown.SetActive(false);
+            spawnerUpTwo.SetActive(true);
+            spawnerDownTwo.SetActive(true);
+        }
         if ( GameStats.stats.LevelCount == 3)
         {
             spawnerUp.SetActive(false);
             SpawnerDown.SetActive(false);
+            spawnerUpTwo.SetActive(false);
+            spawnerDownTwo.SetActive(false);
             SpawnerMiddle.SetActive(false);
             ProgressBar.SetActive(false);
-
-
             Boss.SetActive(true);
-
-
 
         }
 

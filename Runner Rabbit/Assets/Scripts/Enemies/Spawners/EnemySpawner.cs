@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public int enemyType = 1;
     public float enemyCount = 0;
     public string[] enemyName;
+  
     bool enemies;
     character Cha;
     public Transform enemyContainer;

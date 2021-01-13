@@ -32,14 +32,16 @@ public class ManaHandle : MonoBehaviour
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
 
 
-        CurrentDarkMana = DarkMana;
-        CurrentLightMana = LightMana;
+        
 
         DarkMana = GameStats.stats.totalDarkMana;
         LightMana = GameStats.stats.totalLightMana;
 
         DarkManaBar.maxValue = GameStats.stats.totalDarkMana;
         LightManaBar.maxValue = GameStats.stats.totalLightMana;
+
+        CurrentDarkMana = DarkMana;
+        CurrentLightMana = LightMana;
     }
 
     // Update is called once per frame

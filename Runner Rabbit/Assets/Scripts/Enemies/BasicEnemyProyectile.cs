@@ -11,7 +11,7 @@ public class BasicEnemyProyectile : MonoBehaviour
     {
 
 
-        //Destroy(transform.parent.gameObject, 4f);
+        Destroy(transform.parent.gameObject, 7f);
 
         // transform.position = GameObject.Find("Enemy Spawner").transform.position;
     }
