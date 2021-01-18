@@ -36782,6 +36782,7 @@ PrefabInstance:
       objectReference: {fileID: 677475417}
     - target: {fileID: 3542273375926598925, guid: 3e2965c6ceb114834b5b2a17c18421ce,
         type: 3}
+<<<<<<< HEAD
       propertyPath: Skins.Array.size
       value: 21
       objectReference: {fileID: 0}
@@ -36791,6 +36792,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: c5bd32d626aa1455c9ac4386245410d7,
         type: 2}
+=======
+      propertyPath: SkinIDTop
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542273375926598925, guid: 3e2965c6ceb114834b5b2a17c18421ce,
+        type: 3}
+      propertyPath: SkinIDBot
+      value: 12
+      objectReference: {fileID: 0}
+>>>>>>> 376feec6c6527b483f5aa0d44f7ed1abb4203541
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e2965c6ceb114834b5b2a17c18421ce, type: 3}
 --- !u!1001 &6534509361541004208
@@ -36865,7 +36876,7 @@ PrefabInstance:
         type: 3}
       propertyPath: powerLight
       value: 
-      objectReference: {fileID: 11400000, guid: 00ed85c9e9d684421bba7cea8d9aa2bd,
+      objectReference: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020,
         type: 2}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
@@ -36901,12 +36912,12 @@ PrefabInstance:
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: topSkinID
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: botSkinID
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}

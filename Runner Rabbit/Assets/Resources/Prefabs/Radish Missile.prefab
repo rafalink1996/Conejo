@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -7827357289011208025}
   - component: {fileID: 4973731307070545341}
   - component: {fileID: 232152118506635840}
+  - component: {fileID: 1264092836197925562}
   m_Layer: 8
   m_Name: Radish Missile
   m_TagString: character proyectile
@@ -283,6 +284,40 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 1
   m_Emitting: 1
+--- !u!114 &1264092836197925562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156798044908045104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f026f691117442f9d8a939fcecbbc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skins:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 22100000, guid: 116120a57943942099aebe00739149fc, type: 2}
+  - {fileID: 22100000, guid: 3cae2e6356b32452d959e08468e24865, type: 2}
+  - {fileID: 22100000, guid: de908a3c461c947ac9a2dccd0c019480, type: 2}
+  - {fileID: 0}
+  - {fileID: 22100000, guid: 273f038a2acf04a97a33305d98f21a99, type: 2}
+  - {fileID: 22100000, guid: 273f038a2acf04a97a33305d98f21a99, type: 2}
+  - {fileID: 22100000, guid: 78026d1cf4849425e8a454ccb92a1680, type: 2}
+  - {fileID: 22100000, guid: 2af0d724e77a349b0812019094022e0f, type: 2}
+  - {fileID: 0}
+  - {fileID: 22100000, guid: c53ed085380ed46e898a7284001f81aa, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 22100000, guid: a376a0423af54496180412a1d05a1a05, type: 2}
 --- !u!1 &1714133079466120573
 GameObject:
   m_ObjectHideFlags: 0

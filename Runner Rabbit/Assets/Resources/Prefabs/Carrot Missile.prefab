@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5209232845780531543}
   - component: {fileID: 8330219297962323057}
   - component: {fileID: 4425613995646028899}
+  - component: {fileID: 3253308147885863249}
   m_Layer: 8
   m_Name: Carrot Missile
   m_TagString: character proyectile
@@ -166,3 +167,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3253308147885863249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209232845780531540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f026f691117442f9d8a939fcecbbc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skins:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 22100000, guid: 445df6eda066247ae85b7dc7f1ddfc7a, type: 2}
+  - {fileID: 22100000, guid: ae78f9360e5f8494690a72291f0e9be5, type: 2}
+  - {fileID: 22100000, guid: c96ed6fbfded54196a9fd5e5612ed890, type: 2}
+  - {fileID: 0}
+  - {fileID: 22100000, guid: 58476c501c5814ee0a1c654b2ff711ce, type: 2}
+  - {fileID: 22100000, guid: 00bef4e1990a94d24bb68fe48ace19e4, type: 2}
+  - {fileID: 22100000, guid: ece8e4492471746649bfb0bfb6c84646, type: 2}
+  - {fileID: 22100000, guid: 33c43e3d3cb9b45aa8f466850995e73d, type: 2}
+  - {fileID: 0}
+  - {fileID: 22100000, guid: 834a3b37809484ba894845385bed05e1, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 22100000, guid: 0d4a5473375354bfbbbec09cbdbbb83e, type: 2}
