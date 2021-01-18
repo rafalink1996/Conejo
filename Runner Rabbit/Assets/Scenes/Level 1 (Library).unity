@@ -1186,9 +1186,9 @@ MonoBehaviour:
   enemyName:
   - Book (Electric)
   - Book (Ice)
-  - Enemies 3
-  - Enemies 4
-  - Enemies 5
+  - LibraryEnemies1
+  - LibraryEnemies2
+  - LibraryEnemies3
   - Firebook
   - Slime
   enemyContainer: {fileID: 232412099}
@@ -3098,7 +3098,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &304781104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9778,9 +9778,9 @@ MonoBehaviour:
   enemyName:
   - Book (Electric)
   - Book (Ice)
-  - Enemies 3
-  - Enemies 4
-  - Enemies 5
+  - LibraryEnemies1
+  - LibraryEnemies2
+  - LibraryEnemies3
   - Firebook
   - Slime
   enemyContainer: {fileID: 1764332430}
@@ -20501,7 +20501,13 @@ MonoBehaviour:
   enemyType: 1
   enemyCount: 0
   enemyName:
-  - Book (Electric)
+  - LibraryEnemies1
+  - LibraryEnemies2
+  - LibraryEnemies3
+  - LibraryEnemies4
+  - LibraryEnemies5
+  - LibraryEnemies6
+  - LibraryEnemies7
   enemyContainer: {fileID: 232412099}
 --- !u!1 &1294165005
 GameObject:
@@ -27858,8 +27864,14 @@ MonoBehaviour:
   enemyType: 1
   enemyCount: 0
   enemyName:
-  - Book (Electric)
-  enemyContainer: {fileID: 1764332430}
+  - LibraryEnemies1
+  - LibraryEnemies2
+  - LibraryEnemies3
+  - LibraryEnemies4
+  - LibraryEnemies5
+  - LibraryEnemies6
+  - LibraryEnemies7
+  enemyContainer: {fileID: 232412099}
 --- !u!1 &1605213437
 GameObject:
   m_ObjectHideFlags: 0
@@ -37334,7 +37346,7 @@ PrefabInstance:
     - target: {fileID: 2719699189873162468, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2719699189873162472, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
