@@ -10,7 +10,7 @@ public class Kick : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 0.2f);//20.61
-        cha = GameObject.Find("Character");
+        cha = GameObject.FindObjectOfType<character>().gameObject;
     }
 
     // Update is called once per frame

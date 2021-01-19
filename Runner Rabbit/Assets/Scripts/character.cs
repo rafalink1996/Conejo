@@ -220,10 +220,6 @@ public class character : MonoBehaviour
         laser.enabled = false;
 
 
-
-        
-
-
     }
 
     // Update is called once per frame
@@ -355,10 +351,6 @@ public class character : MonoBehaviour
         GameStats.stats.coins = coins;//updates stored coin value;
         GameStats.stats.crystals = crystal;//updates stored crystal value;
 
-
-
-
-
         if (endlevel == true)
         {
             StartCoroutine(GetInvulnerableEndLevel());
@@ -374,10 +366,7 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Rift")
         {
-
-
             Rotation();
-
             upspeed *= -1;
             //dashSpeed *= -1;
             rb.velocity = Vector3.zero;
@@ -385,13 +374,7 @@ public class character : MonoBehaviour
             RiftColition = true;
             FindObjectOfType<AudioManager>().Play("RiftPass");
             CamRipple.RippleEffect();
-
             StartCoroutine(GetInvulnerableRift());
-
-
-
-
-
         }
 
         //collision with coins
@@ -404,8 +387,10 @@ public class character : MonoBehaviour
                 CoinCounter.text = coins.ToString();
             }
             if (GameStats.stats.CoinTicket == true)
+            {
                 coins += 2;
-            CoinCounter.text = coins.ToString();
+                CoinCounter.text = coins.ToString();
+            }
         }
 
         if (collision.tag == "Crystal")
@@ -438,15 +423,15 @@ public class character : MonoBehaviour
                 {
                     LoseHealth();
                 }
-                
+
             }
             else
             {
                 Instantiate(BlockEffect, collision.transform.position, Quaternion.identity);
             }
-            
-           
-           
+
+
+
         }
         if (collision.name == "jumpHeight")
         {
@@ -746,7 +731,7 @@ public class character : MonoBehaviour
         {
             mySpriteRenderer.color = Color.Lerp(dmgColor, originColor, t);
 
-            
+
         }
 
         // restore origin color
