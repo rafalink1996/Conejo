@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
             SpawnerDown.SetActive(false);
             spawnerUpTwo.SetActive(true);
             spawnerDownTwo.SetActive(true);
+            SpawnerMiddle.SetActive(true);
         }
         if ( GameStats.stats.LevelCount == 3)
         {

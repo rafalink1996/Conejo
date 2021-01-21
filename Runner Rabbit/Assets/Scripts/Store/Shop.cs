@@ -39,7 +39,7 @@ public class Shop : MonoBehaviour
 
 
     public GameObject noCoinsPopUp;
-
+    public float costPerHeart;
     public float heartCost;
     public float lightManaCost;
     public float darkManaCost;
@@ -95,9 +95,9 @@ public class Shop : MonoBehaviour
     {
         coins = GameStats.stats.coins;
         CoinCounter.text = coins.ToString();
-
-        if(GameStats.stats.MerchantRune)
-        heartCost = GameStats.stats.numOfHearts * 25;
+        heartCost = costPerHeart * (GameStats.stats.numOfHearts - 2);
+        //if(GameStats.stats.MerchantRune)
+        //heartCost = GameStats.stats.numOfHearts * 25;
        
         //GameStats.stats.coins = coins;
         if (GameStats.stats.MerchantRune == true)
@@ -113,7 +113,10 @@ public class Shop : MonoBehaviour
             DarkManaCostText.text = darkManaCost.ToString();
             heartCostText.text = heartCost.ToString();
         }
-
+        if (GameStats.stats.numOfHearts == 9)
+        {
+            heartCostText.text = "---";
+        }
         
 
         LightpowerObject = GameStats.stats.UnlockedPowers;
