@@ -586,7 +586,7 @@ public class character : MonoBehaviour
         mana.RequiredLightMana(GameStats.stats.darkMana);
         if (mana.CurrentLightMana >= mana.LightManaUsed + 5 && !silenced)
         {
-            //print("UsingPower");
+  
             animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id);
             mana.ReduceLightMana();
@@ -806,7 +806,7 @@ public class character : MonoBehaviour
             case 1:
 
                 // carrot missle
-                print("used missle T1");
+   
                 animator.SetTrigger("Missile");
                 GameObject carrotT1 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 carrotT1.transform.position = transform.position + new Vector3(1, 0, 0);
@@ -819,7 +819,7 @@ public class character : MonoBehaviour
             case 2:
 
                 // carrot missle
-                print("used missle T2");
+          
                 animator.SetTrigger("Missile");
                 GameObject carrotT2 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 carrotT2.transform.position = transform.position + new Vector3(1, 0, 0);
@@ -832,7 +832,7 @@ public class character : MonoBehaviour
             case 3:
 
                 // carrot missle
-                print("used missle T3");
+        
                 animator.SetTrigger("Missile");
                 GameObject carrotT3 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 CarrotMissile CarrotT3Stats = carrotT3.GetComponent<CarrotMissile>();
@@ -846,7 +846,7 @@ public class character : MonoBehaviour
             case 4:
 
                 // carrot missle
-                print("used missle T4");
+           
                 animator.SetTrigger("Missile");
                 GameObject carrotT4 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 carrotT4.transform.position = transform.position + new Vector3(1, 0.5f, 0);
@@ -869,7 +869,7 @@ public class character : MonoBehaviour
 
             case 11:
                 // eardefence
-                print("used Shield T1");
+             
                 animator.SetTrigger("Defence");
                 GameObject shieldT1 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT1.transform.position = transform.position;
@@ -879,7 +879,7 @@ public class character : MonoBehaviour
 
             case 12:
                 // eardefence
-                print("used Shield T2");
+         
                 animator.SetTrigger("Defence");
                 GameObject shieldT2 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT2.transform.position = transform.position;
@@ -889,7 +889,7 @@ public class character : MonoBehaviour
 
             case 13:
                 // eardefence
-                print("used Shield T3");
+       
                 animator.SetTrigger("Defence");
                 GameObject shieldT3 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT3.transform.position = transform.position;
@@ -901,7 +901,7 @@ public class character : MonoBehaviour
 
             case 14:
                 // eardefence
-                print("used Shield T4");
+        
                 animator.SetTrigger("Defence");
                 GameObject shieldT4 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT4.transform.position = transform.position;
@@ -917,7 +917,7 @@ public class character : MonoBehaviour
 
             case 21:
                 // radish missile
-                print("used spell 3");
+           
                 animator.SetTrigger("Missile");
                 GameObject radishT1 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT1.transform.position = transform.position + new Vector3(1, 0, 0);
@@ -928,7 +928,7 @@ public class character : MonoBehaviour
                 break;
             case 22:
                 // radish missile
-                print("used spell 3");
+       
                 animator.SetTrigger("Missile");
                 GameObject radishT2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT2.transform.position = transform.position + new Vector3(1, 0.3f, 0);
@@ -943,7 +943,7 @@ public class character : MonoBehaviour
                 break;
             case 23:
                 // radish missile
-                print("used spell 3");
+          
                 animator.SetTrigger("Missile");
                 GameObject radishT3 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT3.transform.position = transform.position + new Vector3(1, 0.3f, 0);
@@ -962,7 +962,7 @@ public class character : MonoBehaviour
                 break;
             case 24:
                 // radish missile
-                print("used spell 3");
+           
                 animator.SetTrigger("Missile");
                 GameObject radishT4 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT4.transform.position = transform.position + new Vector3(1, 0.3f, 0);
@@ -982,7 +982,7 @@ public class character : MonoBehaviour
                 break;
             case 31:
                 // kick
-                print("used spell 4");
+      
                 animator.SetTrigger("Kick");
                 GameObject kickT1 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 kickT1.transform.position = transform.position;
@@ -992,7 +992,7 @@ public class character : MonoBehaviour
                 break;
             case 32:
                 // kick
-                print("used spell 4");
+
                 animator.SetTrigger("Kick");
                 GameObject kickT2 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 kickT2.transform.position = transform.position;
@@ -1002,7 +1002,7 @@ public class character : MonoBehaviour
                 break;
             case 33:
                 // kick
-                print("used spell 4");
+         
                 animator.SetTrigger("Kick");
                 GameObject kickT3 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 kickT3.transform.position = transform.position;
@@ -1012,7 +1012,7 @@ public class character : MonoBehaviour
                 break;
             case 34:
                 // kick
-                print("used spell 4");
+            
                 animator.SetTrigger("Kick");
 
                 GameObject kickT4 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
@@ -1022,13 +1022,13 @@ public class character : MonoBehaviour
                 kickT4Stats.reflect = true;
                 break;
             case 41:
-                print("used spell 5");
+      
                 break;
 
             case 51:
                 if (HoldPower == true)
                 {
-                    //print("lasering");
+           
                     startVFX.SetActive(true);
                     endVFX.SetActive(true);
                     laser.enabled = true;
@@ -1072,7 +1072,7 @@ public class character : MonoBehaviour
             case 52:
                 if (HoldPower == true)
                 {
-                    //print("lasering");
+               
 
                     laser.enabled = true;
 
@@ -1113,7 +1113,7 @@ public class character : MonoBehaviour
             case 53:
                 if (HoldPower == true)
                 {
-                    //print("lasering");
+            
                     startVFX.SetActive(true);
                     endVFX.SetActive(true);
                     laser.enabled = true;
@@ -1145,7 +1145,7 @@ public class character : MonoBehaviour
 
                         if (hit.transform.tag == "Enemy proyectile")
                         {
-                            print("destroyed" + hit.transform.gameObject.name);
+                            //print("destroyed" + hit.transform.gameObject.name);
                             Destroy(hit.transform.gameObject);
                         }
                         //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
@@ -1164,7 +1164,7 @@ public class character : MonoBehaviour
             case 54:
                 if (HoldPower == true)
                 {
-                    //print("lasering");
+               
                     startVFX.SetActive(true);
                     endVFX.SetActive(true);
                     laser.enabled = true;
