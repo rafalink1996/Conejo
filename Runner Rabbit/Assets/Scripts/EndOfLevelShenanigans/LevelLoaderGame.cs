@@ -66,7 +66,7 @@ public class LevelLoaderGame : MonoBehaviour
         levelcountdown += 1 * Time.deltaTime;
         TimerSlider.value = levelcountdown;
 
-        if (levelcountdown >= levelTime * 0.93f)
+        if (levelcountdown >= levelTime - 7f)
         {
             EnemySpawner1.SetActive(false);
             EnemySpawner2.SetActive(false);

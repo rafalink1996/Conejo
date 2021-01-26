@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject spawnerUpTwo;
     public GameObject spawnerDownTwo;
     public GameObject SpawnerMiddle;
-    public GameObject Boss;
+    public GameObject BossContainer;
+    public string bossName;
     public GameObject ProgressBar;
 
     public Image PowerRarity;
@@ -58,11 +59,6 @@ public class GameManager : MonoBehaviour
 
         audioMixer.SetFloat("SoundVolume", Mathf.Log10(GameStats.stats.AudioVolume) * 20);
         SoundSlider.value = GameStats.stats.AudioVolume;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         if (GameStats.stats.LevelCount == 2)
         {
             spawnerUp.SetActive(false);
@@ -71,7 +67,7 @@ public class GameManager : MonoBehaviour
             spawnerDownTwo.SetActive(true);
             SpawnerMiddle.SetActive(true);
         }
-        if ( GameStats.stats.LevelCount == 3)
+        if (GameStats.stats.LevelCount == 3)
         {
             spawnerUp.SetActive(false);
             SpawnerDown.SetActive(false);
@@ -79,9 +75,18 @@ public class GameManager : MonoBehaviour
             spawnerDownTwo.SetActive(false);
             SpawnerMiddle.SetActive(false);
             ProgressBar.SetActive(false);
-            Boss.SetActive(true);
+            BossContainer.SetActive(true);
+            GameObject boss = Instantiate(Resources.Load("Prefabs/" + bossName) as GameObject);
+            boss.transform.SetParent(BossContainer.transform);
+            boss.transform.localPosition = new Vector3(0, 0, 0);
 
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
 
         if (cha.top)
         {

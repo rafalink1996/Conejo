@@ -14,12 +14,12 @@ public class WyrmSpawn : StateMachineBehaviour
         if (Cha.top && !wyrm.bossTop)
         {
             wyrm.transform.parent.transform.localEulerAngles = new Vector3(180, 0, 0);
-            wyrm.transform.parent.transform.position = new Vector3(wyrm.transform.parent.transform.position.x, -5.860454f, wyrm.transform.parent.transform.position.z);
+            wyrm.transform.parent.transform.position = new Vector3(wyrm.transform.parent.transform.position.x, -4.340454f, wyrm.transform.parent.transform.position.z);
         }
         if (!Cha.top && wyrm.bossTop)
         {
             wyrm.transform.parent.transform.localEulerAngles = new Vector3(0, 0, 0);
-            wyrm.transform.parent.transform.position = new Vector3(wyrm.transform.parent.transform.position.x, 5.860454f, wyrm.transform.parent.transform.position.z);
+            wyrm.transform.parent.transform.position = new Vector3(wyrm.transform.parent.transform.position.x, 4.340454f, wyrm.transform.parent.transform.position.z);
         }
         animator.SetBool("hasAttackedOnce", false);
     }
