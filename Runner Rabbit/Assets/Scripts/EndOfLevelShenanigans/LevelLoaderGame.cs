@@ -29,6 +29,9 @@ public class LevelLoaderGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        Resources.UnloadUnusedAssets();
+
         if(GameStats.stats.LevelCount == 1)
         {
             levelTime = 50 + (25* (GameStats.stats.LevelIndicator -1));
