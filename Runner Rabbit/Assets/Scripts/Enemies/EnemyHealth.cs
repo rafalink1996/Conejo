@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public float health;
     public Slider healthSlider;
     public bool Hit;
-    public float hitTime = 1f;
+    public float hitTime = 6f;
     public bool isBoss = false;
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
         if (hitTime <= 0 && Hit)
         {
             Hit = false;
-            hitTime = 1f;
+            hitTime = 6f;
         }
     }
     public void TakeDamage(int damage)

@@ -23,7 +23,7 @@ public class ElectricBook : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 80;
+        health.maxHealth = 30;
         anim = GetComponent<Animator>();
         if (SceneManager.GetActiveScene().name != "Level 2 (dungeon)")
         {
@@ -66,7 +66,7 @@ public class ElectricBook : MonoBehaviour
         if (attackTime <= 0)
         {
             anim.SetTrigger("Attack");
-            attackTime = Random.Range(0.2f, 1.3f);
+            attackTime = Random.Range(0.6f, 1.8f);
             attack = false;
         }
         //healthSlider.value = health;
