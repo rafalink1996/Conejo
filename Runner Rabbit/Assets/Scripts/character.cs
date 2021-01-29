@@ -410,25 +410,28 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Enemy proyectile" || collision.tag == "Enemy")
         {
-
-            if (!shielded)
+            if (!hit)
             {
-                if (RuneShielded)
+                if (!shielded)
                 {
-                    RuneShielded = false;
-                    Animator RuneShieldAnimator = RuneShield.GetComponent<Animator>();
-                    RuneShieldAnimator.SetTrigger("Break");
+                    if (RuneShielded)
+                    {
+                        RuneShielded = false;
+                        Animator RuneShieldAnimator = RuneShield.GetComponent<Animator>();
+                        RuneShieldAnimator.SetTrigger("Break");
+                    }
+                    else
+                    {
+                        LoseHealth();
+                    }
+
                 }
                 else
                 {
-                    LoseHealth();
+                    Instantiate(BlockEffect, collision.transform.position, Quaternion.identity);
                 }
+            }
 
-            }
-            else
-            {
-                Instantiate(BlockEffect, collision.transform.position, Quaternion.identity);
-            }
 
 
 
@@ -753,7 +756,7 @@ public class character : MonoBehaviour
     IEnumerator GetInvulnerableRift()
     {
         Physics2D.IgnoreLayerCollision(8, 9, true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         Physics2D.IgnoreLayerCollision(8, 9, false);
 
 
