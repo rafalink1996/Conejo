@@ -24,8 +24,9 @@ public class LevelLoaderStore : MonoBehaviour
     public void ContinueButton()
 
     {
-        StartCoroutine(LoadAsync());
         GameStats.stats.LevelCount += 1;
+        StartCoroutine(LoadAsync());
+       
     }
 
 

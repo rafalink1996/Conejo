@@ -63,8 +63,8 @@ public class GameStats : MonoBehaviour
 
     // level indicator
 
-    public int LevelCount;
-    public int LevelIndicator;
+    public int LevelCount;// scene 
+    public int LevelIndicator;// number of times scene is repeated
 
     //skins
     public int topSkinID;
