@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BasicEnemyProyectile : MonoBehaviour
 {
     public float speed = 20f;
     bool reflected;
+    public bool piercing = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +54,12 @@ public class BasicEnemyProyectile : MonoBehaviour
         }
         if (collision.tag == "Player")
         {
-            Destroy(transform.parent.gameObject);
+            if (!piercing)
+            {
+                Destroy(transform.parent.gameObject);
+            }
+            
+            
             //FindObjectOfType<AudioManager>().Play("FireExplotion");
 
             // speed = 3f;

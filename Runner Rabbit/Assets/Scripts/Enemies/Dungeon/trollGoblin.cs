@@ -12,6 +12,7 @@ public class trollGoblin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("Troll_Spawn");
         health = GetComponent<EnemyHealth>();
         health.maxHealth = myHealth;
         attackTime = Random.Range(1.3f, 4f);
@@ -28,11 +29,14 @@ public class trollGoblin : MonoBehaviour
         if (attackTime <= 0 && !attack)
         {
             anim.SetFloat("AttackType", Random.Range(1, 3));
+            
+            FindObjectOfType<AudioManager>().Play("Troll_Attack");
             anim.SetTrigger("Attack");
             attack = true;
         }
         if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
+            FindObjectOfType<AudioManager>().Play("Troll_Death");
             anim.SetTrigger("Die");
         }
     }
@@ -48,4 +52,6 @@ public class trollGoblin : MonoBehaviour
     {
         Destroy(transform.parent.gameObject);
     }
+
+
 }

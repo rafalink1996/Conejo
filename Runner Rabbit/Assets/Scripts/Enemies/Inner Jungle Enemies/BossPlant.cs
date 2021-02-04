@@ -38,6 +38,7 @@ public class BossPlant : MonoBehaviour
         //}
         if (health.health <= 0 && !BossDead)
         {
+            FindObjectOfType<AudioManager>().Play("CP_Death");
             anim.SetTrigger("Death");
             BossDead = true;
             GameStats.stats.bossDead = true;
@@ -45,6 +46,7 @@ public class BossPlant : MonoBehaviour
     }
     void ActivatePosion()
     {
+        FindObjectOfType<AudioManager>().Play("CP_PosionLoop");
         //poisonParticles.Play();
         poisonAttack.SetActive(true);
         poison = true;
@@ -53,6 +55,7 @@ public class BossPlant : MonoBehaviour
 
     void EndPoison()
     {
+        FindObjectOfType<AudioManager>().Stop("CP_PosionLoop");
         //poisonAttack.SetActive(false);
         //poisonParticles.Stop();
         poisonAttack.GetComponent<Animator>().SetTrigger("End");
@@ -87,4 +90,6 @@ public class BossPlant : MonoBehaviour
         healthBar[1].SetActive(true);
         healthBar[2].SetActive(true);
     }
+
+   
 }

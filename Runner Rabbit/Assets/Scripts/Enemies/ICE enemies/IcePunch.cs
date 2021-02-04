@@ -46,4 +46,9 @@ public class IcePunch : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    void PunchSound()
+    {
+        FindObjectOfType<AudioManager>().Play("YetiPunch");
+    }
 }

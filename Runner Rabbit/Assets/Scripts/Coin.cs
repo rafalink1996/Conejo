@@ -25,7 +25,7 @@ public class Coin : MonoBehaviour
             // rune is active
             float dis = Vector2.Distance(PlayerTarget.position, transform.position);
             
-            if (dis < 5)
+            if (dis < 2)
             {
                 // player is within magnet range
                 float step = 0.5f;

@@ -16,6 +16,7 @@ public class Yeti : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("YetiSpawn");
         health = GetComponent<EnemyHealth>();
         health.maxHealth = myHealth;
         GameStats.stats.bossDead = false;
@@ -39,6 +40,7 @@ public class Yeti : MonoBehaviour
         punchTime -= Time.deltaTime;
         if (attackTime <= 0 && !attack)
         {
+            FindObjectOfType<AudioManager>().Play("YetiAttack");
             anim.SetTrigger("Attack");
             attack = true;
             
@@ -56,6 +58,7 @@ public class Yeti : MonoBehaviour
         }
         if (health.health <= 0)
         {
+            FindObjectOfType<AudioManager>().Play("YetiDeath");
             anim.SetTrigger("Die");
             GameStats.stats.bossDead = true;
         }
