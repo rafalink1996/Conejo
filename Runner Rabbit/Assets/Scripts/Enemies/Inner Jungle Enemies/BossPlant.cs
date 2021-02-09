@@ -51,6 +51,7 @@ public class BossPlant : MonoBehaviour
         poisonAttack.SetActive(true);
         poison = true;
         Invoke("EndPoison", poisonTime);
+
     }
 
     void EndPoison()
@@ -62,6 +63,7 @@ public class BossPlant : MonoBehaviour
         anim.SetTrigger("Attack1End");
         poisonTime = Random.Range(4f, 5f);
         poison = false;
+        health.TakeDamage(5);
     }
     void DeactivatePoison()
     {
@@ -70,6 +72,7 @@ public class BossPlant : MonoBehaviour
     void ActivateLeaves()
     {
         leafAttack.StartSpawning();
+        health.TakeDamage(5);
         //Invoke("DeactivateLeaves", 4f);
     }
     void DeactivateLeaves()

@@ -45,7 +45,8 @@ public class BossGriffin : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("ClockworkGrififnLaser");
         rayAttack.SetActive(true);
-        health.health -= 1;
+        
+        health.TakeDamage(1);
     }
     void ShootOne()
     {
@@ -54,7 +55,8 @@ public class BossGriffin : MonoBehaviour
         energyBall.transform.position = transform.position + new Vector3(-1.87f, -0.55f, 0);
         //energyBall.transform.SetParent(null);
         energyBall.transform.rotation = Quaternion.AngleAxis(12.46f, Vector3.forward);
-        health.health -= 1;
+        
+        health.TakeDamage(1);
     }
     void ShootTwo()
     {
@@ -63,7 +65,8 @@ public class BossGriffin : MonoBehaviour
         energyBall.transform.position = transform.position + new Vector3(-2.16f, 0.06f, 0);
         //energyBall.transform.SetParent(null);
         //energyBall.transform.GetChild(0).rotation = Quaternion.AngleAxis(12.46f, Vector3.forward);
-        health.health -= 1;
+        health.TakeDamage(1);
+
     }
     void ShootThree()
     {
@@ -72,7 +75,7 @@ public class BossGriffin : MonoBehaviour
         energyBall.transform.position = transform.position + new Vector3(-2.21f, 1.2f, 0);
         //energyBall.transform.SetParent(null);
         energyBall.transform.rotation = Quaternion.AngleAxis(-13.678f, Vector3.forward);
-        health.health -= 1;
+        health.TakeDamage(1);
     }
     void Silence()
     {
@@ -86,7 +89,7 @@ public class BossGriffin : MonoBehaviour
         }
         FindObjectOfType<AudioManager>().Play("ClockworkGrififnSilence");
         silence = true;
-        health.health -= 1;
+        health.TakeDamage(1);
         Invoke("DeactivateSilence", 10f);
     }
     void DeactivateSilence()

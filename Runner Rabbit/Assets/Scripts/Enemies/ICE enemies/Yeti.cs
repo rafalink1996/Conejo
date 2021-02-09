@@ -5,7 +5,7 @@ using UnityEngine;
 public class Yeti : MonoBehaviour
 {
     public EnemyHealth health;
-        public int myHealth;
+    public int myHealth;
     public bool bossTop;
     Animator anim;
     public float attackTime;
@@ -43,7 +43,7 @@ public class Yeti : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("YetiAttack");
             anim.SetTrigger("Attack");
             attack = true;
-            
+
         }
         if (punchTime <= 0 && !punch)
         {
@@ -51,8 +51,9 @@ public class Yeti : MonoBehaviour
         }
         if (punch)
         {
-            
+
             GameObject icePunch = GameObject.Instantiate(Resources.Load("Prefabs/IcePunch") as GameObject);
+            health.TakeDamage(5);
             punch = false;
             punchTime = Random.Range(5f, 7f);
         }
@@ -70,6 +71,7 @@ public class Yeti : MonoBehaviour
         attackTime = Random.Range(2f, 3f);
         attack = false;
         anim.SetBool("hasAttackedOnce", true);
+        health.TakeDamage(5);
     }
     void DeactivateCollider()
     {
