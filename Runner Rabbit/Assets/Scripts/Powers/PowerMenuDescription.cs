@@ -50,47 +50,66 @@ public class PowerMenuDescription : MonoBehaviour
     float CrystalCost;
 
     //id
-    int slectedPowerID;
+    public int selectedPowerID;
 
+    //buy Upgrade Button
+    public Button UpgradeButton;
+    public TextMeshProUGUI ButtonCrystalText;
+    public Image buttonCrystalImage;
+    public TextMeshProUGUI MaxLevelText;
+    public TextMeshProUGUI UpgradeText;
 
+    private void Start()
+    {
+        UpgradeButton.onClick.AddListener(BuyPowerUpgrade);
+    }
     public void SelectPowerToUpgrade(int PowerID)
     {
-        //CarrotMisssle
+        
         List<Power> SelectedPowers = new List<Power>();
+        
 
         if (PowerID == 1)
         {
             SelectedPowers.AddRange(PowerMenu.CarrotMissleTiers);
             PowerName.text = "Carrot Missle";
             CrystalCost = PowerMenu.CarrotMissleCrystalCost;
+            selectedPowerID = 1;
         }
         else if (PowerID == 2)
         {
             SelectedPowers.AddRange(PowerMenu.EarShieldTiers);
             PowerName.text = "Ear Shield";
             CrystalCost = PowerMenu.EarShieldCrystalCost;
+            selectedPowerID = 2;
         }
         else if (PowerID == 4)
         {
             SelectedPowers.AddRange(PowerMenu.RadishMissleTiers);
             PowerName.text = "Radish Missle";
             CrystalCost = PowerMenu.RadishtMissleCrystalCost;
+            selectedPowerID = 4;
         }
         else if (PowerID == 3)
         {
             SelectedPowers.AddRange(PowerMenu.KickReflectTiers);
             PowerName.text = "Kick Reflect";
             CrystalCost = PowerMenu.KickReflectCrystalCost;
+            selectedPowerID = 3;
+            
         }
         else if (PowerID == 5)
         {
             SelectedPowers.AddRange(PowerMenu.MagicLaserTiers);
             PowerName.text = "Magic Laser";
             CrystalCost = PowerMenu.MagicLaserCrystalCost;
+            selectedPowerID = 5;
+            
 
         }
 
-        Cost.text = CrystalCost.ToString();
+        UpdateCrystalCost(PowerID);
+
 
         UpdateLockedUi(PowerID);
 
@@ -114,44 +133,141 @@ public class PowerMenuDescription : MonoBehaviour
             DescriptionTier3.text = SelectedPowers[2].description;
             DescriptionTier4.text = SelectedPowers[3].description;
 
-       
-
+       // UpgradeButton.onClick.RemoveAllListeners();
+       // UpgradeButton.onClick.AddListener(BuyPowerUpgrade);
 
         
     }
 
-    public void BuyPowerUpgrade()
+    void UpdateCrystalCost(int SelectedPowerID)
     {
-        if (GameStats.stats.crystals >= CrystalCost)
+        if (SelectedPowerID == 1)
         {
-            GameStats.stats.crystals -= CrystalCost;
-            if (slectedPowerID == 1)
+            CrystalCost = PowerMenu.CarrotMissleCrystalCost;
+            Cost.text = CrystalCost.ToString();
+            if (GameStats.stats.CarrotMissleLevel == 4)
             {
-                GameStats.stats.CarrotMissleLevel++;
-                UpdateLockedUi(slectedPowerID);
+                ButtonCrystalText.enabled = false;
+                buttonCrystalImage.enabled = false;
+                UpgradeText.enabled = false;
+                Cost.enabled = false;
+                MaxLevelText.enabled = true;
+
             }
-            if (slectedPowerID == 2)
+            else
             {
-                GameStats.stats.EarDefenceLevel++;
-                UpdateLockedUi(slectedPowerID);
-            }
-            if (slectedPowerID == 3)
-            {
-                GameStats.stats.KickReflectLevel++;
-                UpdateLockedUi(slectedPowerID);
-            }
-            if (slectedPowerID == 4)
-            {
-                GameStats.stats.RadishMissleLevel++;
-                UpdateLockedUi(slectedPowerID);
-            }
-            if (slectedPowerID == 5)
-            {
-                GameStats.stats.MagicLaserLevel++;
-                UpdateLockedUi(slectedPowerID);
+                ButtonCrystalText.enabled = true;
+                buttonCrystalImage.enabled = true;
+                UpgradeText.enabled = true;
+                Cost.enabled = true;
+                MaxLevelText.enabled = false;
             }
 
         }
+        if (SelectedPowerID == 2)
+        {
+            CrystalCost = PowerMenu.EarShieldCrystalCost;
+            Cost.text = CrystalCost.ToString();
+
+            if (GameStats.stats.EarDefenceLevel == 4)
+            {
+                ButtonCrystalText.enabled = false;
+                buttonCrystalImage.enabled = false;
+                UpgradeText.enabled = false;
+                Cost.enabled = false;
+                MaxLevelText.enabled = true;
+
+            }
+            else
+            {
+                ButtonCrystalText.enabled = true;
+                buttonCrystalImage.enabled = true;
+                UpgradeText.enabled = true;
+                Cost.enabled = true;
+                MaxLevelText.enabled = false;
+            }
+        }
+        if (SelectedPowerID == 3)
+        {
+            CrystalCost = PowerMenu.KickReflectCrystalCost;
+            Cost.text = CrystalCost.ToString();
+
+            if (GameStats.stats.KickReflectLevel == 4)
+            {
+                ButtonCrystalText.enabled = false;
+                buttonCrystalImage.enabled = false;
+                UpgradeText.enabled = false;
+                Cost.enabled = false;
+                MaxLevelText.enabled = true;
+
+            }
+            else
+            {
+                ButtonCrystalText.enabled = true;
+                buttonCrystalImage.enabled = true;
+                UpgradeText.enabled = true;
+                Cost.enabled = true;
+                MaxLevelText.enabled = false;
+            }
+        }
+        if (SelectedPowerID == 4)
+        {
+            CrystalCost = PowerMenu.RadishtMissleCrystalCost;
+            Cost.text = CrystalCost.ToString();
+
+            if (GameStats.stats.RadishMissleLevel == 4)
+            {
+                ButtonCrystalText.enabled = false;
+                buttonCrystalImage.enabled = false;
+                UpgradeText.enabled = false;
+                Cost.enabled = false;
+                MaxLevelText.enabled = true;
+
+            }
+            else
+            {
+                ButtonCrystalText.enabled = true;
+                buttonCrystalImage.enabled = true;
+                UpgradeText.enabled = true;
+                Cost.enabled = true;
+                MaxLevelText.enabled = false;
+            }
+        }
+        if (SelectedPowerID == 5)
+        {
+            CrystalCost = PowerMenu.MagicLaserCrystalCost;
+            Cost.text = CrystalCost.ToString();
+
+            if (GameStats.stats.MagicLaserLevel == 4)
+            {
+                ButtonCrystalText.enabled = false;
+                buttonCrystalImage.enabled = false;
+                UpgradeText.enabled = false;
+                Cost.enabled = false;
+                MaxLevelText.enabled = true;
+
+            }
+            else
+            {
+                ButtonCrystalText.enabled = true;
+                buttonCrystalImage.enabled = true;
+                UpgradeText.enabled = true;
+                Cost.enabled = true;
+                MaxLevelText.enabled = false;
+            }
+        }
+
+        Debug.Log("upgradeButtonPressed");
+
+        
+    }
+
+
+    public void BuyPowerUpgrade()
+    {
+        PowerMenu.BuyPowerUpgrade(selectedPowerID);
+        UpdateCrystalCost(selectedPowerID);
+        UpdateLockedUi(selectedPowerID);
 
     }
     void UpdateLockedUi(int selectedID)
