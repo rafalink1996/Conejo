@@ -63,8 +63,8 @@ public class GameStats : MonoBehaviour
 
     // level indicator
 
-    public int LevelCount;// scene 
-    public int LevelIndicator;// number of times scene is repeated
+    public int LevelCount;// level stage
+    public int LevelIndicator;// Scene ID
 
     //skins
     public int topSkinID;
@@ -193,7 +193,7 @@ public class GameStats : MonoBehaviour
         darkMana = powerDark.mana;
 
         LevelCount = 1;
-        LevelIndicator = 2;
+        LevelIndicator = 3;
 
         Rune1 = (Rune)Rune1ID;
         Rune2 = (Rune)Rune2ID;
@@ -207,30 +207,30 @@ public class GameStats : MonoBehaviour
     {
         // detect mas level reached for level bought store
 
-        if (LevelIndicator == 2 && LevelReached <= 1)
+        if (LevelIndicator == 3 && LevelReached <= 1)
         {
 
             LevelReached = 1;
         }
 
-        if (LevelIndicator == 3 && LevelReached <= 2)
+        if (LevelIndicator == 4 && LevelReached <= 2)
         {
 
             LevelReached = 2;
         }
 
-        if (LevelIndicator == 4 && LevelReached <= 3)
+        if (LevelIndicator == 5 && LevelReached <= 3)
         {
 
             LevelReached = 3;
         }
 
-        if (LevelIndicator == 5 && LevelReached <= 4)
+        if (LevelIndicator == 6 && LevelReached <= 4)
         {
 
             LevelReached = 4;
         }
-        if (LevelIndicator == 6 && LevelReached <= 5)
+        if (LevelIndicator == 7 && LevelReached <= 5)
         {
 
             LevelReached = 5;

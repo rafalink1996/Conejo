@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShadowMage : MonoBehaviour
 {
@@ -181,6 +182,7 @@ public class ShadowMage : MonoBehaviour
             else
             {
                 gameObject.SetActive(false);
+                SceneManager.LoadSceneAsync(9);
                 break;
             }
         }

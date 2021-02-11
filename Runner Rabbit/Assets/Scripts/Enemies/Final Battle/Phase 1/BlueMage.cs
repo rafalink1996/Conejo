@@ -30,7 +30,7 @@ public class BlueMage : MonoBehaviour
     public GameObject ShadowMage;
 
 
-    
+    public float HealthPercetnage;
 
 
 
@@ -57,7 +57,7 @@ public class BlueMage : MonoBehaviour
         maxHealth = BlueMageHealth.maxHealth;
         
 
-        float HealthPercetnage = Mathf.Round((health / maxHealth) * 100);
+        HealthPercetnage = Mathf.Round((health / maxHealth) * 100);
         
 
         TransformDissolve = (HealthPercetnage / 100) * maxTransformDissolve;
@@ -101,6 +101,7 @@ public class BlueMage : MonoBehaviour
 
         if (HealthPercetnage <= 0)
         {
+            StartCoroutine(DeactivateHands());
             SpawnPortals[0].PortalAnimatorSetTrigger();
             SpawnPortals[1].PortalAnimatorSetTrigger();
             SpawnPortals[2].PortalAnimatorSetTrigger();
@@ -109,7 +110,7 @@ public class BlueMage : MonoBehaviour
             SpawnPortals[5].PortalAnimatorSetTrigger();
             SpawnPortals[6].PortalAnimatorSetTrigger();
 
-            StartCoroutine(DeactivateHands());
+            
             
 
            

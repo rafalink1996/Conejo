@@ -34,13 +34,13 @@ public class LevelLoaderGame : MonoBehaviour
 
         if(GameStats.stats.LevelCount == 1)
         {
-            levelTime = 50 + (25* (GameStats.stats.LevelIndicator -1));
+            levelTime = 50 + (25* (GameStats.stats.LevelIndicator -2));
 
         }
 
         if (GameStats.stats.LevelCount > 1)
         {
-            levelTime = 100 + (25 * (GameStats.stats.LevelIndicator - 1));
+            levelTime = 100 + (25 * (GameStats.stats.LevelIndicator - 2));
         }
         StartCoroutine(loadloader());
 
@@ -97,7 +97,7 @@ public class LevelLoaderGame : MonoBehaviour
                     }
                     
                     
-                    StartCoroutine(loadAsyncGame(1));
+                    StartCoroutine(loadAsyncGame(2));
                 }
 
             }
@@ -112,7 +112,7 @@ public class LevelLoaderGame : MonoBehaviour
                     levelTime = 0;
                     GameStats.stats.PortalBoost = false;
                     
-                    StartCoroutine(loadAsyncGame(1));
+                    StartCoroutine(loadAsyncGame(2));
                     
                 }
 
@@ -210,7 +210,7 @@ public class LevelLoaderGame : MonoBehaviour
         //loadScene
 
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(0);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
 
         loadingScreen.SetActive(true);
         Time.timeScale = 1;

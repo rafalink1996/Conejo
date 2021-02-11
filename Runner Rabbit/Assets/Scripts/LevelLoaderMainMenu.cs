@@ -29,7 +29,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
         }
         else
         {
-            StartCoroutine(loadAsync(2));
+            StartCoroutine(loadAsync(3));
         }
         
     }
