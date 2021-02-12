@@ -59,6 +59,15 @@ public class GameManager : MonoBehaviour
 
         audioMixer.SetFloat("SoundVolume", Mathf.Log10(GameStats.stats.AudioVolume) * 20);
         SoundSlider.value = GameStats.stats.AudioVolume;
+        if (GameStats.stats.LevelCount == 1)
+        {
+            spawnerUp.SetActive(true);
+            SpawnerDown.SetActive(true);
+            spawnerUpTwo.SetActive(false);
+            spawnerDownTwo.SetActive(false);
+            SpawnerMiddle.SetActive(false);
+            BossContainer.SetActive(false);
+        }
         if (GameStats.stats.LevelCount == 2)
         {
             spawnerUp.SetActive(false);
@@ -66,6 +75,7 @@ public class GameManager : MonoBehaviour
             spawnerUpTwo.SetActive(true);
             spawnerDownTwo.SetActive(true);
             SpawnerMiddle.SetActive(true);
+            BossContainer.SetActive(false);
         }
         if (GameStats.stats.LevelCount == 3)
         {

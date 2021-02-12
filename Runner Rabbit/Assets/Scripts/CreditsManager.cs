@@ -28,6 +28,6 @@ public class CreditsManager : MonoBehaviour
     }
     void EndReached2(VideoPlayer vp)
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(1);
     }
 }

@@ -192,8 +192,8 @@ public class GameStats : MonoBehaviour
         DarkpowerID = powerDark.id;
         darkMana = powerDark.mana;
 
-        LevelCount = 1;
-        LevelIndicator = 3;
+        //LevelCount = 1;
+        //LevelIndicator = 3;
 
         Rune1 = (Rune)Rune1ID;
         Rune2 = (Rune)Rune2ID;
