@@ -33,6 +33,11 @@ public class PlayerData
     public float AudioVolume;
     public float MusicVolume;
 
+    public int SavedLevelIndicator;
+    public int SavedLevelCount;
+    public bool RunInProgress;
+    public int savedLevelPercentage;
+
 
 
 
@@ -108,6 +113,11 @@ public class PlayerData
         ManaJarBought = gamestats.ManaJar;
 
         level = gamestats.leveBoughtID;
+
+        SavedLevelIndicator = gamestats.SavedLevelIndicator;
+        SavedLevelCount = gamestats.SavedLevelCount;
+        RunInProgress = gamestats.RunInProgress;
+        savedLevelPercentage = gamestats.SavedLevelPercentage;
 
         
 

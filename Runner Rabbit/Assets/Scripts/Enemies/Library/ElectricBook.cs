@@ -48,7 +48,7 @@ public class ElectricBook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(SceneManager.GetActiveScene().name);
+        //print(SceneManager.GetActiveScene().name);
         spawnTime -= Time.deltaTime;
         if (spawnTime <= 0 && spawned == false)
         {

@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print("start");
+        //print("start");
         Hit = false;
         healthSlider = transform.Find("Canvas/Slider").GetComponent<Slider>();
         health = maxHealth;

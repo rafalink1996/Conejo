@@ -71,10 +71,10 @@ public class LevelSelect : MonoBehaviour
         {
             if (GameStats.stats.crystals >= 20)
             {
-                GameStats.stats.LevelIndicator = 3;
+                GameStats.stats.LevelIndicator = levelID;
 
                 GameStats.stats.LevelBought = true;
-                GameStats.stats.leveBoughtID = 3;
+                GameStats.stats.leveBoughtID = levelID;
 
                 GameStats.stats.coins += 100;
                 GameStats.stats.crystals -= 20;
@@ -92,10 +92,10 @@ public class LevelSelect : MonoBehaviour
         {
             if (GameStats.stats.crystals >= 40)
             {
-                GameStats.stats.LevelIndicator = 4;
+                GameStats.stats.LevelIndicator = levelID;
 
                 GameStats.stats.LevelBought = true;
-                GameStats.stats.leveBoughtID = 4;
+                GameStats.stats.leveBoughtID = levelID;
 
                 GameStats.stats.coins += 200;
                 GameStats.stats.crystals -= 40;
@@ -112,10 +112,10 @@ public class LevelSelect : MonoBehaviour
         {
             if (GameStats.stats.crystals >= 80)
             {
-                GameStats.stats.LevelIndicator = 5;
+                GameStats.stats.LevelIndicator = levelID;
 
                 GameStats.stats.LevelBought = true;
-                GameStats.stats.leveBoughtID = 5;
+                GameStats.stats.leveBoughtID = levelID;
 
                 GameStats.stats.coins += 350;
                 GameStats.stats.crystals -= 80;
@@ -133,10 +133,10 @@ public class LevelSelect : MonoBehaviour
         {
             if (GameStats.stats.crystals >= 100)
             {
-                GameStats.stats.LevelIndicator = 6;
+                GameStats.stats.LevelIndicator = levelID;
 
                 GameStats.stats.LevelBought = true;
-                GameStats.stats.leveBoughtID = 6;
+                GameStats.stats.leveBoughtID = levelID;
 
                 GameStats.stats.coins += 500;
                 GameStats.stats.crystals -= 100;

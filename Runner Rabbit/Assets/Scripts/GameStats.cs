@@ -153,6 +153,15 @@ public class GameStats : MonoBehaviour
 
     public bool MerchantRune;
 
+    public String LevelName;
+
+    // save Progress
+
+    public int SavedLevelIndicator;
+    public int SavedLevelCount;
+    public int SavedLevelPercentage;
+    public bool RunInProgress;
+
 
 
 
@@ -239,11 +248,13 @@ public class GameStats : MonoBehaviour
 
 
 
-        if (LevelCount == 4)
+        /*
+         if (LevelCount == 4)
         {
             LevelIndicator += 1;
             LevelCount -= 3;
         }
+        */
 
         lightPowerName = powerLight.name;
         lightPowerSprite = powerLight.iconLight;
@@ -276,7 +287,60 @@ public class GameStats : MonoBehaviour
 
     }
 
+    public void CheckLevelIndicator()
+    {
 
+        if (LevelCount == 4)
+        {
+            LevelIndicator += 1;
+            LevelCount -= 3;
+        }
+    }
+
+    public string CheckLevel()
+    {
+        if (LevelIndicator == 1)
+        {
+            
+            LevelName = "Level 1 (Library)";
+        }
+        if (LevelIndicator == 2)
+        {
+           
+            LevelName = "Level 2 (dungeon)";
+        }
+        if (LevelIndicator == 3)
+        {
+           
+            LevelName = "Level 3 (Frozen Room)";
+        }
+        if (LevelIndicator == 4)
+        {
+           
+            LevelName = "Level 4 (Inner Jungle)";
+        }
+        if (LevelIndicator == 5)
+        {
+           
+            LevelName = "Level 5 (SteampunkPortalRoom)";
+        }
+        if (LevelIndicator == 6)
+        {
+            
+            LevelName = "Level 6 (FinalBattle)";
+        }
+
+        return LevelName;
+    }
+
+    public void SaveLevelBackUp()
+    {
+        SavedLevelCount = LevelCount;
+        SavedLevelIndicator = LevelIndicator;
+        RunInProgress = true;
+        SaveStats();
+    }
+    
     public void addSavedPowers()
     {
 
@@ -300,6 +364,11 @@ public class GameStats : MonoBehaviour
 
         crystals = data.Crystals;
         leveBoughtID = data.level;
+
+        SavedLevelCount = data.SavedLevelCount;
+        SavedLevelIndicator = data.SavedLevelIndicator;
+        RunInProgress = data.RunInProgress;
+        SavedLevelPercentage = data.savedLevelPercentage;
 
         LevelReached = data.levelReached;
         botSkinID = data.BotSkin;

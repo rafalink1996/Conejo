@@ -48,7 +48,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         }
         else
         {
-            Debug.Log("no text");
+            //Debug.Log("no text");
 
         }
         if (RewardDisplay2 != null)
@@ -57,7 +57,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         }
         else
         {
-            Debug.Log("no text");
+           // Debug.Log("no text");
 
         }
 
@@ -67,7 +67,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         }
         else
         {
-            Debug.Log("no text");
+           // Debug.Log("no text");
 
         }
     

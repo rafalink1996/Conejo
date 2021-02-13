@@ -25,14 +25,21 @@ public class LevelLoaderStore : MonoBehaviour
 
     {
         GameStats.stats.LevelCount += 1;
-        StartCoroutine(LoadAsync());
+        GameStats.stats.CheckLevelIndicator();
+        GameStats.stats.SaveLevelBackUp();
+        GameStats.stats.SaveStats();
+        string LevelToLoad = GameStats.stats.CheckLevel();
+        
+        //Debug.Log(LevelToLoad);
+        StartCoroutine(LoadAsync(LevelToLoad));
+        
        
     }
 
 
 
     // Update is called once per frame
-    IEnumerator LoadAsync()
+    IEnumerator LoadAsync(string SceneName)
     {
 
         yield return new WaitForSecondsRealtime(transitiontime);
@@ -40,7 +47,7 @@ public class LevelLoaderStore : MonoBehaviour
         //loadScene
 
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(GameStats.stats.LevelIndicator);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneName);
 
         loadingScreen.SetActive(true);
 
@@ -48,7 +55,7 @@ public class LevelLoaderStore : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
             slider.value = progress;
-            Debug.Log(progress);
+            //Debug.Log(progress);
 
             yield return null;
         }

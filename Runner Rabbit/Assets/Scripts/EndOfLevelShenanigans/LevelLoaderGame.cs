@@ -97,7 +97,7 @@ public class LevelLoaderGame : MonoBehaviour
                     }
                     
                     
-                    StartCoroutine(loadAsyncGame(2));
+                    StartCoroutine(loadAsyncGame("Store"));
                 }
 
             }
@@ -112,7 +112,7 @@ public class LevelLoaderGame : MonoBehaviour
                     levelTime = 0;
                     GameStats.stats.PortalBoost = false;
                     
-                    StartCoroutine(loadAsyncGame(2));
+                    StartCoroutine(loadAsyncGame("Store"));
                     
                 }
 
@@ -124,7 +124,7 @@ public class LevelLoaderGame : MonoBehaviour
 
 
 
-    IEnumerator loadAsyncGame(int SceneIndex)
+    IEnumerator loadAsyncGame(string SceneName)
 
     {
 
@@ -147,7 +147,7 @@ public class LevelLoaderGame : MonoBehaviour
         //loadScene
 
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneIndex);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneName);
 
         loadingScreen.SetActive(true);
 
@@ -210,7 +210,7 @@ public class LevelLoaderGame : MonoBehaviour
         //loadScene
 
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
+        AsyncOperation operation = SceneManager.LoadSceneAsync("Main Menu");
 
         loadingScreen.SetActive(true);
         Time.timeScale = 1;

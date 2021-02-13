@@ -12,6 +12,12 @@ public class LevelLoaderMainMenu : MonoBehaviour
     public float transitiontime;
     public GameObject playbuttontransition;
 
+    public GameObject StartButton;
+    public GameObject StartButtonDisplay;
+
+    public GameObject NewRunButton;
+    public GameObject ContinueRunGameObject;
+
     private void Start()
     {
         GameStats.stats.SaveStats();
@@ -22,21 +28,35 @@ public class LevelLoaderMainMenu : MonoBehaviour
     public void LoadLevel()
 
     {
+
         if (GameStats.stats.LevelBought == true)
         {
-            StartCoroutine(loadAsync(GameStats.stats.leveBoughtID));
+
+            //StartCoroutine(loadAsync(GameStats.stats.leveBoughtID));
             GameStats.stats.LevelIndicator = GameStats.stats.leveBoughtID;
+            string LeveleToLoadName = GameStats.stats.CheckLevel();
+            StartCoroutine(loadAsync(LeveleToLoadName));
+
         }
         else
         {
-            StartCoroutine(loadAsync(3));
+            
+            StartCoroutine(loadAsync("Level 1 (Library)"));
         }
         
     }
 
+    public void LoadSavedLevel()
+    {
+
+    }
+    
+        
+    
+    
 
 
-    IEnumerator loadAsync(int SceneIndex)
+    IEnumerator loadAsync(string  SceneName)
 
     {
         // play animation
@@ -50,7 +70,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
         //loadScene
         playbuttontransition.SetActive(false);
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneIndex);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneName);
 
         loadingScreen.SetActive(true);
 
