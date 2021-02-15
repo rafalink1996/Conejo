@@ -34,13 +34,14 @@ public class LevelLoaderMainMenu : MonoBehaviour
 
             //StartCoroutine(loadAsync(GameStats.stats.leveBoughtID));
             GameStats.stats.LevelIndicator = GameStats.stats.leveBoughtID;
+
             string LeveleToLoadName = GameStats.stats.CheckLevel();
             StartCoroutine(loadAsync(LeveleToLoadName));
 
         }
         else
         {
-            
+            GameStats.stats.SavedLevelPercentage = 0; 
             StartCoroutine(loadAsync("Level 1 (Library)"));
         }
         
@@ -48,7 +49,12 @@ public class LevelLoaderMainMenu : MonoBehaviour
 
     public void LoadSavedLevel()
     {
-
+        GameStats.stats.LevelIndicator = GameStats.stats.SavedLevelIndicator;
+        GameStats.stats.LevelCount = GameStats.stats.SavedLevelCount;
+        GameStats.stats.CheckLevelIndicator();
+        string LevelToLoad = GameStats.stats.CheckLevel();
+      
+        StartCoroutine(loadAsync(LevelToLoad));
     }
     
         
