@@ -20,6 +20,10 @@ public class IntroManager : MonoBehaviour
     }
     void EndReached(VideoPlayer vp)
     {
+        LoadMenu();
+    }
+    public void LoadMenu()
+    {
         SceneManager.LoadSceneAsync(1);
     }
 }

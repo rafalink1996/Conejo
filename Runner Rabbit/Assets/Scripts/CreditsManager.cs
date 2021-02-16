@@ -23,10 +23,14 @@ public class CreditsManager : MonoBehaviour
     }
     void EndReached1(VideoPlayer vp)
     {
-        video1.gameObject.SetActive(false);
+        Destroy(video1.gameObject);
         video2.gameObject.SetActive(true);
     }
     void EndReached2(VideoPlayer vp)
+    {
+        LoadMenu();
+    }
+    public void LoadMenu()
     {
         SceneManager.LoadSceneAsync(1);
     }
