@@ -457,10 +457,8 @@ MonoBehaviour:
   enemyCount: 0
   enemyName:
   - Ice Golem
-  - IceBat
-  - IceBat
-  - IceBat
-  - IceBat
+  - IceEnemies1
+  - IceEnemies2
   enemyContainer: {fileID: 877303313}
 --- !u!114 &102801765
 MonoBehaviour:
@@ -6062,10 +6060,8 @@ MonoBehaviour:
   enemyCount: 0
   enemyName:
   - Ice Golem
-  - IceBat
-  - IceBat
-  - IceBat
-  - IceBat
+  - IceEnemies1
+  - IceEnemies2
   enemyContainer: {fileID: 1025664772}
 --- !u!4 &451898761
 Transform:
@@ -12985,7 +12981,7 @@ PrefabInstance:
     - target: {fileID: 2719699189873162468, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2719699189873162472, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
@@ -24386,7 +24382,7 @@ PrefabInstance:
     - target: {fileID: 3265500893348112466, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3265500893416145012, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
@@ -25030,7 +25026,7 @@ PrefabInstance:
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: LevelIndicator
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}

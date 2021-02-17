@@ -33,7 +33,7 @@ public class IceBat : MonoBehaviour
         health.maxHealth = 30;
         //transform.position = StartPos.position;
         anim = GetComponent<Animator>();
-        anim.SetFloat("Type", Random.Range(0, 2));
+        //anim.SetFloat("Type", Random.Range(0, 2));
         //health.maxHealth = 30;
         if (transform.position.y > 0)
         {
@@ -75,7 +75,7 @@ public class IceBat : MonoBehaviour
         }
         if (attackTime <= 0)
         {
-            anim.SetTrigger("Attack");
+            //anim.SetTrigger("Attack");
 
             attackTime = Random.Range(1.2f, 3.3f);
            

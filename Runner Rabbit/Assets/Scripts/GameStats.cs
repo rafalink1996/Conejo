@@ -432,7 +432,7 @@ public class GameStats : MonoBehaviour
 
     public void ResetStats()
     {
-       stats.LevelIndicator = 2;
+       stats.LevelIndicator = 1;
        stats.LevelCount = 1;
        stats.numOfHearts = 3;
        stats.ExtraHearts = false;

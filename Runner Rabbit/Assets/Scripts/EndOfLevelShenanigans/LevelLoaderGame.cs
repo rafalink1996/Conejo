@@ -34,13 +34,13 @@ public class LevelLoaderGame : MonoBehaviour
 
         if(GameStats.stats.LevelCount == 1)
         {
-            levelTime = 50 + (25* (GameStats.stats.LevelIndicator -2));
+            levelTime = 50 + (25* (GameStats.stats.LevelIndicator));
 
         }
 
         if (GameStats.stats.LevelCount > 1)
         {
-            levelTime = 100 + (25 * (GameStats.stats.LevelIndicator - 2));
+            levelTime = 100 + (25 * (GameStats.stats.LevelIndicator));
         }
         StartCoroutine(loadloader());
 
@@ -50,7 +50,7 @@ public class LevelLoaderGame : MonoBehaviour
         }
         if (GameStats.stats.PortalBoost == true)
         {
-            levelcountdown = levelTime/2;
+            levelcountdown = levelTime/3;
             //GameStats.stats.PortalBoost = false;
         }
 
