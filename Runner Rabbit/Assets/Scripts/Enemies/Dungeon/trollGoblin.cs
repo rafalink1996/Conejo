@@ -9,9 +9,11 @@ public class trollGoblin : MonoBehaviour
     Animator anim;
     public EnemyHealth health;
     public int myHealth = 100;
+    public bool Agonize;
     // Start is called before the first frame update
     void Start()
     {
+        Agonize = false;
         FindObjectOfType<AudioManager>().Play("Troll_Spawn");
         health = GetComponent<EnemyHealth>();
         health.maxHealth = myHealth;
@@ -36,6 +38,12 @@ public class trollGoblin : MonoBehaviour
         }
         if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
+            if (!Agonize)
+            {
+                FindObjectOfType<AudioManager>().Play("Troll_Death");
+                Agonize = true;
+            }
+
             FindObjectOfType<AudioManager>().Play("Troll_Death");
             anim.SetTrigger("Die");
         }

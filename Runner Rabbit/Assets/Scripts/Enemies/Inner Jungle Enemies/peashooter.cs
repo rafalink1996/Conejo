@@ -24,9 +24,16 @@ public class peashooter : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Rift")
+        if (collision.tag == "Rift" || collision.tag == "Player")
         {
-            Destroy(transform.parent.gameObject);
+            Animator myAnimator = GetComponent<Animator>();
+            myAnimator.SetTrigger("Destroy");
+            
         }
+    }
+
+    private void DestroyPoison()
+    {
+        Destroy(transform.parent.gameObject);
     }
 }

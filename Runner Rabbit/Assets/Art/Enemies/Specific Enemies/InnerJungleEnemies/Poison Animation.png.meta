@@ -1,25 +1,43 @@
 fileFormatVersion: 2
-guid: dab481ed2ebe6423abc93d1d461a9f4f
+guid: a618e4ca59d9740d485cad056906077a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4042030693469124742
-    second: Seed Break_0
+      213: 4333006465964417368
+    second: Poison Animation_0
   - first:
-      213: 5736148894558444272
-    second: Seed Break_1
+      213: 6623032519783358153
+    second: Poison Animation_1
   - first:
-      213: -6986977858177879570
-    second: Seed Break_2
+      213: 7735860202509510
+    second: Poison Animation_2
   - first:
-      213: -4423738768628315979
-    second: Seed Break_3
+      213: -5323249742287463151
+    second: Poison Animation_3
   - first:
-      213: 7848912562744281421
-    second: Seed Break_4
+      213: 1635008439780028240
+    second: Poison Animation_4
   - first:
-      213: 7434148360339742765
-    second: Seed Break_5
+      213: 3287964955909219582
+    second: Poison Animation_5
+  - first:
+      213: 6382472787709853492
+    second: Poison Animation_6
+  - first:
+      213: 2879209528002319130
+    second: Poison Animation_7
+  - first:
+      213: -1008210969266100528
+    second: Poison Animation_8
+  - first:
+      213: -5148267319756048055
+    second: Poison Animation_9
+  - first:
+      213: -7229299074610799589
+    second: Poison Animation_10
+  - first:
+      213: -4153670534309828256
+    second: Poison Animation_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -129,13 +147,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Seed Break_0
+      name: Poison Animation_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 500
+        y: 1050
         width: 500
-        height: 500
+        height: 350
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a770c88ff72d7e7c0800000000000000
-      internalID: -4042030693469124742
+      spriteID: 851a74d6c6ee12c30800000000000000
+      internalID: 4333006465964417368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Seed Break_1
+      name: Poison Animation_1
       rect:
         serializedVersion: 2
         x: 500
-        y: 500
+        y: 1050
         width: 500
-        height: 500
+        height: 350
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fad7e63705ea9f40800000000000000
-      internalID: 5736148894558444272
+      spriteID: 9ce1c858cfcb9eb50800000000000000
+      internalID: 6623032519783358153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Seed Break_2
+      name: Poison Animation_2
       rect:
         serializedVersion: 2
         x: 1000
-        y: 500
+        y: 1050
         width: 500
-        height: 500
+        height: 350
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,20 +203,146 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee1b9c518a4490f90800000000000000
-      internalID: -6986977858177879570
+      spriteID: 6c4176f49bb7b1000800000000000000
+      internalID: 7735860202509510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Seed Break_3
+      name: Poison Animation_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 700
+        width: 500
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d144c20940026b0800000000000000
+      internalID: -5323249742287463151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison Animation_4
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 700
+        width: 500
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05faad96387b0b610800000000000000
+      internalID: 1635008439780028240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison Animation_5
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 700
+        width: 500
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef4e6eef4b231ad20800000000000000
+      internalID: 3287964955909219582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison Animation_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 350
+        width: 500
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ffa044f29139850800000000000000
+      internalID: 6382472787709853492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison Animation_7
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 350
+        width: 500
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a139f7e9fc105f720800000000000000
+      internalID: 2879209528002319130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison Animation_8
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 350
+        width: 500
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d6ed36177d1202f0800000000000000
+      internalID: -1008210969266100528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison Animation_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 500
-        height: 500
+        height: 350
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +350,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b809c42709bb92c0800000000000000
-      internalID: -4423738768628315979
+      spriteID: 949303d362ead88b0800000000000000
+      internalID: -5148267319756048055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Seed Break_4
+      name: Poison Animation_10
       rect:
         serializedVersion: 2
         x: 500
         y: 0
         width: 500
-        height: 500
+        height: 350
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,20 +371,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d494977f360fcec60800000000000000
-      internalID: 7848912562744281421
+      spriteID: b1c53ca4bce5cab90800000000000000
+      internalID: -7229299074610799589
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Seed Break_5
+      name: Poison Animation_11
       rect:
         serializedVersion: 2
         x: 1000
         y: 0
         width: 500
-        height: 500
+        height: 350
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,8 +392,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d206a91cb866b2760800000000000000
-      internalID: 7434148360339742765
+      spriteID: 069a478f7a23b56c0800000000000000
+      internalID: -4153670534309828256
       vertices: []
       indices: 
       edges: []

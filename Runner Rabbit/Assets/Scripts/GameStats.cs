@@ -159,7 +159,7 @@ public class GameStats : MonoBehaviour
 
     public int SavedLevelIndicator;
     public int SavedLevelCount;
-    public int SavedLevelPercentage;
+    public float SavedLevelPercentage;
     public bool RunInProgress;
 
 
@@ -364,6 +364,7 @@ public class GameStats : MonoBehaviour
 
         crystals = data.Crystals;
         leveBoughtID = data.level;
+        coins = data.Coins;
 
         SavedLevelCount = data.SavedLevelCount;
         SavedLevelIndicator = data.SavedLevelIndicator;
@@ -440,6 +441,7 @@ public class GameStats : MonoBehaviour
        powerDark = originalDarkPower;
        powerLight = originalLightPower;
        coins = 0;
+       SavedLevelPercentage = 0;
 
 
     }

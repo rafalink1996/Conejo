@@ -23,6 +23,8 @@ public class LevelLoaderGame : MonoBehaviour
     public float levelTime;
     public float levelcountdown;
 
+   
+
     public Slider TimerSlider;
     bool timeOver = false;
 
@@ -42,21 +44,33 @@ public class LevelLoaderGame : MonoBehaviour
         {
             levelTime = 100 + (25 * (GameStats.stats.LevelIndicator));
         }
+
+       
         StartCoroutine(loadloader());
 
-        if (GameStats.stats.PortalBoost == false)
+
+        if (GameStats.stats.RunInProgress == true)
         {
-            levelcountdown = 0;
+            levelcountdown = GameStats.stats.SavedLevelPercentage;
         }
-        if (GameStats.stats.PortalBoost == true)
+        else
         {
-            levelcountdown = levelTime/3;
-            //GameStats.stats.PortalBoost = false;
+            if (GameStats.stats.PortalBoost == false)
+            {
+                levelcountdown = 0;
+            }
+            if (GameStats.stats.PortalBoost == true)
+            {
+                levelcountdown = levelTime / 3;
+
+            }
+
         }
 
         TimerSlider.maxValue = levelTime;
         GameStats.stats.spawnHouse = false;
-        
+
+
     }
 
     // Update is called once per frame
@@ -74,6 +88,14 @@ public class LevelLoaderGame : MonoBehaviour
             cha.endlevel = true;
             
         }
+        int levelPercentage = Mathf.FloorToInt((levelcountdown / levelTime) * 100);
+        if (levelPercentage == 25 || levelPercentage == 50 || levelPercentage == 75)
+        {
+            GameStats.stats.SavedLevelPercentage = levelcountdown;
+            GameStats.stats.SaveStats();
+        }
+
+        
   
     }
 

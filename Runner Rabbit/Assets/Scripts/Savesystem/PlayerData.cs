@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerData
 {
     public float Crystals;
+    public float Coins;
 
     public bool fenixfetherBought;
     public bool PortalBoostBought;
@@ -36,7 +37,7 @@ public class PlayerData
     public int SavedLevelIndicator;
     public int SavedLevelCount;
     public bool RunInProgress;
-    public int savedLevelPercentage;
+    public float savedLevelPercentage;
 
 
 
@@ -105,6 +106,7 @@ public class PlayerData
     public PlayerData(GameStats gamestats)
     {
         Crystals = gamestats.crystals;
+        Coins = gamestats.coins;
 
         fenixfetherBought = gamestats.fenixFeather;
         PortalBoostBought = gamestats.PortalBoost;
