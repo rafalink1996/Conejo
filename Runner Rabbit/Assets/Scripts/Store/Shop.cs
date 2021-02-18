@@ -378,11 +378,13 @@ public class Shop : MonoBehaviour
                     GameStats.stats.numOfHearts += 1;
                     GameStats.stats.coins -= heartCost/2;
                     GameStats.stats.MerchantRune = false;
+                    GameStats.stats.SaveCurrentHearts = GameStats.stats.numOfHearts;
+                    GameStats.stats.SaveStats();
                     if (GameStats.stats.MoneySpent < 1000)
                     {
                         GameStats.stats.MoneySpent += heartCost/2;
                     }
-                    print("Bought heart");
+                    //print("Bought heart");
                 }
                 else
                 {
@@ -397,11 +399,13 @@ public class Shop : MonoBehaviour
                 {
                     GameStats.stats.numOfHearts += 1;
                     GameStats.stats.coins -= heartCost;
+                    GameStats.stats.SaveCurrentHearts = GameStats.stats.numOfHearts;
+                    GameStats.stats.SaveStats();
                     if (GameStats.stats.MoneySpent < 1000)
                     {
                         GameStats.stats.MoneySpent += heartCost;
                     }
-                    print("Bought heart");
+                    //print("Bought heart");
                 }
                 else
                 {

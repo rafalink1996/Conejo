@@ -6251,6 +6251,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6feaee262759f485185533cb9398f433, type: 3}
+--- !u!1 &393317634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2719699189873162468, guid: 6feaee262759f485185533cb9398f433,
+    type: 3}
+  m_PrefabInstance: {fileID: 393317633}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &394520490
 GameObject:
   m_ObjectHideFlags: 0
@@ -7325,6 +7331,8 @@ MonoBehaviour:
   MusicSlider: {fileID: 1364760175}
   SoundSlider: {fileID: 1364760174}
   audioMixer: {fileID: 24100000, guid: fc3f455b10db348d094da207e592d7c2, type: 2}
+  StartAnimationUi: {fileID: 1364760194}
+  StartAnimation: {fileID: 393317634}
 --- !u!1 &677475416
 GameObject:
   m_ObjectHideFlags: 0
@@ -13117,6 +13125,12 @@ PrefabInstance:
       objectReference: {fileID: 677475417}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e2965c6ceb114834b5b2a17c18421ce, type: 3}
+--- !u!1 &1105198838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3542273375926598913, guid: 3e2965c6ceb114834b5b2a17c18421ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1105198837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134647617
 GameObject:
   m_ObjectHideFlags: 0
@@ -13814,6 +13828,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1364760173}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1364760194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3265500893348112466, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1364760173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1403348041
 GameObject:
   m_ObjectHideFlags: 0
@@ -14139,12 +14159,15 @@ MonoBehaviour:
   EnemySpawner1: {fileID: 102801762}
   EnemySpawner2: {fileID: 451898758}
   EnemySpawnerHand: {fileID: 253351649}
+  Background: {fileID: 581520159}
   EndlessHosue: {fileID: 146997261}
   cha: {fileID: 1643502920}
+  character: {fileID: 1105198838}
   transitiontime: 2.5
   levelTime: 100
   levelcountdown: 1
   TimerSlider: {fileID: 1364760177}
+  backgroundLoopScript: {fileID: 519420030}
 --- !u!1 &1541687798
 GameObject:
   m_ObjectHideFlags: 0
@@ -19197,7 +19220,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1105198837}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1105198838}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3617dc11b826e4a8db8297cee4ed1479, type: 3}
@@ -25672,7 +25695,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[15].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 4c9af888dcd0643af953fa7127fc76af, type: 3}
+      objectReference: {fileID: 8300000, guid: 01e83fb6656fc4e87aaa542f7bf567a4, type: 3}
     - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
         type: 3}
       propertyPath: sounds.Array.data[49].name
@@ -25832,6 +25855,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[53].priority
       value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[15].priority
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89343ff5d801f460daefffbbfb195a86, type: 3}

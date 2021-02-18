@@ -15,8 +15,11 @@ public class LevelLoaderGame : MonoBehaviour
     public GameObject EnemySpawner2;
     public GameObject EnemySpawnerHand;
 
+    public GameObject Background;
+
     public HouseSpawner EndlessHosue;
     public character cha;
+    public GameObject character;
     //public BossWyrm bossWyrm;
 
     public float transitiontime;
@@ -28,21 +31,25 @@ public class LevelLoaderGame : MonoBehaviour
     public Slider TimerSlider;
     bool timeOver = false;
 
+    public backgroundLoop backgroundLoopScript;
+
     // Start is called before the first frame update
     void Start()
     {
 
         Resources.UnloadUnusedAssets();
 
-        if(GameStats.stats.LevelCount == 1)
+        GameStats.stats.isInStore = false;
+
+        if (GameStats.stats.LevelCount == 1)
         {
-            levelTime = 50 + (25* (GameStats.stats.LevelIndicator));
+            levelTime = 50 + (10* (GameStats.stats.LevelIndicator));
 
         }
 
         if (GameStats.stats.LevelCount > 1)
         {
-            levelTime = 100 + (25 * (GameStats.stats.LevelIndicator));
+            levelTime = 100 + (10 * (GameStats.stats.LevelIndicator));
         }
 
        
@@ -52,6 +59,7 @@ public class LevelLoaderGame : MonoBehaviour
         if (GameStats.stats.RunInProgress == true)
         {
             levelcountdown = GameStats.stats.SavedLevelPercentage;
+            cha.SetSavedStats();
         }
         else
         {
@@ -92,6 +100,7 @@ public class LevelLoaderGame : MonoBehaviour
         if (levelPercentage == 25 || levelPercentage == 50 || levelPercentage == 75)
         {
             GameStats.stats.SavedLevelPercentage = levelcountdown;
+            GameStats.stats.SaveCurrentHearts = cha.Health;
             GameStats.stats.SaveStats();
         }
 
@@ -134,6 +143,8 @@ public class LevelLoaderGame : MonoBehaviour
                     levelTime = 0;
                     GameStats.stats.PortalBoost = false;
                     
+                    
+                    
                     StartCoroutine(loadAsyncGame("Store"));
                     
                 }
@@ -160,12 +171,11 @@ public class LevelLoaderGame : MonoBehaviour
         EndLevelAnimation.SetActive(true);
 
 
-
-
-
         //wait
         yield return new WaitForSecondsRealtime(transitiontime);
-
+        backgroundLoopScript.enabled = false;
+        Destroy(Background);
+        Resources.UnloadUnusedAssets();
         //loadScene
 
 
@@ -191,7 +201,9 @@ public class LevelLoaderGame : MonoBehaviour
     public void backToMainMenu()
 
     {
+
         GameStats.stats.ResetStats();
+        GameStats.stats.RunInProgress = false;
         GameStats.stats.SaveStats();
         loadingScreen.SetActive(true);
         StartCoroutine(loadAsyncMainMenu());
@@ -230,7 +242,11 @@ public class LevelLoaderGame : MonoBehaviour
         yield return new WaitForSecondsRealtime(transitiontime);
 
         //loadScene
-
+        backgroundLoopScript.enabled = false;
+        Destroy(backgroundLoopScript);
+        Destroy(Background);
+        Destroy(character);
+        Resources.UnloadUnusedAssets();
 
         AsyncOperation operation = SceneManager.LoadSceneAsync("Main Menu");
 

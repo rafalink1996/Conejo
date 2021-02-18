@@ -15,7 +15,10 @@ public class LevelLoaderStore : MonoBehaviour
 
     private void Start()
     {
+        GameStats.stats.isInStore = true;
+        GameStats.stats.SaveCurrentHearts = GameStats.stats.numOfHearts;
         GameStats.stats.SaveStats();
+        
 
     }
 
@@ -24,6 +27,7 @@ public class LevelLoaderStore : MonoBehaviour
     public void ContinueButton()
 
     {
+        GameStats.stats.isInStore = false;
         GameStats.stats.LevelCount += 1;
         GameStats.stats.CheckLevelIndicator();
         GameStats.stats.SaveLevelBackUp();

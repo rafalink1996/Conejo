@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5716,7 +5716,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 938819351}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 938819352}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3617dc11b826e4a8db8297cee4ed1479, type: 3}
@@ -6754,6 +6754,8 @@ MonoBehaviour:
   MusicSlider: {fileID: 2074967556}
   SoundSlider: {fileID: 2074967555}
   audioMixer: {fileID: 24100000, guid: fc3f455b10db348d094da207e592d7c2, type: 2}
+  StartAnimationUi: {fileID: 2074967575}
+  StartAnimation: {fileID: 1291129981}
 --- !u!1 &677475416
 GameObject:
   m_ObjectHideFlags: 0
@@ -12563,6 +12565,12 @@ PrefabInstance:
       objectReference: {fileID: 677475417}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e2965c6ceb114834b5b2a17c18421ce, type: 3}
+--- !u!1 &938819352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3542273375926598913, guid: 3e2965c6ceb114834b5b2a17c18421ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 938819351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &988354181
 GameObject:
   m_ObjectHideFlags: 0
@@ -12981,7 +12989,7 @@ PrefabInstance:
     - target: {fileID: 2719699189873162468, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2719699189873162472, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
@@ -13093,8 +13101,19 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2719699190167840734, guid: 6feaee262759f485185533cb9398f433,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6feaee262759f485185533cb9398f433, type: 3}
+--- !u!1 &1291129981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2719699189873162468, guid: 6feaee262759f485185533cb9398f433,
+    type: 3}
+  m_PrefabInstance: {fileID: 1291129980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1294165005
 GameObject:
   m_ObjectHideFlags: 0
@@ -13453,12 +13472,15 @@ MonoBehaviour:
   EnemySpawner1: {fileID: 102801762}
   EnemySpawner2: {fileID: 451898758}
   EnemySpawnerHand: {fileID: 253351649}
+  Background: {fileID: 581520159}
   EndlessHosue: {fileID: 146997261}
   cha: {fileID: 390799254}
+  character: {fileID: 938819352}
   transitiontime: 2.5
   levelTime: 100
   levelcountdown: 1
   TimerSlider: {fileID: 2074967558}
+  backgroundLoopScript: {fileID: 519420030}
 --- !u!1 &1565223059
 GameObject:
   m_ObjectHideFlags: 0
@@ -24382,7 +24404,7 @@ PrefabInstance:
     - target: {fileID: 3265500893348112466, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3265500893416145012, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
@@ -24560,6 +24582,12 @@ GameObject:
 --- !u!1 &2074967574 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 562685654, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2074967554}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2074967575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3265500893348112466, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
     type: 3}
   m_PrefabInstance: {fileID: 2074967554}
   m_PrefabAsset: {fileID: 0}

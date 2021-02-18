@@ -38,6 +38,9 @@ public class PlayerData
     public int SavedLevelCount;
     public bool RunInProgress;
     public float savedLevelPercentage;
+    public int MaxHearts;
+    public int CurrentHearts;
+    public bool IsInStore;
 
 
 
@@ -120,6 +123,7 @@ public class PlayerData
         SavedLevelCount = gamestats.SavedLevelCount;
         RunInProgress = gamestats.RunInProgress;
         savedLevelPercentage = gamestats.SavedLevelPercentage;
+        IsInStore = gamestats.isInStore;
 
         
 

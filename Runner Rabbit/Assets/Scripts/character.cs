@@ -219,6 +219,9 @@ public class character : MonoBehaviour
         endVFX.SetActive(false);
         laser.enabled = false;
 
+        // set saved Values
+        
+
 
     }
 
@@ -357,6 +360,11 @@ public class character : MonoBehaviour
         }
 
 
+    }
+
+    public void SetSavedStats()
+    {
+        Health = GameStats.stats.SaveCurrentHearts;  
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -787,6 +795,7 @@ public class character : MonoBehaviour
 
 
         DeathScreen.SetActive(true);
+        
     }
 
 

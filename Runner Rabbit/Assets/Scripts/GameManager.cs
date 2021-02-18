@@ -29,14 +29,19 @@ public class GameManager : MonoBehaviour
     public Slider MusicSlider;
     public Slider SoundSlider;
     public AudioMixer audioMixer;
-   
+
+
+    public GameObject StartAnimationUi;
+    public GameObject StartAnimation;
 
 
 
 
 
-   private void Start()
+
+    private void Start()
     {
+        StartCoroutine(DestroyStartingAnimations());
         ThePauseButton.interactable = false;
         cha = FindObjectOfType<character>();
         darkcolor = GameStats.stats.powerDark.rarityColor;
@@ -108,6 +113,14 @@ public class GameManager : MonoBehaviour
         }
 
         
+    }
+
+    IEnumerator DestroyStartingAnimations()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(StartAnimation);
+        Destroy(StartAnimationUi);
+        Resources.UnloadUnusedAssets();
     }
 
     public void PauseButton()

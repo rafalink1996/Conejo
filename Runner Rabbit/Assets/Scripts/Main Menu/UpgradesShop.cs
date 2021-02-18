@@ -25,8 +25,11 @@ public class UpgradesShop : MonoBehaviour
         
         if (GameStats.stats.coins >= heartCost)
         {
-            print("Bought heart");
+            //print("Bought heart");
             GameStats.stats.numOfHearts += 1;
+            GameStats.stats.SaveCurrentHearts = GameStats.stats.numOfHearts;
+            GameStats.stats.SaveStats();
+            
 
         }
         else

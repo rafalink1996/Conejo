@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("music");
+        //Play("music");
         Play("musica alternativa XD");
         Play("WindSFX");
     }

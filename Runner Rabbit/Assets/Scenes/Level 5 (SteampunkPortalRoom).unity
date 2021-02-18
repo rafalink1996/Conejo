@@ -6732,6 +6732,8 @@ MonoBehaviour:
   MusicSlider: {fileID: 1649570317}
   SoundSlider: {fileID: 1649570316}
   audioMixer: {fileID: 24100000, guid: fc3f455b10db348d094da207e592d7c2, type: 2}
+  StartAnimationUi: {fileID: 1649570336}
+  StartAnimation: {fileID: 992608879}
 --- !u!1 &677475416
 GameObject:
   m_ObjectHideFlags: 0
@@ -12413,6 +12415,12 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6feaee262759f485185533cb9398f433, type: 3}
+--- !u!1 &992608879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2719699189873162468, guid: 6feaee262759f485185533cb9398f433,
+    type: 3}
+  m_PrefabInstance: {fileID: 992608878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1013694570
 GameObject:
   m_ObjectHideFlags: 0
@@ -12500,7 +12508,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1932799561}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1932799562}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3617dc11b826e4a8db8297cee4ed1479, type: 3}
@@ -18696,12 +18704,15 @@ MonoBehaviour:
   EnemySpawner1: {fileID: 102801762}
   EnemySpawner2: {fileID: 451898758}
   EnemySpawnerHand: {fileID: 253351649}
+  Background: {fileID: 581520159}
   EndlessHosue: {fileID: 146997261}
   cha: {fileID: 1020441850}
+  character: {fileID: 1932799562}
   transitiontime: 2.5
   levelTime: 100
   levelcountdown: 1
   TimerSlider: {fileID: 1649570319}
+  backgroundLoopScript: {fileID: 519420030}
 --- !u!1001 &1540327895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24198,6 +24209,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1649570315}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1649570336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3265500893348112466, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1649570315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1653860235
 GameObject:
   m_ObjectHideFlags: 0
@@ -25251,6 +25268,12 @@ PrefabInstance:
       objectReference: {fileID: 677475417}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e2965c6ceb114834b5b2a17c18421ce, type: 3}
+--- !u!1 &1932799562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3542273375926598913, guid: 3e2965c6ceb114834b5b2a17c18421ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1932799561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1933837806
 GameObject:
   m_ObjectHideFlags: 0

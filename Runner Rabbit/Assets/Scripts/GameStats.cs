@@ -161,6 +161,10 @@ public class GameStats : MonoBehaviour
     public int SavedLevelCount;
     public float SavedLevelPercentage;
     public bool RunInProgress;
+    
+    
+    public int SaveCurrentHearts;
+    public bool isInStore;
 
 
 
@@ -370,6 +374,10 @@ public class GameStats : MonoBehaviour
         SavedLevelIndicator = data.SavedLevelIndicator;
         RunInProgress = data.RunInProgress;
         SavedLevelPercentage = data.savedLevelPercentage;
+        numOfHearts = data.MaxHearts;
+        SaveCurrentHearts = data.CurrentHearts;
+        isInStore = data.IsInStore;
+
 
         LevelReached = data.levelReached;
         botSkinID = data.BotSkin;
@@ -441,7 +449,8 @@ public class GameStats : MonoBehaviour
        powerDark = originalDarkPower;
        powerLight = originalLightPower;
        coins = 0;
-       SavedLevelPercentage = 0;
+       stats.SavedLevelPercentage = 0;
+       stats.SaveCurrentHearts = 3;
 
 
     }
