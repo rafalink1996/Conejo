@@ -71,7 +71,8 @@ public class Shop : MonoBehaviour
 
         coins = GameStats.stats.coins;
         CoinCounter.text = coins.ToString();
-       
+
+        GameStats.stats.SaveStats();
         PopulateShop();
 
         for (int i = 0; i < PowersInStore.Count; i++)
@@ -138,6 +139,8 @@ public class Shop : MonoBehaviour
         }
 
     }
+
+     
 
     private void PopulateShop()
     {

@@ -124,6 +124,7 @@ public class PlayerData
         RunInProgress = gamestats.RunInProgress;
         savedLevelPercentage = gamestats.SavedLevelPercentage;
         IsInStore = gamestats.isInStore;
+        MaxHearts = gamestats.numOfHearts;
 
         
 
