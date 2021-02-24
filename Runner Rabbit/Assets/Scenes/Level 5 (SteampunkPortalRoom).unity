@@ -375,7 +375,9 @@ MonoBehaviour:
   enemyType: 1
   enemyCount: 0
   enemyName:
-  - Steampunk Enemies 1
+  - SteampunkBunny
+  - SteampunkEnemies1
+  - SteampunkEnemies2
   enemyContainer: {fileID: 1325823438}
 --- !u!114 &102801765
 MonoBehaviour:
@@ -785,7 +787,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2007080184}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &317944585
 GameObject:
@@ -6021,7 +6023,9 @@ MonoBehaviour:
   enemyType: 1
   enemyCount: 0
   enemyName:
-  - Steampunk Enemies 1
+  - SteampunkBunny
+  - SteampunkEnemies1
+  - SteampunkEnemies2
   enemyContainer: {fileID: 1789312074}
 --- !u!4 &451898761
 Transform:
@@ -6035,7 +6039,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2007080184}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &453731651
 GameObject:
@@ -12672,7 +12676,11 @@ MonoBehaviour:
   enemyType: 1
   enemyCount: 0
   enemyName:
-  - Steampunk Enemies 1
+  - SteampunkEnemies1
+  - SteampunkEnemies2
+  - SteampunkEnemies3
+  - SteampunkEnemies4
+  - SteampunkEnemies5
   enemyContainer: {fileID: 1325823438}
 --- !u!1 &1079738928
 GameObject:
@@ -18224,7 +18232,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2007080184}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1325823439
 MonoBehaviour:
@@ -24619,7 +24627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2007080184}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1789312075
 MonoBehaviour:
@@ -24754,7 +24762,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2007080184}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1823710149
 MonoBehaviour:
@@ -24788,7 +24796,11 @@ MonoBehaviour:
   enemyType: 1
   enemyCount: 0
   enemyName:
-  - Steampunk Enemies 1
+  - SteampunkEnemies1
+  - SteampunkEnemies2
+  - SteampunkEnemies3
+  - SteampunkEnemies4
+  - SteampunkEnemies5
   enemyContainer: {fileID: 1789312074}
 --- !u!1 &1859497429
 GameObject:
@@ -25560,12 +25572,12 @@ Transform:
   m_Children:
   - {fileID: 102801763}
   - {fileID: 1077114368}
+  - {fileID: 1325823438}
   - {fileID: 451898761}
   - {fileID: 1823710148}
+  - {fileID: 1789312074}
   - {fileID: 253351652}
   - {fileID: 2083894605}
-  - {fileID: 1789312074}
-  - {fileID: 1325823438}
   - {fileID: 2037470078}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -25727,7 +25739,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2007080184}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2083894606
 MonoBehaviour:
