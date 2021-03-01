@@ -36,8 +36,11 @@ public class Yeti : MonoBehaviour
         {
             bossTop = true;
         }
-        attackTime -= Time.deltaTime;
-        punchTime -= Time.deltaTime;
+        if (!GameStats.stats.bossDead)
+        {
+            attackTime -= Time.deltaTime;
+            punchTime -= Time.deltaTime;
+        }
         if (attackTime <= 0 && !attack)
         {
             FindObjectOfType<AudioManager>().Play("YetiAttack");
@@ -57,7 +60,7 @@ public class Yeti : MonoBehaviour
             punch = false;
             punchTime = Random.Range(5f, 7f);
         }
-        if (health.health <= 0)
+        if (health.health <= 0 && !GameStats.stats.bossDead)
         {
             FindObjectOfType<AudioManager>().Play("YetiDeath");
             anim.SetTrigger("Die");
