@@ -41,10 +41,10 @@ public class LevelLoaderMainMenu : MonoBehaviour
         if (GameStats.stats.LevelBought == true)
         {
 
-            
+            GameStats.stats.ResetStats();
+            GameStats.stats.SavedLevelPercentage = 0;
             GameStats.stats.LevelIndicator = GameStats.stats.leveBoughtID;
             GameStats.stats.RunInProgress = true;
-            GameStats.stats.ResetStats();
             GameStats.stats.SavedLevelIndicator = GameStats.stats.LevelIndicator;
             GameStats.stats.SavedLevelCount = GameStats.stats.LevelCount;
             

@@ -11,6 +11,9 @@ public class LevelSelect : MonoBehaviour
     public GameObject JungleLock;
     public GameObject PortalRoomLock;
 
+
+    public Button LibraryButton, DungeonButton, FrozenRoomButton, JungleButton, PortalRoomButton;
+
     public Animator notEnoughCrystals;
 
 
@@ -20,41 +23,52 @@ public class LevelSelect : MonoBehaviour
         if (GameStats.stats.LevelReached >= 1)
         {
             LibraryLock.SetActive(false);
+            LibraryButton.interactable = true;
         }
         else
         {
             LibraryLock.SetActive(true);
+            LibraryButton.interactable = false;
         }
 
         if (GameStats.stats.LevelReached >= 2)
         {
             DungeonLock.SetActive(false);
+            DungeonButton.interactable = true;
         }
         else
         {
             DungeonLock.SetActive(true);
+            DungeonButton.interactable = false;
         }
         if (GameStats.stats.LevelReached >= 3)
         {
             FrozenRoomLock.SetActive(false);
+            FrozenRoomButton.interactable = true;
         } else
         {
             FrozenRoomLock.SetActive(true);
+            FrozenRoomButton.interactable = false;
         }
         if (GameStats.stats.LevelReached >= 4)
         {
             JungleLock.SetActive(false);
+            JungleButton.interactable = true;
         }
         else
         {
             JungleLock.SetActive(true);
+            JungleButton.interactable = false;
         }
         if (GameStats.stats.LevelReached >= 5)
         {
             PortalRoomLock.SetActive(false);
-        }else
+            PortalRoomButton.interactable = true;
+        }
+        else
         {
             PortalRoomLock.SetActive(true);
+            PortalRoomButton.interactable = false;
         }
     }
 

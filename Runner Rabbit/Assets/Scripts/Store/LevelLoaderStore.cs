@@ -32,8 +32,14 @@ public class LevelLoaderStore : MonoBehaviour
         GameStats.stats.CheckLevelIndicator();
         GameStats.stats.SaveLevelBackUp();
         GameStats.stats.SavedLevelPercentage = 0;
+        
         GameStats.stats.SaveStats();
         string LevelToLoad = GameStats.stats.CheckLevel();
+
+        if (GameStats.stats.LevelIndicator > GameStats.stats.LevelReached)
+        {
+            GameStats.stats.LevelReached = GameStats.stats.LevelIndicator;
+        }
 
         
         
