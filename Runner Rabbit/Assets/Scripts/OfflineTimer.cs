@@ -121,8 +121,16 @@ public class OfflineTimer : MonoBehaviour
         int minutes = Mathf.FloorToInt((TimerLenght % 3600) / 60);
         int seconds = Mathf.FloorToInt(TimerLenght % 60);
         string formattedTime = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+        if (GetCrystalsButton.interactable == true){
+            counterText.text = "WATCH AD";
+        }
+        else
+        {
+            counterText.text = formattedTime;
+        }
+        
         //counterText.text = "Counter : " + counterValue.ToString();
-        counterText.text = formattedTime;
+        
 
 
 
