@@ -41,11 +41,12 @@ public class trollGoblin : MonoBehaviour
             if (!Agonize)
             {
                 FindObjectOfType<AudioManager>().Play("Troll_Death");
+                anim.SetTrigger("Die");
                 Agonize = true;
             }
 
-            FindObjectOfType<AudioManager>().Play("Troll_Death");
-            anim.SetTrigger("Die");
+            //FindObjectOfType<AudioManager>().Play("Troll_Death");
+            //anim.SetTrigger("Die");
         }
     }
     void Attack()
