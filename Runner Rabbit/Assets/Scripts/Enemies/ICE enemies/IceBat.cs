@@ -139,10 +139,13 @@ public class IceBat : MonoBehaviour
         {
             batTop = true;
         }
-        if (health.health <= 0)
+        if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
             StartCoroutine(Die());
-           
+           if (GameStats.stats.monstersKilled < 400 && health.Hit)
+            {
+                GameStats.stats.monstersKilled++;
+            }
         }
     }
 

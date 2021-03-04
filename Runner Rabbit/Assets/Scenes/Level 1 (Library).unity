@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -14605,6 +14605,8 @@ MonoBehaviour:
   transition: {fileID: 1021159454}
   EnemySpawner1: {fileID: 102801762}
   EnemySpawner2: {fileID: 451898758}
+  EnemySpawner3: {fileID: 1264218542}
+  EnemySpawner4: {fileID: 1594626476}
   EnemySpawnerHand: {fileID: 253351649}
   Background: {fileID: 581520159}
   EndlessHosue: {fileID: 146997261}
@@ -26339,6 +26341,11 @@ PrefabInstance:
       propertyPath: pausestart
       value: 
       objectReference: {fileID: 672799253}
+    - target: {fileID: 3542273375926598923, guid: 3e2965c6ceb114834b5b2a17c18421ce,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3542273375926598924, guid: 3e2965c6ceb114834b5b2a17c18421ce,
         type: 3}
       propertyPath: StartMarker
@@ -26523,7 +26530,7 @@ PrefabInstance:
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: LevelIndicator
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}

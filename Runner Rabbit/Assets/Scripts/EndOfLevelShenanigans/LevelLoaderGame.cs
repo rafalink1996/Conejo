@@ -13,6 +13,8 @@ public class LevelLoaderGame : MonoBehaviour
 
     public GameObject EnemySpawner1;
     public GameObject EnemySpawner2;
+    public GameObject EnemySpawner3;
+    public GameObject EnemySpawner4;
     public GameObject EnemySpawnerHand;
 
     public GameObject Background;
@@ -84,14 +86,18 @@ public class LevelLoaderGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        levelcountdown += 1 * Time.deltaTime;
-        TimerSlider.value = levelcountdown;
+        if (cha.Health > 0)
+        {
+            levelcountdown += 1 * Time.deltaTime;
+            TimerSlider.value = levelcountdown;
+        }
 
         if (levelcountdown >= levelTime - 7f)
         {
             EnemySpawner1.SetActive(false);
             EnemySpawner2.SetActive(false);
+            EnemySpawner3.SetActive(false);
+            EnemySpawner4.SetActive(false);
             EnemySpawnerHand.SetActive(false);
             cha.endlevel = true;
             

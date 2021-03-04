@@ -220,7 +220,7 @@ public class character : MonoBehaviour
         laser.enabled = false;
 
         // set saved Values
-        
+
 
 
     }
@@ -364,7 +364,7 @@ public class character : MonoBehaviour
 
     public void SetSavedStats()
     {
-        Health = GameStats.stats.SaveCurrentHearts;  
+        Health = GameStats.stats.SaveCurrentHearts;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -597,7 +597,7 @@ public class character : MonoBehaviour
         mana.RequiredLightMana(GameStats.stats.darkMana);
         if (mana.CurrentLightMana >= mana.LightManaUsed + 5 && !silenced)
         {
-  
+
             animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id);
             mana.ReduceLightMana();
@@ -645,7 +645,6 @@ public class character : MonoBehaviour
     public void Float()
     {
 
-
         if (hasPassedThroughRift)
         {
             rb.velocity = Vector3.zero;
@@ -679,40 +678,47 @@ public class character : MonoBehaviour
             ForceFloat = true;
         }
 
-
-
-
     }
 
     public void Fall()
     {
-        if (!top)
+        if (!GameStats.stats.spawnHouse)
         {
-            if (GameStats.stats.Rune1 == GameStats.Rune.FallRune || GameStats.stats.Rune2 == GameStats.Rune.FallRune)
+
+            if (!top)
             {
-                ForceFloat = false;
-                rb.gravityScale = 4;
+                if (GameStats.stats.Rune1 == GameStats.Rune.FallRune || GameStats.stats.Rune2 == GameStats.Rune.FallRune)
+                {
+                    ForceFloat = false;
+                    rb.gravityScale = 4;
+                }
+                else
+                {
+                    ForceFloat = false;
+                    rb.gravityScale = 2;
+
+                }
+
             }
             else
             {
-                ForceFloat = false;
-                rb.gravityScale = 2;
+                if (GameStats.stats.Rune1 == GameStats.Rune.FallRune || GameStats.stats.Rune2 == GameStats.Rune.FallRune)
+                {
+                    rb.gravityScale = -4;
+                }
+                else
+                {
+
+                    rb.gravityScale = -2;
+                }
 
             }
 
         }
         else
         {
-            if (GameStats.stats.Rune1 == GameStats.Rune.FallRune || GameStats.stats.Rune2 == GameStats.Rune.FallRune)
-            {
-                rb.gravityScale = -4;
-            }
-            else
-            {
-
-                rb.gravityScale = -2;
-            }
-
+            rb.gravityScale = 0;
+            rb.velocity = Vector3.zero;
         }
     }
     public void LoseHealth()
@@ -721,7 +727,7 @@ public class character : MonoBehaviour
         animator.SetTrigger("GotHit");
         StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
         StartCoroutine(GetInvulnerable());
-        gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.4f);
+        //gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.4f);
         Instantiate(DamageEffect, transform.position, Quaternion.identity);
     }
 
@@ -788,6 +794,8 @@ public class character : MonoBehaviour
     }
     IEnumerator Death()
     {
+        GameObject.Find("UI/Pause Interface/Pause Button").SetActive(false);
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         Time.timeScale = 0;
         animator.SetTrigger("Dead");
 
@@ -795,7 +803,7 @@ public class character : MonoBehaviour
 
 
         DeathScreen.SetActive(true);
-        
+
     }
 
 
@@ -818,7 +826,7 @@ public class character : MonoBehaviour
             case 1:
 
                 // carrot missle
-   
+
                 animator.SetTrigger("Missile");
                 GameObject carrotT1 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 carrotT1.transform.position = transform.position + new Vector3(1, 0, 0);
@@ -831,7 +839,7 @@ public class character : MonoBehaviour
             case 2:
 
                 // carrot missle
-          
+
                 animator.SetTrigger("Missile");
                 GameObject carrotT2 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 carrotT2.transform.position = transform.position + new Vector3(1, 0, 0);
@@ -844,7 +852,7 @@ public class character : MonoBehaviour
             case 3:
 
                 // carrot missle
-        
+
                 animator.SetTrigger("Missile");
                 GameObject carrotT3 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 CarrotMissile CarrotT3Stats = carrotT3.GetComponent<CarrotMissile>();
@@ -858,7 +866,7 @@ public class character : MonoBehaviour
             case 4:
 
                 // carrot missle
-           
+
                 animator.SetTrigger("Missile");
                 GameObject carrotT4 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 carrotT4.transform.position = transform.position + new Vector3(1, 0.5f, 0);
@@ -881,7 +889,7 @@ public class character : MonoBehaviour
 
             case 11:
                 // eardefence
-             
+
                 animator.SetTrigger("Defence");
                 GameObject shieldT1 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT1.transform.position = transform.position;
@@ -891,7 +899,7 @@ public class character : MonoBehaviour
 
             case 12:
                 // eardefence
-         
+
                 animator.SetTrigger("Defence");
                 GameObject shieldT2 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT2.transform.position = transform.position;
@@ -901,7 +909,7 @@ public class character : MonoBehaviour
 
             case 13:
                 // eardefence
-       
+
                 animator.SetTrigger("Defence");
                 GameObject shieldT3 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT3.transform.position = transform.position;
@@ -913,7 +921,7 @@ public class character : MonoBehaviour
 
             case 14:
                 // eardefence
-        
+
                 animator.SetTrigger("Defence");
                 GameObject shieldT4 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
                 shieldT4.transform.position = transform.position;
@@ -929,7 +937,7 @@ public class character : MonoBehaviour
 
             case 21:
                 // radish missile
-           
+
                 animator.SetTrigger("Missile");
                 GameObject radishT1 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT1.transform.position = transform.position + new Vector3(1, 0, 0);
@@ -940,7 +948,7 @@ public class character : MonoBehaviour
                 break;
             case 22:
                 // radish missile
-       
+
                 animator.SetTrigger("Missile");
                 GameObject radishT2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT2.transform.position = transform.position + new Vector3(1, 0.3f, 0);
@@ -955,7 +963,7 @@ public class character : MonoBehaviour
                 break;
             case 23:
                 // radish missile
-          
+
                 animator.SetTrigger("Missile");
                 GameObject radishT3 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT3.transform.position = transform.position + new Vector3(1, 0.3f, 0);
@@ -974,7 +982,7 @@ public class character : MonoBehaviour
                 break;
             case 24:
                 // radish missile
-           
+
                 animator.SetTrigger("Missile");
                 GameObject radishT4 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT4.transform.position = transform.position + new Vector3(1, 0.3f, 0);
@@ -994,7 +1002,7 @@ public class character : MonoBehaviour
                 break;
             case 31:
                 // kick
-      
+
                 animator.SetTrigger("Kick");
                 GameObject kickT1 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 kickT1.transform.position = transform.position;
@@ -1014,7 +1022,7 @@ public class character : MonoBehaviour
                 break;
             case 33:
                 // kick
-         
+
                 animator.SetTrigger("Kick");
                 GameObject kickT3 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 kickT3.transform.position = transform.position;
@@ -1024,7 +1032,7 @@ public class character : MonoBehaviour
                 break;
             case 34:
                 // kick
-            
+
                 animator.SetTrigger("Kick");
 
                 GameObject kickT4 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
@@ -1034,13 +1042,13 @@ public class character : MonoBehaviour
                 kickT4Stats.reflect = true;
                 break;
             case 41:
-      
+
                 break;
 
             case 51:
                 if (HoldPower == true)
                 {
-           
+
                     startVFX.SetActive(true);
                     endVFX.SetActive(true);
                     laser.enabled = true;
@@ -1084,7 +1092,7 @@ public class character : MonoBehaviour
             case 52:
                 if (HoldPower == true)
                 {
-               
+
 
                     laser.enabled = true;
 
@@ -1125,7 +1133,7 @@ public class character : MonoBehaviour
             case 53:
                 if (HoldPower == true)
                 {
-            
+
                     startVFX.SetActive(true);
                     endVFX.SetActive(true);
                     laser.enabled = true;
@@ -1176,7 +1184,7 @@ public class character : MonoBehaviour
             case 54:
                 if (HoldPower == true)
                 {
-               
+
                     startVFX.SetActive(true);
                     endVFX.SetActive(true);
                     laser.enabled = true;

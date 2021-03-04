@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -14208,6 +14208,8 @@ MonoBehaviour:
   transition: {fileID: 1021159454}
   EnemySpawner1: {fileID: 102801762}
   EnemySpawner2: {fileID: 451898758}
+  EnemySpawner3: {fileID: 307963883}
+  EnemySpawner4: {fileID: 1712389899}
   EnemySpawnerHand: {fileID: 253351649}
   Background: {fileID: 581520159}
   EndlessHosue: {fileID: 146997261}

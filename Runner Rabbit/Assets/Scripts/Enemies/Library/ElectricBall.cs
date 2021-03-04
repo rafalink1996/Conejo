@@ -79,6 +79,7 @@ public class ElectricBall : MonoBehaviour
     public void Hit()
     {
         anim.SetTrigger("Hit");
+        GetComponent<CircleCollider2D>().enabled = false;
     }
     public void Destroyed()
     {
