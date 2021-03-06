@@ -7,16 +7,18 @@ public class DamageTime : MonoBehaviour
 
     private float Speed;
     private bool RestoreTime;
+    
     // Start is called before the first frame update
     void Start()
     {
         RestoreTime = false;
+        
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (RestoreTime)
+        if (RestoreTime/* && !GameManager.GameIsPaused*/)
         {
             if (Time.timeScale < 1f)
             {

@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class GameManager : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-
+    
     public GameObject spawnerUp;
     public GameObject SpawnerDown;
     public GameObject spawnerUpTwo;
@@ -111,7 +111,10 @@ public class GameManager : MonoBehaviour
             PowerRarity.color = lightColor;
             
         }
-
+        if (GameIsPaused)
+        {
+            Time.timeScale = 0;
+        }
         
     }
 
@@ -127,11 +130,13 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         GameIsPaused = true;
+        
     }
     public void ResumeButton()
     {
         Time.timeScale = 1;
         GameIsPaused = false;
+        
     }
 
     IEnumerator WaitForInteractable()
