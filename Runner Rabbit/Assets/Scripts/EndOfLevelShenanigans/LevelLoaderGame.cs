@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LevelLoaderGame : MonoBehaviour
 {
     public GameObject loadingScreen;
-    public Slider slider;
+    public Slider LoadingSlider;
     public GameObject EndLevelAnimation;
     public Animator transition;
 
@@ -52,6 +52,11 @@ public class LevelLoaderGame : MonoBehaviour
         if (GameStats.stats.LevelCount > 1)
         {
             levelTime = 100 + (10 * (GameStats.stats.LevelIndicator));
+        }
+
+        if (GameStats.stats.LevelCount == 3)
+        {
+            TimerSlider.gameObject.SetActive(false);
         }
 
        
@@ -192,7 +197,7 @@ public class LevelLoaderGame : MonoBehaviour
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
-            slider.value = progress;
+            LoadingSlider.value = progress;
             Debug.Log(progress);
 
             yield return null;
@@ -263,7 +268,7 @@ public class LevelLoaderGame : MonoBehaviour
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
-            slider.value = progress;
+            LoadingSlider.value = progress;
             Debug.Log(progress);
 
             yield return null;

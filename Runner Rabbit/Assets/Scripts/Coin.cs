@@ -20,32 +20,36 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameStats.stats.Rune1 == GameStats.Rune.MagnetRune || GameStats.stats.Rune2 == GameStats.Rune.MagnetRune)
+        if (PlayerTarget != null)
         {
-            // rune is active
-            float dis = Vector2.Distance(PlayerTarget.position, transform.position);
-            
-            if (dis < 2)
+            if (GameStats.stats.Rune1 == GameStats.Rune.MagnetRune || GameStats.stats.Rune2 == GameStats.Rune.MagnetRune)
             {
-                // player is within magnet range
-                float step = 0.5f;
-                transform.position = Vector3.MoveTowards(transform.position, PlayerTarget.position, step);
+                // rune is active
+                float dis = Vector2.Distance(PlayerTarget.position, transform.position);
+
+                if (dis < 2)
+                {
+                    // player is within magnet range
+                    float step = 0.5f;
+                    transform.position = Vector3.MoveTowards(transform.position, PlayerTarget.position, step);
+                }
+                else
+                {
+                    //player si not within magnet range
+                    Vector3 temp = transform.position;
+                    temp.x += speed * Time.deltaTime;
+                    transform.position = temp;
+                }
             }
             else
             {
-                //player si not within magnet range
+                // rune is not active
                 Vector3 temp = transform.position;
                 temp.x += speed * Time.deltaTime;
                 transform.position = temp;
             }
         }
-        else
-        {
-            // rune is not active
-            Vector3 temp = transform.position;
-            temp.x += speed * Time.deltaTime;
-            transform.position = temp;
-        }
+        
        
 
         

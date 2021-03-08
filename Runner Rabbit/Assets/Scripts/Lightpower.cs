@@ -18,7 +18,7 @@ public class Lightpower : MonoBehaviour
         button = GetComponent<Button>();
         holdbutton = GetComponent<HoldButton>();
         button.onClick.AddListener(Cha.LightPower);
-        button.image.sprite = GameStats.stats.lightPowerSprite;
+        button.image.sprite = GameStats.stats.powerLight.iconLight;
 
 
         if (GameStats.stats.lightpowerID < 51)
