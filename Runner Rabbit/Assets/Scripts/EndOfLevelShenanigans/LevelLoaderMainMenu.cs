@@ -74,6 +74,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.LevelIndicator = GameStats.stats.SavedLevelIndicator;
             GameStats.stats.LevelCount = GameStats.stats.SavedLevelCount;
             GameStats.stats.CheckLevelIndicator();
+            GameStats.stats.CheckSavedPowers();
             StartCoroutine(loadAsync("Store"));
         }
         else
@@ -81,6 +82,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.LevelIndicator = GameStats.stats.SavedLevelIndicator;
             GameStats.stats.LevelCount = GameStats.stats.SavedLevelCount;
             GameStats.stats.CheckLevelIndicator();
+            GameStats.stats.CheckSavedPowers();
             string LevelToLoad = GameStats.stats.CheckLevel();
             StartCoroutine(loadAsync(LevelToLoad));
         }

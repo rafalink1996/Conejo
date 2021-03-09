@@ -165,6 +165,9 @@ public class GameStats : MonoBehaviour
     
     public int SaveCurrentHearts;
     public bool isInStore;
+    public int savedDarkPowerID;
+    public int savedLightPowerID;
+
 
 
 
@@ -193,7 +196,7 @@ public class GameStats : MonoBehaviour
         void Start()
     {
 
-
+        
 
         lightPowerName = powerLight.name;
         lightPowerSprite = powerLight.iconLight;
@@ -345,8 +348,22 @@ public class GameStats : MonoBehaviour
         SaveStats();
     }
     
-    public void addSavedPowers()
+    public void CheckSavedPowers()
     {
+        
+    for (int i = 0; i < UnlockedPowers.Count; i++)
+        {
+            if (UnlockedPowers[i].id == savedDarkPowerID)
+            {
+                powerDark = UnlockedPowers[i];
+            }
+
+            if (UnlockedPowers[i].id == savedLightPowerID)
+            {
+                powerLight = UnlockedPowers[i];
+            }
+            
+        }
 
     }
 
@@ -377,6 +394,9 @@ public class GameStats : MonoBehaviour
         numOfHearts = data.MaxHearts;
         SaveCurrentHearts = data.CurrentHearts;
         isInStore = data.IsInStore;
+
+        savedDarkPowerID = data.SavedDarkPowerID;
+        savedLightPowerID = data.SavedLightPowerID;
 
 
         LevelReached = data.levelReached;
@@ -451,6 +471,8 @@ public class GameStats : MonoBehaviour
        coins = 0;
        stats.SavedLevelPercentage = 0;
        stats.SaveCurrentHearts = 3;
+        savedDarkPowerID = originalDarkPower.id;
+        savedLightPowerID = originalLightPower.id;
 
 
     }

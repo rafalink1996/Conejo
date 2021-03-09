@@ -105,11 +105,15 @@ public class character : MonoBehaviour
 
     //laser
 
-    public LineRenderer laser;
+    public LineRenderer LaserLight;
+    public LineRenderer LaserDark;
+    public bool isUsinglaserLight;
 
     public Transform StartLaserPos;
-    public GameObject startVFX;
-    public GameObject endVFX;
+    public GameObject StartVFXLight;
+    public GameObject EndVFXLight;
+    public GameObject StartVFXDark;
+    public GameObject EndVFXDark;
 
 
 
@@ -134,7 +138,8 @@ public class character : MonoBehaviour
 
 
 
-
+    //debug hold power
+    public bool HoldPowerIsOn;
 
 
 
@@ -211,13 +216,13 @@ public class character : MonoBehaviour
         Health = NumOfHearts;
         endlevel = false;
 
-        startVFX.GetComponent<ParticleSystem>().Stop();
-        endVFX.GetComponent<ParticleSystem>().Stop();
+        StartVFXLight.GetComponent<ParticleSystem>().Stop();
+        EndVFXLight.GetComponent<ParticleSystem>().Stop();
 
 
-        startVFX.SetActive(false);
-        endVFX.SetActive(false);
-        laser.enabled = false;
+        StartVFXLight.SetActive(false);
+        EndVFXLight.SetActive(false);
+        LaserLight.enabled = false;
 
         // set saved Values
 
@@ -540,24 +545,7 @@ public class character : MonoBehaviour
             animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerLight.id);
             mana.ReduceDarkMana();
-            /*
-            if (lightPower == "Missile")
-            {
-                animator.SetTrigger("Missile");
-                GameObject carrot = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-                carrot.transform.position = transform.position + new Vector3(1, 0, 0);
-                mana.ReduceDarkMana();
-                FindObjectOfType<AudioManager>().Play("MagicMissle");
-            }
-            if (lightPower == "Defence")
-            {
-                animator.SetTrigger("Defence");
-                GameObject shield = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
-                shield.transform.position = transform.position;
-                mana.ReduceDarkMana();
-                FindObjectOfType<AudioManager>().Play("MagicDefence");
-            }
-             */
+            
         }
 
 
@@ -566,20 +554,32 @@ public class character : MonoBehaviour
 
     public void LightPowerHold()
     {
-        mana.RequiredDarkMana(GameStats.stats.lightMana + 5);
-        if (mana.CurrentDarkMana >= mana.DarkManaUsed && !silenced)
+        mana.RequiredDarkMana(GameStats.stats.lightMana);
+        if (mana.CurrentDarkMana >= 1 /*mana.DarkManaUsed*/ && !silenced)
         {
 
             animator.SetBool("isUsingPower", true);
-            UsedPower(GameStats.stats.powerLight.id);
-            mana.ReduceDarkMana();
+            isUsinglaserLight = true;
             HoldPower = true;
-            startVFX.SetActive(true);
-            endVFX.SetActive(true);
+
+            UsedPower(GameStats.stats.powerLight.id);
+            mana.ReduceDarkManaHold();
+            
+            
+
+
+            HoldPowerIsOn = true;
+
+            LaserLight.enabled = true;
+            StartVFXLight.SetActive(true);
+            EndVFXLight.SetActive(true);
+            
+
         }
         else
         {
             LightPowerHoldStop();
+            
         }
 
 
@@ -588,22 +588,37 @@ public class character : MonoBehaviour
     public void LightPowerHoldStop()
     {
         animator.SetBool("isUsingPower", false);
-        UsedPower(GameStats.stats.powerLight.id);
+        // UsedPower(GameStats.stats.powerLight.id);
+
+        LaserLight.enabled = false;
         HoldPower = false;
+        HoldPowerIsOn = false;
+        
+        animator.SetBool("Laser", false);
+        
+        StartVFXLight.GetComponent<ParticleSystem>().Stop();
+        EndVFXLight.GetComponent<ParticleSystem>().Stop();
     }
 
     public void DarkPowerHold()
     {
         mana.RequiredLightMana(GameStats.stats.darkMana);
-        if (mana.CurrentLightMana >= mana.LightManaUsed + 5 && !silenced)
+        if (mana.CurrentLightMana >= 1 /*mana.LightManaUsed*/  && !silenced)
         {
-
+            LaserDark.enabled = true;
+            isUsinglaserLight = false;
+            HoldPower = true;
             animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id);
-            mana.ReduceLightMana();
-            HoldPower = true;
-            startVFX.SetActive(true);
-            endVFX.SetActive(true);
+            mana.ReduceLightManaHold();
+            HoldPowerIsOn = true;
+            
+           
+
+            StartVFXDark.SetActive(true);
+            EndVFXDark.SetActive(true);
+           
+
 
         }
         else
@@ -616,8 +631,14 @@ public class character : MonoBehaviour
     public void DarkPowerHoldStop()
     {
         animator.SetBool("isUsingPower", false);
-        UsedPower(GameStats.stats.powerDark.id);
+        //UsedPower(GameStats.stats.powerDark.id);
         HoldPower = false;
+        HoldPowerIsOn = false;
+
+        animator.SetBool("Laser", false);
+        LaserDark.enabled = false;
+        StartVFXDark.GetComponent<ParticleSystem>().Stop();
+        EndVFXDark.GetComponent<ParticleSystem>().Stop();
     }
 
 
@@ -1046,98 +1067,165 @@ public class character : MonoBehaviour
                 break;
 
             case 51:
+
                 if (HoldPower == true)
                 {
-
-                    startVFX.SetActive(true);
-                    endVFX.SetActive(true);
-                    laser.enabled = true;
-
                     int layerMask = 1 << 9;
                     LaserlayerMask = layerMask;
 
                     animator.SetBool("Laser", true);
-                    endVFX.transform.position = laser.GetPosition(1);
-                    startVFX.GetComponent<ParticleSystem>().Play();
-                    endVFX.GetComponent<ParticleSystem>().Play();
-                    laser.SetPosition(0, StartLaserPos.position);
-                    laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
-                    Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
-                    RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
 
-
-                    if (hit.collider != null)
+                    if (isUsinglaserLight == true)
                     {
-                        laser.SetPosition(1, hit.point);
-                        if (hit.transform.tag == "Enemy")
-                        {
-                            EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                            target.TakeDamage(1);
-                        }
-                        //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
-                    }
+                        
+                        LaserLight.SetPosition(0, StartLaserPos.position);
+                        LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                        EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
+                        Debug.Log("using  hold power light");
+
+                        Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                        RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+                        StartVFXLight.GetComponent<ParticleSystem>().Play();
+                        EndVFXLight.GetComponent<ParticleSystem>().Play();
+
+                        if (hit.collider != null)
+                        {
+                            LaserLight.SetPosition(1, hit.point);
+
+
+                            if (hit.transform.tag == "Enemy")
+                            {
+                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                target.TakeDamage(1);
+                            }
+
+                        }
+
+
+
+                    }
+                    else
+                    {
+                        
+                        LaserDark.SetPosition(0, StartLaserPos.position);
+                        LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                        EndVFXDark.transform.position = LaserDark.GetPosition(1);
+
+                        Debug.Log("using  hold power dark");
+
+                        Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                        RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+                        StartVFXDark.GetComponent<ParticleSystem>().Play();
+                        EndVFXDark.GetComponent<ParticleSystem>().Play();
+
+                        if (hit.collider != null)
+                        {
+                            LaserDark.SetPosition(1, hit.point);
+
+
+                            if (hit.transform.tag == "Enemy")
+                            {
+                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                target.TakeDamage(1);
+                            }
+
+                        }
+                    }
                 }
-                else if (HoldPower == false)
+                /*else if (HoldPower == false)
                 {
                     animator.SetBool("Laser", false);
-                    laser.enabled = false;
+                    
+                        LaserLight.enabled = false;
+
                     startVFX.GetComponent<ParticleSystem>().Stop();
                     endVFX.GetComponent<ParticleSystem>().Stop();
 
                 }
+                */
 
                 break;
+
 
             case 52:
+
                 if (HoldPower == true)
                 {
-
-
-                    laser.enabled = true;
-
                     int layerMask = 1 << 9;
                     LaserlayerMask = layerMask;
 
                     animator.SetBool("Laser", true);
-                    endVFX.transform.position = laser.GetPosition(1);
-                    startVFX.GetComponent<ParticleSystem>().Play();
-                    endVFX.GetComponent<ParticleSystem>().Play();
-                    laser.SetPosition(0, StartLaserPos.position);
-                    laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
-                    Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
-                    RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
 
-
-                    if (hit.collider != null)
+                    if (isUsinglaserLight == true)
                     {
-                        laser.SetPosition(1, hit.point);
-                        if (hit.transform.tag == "Enemy")
+
+                        LaserLight.SetPosition(0, StartLaserPos.position);
+                        LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                        EndVFXLight.transform.position = LaserLight.GetPosition(1);
+
+                        Debug.Log("using  hold power light");
+
+                        Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                        RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+                        StartVFXLight.GetComponent<ParticleSystem>().Play();
+                        EndVFXLight.GetComponent<ParticleSystem>().Play();
+
+                        if (hit.collider != null)
                         {
-                            EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                            target.TakeDamage(1);
+                            LaserLight.SetPosition(1, hit.point);
+
+
+                            if (hit.transform.tag == "Enemy")
+                            {
+                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                target.TakeDamage(1);
+                            }
+
                         }
-                        //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
+
+
+
                     }
+                    else
+                    {
 
-                }
-                else if (HoldPower == false)
-                {
-                    animator.SetBool("Laser", false);
-                    laser.enabled = false;
-                    startVFX.GetComponent<ParticleSystem>().Stop();
-                    endVFX.GetComponent<ParticleSystem>().Stop();
+                        LaserDark.SetPosition(0, StartLaserPos.position);
+                        LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                        EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
+                        Debug.Log("using  hold power dark");
+
+                        Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                        RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+                        StartVFXDark.GetComponent<ParticleSystem>().Play();
+                        EndVFXDark.GetComponent<ParticleSystem>().Play();
+
+                        if (hit.collider != null)
+                        {
+                            LaserDark.SetPosition(1, hit.point);
+
+
+                            if (hit.transform.tag == "Enemy")
+                            {
+                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                target.TakeDamage(1);
+                            }
+
+                        }
+                    }
                 }
                 break;
+
             case 53:
+
+
                 if (HoldPower == true)
                 {
-
-                    startVFX.SetActive(true);
-                    endVFX.SetActive(true);
-                    laser.enabled = true;
-
                     int layerMask1 = 1 << 9;
                     int layerMask2 = 1 << 15;
 
@@ -1145,49 +1233,74 @@ public class character : MonoBehaviour
                     LaserlayerMask = CombiendLayerMask;
 
                     animator.SetBool("Laser", true);
-                    endVFX.transform.position = laser.GetPosition(1);
-                    startVFX.GetComponent<ParticleSystem>().Play();
-                    endVFX.GetComponent<ParticleSystem>().Play();
-                    laser.SetPosition(0, StartLaserPos.position);
-                    laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
-                    Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
-                    RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
 
-
-                    if (hit.collider != null)
+                    if (isUsinglaserLight == true)
                     {
-                        laser.SetPosition(1, hit.point);
-                        if (hit.transform.tag == "Enemy")
+
+                        LaserLight.SetPosition(0, StartLaserPos.position);
+                        LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                        EndVFXLight.transform.position = LaserLight.GetPosition(1);
+
+                        Debug.Log("using  hold power light");
+
+                        Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                        RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+                        StartVFXLight.GetComponent<ParticleSystem>().Play();
+                        EndVFXLight.GetComponent<ParticleSystem>().Play();
+
+                        if (hit.collider != null)
                         {
-                            EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                            target.TakeDamage(1);
+                            LaserLight.SetPosition(1, hit.point);
+
+
+                            if (hit.transform.tag == "Enemy")
+                            {
+                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                target.TakeDamage(1);
+                            }
+
                         }
 
-                        if (hit.transform.tag == "Enemy proyectile")
-                        {
-                            //print("destroyed" + hit.transform.gameObject.name);
-                            Destroy(hit.transform.gameObject);
-                        }
-                        //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
+
+
                     }
+                    else
+                    {
 
-                }
-                else if (HoldPower == false)
-                {
-                    animator.SetBool("Laser", false);
-                    laser.enabled = false;
-                    startVFX.GetComponent<ParticleSystem>().Stop();
-                    endVFX.GetComponent<ParticleSystem>().Stop();
+                        LaserDark.SetPosition(0, StartLaserPos.position);
+                        LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                        EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
+                        Debug.Log("using  hold power dark");
+
+                        Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                        RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+                        StartVFXDark.GetComponent<ParticleSystem>().Play();
+                        EndVFXDark.GetComponent<ParticleSystem>().Play();
+
+                        if (hit.collider != null)
+                        {
+                            LaserDark.SetPosition(1, hit.point);
+
+
+                            if (hit.transform.tag == "Enemy")
+                            {
+                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                target.TakeDamage(1);
+                            }
+
+                        }
+                    }
                 }
+                
+                
                 break;
             case 54:
+
                 if (HoldPower == true)
                 {
-
-                    startVFX.SetActive(true);
-                    endVFX.SetActive(true);
-                    laser.enabled = true;
                     int layerMask1 = 1 << 9;
                     int layerMask2 = 1 << 15;
 
@@ -1195,40 +1308,64 @@ public class character : MonoBehaviour
                     LaserlayerMask = CombiendLayerMask;
 
                     animator.SetBool("Laser", true);
-                    endVFX.transform.position = laser.GetPosition(1);
-                    startVFX.GetComponent<ParticleSystem>().Play();
-                    endVFX.GetComponent<ParticleSystem>().Play();
-                    laser.SetPosition(0, StartLaserPos.position);
-                    laser.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
-                    Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
-                    RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
 
-
-                    if (hit.collider != null)
+                    if (isUsinglaserLight == true)
                     {
-                        laser.SetPosition(1, hit.point);
-                        if (hit.transform.tag == "Enemy")
-                        {
-                            EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                            target.TakeDamage(1);
-                        }
 
-                        if (hit.transform.tag == "Enemy proyectile")
+                        LaserLight.SetPosition(0, StartLaserPos.position);
+                        LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                        EndVFXLight.transform.position = LaserLight.GetPosition(1);
+
+                        Debug.Log("using  hold power light");
+
+                        Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                        RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+                        StartVFXLight.GetComponent<ParticleSystem>().Play();
+                        EndVFXLight.GetComponent<ParticleSystem>().Play();
+
+                        if (hit.collider != null)
                         {
-                            Destroy(hit.transform.gameObject);
+                            LaserLight.SetPosition(1, hit.point);
+
+
+                            if (hit.transform.tag == "Enemy")
+                            {
+                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                target.TakeDamage(1);
+                            }
                         }
-                        //Debug.Log("RayCast: " + hit.collider.gameObject.tag);
                     }
+                    else
+                    {
 
-                }
-                else if (HoldPower == false)
-                {
-                    animator.SetBool("Laser", false);
-                    laser.enabled = false;
-                    startVFX.GetComponent<ParticleSystem>().Stop();
-                    endVFX.GetComponent<ParticleSystem>().Stop();
+                        LaserDark.SetPosition(0, StartLaserPos.position);
+                        LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
+                        EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
+                        Debug.Log("using  hold power dark");
+
+                        Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                        RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+                        StartVFXDark.GetComponent<ParticleSystem>().Play();
+                        EndVFXDark.GetComponent<ParticleSystem>().Play();
+
+                        if (hit.collider != null)
+                        {
+                            LaserDark.SetPosition(1, hit.point);
+
+
+                            if (hit.transform.tag == "Enemy")
+                            {
+                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                target.TakeDamage(1);
+                            }
+
+                        }
+                    }
                 }
+
                 break;
 
 

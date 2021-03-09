@@ -114,6 +114,20 @@ public class ManaHandle : MonoBehaviour
 
     }
 
+    public void ReduceDarkManaHold()
+    {
+        if (GameStats.stats.Rune1 == GameStats.Rune.SpellRune || GameStats.stats.Rune2 == GameStats.Rune.SpellRune)
+        {
+            CurrentDarkMana -= (DarkManaUsed * (1 / 4)) * Time.deltaTime;
+            DarkManaBar.value -= (DarkManaUsed * (1 / 4))* Time.deltaTime;
+        }
+        else
+        {
+            CurrentDarkMana -= DarkManaUsed * Time.deltaTime;
+            DarkManaBar.value -= DarkManaUsed * Time.deltaTime;
+        }
+    }
+
     public void ReduceLightMana()
 
     {
@@ -130,5 +144,20 @@ public class ManaHandle : MonoBehaviour
        
         
 
+    }
+
+    public void ReduceLightManaHold()
+    {
+
+        if (GameStats.stats.Rune1 == GameStats.Rune.SpellRune || GameStats.stats.Rune2 == GameStats.Rune.SpellRune)
+        {
+            CurrentLightMana -= (LightManaUsed * (1 / 4)) * Time.deltaTime;
+            LightManaBar.value -= (LightManaUsed * (1 / 4)) * Time.deltaTime;
+        }
+        else
+        {
+            CurrentLightMana -= LightManaUsed * Time.deltaTime;
+            LightManaBar.value -= LightManaUsed * Time.deltaTime;
+        }
     }
 }

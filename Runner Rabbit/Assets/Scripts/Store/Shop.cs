@@ -286,40 +286,67 @@ public class Shop : MonoBehaviour
 
     public void OnLightButtonBuy(Power power, GameObject SoldOut, Button powerbutton)
     {
-        Debug.Log(power.name);
-        if (GameStats.stats.coins >= power.Cost)
+        if (GameStats.stats.MerchantRune == true)
         {
-            GameStats.stats.powerLight = power;
-            //GameStats.stats.lightPowerSprite = power.iconLight;
-            //GameStats.stats.lightpowerID = power.id;
-            if (GameStats.stats.MerchantRune == true)
+            if (GameStats.stats.coins >= power.Cost/2)
             {
+                GameStats.stats.powerLight = power;
+                GameStats.stats.savedLightPowerID = GameStats.stats.powerLight.id;
+               
+               
                 GameStats.stats.MerchantRune = false;
-                GameStats.stats.coins -= (power.Cost/2);
+                GameStats.stats.coins -= (power.Cost / 2);
+                
+                if (GameStats.stats.MoneySpent < 1000)
+                {
+                    GameStats.stats.MoneySpent += power.Cost/2;
+                }
+
+
+                SoldOut.SetActive(true);
+                powerbutton.interactable = false;
+                BuyButton.onClick.RemoveAllListeners();
+                Display.SetActive(false);
+
             }
             else
             {
-                GameStats.stats.coins -= power.Cost;
+                StartCoroutine(NotEnoughCoins());
+                print("You don't have enough coins!!!");
+                //Play sound
             }
-            
-            if (GameStats.stats.MoneySpent < 1000)
-            {
-                GameStats.stats.MoneySpent += power.Cost;
-            }
-            
-
-            SoldOut.SetActive(true);
-            powerbutton.interactable = false;
-            BuyButton.onClick.RemoveAllListeners();
-            Display.SetActive(false);
-
         }
         else
         {
-            StartCoroutine(NotEnoughCoins());
-            print("You don't have enough coins!!!");
-            //Play sound
+            if (GameStats.stats.coins >= power.Cost)
+            {
+                GameStats.stats.powerLight = power;
+                GameStats.stats.savedLightPowerID = GameStats.stats.powerLight.id;
+
+
+                GameStats.stats.coins -= power.Cost;
+                
+
+                if (GameStats.stats.MoneySpent < 1000)
+                {
+                    GameStats.stats.MoneySpent += power.Cost;
+                }
+
+
+                SoldOut.SetActive(true);
+                powerbutton.interactable = false;
+                BuyButton.onClick.RemoveAllListeners();
+                Display.SetActive(false);
+
+            }
+            else
+            {
+                StartCoroutine(NotEnoughCoins());
+                print("You don't have enough coins!!!");
+                //Play sound
+            }
         }
+       
 
     }
 
@@ -328,37 +355,68 @@ public class Shop : MonoBehaviour
     public void OnDarkButtonClicBuy(Power power, GameObject SoldOut, Button powerbutton)
 
     {
-        if (GameStats.stats.coins >= power.Cost)
+        
+        if (GameStats.stats.MerchantRune == true)
         {
-            GameStats.stats.powerDark = power;
-            // GameStats.stats.darkPowerSprite = power.iconDark;
-            //GameStats.stats.DarkpowerID = power.id;
-            if (GameStats.stats.MerchantRune)
+            if (GameStats.stats.coins >= power.Cost/2)
             {
-                GameStats.stats.MerchantRune = false;
-                GameStats.stats.coins -= (power.Cost / 2);
+                GameStats.stats.powerDark = power;
+                GameStats.stats.savedDarkPowerID = GameStats.stats.powerDark.id;
+
+
+                
+               GameStats.stats.MerchantRune = false;
+               GameStats.stats.coins -= (power.Cost / 2);
+                
+
+                if (GameStats.stats.MoneySpent < 1000)
+                {
+                    GameStats.stats.MoneySpent += power.Cost/2;
+                }
+
+                SoldOut.SetActive(true);
+                powerbutton.interactable = false;
+                BuyButton.onClick.RemoveAllListeners();
+                Display.SetActive(false);
             }
             else
             {
-                GameStats.stats.coins -= power.Cost;
+                StartCoroutine(NotEnoughCoins());
+                print("You don't have enough coins!!!");
+                //Play sound
             }
-             
-            if (GameStats.stats.MoneySpent < 1000)
-            {
-                GameStats.stats.MoneySpent += power.Cost;
-            }
-
-            SoldOut.SetActive(true);
-            powerbutton.interactable = false;
-            BuyButton.onClick.RemoveAllListeners();
-            Display.SetActive(false);
         }
         else
         {
-            StartCoroutine(NotEnoughCoins());
-            print("You don't have enough coins!!!");
-            //Play sound
+            if (GameStats.stats.coins >= power.Cost)
+            {
+                GameStats.stats.powerDark = power;
+                GameStats.stats.savedDarkPowerID = GameStats.stats.powerDark.id;
+
+
+             
+                
+                GameStats.stats.coins -= power.Cost;
+                
+
+                if (GameStats.stats.MoneySpent < 1000)
+                {
+                    GameStats.stats.MoneySpent += power.Cost;
+                }
+
+                SoldOut.SetActive(true);
+                powerbutton.interactable = false;
+                BuyButton.onClick.RemoveAllListeners();
+                Display.SetActive(false);
+            }
+            else
+            {
+                StartCoroutine(NotEnoughCoins());
+                print("You don't have enough coins!!!");
+                //Play sound
+            }
         }
+       
     }
 
     public void Back()

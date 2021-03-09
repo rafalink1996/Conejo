@@ -101,6 +101,9 @@ public class PlayerData
         false,
     };
 
+    public int SavedDarkPowerID;
+    public int SavedLightPowerID;
+
 
 
 
@@ -125,6 +128,9 @@ public class PlayerData
         savedLevelPercentage = gamestats.SavedLevelPercentage;
         IsInStore = gamestats.isInStore;
         MaxHearts = gamestats.numOfHearts;
+
+        SavedDarkPowerID = gamestats.savedDarkPowerID;
+        SavedLightPowerID = gamestats.savedLightPowerID;
 
         
 
