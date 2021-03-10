@@ -314,7 +314,7 @@ public class character : MonoBehaviour
 
         // Death
 
-        if (Health == 0 && GameStats.stats.fenixFeather == false)
+        if (Health <= 0 && GameStats.stats.fenixFeather == false)
         {
             StartCoroutine(Death());
             if (GameStats.stats.diedTimes < 50)
@@ -323,7 +323,7 @@ public class character : MonoBehaviour
             }
         }
 
-        if (Health == 0 && GameStats.stats.fenixFeather == true)
+        if (Health <= 0 && GameStats.stats.fenixFeather == true)
         {
             Health = NumOfHearts;
             GameStats.stats.fenixFeather = false;
@@ -388,6 +388,9 @@ public class character : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("RiftPass");
             CamRipple.RippleEffect();
             StartCoroutine(GetInvulnerableRift());
+            silenced = true;
+            GameObject.Find("UI/Power/Power Light").SetActive(false);
+            GameObject.Find("UI/Power/Power Dark").SetActive(false);
         }
 
         //collision with coins
@@ -495,8 +498,17 @@ public class character : MonoBehaviour
             {
                 LightPowerHoldStop();
             }
-
-
+            if (GameStats.stats.lightpowerID >= 51)
+            {
+                LightPowerHoldStop();
+            }
+            if (GameStats.stats.DarkpowerID >= 51)
+            {
+                DarkPowerHoldStop();
+            }
+            silenced = false;
+            GameObject.Find("UI/Power/Power Light").SetActive(true);
+            GameObject.Find("UI/Power/Power Dark").SetActive(true);
         }
         if (collision.name == "Silence")
         {
@@ -819,6 +831,7 @@ public class character : MonoBehaviour
         animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         Time.timeScale = 0;
         animator.SetTrigger("Dead");
+        animator.SetBool("Death", true);
 
         yield return new WaitForSecondsRealtime(1f);
 

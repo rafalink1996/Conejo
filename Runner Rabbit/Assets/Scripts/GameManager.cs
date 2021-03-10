@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         cha = FindObjectOfType<character>();
         darkcolor = GameStats.stats.powerDark.rarityColor;
         lightColor = GameStats.stats.powerLight.rarityColor;
-
+        Time.timeScale = 1f;
         if (cha.top)
         {
             PowerRarity.color = darkcolor;
