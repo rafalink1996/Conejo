@@ -79,7 +79,7 @@ public class SkinMenuStore : MonoBehaviour
         {
             LockedSkins[17].enabled = false;
         }
-        if (GameStats.stats.skinConditions[4] == true)
+        if (GameStats.stats.skinConditions[5] == true)
         {
             LockedSkins[18].enabled = false;
         }

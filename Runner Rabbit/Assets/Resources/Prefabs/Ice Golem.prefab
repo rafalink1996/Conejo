@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 3742358350541262106}
   - component: {fileID: 3742358350541262107}
   - component: {fileID: 3742358350541262108}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Ice_Golem rock (big)
   m_TagString: Enemy proyectile
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 3742358351147006408}
   - component: {fileID: 3742358351147006409}
   - component: {fileID: 3742358351147006410}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Ice_Golem rock (big)
   m_TagString: Enemy proyectile
   m_Icon: {fileID: 0}
@@ -730,6 +730,7 @@ GameObject:
   - component: {fileID: 3742358351857020426}
   - component: {fileID: 3742358351857020425}
   - component: {fileID: 3742358351857020424}
+  - component: {fileID: 5637661708199228023}
   m_Layer: 9
   m_Name: Ice_Golem Head (big)
   m_TagString: Enemy
@@ -858,6 +859,23 @@ MonoBehaviour:
   healthSlider: {fileID: 6910594193366742147}
   Hit: 0
   hitTime: 1
+  isBoss: 0
+--- !u!58 &5637661708199228023
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742358351857020429}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.23072302, y: 0.07341206}
+  serializedVersion: 2
+  m_Radius: 1.6085702
 --- !u!1 &3742358351990399920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,7 +1053,7 @@ GameObject:
   - component: {fileID: 3742358352222923928}
   - component: {fileID: 3742358352222923927}
   - component: {fileID: 3742358352222923926}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Ice_Golem rock (big)
   m_TagString: Enemy proyectile
   m_Icon: {fileID: 0}

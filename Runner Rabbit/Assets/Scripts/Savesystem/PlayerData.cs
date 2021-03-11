@@ -42,6 +42,10 @@ public class PlayerData
     public int CurrentHearts;
     public bool IsInStore;
 
+    public int Manalight;
+    public int ManaDark;
+
+
 
 
 
@@ -131,6 +135,9 @@ public class PlayerData
 
         SavedDarkPowerID = gamestats.savedDarkPowerID;
         SavedLightPowerID = gamestats.savedLightPowerID;
+
+        ManaDark = gamestats.totalDarkMana;
+        Manalight = gamestats.totalLightMana;
 
         
 

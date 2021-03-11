@@ -49,6 +49,13 @@ public class LevelLoaderStore : MonoBehaviour
        
     }
 
+    public void GoToMainMenu()
+    {
+        GameStats.stats.SaveStats();
+
+        StartCoroutine(LoadAsync("Main Menu"));
+    }
+
 
 
     // Update is called once per frame
@@ -73,4 +80,7 @@ public class LevelLoaderStore : MonoBehaviour
             yield return null;
         }
     }
+
+
+   
 }

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7281,6 +7281,7 @@ GameObject:
   - component: {fileID: 672799253}
   - component: {fileID: 672799255}
   - component: {fileID: 672799256}
+  - component: {fileID: 672799257}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7300,8 +7301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5522b7f32b21e4c02ab28a8c43aecfda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausetime: 3
-  pause: 0
+  pausetime1: 2
+  pausetime2: 1
+  pause: 1
+  image: {fileID: 3265500893110779775}
 --- !u!4 &672799254
 Transform:
   m_ObjectHideFlags: 0
@@ -7337,7 +7340,7 @@ MonoBehaviour:
   bossName: Book Wyrm
   ProgressBar: {fileID: 1725316092}
   PowerRarity: {fileID: 199897292}
-  cha: {fileID: 0}
+  cha: {fileID: 992125959}
   darkcolor: {r: 0, g: 0, b: 0, a: 0}
   lightColor: {r: 0, g: 0, b: 0, a: 0}
   ThePauseButton: {fileID: 767270478}
@@ -7369,6 +7372,19 @@ MonoBehaviour:
   RewardDisplay3: {fileID: 0}
   revive: 0
   deathscreen: {fileID: 0}
+--- !u!114 &672799257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672799252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1deaf5e64a3584ff784866c971433f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUD: {fileID: 0}
 --- !u!1 &677475416
 GameObject:
   m_ObjectHideFlags: 0
@@ -25356,16 +25372,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2719699189231162305, guid: 6feaee262759f485185533cb9398f433,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2719699189231162308, guid: 6feaee262759f485185533cb9398f433,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2719699189873162468, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
       propertyPath: m_Name
@@ -25488,49 +25494,39 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 2719699190167840734, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2942424662133344798, guid: a494f74d9b6f44f4d840fe00bdf4d92e,
-        type: 3}
-    - target: {fileID: 2719699190167840734, guid: 6feaee262759f485185533cb9398f433,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2719699190167840734, guid: 6feaee262759f485185533cb9398f433,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2719699190167840734, guid: 6feaee262759f485185533cb9398f433,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
+      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2719699190167840734, guid: 6feaee262759f485185533cb9398f433,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7705270596676702657, guid: 26e23a2144b8143b39a592f5114ca78f,
+        type: 3}
     - target: {fileID: 2719699190167840735, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2719699190167840735, guid: 6feaee262759f485185533cb9398f433,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 2719699190167840735, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 333.97342
+      value: 83.39582
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719699190167840735, guid: 6feaee262759f485185533cb9398f433,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2719699190167840735, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 333.88638
+      value: 82.94423
       objectReference: {fileID: 0}
     - target: {fileID: 2719699190167840735, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 128.70454
+      value: 51.454414
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6feaee262759f485185533cb9398f433, type: 3}
@@ -25587,11 +25583,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1526805044}
-    - target: {fileID: 3265500892654244462, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
-        type: 3}
-      propertyPath: m_Name
-      value: Power
-      objectReference: {fileID: 0}
     - target: {fileID: 3265500892834927530, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -25770,6 +25761,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3265500893110779773}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3265500893110779775 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2975092947295472727, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3265500893110779773}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3542273376075585792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25917,6 +25920,11 @@ PrefabInstance:
       propertyPath: endMarker
       value: 
       objectReference: {fileID: 677475417}
+    - target: {fileID: 3542273375926598924, guid: 3e2965c6ceb114834b5b2a17c18421ce,
+        type: 3}
+      propertyPath: speed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e2965c6ceb114834b5b2a17c18421ce, type: 3}
 --- !u!1001 &5996313385574373520

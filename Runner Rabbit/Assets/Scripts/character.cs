@@ -51,6 +51,8 @@ public class character : MonoBehaviour
     public string darkPower;
     public bool silenced;
     public bool shielded;
+    public bool riftSileneced;
+    public bool ShieldHealthAbsorb;
 
     public GameObject DamageEffect;
     public GameObject BlockEffect;
@@ -208,11 +210,15 @@ public class character : MonoBehaviour
 
         if (GameStats.stats.ExtraHearts == true)
         {
-            NumOfHearts += 2;
+            
+            GameStats.stats.numOfHearts += 2;
+            GameStats.stats.HealToFull();
             GameStats.stats.ExtraHearts = false;
             GameStats.stats.SaveStats();
         }
 
+
+        NumOfHearts = GameStats.stats.numOfHearts;
         Health = NumOfHearts;
         endlevel = false;
 
@@ -389,8 +395,26 @@ public class character : MonoBehaviour
             CamRipple.RippleEffect();
             StartCoroutine(GetInvulnerableRift());
             silenced = true;
-            GameObject.Find("UI/Power/Power Light").SetActive(false);
-            GameObject.Find("UI/Power/Power Dark").SetActive(false);
+            GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Light");
+            ButtonDark.SetActive(false);
+            GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Dark");
+            ButtonLight.SetActive(false);
+
+            DarkPowerHoldStop();
+            Button DarkButtonComponent = ButtonDark.GetComponent<Button>();
+            Button LightButtonComponent = ButtonLight.GetComponent<Button>();
+            if (DarkButtonComponent != null)
+            {
+                DarkButtonComponent.interactable = false;
+            }
+            if (LightButtonComponent != null)
+            {
+                LightButtonComponent.interactable = false;
+            }
+
+            riftSileneced = true;
+            StartCoroutine(ResetHoldPower());            
+
         }
 
         //collision with coins
@@ -445,6 +469,10 @@ public class character : MonoBehaviour
                 else
                 {
                     Instantiate(BlockEffect, collision.transform.position, Quaternion.identity);
+                    if (ShieldHealthAbsorb == true)
+                    {
+                        Health += 1;
+                    }
                 }
             }
 
@@ -507,14 +535,47 @@ public class character : MonoBehaviour
                 DarkPowerHoldStop();
             }
             silenced = false;
-            GameObject.Find("UI/Power/Power Light").SetActive(true);
-            GameObject.Find("UI/Power/Power Dark").SetActive(true);
+           GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Light");
+           ButtonDark.SetActive(true);
+           GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Dark");
+           ButtonLight.SetActive(true);
+
+            DarkPowerHoldStop();
+           Button DarkButtonComponent = ButtonDark.GetComponent<Button>();
+           Button LightButtonComponent = ButtonLight.GetComponent<Button>();
+            if (DarkButtonComponent != null){
+                DarkButtonComponent.interactable = true;
+            }
+            if (LightButtonComponent != null)
+            {
+                LightButtonComponent.interactable = true;
+            }
+
+           // riftSileneced = false ;
+
+
         }
         if (collision.name == "Silence")
         {
             silenced = false;
+
         }
+
+        
+
+
+       
+        
     }
+
+
+    private void restartPowerButton()
+    {
+
+    }
+    
+        
+    
 
 
     void Rotation()
@@ -567,7 +628,7 @@ public class character : MonoBehaviour
     public void LightPowerHold()
     {
         mana.RequiredDarkMana(GameStats.stats.lightMana);
-        if (mana.CurrentDarkMana >= 1 /*mana.DarkManaUsed*/ && !silenced)
+        if (mana.CurrentDarkMana >= 1 /*mana.DarkManaUsed*/ && !silenced && !riftSileneced)
         {
 
             animator.SetBool("isUsingPower", true);
@@ -615,7 +676,7 @@ public class character : MonoBehaviour
     public void DarkPowerHold()
     {
         mana.RequiredLightMana(GameStats.stats.darkMana);
-        if (mana.CurrentLightMana >= 1 /*mana.LightManaUsed*/  && !silenced)
+        if (mana.CurrentLightMana >= 1 /*mana.LightManaUsed*/  && !silenced && !riftSileneced)
         {
             LaserDark.enabled = true;
             isUsinglaserLight = false;
@@ -821,9 +882,16 @@ public class character : MonoBehaviour
     {
         shielded = true;
         yield return new WaitForSeconds(1f);
+        ShieldHealthAbsorb = false;
         shielded = false;
 
 
+    }
+
+    IEnumerator ResetHoldPower()
+    {
+        yield return new WaitForSeconds(1f);
+        riftSileneced = false;
     }
     IEnumerator Death()
     {
@@ -949,6 +1017,7 @@ public class character : MonoBehaviour
                 shieldT3.transform.position = transform.position;
                 Shield ShieldT3stats = shieldT3.GetComponent<Shield>();
                 ShieldT3stats.HealthAbsorb = true;
+                ShieldHealthAbsorb = true;
                 StartCoroutine(GetInvulnerablePower());
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
@@ -961,6 +1030,7 @@ public class character : MonoBehaviour
                 shieldT4.transform.position = transform.position;
                 Shield ShieldT4stats = shieldT4.GetComponent<Shield>();
                 ShieldT4stats.HealthAbsorb = true;
+                ShieldHealthAbsorb = true;
                 StartCoroutine(GetInvulnerablePower());
 
                 FindObjectOfType<AudioManager>().Play("MagicDefence");

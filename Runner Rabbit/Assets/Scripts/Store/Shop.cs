@@ -50,6 +50,10 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI LightManaCostText;
     public TextMeshProUGUI DarkManaCostText;
 
+    public ParticleSystem BuyLightManaEffect;
+    public ParticleSystem BuyDarkManaEffect;
+
+
 
 
 
@@ -59,7 +63,7 @@ public class Shop : MonoBehaviour
     {
         if (GameStats.stats.Rune1 == GameStats.Rune.GreedRune || GameStats.stats.Rune2 == GameStats.Rune.GreedRune)
         {
-            GameStats.stats.coins = Mathf.FloorToInt(coins * 1.25f);
+            GameStats.stats.coins = Mathf.FloorToInt(GameStats.stats.coins * 1.25f);
         }
 
         if (GameStats.stats.Rune1 == GameStats.Rune.MerchandRune || GameStats.stats.Rune2 == GameStats.Rune.MerchandRune)
@@ -297,7 +301,7 @@ public class Shop : MonoBehaviour
                 GameStats.stats.MerchantRune = false;
                 GameStats.stats.coins -= (power.Cost / 2);
                 
-                if (GameStats.stats.MoneySpent < 1000)
+                if (GameStats.stats.MoneySpent < 2000)
                 {
                     GameStats.stats.MoneySpent += power.Cost/2;
                 }
@@ -327,7 +331,7 @@ public class Shop : MonoBehaviour
                 GameStats.stats.coins -= power.Cost;
                 
 
-                if (GameStats.stats.MoneySpent < 1000)
+                if (GameStats.stats.MoneySpent < 2000)
                 {
                     GameStats.stats.MoneySpent += power.Cost;
                 }
@@ -369,7 +373,7 @@ public class Shop : MonoBehaviour
                GameStats.stats.coins -= (power.Cost / 2);
                 
 
-                if (GameStats.stats.MoneySpent < 1000)
+                if (GameStats.stats.MoneySpent < 2000)
                 {
                     GameStats.stats.MoneySpent += power.Cost/2;
                 }
@@ -399,7 +403,7 @@ public class Shop : MonoBehaviour
                 GameStats.stats.coins -= power.Cost;
                 
 
-                if (GameStats.stats.MoneySpent < 1000)
+                if (GameStats.stats.MoneySpent < 2000)
                 {
                     GameStats.stats.MoneySpent += power.Cost;
                 }
@@ -462,7 +466,7 @@ public class Shop : MonoBehaviour
                     GameStats.stats.coins -= heartCost;
                     GameStats.stats.SaveCurrentHearts = GameStats.stats.numOfHearts;
                     GameStats.stats.SaveStats();
-                    if (GameStats.stats.MoneySpent < 1000)
+                    if (GameStats.stats.MoneySpent < 2000)
                     {
                         GameStats.stats.MoneySpent += heartCost;
                     }
@@ -489,9 +493,11 @@ public class Shop : MonoBehaviour
             if (GameStats.stats.coins >= lightManaCost/2)
             {
                 GameStats.stats.totalLightMana += 10;
+                BuyLightManaEffect.Play();
+                
                 GameStats.stats.coins -= lightManaCost/2;
                 GameStats.stats.MerchantRune = false;
-                if (GameStats.stats.MoneySpent < 1000)
+                if (GameStats.stats.MoneySpent < 2000)
                 {
                     GameStats.stats.MoneySpent += lightManaCost/2;
                 }
@@ -510,7 +516,7 @@ public class Shop : MonoBehaviour
             {
                 GameStats.stats.totalLightMana += 10;
                 GameStats.stats.coins -= lightManaCost;
-                if (GameStats.stats.MoneySpent < 1000)
+                if (GameStats.stats.MoneySpent < 2000)
                 {
                     GameStats.stats.MoneySpent += lightManaCost;
                 }
@@ -532,9 +538,10 @@ public class Shop : MonoBehaviour
             if (GameStats.stats.coins >= darkManaCost/2)
             {
                 GameStats.stats.totalDarkMana += 10;
+                BuyDarkManaEffect.Play();
                 GameStats.stats.coins -= darkManaCost/2;
                 GameStats.stats.MerchantRune = false;
-                if (GameStats.stats.MoneySpent < 1000)
+                if (GameStats.stats.MoneySpent < 2000)
                 {
                     GameStats.stats.MoneySpent += darkManaCost/2;
                 }
@@ -553,7 +560,7 @@ public class Shop : MonoBehaviour
             {
                 GameStats.stats.totalDarkMana += 10;
                 GameStats.stats.coins -= darkManaCost;
-                if (GameStats.stats.MoneySpent < 1000)
+                if (GameStats.stats.MoneySpent < 2000)
                 {
                     GameStats.stats.MoneySpent += darkManaCost;
                 }

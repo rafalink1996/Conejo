@@ -92,21 +92,21 @@ public class GameStats : MonoBehaviour
 
     // achievemnts
     public bool[] AchivementConditions =  new[ ]{
-        false, // 1.Wyrm Defeated
-        false, // 2.MageGoblin Defeated
-        false, // 3.Yeti Defeated
-        false, // 4.CarnivorousPlant Defeated
-        false, // 5.ClockworkGriffin Defeated
-        false, // 6.Wizard Defeated
-        false, // 7.acumulated 1000 Gold
-        false, // 8.Acumulated 500 Crystals
-        false, // 9.Bought All PowerUps for one run
-        false, // 10.Have one legendary spell equiped
-        false, // 11.Have two legendary spells equiped
-        false, // 12.Killed 400 monsters
-        false, // 13.spend over 1000 gold
-        false, // 14.died 50 times
-        false, // 15.kill a boss while having full health
+        false, // 0.Wyrm Defeated
+        false, // 1.MageGoblin Defeated
+        false, // 2.Yeti Defeated
+        false, // 3.CarnivorousPlant Defeated
+        false, // 4.ClockworkGriffin Defeated
+        false, // 5.Wizard Defeated
+        false, // 6.acumulated 1000 Gold
+        false, // 7.Acumulated 500 Crystals
+        false, // 8.Bought All PowerUps for one run
+        false, // 9.Have one legendary spell equiped
+        false, // 10.Have two legendary spells equiped
+        false, // 11.Killed 400 monsters
+        false, // 12.spend over 1000 gold
+        false, // 13.died 50 times
+        false, // 14.kill a boss while having full health
 
         };
 
@@ -167,6 +167,8 @@ public class GameStats : MonoBehaviour
     public bool isInStore;
     public int savedDarkPowerID;
     public int savedLightPowerID;
+
+    
 
 
 
@@ -304,6 +306,9 @@ public class GameStats : MonoBehaviour
         }
     }
 
+
+
+
     public string CheckLevel()
     {
         if (LevelIndicator == 1)
@@ -366,6 +371,36 @@ public class GameStats : MonoBehaviour
         }
 
     }
+    public void HealToFull()
+    {
+        SaveCurrentHearts = numOfHearts;
+        SaveStats();
+    }
+
+
+    public void CheckAchievements()
+    {
+        if (LevelReached >= 2)
+        {
+            AchivementConditions[1] = true;
+
+        }
+        if (LevelReached >= 3)
+        {
+            AchivementConditions[2] = true;
+
+        }
+        if (LevelReached >= 4)
+        {
+            AchivementConditions[3] = true;
+
+        }
+        if (LevelReached >= 5)
+        {
+            AchivementConditions[4] = true;
+
+        }
+    }
 
     public void SaveStats()
     {
@@ -397,6 +432,9 @@ public class GameStats : MonoBehaviour
 
         savedDarkPowerID = data.SavedDarkPowerID;
         savedLightPowerID = data.SavedLightPowerID;
+
+        totalDarkMana = data.ManaDark;
+        totalLightMana = data.Manalight;
 
 
         LevelReached = data.levelReached;
@@ -464,8 +502,8 @@ public class GameStats : MonoBehaviour
        stats.LevelIndicator = 1;
        stats.LevelCount = 1;
        stats.numOfHearts = 3;
-       stats.ExtraHearts = false;
-       stats.ManaJar = false;
+       //stats.ExtraHearts = false;
+       //stats.ManaJar = false;
        powerDark = originalDarkPower;
        powerLight = originalLightPower;
        coins = 0;
@@ -473,6 +511,10 @@ public class GameStats : MonoBehaviour
        stats.SaveCurrentHearts = 3;
         savedDarkPowerID = originalDarkPower.id;
         savedLightPowerID = originalLightPower.id;
+        totalLightMana = 30;
+        totalDarkMana = 30;
+
+        SaveStats();
 
 
     }
