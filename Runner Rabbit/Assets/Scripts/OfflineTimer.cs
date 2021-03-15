@@ -150,6 +150,7 @@ public class OfflineTimer : MonoBehaviour
         //Save last minmize into gamestas
         GameStats.stats.timedRewardLastDate = lastMinimize.ToBinary();
         pauseCounter++;
+        GameStats.stats.SaveStats();
         //pauseText.text = "paused" + pauseCounter + "times";
     }
 

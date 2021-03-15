@@ -57,6 +57,8 @@ public class GameStats : MonoBehaviour
 
     public List<Power> UnlockedPowers = new List<Power>();
 
+    public bool NoAdsBought = false;
+
 
 
 
@@ -494,6 +496,8 @@ public class GameStats : MonoBehaviour
         UnlockedRunes[7] = data.unlockedRunes[7];
         UnlockedRunes[8] = data.unlockedRunes[8];
         UnlockedRunes[9] = data.unlockedRunes[9];
+
+        NoAdsBought = data.NoAdsBought;
 
     }
 

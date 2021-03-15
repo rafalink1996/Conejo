@@ -109,6 +109,8 @@ public class PlayerData
     public int SavedLightPowerID;
 
 
+    public bool NoAdsBought;
+
 
 
 
@@ -148,7 +150,7 @@ public class PlayerData
 
         AudioVolume = gamestats.AudioVolume;
         MusicVolume = gamestats.MusicVolume;
-
+        NoAdsBought = gamestats.NoAdsBought;
 
 
         TimeReward = gamestats.timedReward;

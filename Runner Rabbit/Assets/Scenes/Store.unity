@@ -2915,41 +2915,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239028816}
   m_CullTransparentMesh: 0
---- !u!1 &241756481
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 241756482}
-  m_Layer: 5
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &241756482
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241756481}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 879153454}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -958.86, y: -539}
-  m_SizeDelta: {x: 163.54431, y: 163.54431}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &257665337
 GameObject:
   m_ObjectHideFlags: 0
@@ -7045,7 +7010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &590216889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14570,7 +14535,6 @@ RectTransform:
   - {fileID: 1054949791}
   - {fileID: 806514613}
   - {fileID: 1398017668}
-  - {fileID: 241756482}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27481,6 +27445,8 @@ MonoBehaviour:
   RewardDisplay3: {fileID: 1362433489}
   revive: 0
   deathscreen: {fileID: 0}
+  AdButton: {fileID: 1971652886}
+  ConfirmWatchAdObject: {fileID: 769593463}
 --- !u!4 &1841330883
 Transform:
   m_ObjectHideFlags: 0
@@ -28685,6 +28651,11 @@ PrefabInstance:
       propertyPath: MerchantRune
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: NoAdsBought
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29136,18 +29107,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1971652887}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 769593463}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1971652887
 MonoBehaviour:
   m_ObjectHideFlags: 0

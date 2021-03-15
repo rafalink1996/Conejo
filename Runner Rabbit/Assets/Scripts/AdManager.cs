@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.Audio;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class AdManager : MonoBehaviour, IUnityAdsListener
@@ -12,13 +13,19 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     private string playStoreID = "3834045";
     private string appStoreID = "3834044";
 
+    private string AdGameID;
+
+
+
     private string interstitialAd = "video";
     private string rewardedVideoAd = "rewardedVideo";
 
     public bool isTargetPlayStore;
+    public bool AutomaticIDPlacement;
     public bool isTestAd;
 
     public AudioMixer MainMixer;
+    
 
     public int RewardCoins;
     public int RewardCrystals;
@@ -33,85 +40,177 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
    // public character cha;
     public GameObject deathscreen;
 
+    public Button AdButton;
+    public GameObject ConfirmWatchAdObject;
+
+    public LevelLoaderGame levelLoaderGame;
+   
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
 
-        Advertisement.AddListener(this);
-        IniziatlizeAdvertisement();
-
-        RewardCoins = 100 + (25 * (GameStats.stats.LevelIndicator - 2));
-        if (RewardDisplay1 != null)
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            RewardDisplay1.text = RewardCoins.ToString();
+            AdGameID = appStoreID;
+            
+        }else if (Application.platform == RuntimePlatform.Android)
+        {
+            AdGameID = playStoreID;
         }
         else
         {
-            //Debug.Log("no text");
-
+            AutomaticIDPlacement = false;
         }
-        if (RewardDisplay2 != null)
+
+
+        if (GameStats.stats.NoAdsBought == false)
         {
-            RewardDisplay2.text = RewardCoins.ToString();
+            if (AdButton != null){
+                AdButton.onClick.AddListener(ShowConfirmationScreen);
+            }
+           
+            Advertisement.AddListener(this);
+            IniziatlizeAdvertisement();
+
+            RewardCoins = 100 + (25 * (GameStats.stats.LevelIndicator - 2));
+            if (RewardDisplay1 != null)
+            {
+                RewardDisplay1.text = RewardCoins.ToString();
+            }
+            else
+            {
+                //Debug.Log("no text");
+
+            }
+            if (RewardDisplay2 != null)
+            {
+                RewardDisplay2.text = RewardCoins.ToString();
+            }
+            else
+            {
+                // Debug.Log("no text");
+
+            }
+
+            if (RewardDisplay3 != null)
+            {
+                RewardDisplay3.text = RewardCoins.ToString();
+            }
+            else
+            {
+                // Debug.Log("no text");
+
+            }
         }
         else
         {
-           // Debug.Log("no text");
-
+            if (AdButton != null)
+            {
+                AdButton.onClick.RemoveAllListeners();
+                AdButton.onClick.AddListener(ShowReardWhenNoADS);
+            }
         }
 
-        if (RewardDisplay3 != null)
-        {
-            RewardDisplay3.text = RewardCoins.ToString();
-        }
-        else
-        {
-           // Debug.Log("no text");
+       
 
-        }
+    }
+
     
+   public void showInterstitialAdCheck()
+    {
+        if (GameStats.stats.NoAdsBought == false)
+        {
+            PlayInterstitialAD();
+        }
+        else
+        {
+            levelLoaderGame.backToMainMenu();
+        }
+    }
+   
+
+
+    void ShowReardWhenNoADS()
+    {
+        if (rewardColect != null)
+        {
+            rewardColect.SetActive(true);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void ShowConfirmationScreen()
     {
-        
+        ConfirmWatchAdObject.SetActive(true);
     }
+  
 
     private void IniziatlizeAdvertisement()
     {
-        if (isTargetPlayStore)
+        if (AutomaticIDPlacement)
         {
-            Advertisement.Initialize(playStoreID, isTestAd); return;
+            Advertisement.Initialize(AdGameID, isTestAd);
+            
         }
         else
         {
-            Advertisement.Initialize(appStoreID, isTestAd);
+            if (isTargetPlayStore)
+            {
+                Advertisement.Initialize(playStoreID, isTestAd); return;
+            }
+            else
+            {
+                Advertisement.Initialize(appStoreID, isTestAd);
+            }
         }
+        
         
     }
 
     public void PlayInterstitialAD()
     {
-        if (!Advertisement.IsReady(interstitialAd))
+        if (GameStats.stats.NoAdsBought == false)
         {
-            return;
+            if (!Advertisement.IsReady(interstitialAd))
+            {
+                return;
+            }
+            else
+            {
+                Advertisement.Show(interstitialAd);
+            }
         }
         else
         {
-            Advertisement.Show(interstitialAd);
+            if (levelLoaderGame != null)
+            {
+                levelLoaderGame.backToMainMenu();
+            }
         }
+       
     }
 
     public void PlayRewardeVideoAd()
     {
-        if (!Advertisement.IsReady(rewardedVideoAd)){
-            return;
+        if (GameStats.stats.NoAdsBought == false)
+        {
+            if (!Advertisement.IsReady(rewardedVideoAd))
+            {
+                return;
+            }
+            else
+            {
+                Advertisement.Show(rewardedVideoAd);
+            }
         }
         else
         {
-            Advertisement.Show(rewardedVideoAd);
+            if (rewardColect != null)
+            {
+                rewardColect.SetActive(true);
+            }
         }
     }
 
@@ -122,13 +221,18 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsDidError(string message)
     {
+
         //throw new System.NotImplementedException();
     }
 
     public void OnUnityAdsDidStart(string placementId)
     {
-       
+
         //throw new System.NotImplementedException();
+        //MainMixer.SetFloat("Sound", -80);
+        //MainMixer.SetFloat("Music", -80);
+        MainMixer.SetFloat("MasterVolume", -80);
+
     }
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
@@ -136,8 +240,22 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         switch (showResult)
         {
             case ShowResult.Failed:
+                if (levelLoaderGame != null)
+                {
+                    levelLoaderGame.backToMainMenu();
+                }
+                MainMixer.SetFloat("MasterVolume", 0);
+
                 break;
+
             case ShowResult.Skipped:
+
+                if (levelLoaderGame != null)
+                {
+                    levelLoaderGame.backToMainMenu();
+                }
+                MainMixer.SetFloat("MasterVolume", 0);
+                
                 break;
             case ShowResult.Finished:
                 if (placementId == rewardedVideoAd)
@@ -146,15 +264,22 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
                     {
                         rewardColect.SetActive(true);
                     }
-                    else if (revive)
-                    {
-                        //reviveCharacter();
-                    }
-                    
+                    // MainMixer.SetFloat("Sound", GameStats.stats.AudioVolume);
+                    // MainMixer.SetFloat("Music", GameStats.stats.MusicVolume);
+                    MainMixer.SetFloat("MasterVolume", 0);
+
                     Debug.Log("finished rewarded");
                 }
                 if (placementId == interstitialAd)
                 {
+                    //MainMixer.SetFloat("Sound", GameStats.stats.AudioVolume);
+                    //MainMixer.SetFloat("Music", GameStats.stats.MusicVolume);
+                    MainMixer.SetFloat("MasterVolume", 0);
+                    if (levelLoaderGame != null)
+                    {
+                        levelLoaderGame.backToMainMenu();
+                    }
+
                     Debug.Log("finished interstisial");
                 }
                 break;
@@ -175,25 +300,5 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         GameStats.stats.SaveStats();
     }
 
-   /* public void reviveCharacter()
-    {
-        cha.Health = cha.NumOfHearts;
-        deathscreen.SetActive(false);
-    }
-
-
-    public void toggleRevive()
-    {
-        if (revive == false)
-        {
-            revive = true;
-        }
-        else
-        {
-            revive = false;
-        }
-       
-    }
-   */
-
+  
 }

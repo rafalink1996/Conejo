@@ -7273,6 +7273,7 @@ GameObject:
   - component: {fileID: 672799254}
   - component: {fileID: 672799253}
   - component: {fileID: 672799255}
+  - component: {fileID: 672799256}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7340,6 +7341,33 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: fc3f455b10db348d094da207e592d7c2, type: 2}
   StartAnimationUi: {fileID: 1364760194}
   StartAnimation: {fileID: 393317634}
+--- !u!114 &672799256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672799252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182f41a75ffc642009d12a539811f551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTargetPlayStore: 0
+  AutomaticIDPlacement: 1
+  isTestAd: 1
+  MainMixer: {fileID: 24100000, guid: fc3f455b10db348d094da207e592d7c2, type: 2}
+  RewardCoins: 0
+  RewardCrystals: 0
+  rewardColect: {fileID: 0}
+  RewardDisplay1: {fileID: 0}
+  RewardDisplay2: {fileID: 0}
+  RewardDisplay3: {fileID: 0}
+  revive: 0
+  deathscreen: {fileID: 0}
+  AdButton: {fileID: 0}
+  ConfirmWatchAdObject: {fileID: 0}
+  levelLoaderGame: {fileID: 1526805044}
 --- !u!1 &677475416
 GameObject:
   m_ObjectHideFlags: 0
@@ -13534,7 +13562,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1526805044}
+      objectReference: {fileID: 672799256}
+    - target: {fileID: 3265500892834927530, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: showInterstitialAdCheck
+      objectReference: {fileID: 0}
     - target: {fileID: 3265500893041496508, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
       propertyPath: OnHoldDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
