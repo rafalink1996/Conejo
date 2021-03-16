@@ -7,11 +7,14 @@ using UnityEngine;
 public class Power : ScriptableObject
 {
     new public string name = "new Item";
+    public string Español_Name;
+
     public Sprite iconLight = null;
     public Sprite iconDark = null;
     public float mana;
     public float Damage;
     public string description;
+    public string Español_Description;
     public int id;
     public int Cost;
 

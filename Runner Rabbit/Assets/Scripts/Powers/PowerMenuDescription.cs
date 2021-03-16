@@ -72,28 +72,59 @@ public class PowerMenuDescription : MonoBehaviour
         if (PowerID == 1)
         {
             SelectedPowers.AddRange(PowerMenu.CarrotMissleTiers);
-            PowerName.text = "Carrot Missle";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                PowerName.text = "Carrot Missle";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                PowerName.text = "Misil Zanahoria";
+            }
+            
             CrystalCost = PowerMenu.CarrotMissleCrystalCost;
             selectedPowerID = 1;
         }
         else if (PowerID == 2)
         {
             SelectedPowers.AddRange(PowerMenu.EarShieldTiers);
-            PowerName.text = "Ear Shield";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                PowerName.text = "Ear Shield";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                PowerName.text = "Escudo Oreja";
+            }
+                
             CrystalCost = PowerMenu.EarShieldCrystalCost;
             selectedPowerID = 2;
         }
         else if (PowerID == 4)
         {
             SelectedPowers.AddRange(PowerMenu.RadishMissleTiers);
-            PowerName.text = "Radish Missle";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                PowerName.text = "Radish Missle";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                PowerName.text = "Misil Rábano";
+            }
+
             CrystalCost = PowerMenu.RadishtMissleCrystalCost;
             selectedPowerID = 4;
         }
         else if (PowerID == 3)
         {
             SelectedPowers.AddRange(PowerMenu.KickReflectTiers);
-            PowerName.text = "Kick Reflect";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                PowerName.text = "Kick Refelct";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                PowerName.text = "Patada Reflectiva";
+            }
             CrystalCost = PowerMenu.KickReflectCrystalCost;
             selectedPowerID = 3;
             
@@ -101,7 +132,14 @@ public class PowerMenuDescription : MonoBehaviour
         else if (PowerID == 5)
         {
             SelectedPowers.AddRange(PowerMenu.MagicLaserTiers);
-            PowerName.text = "Magic Laser";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                PowerName.text = "Magic Laser";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                PowerName.text = "Rayo Láser";
+            }
             CrystalCost = PowerMenu.MagicLaserCrystalCost;
             selectedPowerID = 5;
             
@@ -128,10 +166,21 @@ public class PowerMenuDescription : MonoBehaviour
             ManaTier3.text = SelectedPowers[2].mana.ToString();
             ManaTier4.text = SelectedPowers[3].mana.ToString();
 
+        if (GameStats.stats.LanguageSelect == 0)
+        {
             DescriptionTier1.text = SelectedPowers[0].description;
             DescriptionTier2.text = SelectedPowers[1].description;
             DescriptionTier3.text = SelectedPowers[2].description;
             DescriptionTier4.text = SelectedPowers[3].description;
+        }
+        else if (GameStats.stats.LanguageSelect == 1)
+        {
+            DescriptionTier1.text = SelectedPowers[0].Español_Description;
+            DescriptionTier2.text = SelectedPowers[1].Español_Description;
+            DescriptionTier3.text = SelectedPowers[2].Español_Description;
+            DescriptionTier4.text = SelectedPowers[3].Español_Description;
+        }
+          
 
        // UpgradeButton.onClick.RemoveAllListeners();
        // UpgradeButton.onClick.AddListener(BuyPowerUpgrade);

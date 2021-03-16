@@ -52,6 +52,8 @@ public class GameStats : MonoBehaviour
     public int KickReflectLevel;
     public int MagicLaserLevel;
 
+    
+
 
     public int LevelReached;
 
@@ -170,11 +172,14 @@ public class GameStats : MonoBehaviour
     public int savedDarkPowerID;
     public int savedLightPowerID;
 
-    
 
 
 
 
+    public int LanguageSelect;
+
+    // 1 = english
+    // 2 = Español
 
 
 
@@ -498,6 +503,8 @@ public class GameStats : MonoBehaviour
         UnlockedRunes[9] = data.unlockedRunes[9];
 
         NoAdsBought = data.NoAdsBought;
+
+        LanguageSelect = data.LanguageSelect;
 
     }
 

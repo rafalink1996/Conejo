@@ -111,6 +111,8 @@ public class PlayerData
 
     public bool NoAdsBought;
 
+    public int LanguageSelect;
+
 
 
 
@@ -207,6 +209,8 @@ public class PlayerData
         unlockedRunes[7] = gamestats.UnlockedRunes[7];
         unlockedRunes[8] = gamestats.UnlockedRunes[8];
         unlockedRunes[9] = gamestats.UnlockedRunes[9];
+
+        LanguageSelect = gamestats.LanguageSelect;
 
     }
 }

@@ -122,7 +122,14 @@ public class OfflineTimer : MonoBehaviour
         int seconds = Mathf.FloorToInt(TimerLenght % 60);
         string formattedTime = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
         if (GetCrystalsButton.interactable == true){
-            counterText.text = "WATCH AD";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                counterText.text = "WATCH AD";
+            } else if (GameStats.stats.LanguageSelect == 1)
+            {
+                counterText.text = "VER AD";
+            }
+            
         }
         else
         {

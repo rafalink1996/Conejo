@@ -34,8 +34,11 @@ public class RuneSystem : MonoBehaviour
     public Button[] BuyEquiButtons;
     public int[] RuneCosts;
     public string[] RuneNames;
+    public string[] Español_RuneNames;
 
-   
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,9 +47,20 @@ public class RuneSystem : MonoBehaviour
         {
             if(GameStats.stats.UnlockedRunes[i] == true)
             {
-                Buy_EquipButtonsText[i].text = "Equip";
+
+                
                 TextMeshProUGUI CostTextTMP = CostTexts[i].GetComponent<TextMeshProUGUI>();
-                CostTextTMP.text = "owned";
+                
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    Buy_EquipButtonsText[i].text = "Equip";
+                    CostTextTMP.text = "owned";
+                } else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    Buy_EquipButtonsText[i].text = "Equipar";
+                    CostTextTMP.text = "Comprado";
+                }
+               
                 GameObject CostCrystal = CostTexts[i].transform.GetChild(0).gameObject;
                 CostCrystal.SetActive(false);
 
@@ -55,9 +69,18 @@ public class RuneSystem : MonoBehaviour
             }
             else
             {
-                Buy_EquipButtonsText[i].text = "Buy";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    Buy_EquipButtonsText[i].text = "Buy";
+                } else if (GameStats.stats.LanguageSelect == 1){
+                    Buy_EquipButtonsText[i].text = "Comprar";
+                }
 
-               // CostTexts[i].SetActive(true);
+
+                
+
+
+                // CostTexts[i].SetActive(true);
             }
         }
 
@@ -70,8 +93,31 @@ public class RuneSystem : MonoBehaviour
             UnequipButtonRune1.SetActive(true);
             PreviouslySelectedRune1 = GameStats.stats.Rune1ID -1;
             BuyEquiButtons[GameStats.stats.Rune1ID - 1].gameObject.SetActive(false);
-            RuneSlotName1.text = RuneNames[GameStats.stats.Rune1ID];
+
+            if (GameStats.stats.LanguageSelect == 0) //ingles seleccionado
+            {
+
+                    RuneSlotName1.text = RuneNames[GameStats.stats.Rune1ID]; // rune Name
+    
+            } else if (GameStats.stats.LanguageSelect == 1) //español seleccionado
+            {
+               
+                    RuneSlotName1.text = Español_RuneNames[GameStats.stats.Rune1ID]; //nombre Runa español
+     
+            }
+           
             Debug.Log("Rune1 has" + ((GameStats.Rune)PreviouslySelectedRune1 +1));
+        }
+        else
+        {
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                RuneSlotName1.text = RuneNames[0]; 
+            } else if (GameStats.stats.LanguageSelect == 1)
+            {
+                RuneSlotName1.text = Español_RuneNames[0];
+            }
+
         }
         if (GameStats.stats.Rune2ID != 0)
         {
@@ -80,8 +126,28 @@ public class RuneSystem : MonoBehaviour
             UnequipButtonRune2.SetActive(true);
             PreviouslySelectedRune2 = GameStats.stats.Rune2ID -1;
             BuyEquiButtons[GameStats.stats.Rune2ID - 1].gameObject.SetActive(false);
-            RuneSlotName2.text = RuneNames[GameStats.stats.Rune2ID];
-            Debug.Log("Rune2 has" + ((GameStats.Rune)PreviouslySelectedRune2 +1));
+
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                RuneSlotName2.text = RuneNames[GameStats.stats.Rune2ID];
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                RuneSlotName2.text = Español_RuneNames[GameStats.stats.Rune2ID];
+            }
+
+                Debug.Log("Rune2 has" + ((GameStats.Rune)PreviouslySelectedRune2 +1));
+        }
+        else
+        {
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                RuneSlotName2.text = RuneNames[0];
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                RuneSlotName2.text = Español_RuneNames[0];
+            }
         }
     }
 
@@ -92,9 +158,18 @@ public class RuneSystem : MonoBehaviour
         {
             if (GameStats.stats.UnlockedRunes[i] == true)
             {
-                Buy_EquipButtonsText[i].text = "Equip";
+                
                 TextMeshProUGUI CostTextTMP = CostTexts[i].GetComponent<TextMeshProUGUI>();
-                CostTextTMP.text = "owned";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    Buy_EquipButtonsText[i].text = "Equip"; Buy_EquipButtonsText[i].fontSize = 40;
+                    CostTextTMP.text = "owned";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    Buy_EquipButtonsText[i].text = "Equipar"; Buy_EquipButtonsText[i].fontSize = 25;
+                    CostTextTMP.text = "Comprado";
+                }
                 GameObject CostCrystal = CostTexts[i].transform.GetChild(0).gameObject;
                 CostCrystal.SetActive(false);
 
@@ -102,7 +177,19 @@ public class RuneSystem : MonoBehaviour
             }
             else
             {
-                Buy_EquipButtonsText[i].text = "Buy";
+                TextMeshProUGUI CostTextTMP = CostTexts[i].GetComponent<TextMeshProUGUI>();
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    
+                    Buy_EquipButtonsText[i].text = "Buy"; Buy_EquipButtonsText[i].fontSize = 40;
+                    CostTextTMP.text = "Cost: " + RuneCosts[i];
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                   
+                    Buy_EquipButtonsText[i].text = "Comprar"; Buy_EquipButtonsText[i].fontSize = 25;
+                    CostTextTMP.text = "Costo: " + RuneCosts[i];
+                }
                 //CostTexts[i].SetActive(true);
             }
         }   
@@ -145,7 +232,14 @@ public class RuneSystem : MonoBehaviour
             ButtonSelcetRune2.SetActive(false);
             BuyEquiButtons[(int)SelectedRuneID-1].gameObject.SetActive(false);
             PreviouslySelectedRune1 = (int)SelectedRuneID - 1;
-            RuneSlotName1.text = RuneNames[(int)SelectedRuneID];
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                RuneSlotName1.text = RuneNames[(int)SelectedRuneID];
+            } else if (GameStats.stats.LanguageSelect == 1)
+            {
+                RuneSlotName1.text = Español_RuneNames[(int)SelectedRuneID];
+            }
+            
             UnequipButtonRune1.SetActive(true);
             GameStats.stats.SaveStats();
         }
@@ -161,7 +255,14 @@ public class RuneSystem : MonoBehaviour
             ButtonSelcetRune2.SetActive(false);
             BuyEquiButtons[(int)SelectedRuneID-1].gameObject.SetActive(false);
             PreviouslySelectedRune2 = (int)SelectedRuneID - 1;
-            RuneSlotName2.text = RuneNames[(int)SelectedRuneID];
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                RuneSlotName2.text = RuneNames[(int)SelectedRuneID];
+            } else if (GameStats.stats.LanguageSelect == 1)
+            {
+                RuneSlotName2.text = Español_RuneNames[(int)SelectedRuneID];
+            }
+                
             UnequipButtonRune2.SetActive(true);
             GameStats.stats.SaveStats();
         }
@@ -177,6 +278,17 @@ public class RuneSystem : MonoBehaviour
             GameStats.stats.Rune1ID = 0;
             BuyEquiButtons[PreviouslySelectedRune1].gameObject.SetActive(true);
             UnequipButtonRune1.SetActive(false);
+            
+
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                RuneSlotName1.text = RuneNames[0];
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                RuneSlotName1.text = Español_RuneNames[0];
+            }
+
             GameStats.stats.SaveStats();
 
         }
@@ -189,6 +301,16 @@ public class RuneSystem : MonoBehaviour
             GameStats.stats.Rune2ID = 0;
             BuyEquiButtons[PreviouslySelectedRune2].gameObject.SetActive(true);
             UnequipButtonRune2.SetActive(false);
+
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                RuneSlotName2.text = RuneNames[0];
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                RuneSlotName2.text = Español_RuneNames[0];
+            }
+
             GameStats.stats.SaveStats();
 
         }
