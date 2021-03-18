@@ -50,6 +50,11 @@ public class ManaHandle : MonoBehaviour
 
         CurrentDarkMana = DarkMana;
         CurrentLightMana = LightMana;
+
+        //codigo extra para ver si se arregla lo del mana
+
+        DarkManaUsed = GameStats.stats.powerDark.mana;
+        LightManaUsed = GameStats.stats.powerLight.mana;
     }
 
     // Update is called once per frame
