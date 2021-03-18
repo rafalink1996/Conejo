@@ -10,6 +10,7 @@ public class LanguageManagerStore : MonoBehaviour
     public TextMeshProUGUI SettingsTitle, MusicSubtitle, soundSubtitle, CloseButton, MainMenuButton;
     public TextMeshProUGUI DamagePowerDisplay, ManaPowerDisplay, BuyPowerDisplay, BackPowerDisplay;
     public TextMeshProUGUI WatchAdText, WatchAdCoinsText, WatchAdBackButton, WatchAdWatchButton, CongratulationsText, RewardCoinText, CollectButton;
+    public TextMeshProUGUI GobacktoMainMenuquestionText, gobacktomainmenubutton, mainmenuquestionBackbutton;
 
 
     //English************************
@@ -38,6 +39,10 @@ public class LanguageManagerStore : MonoBehaviour
     string English_WatchAdWatchButton = "Watch";
     string English_Congratulation = "Congratulations! You Got";
     string English_Collectbutton = "collect";
+
+    string English_GobackToMainMenuQuestion = "Go back to main menu?";
+    string English_goBackToMainMenuButton = "Go Back to main menu";
+    
     
 
 
@@ -67,6 +72,9 @@ public class LanguageManagerStore : MonoBehaviour
     string Español_WatchAdWatchButton = "Ver";
     string Español_Congratulation = "¡Felicidades! consigues";
     string Español_Collectbutton = "Recoger";
+
+    string Español_GobackToMainMenuQuestion = "¿volver al menú principal?";
+    string Español_goBackToMainMenuButton = "ir al menú principal";
 
 
 
@@ -111,6 +119,9 @@ public class LanguageManagerStore : MonoBehaviour
                 RewardCoinText.text = English_WatchAdCoinText;
                 CollectButton.text = English_Collectbutton;
 
+                GobacktoMainMenuquestionText.text = English_GobackToMainMenuQuestion;
+                gobacktomainmenubutton.text = English_goBackToMainMenuButton;
+
                 break;
 
             case 1:// English
@@ -143,6 +154,9 @@ public class LanguageManagerStore : MonoBehaviour
                 CongratulationsText.text = Español_Congratulation;
                 RewardCoinText.text = Español_WatchAdCoinText;
                 CollectButton.text = Español_Collectbutton;
+
+                GobacktoMainMenuquestionText.text = Español_GobackToMainMenuQuestion;
+                gobacktomainmenubutton.text = Español_goBackToMainMenuButton;
 
                 break;
         }

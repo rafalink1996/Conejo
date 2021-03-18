@@ -6,6 +6,13 @@ using TMPro;
 
 public class LanguageManager : MonoBehaviour
 {
+
+    // Initial Select Language
+    public TextMeshProUGUI InitialSelectLanguageTitle;
+    public TextMeshProUGUI ConfirmButton;
+    
+
+
     public TMP_Dropdown LanguageDropdownSettings;
     // main menú Texts
     //BackText
@@ -41,6 +48,9 @@ public class LanguageManager : MonoBehaviour
     //strings language
     //English **********************
 
+    string English_InitialSelectLanguage = "Select Language";
+    string English_ConfirmButton = "confirm";
+
     string English_BackButton = "Back";
 
     string English_StartButton = "Start";
@@ -67,9 +77,9 @@ public class LanguageManager : MonoBehaviour
     string English_FenixFeatherText = "phoenix Feather";
     string English_RuneButton = "Runes";
 
-    string English_CarrotPower = "Carrot Missle";
+    string English_CarrotPower = "Carrot Missile";
     string English_EarShieldPower = "Ear Shield";
-    string English_RadishMisslePower = "Radish Missle";
+    string English_RadishMisslePower = "Radish Missile";
     string English_KickReflectPower = "Kick Reflect";
     string English_MagicLaserPower = "Magic Laser";
 
@@ -77,7 +87,7 @@ public class LanguageManager : MonoBehaviour
     string English_WatchAdText = "Watch ad to get crystals?";
     string English_CrystalText = "Crystals";
     string English_WatchButton = "Watch";
-    string English_CongratulationsText = "Congartulations! You Got:";
+    string English_CongratulationsText = "Congratulations! You Got:";
     string English_Collect = "Collect";
 
     string English_DamageText1 = "Damage";
@@ -118,7 +128,7 @@ public class LanguageManager : MonoBehaviour
 
     // runeforge
     string English_RuneForgeTitle = "Rune Forge";
-    string English_EquipedRunes = "Equiped Runes";
+    string English_EquipedRunes = "Equipped Runes";
 
     string English_RuneSlotUnequip = "unequip";
     string English_Select = "Select";
@@ -138,7 +148,7 @@ public class LanguageManager : MonoBehaviour
 
     string English_RuneDescription1 = "Gives you extra magic for floating";
     string English_RuneDescription2 = "you fall faster towards the rift";
-    string English_RuneDescription3 = "Coins are atracted to you";
+    string English_RuneDescription3 = "Coins are attracted to you";
     string English_RuneDescription4 = "Recharge mana faster";
     string English_RuneDescription5 = "Spells cost less mana";
     string English_RuneDescription6 = "Prevents the first time you would get hit each level";
@@ -153,9 +163,9 @@ public class LanguageManager : MonoBehaviour
     string English_BoneSkin = "Bone";
     string English_IceGolemSkin = "Ice Golem";
     string English_PlantSkin = "Plant";
-    string English_ClokworkSkin = "Clokwork";
+    string English_ClokworkSkin = "Clockwork";
     string English_ShadowWizardSkin = "Shadow Wizard";
-    string English_TophatSkin = "Tophat";
+    string English_TophatSkin = "Top hat";
     string English_AngelSkin = "Angel";
     string English_ImpSkin = "Imp";
     string English_SnowmanSkin = "Snowman";
@@ -177,7 +187,7 @@ public class LanguageManager : MonoBehaviour
     string English_HowToPlay = "How to Play";
     string English_MovemntHowToPlay = "Movement";
     string English_PowersHowToPlay = "Powers";
-    
+
 
 
 
@@ -185,6 +195,9 @@ public class LanguageManager : MonoBehaviour
 
 
     //Español******************
+
+    string Español_InitialSelectLanguage = "Escoger Idioma";
+    string Español_ConfirmButton = "confirmar";
 
     string Español_BackButton = "Volver";
 
@@ -327,7 +340,14 @@ public class LanguageManager : MonoBehaviour
 
     void Start()
     {
-        SetLanguage(GameStats.stats.LanguageSelect);
+        if (Application.systemLanguage == SystemLanguage.English)
+        {
+            InitialSelectLanguageTitle.text = English_InitialSelectLanguage;
+        } else if (Application.systemLanguage == SystemLanguage.Spanish)
+        {
+            InitialSelectLanguageTitle.text = Español_InitialSelectLanguage;
+        }
+            SetLanguage(GameStats.stats.LanguageSelect);
         LanguageDropdownSettings.value = GameStats.stats.LanguageSelect;
     }
 
@@ -338,8 +358,13 @@ public class LanguageManager : MonoBehaviour
             case 0:// English
 
                 GameStats.stats.LanguageSelect = 0;
+                GameStats.stats.languageselected = true;
                 GameStats.stats.SaveStats();
-                  //main menu and options
+                //main menu and options
+
+                InitialSelectLanguageTitle.text = English_InitialSelectLanguage;
+                ConfirmButton.text = English_ConfirmButton;
+
                 BackButton1.text = English_BackButton;
 
                 StartButton.text = English_StartButton;
@@ -515,8 +540,13 @@ public class LanguageManager : MonoBehaviour
             case 1:// Español
 
                 GameStats.stats.LanguageSelect = 1;
+                GameStats.stats.languageselected = true;
                 GameStats.stats.SaveStats();
                 //menú principal y opciones
+
+                InitialSelectLanguageTitle.text = Español_InitialSelectLanguage;
+                ConfirmButton.text = Español_ConfirmButton;
+
                 BackButton1.text = Español_BackButton;
 
                 StartButton.text = Español_StartButton;
@@ -684,6 +714,16 @@ public class LanguageManager : MonoBehaviour
                 break;
 
 
+        }
+    }
+
+    public void ConfirmLanguage()
+    {
+        if (GameStats.stats.languageselected == false)
+        {
+            GameStats.stats.languageselected = true;
+            GameStats.stats.LanguageSelect = 0;
+            GameStats.stats.SaveStats();
         }
     }
 }

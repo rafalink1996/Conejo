@@ -177,9 +177,13 @@ public class GameStats : MonoBehaviour
 
 
     public int LanguageSelect;
+    public bool languageselected;
 
     // 1 = english
     // 2 = Español
+
+
+    
 
 
 
@@ -505,6 +509,7 @@ public class GameStats : MonoBehaviour
         NoAdsBought = data.NoAdsBought;
 
         LanguageSelect = data.LanguageSelect;
+        languageselected = data.languageSelected;
 
     }
 
