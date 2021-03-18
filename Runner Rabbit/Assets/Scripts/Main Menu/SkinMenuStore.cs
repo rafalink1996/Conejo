@@ -27,7 +27,7 @@ public class SkinMenuStore : MonoBehaviour
 
     public GameObject buybutton;
 
-    public GameStats GS;
+    
 
     
 
@@ -38,7 +38,7 @@ public class SkinMenuStore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GS = FindObjectOfType<GameStats>();
+       
         
         selectdisplayimage.sprite = SkinIcons[SelectedSkinID];
 
@@ -188,8 +188,16 @@ public class SkinMenuStore : MonoBehaviour
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
 
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
 
         }
@@ -198,8 +206,16 @@ public class SkinMenuStore : MonoBehaviour
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
 
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
 
         }
@@ -209,8 +225,16 @@ public class SkinMenuStore : MonoBehaviour
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
 
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 4 && GameStats.stats.LevelReached >= 4)
@@ -218,8 +242,16 @@ public class SkinMenuStore : MonoBehaviour
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
 
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 5 && GameStats.stats.LevelReached >= 5)
@@ -227,8 +259,16 @@ public class SkinMenuStore : MonoBehaviour
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
 
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
 
@@ -237,8 +277,16 @@ public class SkinMenuStore : MonoBehaviour
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
 
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
 
@@ -246,8 +294,16 @@ public class SkinMenuStore : MonoBehaviour
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
 
@@ -255,24 +311,49 @@ public class SkinMenuStore : MonoBehaviour
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 8 && GameStats.stats.skinConditions[1] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            } else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
+            
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 9 && GameStats.stats.skinConditions[1] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
 
@@ -280,8 +361,16 @@ public class SkinMenuStore : MonoBehaviour
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
 
@@ -289,56 +378,112 @@ public class SkinMenuStore : MonoBehaviour
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 12 && GameStats.stats.skinConditions[1] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 13 && GameStats.stats.skinConditions[1] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 14 && GameStats.stats.skinConditions[1] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 15 && GameStats.stats.skinConditions[3] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 16 && GameStats.stats.skinConditions[1] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 17 && GameStats.stats.LevelReached == 7)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
 
@@ -346,16 +491,32 @@ public class SkinMenuStore : MonoBehaviour
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
         else if (SelectedSkinID == 19 && GameStats.stats.skinConditions[5] == true)
         {
             buttonBot.SetActive(true);
             buttonTop.SetActive(true);
-            unlockedText.text = "Unlocked";
-            UnlockDescription.text = "select skin position";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Unlocked";
+                UnlockDescription.text = "select skin position";
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Desbloqueado";
+                UnlockDescription.text = "Seleccionar posición de skin";
+            }
             buybutton.SetActive(false);
         }
 
@@ -363,83 +524,188 @@ public class SkinMenuStore : MonoBehaviour
         {
             buttonBot.SetActive(false);
             buttonTop.SetActive(false);
-            unlockedText.text = "Locked";
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                unlockedText.text = "Locked";
+
+            } else if (GameStats.stats.LanguageSelect == 1)
+            {
+                unlockedText.text = "Bloqueado";
+            }
+           
 
 
             if (SelectedSkinID == 1)
             {
-                UnlockDescription.text = " buy skin for 50 gems";
+                if (GameStats.stats.LanguageSelect== 0)
+                {
+                    UnlockDescription.text = "buy skin for 50 Crystals";
+                } else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Comprar skin por 50 Cristales";
+                }
+                
                 buybutton.SetActive(true);
             }
             else if (SelectedSkinID == 2)
             {
-                UnlockDescription.text = " Defeat the Wyrm at the library to unlock";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "Defeat the Wyrm at the library to unlock";
+                } else if(GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Vence al Dragón en la librería para desbloquear";
+                }
+                    
                 buybutton.SetActive(false);
             }
             else if (SelectedSkinID == 3)
             {
-                UnlockDescription.text = " Defeat the Mage Goblin at the Dungeon to unlock";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "Defeat the Mage Goblin at the Dungeon to unlock";
+                } else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Vence al goblin mago en la mazmorra para desbloquar";
+                }
+                    
                 buybutton.SetActive(false);
             }
             else if (SelectedSkinID == 4)
             {
-                UnlockDescription.text = " Defeat the Yeti at the Ice Room to unlock";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "Defeat the Yeti at the Ice Room to unlock";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Vence al Yeti en el cuarto congelado para debloquear";
+                }
+
                 buybutton.SetActive(false);
             }
             else if (SelectedSkinID == 5)
             {
-                UnlockDescription.text = " Defeat the Carnivorous Plant at the Jungle to unlock";
-                buybutton.SetActive(false);
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "Defeat the Carnivorous Plant at the Jungle to unlock";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Vence a la planta carnivora en la jungla para desbloquear";
+                }
+                    buybutton.SetActive(false);
             }
             else if (SelectedSkinID == 6)
             {
-                UnlockDescription.text = " Defeat the Clockwork Griffin at the Portal Room to unlock";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "Defeat the Clockwork Griffin at the Portal Room to unlock";
+                }
+               else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Vence al grifo de relojería para desbloquar";
+                }
+                    
                 buybutton.SetActive(false);
             }
             else if (SelectedSkinID >= 7 && SelectedSkinID <= 9)
             {
-                UnlockDescription.text = " buy the skin pack to unlock";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "buy the skin pack to unlock";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Compra el pack de skins para desbloquar";
+                }
+                    
                 buybutton.SetActive(true);
             }
             else if (SelectedSkinID == 10)
             {
-                UnlockDescription.text = "buy skin for 50 gems";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "buy skin for 50 Crystals";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Comprar skin por 50 Cristales";
+                }
                 buybutton.SetActive(true);
             }
 
             else if (SelectedSkinID >= 11 && SelectedSkinID <= 14)
             {
-                UnlockDescription.text = " buy the skin pack to unlock";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "buy the skin pack to unlock";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Compra el pack de skins para desbloquar";
+                }
                 buybutton.SetActive(true);
             }
             else if (SelectedSkinID == 15)
             {
-                UnlockDescription.text = "buy skin for 50 gems";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "buy skin for 50 Crystals";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Comprar skin por 50 Cristales";
+                }
                 buybutton.SetActive(true);
             }
             else if (SelectedSkinID == 16)
             {
-                UnlockDescription.text = "buy the skin pack to unlock";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "buy the skin pack to unlock";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Compra el pack de skins para desbloquar";
+                }
                 buybutton.SetActive(true);
             }
             else if (SelectedSkinID == 17)
             {
-                UnlockDescription.text = "Defeat The Mage to unlock";
-                buybutton.SetActive(false);
-            }
-            else if (SelectedSkinID == 17)
-            {
-                UnlockDescription.text = "Defeat The Mage to unlock";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "Defeat The Mage to unlock";
+
+                } else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Vence al mago para desbloquar";
+                }
+                   
                 buybutton.SetActive(false);
             }
             else if (SelectedSkinID == 18)
             {
-                UnlockDescription.text = "buy skin for 50 gems";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "buy skin for 50 Crystals";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Comprar skin por 50 Cristales";
+                }
                 buybutton.SetActive(true);
             }
             else if (SelectedSkinID == 19)
             {
-                UnlockDescription.text = "buy skin for 50 gems";
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    UnlockDescription.text = "buy skin for 50 Crystals";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    UnlockDescription.text = "Comprar skin por 50 Cristales";
+                }
                 buybutton.SetActive(true);
             }
 

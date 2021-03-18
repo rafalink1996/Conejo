@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 20768440}
   - component: {fileID: 20768439}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: FoxSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,8 +363,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Fox
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1252,7 +1252,7 @@ GameObject:
   - component: {fileID: 39171999}
   - component: {fileID: 39171998}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PowersButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1274,8 +1274,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21, y: 11.24}
-  m_SizeDelta: {x: 305.23584, y: 43.548027}
+  m_AnchoredPosition: {x: -29.7, y: 8.7}
+  m_SizeDelta: {x: 444.3871, y: 70.88133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &39171998
 MonoBehaviour:
@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2838,7 +2838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &88540585
 Transform:
   m_ObjectHideFlags: 0
@@ -10090,10 +10090,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -980}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142764438
 MonoBehaviour:
@@ -10421,7 +10421,7 @@ GameObject:
   - component: {fileID: 153675088}
   - component: {fileID: 153675087}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: AssassinWhiteSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10467,8 +10467,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Assasin White
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -10972,7 +10972,7 @@ GameObject:
   - component: {fileID: 186321638}
   - component: {fileID: 186321637}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: AssassinBalckSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11019,8 +11019,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Assasin Black
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -11130,7 +11130,7 @@ GameObject:
   - component: {fileID: 186322146}
   - component: {fileID: 186322145}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Achievemnt Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11633,8 +11633,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Max Level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -13327,7 +13327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &258772268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21701,8 +21701,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 255.7, y: -51}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 250.01, y: -38.019}
+  m_SizeDelta: {x: 239.02979, y: 23.962372}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &364700498
 MonoBehaviour:
@@ -21723,7 +21723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: unlocked
+  m_text: Desbloqueado
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
   m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
@@ -21752,8 +21752,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -21769,7 +21769,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -21793,7 +21793,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 364700498}
-    characterCount: 8
+    characterCount: 12
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -23619,6 +23619,7 @@ RectTransform:
   - {fileID: 998420622}
   - {fileID: 796963663}
   - {fileID: 658044176}
+  - {fileID: 2120033839}
   m_Father: {fileID: 903192609}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25444,7 +25445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &475458463
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26604,7 +26605,7 @@ GameObject:
   - component: {fileID: 503759787}
   - component: {fileID: 503759786}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SnowManSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26652,8 +26653,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -26911,7 +26912,7 @@ GameObject:
   - component: {fileID: 507801779}
   - component: {fileID: 507801778}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Ice Gloem Skin Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26959,8 +26960,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -27227,7 +27228,7 @@ GameObject:
   - component: {fileID: 512328580}
   - component: {fileID: 512328579}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SelectSkinBotText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27731,7 +27732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &523370598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28456,10 +28457,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -770}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &533491468
 MonoBehaviour:
@@ -31671,7 +31672,7 @@ GameObject:
   - component: {fileID: 637037166}
   - component: {fileID: 637037165}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TophatSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31717,8 +31718,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: tophat
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -34024,7 +34025,7 @@ GameObject:
   - component: {fileID: 691983041}
   - component: {fileID: 691983040}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MovementButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34046,8 +34047,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: 11.24}
-  m_SizeDelta: {x: 376.89093, y: 54.52063}
+  m_AnchoredPosition: {x: -38.8, y: 10.6}
+  m_SizeDelta: {x: 434.04236, y: 73.15701}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691983040
 MonoBehaviour:
@@ -34106,7 +34107,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -34116,7 +34117,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -34844,7 +34845,7 @@ GameObject:
   - component: {fileID: 711531692}
   - component: {fileID: 711531691}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: BoneSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34892,8 +34893,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -35671,8 +35672,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 37.5, y: 47.3}
-  m_SizeDelta: {x: 125.49478, y: 74.70487}
+  m_AnchoredPosition: {x: 41.42, y: 47.3}
+  m_SizeDelta: {x: 133.33765, y: 74.704994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &732295599
 MonoBehaviour:
@@ -35695,8 +35696,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Achievment Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -35722,8 +35723,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 17.62
-  m_fontSizeBase: 17.62
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -36019,10 +36020,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -350}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754484488
 MonoBehaviour:
@@ -44230,10 +44231,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -560}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &847010894
 MonoBehaviour:
@@ -45539,10 +45540,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -1190}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890131052
 MonoBehaviour:
@@ -45824,7 +45825,7 @@ RectTransform:
   m_GameObject: {fileID: 903192608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 433487706}
   - {fileID: 1386064313}
@@ -45834,7 +45835,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -24, y: -8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &904716024
@@ -47022,7 +47023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 246.7, y: -113.9}
+  m_AnchoredPosition: {x: 246.2, y: -124.12}
   m_SizeDelta: {x: 159.28687, y: 48.539246}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &956118978
@@ -47762,7 +47763,7 @@ GameObject:
   - component: {fileID: 972589959}
   - component: {fileID: 972589958}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PlantSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47810,8 +47811,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -48790,8 +48791,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26, y: 11.24}
-  m_SizeDelta: {x: 181.57483, y: 45.393707}
+  m_AnchoredPosition: {x: -15.864, y: 14.7}
+  m_SizeDelta: {x: 423.76596, y: 75.07079}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999295650
 MonoBehaviour:
@@ -48848,7 +48849,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -48858,7 +48859,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -48925,7 +48926,7 @@ GameObject:
   - component: {fileID: 1000272750}
   - component: {fileID: 1000272749}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: BAckButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49856,10 +49857,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -2030}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1018228589
 MonoBehaviour:
@@ -51741,7 +51742,7 @@ GameObject:
   - component: {fileID: 1075014401}
   - component: {fileID: 1075014400}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: WizardSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51789,8 +51790,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -52338,7 +52339,7 @@ GameObject:
   - component: {fileID: 1081741691}
   - component: {fileID: 1081741690}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ClockworkSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52386,8 +52387,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -53094,10 +53095,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -1400}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1118897542
 MonoBehaviour:
@@ -54004,7 +54005,7 @@ GameObject:
   - component: {fileID: 1137303913}
   - component: {fileID: 1137303912}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DefaultskinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54050,8 +54051,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Default
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -56267,10 +56268,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -140}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1196949050
 GameObject:
@@ -58061,7 +58062,7 @@ GameObject:
   - component: {fileID: 1237876857}
   - component: {fileID: 1237876856}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: AstralTravelerSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58110,8 +58111,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -58154,7 +58155,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 7
+  m_firstOverflowCharacterIndex: 16
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -58183,7 +58184,7 @@ MonoBehaviour:
     spaceCount: 3
     wordCount: 2
     linkCount: 0
-    lineCount: 3
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -59968,10 +59969,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -2240}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1303005621
 MonoBehaviour:
@@ -60800,7 +60801,7 @@ GameObject:
   - component: {fileID: 1326135719}
   - component: {fileID: 1326135718}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: HowToPlayTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60822,8 +60823,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 17, y: 147}
-  m_SizeDelta: {x: -1192.9255, y: -540.25024}
+  m_AnchoredPosition: {x: -5.299988, y: 152.6}
+  m_SizeDelta: {x: -1237.603, y: -551.4197}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1326135718
 MonoBehaviour:
@@ -60846,8 +60847,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: HOW TO PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -60911,7 +60912,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -391.96866, y: 10.505458, z: -396.43982, w: 3.2527347}
+  m_margin: {x: -436.64618, y: 0.7322289, z: -446.70206, w: 3.2527347}
   m_textInfo:
     textComponent: {fileID: 1326135718}
     characterCount: 11
@@ -63933,7 +63934,7 @@ GameObject:
   - component: {fileID: 1420889912}
   - component: {fileID: 1420889911}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SlimeSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63981,8 +63982,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -64908,7 +64909,7 @@ GameObject:
   - component: {fileID: 1451919110}
   - component: {fileID: 1451919109}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ImpSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64956,8 +64957,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -68686,10 +68687,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -1610}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556494334
 MonoBehaviour:
@@ -69305,22 +69306,54 @@ MonoBehaviour:
   - Necesarry Expenses
   - Thats not how it happened
   - Flawless Boss
+  "Espa\xF1ol_AchivementNames":
+  - "Llama de la librer\xEDa"
+  - Hueso de mazmorra
+  - Cristal de hielo
+  - Hoja afilada
+  - Engranaje Giratorio
+  - Final
+  - Millonario
+  - Acumulador de cristales
+  - Empoderado
+  - Maestro de hechizos
+  - Mago definitivo
+  - Cazador de monstruos
+  - Gastos necesarios
+  - "asi no fue como pas\xF3"
+  - Jefe perfecto
   AchivementDescriptions:
   - defeated the book wyrm
   - defeated the goblin mage
   - defeated the frost yeti
-  - thefeated the gigant  carnivorous plant
+  - defeated the gigant  carnivorous plant
   - defeated the clockwork grffin
   - defeated the mage
   - acumulated  1000 gold in a single run
   - acumulated 500 crystals
   - Bought All PowerUps for one run
   - Have one legendary spell equiped
-  - Have two legendary spells equiped
+  - Have two legendary spells equiped at the same time
   - Killed 400 monsters
   - spend over 1000 gold
   - died 50 times
   - kill a boss while having full health
+  "Espa\xF1ol_AchivementDescriptions":
+  - "Derrotado el dragon de la librer\xEDa"
+  - derrotado el gobling mago
+  - derrotado el yeti de las nieves
+  - derrotado la planta carnivora gigante
+  - "derrotado el grifo de relojer\xEDa"
+  - derrotado el mago
+  - Acumulado 1000 monedas de oro en una partida
+  - Acumulado 500 cristales
+  - compraste todos los power ups para una sola partida
+  - equipaste un hechizo legendario
+  - equipaste dos hechizos legendarios al mismo tiempo
+  - mataste 400 monstruos
+  - gastaste mas de 1000 de oro
+  - moriste mas de 50 veces
+  - mataste a un boss teniendo toda la vida
   AchievementImage: {fileID: 227486171}
   AchievmentName: {fileID: 732295599}
   AchievmentDescription: {fileID: 1779809174}
@@ -69490,8 +69523,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.65, y: -54.35}
-  m_SizeDelta: {x: 228.29599, y: 73.108376}
+  m_AnchoredPosition: {x: -3, y: -39.9}
+  m_SizeDelta: {x: 227.77097, y: 49.48168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571093598
 MonoBehaviour:
@@ -69512,10 +69545,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Description
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -69582,10 +69615,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1571093598}
-    characterCount: 8
+    characterCount: 11
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -70473,7 +70506,6 @@ MonoBehaviour:
   UnlockDescription: {fileID: 1571093598}
   CrystalCounter: {fileID: 1576984862}
   buybutton: {fileID: 956118976}
-  GS: {fileID: 0}
 --- !u!1 &1583703716
 GameObject:
   m_ObjectHideFlags: 0
@@ -70617,7 +70649,7 @@ GameObject:
   - component: {fileID: 1584869180}
   - component: {fileID: 1584869179}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Skin Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70639,8 +70671,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000050863, y: 179.2}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 8.4, y: 180.88}
+  m_SizeDelta: {x: 268.70706, y: 46.635925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1584869179
 MonoBehaviour:
@@ -71847,10 +71879,10 @@ RectTransform:
   m_Father: {fileID: 1836368918}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -1820}
+  m_SizeDelta: {x: 300, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1623117455
 MonoBehaviour:
@@ -73458,6 +73490,7 @@ MonoBehaviour:
   level4Text: {fileID: 2035186992}
   UpgradePowerText: {fileID: 1243985186}
   UpgradePowerCrystalText: {fileID: 1958510379}
+  UpgradePowerMaxLevelText: {fileID: 209286742}
   DungeonStartText: {fileID: 1780012829}
   DungeonStartDescriptionText: {fileID: 1185894876}
   DungeonStartCostText: {fileID: 1839559640}
@@ -73513,6 +73546,47 @@ MonoBehaviour:
   RuneSlot2Unequip: {fileID: 1285764845}
   RuneSlot1Select: {fileID: 838065713}
   RuneSlot2Select: {fileID: 1079607963}
+  SkinTitle: {fileID: 1584869179}
+  DefaultSkinText: {fileID: 1137303912}
+  DragonFireSkinText: {fileID: 1869812164}
+  BoneSkinText: {fileID: 711531691}
+  IceGolemSkinText: {fileID: 507801778}
+  PlantSkinText: {fileID: 972589958}
+  ClockWorkSkinText: {fileID: 1081741690}
+  ShadowWizardSkinText: {fileID: 1767884125}
+  TophatSkinText: {fileID: 637037165}
+  AngelSkinText: {fileID: 2073398265}
+  ImpSkinText: {fileID: 1451919109}
+  SnowmanSkinText: {fileID: 503759786}
+  WizardSkinText: {fileID: 1075014400}
+  AstralTravelerSkinText: {fileID: 1237876856}
+  SlimeSkinText: {fileID: 1420889911}
+  AlienSkinText: {fileID: 2027714656}
+  AssasinBlackSkinText: {fileID: 186321637}
+  AssasinWhiteSkinText: {fileID: 153675087}
+  FoxSkinText: {fileID: 20768439}
+  IceCreamSkinText: {fileID: 2016132083}
+  MechSkinText: {fileID: 2007065480}
+  BackButtonSkinMenu: {fileID: 1000272749}
+  buySkinButton: {fileID: 2011642596}
+  selectButton1Text: {fileID: 1989481357}
+  selectButton2Text: {fileID: 512328579}
+  AchievmentTitle: {fileID: 186322145}
+  AchivementBackButton: {fileID: 1439328355}
+  HowToPlayTitle: {fileID: 1326135718}
+  MovmentHowToPlayButton: {fileID: 691983040}
+  PowersHowToPlayButton: {fileID: 39171998}
+  BackHowToPlayButton: {fileID: 999295650}
+  English_HowToPlayMovmentSprite: {fileID: 21300000, guid: 3934b9b097f704feaa04d55e99c4259e,
+    type: 3}
+  English_HowToPlayPowersSpirte: {fileID: 21300000, guid: c3faa447478e543e18402bd7c5308121,
+    type: 3}
+  "Espa\xF1ol_HowToPlayMovmentSprite": {fileID: 21300000, guid: 3f717183008f643c98714745777c4cc0,
+    type: 3}
+  "Espa\xF1ol_HowToPlayPowersSpirte": {fileID: 21300000, guid: 98242dd94892b4e7ea0aa0b077665de6,
+    type: 3}
+  HowToPlayDisplayMovementImage: {fileID: 1503494916}
+  HowToPlayDisplayPowersImage: {fileID: 347372423}
 --- !u!1 &1672257298
 GameObject:
   m_ObjectHideFlags: 0
@@ -74398,7 +74472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 795.0006, y: 0}
+  m_AnchoredPosition: {x: 91.23069, y: 0.0000076293945}
   m_SizeDelta: {x: 1590, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1724935419
@@ -76059,7 +76133,7 @@ GameObject:
   - component: {fileID: 1767884126}
   - component: {fileID: 1767884125}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ShadowWizardSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76107,8 +76181,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -76151,7 +76225,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 7
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -76180,7 +76254,7 @@ MonoBehaviour:
     spaceCount: 2
     wordCount: 2
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -76457,8 +76531,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.37, y: -29.695}
-  m_SizeDelta: {x: 201.22568, y: 79.28489}
+  m_AnchoredPosition: {x: -0.37, y: -31.31}
+  m_SizeDelta: {x: 201.22568, y: 82.514305}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1779809174
 MonoBehaviour:
@@ -76481,8 +76555,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Achievment description
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -78313,7 +78387,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -709}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 1867.2947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1836368919
 MonoBehaviour:
@@ -79143,7 +79217,7 @@ GameObject:
   - component: {fileID: 1869812165}
   - component: {fileID: 1869812164}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DragonFireSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79191,8 +79265,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -82933,7 +83007,7 @@ GameObject:
   - component: {fileID: 1972748893}
   - component: {fileID: 1972748892}
   m_Layer: 0
-  m_Name: Button
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83716,7 +83790,7 @@ GameObject:
   - component: {fileID: 1989481358}
   - component: {fileID: 1989481357}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SelectSkinTopText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89150,7 +89224,7 @@ GameObject:
   - component: {fileID: 2007065481}
   - component: {fileID: 2007065480}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MechSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89196,8 +89270,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Mech
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -89538,7 +89612,7 @@ GameObject:
   - component: {fileID: 2011642597}
   - component: {fileID: 2011642596}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: BuyButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89769,7 +89843,7 @@ GameObject:
   - component: {fileID: 2016132084}
   - component: {fileID: 2016132083}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: IceCreamSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89817,8 +89891,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -90467,7 +90541,7 @@ GameObject:
   - component: {fileID: 2027714657}
   - component: {fileID: 2027714656}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: AlienSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90513,8 +90587,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Alien
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -91358,8 +91432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4813783658527170034, guid: baa4ae8a7b7db426988755d411f8d409,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1162c2bf8ea4b4caabe0a7e8e47939c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -92297,7 +92370,7 @@ GameObject:
   - component: {fileID: 2073398266}
   - component: {fileID: 2073398265}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: AngelSkinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92345,8 +92418,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e8b0cb7edf1844f63adf5007c5402d1c, type: 2}
-  m_sharedMaterial: {fileID: 5062563752071985503, guid: e8b0cb7edf1844f63adf5007c5402d1c,
+  m_fontAsset: {fileID: 11400000, guid: a23bf388a204e4d9e8524915128cb254, type: 2}
+  m_sharedMaterial: {fileID: -3146381450991195316, guid: a23bf388a204e4d9e8524915128cb254,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -94067,6 +94140,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118124163}
+  m_CullTransparentMesh: 0
+--- !u!1 &2120033838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120033839}
+  - component: {fileID: 2120033841}
+  - component: {fileID: 2120033840}
+  m_Layer: 5
+  m_Name: Border
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2120033839
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120033838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 433487706}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -11.02, y: -30.198}
+  m_SizeDelta: {x: 293.28265, y: 255.10083}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2120033840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120033838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 5104650103280420013, guid: 246a71b6200b141b9b268644b26f8a33,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2120033841
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120033838}
   m_CullTransparentMesh: 0
 --- !u!1 &2120490472
 GameObject:

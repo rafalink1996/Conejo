@@ -18,14 +18,25 @@ public class LanguageManager : MonoBehaviour
     public TextMeshProUGUI StoreTitle, PowerUpsTitle, ManaJarText, CoinX2text, ExtraHeartsText, PoertalBoostText, FenixFeatherText, RuneText, BackButtonStoreText; // Main texts
     public TextMeshProUGUI CarrotPowerText, EarShieldText, RadishMissleText, KickReflectText, MagicLaserText; // Powers
     public TextMeshProUGUI GetCrystalText, WatchAdText, WatchAdCrystaltext, WhatchAdBackButtonText, WatchButtonText, CongratulationsText, rewardCrystalText, CollectText; // timedReward
-    public TextMeshProUGUI DamageText1, DamageText2, DamageText3, DamageText4, level1Text, level2Text, level3Text, level4Text, UpgradePowerText, UpgradePowerCrystalText; // UpgradePowes
+    public TextMeshProUGUI DamageText1, DamageText2, DamageText3, DamageText4, level1Text, level2Text, level3Text, level4Text, UpgradePowerText, UpgradePowerCrystalText, UpgradePowerMaxLevelText; // UpgradePowes
     public TextMeshProUGUI DungeonStartText, DungeonStartDescriptionText,DungeonStartCostText, DungeonStartCrystals, DungeonStartCoins, DungeonStartBackButton, DungeonStartBuyButton; //DungeonStart
     public TextMeshProUGUI IceCaveStartText, IceCaveStartDescriptionText, IceCaveStartCostText, IceCaveStartCrystals, IceCaveStartCoins, IceCaveStartBackButton, IceCaveStartBuyButton; //Ice caveStart
     public TextMeshProUGUI JungleStartText, JungleStartDescriptionText, JungleStartCostText, JungleStartCrystals, JungleStartCoins, JungleStartBackButton, JungleStartBuyButton; // Jungle Start
     public TextMeshProUGUI PortalRoomStartText, PortalRoomStartDescriptionText, PortalRoomStartCostText, PortalRoomStartCrystals, PortalRoomStartCoins, PortalRoomStartBackButton, PortalRoomStartBuyButton; //Portal roomStart
+    //Texts RuneForge
     public TextMeshProUGUI RuneforgeTitle, RuneforgeBackButtonText, RuneName1, RuneName2, RuneName3, RuneName4, RuneName5, RuneName6, RuneName7, RuneName8, RuneName9, RuneName10, RuneDescription1, // RuneForge
                            RuneDescription2, RuneDescription3, RuneDescription4, RuneDescription5, RuneDescription6, RuneDescription7, RuneDescription8, RuneDescription9, RuneDescription10, EquipedRunes,
                            RuneSlot1Unequip, RuneSlot2Unequip, RuneSlot1Select, RuneSlot2Select;
+    //texts Skin Menú
+    public TextMeshProUGUI SkinTitle, DefaultSkinText, DragonFireSkinText, BoneSkinText, IceGolemSkinText, PlantSkinText, ClockWorkSkinText, ShadowWizardSkinText, TophatSkinText, AngelSkinText, ImpSkinText, SnowmanSkinText,
+                           WizardSkinText, AstralTravelerSkinText, SlimeSkinText, AlienSkinText, AssasinBlackSkinText, AssasinWhiteSkinText, FoxSkinText, IceCreamSkinText, MechSkinText, BackButtonSkinMenu, buySkinButton, selectButton1Text, selectButton2Text;
+    // AchivementMenú
+    public TextMeshProUGUI AchievmentTitle, AchivementBackButton;
+    //HowToPlay
+    public TextMeshProUGUI HowToPlayTitle, MovmentHowToPlayButton, PowersHowToPlayButton, BackHowToPlayButton;
+    public Sprite English_HowToPlayMovmentSprite, English_HowToPlayPowersSpirte, Español_HowToPlayMovmentSprite, Español_HowToPlayPowersSpirte;
+    public Image HowToPlayDisplayMovementImage, HowToPlayDisplayPowersImage;
+
 
     //strings language
     //English **********************
@@ -78,6 +89,7 @@ public class LanguageManager : MonoBehaviour
     string English_LevelText3 = "Level 3";
     string English_LevelText4 = "Level 4";
     string English_UpgradePowerText = "Upgrade";
+    string English_MaxLevelText = "Max Level";
 
     string English_BuyButton = "buy";
 
@@ -109,7 +121,7 @@ public class LanguageManager : MonoBehaviour
     string English_EquipedRunes = "Equiped Runes";
 
     string English_RuneSlotUnequip = "unequip";
-    string English_RuneSlotselect = "Select";
+    string English_Select = "Select";
 
 
 
@@ -136,6 +148,36 @@ public class LanguageManager : MonoBehaviour
     string English_RuneDescription10 = "gives you one random power up when starting a new run";
 
 
+    string English_DefaultSkin = "Default";
+    string English_DragonFireSkin = "Dragon Fire";
+    string English_BoneSkin = "Bone";
+    string English_IceGolemSkin = "Ice Golem";
+    string English_PlantSkin = "Plant";
+    string English_ClokworkSkin = "Clokwork";
+    string English_ShadowWizardSkin = "Shadow Wizard";
+    string English_TophatSkin = "Tophat";
+    string English_AngelSkin = "Angel";
+    string English_ImpSkin = "Imp";
+    string English_SnowmanSkin = "Snowman";
+    string English_WizardSkin = "Wizard";
+    string English_AstralTravelerSKin = "Astral Traveler";
+    string English_SlimeSkin = "Slime";
+    string English_AlienSkin = "Alien";
+    string English_AssasinBlackSkin = "Assassin Black";
+    string English_AssasinWhiteSkin = "Assassin White";
+    string English_FoxSkin = "Fox";
+    string English_IceCreamSkin = "Ice Cream";
+    string English_MechSkin = "Mech";
+
+    // achievment menú
+    string English_Achievments = "Achievements";
+
+    //HowToPlay
+
+    string English_HowToPlay = "How to Play";
+    string English_MovemntHowToPlay = "Movement";
+    string English_PowersHowToPlay = "Powers";
+    
 
 
 
@@ -151,10 +193,10 @@ public class LanguageManager : MonoBehaviour
     string Español_NewRunButton = "Nueva Partida";
     string Español_StoreButton = "Tienda";
     string Español_SkinsButton = "Aspectos";
-    string Español_HowToPlayButton = "Como Jugar";
+    string Español_HowToPlayButton = "Cómo Jugar";
 
     string Español_OptionsTitle = "Opciones";
-    string Español_Music = "Musica";
+    string Español_Music = "Música";
     string Español_Sound = "Sonido";
     string Español_Notifications = "Notificaciones";
     string Español_Language = "Lenguaje";
@@ -170,7 +212,7 @@ public class LanguageManager : MonoBehaviour
     string Español_FenixFeatherText = "Pluma de fenix";
     string Español_RuneButton = "Runas";
 
-    string Español_CarrotPower = "Missíl zanahoria";
+    string Español_CarrotPower = "Misil zanahoria";
     string Español_EarShieldPower = "Escudo Oreja";
     string Español_RadishMisslePower = "Misil Rábano";
     string Español_KickReflectPower = "Patada Reflectiva";
@@ -192,8 +234,9 @@ public class LanguageManager : MonoBehaviour
     string Español_LevelText3 = "Nivel  3";
     string Español_LevelText4 = "Nivel  4";
     string Español_UpgradePowerText = "Mejorar";
+    string Español_MaxLevelText = "Nivel Máximo";
 
-    string Español_LevelStartBuyButton = "Comprar";
+    string Español_BuyButton = "Comprar";
     string Español_LevelSelectCostText = "Costo:";
 
     string Español_DungeonStartText = "Comienzo Mazmorra";
@@ -222,7 +265,7 @@ public class LanguageManager : MonoBehaviour
     string Español_EquipedRunes = "Runas equipadas";
 
     string Español_RuneSlotUnequip = "Desequipar";
-    string Español_RuneSlotselect = "seleccionar";
+    string Español_Select = "seleccionar";
 
     string Español_RuneName1 = "Runa Flotar";
     string Español_RuneName2 = "Runa Caida";
@@ -244,7 +287,38 @@ public class LanguageManager : MonoBehaviour
     string Español_RuneDescription7 = "Te da mas monedas al llegar a la tienda";
     string Español_RuneDescription8 = "la primera compra en la tienda de monedas esta a mitad de precio";
     string Español_RuneDescription9 = "Los enemigos aparecen con menos vida";
-    string Español_RuneDescription10 = "te da un power up random al comenzar un juego";
+    string Español_RuneDescription10 = "te da un power up al azar cuendo empiezas un juego";
+
+    string Español_DefaultSkin = "Normal";
+    string Español_DragonFireSkin = "Fuego de dragón";
+    string Español_BoneSkin = "Hueso";
+    string Español_IceGolemSkin = "Golem de hielo";
+    string Español_PlantSkin = "Planta";
+    string Español_ClokworkSkin = "Relojería";
+    string Español_ShadowWizardSkin = "Mago de sombras";
+    string Español_TophatSkin = "Sombrero de copa";
+    string Español_AngelSkin = "Angel";
+    string Español_ImpSkin = "Diablillo";
+    string Español_SnowmanSkin = "Hombre de nieve";
+    string Español_WizardSkin = "Mago";
+    string Español_AstralTravelerSKin = "Viajero Astral";
+    string Español_SlimeSkin = "Slime";
+    string Español_AlienSkin = "Alien";
+    string Español_AssasinBlackSkin = "Asesino negro";
+    string Español_AssasinWhiteSkin = "Asesino blanco";
+    string Español_FoxSkin = "Zorro";
+    string Español_IceCreamSkin = "Paleta";
+    string Español_MechSkin = "Mech";
+
+    // logros
+
+    string Español_Achievments = "Logros";
+
+    //Como Jugar
+
+    string Español_HowToPlay = "Cómo Jugar";
+    string Español_MovemntHowToPlay = "Movimiento";
+    string Español_PowersHowToPlay = "Poderes";
 
 
 
@@ -318,6 +392,7 @@ public class LanguageManager : MonoBehaviour
                 level4Text.text = English_LevelText4;
                 UpgradePowerText.text = English_UpgradePowerText;
                 UpgradePowerCrystalText.text = English_CrystalText;
+                UpgradePowerMaxLevelText.text = English_MaxLevelText;
 
                     //level select
 
@@ -360,8 +435,8 @@ public class LanguageManager : MonoBehaviour
                 RuneSlot1Unequip.text = English_RuneSlotUnequip;
                 RuneSlot2Unequip.text = English_RuneSlotUnequip;
 
-                RuneSlot1Select.text = English_RuneSlotselect;
-                RuneSlot2Select.text = English_RuneSlotselect;
+                RuneSlot1Select.text = English_Select;
+                RuneSlot2Select.text = English_Select;
 
                 RuneforgeBackButtonText.text = English_BackButton;
 
@@ -386,6 +461,51 @@ public class LanguageManager : MonoBehaviour
                 RuneDescription8.text = English_RuneDescription8;
                 RuneDescription9.text = English_RuneDescription9;
                 RuneDescription10.text = English_RuneDescription10;
+
+                // Skin menu
+
+                SkinTitle.text = English_SkinsButton;
+                BackButtonSkinMenu.text = English_BackButton;
+                buySkinButton.text = English_BuyButton;
+                selectButton1Text.text = English_Select; selectButton1Text.fontSize = 14;
+                selectButton2Text.text = English_Select; selectButton2Text.fontSize = 14;
+
+                DefaultSkinText.text = English_DefaultSkin;
+                DragonFireSkinText.text = English_DragonFireSkin;
+                BoneSkinText.text = English_BoneSkin;
+                IceGolemSkinText.text = English_IceGolemSkin;
+                PlantSkinText.text = English_PlantSkin;
+                ClockWorkSkinText.text = English_ClokworkSkin;
+                ShadowWizardSkinText.text = English_ShadowWizardSkin;
+                TophatSkinText.text = English_TophatSkin;
+                AngelSkinText.text = English_AngelSkin;
+                ImpSkinText.text = English_ImpSkin;
+                SnowmanSkinText.text = English_SnowmanSkin;
+                WizardSkinText.text = English_WizardSkin;
+                AstralTravelerSkinText.text = English_AstralTravelerSKin;
+                SlimeSkinText.text = English_SlimeSkin;
+                AlienSkinText.text = English_AlienSkin;
+                AssasinBlackSkinText.text = English_AssasinBlackSkin;
+                AssasinWhiteSkinText.text = English_AssasinWhiteSkin;
+                FoxSkinText.text = English_FoxSkin;
+                IceCreamSkinText.text = English_IceCreamSkin;
+                MechSkinText.text = English_MechSkin;
+
+                //Achievemnt menú
+
+                AchievmentTitle.text = English_Achievments;
+                AchivementBackButton.text = English_BackButton;
+
+                //HowToPlay
+
+                HowToPlayTitle.text = English_HowToPlay;
+                PowersHowToPlayButton.text = English_PowersHowToPlay;
+                MovmentHowToPlayButton.text = English_MovemntHowToPlay;
+                BackHowToPlayButton.text = English_BackButton;
+                HowToPlayDisplayMovementImage.sprite = English_HowToPlayMovmentSprite;
+                HowToPlayDisplayPowersImage.sprite = English_HowToPlayPowersSpirte;
+
+
 
 
 
@@ -449,6 +569,7 @@ public class LanguageManager : MonoBehaviour
                 level4Text.text = Español_LevelText4;
                 UpgradePowerText.text = Español_UpgradePowerText;
                 UpgradePowerCrystalText.text = Español_CrystalText;
+                UpgradePowerMaxLevelText.text = Español_MaxLevelText;
 
                 // comienzo de nivel
 
@@ -457,7 +578,7 @@ public class LanguageManager : MonoBehaviour
                 DungeonStartCoins.text = Español_DungeonStartCoins;
                 DungeonStartCostText.text = Español_LevelSelectCostText;
                 DungeonStartCrystals.text = Español_DungeonStartCrystals;
-                DungeonStartBuyButton.text = Español_LevelStartBuyButton;
+                DungeonStartBuyButton.text = Español_BuyButton;
                 DungeonStartBackButton.text = Español_BackButton;
 
                 IceCaveStartText.text = Español_IceCaveStartText;
@@ -465,7 +586,7 @@ public class LanguageManager : MonoBehaviour
                 IceCaveStartCoins.text = Español_IceCaveStartCoins;
                 IceCaveStartCostText.text = Español_LevelSelectCostText;
                 IceCaveStartCrystals.text = Español_IceCaveStartCrystals;
-                IceCaveStartBuyButton.text = Español_LevelStartBuyButton;
+                IceCaveStartBuyButton.text = Español_BuyButton;
                 IceCaveStartBackButton.text = Español_BackButton;
 
                 JungleStartText.text = Español_JungleStartText;
@@ -473,7 +594,7 @@ public class LanguageManager : MonoBehaviour
                 JungleStartCoins.text = Español_JungleStartCoins;
                 JungleStartCostText.text = Español_LevelSelectCostText;
                 JungleStartCrystals.text = Español_JungleStartCrystals;
-                JungleStartBuyButton.text = Español_LevelStartBuyButton;
+                JungleStartBuyButton.text = Español_BuyButton;
                 JungleStartBackButton.text = Español_BackButton;
 
                 PortalRoomStartText.text = Español_PortalRoomStartText;
@@ -481,7 +602,7 @@ public class LanguageManager : MonoBehaviour
                 PortalRoomStartCoins.text = Español_PortalRoomStartCoins;
                 PortalRoomStartCostText.text = Español_LevelSelectCostText;
                 PortalRoomStartCrystals.text = Español_PortalRoomStartCrystals;
-                PortalRoomStartBuyButton.text = Español_LevelStartBuyButton;
+                PortalRoomStartBuyButton.text = Español_BuyButton;
                 PortalRoomStartBackButton.text = Español_BackButton;
 
                 // Forja de runas
@@ -491,8 +612,8 @@ public class LanguageManager : MonoBehaviour
                 RuneSlot1Unequip.text = Español_RuneSlotUnequip;
                 RuneSlot2Unequip.text = Español_RuneSlotUnequip;
 
-                RuneSlot1Select.text = Español_RuneSlotselect;
-                RuneSlot2Select.text = Español_RuneSlotselect;
+                RuneSlot1Select.text = Español_Select;
+                RuneSlot2Select.text = Español_Select;
 
                 RuneforgeBackButtonText.text = Español_BackButton;
 
@@ -517,6 +638,48 @@ public class LanguageManager : MonoBehaviour
                 RuneDescription8.text = Español_RuneDescription8;
                 RuneDescription9.text = Español_RuneDescription9;
                 RuneDescription10.text = Español_RuneDescription10;
+
+                SkinTitle.text = Español_SkinsButton;
+                BackButtonSkinMenu.text = Español_BackButton;
+                buySkinButton.text = Español_BuyButton;
+                selectButton1Text.text = Español_Select; selectButton1Text.fontSize = 8;
+                selectButton2Text.text = Español_Select; selectButton2Text.fontSize = 8;
+
+                DefaultSkinText.text = Español_DefaultSkin;
+                DragonFireSkinText.text = Español_DragonFireSkin;
+                BoneSkinText.text = Español_BoneSkin;
+                IceGolemSkinText.text = Español_IceGolemSkin;
+                PlantSkinText.text = Español_PlantSkin;
+                ClockWorkSkinText.text = Español_ClokworkSkin;
+                ShadowWizardSkinText.text = Español_ShadowWizardSkin;
+                TophatSkinText.text = Español_TophatSkin;
+                AngelSkinText.text = Español_AngelSkin;
+                ImpSkinText.text = Español_ImpSkin;
+                SnowmanSkinText.text = Español_SnowmanSkin;
+                WizardSkinText.text = Español_WizardSkin;
+                AstralTravelerSkinText.text = Español_AstralTravelerSKin;
+                SlimeSkinText.text = Español_SlimeSkin;
+                AlienSkinText.text = Español_AlienSkin;
+                AssasinBlackSkinText.text = Español_AssasinBlackSkin;
+                AssasinWhiteSkinText.text = Español_AssasinWhiteSkin;
+                FoxSkinText.text = Español_FoxSkin;
+                IceCreamSkinText.text = Español_IceCreamSkin;
+                MechSkinText.text = Español_MechSkin;
+
+                //Achievemnt menú
+
+                AchievmentTitle.text = Español_Achievments;
+                AchivementBackButton.text = Español_BackButton;
+
+                //cómo Jugar
+
+                HowToPlayTitle.text = Español_HowToPlay;
+                PowersHowToPlayButton.text = Español_PowersHowToPlay;
+                MovmentHowToPlayButton.text = Español_MovemntHowToPlay;
+                BackHowToPlayButton.text = Español_BackButton;
+                HowToPlayDisplayMovementImage.sprite = Español_HowToPlayMovmentSprite;
+                HowToPlayDisplayPowersImage.sprite = Español_HowToPlayPowersSpirte;
+
 
                 break;
 

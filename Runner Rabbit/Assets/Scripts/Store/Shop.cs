@@ -229,10 +229,21 @@ public class Shop : MonoBehaviour
         Display.SetActive(true);
 
         PowerImage.sprite = power.iconLight;
-        PowerName.text = power.name;
+
+        if (GameStats.stats.LanguageSelect == 0)
+        {
+            PowerName.text = power.name;
+            powerDescription.text = power.description;
+
+        } else if(GameStats.stats.LanguageSelect == 0)
+        {
+            PowerName.text = power.Español_Name;
+            powerDescription.text = power.Español_Description;
+        }
+            
         Manacost.text = power.mana.ToString();
         PowerDamage.text = power.Damage.ToString();
-        powerDescription.text = power.description;
+       
         /*
         Debug.Log(power.name);
         if (GameStats.stats.coins >= power.Cost)
@@ -261,10 +272,19 @@ public class Shop : MonoBehaviour
         Display.SetActive(true);
 
         PowerImage.sprite = power.iconDark;
-        PowerName.text = power.name;
+        if (GameStats.stats.LanguageSelect == 0)
+        {
+            PowerName.text = power.name;
+            powerDescription.text = power.description;
+        } else if (GameStats.stats.LanguageSelect == 1)
+        {
+            PowerName.text = power.Español_Name;
+            powerDescription.text = power.Español_Description;
+        }
+        
         Manacost.text = power.mana.ToString();
         PowerDamage.text = power.Damage.ToString();
-        powerDescription.text = power.description;
+        
         /*
         Debug.Log(power.name);
         if (GameStats.stats.coins >= power.Cost)
