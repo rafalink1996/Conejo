@@ -43,6 +43,9 @@ public class LanguageManager : MonoBehaviour
     public TextMeshProUGUI HowToPlayTitle, MovmentHowToPlayButton, PowersHowToPlayButton, BackHowToPlayButton;
     public Sprite English_HowToPlayMovmentSprite, English_HowToPlayPowersSpirte, Español_HowToPlayMovmentSprite, Español_HowToPlayPowersSpirte;
     public Image HowToPlayDisplayMovementImage, HowToPlayDisplayPowersImage;
+    //Crystal Store
+    public Text NoAdsTitle, RestorePurchaseTitle, CrystalBunch, CrystalPile, CryslatBag, CrystalChest, skinpacktitle;
+    public TextMeshProUGUI NineSkinsDescription;
 
 
     //strings language
@@ -188,6 +191,17 @@ public class LanguageManager : MonoBehaviour
     string English_MovemntHowToPlay = "Movement";
     string English_PowersHowToPlay = "Powers";
 
+    //Crystal Store
+
+    string English_RemoveAds = "Remove Ads";
+    string English_RestorePurchases = "Restore Purchases";
+    string English_CrystalBunch = "Crystal Bunch";
+    string English_CrystalPile = "Crystal Pile";
+    string English_CrystalBag = "Crystal Bag";
+    string English_CrystalChest = "Crystal Chest";
+    string English_SkinPack = "Skin pack";
+    string English_9Skins = "9 skins";
+
 
 
 
@@ -332,6 +346,19 @@ public class LanguageManager : MonoBehaviour
     string Español_HowToPlay = "Cómo Jugar";
     string Español_MovemntHowToPlay = "Movimiento";
     string Español_PowersHowToPlay = "Poderes";
+
+    //Tienda IAP
+
+    string Español_RemoveAds = "Quitar Ads";
+    string Español_RestorePurchases = "Reestablecer compras";
+    string Español_CrystalBunch = "Manojo de cristales";
+    string Español_CrystalPile = "Pila de cristales";
+    string Español_CrystalBag = "Bolsa de cristales";
+    string Español_CrystalChest = "Cofre de Cristales";
+
+    string Español_SkinPack = "Paquete de Aspectos";
+    string Español_9Skins = "9 Aspectos";
+
 
 
 
@@ -531,6 +558,18 @@ public class LanguageManager : MonoBehaviour
                 HowToPlayDisplayPowersImage.sprite = English_HowToPlayPowersSpirte;
 
 
+                //Store IAP
+
+                NoAdsTitle.text = English_RemoveAds;
+                RestorePurchaseTitle.text = English_RestorePurchases;
+                CrystalBunch.text = English_CrystalBunch;
+                CrystalPile.text = English_CrystalPile;
+                CryslatBag.text = English_CrystalBag;
+                CrystalChest.text = English_CrystalChest;
+
+                skinpacktitle.text = English_SkinPack;
+                NineSkinsDescription.text = English_9Skins;
+
 
 
 
@@ -709,6 +748,16 @@ public class LanguageManager : MonoBehaviour
                 BackHowToPlayButton.text = Español_BackButton;
                 HowToPlayDisplayMovementImage.sprite = Español_HowToPlayMovmentSprite;
                 HowToPlayDisplayPowersImage.sprite = Español_HowToPlayPowersSpirte;
+
+                NoAdsTitle.text = Español_RemoveAds;
+                RestorePurchaseTitle.text = Español_RestorePurchases;
+                CrystalBunch.text = Español_CrystalBunch;
+                CrystalPile.text = Español_CrystalPile;
+                CryslatBag.text = Español_CrystalBag;
+                CrystalChest.text = Español_CrystalChest;
+
+                skinpacktitle.text = Español_SkinPack;
+                NineSkinsDescription.text = Español_9Skins;
 
 
                 break;
