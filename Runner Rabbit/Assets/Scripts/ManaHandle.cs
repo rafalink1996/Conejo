@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ManaHandle : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class ManaHandle : MonoBehaviour
     public float CurrentLightMana;
 
     private character Cha;
+
+    public TextMeshProUGUI LightManaQuantityDisplay;
+    public TextMeshProUGUI DarkManaQuantityDisplay;
 
 
 
@@ -55,11 +59,17 @@ public class ManaHandle : MonoBehaviour
 
         DarkManaUsed = GameStats.stats.powerDark.mana;
         LightManaUsed = GameStats.stats.powerLight.mana;
+
+        LightManaQuantityDisplay.text = Mathf.FloorToInt(CurrentLightMana).ToString();
+        DarkManaQuantityDisplay.text = Mathf.FloorToInt(CurrentDarkMana).ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+       
+
         DarkManaBar.value = CurrentDarkMana;
         LightManaBar.value = CurrentLightMana;
 
@@ -99,6 +109,9 @@ public class ManaHandle : MonoBehaviour
         {
             CurrentLightMana = 0;
         }
+
+        LightManaQuantityDisplay.text = Mathf.FloorToInt(CurrentLightMana).ToString();
+        DarkManaQuantityDisplay.text = Mathf.FloorToInt(CurrentDarkMana).ToString();
     }
     public void RequiredDarkMana (float DarkManaRequired)
     {

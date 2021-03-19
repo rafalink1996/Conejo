@@ -611,7 +611,7 @@ public class character : MonoBehaviour
 
 
 
-        mana.RequiredDarkMana(GameStats.stats.lightMana);
+        mana.RequiredDarkMana(GameStats.stats.powerLight.mana);
         if (mana.CurrentDarkMana >= mana.DarkManaUsed && !isUsingPower && !silenced)
         {
             isUsingPower = true;
@@ -627,7 +627,7 @@ public class character : MonoBehaviour
 
     public void LightPowerHold()
     {
-        mana.RequiredDarkMana(GameStats.stats.lightMana);
+        mana.RequiredDarkMana(GameStats.stats.powerLight.mana) ;
         if (mana.CurrentDarkMana >= 1 /*mana.DarkManaUsed*/ && !silenced && !riftSileneced)
         {
 
@@ -675,7 +675,7 @@ public class character : MonoBehaviour
 
     public void DarkPowerHold()
     {
-        mana.RequiredLightMana(GameStats.stats.darkMana);
+        mana.RequiredLightMana(GameStats.stats.powerDark.mana);
         if (mana.CurrentLightMana >= 1 /*mana.LightManaUsed*/  && !silenced && !riftSileneced)
         {
             LaserDark.enabled = true;
@@ -719,7 +719,7 @@ public class character : MonoBehaviour
     {
 
 
-        mana.RequiredLightMana(GameStats.stats.darkMana);
+        mana.RequiredLightMana(GameStats.stats.powerDark.mana);
         if (mana.CurrentLightMana >= mana.LightManaUsed && !isUsingPower && !silenced)
         {
             isUsingPower = true;
