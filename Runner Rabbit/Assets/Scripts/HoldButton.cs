@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
 
-    private bool pointerDown;
+    [SerializeField] private bool pointerDown;
     public UnityEvent OnHoldDown;
     public UnityEvent OnHoldUp;
 
@@ -48,7 +48,7 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     }
 
-    private void Reset()
+    public void Reset()
     {
         pointerDown = false;
     }

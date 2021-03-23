@@ -22,7 +22,7 @@ public class ManaHandle : MonoBehaviour
     public float CurrentDarkMana;
     public float CurrentLightMana;
 
-    private character Cha;
+    public character Cha;
 
     public TextMeshProUGUI LightManaQuantityDisplay;
     public TextMeshProUGUI DarkManaQuantityDisplay;

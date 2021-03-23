@@ -89,8 +89,8 @@ public class StoreStats : MonoBehaviour
             }
         }
 
-        DarkButton.image.sprite = GameStats.stats.darkPowerSprite;
-        LightButton.image.sprite = GameStats.stats.lightPowerSprite;
+        DarkButton.image.sprite = GameStats.stats.powerDark.iconDark;
+        LightButton.image.sprite = GameStats.stats.powerLight.iconLight;
 
     }
 

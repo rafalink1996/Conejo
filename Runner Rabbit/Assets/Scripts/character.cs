@@ -51,7 +51,8 @@ public class character : MonoBehaviour
     public string darkPower;
     public bool silenced;
     public bool shielded;
-    public bool riftSileneced;
+    public bool DarkSilecend;
+    public bool LightSilenced;
     public bool ShieldHealthAbsorb;
 
     public GameObject DamageEffect;
@@ -112,8 +113,10 @@ public class character : MonoBehaviour
     public bool isUsinglaserLight;
 
     public Transform StartLaserPos;
+
     public GameObject StartVFXLight;
     public GameObject EndVFXLight;
+
     public GameObject StartVFXDark;
     public GameObject EndVFXDark;
 
@@ -121,6 +124,7 @@ public class character : MonoBehaviour
 
 
     public bool HoldPower = false;
+
 
 
     public int LaserlayerMask;
@@ -142,6 +146,14 @@ public class character : MonoBehaviour
 
     //debug hold power
     public bool HoldPowerIsOn;
+
+
+
+
+    // debug images
+
+   // public GameObject LightDebugImage;
+   // public GameObject DarkDebugImage;
 
 
 
@@ -222,6 +234,7 @@ public class character : MonoBehaviour
         Health = NumOfHearts;
         endlevel = false;
 
+        //LightLaser
         StartVFXLight.GetComponent<ParticleSystem>().Stop();
         EndVFXLight.GetComponent<ParticleSystem>().Stop();
 
@@ -230,7 +243,18 @@ public class character : MonoBehaviour
         EndVFXLight.SetActive(false);
         LaserLight.enabled = false;
 
-        // set saved Values
+        //DarkLAser
+        StartVFXDark.GetComponent<ParticleSystem>().Stop();
+        EndVFXDark.GetComponent<ParticleSystem>().Stop();
+
+        StartVFXDark.SetActive(false);
+        EndVFXDark.SetActive(false);
+        LaserDark.enabled = false;
+
+
+
+       // DarkDebugImage.SetActive(false);
+       // LightDebugImage.SetActive(false);
 
 
 
@@ -240,6 +264,17 @@ public class character : MonoBehaviour
     void Update()
 
     {
+
+        if (top)
+        {
+            LightSilenced = true;
+            DarkSilecend = false;
+        } else if (!top)
+        {
+
+            LightSilenced = false;
+            DarkSilecend = true;
+        }
 
 
 
@@ -394,13 +429,15 @@ public class character : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("RiftPass");
             CamRipple.RippleEffect();
             StartCoroutine(GetInvulnerableRift());
-            silenced = true;
-            GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Light");
+            
+            GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Dark");
             ButtonDark.SetActive(false);
-            GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Dark");
+            GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Light");
             ButtonLight.SetActive(false);
 
-            DarkPowerHoldStop();
+            //DarkPowerHoldStop();
+            //LightPowerHoldStop();
+
             Button DarkButtonComponent = ButtonDark.GetComponent<Button>();
             Button LightButtonComponent = ButtonLight.GetComponent<Button>();
             if (DarkButtonComponent != null)
@@ -412,7 +449,8 @@ public class character : MonoBehaviour
                 LightButtonComponent.interactable = false;
             }
 
-            riftSileneced = true;
+            
+            
             StartCoroutine(ResetHoldPower());            
 
         }
@@ -517,12 +555,12 @@ public class character : MonoBehaviour
             hasPassedThroughRift = true;
             Instantiate(riftEffect, transform.position, Quaternion.identity);
             StartCoroutine(GetInvulnerableRift());
-
-            if (GameStats.stats.powerDark.id >= 52)
+/*
+            if (GameStats.stats.powerDark.id >= 51)
             {
                 DarkPowerHoldStop();
             }
-            if (GameStats.stats.powerLight.id >= 52)
+            if (GameStats.stats.powerLight.id >= 51)
             {
                 LightPowerHoldStop();
             }
@@ -534,13 +572,16 @@ public class character : MonoBehaviour
             {
                 DarkPowerHoldStop();
             }
+
+*/
             silenced = false;
            GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Light");
            ButtonDark.SetActive(true);
            GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Dark");
            ButtonLight.SetActive(true);
 
-            DarkPowerHoldStop();
+            //LightPowerHoldStop();
+            //DarkPowerHoldStop();
            Button DarkButtonComponent = ButtonDark.GetComponent<Button>();
            Button LightButtonComponent = ButtonLight.GetComponent<Button>();
             if (DarkButtonComponent != null){
@@ -559,19 +600,7 @@ public class character : MonoBehaviour
         {
             silenced = false;
 
-        }
-
-        
-
-
-       
-        
-    }
-
-
-    private void restartPowerButton()
-    {
-
+        }    
     }
     
         
@@ -611,7 +640,7 @@ public class character : MonoBehaviour
 
 
 
-        mana.RequiredDarkMana(GameStats.stats.powerLight.mana);
+        //mana.RequiredDarkMana(GameStats.stats.powerLight.mana);
         if (mana.CurrentDarkMana >= mana.DarkManaUsed && !isUsingPower && !silenced)
         {
             isUsingPower = true;
@@ -627,11 +656,14 @@ public class character : MonoBehaviour
 
     public void LightPowerHold()
     {
-        mana.RequiredDarkMana(GameStats.stats.powerLight.mana) ;
-        if (mana.CurrentDarkMana >= 1 /*mana.DarkManaUsed*/ && !silenced && !riftSileneced)
+        //mana.RequiredDarkMana(GameStats.stats.powerLight.mana) ;
+       
+        if (mana.CurrentDarkMana >= 1 /*mana.DarkManaUsed*/ && !silenced && !LightSilenced)
         {
 
-            animator.SetBool("isUsingPower", true);
+            animator.SetBool("Laser", true);
+
+            //animator.SetBool("isUsingPower", true);
             isUsinglaserLight = true;
             HoldPower = true;
 
@@ -641,12 +673,13 @@ public class character : MonoBehaviour
             
 
 
-            HoldPowerIsOn = true;
+           
 
             LaserLight.enabled = true;
             StartVFXLight.SetActive(true);
             EndVFXLight.SetActive(true);
-            
+           
+
 
         }
         else
@@ -665,32 +698,50 @@ public class character : MonoBehaviour
 
         LaserLight.enabled = false;
         HoldPower = false;
-        HoldPowerIsOn = false;
-        
+
+        isUsinglaserLight = false;
+
+
         animator.SetBool("Laser", false);
         
         StartVFXLight.GetComponent<ParticleSystem>().Stop();
         EndVFXLight.GetComponent<ParticleSystem>().Stop();
+       
+       
+
+
+        GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Light");
+        HoldButton HoldButtonLight = ButtonLight.GetComponent<HoldButton>();
+        HoldButtonLight.Reset();
+
+
     }
 
     public void DarkPowerHold()
     {
-        mana.RequiredLightMana(GameStats.stats.powerDark.mana);
-        if (mana.CurrentLightMana >= 1 /*mana.LightManaUsed*/  && !silenced && !riftSileneced)
+        //mana.RequiredLightMana(GameStats.stats.powerDark.mana);
+        
+        if (mana.CurrentLightMana >= 1 /*mana.LightManaUsed*/  && !silenced && !DarkSilecend)
         {
             LaserDark.enabled = true;
             isUsinglaserLight = false;
             HoldPower = true;
-            animator.SetBool("isUsingPower", true);
+
+            animator.SetBool("Laser", true);
+            //animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id);
             mana.ReduceLightManaHold();
-            HoldPowerIsOn = true;
-            
+
+
            
 
             StartVFXDark.SetActive(true);
             EndVFXDark.SetActive(true);
            
+            
+
+
+
 
 
         }
@@ -705,13 +756,20 @@ public class character : MonoBehaviour
     {
         animator.SetBool("isUsingPower", false);
         //UsedPower(GameStats.stats.powerDark.id);
-        HoldPower = false;
-        HoldPowerIsOn = false;
+
+        isUsinglaserLight = false;
 
         animator.SetBool("Laser", false);
         LaserDark.enabled = false;
         StartVFXDark.GetComponent<ParticleSystem>().Stop();
         EndVFXDark.GetComponent<ParticleSystem>().Stop();
+        HoldPower = false;
+
+        GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Dark");
+        HoldButton HoldButtonDark = ButtonDark.GetComponent<HoldButton>();
+        HoldButtonDark.Reset();
+
+
     }
 
 
@@ -719,7 +777,7 @@ public class character : MonoBehaviour
     {
 
 
-        mana.RequiredLightMana(GameStats.stats.powerDark.mana);
+        //mana.RequiredLightMana(GameStats.stats.powerDark.mana);
         if (mana.CurrentLightMana >= mana.LightManaUsed && !isUsingPower && !silenced)
         {
             isUsingPower = true;
@@ -890,8 +948,10 @@ public class character : MonoBehaviour
 
     IEnumerator ResetHoldPower()
     {
-        yield return new WaitForSeconds(1f);
-        riftSileneced = false;
+        yield return new WaitForSeconds(0.5f);
+     
+        
+
     }
     IEnumerator Death()
     {
@@ -1156,7 +1216,7 @@ public class character : MonoBehaviour
                     int layerMask = 1 << 9;
                     LaserlayerMask = layerMask;
 
-                    animator.SetBool("Laser", true);
+                    //animator.SetBool("Laser", true);
 
                     if (isUsinglaserLight == true)
                     {
@@ -1165,7 +1225,7 @@ public class character : MonoBehaviour
                         LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
-                        Debug.Log("using  hold power light");
+                       // Debug.Log("using  hold power light");
 
                         Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
                         RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
@@ -1176,12 +1236,13 @@ public class character : MonoBehaviour
                         if (hit.collider != null)
                         {
                             LaserLight.SetPosition(1, hit.point);
+                            EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
 
                             if (hit.transform.tag == "Enemy")
                             {
                                 EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(1);
+                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerLight.Damage));
                             }
 
                         }
@@ -1196,7 +1257,7 @@ public class character : MonoBehaviour
                         LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
-                        Debug.Log("using  hold power dark");
+                       // Debug.Log("using  hold power dark");
 
                         Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
                         RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
@@ -1207,12 +1268,13 @@ public class character : MonoBehaviour
                         if (hit.collider != null)
                         {
                             LaserDark.SetPosition(1, hit.point);
+                            EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
 
                             if (hit.transform.tag == "Enemy")
                             {
                                 EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(1);
+                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerDark.Damage));
                             }
 
                         }
@@ -1249,7 +1311,7 @@ public class character : MonoBehaviour
                         LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
-                        Debug.Log("using  hold power light");
+                       // Debug.Log("using  hold power light");
 
                         Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
                         RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
@@ -1260,12 +1322,13 @@ public class character : MonoBehaviour
                         if (hit.collider != null)
                         {
                             LaserLight.SetPosition(1, hit.point);
+                            EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
 
                             if (hit.transform.tag == "Enemy")
                             {
                                 EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(1);
+                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerLight.Damage));
                             }
 
                         }
@@ -1280,7 +1343,7 @@ public class character : MonoBehaviour
                         LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
-                        Debug.Log("using  hold power dark");
+                        //Debug.Log("using  hold power dark");
 
                         Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
                         RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
@@ -1291,12 +1354,13 @@ public class character : MonoBehaviour
                         if (hit.collider != null)
                         {
                             LaserDark.SetPosition(1, hit.point);
+                            EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
 
                             if (hit.transform.tag == "Enemy")
                             {
                                 EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(1);
+                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerDark.Damage));
                             }
 
                         }
@@ -1335,12 +1399,13 @@ public class character : MonoBehaviour
                         if (hit.collider != null)
                         {
                             LaserLight.SetPosition(1, hit.point);
+                            EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
 
                             if (hit.transform.tag == "Enemy")
                             {
                                 EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(1);
+                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerLight.Damage));
                             }
 
                         }
@@ -1366,12 +1431,13 @@ public class character : MonoBehaviour
                         if (hit.collider != null)
                         {
                             LaserDark.SetPosition(1, hit.point);
+                            EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
 
                             if (hit.transform.tag == "Enemy")
                             {
                                 EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(1);
+                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerDark.Damage));
                             }
 
                         }
@@ -1410,12 +1476,13 @@ public class character : MonoBehaviour
                         if (hit.collider != null)
                         {
                             LaserLight.SetPosition(1, hit.point);
+                            EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
 
                             if (hit.transform.tag == "Enemy")
                             {
                                 EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(1);
+                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerLight.Damage));
                             }
                         }
                     }
@@ -1437,12 +1504,13 @@ public class character : MonoBehaviour
                         if (hit.collider != null)
                         {
                             LaserDark.SetPosition(1, hit.point);
+                            EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
 
                             if (hit.transform.tag == "Enemy")
                             {
                                 EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(1);
+                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerDark.Damage));
                             }
 
                         }

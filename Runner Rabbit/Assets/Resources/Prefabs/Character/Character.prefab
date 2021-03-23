@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8128828259596697572}
   - component: {fileID: 918924986278634395}
   - component: {fileID: 984920343657080923}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: EndParticlesDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444707486810626864}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -37.920998, y: 4.564998, z: 0}
-  m_LocalScale: {x: 1, y: 0.29999995, z: 0.29999995}
+  m_LocalPosition: {x: 44.62, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1482764631676686646}
   m_RootOrder: 1
@@ -4898,7 +4898,7 @@ GameObject:
   - component: {fileID: 5852715509423993176}
   - component: {fileID: 7990432666583759947}
   - component: {fileID: 5542540969732874065}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: StartParticlesDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,8 +4913,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561242108868953948}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -51.207993, y: 4.564998, z: 0}
-  m_LocalScale: {x: 1, y: 0.29999995, z: 0.29999995}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1482764631676686646}
   m_RootOrder: 0
@@ -5109,7 +5109,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6745283, g: 0.9902397, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.9326968, b: 0.6745098, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9665,11 +9665,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3542273375664211264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.2, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3542273376215762908}
   - {fileID: 3542273375794030477}
+  - {fileID: 3542273376215762908}
   - {fileID: 1482764631676686646}
   m_Father: {fileID: 3542273375926598914}
   m_RootOrder: 4
@@ -9790,11 +9790,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3542273375794030476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.02, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3542273377416802501}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3542273375891128089
 GameObject:
@@ -9962,6 +9962,9 @@ MonoBehaviour:
   darkPower: 
   silenced: 0
   shielded: 0
+  DarkSilecend: 0
+  LightSilenced: 0
+  ShieldHealthAbsorb: 0
   DamageEffect: {fileID: 8913614718127215492, guid: a1ab28f0a32f14e129a950ceb6acc8cc,
     type: 3}
   BlockEffect: {fileID: 3927825618273981054, guid: 3845948f449224274b194beb277d6118,
@@ -10382,7 +10385,7 @@ GameObject:
   - component: {fileID: 3542273376187445308}
   - component: {fileID: 3542273376187445310}
   - component: {fileID: 3542273376187445309}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: StartParticlesLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10593,7 +10596,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6745283, g: 0.9902397, b: 1, a: 1}
+      maxColor: {r: 0.18396229, g: 0.87325174, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15227,7 +15230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3542273376215762908}
   - component: {fileID: 3542273376215762910}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: LaserLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15242,13 +15245,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3542273376215762907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.84, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3542273376187445308}
   - {fileID: 3542273376818000954}
   m_Father: {fileID: 3542273377416802501}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &3542273376215762910
 LineRenderer:
@@ -15321,7 +15324,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.2216981, g: 0.9519566, b: 1, a: 1}
+      key0: {r: 0.2783019, g: 0.89863783, b: 1, a: 1}
       key1: {r: 0.8426438, g: 0.5707547, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -15413,7 +15416,7 @@ GameObject:
   - component: {fileID: 3542273376818000954}
   - component: {fileID: 3542273376818000956}
   - component: {fileID: 3542273376818000955}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: EndParticlesLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20166,7 +20169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1482764631676686646}
   - component: {fileID: 3710152148847162657}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: LaserDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20181,7 +20184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3801724480796417825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.84, y: -0.14999914, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5852715509423993176}
@@ -20260,7 +20263,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.2216981, g: 0.9519566, b: 1, a: 1}
+      key0: {r: 1, g: 0.82659805, b: 0, a: 1}
       key1: {r: 0.8426438, g: 0.5707547, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

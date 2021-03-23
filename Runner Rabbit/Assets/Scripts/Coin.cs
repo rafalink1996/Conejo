@@ -14,7 +14,11 @@ public class Coin : MonoBehaviour
     {
         FindObjectOfType<TokenSpawner>().SetTokenCount(myTokenCount);
         Destroy(gameObject, 10f);
-        PlayerTarget = GameObject.FindObjectOfType<character>().transform;
+        if (FindObjectOfType<character>() != null)
+        {
+            PlayerTarget = GameObject.FindObjectOfType<character>().transform;
+        }
+        
     }
 
     // Update is called once per frame

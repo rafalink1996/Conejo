@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 public class Lightpower : MonoBehaviour
 {
-    private character Cha;
-    Button button;
-    HoldButton holdbutton;
+    public character Cha;
+    public Button button;
+    public HoldButton holdbutton;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
-        button = GetComponent<Button>();
-        holdbutton = GetComponent<HoldButton>();
-        button.onClick.AddListener(Cha.LightPower);
+        //Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
+        //button = GetComponent<Button>();
+        //holdbutton = GetComponent<HoldButton>();
+        //button.onClick.AddListener(Cha.LightPower);
         button.image.sprite = GameStats.stats.powerLight.iconLight;
 
-
+        /*
         if (GameStats.stats.lightpowerID < 51)
         {
             button.onClick.AddListener(Cha.LightPower);
@@ -32,6 +32,19 @@ public class Lightpower : MonoBehaviour
             holdbutton.OnHoldUp.AddListener(Cha.LightPowerHoldStop);
             print("holdButtonWithLaserLight");
 
+        }
+
+        */
+
+        if (GameStats.stats.powerLight.id < 51)
+        {
+            button.enabled = true;
+            holdbutton.enabled = false;
+        }
+        else if (GameStats.stats.powerLight.id == 51 || GameStats.stats.powerLight.id == 52 || GameStats.stats.powerLight.id == 53 || GameStats.stats.powerLight.id == 54)
+        {
+            button.enabled = false;
+            holdbutton.enabled = true;
         }
     }
 

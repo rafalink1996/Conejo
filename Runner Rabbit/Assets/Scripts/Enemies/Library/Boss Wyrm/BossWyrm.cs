@@ -142,7 +142,7 @@ public class BossWyrm : MonoBehaviour
         if (element == 1)
         {
             GameObject fireBall = Instantiate(Resources.Load("Prefabs/WyrmFireBall") as GameObject);
-            health.health -= 2;
+            health.health -= 20;
             
             fireBall.transform.position = transform.position + new Vector3(-5.755793f, -0.2495456f, 0);
             fireBall.GetComponentInChildren<WyrmFireBall>().sourceTransform = this.transform;
@@ -153,7 +153,7 @@ public class BossWyrm : MonoBehaviour
             GameObject thunderBall = Instantiate(Resources.Load("Prefabs/WyrmThunderBall") as GameObject);
             thunderBall.transform.position = transform.position + new Vector3(-5.755793f, -0.2495456f, 0);
             thunderBall.GetComponentInChildren<WyrmThunderBall>().sourceTransform = this.transform;
-            health.health -= 2;
+            health.health -= 20;
         }
     }
     public void RiftAttack()
@@ -161,12 +161,12 @@ public class BossWyrm : MonoBehaviour
         if (element == 2)
         {
             attacks[0].SetActive(true);
-            health.health -= 1;
+            health.health -= 10;
         }
         if (element == 3)
         {
             attacks[3].SetActive(true);
-            health.health -= 1;
+            health.health -= 10;
         }
     }
     public void Ray()
@@ -174,12 +174,12 @@ public class BossWyrm : MonoBehaviour
         if (element == 1)
         {
             attacks[1].SetActive(true);
-            health.health -= 3;
+            health.health -= 30;
         }
         if (element == 2)
         {
             attacks[2].SetActive(true);
-            health.health -= 1;
+            health.health -= 10;
         }
     }
     void DeactivateCollider()
