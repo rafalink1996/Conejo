@@ -11,6 +11,10 @@ using GoogleMobileAds.Api;
 using GoogleMobileAds.Common;
 using GoogleMobileAds.Mediation;
 using GoogleMobileAds.iOS;
+using GoogleMobileAds.Android;
+using GoogleMobileAds.Editor;
+using GoogleMobileAds.Unity;
+
 
 
 public class AdManager : MonoBehaviour
@@ -43,13 +47,13 @@ public class AdManager : MonoBehaviour
 
     private string adUnitId;
 
-    string IntersticialAD_ID = "ca-app-pub-4145591567952062/3601130590"; //"ca-app-pub-3940256099942544/4411468910"; // IOS = ca-app-pub-4145591567952062/3601130590 ***// *** Android = ca-app-pub-4145591567952062/9052767822
-    string RewardedAD_ID = "ca-app-pub-4145591567952062/2259633924"; //"ca-app-pub-3940256099942544/1712485313"; //IOS = ca-app-pub-4145591567952062/2259633924 ***//*** Android = ca-app-pub-4145591567952062/5433140916
+    string IntersticialAD_ID = "ca-app-pub-3940256099942544/4411468910"; // IOS = ca-app-pub-4145591567952062/3601130590 ***// *** Android = ca-app-pub-4145591567952062/9052767822
+    string RewardedAD_ID = "ca-app-pub-3940256099942544/1712485313"; //IOS = ca-app-pub-4145591567952062/2259633924 ***//*** Android = ca-app-pub-4145591567952062/5433140916
 
     private RewardedAd rewardedAd;
     private InterstitialAd interstitial;
 
-    
+
     public bool probandoAdmob;
 
 
@@ -153,7 +157,7 @@ public class AdManager : MonoBehaviour
 
         if (GameStats.stats.NoAdsBought == false)
         {
-           
+
 
             if (this.rewardedAd.IsLoaded())
             {
@@ -209,7 +213,7 @@ public class AdManager : MonoBehaviour
         else
         {
             BackToMainMenuIntersticial();
-            
+
         }
 
 
@@ -254,7 +258,7 @@ public class AdManager : MonoBehaviour
 
 
     // ADmob Events
-    new 
+    new
     //Rewarded video ads events
 
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
@@ -264,8 +268,11 @@ public class AdManager : MonoBehaviour
 
     public void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
     {
-
+        MonoBehaviour.print(
+            "HandleRewardedAdFailedToLoad event received with message: "
+                             + args.Message);
         Debug.Log("ad failed to load");
+        
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args)
@@ -303,8 +310,12 @@ public class AdManager : MonoBehaviour
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
         Debug.Log("ad failed to load");
-        
+       
         BackToMainMenuIntersticial();
+        MonoBehaviour.print(
+            "HandleRewardedAdFailedToLoad event received with message: "
+                             + args.Message);
+
     }
 
     public void HandleOnAdOpened(object sender, EventArgs args)
@@ -320,9 +331,9 @@ public class AdManager : MonoBehaviour
 
     public void HandleOnAdLeavingApplication(object sender, EventArgs args)
     {
-       
-    }
 
+    }
+    
 }
 
 
