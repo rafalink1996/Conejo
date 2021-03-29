@@ -254,7 +254,7 @@ public class AdManager : MonoBehaviour
 
 
     // ADmob Events
-
+    new 
     //Rewarded video ads events
 
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
