@@ -7353,9 +7353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182f41a75ffc642009d12a539811f551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTargetPlayStore: 0
-  AutomaticIDPlacement: 1
-  isTestAd: 1
   MainMixer: {fileID: 24100000, guid: fc3f455b10db348d094da207e592d7c2, type: 2}
   RewardCoins: 0
   RewardCrystals: 0
@@ -7363,11 +7360,11 @@ MonoBehaviour:
   RewardDisplay1: {fileID: 0}
   RewardDisplay2: {fileID: 0}
   RewardDisplay3: {fileID: 0}
-  revive: 0
   deathscreen: {fileID: 0}
   AdButton: {fileID: 0}
   ConfirmWatchAdObject: {fileID: 0}
   levelLoaderGame: {fileID: 1526805044}
+  probandoAdmob: 0
 --- !u!1 &677475416
 GameObject:
   m_ObjectHideFlags: 0
@@ -13626,7 +13623,7 @@ PrefabInstance:
     - target: {fileID: 3265500892834927530, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: showInterstitialAdCheck
+      value: RequestInterstitial
       objectReference: {fileID: 0}
     - target: {fileID: 3265500893041496508, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
@@ -25867,7 +25864,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[15].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 01e83fb6656fc4e87aaa542f7bf567a4, type: 3}
+      objectReference: {fileID: 8300000, guid: b151369756bd74c51843d7ed80497353, type: 3}
     - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
         type: 3}
       propertyPath: sounds.Array.data[49].name
@@ -26033,6 +26030,11 @@ PrefabInstance:
       propertyPath: sounds.Array.data[15].priority
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b151369756bd74c51843d7ed80497353, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89343ff5d801f460daefffbbfb195a86, type: 3}
 --- !u!1001 &6534509361541004208
