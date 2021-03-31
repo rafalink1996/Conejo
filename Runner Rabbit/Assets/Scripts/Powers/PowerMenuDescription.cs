@@ -194,7 +194,7 @@ public class PowerMenuDescription : MonoBehaviour
         {
             CrystalCost = PowerMenu.CarrotMissleCrystalCost;
             Cost.text = CrystalCost.ToString();
-            if (GameStats.stats.CarrotMissleLevel == 4)
+            if (GameStats.stats.CarrotMissleLevel >= 4)
             {
                 ButtonCrystalText.enabled = false;
                 buttonCrystalImage.enabled = false;
@@ -218,7 +218,7 @@ public class PowerMenuDescription : MonoBehaviour
             CrystalCost = PowerMenu.EarShieldCrystalCost;
             Cost.text = CrystalCost.ToString();
 
-            if (GameStats.stats.EarDefenceLevel == 4)
+            if (GameStats.stats.EarDefenceLevel >= 4)
             {
                 ButtonCrystalText.enabled = false;
                 buttonCrystalImage.enabled = false;
@@ -241,7 +241,7 @@ public class PowerMenuDescription : MonoBehaviour
             CrystalCost = PowerMenu.KickReflectCrystalCost;
             Cost.text = CrystalCost.ToString();
 
-            if (GameStats.stats.KickReflectLevel == 4)
+            if (GameStats.stats.KickReflectLevel >= 4)
             {
                 ButtonCrystalText.enabled = false;
                 buttonCrystalImage.enabled = false;
@@ -264,7 +264,7 @@ public class PowerMenuDescription : MonoBehaviour
             CrystalCost = PowerMenu.RadishtMissleCrystalCost;
             Cost.text = CrystalCost.ToString();
 
-            if (GameStats.stats.RadishMissleLevel == 4)
+            if (GameStats.stats.RadishMissleLevel >= 4)
             {
                 ButtonCrystalText.enabled = false;
                 buttonCrystalImage.enabled = false;
@@ -287,7 +287,7 @@ public class PowerMenuDescription : MonoBehaviour
             CrystalCost = PowerMenu.MagicLaserCrystalCost;
             Cost.text = CrystalCost.ToString();
 
-            if (GameStats.stats.MagicLaserLevel == 4)
+            if (GameStats.stats.MagicLaserLevel >= 4)
             {
                 ButtonCrystalText.enabled = false;
                 buttonCrystalImage.enabled = false;

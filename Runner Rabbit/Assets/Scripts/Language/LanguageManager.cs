@@ -30,6 +30,7 @@ public class LanguageManager : MonoBehaviour
     public TextMeshProUGUI IceCaveStartText, IceCaveStartDescriptionText, IceCaveStartCostText, IceCaveStartCrystals, IceCaveStartCoins, IceCaveStartBackButton, IceCaveStartBuyButton; //Ice caveStart
     public TextMeshProUGUI JungleStartText, JungleStartDescriptionText, JungleStartCostText, JungleStartCrystals, JungleStartCoins, JungleStartBackButton, JungleStartBuyButton; // Jungle Start
     public TextMeshProUGUI PortalRoomStartText, PortalRoomStartDescriptionText, PortalRoomStartCostText, PortalRoomStartCrystals, PortalRoomStartCoins, PortalRoomStartBackButton, PortalRoomStartBuyButton; //Portal roomStart
+    public TextMeshProUGUI RewriteLevelQuestion, RewriteLevelDescription, RewriteLevelButton, RewriteLevelBackButton; //Rewrite level
     //Texts RuneForge
     public TextMeshProUGUI RuneforgeTitle, RuneforgeBackButtonText, RuneName1, RuneName2, RuneName3, RuneName4, RuneName5, RuneName6, RuneName7, RuneName8, RuneName9, RuneName10, RuneDescription1, // RuneForge
                            RuneDescription2, RuneDescription3, RuneDescription4, RuneDescription5, RuneDescription6, RuneDescription7, RuneDescription8, RuneDescription9, RuneDescription10, EquipedRunes,
@@ -128,6 +129,10 @@ public class LanguageManager : MonoBehaviour
     string English_PortalRoomStartDescriptionText = "Start in the portal room Level With";
     string English_PortalRoomStartCoins = "500 Coins";
     string English_PortalRoomStartCrystals = "100 crystals";
+
+
+    string English_RewriteLevelQuestion = "You already bought a level. are you sure you want to change the starting level?";
+    string English_RewriteLevelDescription = "previous coins will be removed and previous crystals will be refunded before making the new purchase";
 
     // runeforge
     string English_RuneForgeTitle = "Rune Forge";
@@ -359,6 +364,9 @@ public class LanguageManager : MonoBehaviour
     string Español_SkinPack = "Paquete de Aspectos";
     string Español_9Skins = "9 Aspectos";
 
+    string Español_RewriteLevelQuestion = "ya haz comprado un nivel, ¿estás seguro que quieres cambiar el nivel de inicio? ";
+    string Español_RewriteLevelDescription = "Las monedas que se te habian dado se te quitarán y se devolveran los crystales gastados antes de hacer la nueva compra";
+
 
 
 
@@ -479,6 +487,11 @@ public class LanguageManager : MonoBehaviour
                 PortalRoomStartCrystals.text = English_PortalRoomStartCrystals;
                 PortalRoomStartBuyButton.text = English_BuyButton;
                 PortalRoomStartBackButton.text = English_BackButton;
+
+                RewriteLevelQuestion.text = English_RewriteLevelQuestion;
+                RewriteLevelDescription.text = English_RewriteLevelDescription;
+                RewriteLevelBackButton.text = English_BackButton;
+                RewriteLevelButton.text = English_BuyButton;
 
                 // rune Forge
                 RuneforgeTitle.text = English_RuneForgeTitle;
@@ -673,6 +686,11 @@ public class LanguageManager : MonoBehaviour
                 PortalRoomStartCrystals.text = Español_PortalRoomStartCrystals;
                 PortalRoomStartBuyButton.text = Español_BuyButton;
                 PortalRoomStartBackButton.text = Español_BackButton;
+
+                RewriteLevelQuestion.text = Español_RewriteLevelQuestion;
+                RewriteLevelDescription.text = Español_RewriteLevelDescription;
+                RewriteLevelBackButton.text = Español_BackButton;
+                RewriteLevelButton.text = Español_BuyButton;
 
                 // Forja de runas
                 RuneforgeTitle.text = Español_RuneForgeTitle;

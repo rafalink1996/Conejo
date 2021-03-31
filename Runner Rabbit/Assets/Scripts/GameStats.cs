@@ -179,6 +179,7 @@ public class GameStats : MonoBehaviour
     public int LanguageSelect;
     public bool languageselected;
 
+    public bool RunInProgressPortalBoost;
     // 1 = english
     // 2 = Español
 
@@ -518,22 +519,26 @@ public class GameStats : MonoBehaviour
        stats.LevelIndicator = 1;
        stats.LevelCount = 1;
        stats.numOfHearts = 3;
-       //stats.ExtraHearts = false;
-       //stats.ManaJar = false;
+       stats.ExtraHearts = false;
+       stats.ManaJar = false;
        powerDark = originalDarkPower;
        powerLight = originalLightPower;
        coins = 0;
        stats.SavedLevelPercentage = 0;
        stats.SaveCurrentHearts = 3;
-        savedDarkPowerID = originalDarkPower.id;
-        savedLightPowerID = originalLightPower.id;
-        totalLightMana = 30;
-        totalDarkMana = 30;
+       savedDarkPowerID = originalDarkPower.id;
+       savedLightPowerID = originalLightPower.id;
+       totalLightMana = 30;
+       totalDarkMana = 30;
+       
+
 
         SaveStats();
 
 
     }
+
+    
 
 
 

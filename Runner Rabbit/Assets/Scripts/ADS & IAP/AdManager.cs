@@ -8,12 +8,8 @@ using TMPro;
 using UnityEngine.UI;
 using GoogleMobileAds;
 using GoogleMobileAds.Api;
-using GoogleMobileAds.Common;
-using GoogleMobileAds.Mediation;
-using GoogleMobileAds.iOS;
-using GoogleMobileAds.Android;
-using GoogleMobileAds.Editor;
-using GoogleMobileAds.Unity;
+using GoogleMobileAds.Api.Mediation.UnityAds;
+
 
 
 
@@ -55,6 +51,8 @@ public class AdManager : MonoBehaviour
 
 
     public bool probandoAdmob;
+    public GameObject AdFailedToLoadObject;
+    
 
 
 
@@ -75,6 +73,43 @@ public class AdManager : MonoBehaviour
         adUnitId = "unexpected_platform";
 #endif
 
+        MobileAds.Initialize((initStatus) =>
+        {
+            Dictionary<string, AdapterStatus> map = initStatus.getAdapterStatusMap();
+            foreach (KeyValuePair<string, AdapterStatus> keyValuePair in map)
+            {
+                string className = keyValuePair.Key;
+                AdapterStatus status = keyValuePair.Value;
+                switch (status.InitializationState)
+                {
+                    case AdapterState.NotReady:
+                        // The adapter initialization did not complete.
+                        MonoBehaviour.print("Adapter: " + className + " not ready.");
+                        break;
+                    case AdapterState.Ready:
+                        // The adapter was successfully initialized.
+                        MonoBehaviour.print("Adapter: " + className + " is initialized.");
+                        break;
+                }
+            }
+        });
+  
+
+
+    // Remove this code before build //
+    List<string> deviceIds = new List<string>();
+        deviceIds.Add("14d1fff363b2cda9939aac6cb791aaef");
+        RequestConfiguration requestConfiguration = new RequestConfiguration
+            .Builder()
+            .SetTestDeviceIds(deviceIds)
+            .build();
+
+        MobileAds.SetRequestConfiguration(requestConfiguration);
+        //*******************************//
+
+       
+       // RequestInterstitial();
+       // RequestRewardedVideoAd();
 
         #endregion
 
@@ -87,18 +122,10 @@ public class AdManager : MonoBehaviour
                 AdButton.onClick.AddListener(ShowConfirmationScreen);
             }
 
-            MobileAds.Initialize(initStatus => { });
+          
 
-            // Remove this code before build //
-            List<string> deviceIds = new List<string>();
-            deviceIds.Add("14d1fff363b2cda9939aac6cb791aaef");
-            RequestConfiguration requestConfiguration = new RequestConfiguration
-                .Builder()
-                .SetTestDeviceIds(deviceIds)
-                .build();
-
-            MobileAds.SetRequestConfiguration(requestConfiguration);
-            //*******************************//
+          
+            
 
 
             RewardCoins = 100 + (25 * GameStats.stats.LevelIndicator);
@@ -162,8 +189,8 @@ public class AdManager : MonoBehaviour
             if (this.rewardedAd.IsLoaded())
             {
                 this.rewardedAd.Show();
-            }
-
+            } 
+            
         }
         else
         {
@@ -207,7 +234,7 @@ public class AdManager : MonoBehaviour
             if (this.interstitial.IsLoaded())
             {
                 this.interstitial.Show();
-            }
+            } 
 
         }
         else
@@ -258,20 +285,29 @@ public class AdManager : MonoBehaviour
 
 
     // ADmob Events
-    new
+  
     //Rewarded video ads events
 
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
+
         PlayRewardeVideoAd();
+       
     }
 
     public void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
     {
-        MonoBehaviour.print(
-            "HandleRewardedAdFailedToLoad event received with message: "
-                             + args.Message);
-        Debug.Log("ad failed to load");
+
+        /* MonoBehaviour.print(
+             "HandleRewardedAdFailedToLoad event received with message: "
+                              + args.Message);
+         Debug.Log("ad failed to load");*/
+
+
+
+       
+
+        
         
     }
 
@@ -305,16 +341,19 @@ public class AdManager : MonoBehaviour
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
         PlayInterstitialAD();
+        
     }
 
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
+        /*
         Debug.Log("ad failed to load");
        
         BackToMainMenuIntersticial();
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
-                             + args.Message);
+                             + args.Message);*/
+        
 
     }
 

@@ -15,6 +15,12 @@ public class LevelSelect : MonoBehaviour
     public Button LibraryButton, DungeonButton, FrozenRoomButton, JungleButton, PortalRoomButton;
 
     public Animator notEnoughCrystals;
+    
+    public GameObject RewriteLevelObject;
+    private int RewriteLevelID;
+
+    private int CrystalsSpent;
+    private int CoinsGiven;
 
 
     // Start is called before the first frame update
@@ -81,87 +87,140 @@ public class LevelSelect : MonoBehaviour
 
     public void BuyLevel (int levelID)
     {
-        if (levelID == 2)
+        if (GameStats.stats.LevelBought == false)
         {
-            if (GameStats.stats.crystals >= 20)
+            if (levelID == 1)
             {
-                GameStats.stats.LevelIndicator = levelID;
-
-                GameStats.stats.LevelBought = true;
+                GameStats.stats.LevelBought = false;
                 GameStats.stats.leveBoughtID = levelID;
-
-                GameStats.stats.coins += 100;
-                GameStats.stats.crystals -= 20;
+                GameStats.stats.LevelIndicator = levelID;
+                CrystalsSpent = 0;
+                CoinsGiven = 0;
 
             }
-            else
+            if (levelID == 2)
             {
+                if (GameStats.stats.crystals >= 20)
+                {
+                    GameStats.stats.LevelIndicator = levelID;
 
-                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    GameStats.stats.LevelBought = true;
+                    GameStats.stats.leveBoughtID = levelID;
+
+                    GameStats.stats.coins += 100;
+                    GameStats.stats.crystals -= 20;
+
+
+                    CrystalsSpent = 20;
+                    CoinsGiven = 100;
+
+                   
+
+
+                }
+                else
+                {
+
+                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                }
+
             }
+
+            if (levelID == 3)
+            {
+                if (GameStats.stats.crystals >= 40)
+                {
+                    GameStats.stats.LevelIndicator = levelID;
+
+                    GameStats.stats.LevelBought = true;
+                    GameStats.stats.leveBoughtID = levelID;
+
+                    GameStats.stats.coins += 200;
+                    GameStats.stats.crystals -= 40;
+
+                    CrystalsSpent = 40;
+                    CoinsGiven = 200;
+
+                   
+                }
+                else
+                {
+
+                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                }
+
+
+            }
+            if (levelID == 4)
+            {
+                if (GameStats.stats.crystals >= 80)
+                {
+                    GameStats.stats.LevelIndicator = levelID;
+
+                    GameStats.stats.LevelBought = true;
+                    GameStats.stats.leveBoughtID = levelID;
+
+                    GameStats.stats.coins += 350;
+                    GameStats.stats.crystals -= 80;
+
+                    CrystalsSpent = 80;
+                    CoinsGiven = 350;
+
+                   
+                }
+                else
+                {
+                    
+                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                }
+
+
+            }
+
+            if (levelID == 5)
+            {
+                if (GameStats.stats.crystals >= 100)
+                {
+                    GameStats.stats.LevelIndicator = levelID;
+
+                    GameStats.stats.LevelBought = true;
+                    GameStats.stats.leveBoughtID = levelID;
+
+                    GameStats.stats.coins += 500;
+                    GameStats.stats.crystals -= 100;
+
+
+                    CrystalsSpent = 100;
+                    CoinsGiven = 500;
+
+                   
+                }
+                else
+                {
+
+                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                }
+
+
+            }
+        } else
+        {
+            RewriteLevelID = levelID;
+            RewriteLevelObject.SetActive(true);
 
         }
 
-        if (levelID == 3)
-        {
-            if (GameStats.stats.crystals >= 40)
-            {
-                GameStats.stats.LevelIndicator = levelID;
+       
+        
+    }
 
-                GameStats.stats.LevelBought = true;
-                GameStats.stats.leveBoughtID = levelID;
+    public void rewriteLevelFunction()
+    {
+        GameStats.stats.crystals += CrystalsSpent;
+        GameStats.stats.coins -= CoinsGiven;
+        GameStats.stats.LevelBought = false;
+        BuyLevel(RewriteLevelID);
+       
 
-                GameStats.stats.coins += 200;
-                GameStats.stats.crystals -= 40;
-            }
-            else
-            {
-
-                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
-            }
-
-
-        }
-        if (levelID == 4)
-        {
-            if (GameStats.stats.crystals >= 80)
-            {
-                GameStats.stats.LevelIndicator = levelID;
-
-                GameStats.stats.LevelBought = true;
-                GameStats.stats.leveBoughtID = levelID;
-
-                GameStats.stats.coins += 350;
-                GameStats.stats.crystals -= 80;
-            }
-            else
-            {
-
-                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
-            }
-
-
-        }
-
-        if (levelID == 5)
-        {
-            if (GameStats.stats.crystals >= 100)
-            {
-                GameStats.stats.LevelIndicator = levelID;
-
-                GameStats.stats.LevelBought = true;
-                GameStats.stats.leveBoughtID = levelID;
-
-                GameStats.stats.coins += 500;
-                GameStats.stats.crystals -= 100;
-            }
-            else
-            {
-                
-                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
-            }
-                
-
-        }
     }
 }

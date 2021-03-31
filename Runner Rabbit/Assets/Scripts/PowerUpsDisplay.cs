@@ -41,6 +41,13 @@ public class PowerUpsDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameStats.stats.fenixFeather == true)
+        {
+            fenixFeather.enabled = true;
+        }
+        else
+        {
+            fenixFeather.enabled = false;
+        }
     }
 }

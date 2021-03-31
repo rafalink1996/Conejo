@@ -68,7 +68,8 @@ public class LevelLoaderGame : MonoBehaviour
             levelcountdown = GameStats.stats.SavedLevelPercentage;
             cha.SetSavedStats();
         }
-        else
+
+        if (GameStats.stats.RunInProgressPortalBoost == false)
         {
             if (GameStats.stats.PortalBoost == false)
             {
@@ -81,9 +82,15 @@ public class LevelLoaderGame : MonoBehaviour
             }
 
         }
+        else
+        {
+            GameStats.stats.RunInProgressPortalBoost = false;
+        }
 
         TimerSlider.maxValue = levelTime;
         GameStats.stats.spawnHouse = false;
+
+        
 
 
     }

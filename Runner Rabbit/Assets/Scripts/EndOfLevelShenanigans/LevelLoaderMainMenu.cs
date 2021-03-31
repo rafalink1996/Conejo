@@ -44,9 +44,11 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.ResetStats();
             GameStats.stats.SavedLevelPercentage = 0;
             GameStats.stats.LevelIndicator = GameStats.stats.leveBoughtID;
-            GameStats.stats.RunInProgress = true;
+           // GameStats.stats.RunInProgress = true;
             GameStats.stats.SavedLevelIndicator = GameStats.stats.LevelIndicator;
             GameStats.stats.SavedLevelCount = GameStats.stats.LevelCount;
+            GameStats.stats.LevelBought = false;
+            GameStats.stats.RunInProgressPortalBoost = false;
             
            
             string LeveleToLoadName = GameStats.stats.CheckLevel();
@@ -59,9 +61,10 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.ResetStats();
             GameStats.stats.SavedLevelIndicator = GameStats.stats.LevelIndicator;
             GameStats.stats.SavedLevelCount = GameStats.stats.LevelCount;
-            
-            GameStats.stats.RunInProgress = true;
-            
+            GameStats.stats.RunInProgressPortalBoost = false;
+
+            //GameStats.stats.RunInProgress = true;
+
             StartCoroutine(loadAsync("Level 1 (Library)"));
         }
         
@@ -75,7 +78,9 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.LevelCount = GameStats.stats.SavedLevelCount;
             GameStats.stats.CheckLevelIndicator();
             GameStats.stats.CheckSavedPowers();
+            GameStats.stats.RunInProgressPortalBoost = true;
             StartCoroutine(loadAsync("Store"));
+            
         }
         else
         {
@@ -83,8 +88,10 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.LevelCount = GameStats.stats.SavedLevelCount;
             GameStats.stats.CheckLevelIndicator();
             GameStats.stats.CheckSavedPowers();
+            GameStats.stats.RunInProgressPortalBoost = true;
             string LevelToLoad = GameStats.stats.CheckLevel();
             StartCoroutine(loadAsync(LevelToLoad));
+           
         }
 
         
