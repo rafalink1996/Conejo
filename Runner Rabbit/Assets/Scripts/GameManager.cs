@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(DestroyStartingAnimations());
+        GameIsPaused = false;
         ThePauseButton.interactable = false;
         cha = FindObjectOfType<character>();
         darkcolor = GameStats.stats.powerDark.rarityColor;

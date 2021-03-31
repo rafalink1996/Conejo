@@ -224,8 +224,9 @@ public class LevelLoaderGame : MonoBehaviour
         GameStats.stats.RunInProgress = false;
         GameStats.stats.SaveStats();
         loadingScreen.SetActive(true);
-        StartCoroutine(loadAsyncMainMenu());
         Time.timeScale = 1;
+        StartCoroutine(loadAsyncMainMenu());
+        
         GameStats.stats.CoinTicket = false;
 
     }
@@ -234,8 +235,9 @@ public class LevelLoaderGame : MonoBehaviour
     {
         GameStats.stats.SaveStats();
         loadingScreen.SetActive(true);
-        StartCoroutine(loadAsyncMainMenu());
         Time.timeScale = 1;
+        StartCoroutine(loadAsyncMainMenu());
+        
         // save level indicator and count for resume;
 
 
