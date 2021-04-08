@@ -14,12 +14,12 @@ public class YetiSpawn : StateMachineBehaviour
         if (Cha.top && !yeti.bossTop)
         {
             //mage.transform.parent.transform.localEulerAngles = new Vector3(180, 0, 0);
-            yeti.transform.parent.transform.position = new Vector3(yeti.transform.parent.transform.position.x, -5.23f, yeti.transform.parent.transform.position.z);
+            yeti/*.transform.parent*/.transform.position = new Vector3(yeti/*.transform.parent*/.transform.position.x, -6.41f, yeti/*.transform.parent*/.transform.position.z);
         }
         if (!Cha.top && yeti.bossTop)
         {
             //mage.transform.parent.transform.localEulerAngles = new Vector3(0, 0, 0);
-            yeti.transform.parent.transform.position = new Vector3(yeti.transform.parent.transform.position.x, 5.23f, yeti.transform.parent.transform.position.z);
+            yeti/*.transform.parent*/.transform.position = new Vector3(yeti/*.transform.parent*/.transform.position.x, 5.23f, yeti/*.transform.parent**/.transform.position.z);
         }
         animator.SetBool("hasAttackedOnce", false);
     }

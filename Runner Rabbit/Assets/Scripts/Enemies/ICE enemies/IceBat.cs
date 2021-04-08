@@ -35,14 +35,14 @@ public class IceBat : MonoBehaviour
         anim = GetComponent<Animator>();
         //anim.SetFloat("Type", Random.Range(0, 2));
         //health.maxHealth = 30;
-        if (transform.position.y > 0)
+        /*if (transform.position.y > 0)
         {
             enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
         }
         if (transform.position.y < 0)
         {
             enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
-        }
+        }*/
         spawnTime = Random.Range(0.1f, 2f);
         attackTime = Random.Range(1.2f, 3.3f);
         
