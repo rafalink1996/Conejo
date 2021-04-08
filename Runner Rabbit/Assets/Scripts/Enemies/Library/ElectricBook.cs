@@ -66,7 +66,7 @@ public class ElectricBook : MonoBehaviour
         if (attackTime <= 0)
         {
             anim.SetTrigger("Attack");
-            attackTime = Random.Range(0.6f, 1.8f);
+            attackTime = Random.Range(1f, 2.5f);
             attack = false;
         }
         //healthSlider.value = health;

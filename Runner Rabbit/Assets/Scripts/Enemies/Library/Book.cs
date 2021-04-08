@@ -20,7 +20,7 @@ public class Book : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 50;
+        health.maxHealth = 40;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
