@@ -24,7 +24,7 @@ public class IceGolem : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 100;
+        health.maxHealth = 80;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
@@ -80,12 +80,12 @@ public class IceGolem : MonoBehaviour
             }
         }
 
-        if (health.health <= 75)
+        if (health.health <= health.health * 0.75f)
         {
             Boulder1.BreakBoulder = true;
         }
 
-        if (health.health <= 50)
+        if (health.health <= health.health * 0.50f)
         {
             Boulder2.BreakBoulder = true;
         }

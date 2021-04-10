@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4096424118293959987}
   - component: {fileID: 8859769256630127088}
   m_Layer: 9
-  m_Name: 'SteampunkBunny '
+  m_Name: SteampunkBunny
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,11 +274,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ea4ba85c954d37ae30a2ae47bb9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
+  maxHealth: 80
+  health: 80
   healthSlider: {fileID: 1974487972269715009}
   Hit: 0
   hitTime: 1
+  isBoss: 0
 --- !u!1 &4279875859825694627
 GameObject:
   m_ObjectHideFlags: 0

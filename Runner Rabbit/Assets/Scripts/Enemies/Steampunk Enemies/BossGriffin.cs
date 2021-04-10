@@ -17,7 +17,7 @@ public class BossGriffin : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 100;
+        health.maxHealth = 800;
         BossDead = false;
         GameStats.stats.bossDead = false;
         anim = GetComponent<Animator>();
@@ -46,7 +46,7 @@ public class BossGriffin : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("ClockworkGrififnLaser");
         rayAttack.SetActive(true);
         
-        health.TakeDamage(1);
+        health.TakeDamage(20);
     }
     void ShootOne()
     {
@@ -56,7 +56,7 @@ public class BossGriffin : MonoBehaviour
         //energyBall.transform.SetParent(null);
         energyBall.transform.rotation = Quaternion.AngleAxis(12.46f, Vector3.forward);
         
-        health.TakeDamage(1);
+        health.TakeDamage(5);
     }
     void ShootTwo()
     {
@@ -65,7 +65,7 @@ public class BossGriffin : MonoBehaviour
         energyBall.transform.position = transform.position + new Vector3(-2.16f, 0.06f, 0);
         //energyBall.transform.SetParent(null);
         //energyBall.transform.GetChild(0).rotation = Quaternion.AngleAxis(12.46f, Vector3.forward);
-        health.TakeDamage(1);
+        health.TakeDamage(5);
 
     }
     void ShootThree()
@@ -75,7 +75,7 @@ public class BossGriffin : MonoBehaviour
         energyBall.transform.position = transform.position + new Vector3(-2.21f, 1.2f, 0);
         //energyBall.transform.SetParent(null);
         energyBall.transform.rotation = Quaternion.AngleAxis(-13.678f, Vector3.forward);
-        health.TakeDamage(1);
+        health.TakeDamage(5);
     }
     void Silence()
     {

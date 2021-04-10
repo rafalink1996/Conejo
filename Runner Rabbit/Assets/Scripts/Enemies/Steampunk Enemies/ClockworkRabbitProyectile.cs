@@ -5,8 +5,8 @@ using UnityEngine;
 public class ClockworkRabbitProyectile : MonoBehaviour
 {
 
-    public float frequency = 10.0f; // Speed of sine movement
-    public float magnitude = 1.0f; //  Size of sine movement, its the amplitude of the side curve
+    public float frequency = 4.0f; // Speed of sine movement
+    public float magnitude = 2.0f; //  Size of sine movement, its the amplitude of the side curve
     public float speed = 1.0f;
 
     Vector3 pos;

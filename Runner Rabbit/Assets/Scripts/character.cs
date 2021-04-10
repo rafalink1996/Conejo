@@ -960,6 +960,7 @@ public class character : MonoBehaviour
         Time.timeScale = 0;
         animator.SetTrigger("Dead");
         animator.SetBool("Death", true);
+        
 
         yield return new WaitForSecondsRealtime(1f);
 
