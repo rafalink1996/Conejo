@@ -11,8 +11,8 @@ public class IAPManager : MonoBehaviour
     string Crystal1200 = "com.darkelectron.magicbound.crystals1200";
     string Crystal3000 = "com.darkelectron.magicbound.crystals3000";
 
-    string SkinPack = "com.darkelectron.magicbound.SkinPack";
-    string RemoveAds = "com.darkelectron.magicbound.RemoveAds";
+    string SkinPack = "com.darkelectron.magicbound.skin_pack";
+    string RemoveAds = "com.darkelectron.magicbound.remove_ads";
 
     public GameObject RestorePurchasesButton;
 
