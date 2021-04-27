@@ -40,6 +40,7 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: d0a1dac9fb2b34b69aee8c35d5df37a6, type: 3}
@@ -56,6 +57,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: dbcc6dfda4c3549e6914e75487635edf, type: 3}
     totalSpriteSurfaceArea: 2136180
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: -7494314424564879864, guid: 9e440e302f3c042c0a615e9b1490ba3e, type: 3}
@@ -381,5 +384,6 @@ SpriteAtlas:
   - float (clockwork)_3
   - float (clockwork)_8
   - float (clockwork)_9
+  m_RenderDataMap: {}
   m_Tag: ClockWorkSkinatlas
   m_IsVariant: 0

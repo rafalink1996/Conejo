@@ -40,6 +40,7 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 757844b6cbaf74a13a95aa29d8701dc0, type: 3}
@@ -68,6 +69,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 640d75ba506b646e5a80eae18a9ab9cc, type: 3}
     totalSpriteSurfaceArea: 15577035
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: -638473688534482292, guid: 0dc80f403786644cb835d18aaa460e76, type: 3}
@@ -609,5 +612,6 @@ SpriteAtlas:
   - ShadowShieldLoop_0
   - ShadowShieldLoop_10
   - ShadowShieldLoop_11
+  m_RenderDataMap: {}
   m_Tag: MageBossAtlas
   m_IsVariant: 0

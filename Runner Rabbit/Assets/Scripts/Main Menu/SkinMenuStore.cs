@@ -718,6 +718,8 @@ public class SkinMenuStore : MonoBehaviour
 
         }
 
+        GameStats.stats.SaveStats();
+
     }
 
 

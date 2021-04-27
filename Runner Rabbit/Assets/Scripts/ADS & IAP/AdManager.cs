@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
@@ -21,8 +22,8 @@ public class AdManager : MonoBehaviour
     public AudioMixer MainMixer;
 
 
-    public int RewardCoins;
-    public int RewardCrystals;
+   int RewardCoins;
+   int RewardCrystals;
 
     public GameObject rewardColect;
 
@@ -43,8 +44,8 @@ public class AdManager : MonoBehaviour
 
     private string adUnitId;
 
-    string IntersticialAD_ID = "ca-app-pub-3940256099942544/4411468910"; // IOS = ca-app-pub-4145591567952062/3601130590 ***// *** Android = ca-app-pub-4145591567952062/9052767822
-    string RewardedAD_ID = "ca-app-pub-3940256099942544/1712485313"; //IOS = ca-app-pub-4145591567952062/2259633924 ***//*** Android = ca-app-pub-4145591567952062/5433140916
+    string IntersticialAD_ID = "ca-app-pub-3940256099942544/4411468910"; // IOS = ca-app-pub-4145591567952062/3601130590 //  Android = ca-app-pub-4145591567952062/9052767822
+    string RewardedAD_ID = "ca-app-pub-3940256099942544/1712485313"; //IOS = ca-app-pub-4145591567952062/2259633924 // Android = ca-app-pub-4145591567952062/5433140916
 
     private RewardedAd rewardedAd;
     private InterstitialAd interstitial;
@@ -105,11 +106,10 @@ public class AdManager : MonoBehaviour
             .build();
 
         MobileAds.SetRequestConfiguration(requestConfiguration);
-        //*******************************//
+        
 
        
-       // RequestInterstitial();
-       // RequestRewardedVideoAd();
+  
 
         #endregion
 
@@ -152,6 +152,10 @@ public class AdManager : MonoBehaviour
         }
 
         #endregion
+
+
+      RequestRewardedVideoAd();
+      RequestInterstitial();
 
 
 
@@ -291,17 +295,17 @@ public class AdManager : MonoBehaviour
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
 
-        PlayRewardeVideoAd();
+      //  PlayRewardeVideoAd();
        
     }
 
     public void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
     {
 
-        /* MonoBehaviour.print(
+         MonoBehaviour.print(
              "HandleRewardedAdFailedToLoad event received with message: "
                               + args.Message);
-         Debug.Log("ad failed to load");*/
+         Debug.Log("ad failed to load");
 
 
 
@@ -340,19 +344,19 @@ public class AdManager : MonoBehaviour
 
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
-        PlayInterstitialAD();
+       // PlayInterstitialAD();
         
     }
 
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        /*
+        
         Debug.Log("ad failed to load");
        
         BackToMainMenuIntersticial();
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
-                             + args.Message);*/
+                             + args.Message);
         
 
     }
@@ -374,6 +378,11 @@ public class AdManager : MonoBehaviour
     }
     
 }
+
+
+
+
+
 
 
 

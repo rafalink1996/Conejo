@@ -20,14 +20,27 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 0
       sRGB: 1
-    platformSettings: []
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
-      enableTightPacking: 1
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 6340324ee813c47808fc488b3e7577f8, type: 3}
@@ -39,6 +52,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 9bb26c29dab7b4b88ab97fa2bd3062d1, type: 3}
     totalSpriteSurfaceArea: 1738219
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 40050341071518234, guid: 238326d0b230f4107bc8db42f9deb232, type: 3}
@@ -202,5 +217,6 @@ SpriteAtlas:
   - EyeHandLoop_10
   - EyeHandLoop_8
   - EyeHandLoop_9
+  m_RenderDataMap: {}
   m_Tag: MageLEvelEnemies
   m_IsVariant: 0

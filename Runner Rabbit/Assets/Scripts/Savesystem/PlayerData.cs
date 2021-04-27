@@ -162,6 +162,9 @@ public class PlayerData
         skinConditions[0] = gamestats.skinConditions[0];
         skinConditions[1] = gamestats.skinConditions[1];
         skinConditions[2] = gamestats.skinConditions[2];
+        skinConditions[3] = gamestats.skinConditions[3];
+        skinConditions[4] = gamestats.skinConditions[4];
+        skinConditions[5] = gamestats.skinConditions[5];
 
 
 

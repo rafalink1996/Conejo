@@ -25,7 +25,7 @@ SpriteAtlas:
       m_BuildTarget: DefaultTexturePlatform
       m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
-      m_TextureFormat: 4
+      m_TextureFormat: -1
       m_TextureCompression: 2
       m_CompressionQuality: 80
       m_CrunchedCompression: 1
@@ -40,6 +40,7 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 8f79f059337e14f3389d516fe0dda04e, type: 3}
@@ -57,6 +58,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 20044b27cae5a489cab8ce3d9ba1daa3, type: 3}
     totalSpriteSurfaceArea: 5735057
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300008, guid: 99f855f1501e34fdca3c76ad60b235bd, type: 3}
@@ -388,5 +391,6 @@ SpriteAtlas:
   - Archer Goblin Idle_9
   - Archer Goblin Idle_11
   - Archer Goblin Idle_10
+  m_RenderDataMap: {}
   m_Tag: GoblinAtlas
   m_IsVariant: 0
