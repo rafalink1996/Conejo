@@ -6,17 +6,17 @@ using UnityEngine.UI;
 
 public class PowerMEnu : MonoBehaviour
 {
-    public Animator powerbuttontransition;
+    public GameObject BGSpriteGoup;
 
 
     // transition to power menu
-    public GameObject mainmenu;
-    public GameObject powermenu;
+    public GameObject MainMenuHolder;
+    public GameObject StoreHolder;
     public GameObject TowerDark;
     public GameObject TowerLight;
 
 
-    public float transitionTimein;
+    public float TransTime;
     public float transitionTimeout;
 
 
@@ -838,26 +838,32 @@ public class PowerMEnu : MonoBehaviour
 
     public void PowerMenu()
     {
-        powerbuttontransition.SetTrigger("Powers");
+        LeanTween.moveLocalX(BGSpriteGoup, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
+        LeanTween.moveLocalX(MainMenuHolder, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
+        LeanTween.moveLocalX(StoreHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
 
 
-        StartCoroutine(GoToPowersMenu());
+        //StartCoroutine(GoToPowersMenu());
     }
 
     public void PowerMenuBack()
     {
-        powerbuttontransition.SetTrigger("Powers Out");
+        LeanTween.moveLocalX(BGSpriteGoup, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
+        LeanTween.moveLocalX(MainMenuHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
+        LeanTween.moveLocalX(StoreHolder, 1920, TransTime).setEase(LeanTweenType.easeOutExpo);
 
 
-        StartCoroutine(backfromPowersMenu());
+
+        //StartCoroutine(backfromPowersMenu());
     }
 
     IEnumerator GoToPowersMenu()
     {
 
-        yield return new WaitForSeconds(transitionTimein);
+        yield return new WaitForSeconds(TransTime);
 
-        powermenu.SetActive(true);
+
+        StoreHolder.SetActive(true);
         TowerDark.SetActive(false);
         TowerDark.SetActive(false);
 
@@ -871,7 +877,7 @@ public class PowerMEnu : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTimeout);
 
-        mainmenu.SetActive(true);
+        MainMenuHolder.SetActive(true);
         TowerDark.SetActive(true);
         TowerDark.SetActive(true);
 
