@@ -148,19 +148,36 @@ public class character : MonoBehaviour
     public bool HoldPowerIsOn;
 
 
+    [Header ("Caches")]
+    [SerializeField] GameObject ButtonDark;
+    [SerializeField] GameObject ButtonLight;
+    Button DarkButtonComponent;
+    Button LightButtonComponent;
+
+
+
+
 
 
     // debug images
 
-   // public GameObject LightDebugImage;
-   // public GameObject DarkDebugImage;
+    // public GameObject LightDebugImage;
+    // public GameObject DarkDebugImage;
 
-
+    [SerializeField] UIManager MyUIManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject ButtonDark = GameObject.FindObjectOfType<Darkpower>().gameObject;
+        ButtonDark.SetActive(true);
+        GameObject ButtonLight = GameObject.FindObjectOfType<Lightpower>().gameObject;
+        ButtonLight.SetActive(true);
 
+        Button DarkButtonComponent = ButtonDark.GetComponent<Button>();
+        Button LightButtonComponent = ButtonLight.GetComponent<Button>();
+
+        MyUIManager = FindObjectOfType<UIManager>();
         rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         rb.AddForce(new Vector2(0, 200));
@@ -430,10 +447,10 @@ public class character : MonoBehaviour
             CamRipple.RippleEffect();
             StartCoroutine(GetInvulnerableRift());
             
-            GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Dark");
-            ButtonDark.SetActive(false);
-            GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Light");
-            ButtonLight.SetActive(false);
+           // GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Dark");
+           // ButtonDark.SetActive(false);
+           // GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Light");
+           // ButtonLight.SetActive(false);
 
             //DarkPowerHoldStop();
             //LightPowerHoldStop();
@@ -555,35 +572,13 @@ public class character : MonoBehaviour
             hasPassedThroughRift = true;
             Instantiate(riftEffect, transform.position, Quaternion.identity);
             StartCoroutine(GetInvulnerableRift());
-/*
-            if (GameStats.stats.powerDark.id >= 51)
-            {
-                DarkPowerHoldStop();
-            }
-            if (GameStats.stats.powerLight.id >= 51)
-            {
-                LightPowerHoldStop();
-            }
-            if (GameStats.stats.lightpowerID >= 51)
-            {
-                LightPowerHoldStop();
-            }
-            if (GameStats.stats.DarkpowerID >= 51)
-            {
-                DarkPowerHoldStop();
-            }
+            MyUIManager.ChangeManaInUse();
 
-*/
-            silenced = false;
-           GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Light");
-           ButtonDark.SetActive(true);
-           GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Dark");
-           ButtonLight.SetActive(true);
+        silenced = false;
+          
 
-            //LightPowerHoldStop();
-            //DarkPowerHoldStop();
-           Button DarkButtonComponent = ButtonDark.GetComponent<Button>();
-           Button LightButtonComponent = ButtonLight.GetComponent<Button>();
+        
+           
             if (DarkButtonComponent != null){
                 DarkButtonComponent.interactable = true;
             }
@@ -592,7 +587,7 @@ public class character : MonoBehaviour
                 LightButtonComponent.interactable = true;
             }
 
-           // riftSileneced = false ;
+        
 
 
         }
