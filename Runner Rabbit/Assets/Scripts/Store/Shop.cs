@@ -56,7 +56,10 @@ public class Shop : MonoBehaviour
     public ParticleSystem BuyDarkManaEffect;
 
 
-
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
 
 
 

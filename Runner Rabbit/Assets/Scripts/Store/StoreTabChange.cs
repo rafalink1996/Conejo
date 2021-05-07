@@ -8,7 +8,7 @@ public class StoreTabChange : MonoBehaviour
     public GameObject Upgrades;
     public GameObject Powers;
     private Animator animator;
-    private bool powers;
+    private bool powers = false;
 
     private void Start()
     {
