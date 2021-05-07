@@ -36,12 +36,15 @@ public class RuneSystem : MonoBehaviour
     public string[] RuneNames;
     public string[] Español_RuneNames;
 
+    PowerMEnu myPowerShop;
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        myPowerShop = FindObjectOfType<PowerMEnu>();
         // See what runes are unlocked
         for (int i = 0; i < GameStats.stats.UnlockedRunes.Length; i++)
         {
@@ -213,6 +216,10 @@ public class RuneSystem : MonoBehaviour
             {
                 GameStats.stats.crystals -= RuneCosts[runeID -1];
                 GameStats.stats.UnlockedRunes[runeID - 1] = true;
+            }
+            else
+            {
+                myPowerShop.NotEnoughCrystals();
             }
             
         }

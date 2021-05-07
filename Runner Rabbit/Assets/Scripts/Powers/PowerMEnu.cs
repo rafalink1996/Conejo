@@ -43,7 +43,8 @@ public class PowerMEnu : MonoBehaviour
     public GameObject ExtraHeartsSoldOut;
     public GameObject ManaJarSoldOut;
 
-    public Animator notEnoughCrystals;
+    public GameObject notEnoughCrystals;
+    CanvasGroup NoCrystalsCanvasG;
 
     public Power[] CarrotMissleTiers;
     public Power[] EarShieldTiers;
@@ -88,7 +89,7 @@ public class PowerMEnu : MonoBehaviour
         ExtraHearts.text = ExtraHeartsCost.ToString();
         ManaJar.text = ManaJarCost.ToString();
 
-
+        NoCrystalsCanvasG = notEnoughCrystals.GetComponent<CanvasGroup>();
         /*
         CarrotMissleTierID = GameStats.stats.CarrotMissleLevel;
         EarShieldTierID = GameStats.stats.EarDefenceLevel;
@@ -857,6 +858,7 @@ public class PowerMEnu : MonoBehaviour
         //StartCoroutine(backfromPowersMenu());
     }
 
+    /*
     IEnumerator GoToPowersMenu()
     {
 
@@ -883,6 +885,7 @@ public class PowerMEnu : MonoBehaviour
 
         yield return null;
     }
+    */
 
 
     public void BuyItem(float ItemID)
@@ -898,11 +901,12 @@ public class PowerMEnu : MonoBehaviour
             }
             else
             {
-                if (GameStats.stats.crystals >= CoinTicketCost)
+                if (GameStats.stats.crystals < CoinTicketCost)
                 {
-                    Debug.Log("not enough crystals");
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
-                } else if (GameStats.stats.CoinTicket == false)
+                    //Debug.Log("not enough crystals");
+                    //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    NotEnoughCrystals();
+                } else if (GameStats.stats.CoinTicket == true)
                 {
                     Debug.Log("already bought"); 
                 }
@@ -923,12 +927,13 @@ public class PowerMEnu : MonoBehaviour
             }
             else
             {
-                if (GameStats.stats.crystals >= PortalBoostCost)
+                if (GameStats.stats.crystals < PortalBoostCost)
                 {
-                    Debug.Log("not enough crystals");
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    //Debug.Log("not enough crystals");
+                    //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    NotEnoughCrystals();
                 }
-                else if (GameStats.stats.PortalBoost == false)
+                else if (GameStats.stats.PortalBoost == true)
                 {
                     Debug.Log("already bought");
                 }
@@ -946,12 +951,13 @@ public class PowerMEnu : MonoBehaviour
             }
             else
             {
-                if (GameStats.stats.crystals >= FenixFeatherCost)
+                if (GameStats.stats.crystals < FenixFeatherCost)
                 {
-                    Debug.Log("not enough crystals");
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    //Debug.Log("not enough crystals");
+                    //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    NotEnoughCrystals();
                 }
-                else if (GameStats.stats.fenixFeather == false)
+                else if (GameStats.stats.fenixFeather == true)
                 {
                     Debug.Log("already bought");
                 }
@@ -969,12 +975,13 @@ public class PowerMEnu : MonoBehaviour
             }
             else
             {
-                if (GameStats.stats.crystals >= ExtraHeartsCost)
+                if (GameStats.stats.crystals < ExtraHeartsCost)
                 {
-                    Debug.Log("not enough crystals");
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    //Debug.Log("not enough crystals");
+                    //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    NotEnoughCrystals();
                 }
-                else if (GameStats.stats.ExtraHearts == false)
+                else if (GameStats.stats.ExtraHearts == true)
                 {
                     Debug.Log("already bought");
                 }
@@ -991,12 +998,13 @@ public class PowerMEnu : MonoBehaviour
             }
             else
             {
-                if (GameStats.stats.crystals >= ManaJarCost)
+                if (GameStats.stats.crystals < ManaJarCost)
                 {
-                    Debug.Log("not enough crystals");
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    //Debug.Log("not enough crystals");
+                    //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    NotEnoughCrystals();
                 }
-                else if (GameStats.stats.ManaJar == false)
+                else if (GameStats.stats.ManaJar == true)
                 {
                     Debug.Log("already bought");
                 }
@@ -1038,8 +1046,9 @@ public class PowerMEnu : MonoBehaviour
             }
             else
             {
-                Debug.Log("not enough crystals");
-                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                //Debug.Log("not enough crystals");
+                //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                NotEnoughCrystals();
             }
 
         }
@@ -1072,8 +1081,9 @@ public class PowerMEnu : MonoBehaviour
 
             else
             {
-                Debug.Log("not enough crystals");
-                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                //Debug.Log("not enough crystals");
+                //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                NotEnoughCrystals();
             }
             }
 
@@ -1110,9 +1120,10 @@ public class PowerMEnu : MonoBehaviour
 
            else
                 {
-                    Debug.Log("not enough crystals");
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
-                }
+                //Debug.Log("not enough crystals");
+                //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                NotEnoughCrystals();
+            }
             }
 
             // radish missle upgrade
@@ -1147,9 +1158,10 @@ public class PowerMEnu : MonoBehaviour
             }
                 else
                 {
-                    Debug.Log("not enough crystals");
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
-                }
+                //Debug.Log("not enough crystals");
+                //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                NotEnoughCrystals();
+            }
             }
 
         // MagicLaser Upgrade
@@ -1183,10 +1195,19 @@ public class PowerMEnu : MonoBehaviour
             }
             else
             {
-                Debug.Log("not enough crystals");
-                notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                //Debug.Log("not enough crystals");
+                //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                NotEnoughCrystals();
             }
         }
+    }
+
+
+   public void NotEnoughCrystals()
+    {
+        LeanTween.cancel(notEnoughCrystals);
+        LeanTween.alphaCanvas(NoCrystalsCanvasG, 1, 0.5f);
+        LeanTween.alphaCanvas(NoCrystalsCanvasG, 0, 0.5f).setDelay(1);
     }
 
 }

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using GoogleMobileAds;
 using GoogleMobileAds.Api;
 using GoogleMobileAds.Api.Mediation.UnityAds;
+using UnityEngine.SceneManagement;
 
 
 
@@ -106,10 +107,18 @@ public class AdManager : MonoBehaviour
 
         MobileAds.SetRequestConfiguration(requestConfiguration);
         //*******************************//
-
+        Scene currentScene = SceneManager.GetActiveScene();
+        string SceneName = currentScene.name;
+       if(SceneName == "Store" || SceneName == "Main Menu")
+        {
+            RequestRewardedVideoAd();
+        }
+        else
+        {
+            RequestInterstitial();
+        }
        
-       // RequestInterstitial();
-       // RequestRewardedVideoAd();
+        
 
         #endregion
 
@@ -291,7 +300,7 @@ public class AdManager : MonoBehaviour
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
 
-        PlayRewardeVideoAd();
+       // PlayRewardeVideoAd();
        
     }
 
@@ -340,7 +349,7 @@ public class AdManager : MonoBehaviour
 
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
-        PlayInterstitialAD();
+       // PlayInterstitialAD();
         
     }
 
