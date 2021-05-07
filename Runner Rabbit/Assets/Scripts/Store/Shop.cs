@@ -35,10 +35,12 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI powerDescription;
     public Button BuyButton;
     public Button BackButton;
+    public TextMeshProUGUI PowerCost;
 
 
 
     public GameObject noCoinsPopUp;
+    CanvasGroup NoCoinsCanvasG;
     public float costPerHeart;
     public float heartCost;
     public float lightManaCost;
@@ -61,6 +63,7 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
+        NoCoinsCanvasG = noCoinsPopUp.GetComponent<CanvasGroup>();
         if (GameStats.stats.Rune1 == GameStats.Rune.GreedRune || GameStats.stats.Rune2 == GameStats.Rune.GreedRune)
         {
             GameStats.stats.coins = Mathf.FloorToInt(GameStats.stats.coins * 1.25f);
@@ -240,7 +243,8 @@ public class Shop : MonoBehaviour
             PowerName.text = power.Español_Name;
             powerDescription.text = power.Español_Description;
         }
-            
+
+        PowerCost.text = power.Cost.ToString();
         Manacost.text = power.mana.ToString();
         PowerDamage.text = power.Damage.ToString();
        
@@ -281,7 +285,8 @@ public class Shop : MonoBehaviour
             PowerName.text = power.Español_Name;
             powerDescription.text = power.Español_Description;
         }
-        
+
+        PowerCost.text = power.Cost.ToString();
         Manacost.text = power.mana.ToString();
         PowerDamage.text = power.Damage.ToString();
         
@@ -335,8 +340,9 @@ public class Shop : MonoBehaviour
             }
             else
             {
-                StartCoroutine(NotEnoughCoins());
-                print("You don't have enough coins!!!");
+                notEnoughCoins();
+                //StartCoroutine(NotEnoughCoins());
+                //print("You don't have enough coins!!!");
                 //Play sound
             }
         }
@@ -365,8 +371,9 @@ public class Shop : MonoBehaviour
             }
             else
             {
-                StartCoroutine(NotEnoughCoins());
-                print("You don't have enough coins!!!");
+                notEnoughCoins();
+                //StartCoroutine(NotEnoughCoins());
+                //print("You don't have enough coins!!!");
                 //Play sound
             }
         }
@@ -405,8 +412,9 @@ public class Shop : MonoBehaviour
             }
             else
             {
-                StartCoroutine(NotEnoughCoins());
-                print("You don't have enough coins!!!");
+                notEnoughCoins();
+                //StartCoroutine(NotEnoughCoins());
+                //print("You don't have enough coins!!!");
                 //Play sound
             }
         }
@@ -435,8 +443,9 @@ public class Shop : MonoBehaviour
             }
             else
             {
-                StartCoroutine(NotEnoughCoins());
-                print("You don't have enough coins!!!");
+                notEnoughCoins();
+                //StartCoroutine(NotEnoughCoins());
+                //print("You don't have enough coins!!!");
                 //Play sound
             }
         }
@@ -473,8 +482,9 @@ public class Shop : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(NotEnoughCoins());
-                    print("You don't have enough coins!!!");
+                    notEnoughCoins();
+                    //StartCoroutine(NotEnoughCoins());
+                    //print("You don't have enough coins!!!");
                     //Play sound
                 }
             }
@@ -494,8 +504,9 @@ public class Shop : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(NotEnoughCoins());
-                    print("You don't have enough coins!!!");
+                    notEnoughCoins();
+                    //StartCoroutine(NotEnoughCoins());
+                    //print("You don't have enough coins!!!");
                     //Play sound
                 }
             }
@@ -503,7 +514,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            print("You have max hearts");
+           // print("You have max hearts");
         }
     }
     public void OnButtonLightMana()
@@ -521,12 +532,13 @@ public class Shop : MonoBehaviour
                 {
                     GameStats.stats.MoneySpent += lightManaCost/2;
                 }
-                print("Bought Light Mana");
+                //print("Bought Light Mana");
             }
             else
             {
-                StartCoroutine(NotEnoughCoins());
-                print("You don't have enough coins!!!");
+                notEnoughCoins();
+                //StartCoroutine(NotEnoughCoins());
+                //print("You don't have enough coins!!!");
                 //Play sound
             }
         }
@@ -540,12 +552,13 @@ public class Shop : MonoBehaviour
                 {
                     GameStats.stats.MoneySpent += lightManaCost;
                 }
-                print("Bought Light Mana");
+               // print("Bought Light Mana");
             }
             else
             {
-                StartCoroutine(NotEnoughCoins());
-                print("You don't have enough coins!!!");
+                notEnoughCoins();
+                //StartCoroutine(NotEnoughCoins());
+                //print("You don't have enough coins!!!");
                 //Play sound
             }
         }
@@ -565,12 +578,13 @@ public class Shop : MonoBehaviour
                 {
                     GameStats.stats.MoneySpent += darkManaCost/2;
                 }
-                print("Bought Dark Mana");
+               // print("Bought Dark Mana");
             }
             else
             {
-                StartCoroutine(NotEnoughCoins());
-                print("You don't have enough coins!!!");
+                notEnoughCoins();
+                //StartCoroutine(NotEnoughCoins());
+                //print("You don't have enough coins!!!");
                 //Play sound
             }
         }
@@ -584,12 +598,13 @@ public class Shop : MonoBehaviour
                 {
                     GameStats.stats.MoneySpent += darkManaCost;
                 }
-                print("Bought Dark Mana");
+                //print("Bought Dark Mana");
             }
             else
             {
-                StartCoroutine(NotEnoughCoins());
-                print("You don't have enough coins!!!");
+                notEnoughCoins();
+                //StartCoroutine(NotEnoughCoins());
+                //print("You don't have enough coins!!!");
                 //Play sound
             }
         }
@@ -597,8 +612,17 @@ public class Shop : MonoBehaviour
     }
 
 
+    void notEnoughCoins()
+    {
+        //print("You don't have enough coins!!!");
+        LeanTween.cancel(NoCoinsCanvasG.gameObject);
+ 
+        LeanTween.alphaCanvas(NoCoinsCanvasG, 1, 0.5f);
+        LeanTween.alphaCanvas(NoCoinsCanvasG , 0, 0.5f).setDelay(1);
 
+    }
 
+    /*
     IEnumerator NotEnoughCoins()
     {
         noCoinsPopUp.SetActive(true);
@@ -608,5 +632,6 @@ public class Shop : MonoBehaviour
 
 
     }
+    */
 
 }
