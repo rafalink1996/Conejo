@@ -23,9 +23,9 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 2048
+      m_MaxTextureSize: 4096
       m_ResizeAlgorithm: 0
-      m_TextureFormat: 4
+      m_TextureFormat: -1
       m_TextureCompression: 1
       m_CompressionQuality: 50
       m_CrunchedCompression: 1
@@ -38,8 +38,8 @@ SpriteAtlas:
       padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
-      enableTightPacking: 1
+      enableRotation: 0
+      enableTightPacking: 0
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 9365607315f2149f8905f6ae702c4bb7, type: 3}
@@ -59,7 +59,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 5c75495438eec4f12be7a2c98845b384, type: 3}
     - {fileID: 2800000, guid: 016ea274fc826448cb67a892b9e61ef0, type: 3}
     - {fileID: 2800000, guid: 9c2956cea55b54aafbe30cdf92175677, type: 3}
-    totalSpriteSurfaceArea: 12554156
+    totalSpriteSurfaceArea: 14465611
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:

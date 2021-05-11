@@ -663,7 +663,7 @@ public class character : MonoBehaviour
             HoldPower = true;
 
             UsedPower(GameStats.stats.powerLight.id);
-            mana.ReduceDarkManaHold();
+            mana.ReduceLightManaHold();
             
             
 
@@ -725,7 +725,7 @@ public class character : MonoBehaviour
             animator.SetBool("Laser", true);
             //animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id);
-            mana.ReduceLightManaHold();
+            mana.ReduceDarkManaHold();
 
 
            
@@ -778,7 +778,7 @@ public class character : MonoBehaviour
             isUsingPower = true;
             animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id);
-            mana.ReduceLightMana();
+            mana.ReduceDarkMana();
 
         }
 
@@ -990,7 +990,7 @@ public class character : MonoBehaviour
                 carrotT1.transform.position = transform.position + new Vector3(1, 0, 0);
                 CarrotMissile CarrotT1Stats = carrotT1.GetComponent<CarrotMissile>();
                 CarrotT1Stats.Piercing = false;
-                CarrotT1Stats.damage = 10;
+                //CarrotT1Stats.damage = 10;
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
 
@@ -1003,7 +1003,7 @@ public class character : MonoBehaviour
                 carrotT2.transform.position = transform.position + new Vector3(1, 0, 0);
                 CarrotMissile CarrotT2Stats = carrotT2.GetComponent<CarrotMissile>();
                 CarrotT2Stats.Piercing = false;
-                CarrotT2Stats.damage = 15;
+                //CarrotT2Stats.damage = 15;
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
 
@@ -1015,7 +1015,7 @@ public class character : MonoBehaviour
                 GameObject carrotT3 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 CarrotMissile CarrotT3Stats = carrotT3.GetComponent<CarrotMissile>();
                 CarrotT3Stats.Piercing = true;
-                CarrotT3Stats.damage = 20;
+                //CarrotT3Stats.damage = 20;
                 carrotT3.transform.position = transform.position + new Vector3(1, 0, 0);
 
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
@@ -1031,10 +1031,10 @@ public class character : MonoBehaviour
                 GameObject carrotT4Clone = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 CarrotMissile CarrotT4Stats = carrotT4.GetComponent<CarrotMissile>();
                 CarrotT4Stats.Piercing = true;
-                CarrotT4Stats.damage = 25;
+                //CarrotT4Stats.damage = 25;
                 CarrotMissile CarrotT4CloneStats = carrotT4Clone.GetComponent<CarrotMissile>();
                 CarrotT4CloneStats.Piercing = true;
-                CarrotT4CloneStats.damage = 25;
+                //CarrotT4CloneStats.damage = 25;
                 carrotT4Clone.transform.position = transform.position + new Vector3(1, -0.5f, 0);
 
 

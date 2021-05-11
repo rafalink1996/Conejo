@@ -31,6 +31,8 @@ public class LanguageManager : MonoBehaviour
     public TextMeshProUGUI JungleStartText, JungleStartDescriptionText, JungleStartCostText, JungleStartCrystals, JungleStartCoins, JungleStartBackButton, JungleStartBuyButton; // Jungle Start
     public TextMeshProUGUI PortalRoomStartText, PortalRoomStartDescriptionText, PortalRoomStartCostText, PortalRoomStartCrystals, PortalRoomStartCoins, PortalRoomStartBackButton, PortalRoomStartBuyButton; //Portal roomStart
     public TextMeshProUGUI RewriteLevelQuestion, RewriteLevelDescription, RewriteLevelButton, RewriteLevelBackButton; //Rewrite level
+   
+
     //Texts RuneForge
     public TextMeshProUGUI RuneforgeTitle, RuneforgeBackButtonText, RuneName1, RuneName2, RuneName3, RuneName4, RuneName5, RuneName6, RuneName7, RuneName8, RuneName9, RuneName10, RuneDescription1, // RuneForge
                            RuneDescription2, RuneDescription3, RuneDescription4, RuneDescription5, RuneDescription6, RuneDescription7, RuneDescription8, RuneDescription9, RuneDescription10, EquipedRunes,
@@ -74,11 +76,11 @@ public class LanguageManager : MonoBehaviour
 
     string English_StoreTitle = "Store";
     string English_PowerUpsTitle = "Power Ups";
-    string English_ManaJarText = "Mana Jar";
-    string English_CointX2TicketText = "Coin x2 Ticket";
-    string English_ExtraHeartsText = "Extra Hearts";
-    string English_PortalBoostText = "Portal Boost";
-    string English_FenixFeatherText = "phoenix Feather";
+    public string English_ManaJarText = "Mana Jar";
+    public string English_CointX2TicketText = "Coin x2 Ticket";
+    public string English_ExtraHeartsText = "Extra Hearts";
+    public string English_PortalBoostText = "Portal Boost";
+    public string English_FenixFeatherText = "phoenix Feather";
     string English_RuneButton = "Runes";
 
     string English_CarrotPower = "Carrot Missile";
@@ -209,7 +211,11 @@ public class LanguageManager : MonoBehaviour
 
 
 
-
+    public string English_CoinsX2Description = "Every Coin You take Counts as 2";
+    public string English_PortalBoostDescription = "Start Each level half complete, does not count boss levels";
+    public string English_PhoenixFeatherDescription = "Revive once next run";
+    public string English_ExtraHeartsDescription = "Start the run with 2 extra hearts";
+    public string English_ManaJarDescription = "Start the run with 30 extra dark mana and 30 extra light mana";
 
 
 
@@ -237,11 +243,11 @@ public class LanguageManager : MonoBehaviour
 
     string Español_StoreTitle = "Tienda";
     string Español_PowerUpsTitle = "Power Ups";
-    string Español_ManaJarText = "Jarra de mana";
-    string Español_CointX2TicketText = "Tiquete monedas x2";
-    string Español_ExtraHeartsText = "Corazones extra";
-    string Español_PortalBoostText = "Boost de portal";
-    string Español_FenixFeatherText = "Pluma de fenix";
+    public string Español_ManaJarText = "Jarra de mana";
+    public string Español_CointX2TicketText = "Tiquete monedas x2";
+    public string Español_ExtraHeartsText = "Corazones extra";
+    public string Español_PortalBoostText = "Boost de portal";
+    public string Español_FenixFeatherText = "Pluma de fenix";
     string Español_RuneButton = "Runas";
 
     string Español_CarrotPower = "Misil zanahoria";
@@ -366,6 +372,14 @@ public class LanguageManager : MonoBehaviour
 
     string Español_RewriteLevelQuestion = "ya haz comprado un nivel, ¿estás seguro que quieres cambiar el nivel de inicio? ";
     string Español_RewriteLevelDescription = "Las monedas que se te habian dado se te quitarán y se devolveran los crystales gastados antes de hacer la nueva compra";
+
+
+    public string Español_CoinsX2Description = "Cada moneda que recoges cuenta por 2";
+    public string Español_PortalBoostDescription = "Empieza cada nivel 50% completado, no funciona con niveles de Jefes";
+    public string Español_PhoenixFeatherDescription = "Revive una vez por partida";
+    public string Español_ExtraHeartsDescription = "Empieza la partida con 2 corazones extra";
+    public string Español_ManaJarDescription = "Empieza la partida con 30 mana extra";
+
 
 
 

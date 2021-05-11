@@ -13,7 +13,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
     public GameObject playbuttontransition;
 
     public GameObject StartButton;
-    public GameObject StartButtonDisplay;
+  
 
     public GameObject NewRunButton;
     public GameObject ContinueRunButton;
@@ -24,7 +24,6 @@ public class LevelLoaderMainMenu : MonoBehaviour
         if (GameStats.stats.RunInProgress == true)
         {
             StartButton.SetActive(false);
-            StartButtonDisplay.SetActive(false);
             NewRunButton.SetActive(true);
             ContinueRunButton.SetActive(true);
         }
@@ -49,6 +48,8 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.SavedLevelCount = GameStats.stats.LevelCount;
             GameStats.stats.LevelBought = false;
             GameStats.stats.RunInProgressPortalBoost = false;
+            GameStats.stats.SavedLevelPercentage = 0;
+         
             
            
             string LeveleToLoadName = GameStats.stats.CheckLevel();
@@ -62,6 +63,8 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.SavedLevelIndicator = GameStats.stats.LevelIndicator;
             GameStats.stats.SavedLevelCount = GameStats.stats.LevelCount;
             GameStats.stats.RunInProgressPortalBoost = false;
+            GameStats.stats.SavedLevelPercentage = 0;
+            
 
             //GameStats.stats.RunInProgress = true;
 

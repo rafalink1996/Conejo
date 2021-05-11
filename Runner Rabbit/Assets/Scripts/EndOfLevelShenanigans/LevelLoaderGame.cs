@@ -115,11 +115,12 @@ public class LevelLoaderGame : MonoBehaviour
             
         }
         int levelPercentage = Mathf.FloorToInt((levelcountdown / levelTime) * 100);
-        if (levelPercentage == 25 || levelPercentage == 50 || levelPercentage == 75)
+        if (levelPercentage == 1 || levelPercentage == 25 || levelPercentage == 50 || levelPercentage == 75)
         {
             GameStats.stats.SavedLevelPercentage = levelcountdown;
             GameStats.stats.SaveCurrentHearts = cha.Health;
             GameStats.stats.SaveStats();
+            GameStats.stats.RunInProgress = true;
         }
 
         

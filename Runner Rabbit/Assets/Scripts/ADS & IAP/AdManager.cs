@@ -39,6 +39,11 @@ public class AdManager : MonoBehaviour
 
     public LevelLoaderGame levelLoaderGame;
 
+    [SerializeField] GameObject FailedtoShowGameObject;
+    [SerializeField] TextMeshProUGUI FailedAdDescriptionText;
+    
+    string FailedTLoadText;
+
 
     // Google admob
 
@@ -52,7 +57,11 @@ public class AdManager : MonoBehaviour
 
 
     public bool probandoAdmob;
-    public GameObject AdFailedToLoadObject;
+    bool FailedToLoad = false;
+    
+
+
+    [SerializeField] Image AdLoadedImage;
     
 
 
@@ -73,6 +82,14 @@ public class AdManager : MonoBehaviour
 #else
         adUnitId = "unexpected_platform";
 #endif
+
+        if(AdLoadedImage != null)
+        {
+            AdLoadedImage.color = Color.red;
+        }
+
+        FailedToLoad = false;
+
 
         MobileAds.Initialize((initStatus) =>
         {
@@ -107,8 +124,10 @@ public class AdManager : MonoBehaviour
 
         MobileAds.SetRequestConfiguration(requestConfiguration);
         //*******************************//
+
         Scene currentScene = SceneManager.GetActiveScene();
         string SceneName = currentScene.name;
+        /*
        if(SceneName == "Store" || SceneName == "Main Menu")
         {
             RequestRewardedVideoAd();
@@ -117,8 +136,10 @@ public class AdManager : MonoBehaviour
         {
             RequestInterstitial();
         }
-       
-        
+        */
+        RequestRewardedVideoAd();
+        RequestInterstitial();
+
 
         #endregion
 
@@ -198,7 +219,17 @@ public class AdManager : MonoBehaviour
             if (this.rewardedAd.IsLoaded())
             {
                 this.rewardedAd.Show();
-            } 
+            }
+            else if (FailedToLoad)
+            {
+                FailedAdDescriptionText.text = FailedTLoadText;
+                FailedtoShowGameObject.SetActive(true);
+
+            }
+            else
+            {
+                // show ad loading
+            }
             
         }
         else
@@ -299,7 +330,11 @@ public class AdManager : MonoBehaviour
 
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
-
+        if(AdLoadedImage != null)
+        {
+            AdLoadedImage.color = Color.green;
+        }
+        
        // PlayRewardeVideoAd();
        
     }
@@ -312,12 +347,17 @@ public class AdManager : MonoBehaviour
                               + args.Message);
          Debug.Log("ad failed to load");*/
 
+        FailedToLoad = true;
+        FailedTLoadText = "Faield due to: " + args.Message;
+
+        if (AdLoadedImage != null)
+        {
+            AdLoadedImage.color = Color.black;
+        }
 
 
-       
 
-        
-        
+
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args)
@@ -327,11 +367,20 @@ public class AdManager : MonoBehaviour
 
     public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
     {
+        if(FailedtoShowGameObject != null)
+        {
+            FailedtoShowGameObject.SetActive(true);
+            FailedAdDescriptionText.text = args.Message;
+        }
+      
+
+
         MainMixer.SetFloat("MasterVolume", 0);
     }
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
+        RequestRewardedVideoAd();
         MainMixer.SetFloat("MasterVolume", 0);
     }
 
@@ -341,6 +390,11 @@ public class AdManager : MonoBehaviour
         if (rewardColect != null)
         {
             rewardColect.SetActive(true);
+        }
+
+        if (AdLoadedImage != null)
+        {
+            AdLoadedImage.color = Color.red;
         }
     }
 
@@ -381,7 +435,52 @@ public class AdManager : MonoBehaviour
     {
 
     }
-    
+
+    /*
+    private void OnDestroy()
+    {
+        interstitial.Destroy();
+
+        this.rewardedAd.OnAdLoaded -= HandleRewardedAdLoaded;
+        // ** Called when an ad request failed to load.
+        this.rewardedAd.OnAdFailedToLoad -= HandleRewardedAdFailedToLoad;
+        // ** Called when an ad is shown.
+        this.rewardedAd.OnAdOpening -= HandleRewardedAdOpening;
+        // ** Called when an ad request failed to show.
+        this.rewardedAd.OnAdFailedToShow -= HandleRewardedAdFailedToShow;
+        // ** Called when the user should be rewarded for interacting with the ad.
+        this.rewardedAd.OnUserEarnedReward -= HandleUserEarnedReward;
+        // ** Called when the ad is closed.
+        this.rewardedAd.OnAdClosed -= HandleRewardedAdClosed;
+
+
+        // Called when an ad request has successfully loaded.
+        this.interstitial.OnAdLoaded -= HandleOnAdLoaded;
+        // Called when an ad request failed to load.
+        this.interstitial.OnAdFailedToLoad -= HandleOnAdFailedToLoad;
+        // Called when an ad is shown.
+        this.interstitial.OnAdOpening -= HandleOnAdOpened;
+        // Called when the ad is closed.
+        this.interstitial.OnAdClosed -= HandleOnAdClosed;
+        // Called when the ad click caused the user to leave the application.
+        this.interstitial.OnAdLeavingApplication -= HandleOnAdLeavingApplication;
+
+      
+    }
+    */
+
+    public void RetryToLoadAD()
+    {
+        if (FailedToLoad)
+        {
+            RequestRewardedVideoAd();
+        }
+        else
+        {
+            // do nothing
+        }
+    }
+
 }
 
 

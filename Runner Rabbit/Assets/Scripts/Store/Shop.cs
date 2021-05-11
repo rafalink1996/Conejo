@@ -36,6 +36,8 @@ public class Shop : MonoBehaviour
     public Button BuyButton;
     public Button BackButton;
     public TextMeshProUGUI PowerCost;
+    [SerializeField] TextMeshProUGUI PowerTier;
+    [SerializeField] Image PowerTierBG;
 
 
 
@@ -250,6 +252,8 @@ public class Shop : MonoBehaviour
         PowerCost.text = power.Cost.ToString();
         Manacost.text = power.mana.ToString();
         PowerDamage.text = power.Damage.ToString();
+        PowerTier.text = power.Rarity.ToString();
+        PowerTierBG.color = power.rarityColor;
        
         /*
         Debug.Log(power.name);
@@ -292,7 +296,9 @@ public class Shop : MonoBehaviour
         PowerCost.text = power.Cost.ToString();
         Manacost.text = power.mana.ToString();
         PowerDamage.text = power.Damage.ToString();
-        
+        PowerTier.text = power.Rarity.ToString();
+        PowerTierBG.color = power.rarityColor;
+
         /*
         Debug.Log(power.name);
         if (GameStats.stats.coins >= power.Cost)
