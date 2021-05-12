@@ -48,7 +48,6 @@ GameObject:
   - component: {fileID: 648216377211535490}
   - component: {fileID: 648216377211535493}
   - component: {fileID: 648216377211535488}
-  - component: {fileID: 3643454591588662218}
   - component: {fileID: 8231673920346723229}
   - component: {fileID: 3130558020234127975}
   m_Layer: 9
@@ -155,21 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 0}
---- !u!114 &3643454591588662218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648216377211535492}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  maxspeed: 10
-  acceleration: 2
 --- !u!114 &8231673920346723229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +170,8 @@ MonoBehaviour:
   health: 0
   healthSlider: {fileID: 0}
   Hit: 0
-  hitTime: 1
+  MaxHitTime: 6
+  isBoss: 0
 --- !u!61 &3130558020234127975
 BoxCollider2D:
   m_ObjectHideFlags: 0

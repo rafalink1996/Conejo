@@ -7317,8 +7317,12 @@ MonoBehaviour:
   AdButton: {fileID: 0}
   ConfirmWatchAdObject: {fileID: 0}
   levelLoaderGame: {fileID: 1526805044}
+  FailedtoShowGameObject: {fileID: 0}
+  FailedAdDescriptionText: {fileID: 0}
   probandoAdmob: 0
-  AdFailedToLoadObject: {fileID: 0}
+  LoadRetryRewarded: 0
+  LoadRetryIntersticial: 0
+  AdLoadedImage: {fileID: 0}
 --- !u!1 &677475416
 GameObject:
   m_ObjectHideFlags: 0
@@ -26218,6 +26222,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752282420540000881, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6033464752023225822, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}

@@ -9,12 +9,15 @@ public class EnemyHealth : MonoBehaviour
     public float health;
     public Slider healthSlider;
     public bool Hit;
-    public float hitTime = 6f;
+    float hitTime;
+    [SerializeField] float MaxHitTime = 6;
     public bool isBoss = false;
-    // Start is called before the first frame update
+
+    
     void Start()
     {
         //print("start");
+        hitTime = MaxHitTime;
         Hit = false;
         healthSlider = transform.Find("Canvas/Slider").GetComponent<Slider>();
         health = maxHealth;
@@ -29,7 +32,7 @@ public class EnemyHealth : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         healthSlider.value = health;
@@ -41,7 +44,7 @@ public class EnemyHealth : MonoBehaviour
         if (hitTime <= 0 && Hit)
         {
             Hit = false;
-            hitTime = 6f;
+            hitTime = MaxHitTime;
         }
     }
     public void TakeDamage(int damage)

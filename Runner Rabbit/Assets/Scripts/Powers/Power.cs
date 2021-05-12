@@ -12,7 +12,7 @@ public class Power : ScriptableObject
     public Sprite iconLight = null;
     public Sprite iconDark = null;
     public float mana;
-    public float Damage;
+    public int Damage;
     public string description;
     public string Español_Description;
     public int id;

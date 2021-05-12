@@ -640,8 +640,8 @@ public class character : MonoBehaviour
         {
             isUsingPower = true;
             animator.SetBool("isUsingPower", true);
-            UsedPower(GameStats.stats.powerLight.id);
-            mana.ReduceDarkMana();
+            UsedPower(GameStats.stats.powerLight.id, GameStats.stats.powerLight.Damage) ;
+            mana.ReduceLightMana();
             
         }
 
@@ -662,7 +662,7 @@ public class character : MonoBehaviour
             isUsinglaserLight = true;
             HoldPower = true;
 
-            UsedPower(GameStats.stats.powerLight.id);
+            UsedPower(GameStats.stats.powerLight.id, GameStats.stats.powerLight.Damage);
             mana.ReduceLightManaHold();
             
             
@@ -724,7 +724,7 @@ public class character : MonoBehaviour
 
             animator.SetBool("Laser", true);
             //animator.SetBool("isUsingPower", true);
-            UsedPower(GameStats.stats.powerDark.id);
+            UsedPower(GameStats.stats.powerDark.id, GameStats.stats.powerDark.Damage);
             mana.ReduceDarkManaHold();
 
 
@@ -777,7 +777,7 @@ public class character : MonoBehaviour
         {
             isUsingPower = true;
             animator.SetBool("isUsingPower", true);
-            UsedPower(GameStats.stats.powerDark.id);
+            UsedPower(GameStats.stats.powerDark.id, GameStats.stats.powerDark.Damage);
             mana.ReduceDarkMana();
 
         }
@@ -977,7 +977,7 @@ public class character : MonoBehaviour
     }
 
 
-    public void UsedPower(int id)
+    public void UsedPower(int id, int damage)
     {
         switch (id)
         {
@@ -990,7 +990,7 @@ public class character : MonoBehaviour
                 carrotT1.transform.position = transform.position + new Vector3(1, 0, 0);
                 CarrotMissile CarrotT1Stats = carrotT1.GetComponent<CarrotMissile>();
                 CarrotT1Stats.Piercing = false;
-                //CarrotT1Stats.damage = 10;
+                CarrotT1Stats.damage = damage;
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
 
@@ -1003,7 +1003,7 @@ public class character : MonoBehaviour
                 carrotT2.transform.position = transform.position + new Vector3(1, 0, 0);
                 CarrotMissile CarrotT2Stats = carrotT2.GetComponent<CarrotMissile>();
                 CarrotT2Stats.Piercing = false;
-                //CarrotT2Stats.damage = 15;
+                CarrotT2Stats.damage = damage;
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
 
@@ -1015,7 +1015,7 @@ public class character : MonoBehaviour
                 GameObject carrotT3 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 CarrotMissile CarrotT3Stats = carrotT3.GetComponent<CarrotMissile>();
                 CarrotT3Stats.Piercing = true;
-                //CarrotT3Stats.damage = 20;
+                CarrotT3Stats.damage = damage;
                 carrotT3.transform.position = transform.position + new Vector3(1, 0, 0);
 
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
@@ -1031,10 +1031,10 @@ public class character : MonoBehaviour
                 GameObject carrotT4Clone = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
                 CarrotMissile CarrotT4Stats = carrotT4.GetComponent<CarrotMissile>();
                 CarrotT4Stats.Piercing = true;
-                //CarrotT4Stats.damage = 25;
+                CarrotT4Stats.damage = damage;
                 CarrotMissile CarrotT4CloneStats = carrotT4Clone.GetComponent<CarrotMissile>();
                 CarrotT4CloneStats.Piercing = true;
-                //CarrotT4CloneStats.damage = 25;
+                CarrotT4CloneStats.damage = damage;
                 carrotT4Clone.transform.position = transform.position + new Vector3(1, -0.5f, 0);
 
 
@@ -1102,7 +1102,7 @@ public class character : MonoBehaviour
                 GameObject radishT1 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT1.transform.position = transform.position + new Vector3(1, 0, 0);
                 RadishMissile RadishT1stats = radishT1.GetComponent<RadishMissile>();
-                RadishT1stats.damage = 15;
+                RadishT1stats.damage = damage;
                 FindObjectOfType<AudioManager>().Play("RadishMissle");
 
                 break;
@@ -1113,11 +1113,11 @@ public class character : MonoBehaviour
                 GameObject radishT2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT2.transform.position = transform.position + new Vector3(1, 0.3f, 0);
                 RadishMissile RadishT2stats = radishT2.GetComponent<RadishMissile>();
-                RadishT2stats.damage = 15;
+                RadishT2stats.damage = damage;
                 GameObject radishT2clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT2clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
                 RadishMissile RadishT2statsclone = radishT2clone.GetComponent<RadishMissile>();
-                RadishT2statsclone.damage = 15;
+                RadishT2statsclone.damage = damage;
                 FindObjectOfType<AudioManager>().Play("RadishMissle");
 
                 break;
@@ -1128,15 +1128,15 @@ public class character : MonoBehaviour
                 GameObject radishT3 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT3.transform.position = transform.position + new Vector3(1, 0.3f, 0);
                 RadishMissile RadishT3stats = radishT3.GetComponent<RadishMissile>();
-                RadishT3stats.damage = 15;
+                RadishT3stats.damage = damage;
                 GameObject radishT3clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT3clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
                 RadishMissile RadishT3statsclone = radishT3clone.GetComponent<RadishMissile>();
-                RadishT3statsclone.damage = 15;
+                RadishT3statsclone.damage = damage;
                 GameObject radishT3clone2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT3clone2.transform.position = transform.position + new Vector3(2, 0, 0);
                 RadishMissile RadishT3statsclone2 = radishT3clone2.GetComponent<RadishMissile>();
-                RadishT3statsclone2.damage = 15;
+                RadishT3statsclone2.damage = damage;
                 FindObjectOfType<AudioManager>().Play("RadishMissle");
 
                 break;
@@ -1147,15 +1147,15 @@ public class character : MonoBehaviour
                 GameObject radishT4 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT4.transform.position = transform.position + new Vector3(1, 0.3f, 0);
                 RadishMissile RadishT4stats = radishT4.GetComponent<RadishMissile>();
-                RadishT4stats.damage = 25;
+                RadishT4stats.damage = damage;
                 GameObject radishT4clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT4clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
                 RadishMissile RadishT4statsclone = radishT4clone.GetComponent<RadishMissile>();
-                RadishT4statsclone.damage = 25;
+                RadishT4statsclone.damage = damage;
                 GameObject radishT4clone2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
                 radishT4clone2.transform.position = transform.position + new Vector3(2, 0, 0);
                 RadishMissile RadishT4statsclone2 = radishT4clone2.GetComponent<RadishMissile>();
-                RadishT4statsclone2.damage = 25;
+                RadishT4statsclone2.damage = damage;
                 FindObjectOfType<AudioManager>().Play("RadishMissle");
 
 

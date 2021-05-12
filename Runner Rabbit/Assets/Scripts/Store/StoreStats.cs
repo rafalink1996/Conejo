@@ -23,6 +23,10 @@ public class StoreStats : MonoBehaviour
     private Button DarkButton;
     private Button LightButton;
 
+    public Image LightPowerRarity;
+    public Image DarkPowerRarity;
+   
+
 
 
     // power stats display
@@ -32,6 +36,7 @@ public class StoreStats : MonoBehaviour
     public TextMeshProUGUI Manacost;
     public TextMeshProUGUI PowerDamage;
     public TextMeshProUGUI powerDescription;
+    public Image RarityColor;
         
 
 
@@ -92,6 +97,9 @@ public class StoreStats : MonoBehaviour
         DarkButton.image.sprite = GameStats.stats.powerDark.iconDark;
         LightButton.image.sprite = GameStats.stats.powerLight.iconLight;
 
+        DarkPowerRarity.color = GameStats.stats.powerDark.rarityColor;
+        LightPowerRarity.color = GameStats.stats.powerLight.rarityColor;
+
     }
 
     public void DarkPowerButton()
@@ -101,6 +109,7 @@ public class StoreStats : MonoBehaviour
         Manacost.text = GameStats.stats.powerDark.mana.ToString();
         PowerDamage.text = GameStats.stats.powerDark.Damage.ToString();
         powerDescription.text = GameStats.stats.powerDark.description;
+        RarityColor.color = GameStats.stats.powerDark.rarityColor;
     }
 
     public void LightPowerButton()
@@ -110,6 +119,7 @@ public class StoreStats : MonoBehaviour
         Manacost.text = GameStats.stats.powerLight.mana.ToString();
         PowerDamage.text = GameStats.stats.powerLight.Damage.ToString();
         powerDescription.text = GameStats.stats.powerLight.description;
+        RarityColor.color = GameStats.stats.powerLight.rarityColor;
     }
 
 }

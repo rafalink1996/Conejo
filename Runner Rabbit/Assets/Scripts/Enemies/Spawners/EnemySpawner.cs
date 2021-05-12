@@ -20,14 +20,11 @@ public class EnemySpawner : MonoBehaviour
         enemyType = Random.Range(0, enemyName.Length);
         Cha = FindObjectOfType<character>();
         GameStats.stats.bossDead = false;
-        //enemyContainer = transform.Find("EnemyContainer");
-        //enemyContainer.transform.SetParent(null);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        //enemyContainer.transform.position = transform.position;
         if (enemyContainer.childCount == 0 && enemies)
         {
             spawnTime = Random.Range(3f, 6f);
@@ -53,17 +50,6 @@ public class EnemySpawner : MonoBehaviour
             enemy = true;
             enemies = true;
         }
-        /*if (Cha.top)
-        {
-            transform.position = new Vector3(transform.position.x, -5.84f, transform.position.z);
-
-        }
-        else
-        {
-            transform.position = new Vector3(transform.position.x, 5.84f, transform.position.z);
-
-        }*/
-
     }
     public void SetEnemyCount (int count)
     {

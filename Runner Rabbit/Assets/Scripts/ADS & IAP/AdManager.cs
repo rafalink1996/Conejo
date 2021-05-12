@@ -39,9 +39,10 @@ public class AdManager : MonoBehaviour
 
     public LevelLoaderGame levelLoaderGame;
 
-    [SerializeField] GameObject FailedtoShowGameObject;
-    [SerializeField] TextMeshProUGUI FailedAdDescriptionText;
-    
+
+    // Failed To Load Rewarded
+    [SerializeField] GameObject FailedtoShowGameObject = null;
+    [SerializeField] TextMeshProUGUI FailedAdDescriptionText = null;
     string FailedTLoadText;
 
 
@@ -57,11 +58,16 @@ public class AdManager : MonoBehaviour
 
 
     public bool probandoAdmob;
-    bool FailedToLoad = false;
-    
+    bool FailedToLoadRewarded = false;
+    bool FailedToLoadIntersticial = false;
 
 
-    [SerializeField] Image AdLoadedImage;
+    public int LoadRetryRewarded;
+    public int LoadRetryIntersticial;
+
+
+
+    [SerializeField] Image AdLoadedImage = null;
     
 
 
@@ -88,7 +94,9 @@ public class AdManager : MonoBehaviour
             AdLoadedImage.color = Color.red;
         }
 
-        FailedToLoad = false;
+        FailedToLoadRewarded = false;
+        LoadRetryRewarded = 0;
+        LoadRetryIntersticial = 0;
 
 
         MobileAds.Initialize((initStatus) =>
@@ -114,7 +122,7 @@ public class AdManager : MonoBehaviour
   
 
 
-    // Remove this code before build //
+   // **************** Remove this code before build ************************ //
     List<string> deviceIds = new List<string>();
         deviceIds.Add("14d1fff363b2cda9939aac6cb791aaef");
         RequestConfiguration requestConfiguration = new RequestConfiguration
@@ -123,11 +131,11 @@ public class AdManager : MonoBehaviour
             .build();
 
         MobileAds.SetRequestConfiguration(requestConfiguration);
-        //*******************************//
+   // **********************************************************************   //
 
         Scene currentScene = SceneManager.GetActiveScene();
         string SceneName = currentScene.name;
-        /*
+        
        if(SceneName == "Store" || SceneName == "Main Menu")
         {
             RequestRewardedVideoAd();
@@ -136,10 +144,6 @@ public class AdManager : MonoBehaviour
         {
             RequestInterstitial();
         }
-        */
-        RequestRewardedVideoAd();
-        RequestInterstitial();
-
 
         #endregion
 
@@ -151,13 +155,6 @@ public class AdManager : MonoBehaviour
             {
                 AdButton.onClick.AddListener(ShowConfirmationScreen);
             }
-
-          
-
-          
-            
-
-
             RewardCoins = 100 + (25 * GameStats.stats.LevelIndicator);
             if (RewardDisplay1 != null)
             {
@@ -214,23 +211,19 @@ public class AdManager : MonoBehaviour
 
         if (GameStats.stats.NoAdsBought == false)
         {
-
-
             if (this.rewardedAd.IsLoaded())
             {
                 this.rewardedAd.Show();
             }
-            else if (FailedToLoad)
+            else if (FailedToLoadRewarded)
             {
                 FailedAdDescriptionText.text = FailedTLoadText;
                 FailedtoShowGameObject.SetActive(true);
-
             }
             else
             {
                 // show ad loading
-            }
-            
+            } 
         }
         else
         {
@@ -239,8 +232,8 @@ public class AdManager : MonoBehaviour
                 rewardColect.SetActive(true);
             }
         }
-
     }
+
     public void RequestInterstitial()
     {
 
@@ -268,30 +261,31 @@ public class AdManager : MonoBehaviour
 
     public void PlayInterstitialAD()
     {
-
-        if (GameStats.stats.NoAdsBought == false)
+        if (FailedToLoadIntersticial)
         {
-            if (this.interstitial.IsLoaded())
+            if (GameStats.stats.NoAdsBought == false)
             {
-                this.interstitial.Show();
-            } 
+                if (this.interstitial.IsLoaded())
+                {
+                    this.interstitial.Show();
+                }
+            }
+            else
+            {
+                BackToMainMenuIntersticial();
 
+            }
         }
         else
         {
             BackToMainMenuIntersticial();
-
-        }
-
-
-
+        } 
     }
 
     public void BackToMainMenuIntersticial()
     {
         levelLoaderGame.backToMainMenu();
     }
-
 
 
     void ShowRewardWhenNoADS()
@@ -323,10 +317,11 @@ public class AdManager : MonoBehaviour
     }
 
 
+    // *********************************************************  //
+    // ******************** ADmob Events ***********************  //
+    // *********************************************************  //
 
-    // ADmob Events
-  
-    //Rewarded video ads events
+    // ************** Rewarded video ads events ****************  //
 
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
@@ -334,30 +329,31 @@ public class AdManager : MonoBehaviour
         {
             AdLoadedImage.color = Color.green;
         }
-        
-       // PlayRewardeVideoAd();
-       
+        LoadRetryRewarded = 0;
     }
 
     public void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
     {
-
         /* MonoBehaviour.print(
              "HandleRewardedAdFailedToLoad event received with message: "
                               + args.Message);
          Debug.Log("ad failed to load");*/
 
-        FailedToLoad = true;
-        FailedTLoadText = "Faield due to: " + args.Message;
-
-        if (AdLoadedImage != null)
+        if(LoadRetryRewarded > 2)
         {
-            AdLoadedImage.color = Color.black;
+            FailedToLoadRewarded = true;
+            FailedTLoadText = "Faield due to: " + args.Message;
+
+            if (AdLoadedImage != null)
+            {
+                AdLoadedImage.color = Color.black;
+            }
         }
-
-
-
-
+        else
+        {
+            LoadRetryRewarded += 1;
+            RequestRewardedVideoAd();
+        }
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args)
@@ -372,9 +368,6 @@ public class AdManager : MonoBehaviour
             FailedtoShowGameObject.SetActive(true);
             FailedAdDescriptionText.text = args.Message;
         }
-      
-
-
         MainMixer.SetFloat("MasterVolume", 0);
     }
 
@@ -391,7 +384,6 @@ public class AdManager : MonoBehaviour
         {
             rewardColect.SetActive(true);
         }
-
         if (AdLoadedImage != null)
         {
             AdLoadedImage.color = Color.red;
@@ -399,11 +391,11 @@ public class AdManager : MonoBehaviour
     }
 
 
-    // intersticial Ad events
+    // ************** intersticial video ads events ****************  //
 
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
-       // PlayInterstitialAD();
+        LoadRetryIntersticial = 0;
         
     }
 
@@ -416,6 +408,16 @@ public class AdManager : MonoBehaviour
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
                              + args.Message);*/
+
+        if(LoadRetryIntersticial > 2)
+        {
+            FailedToLoadIntersticial = true;
+        }
+        else
+        {
+            LoadRetryIntersticial += 1;
+            RequestInterstitial();
+        }
         
 
     }
@@ -436,42 +438,11 @@ public class AdManager : MonoBehaviour
 
     }
 
-    /*
-    private void OnDestroy()
-    {
-        interstitial.Destroy();
-
-        this.rewardedAd.OnAdLoaded -= HandleRewardedAdLoaded;
-        // ** Called when an ad request failed to load.
-        this.rewardedAd.OnAdFailedToLoad -= HandleRewardedAdFailedToLoad;
-        // ** Called when an ad is shown.
-        this.rewardedAd.OnAdOpening -= HandleRewardedAdOpening;
-        // ** Called when an ad request failed to show.
-        this.rewardedAd.OnAdFailedToShow -= HandleRewardedAdFailedToShow;
-        // ** Called when the user should be rewarded for interacting with the ad.
-        this.rewardedAd.OnUserEarnedReward -= HandleUserEarnedReward;
-        // ** Called when the ad is closed.
-        this.rewardedAd.OnAdClosed -= HandleRewardedAdClosed;
-
-
-        // Called when an ad request has successfully loaded.
-        this.interstitial.OnAdLoaded -= HandleOnAdLoaded;
-        // Called when an ad request failed to load.
-        this.interstitial.OnAdFailedToLoad -= HandleOnAdFailedToLoad;
-        // Called when an ad is shown.
-        this.interstitial.OnAdOpening -= HandleOnAdOpened;
-        // Called when the ad is closed.
-        this.interstitial.OnAdClosed -= HandleOnAdClosed;
-        // Called when the ad click caused the user to leave the application.
-        this.interstitial.OnAdLeavingApplication -= HandleOnAdLeavingApplication;
-
-      
-    }
-    */
+   
 
     public void RetryToLoadAD()
     {
-        if (FailedToLoad)
+        if (FailedToLoadRewarded)
         {
             RequestRewardedVideoAd();
         }

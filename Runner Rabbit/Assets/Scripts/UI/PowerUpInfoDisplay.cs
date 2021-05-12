@@ -8,21 +8,21 @@ public class PowerUpInfoDisplay : MonoBehaviour
 {
 
     int CurrentPowerUp;
-    [SerializeField] LanguageManager myLanguageManager;
-    [SerializeField] PowerMEnu myPowerMenu;
+    [SerializeField] LanguageManager myLanguageManager = null;
+    [SerializeField] PowerMEnu myPowerMenu = null;
 
     [Header("PowerUpsInfo")] 
-    [SerializeField] Sprite[] PowerUpsSprites;
+    [SerializeField] Sprite[] PowerUpsSprites = null;
     
     
     
  
-    [SerializeField] Image PowerUpImage;
-    [SerializeField] TextMeshProUGUI PowerUpName;
-    [SerializeField] TextMeshProUGUI PowerUpDescription;
+    [SerializeField] Image PowerUpImage = null;
+    [SerializeField] TextMeshProUGUI PowerUpName = null;
+    [SerializeField] TextMeshProUGUI PowerUpDescription = null;
 
 
-    [SerializeField] TextMeshProUGUI Cost;
+    [SerializeField] TextMeshProUGUI Cost = null;
 
     // Start is called before the first frame update
     void Start()

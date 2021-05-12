@@ -36,16 +36,13 @@ public class ElectricBook : MonoBehaviour
                 enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
             }
         }
-        //enemySpawner = FindObjectOfType<EnemySpawner>();
-        //healthSlider = GetComponentInChildren<Slider>();
-        //health = maxHealth;
-        //healthSlider.maxValue = maxHealth;
+       
         spawnTime = Random.Range(0.1f, 2f);
         attackTime = Random.Range(0.2f, 1.3f);
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         //print(SceneManager.GetActiveScene().name);
