@@ -11,6 +11,7 @@ public class LanguageManagerStore : MonoBehaviour
     public TextMeshProUGUI DamagePowerDisplay, ManaPowerDisplay, BuyPowerDisplay, BackPowerDisplay;
     public TextMeshProUGUI WatchAdText, WatchAdCoinsText, WatchAdBackButton, WatchAdWatchButton, CongratulationsText, RewardCoinText, CollectButton;
     public TextMeshProUGUI GobacktoMainMenuquestionText, gobacktomainmenubutton, mainmenuquestionBackbutton;
+    public TextMeshProUGUI DamageTextStats;
 
 
     //English************************
@@ -76,6 +77,39 @@ public class LanguageManagerStore : MonoBehaviour
     string Español_GobackToMainMenuQuestion = "¿volver al menú principal?";
     string Español_goBackToMainMenuButton = "ir al menú principal";
 
+    // string English_PlusHealth = "+ Health";
+
+
+    //Frances *******************
+
+    string Frances_PlusHealth = "+ Vida";
+    string Frances_PlusMana = "+ Mana";
+    string Frances_PowerTab = "Powers";
+    string Frances_UpgradesTab = "Upgrades";
+    string Frances_RewardButtonGet = "Get";
+    string Frances_Continue = "Continue";
+    string Frances_Settings = "Settings";
+    string Frances_Music = "Music";
+    string Frances_Sound = "Sound";
+    string Frances_Colse = "Close";
+    string Frances_MainMenu = "Main Menu";
+    string Frances_CurrentHealth = "Current health";
+    string Frances_CurrentMana = "Mana";
+    string Frances_Damage = "Damage";
+    string Frances_ManaPowerDisplay = "Mana Cost";
+    string Frances_BuyPowerDisplay = "Buy";
+    string Frances_BackButton = "Back";
+
+    string Frances_WhatchAdText = "Watch ad to get";
+    string Frances_WatchAdCoinText = "Coins";
+    string Frances_WhatchAdBackButton = "Back";
+    string Frances_WatchAdWatchButton = "Watch";
+    string Frances_Congratulation = "Congratulations! You Got";
+    string Frances_Collectbutton = "collect";
+
+    string Frances_GobackToMainMenuQuestion = "Go back to main menu?";
+    string Frances_goBackToMainMenuButton = "Go Back to main menu";
+
 
 
 
@@ -122,9 +156,11 @@ public class LanguageManagerStore : MonoBehaviour
                 GobacktoMainMenuquestionText.text = English_GobackToMainMenuQuestion;
                 gobacktomainmenubutton.text = English_goBackToMainMenuButton;
 
+                DamageTextStats.text = English_Damage;
+
                 break;
 
-            case 1:// English
+            case 1:// Español
 
                 PlusHealthButton.text = Español_PlusHealth;
                 PlusLightManaButton.text = Español_PlusMana;
@@ -157,6 +193,48 @@ public class LanguageManagerStore : MonoBehaviour
 
                 GobacktoMainMenuquestionText.text = Español_GobackToMainMenuQuestion;
                 gobacktomainmenubutton.text = Español_goBackToMainMenuButton;
+
+                DamageTextStats.text = Español_Damage;
+
+                break;
+
+            case 2:// Frances
+
+
+                PlusHealthButton.text = Frances_PlusHealth;
+                PlusLightManaButton.text = Frances_PlusMana;
+                PlusDarkManaButton.text = Frances_PlusMana;
+                PowerTabButton.text = Frances_PowerTab;
+                UpgradeTabButton.text = Frances_UpgradesTab;
+                RewardbuttonGetText.text = Frances_RewardButtonGet;
+                ContinueButton.text = Frances_Continue;
+                CurrentHealthDisplayText.text = Frances_CurrentHealth;
+                CurrentManaDisplayText.text = Frances_CurrentMana;
+
+                SettingsTitle.text = Frances_Settings;
+                MusicSubtitle.text = Frances_Music;
+                soundSubtitle.text = Frances_Sound;
+                CloseButton.text = Frances_Colse;
+                MainMenuButton.text = Frances_MainMenu;
+
+                DamagePowerDisplay.text = Frances_Damage;
+                ManaPowerDisplay.text = Frances_ManaPowerDisplay;
+                BuyPowerDisplay.text = Frances_BuyPowerDisplay;
+                BackPowerDisplay.text = Frances_BackButton;
+
+                WatchAdText.text = Frances_WhatchAdText;
+                WatchAdCoinsText.text = Frances_WatchAdCoinText;
+                WatchAdBackButton.text = Frances_WhatchAdBackButton; WatchAdBackButton.fontSize = 50;
+                WatchAdWatchButton.text = Frances_WatchAdWatchButton;
+                CongratulationsText.text = Frances_Congratulation;
+                RewardCoinText.text = Frances_WatchAdCoinText;
+                CollectButton.text = Frances_Collectbutton;
+
+                GobacktoMainMenuquestionText.text = Frances_GobackToMainMenuQuestion;
+                gobacktomainmenubutton.text = Frances_goBackToMainMenuButton;
+
+                DamageTextStats.text = Frances_Damage;
+
 
                 break;
         }

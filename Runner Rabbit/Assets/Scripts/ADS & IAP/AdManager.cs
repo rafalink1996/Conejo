@@ -261,7 +261,7 @@ public class AdManager : MonoBehaviour
 
     public void PlayInterstitialAD()
     {
-        if (FailedToLoadIntersticial)
+        if (!FailedToLoadIntersticial)
         {
             if (GameStats.stats.NoAdsBought == false)
             {

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3630204665408495402}
   - component: {fileID: 3630204665408495403}
   - component: {fileID: 7986899452892968813}
+  - component: {fileID: 8771611091002127682}
   m_Layer: 9
   m_Name: GriffinProyectile
   m_TagString: Enemy proyectile
@@ -225,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  piercing: 0
 --- !u!58 &3630204665408495403
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -262,6 +264,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8771611091002127682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630204665408495413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &3630204665475381576
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,6 +49,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.LevelBought = false;
             GameStats.stats.RunInProgressPortalBoost = false;
             GameStats.stats.SavedLevelPercentage = 0;
+            GameStats.stats.RunInProgress = false;
          
             
            
@@ -64,7 +65,8 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.SavedLevelCount = GameStats.stats.LevelCount;
             GameStats.stats.RunInProgressPortalBoost = false;
             GameStats.stats.SavedLevelPercentage = 0;
-            
+            GameStats.stats.RunInProgress = false;
+
 
             //GameStats.stats.RunInProgress = true;
 

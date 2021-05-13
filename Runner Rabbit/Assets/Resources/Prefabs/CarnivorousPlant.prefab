@@ -65,7 +65,7 @@ MonoBehaviour:
   health: 100
   healthSlider: {fileID: 0}
   Hit: 0
-  hitTime: 1
+  MaxHitTime: 6
   isBoss: 0
 --- !u!114 &5806179122772008540
 MonoBehaviour:
@@ -5427,6 +5427,7 @@ GameObject:
   - component: {fileID: 6494181948794644907}
   - component: {fileID: 6494181948794644906}
   - component: {fileID: 6494181948794644910}
+  - component: {fileID: 8528898214766432205}
   m_Layer: 9
   m_Name: Plant (1)
   m_TagString: Enemy
@@ -5586,8 +5587,21 @@ MonoBehaviour:
   health: 650
   healthSlider: {fileID: 6494181949762485610}
   Hit: 0
-  hitTime: 1
+  MaxHitTime: 6
   isBoss: 1
+--- !u!114 &8528898214766432205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494181948794644900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &6494181948802624945
 GameObject:
   m_ObjectHideFlags: 0
@@ -5885,6 +5899,8 @@ MonoBehaviour:
   respawnTime: 0.5
   respawnTimeRandom: 2
   Spawn: 0
+  StaticSpawning: 0
+  SpawnWave: 0
   DarkSide: 0
 --- !u!114 &6494181949069720882
 MonoBehaviour:
@@ -6000,6 +6016,7 @@ GameObject:
   - component: {fileID: 6494181949596301871}
   - component: {fileID: 6494181949596301868}
   - component: {fileID: 6494181949596301869}
+  - component: {fileID: 3913689786788765502}
   m_Layer: 9
   m_Name: Plant
   m_TagString: Enemy
@@ -6160,8 +6177,21 @@ MonoBehaviour:
   health: 650
   healthSlider: {fileID: 0}
   Hit: 0
-  hitTime: 1
+  MaxHitTime: 6
   isBoss: 1
+--- !u!114 &3913689786788765502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494181949596301867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &6494181949627010458
 GameObject:
   m_ObjectHideFlags: 0
@@ -10942,6 +10972,7 @@ GameObject:
   - component: {fileID: 6494181949665389023}
   - component: {fileID: 6494181949665389022}
   - component: {fileID: 6494181949665389021}
+  - component: {fileID: 2107844254335395101}
   m_Layer: 0
   m_Name: PoisonBreath
   m_TagString: Enemy proyectile
@@ -11059,6 +11090,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5623121, y: 0.73319054}
   m_EdgeRadius: 0
+--- !u!114 &2107844254335395101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494181949665389017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &6494181949681615919
 GameObject:
   m_ObjectHideFlags: 0
@@ -11071,6 +11115,7 @@ GameObject:
   - component: {fileID: 6494181949681615923}
   - component: {fileID: 6494181949681615922}
   - component: {fileID: 6494181949681615917}
+  - component: {fileID: 6690917546080814819}
   m_Layer: 0
   m_Name: PoisonBreath
   m_TagString: Enemy proyectile
@@ -11188,6 +11233,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5623121, y: 0.6708491}
   m_EdgeRadius: 0
+--- !u!114 &6690917546080814819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494181949681615919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &6494181949762485604
 GameObject:
   m_ObjectHideFlags: 0
@@ -11327,6 +11385,8 @@ MonoBehaviour:
   respawnTime: 0.5
   respawnTimeRandom: 2
   Spawn: 0
+  StaticSpawning: 0
+  SpawnWave: 0
   DarkSide: 0
 --- !u!114 &6494181949898193500
 MonoBehaviour:

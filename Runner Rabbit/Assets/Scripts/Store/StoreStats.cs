@@ -105,20 +105,38 @@ public class StoreStats : MonoBehaviour
     public void DarkPowerButton()
     {
         PowerImage.sprite = GameStats.stats.powerDark.iconDark;
-        PowerName.text = GameStats.stats.powerDark.name;
+        
         Manacost.text = GameStats.stats.powerDark.mana.ToString();
         PowerDamage.text = GameStats.stats.powerDark.Damage.ToString();
-        powerDescription.text = GameStats.stats.powerDark.description;
+        if (GameStats.stats.LanguageSelect == 0)
+        {
+            PowerName.text = GameStats.stats.powerDark.name;
+            powerDescription.text = GameStats.stats.powerDark.description;
+        }
+        else if (GameStats.stats.LanguageSelect == 1)
+        {
+            PowerName.text = GameStats.stats.powerDark.Español_Name;
+            powerDescription.text = GameStats.stats.powerDark.Español_Description;
+        }
         RarityColor.color = GameStats.stats.powerDark.rarityColor;
     }
 
     public void LightPowerButton()
     {
         PowerImage.sprite = GameStats.stats.powerLight.iconLight;
-        PowerName.text = GameStats.stats.powerLight.name;
+        
         Manacost.text = GameStats.stats.powerLight.mana.ToString();
         PowerDamage.text = GameStats.stats.powerLight.Damage.ToString();
-        powerDescription.text = GameStats.stats.powerLight.description;
+        if (GameStats.stats.LanguageSelect == 0)
+        {
+            PowerName.text = GameStats.stats.powerLight.name;
+            powerDescription.text = GameStats.stats.powerLight.description;
+        } else if(GameStats.stats.LanguageSelect == 1)
+        {
+            PowerName.text = GameStats.stats.powerLight.Español_Name;
+            powerDescription.text = GameStats.stats.powerLight.Español_Description;
+        }
+       
         RarityColor.color = GameStats.stats.powerLight.rarityColor;
     }
 

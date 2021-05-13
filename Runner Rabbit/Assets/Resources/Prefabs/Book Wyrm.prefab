@@ -254,7 +254,7 @@ MonoBehaviour:
   health: 0
   healthSlider: {fileID: 7646781834735630261}
   Hit: 0
-  hitTime: 1
+  MaxHitTime: 6
   isBoss: 1
 --- !u!58 &7646781832802891021
 CircleCollider2D:
@@ -712,6 +712,7 @@ GameObject:
   - component: {fileID: 7646781833664339738}
   - component: {fileID: 7646781833664339737}
   - component: {fileID: 7646781833664339736}
+  - component: {fileID: 4728604465537672613}
   m_Layer: 9
   m_Name: WyrmElectricRift
   m_TagString: Enemy proyectile
@@ -1036,6 +1037,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4728604465537672613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7646781833664339743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1
 --- !u!1 &7646781833711249148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,6 +1347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7646781833789823809}
   - component: {fileID: 7646781833789823808}
+  - component: {fileID: 9112226275093450496}
   m_Layer: 9
   m_Name: Collider
   m_TagString: Enemy proyectile
@@ -1380,6 +1395,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9916963, y: 0.14550471}
   m_EdgeRadius: 0
+--- !u!114 &9112226275093450496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7646781833789823810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &7646781833883624079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,7 +1530,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.7999997, y: 2.6999998}
+    oldSize: {x: 4.8, y: 2.7}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

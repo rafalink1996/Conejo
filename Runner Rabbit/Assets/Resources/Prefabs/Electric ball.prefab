@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7579993953669882396}
   - component: {fileID: 5252888734981518146}
   - component: {fileID: 5534220096377194679}
+  - component: {fileID: 5037462459222941717}
   m_Layer: 15
   m_Name: Ball
   m_TagString: Enemy proyectile
@@ -253,6 +254,19 @@ CircleCollider2D:
   m_Offset: {x: -1.3992014, y: 0.2439031}
   serializedVersion: 2
   m_Radius: 0.84157586
+--- !u!114 &5037462459222941717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418946848296506421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1
 --- !u!1 &1457097437561965805
 GameObject:
   m_ObjectHideFlags: 0

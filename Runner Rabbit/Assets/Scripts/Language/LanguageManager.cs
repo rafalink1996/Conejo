@@ -44,7 +44,7 @@ public class LanguageManager : MonoBehaviour
     public TextMeshProUGUI AchievmentTitle, AchivementBackButton;
     //HowToPlay
     public TextMeshProUGUI HowToPlayTitle, MovmentHowToPlayButton, PowersHowToPlayButton, BackHowToPlayButton;
-    public Sprite English_HowToPlayMovmentSprite, English_HowToPlayPowersSpirte, Español_HowToPlayMovmentSprite, Español_HowToPlayPowersSpirte;
+    public Sprite English_HowToPlayMovmentSprite, English_HowToPlayPowersSpirte, Español_HowToPlayMovmentSprite, Español_HowToPlayPowersSpirte, Frances_HowToPlayMovmentSprite, Frances_HowToPlayPowersSpirte;
     public Image HowToPlayDisplayMovementImage, HowToPlayDisplayPowersImage;
     //Crystal Store
     public Text NoAdsTitle, RestorePurchaseTitle, CrystalBunch, CrystalPile, CryslatBag, CrystalChest, skinpacktitle;
@@ -161,7 +161,7 @@ public class LanguageManager : MonoBehaviour
     string English_RuneDescription3 = "Coins are attracted to you";
     string English_RuneDescription4 = "Recharge mana faster";
     string English_RuneDescription5 = "Spells cost less mana";
-    string English_RuneDescription6 = "Prevents the first time you would get hit each level";
+    string English_RuneDescription6 = "Grants you a shield that protects you from one hit each level";
     string English_RuneDescription7 = "gives you more coins when you reach the store";
     string English_RuneDescription8 = "the first item in the coin shop is 50% off";
     string English_RuneDescription9 = "Enemies spawn with less health";
@@ -183,8 +183,8 @@ public class LanguageManager : MonoBehaviour
     string English_AstralTravelerSKin = "Astral Traveler";
     string English_SlimeSkin = "Slime";
     string English_AlienSkin = "Alien";
-    string English_AssasinBlackSkin = "Assassin Black";
-    string English_AssasinWhiteSkin = "Assassin White";
+    string English_AssasinBlackSkin = "Dark Assasin";
+    string English_AssasinWhiteSkin = "Light Assasin";
     string English_FoxSkin = "Fox";
     string English_IceCreamSkin = "Ice Cream";
     string English_MechSkin = "Mech";
@@ -211,9 +211,9 @@ public class LanguageManager : MonoBehaviour
 
 
 
-    public string English_CoinsX2Description = "Every Coin You take Counts as 2";
-    public string English_PortalBoostDescription = "Start Each level half complete, does not count boss levels";
-    public string English_PhoenixFeatherDescription = "Revive once next run";
+    public string English_CoinsX2Description = "Every coin you collect counts as 2";
+    public string English_PortalBoostDescription = "non-boss levels last half as long";
+    public string English_PhoenixFeatherDescription = "If you die, you'll be automatically resurrected with full health a single time";
     public string English_ExtraHeartsDescription = "Start the run with 2 extra hearts";
     public string English_ManaJarDescription = "Start the run with 30 extra dark mana and 30 extra light mana";
 
@@ -321,7 +321,7 @@ public class LanguageManager : MonoBehaviour
     string Español_RuneDescription3 = "Las monedas son atraidas a tí";
     string Español_RuneDescription4 = "Recarga maná Más rápido";
     string Español_RuneDescription5 = "los hechizos Cuestan Menos maná";
-    string Español_RuneDescription6 = "Previene la primera vez que tomas daño cada nivel";
+    string Español_RuneDescription6 = "Te da un escudo que te protege de un golpe cada nivel";
     string Español_RuneDescription7 = "Te da mas monedas al llegar a la tienda";
     string Español_RuneDescription8 = "la primera compra en la tienda de monedas esta a mitad de precio";
     string Español_RuneDescription9 = "Los enemigos aparecen con menos vida";
@@ -342,8 +342,8 @@ public class LanguageManager : MonoBehaviour
     string Español_AstralTravelerSKin = "Viajero Astral";
     string Español_SlimeSkin = "Slime";
     string Español_AlienSkin = "Alien";
-    string Español_AssasinBlackSkin = "Asesino negro";
-    string Español_AssasinWhiteSkin = "Asesino blanco";
+    string Español_AssasinBlackSkin = "Asesino de oscuridad";
+    string Español_AssasinWhiteSkin = "Asesino de luz";
     string Español_FoxSkin = "Zorro";
     string Español_IceCreamSkin = "Paleta";
     string Español_MechSkin = "Mech";
@@ -375,11 +375,177 @@ public class LanguageManager : MonoBehaviour
 
 
     public string Español_CoinsX2Description = "Cada moneda que recoges cuenta por 2";
-    public string Español_PortalBoostDescription = "Empieza cada nivel 50% completado, no funciona con niveles de Jefes";
-    public string Español_PhoenixFeatherDescription = "Revive una vez por partida";
+    public string Español_PortalBoostDescription = "los niveles que no son de jefes duran la mitad de tiempo";
+    public string Español_PhoenixFeatherDescription = "Si mueres, resusitarás con la vida completa una vez";
     public string Español_ExtraHeartsDescription = "Empieza la partida con 2 corazones extra";
-    public string Español_ManaJarDescription = "Empieza la partida con 30 mana extra";
+    public string Español_ManaJarDescription = "Empieza la partida con 30 mana de luz y 30 mana de oscuridad extra";
 
+
+
+    // Frances******************
+
+    string Frances_InitialSelectLanguage = "Select Language";
+    string Frances_ConfirmButton = "confirm";
+
+    string Frances_BackButton = "Back";
+
+    string Frances_StartButton = "Start";
+    string Frances_ContinueButton = "Continue";
+    string Frances_NewRunButton = "New Run";
+    string Frances_StoreButton = "Store";
+    string Frances_SkinsButton = "Skins";
+    string Frances_HowToPlayButton = "How to play";
+
+    string Frances_OptionsTitle = "Options";
+    string Frances_Music = "Music";
+    string Frances_Sound = "Sound";
+    string Frances_Notifications = "Notifications";
+    string Frances_Language = "Language";
+
+    //Store
+
+    string Frances_StoreTitle = "Store";
+    string Frances_PowerUpsTitle = "Power Ups";
+    public string Frances_ManaJarText = "Mana Jar";
+    public string Frances_CointX2TicketText = "Coin x2 Ticket";
+    public string Frances_ExtraHeartsText = "Extra Hearts";
+    public string Frances_PortalBoostText = "Portal Boost";
+    public string Frances_FenixFeatherText = "phoenix Feather";
+    string Frances_RuneButton = "Runes";
+
+    string Frances_CarrotPower = "Carrot Missile";
+    string Frances_EarShieldPower = "Ear Shield";
+    string Frances_RadishMisslePower = "Radish Missile";
+    string Frances_KickReflectPower = "Kick Reflect";
+    string Frances_MagicLaserPower = "Magic Laser";
+
+    string Frances_GetCrystalText = "Get Crystals";
+    string Frances_WatchAdText = "Watch ad to get crystals?";
+    string Frances_CrystalText = "Crystals";
+    string Frances_WatchButton = "Watch";
+    string Frances_CongratulationsText = "Congratulations! You Got:";
+    string Frances_Collect = "Collect";
+
+    string Frances_DamageText1 = "Damage";
+    string Frances_DamageText2 = "Damage";
+    string Frances_DamageText3 = "Damage";
+    string Frances_DamageText4 = "Damage";
+    string Frances_LevelText1 = "Level 1";
+    string Frances_LevelText2 = "Level 2";
+    string Frances_LevelText3 = "Level 3";
+    string Frances_LevelText4 = "Level 4";
+    string Frances_UpgradePowerText = "Upgrade";
+    string Frances_MaxLevelText = "Max Level";
+
+    string Frances_BuyButton = "buy";
+
+    string Frances_LevelSelectCostText = "Cost:";
+
+    string Frances_DungeonStartText = "Dungeon Start";
+    string Frances_DungeonStartDescriptionText = "Start in Dungeon Level With";
+    string Frances_DungeonStartCoins = "100 Coins";
+    string Frances_DungeonStartCrystals = "20 crystals";
+
+
+    string Frances_IceCaveStartText = "Frozen Room Start";
+    string Frances_IceCaveStartDescriptionText = "Start in Frozen Room Level With";
+    string Frances_IceCaveStartCoins = "200 Coins";
+    string Frances_IceCaveStartCrystals = "40 crystals";
+
+    string Frances_JungleStartText = "Jungle Start";
+    string Frances_JungleStartDescriptionText = "Start in Jungle Level With";
+    string Frances_JungleStartCoins = "350 Coins";
+    string Frances_JungleStartCrystals = "80 crystals";
+
+    string Frances_PortalRoomStartText = "Portal Room Start";
+    string Frances_PortalRoomStartDescriptionText = "Start in the portal room Level With";
+    string Frances_PortalRoomStartCoins = "500 Coins";
+    string Frances_PortalRoomStartCrystals = "100 crystals";
+
+
+    string Frances_RewriteLevelQuestion = "You already bought a level. are you sure you want to change the starting level?";
+    string Frances_RewriteLevelDescription = "previous coins will be removed and previous crystals will be refunded before making the new purchase";
+
+    // runeforge
+    string Frances_RuneForgeTitle = "Rune Forge";
+    string Frances_EquipedRunes = "Equipped Runes";
+
+    string Frances_RuneSlotUnequip = "unequip";
+    string Frances_Select = "Select";
+
+
+
+    string Frances_RuneName1 = "Float Rune";
+    string Frances_RuneName2 = "Fall Rune";
+    string Frances_RuneName3 = "Magnet Rune";
+    string Frances_RuneName4 = "Mana Rune";
+    string Frances_RuneName5 = "Spell Rune";
+    string Frances_RuneName6 = "Shield Rune";
+    string Frances_RuneName7 = "Greed Rune";
+    string Frances_RuneName8 = "Merchant Rune";
+    string Frances_RuneName9 = "Destruction Rune";
+    string Frances_RuneName10 = "Unknown Rune";
+
+    string Frances_RuneDescription1 = "Gives you extra magic for floating";
+    string Frances_RuneDescription2 = "you fall faster towards the rift";
+    string Frances_RuneDescription3 = "Coins are attracted to you";
+    string Frances_RuneDescription4 = "Recharge mana faster";
+    string Frances_RuneDescription5 = "Spells cost less mana";
+    string Frances_RuneDescription6 = "Prevents the first time you would get hit each level";
+    string Frances_RuneDescription7 = "gives you more coins when you reach the store";
+    string Frances_RuneDescription8 = "the first item in the coin shop is 50% off";
+    string Frances_RuneDescription9 = "Enemies spawn with less health";
+    string Frances_RuneDescription10 = "gives you one random power up when starting a new run";
+
+
+    string Frances_DefaultSkin = "Default";
+    string Frances_DragonFireSkin = "Dragon Fire";
+    string Frances_BoneSkin = "Bone";
+    string Frances_IceGolemSkin = "Ice Golem";
+    string Frances_PlantSkin = "Plant";
+    string Frances_ClokworkSkin = "Clockwork";
+    string Frances_ShadowWizardSkin = "Shadow Wizard";
+    string Frances_TophatSkin = "Top hat";
+    string Frances_AngelSkin = "Angel";
+    string Frances_ImpSkin = "Imp";
+    string Frances_SnowmanSkin = "Snowman";
+    string Frances_WizardSkin = "Wizard";
+    string Frances_AstralTravelerSKin = "Astral Traveler";
+    string Frances_SlimeSkin = "Slime";
+    string Frances_AlienSkin = "Alien";
+    string Frances_AssasinBlackSkin = "Assassin Black";
+    string Frances_AssasinWhiteSkin = "Assassin White";
+    string Frances_FoxSkin = "Fox";
+    string Frances_IceCreamSkin = "Ice Cream";
+    string Frances_MechSkin = "Mech";
+
+    // achievment menú
+    string Frances_Achievments = "Achievements";
+
+    //HowToPlay
+
+    string Frances_HowToPlay = "How to Play";
+    string Frances_MovemntHowToPlay = "Movement";
+    string Frances_PowersHowToPlay = "Powers";
+
+    //Crystal Store
+
+    string Frances_RemoveAds = "Remove Ads";
+    string Frances_RestorePurchases = "Restore Purchases";
+    string Frances_CrystalBunch = "Crystal Bunch";
+    string Frances_CrystalPile = "Crystal Pile";
+    string Frances_CrystalBag = "Crystal Bag";
+    string Frances_CrystalChest = "Crystal Chest";
+    string Frances_SkinPack = "Skin pack";
+    string Frances_9Skins = "9 skins";
+
+
+
+    public string Frances_CoinsX2Description = "Every coin you collect counts as 2";
+    public string Frances_PortalBoostDescription = "Start each level at the halfway point, does not count boss levels";
+    public string Frances_PhoenixFeatherDescription = "When you die heal to full once";
+    public string Frances_ExtraHeartsDescription = "Start the run with 2 extra hearts";
+    public string Frances_ManaJarDescription = "Start the run with 30 extra dark mana and 30 extra light mana";
 
 
 
@@ -790,6 +956,201 @@ public class LanguageManager : MonoBehaviour
 
                 skinpacktitle.text = Español_SkinPack;
                 NineSkinsDescription.text = Español_9Skins;
+
+
+                break;
+
+            case 2: // frances
+                GameStats.stats.LanguageSelect = 2;
+                GameStats.stats.languageselected = true;
+                GameStats.stats.SaveStats();
+                //main menu and options
+
+                InitialSelectLanguageTitle.text = Frances_InitialSelectLanguage;
+                ConfirmButton.text = Frances_ConfirmButton;
+
+                BackButton1.text = Frances_BackButton;
+
+                StartButton.text = Frances_StartButton;
+                ContinueButton.text = Frances_ContinueButton;
+                NewRunButton.text = Frances_NewRunButton;
+                StoreButton.text = Frances_StoreButton;
+                SkinsButtom.text = Frances_SkinsButton; SkinsButtom.fontSize = 34;
+                HowToPlayButton.text = Frances_HowToPlayButton;
+
+                OptionsTitle.text = Frances_OptionsTitle;
+                MusicText.text = Frances_Music;
+                SoundText.text = Frances_Sound;
+                NotificationsText.text = Frances_Notifications;
+                LanguageText.text = Frances_Language;
+                BackButton1.text = Frances_BackButton;
+
+                // store
+                StoreTitle.text = Frances_StoreTitle;
+                PowerUpsTitle.text = Frances_PowerUpsTitle;
+                ManaJarText.text = Frances_ManaJarText;
+                CoinX2text.text = Frances_CointX2TicketText;
+                ExtraHeartsText.text = Frances_ExtraHeartsText;
+                PoertalBoostText.text = Frances_PortalBoostText;
+                FenixFeatherText.text = Frances_FenixFeatherText;
+                RuneText.text = Frances_RuneButton;
+                BackButtonStoreText.text = Frances_BackButton;
+
+                CarrotPowerText.text = Frances_CarrotPower;
+                EarShieldText.text = Frances_EarShieldPower;
+                RadishMissleText.text = Frances_RadishMisslePower;
+                KickReflectText.text = Frances_KickReflectPower;
+                MagicLaserText.text = Frances_MagicLaserPower;
+
+                GetCrystalText.text = Frances_GetCrystalText; GetCrystalText.fontSize = 16;
+                WatchAdText.text = Frances_WatchAdText;
+                rewardCrystalText.text = Frances_CrystalText;
+                WatchAdCrystaltext.text = Frances_CrystalText;
+                WatchButtonText.text = Frances_WatchButton;
+                CongratulationsText.text = Frances_CongratulationsText;
+                CollectText.text = Frances_Collect;
+                WhatchAdBackButtonText.text = Frances_BackButton;
+
+                DamageText1.text = Frances_DamageText1;
+                DamageText2.text = Frances_DamageText2;
+                DamageText3.text = Frances_DamageText3;
+                DamageText4.text = Frances_DamageText4;
+                level1Text.text = Frances_LevelText1;
+                level2Text.text = Frances_LevelText2;
+                level3Text.text = Frances_LevelText3;
+                level4Text.text = Frances_LevelText4;
+                UpgradePowerText.text = Frances_UpgradePowerText;
+                UpgradePowerCrystalText.text = Frances_CrystalText;
+                UpgradePowerMaxLevelText.text = Frances_MaxLevelText;
+
+                //level select
+
+                DungeonStartText.text = Frances_DungeonStartText;
+                DungeonStartDescriptionText.text = Frances_DungeonStartDescriptionText;
+                DungeonStartCoins.text = Frances_DungeonStartCoins;
+                DungeonStartCostText.text = Frances_LevelSelectCostText;
+                DungeonStartCrystals.text = Frances_DungeonStartCrystals;
+                DungeonStartBuyButton.text = Frances_BuyButton;
+                DungeonStartBackButton.text = Frances_BackButton;
+
+                IceCaveStartText.text = Frances_IceCaveStartText;
+                IceCaveStartDescriptionText.text = Frances_IceCaveStartDescriptionText;
+                IceCaveStartCoins.text = Frances_IceCaveStartCoins;
+                IceCaveStartCostText.text = Frances_LevelSelectCostText;
+                IceCaveStartCrystals.text = Frances_IceCaveStartCrystals;
+                IceCaveStartBuyButton.text = Frances_BuyButton;
+                IceCaveStartBackButton.text = Frances_BackButton;
+
+                JungleStartText.text = Frances_JungleStartText;
+                JungleStartDescriptionText.text = Frances_JungleStartDescriptionText;
+                JungleStartCoins.text = Frances_JungleStartCoins;
+                JungleStartCostText.text = Frances_LevelSelectCostText;
+                JungleStartCrystals.text = Frances_JungleStartCrystals;
+                JungleStartBuyButton.text = Frances_BuyButton;
+                JungleStartBackButton.text = Frances_BackButton;
+
+                PortalRoomStartText.text = Frances_PortalRoomStartText;
+                PortalRoomStartDescriptionText.text = Frances_PortalRoomStartDescriptionText;
+                PortalRoomStartCoins.text = Frances_PortalRoomStartCoins;
+                PortalRoomStartCostText.text = Frances_LevelSelectCostText;
+                PortalRoomStartCrystals.text = Frances_PortalRoomStartCrystals;
+                PortalRoomStartBuyButton.text = Frances_BuyButton;
+                PortalRoomStartBackButton.text = Frances_BackButton;
+
+                RewriteLevelQuestion.text = Frances_RewriteLevelQuestion;
+                RewriteLevelDescription.text = Frances_RewriteLevelDescription;
+                RewriteLevelBackButton.text = Frances_BackButton;
+                RewriteLevelButton.text = Frances_BuyButton;
+
+                // rune Forge
+                RuneforgeTitle.text = Frances_RuneForgeTitle;
+                EquipedRunes.text = Frances_EquipedRunes;
+
+                RuneSlot1Unequip.text = Frances_RuneSlotUnequip;
+                RuneSlot2Unequip.text = Frances_RuneSlotUnequip;
+
+                RuneSlot1Select.text = Frances_Select;
+                RuneSlot2Select.text = Frances_Select;
+
+                RuneforgeBackButtonText.text = Frances_BackButton;
+
+                RuneName1.text = Frances_RuneName1;
+                RuneName2.text = Frances_RuneName2;
+                RuneName3.text = Frances_RuneName3;
+                RuneName4.text = Frances_RuneName4;
+                RuneName5.text = Frances_RuneName5;
+                RuneName6.text = Frances_RuneName6;
+                RuneName7.text = Frances_RuneName7;
+                RuneName8.text = Frances_RuneName8;
+                RuneName9.text = Frances_RuneName9;
+                RuneName10.text = Frances_RuneName10;
+
+                RuneDescription1.text = Frances_RuneDescription1;
+                RuneDescription2.text = Frances_RuneDescription2;
+                RuneDescription3.text = Frances_RuneDescription3;
+                RuneDescription4.text = Frances_RuneDescription4;
+                RuneDescription5.text = Frances_RuneDescription5;
+                RuneDescription6.text = Frances_RuneDescription6;
+                RuneDescription7.text = Frances_RuneDescription7;
+                RuneDescription8.text = Frances_RuneDescription8;
+                RuneDescription9.text = Frances_RuneDescription9;
+                RuneDescription10.text = Frances_RuneDescription10;
+
+                // Skin menu
+
+                SkinTitle.text = Frances_SkinsButton;
+                BackButtonSkinMenu.text = Frances_BackButton;
+                buySkinButton.text = Frances_BuyButton;
+                selectButton1Text.text = Frances_Select; selectButton1Text.fontSize = 14;
+                selectButton2Text.text = Frances_Select; selectButton2Text.fontSize = 14;
+
+                DefaultSkinText.text = Frances_DefaultSkin;
+                DragonFireSkinText.text = Frances_DragonFireSkin;
+                BoneSkinText.text = Frances_BoneSkin;
+                IceGolemSkinText.text = Frances_IceGolemSkin;
+                PlantSkinText.text = Frances_PlantSkin;
+                ClockWorkSkinText.text = Frances_ClokworkSkin;
+                ShadowWizardSkinText.text = Frances_ShadowWizardSkin;
+                TophatSkinText.text = Frances_TophatSkin;
+                AngelSkinText.text = Frances_AngelSkin;
+                ImpSkinText.text = Frances_ImpSkin;
+                SnowmanSkinText.text = Frances_SnowmanSkin;
+                WizardSkinText.text = Frances_WizardSkin;
+                AstralTravelerSkinText.text = Frances_AstralTravelerSKin;
+                SlimeSkinText.text = Frances_SlimeSkin;
+                AlienSkinText.text = Frances_AlienSkin;
+                AssasinBlackSkinText.text = Frances_AssasinBlackSkin;
+                AssasinWhiteSkinText.text = Frances_AssasinWhiteSkin;
+                FoxSkinText.text = Frances_FoxSkin;
+                IceCreamSkinText.text = Frances_IceCreamSkin;
+                MechSkinText.text = Frances_MechSkin;
+
+                //Achievemnt menú
+
+                AchievmentTitle.text = Frances_Achievments;
+                AchivementBackButton.text = Frances_BackButton;
+
+                //HowToPlay
+
+                HowToPlayTitle.text = Frances_HowToPlay;
+                PowersHowToPlayButton.text = Frances_PowersHowToPlay;
+                MovmentHowToPlayButton.text = Frances_MovemntHowToPlay;
+                BackHowToPlayButton.text = Frances_BackButton;
+                HowToPlayDisplayMovementImage.sprite = Frances_HowToPlayMovmentSprite;  
+                HowToPlayDisplayPowersImage.sprite = Frances_HowToPlayPowersSpirte; 
+
+
+                //Store IAP
+
+                NoAdsTitle.text = Frances_RemoveAds;
+                RestorePurchaseTitle.text = Frances_RestorePurchases;
+                CrystalBunch.text = Frances_CrystalBunch;
+                CrystalPile.text = Frances_CrystalPile;
+                CryslatBag.text = Frances_CrystalBag;
+                CrystalChest.text = Frances_CrystalChest;
+
+                skinpacktitle.text = Frances_SkinPack;
+                NineSkinsDescription.text = Frances_9Skins;
 
 
                 break;

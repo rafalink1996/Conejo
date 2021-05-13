@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Proyectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        Destroy(gameObject, 4f);
-    }
+    public bool DestroyP;
 
-    // Update is called once per frame
-    void Update()
+    public int Damage = 1;
+
+    private void Start()
     {
-        
+        if (DestroyP)
+        {
+            Destroy(gameObject, 5f);
+        }
     }
 }

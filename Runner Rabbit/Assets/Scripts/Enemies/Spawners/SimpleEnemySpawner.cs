@@ -10,65 +10,90 @@ public class SimpleEnemySpawner : MonoBehaviour
     public float respawnTimeRandom = 4.0f;
     public bool Spawn;
 
+
+
+
+    public bool StaticSpawning;
+    public int SpawnWave;
+
     public bool DarkSide = false;
     // Start is called before the first frame update
     void Start()
     {
-        if (SimpleEnemy != null)
+        if (GameStats.stats.LevelCount == 3)
         {
-            StartCoroutine(SimpleEnemyWave());
+            gameObject.SetActive(false);
         }
+        else
+        {
+            if (SimpleEnemy != null)
+            {
+                StartCoroutine(SimpleEnemyWave());
+            }
 
-        if (SimpleEnemyStatic != null)
-        {
-            StartCoroutine(SimpleEnemyWaveStatic());
+            if (SimpleEnemyStatic != null)
+            {
+                StartCoroutine(SimpleEnemyWaveStatic());
+            }
         }
+       
 
 
     }
 
-    // Update is called once per frame
+
+
+
+
+
+    IEnumerator SimpleEnemyWaveStatic()
+    {
+
+        yield return new WaitForSeconds(Random.Range(4, 6));
+        spawnEnemy();
+        yield return new WaitForSeconds(1.3f);
+        spawnEnemy();
+        yield return new WaitForSeconds(1.3f);
+        spawnEnemy();
+        StartCoroutine(SimpleEnemyWaveStatic());
+
+
+    }
+
+
+
+    private void spawnEnemy()
+    {
+
+        GameObject SE = Instantiate(SimpleEnemyStatic) as GameObject;
+        SE.transform.position = new Vector2(transform.position.x, transform.position.y);
+        if (DarkSide == true)
+        {
+            SE.transform.eulerAngles += new Vector3(0, 0, 180);
+        }
+
+    }
+
+
+
     IEnumerator SimpleEnemyWave()
     {
         while (true)
         {
             yield return new WaitForSeconds(respawnTime);
-     
-                spawnEnemyRandom();
+
+            spawnEnemyRandom();
 
         }
     }
 
-    IEnumerator SimpleEnemyWaveStatic()
-    {
 
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range (respawnTime, respawnTimeRandom));
-     
-                spawnEnemy();
-     
-        }
-    }
-
-     
     private void spawnEnemyRandom()
     {
-       
-            GameObject SE = Instantiate(SimpleEnemy) as GameObject;
-            SE.transform.position = new Vector2(transform.position.x, transform.position.y + Random.Range(-8, 8));
-        
+
+        GameObject SE = Instantiate(SimpleEnemy) as GameObject;
+        SE.transform.position = new Vector2(transform.position.x, transform.position.y + Random.Range(-8, 8));
+
     }
 
-    private void spawnEnemy()
-    {
-       
-            GameObject SE = Instantiate(SimpleEnemyStatic) as GameObject;
-            SE.transform.position = new Vector2(transform.position.x, transform.position.y);
-        if (DarkSide == true) 
-        {
-            SE.transform.eulerAngles += new Vector3(0, 0, 180);
-        }
-        
-    }
 }

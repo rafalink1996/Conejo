@@ -10,20 +10,49 @@ public class Subtitles : MonoBehaviour
     public float initialTime;
     public float[] SubtitleTimers;
     public string[] Español_Subtitles;
-    
-    
+    public string[] English_Subtitles;
+    public string[] Frances_Subtitles;
+
+
+
+
     void Start()
     {
         SubtitleTextMesh.text = " ";
-      
-       if (Application.systemLanguage == SystemLanguage.English)
+
+        if (!GameStats.stats.languageselected)
         {
-            return;
-        } else if (Application.systemLanguage == SystemLanguage.Spanish)
-        {
-            StartCoroutine(DisplaySubtitles(Español_Subtitles, SubtitleTimers));
+            if (Application.systemLanguage == SystemLanguage.English)
+            {
+                StartCoroutine(DisplaySubtitles(English_Subtitles, SubtitleTimers));
+                return;
+            }
+            else if (Application.systemLanguage == SystemLanguage.Spanish)
+            {
+                StartCoroutine(DisplaySubtitles(Español_Subtitles, SubtitleTimers));
+            }
+            else if (Application.systemLanguage == SystemLanguage.French)
+            {
+                StartCoroutine(DisplaySubtitles(Frances_Subtitles, SubtitleTimers));
+            }
         }
-      
+        else
+        {
+            if(GameStats.stats.LanguageSelect == 0) // English
+            {
+                StartCoroutine(DisplaySubtitles(English_Subtitles, SubtitleTimers));
+                return;
+            } else if (GameStats.stats.LanguageSelect == 1) // Español
+            {
+                StartCoroutine(DisplaySubtitles(Español_Subtitles, SubtitleTimers));
+            }
+            else if (GameStats.stats.LanguageSelect == 2) // frances
+            {
+                StartCoroutine(DisplaySubtitles(Frances_Subtitles, SubtitleTimers));
+            }
+        }
+       
+
 
         //StartCoroutine(DisplaySubtitles(Español_Subtitles, SubtitleTimers));
     }

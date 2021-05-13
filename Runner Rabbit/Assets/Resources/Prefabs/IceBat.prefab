@@ -459,6 +459,7 @@ GameObject:
   - component: {fileID: 5281009357790897425}
   - component: {fileID: 1862919307198856874}
   - component: {fileID: 8803091674553794175}
+  - component: {fileID: 2013059966081770}
   m_Layer: 9
   m_Name: 'Bat '
   m_TagString: Enemy
@@ -707,8 +708,21 @@ MonoBehaviour:
   health: 0
   healthSlider: {fileID: 0}
   Hit: 0
-  hitTime: 1
+  MaxHitTime: 6
   isBoss: 0
+--- !u!114 &2013059966081770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5281009357790897428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1
 --- !u!1 &5499748784532283984
 GameObject:
   m_ObjectHideFlags: 0

@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 3742358350541262106}
   - component: {fileID: 3742358350541262107}
   - component: {fileID: 3742358350541262108}
+  - component: {fileID: 4278781838032042512}
   m_Layer: 15
   m_Name: Ice_Golem rock (big)
   m_TagString: Enemy proyectile
@@ -299,6 +300,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4278781838032042512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742358350541262110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &3742358350937542776
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +440,7 @@ GameObject:
   - component: {fileID: 3742358351147006408}
   - component: {fileID: 3742358351147006409}
   - component: {fileID: 3742358351147006410}
+  - component: {fileID: 762592231638443547}
   m_Layer: 15
   m_Name: Ice_Golem rock (big)
   m_TagString: Enemy proyectile
@@ -554,6 +569,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &762592231638443547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742358351147006412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &3742358351263345336
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,7 +886,7 @@ MonoBehaviour:
   health: 80
   healthSlider: {fileID: 6910594193366742147}
   Hit: 0
-  hitTime: 1
+  MaxHitTime: 6
   isBoss: 0
 --- !u!58 &5637661708199228023
 CircleCollider2D:
@@ -1053,6 +1081,7 @@ GameObject:
   - component: {fileID: 3742358352222923928}
   - component: {fileID: 3742358352222923927}
   - component: {fileID: 3742358352222923926}
+  - component: {fileID: 4223588793107502076}
   m_Layer: 15
   m_Name: Ice_Golem rock (big)
   m_TagString: Enemy proyectile
@@ -1181,6 +1210,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4223588793107502076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742358352222923931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &3742358352368834695
 GameObject:
   m_ObjectHideFlags: 0

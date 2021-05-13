@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 8364641684965142934}
   - component: {fileID: 4621213433411947103}
   - component: {fileID: 8617520978852740351}
+  - component: {fileID: 3473809288366847653}
   m_Layer: 15
   m_Name: Pea
   m_TagString: Enemy proyectile
@@ -201,3 +202,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3473809288366847653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750185726621539114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1

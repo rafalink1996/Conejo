@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -515665071527453277}
   - component: {fileID: -3092157217562451234}
   - component: {fileID: 9191990297177055048}
+  - component: {fileID: -5930153491840775455}
   m_Layer: 9
   m_Name: ClockworkBunnyProyectile
   m_TagString: Enemy proyectile
@@ -231,3 +232,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5930153491840775455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2907116240619165713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2

@@ -478,7 +478,7 @@ public class Shop : MonoBehaviour
             {
                 if (GameStats.stats.coins >= heartCost/2)
                 {
-                    GameStats.stats.numOfHearts += 1;
+                    GameStats.stats.numOfHearts += 2;
                     GameStats.stats.coins -= heartCost/2;
                     GameStats.stats.MerchantRune = false;
                     GameStats.stats.SaveCurrentHearts = GameStats.stats.numOfHearts;
@@ -501,7 +501,7 @@ public class Shop : MonoBehaviour
             {
                 if (GameStats.stats.coins >= heartCost)
                 {
-                    GameStats.stats.numOfHearts += 1;
+                    GameStats.stats.numOfHearts += 2;
                     GameStats.stats.coins -= heartCost;
                     GameStats.stats.SaveCurrentHearts = GameStats.stats.numOfHearts;
                     GameStats.stats.SaveStats();

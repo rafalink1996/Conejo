@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -690,7 +690,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609816365}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 76ce6074eea674c149dd24ad0eef2fe8, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 012489ea8d0ca48f1a022d68253cc268, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 830018306}
@@ -951,21 +951,72 @@ MonoBehaviour:
   - ir por el laberinto de la torre y hacia lo desconocido.
   - "\xBFEl verdadero problema?"
   - "Enga\xF1ar al astuto y malvado mago "
-  - que lo ha mentido encerrado como un conejillo de Indias.
+  - que lo ha mantenido encerrado como un conejillo de Indias.
   - 
   - "Astuto y malvado podr\xEDa ser,"
-  - "pero ese d\xEDa el mago cometi\xF3 el error fatal de dejar un libro atr\xE1s."
+  - "pero ese d\xEDa el mago cometi\xF3 el error fatal de dejar un libro."
   - "Un libro ordinario no podr\xEDa ayudar al conejo,"
   - pero este en particular,
-  - ' un libro de hechizos'
+  - un libro de hechizos,
   - 'era la herramienta de escape perfecta. '
   - 
   - Todo lo que necesitaba hacer ahora era encontrar el hechizo que lo ayudara a
-    escapar
+    escapar.
   - "Y lo encontr\xF3."
   - "En un torbellino de chispas y humo, el hechizo rompi\xF3 la realidad en dos,"
-  - "dandole al conejo la oportunidad de escapar que hab\xEDa anhelado por tanto
+  - "d\xE1ndole al conejo la oportunidad de escapar que hab\xEDa anhelado por tanto
     tiempo. "
+  - 
+  English_Subtitles:
+  - "I need to get out today, was the thought that came busting into the bunny\u2019s
+    mind as his eyes popped open,"
+  - 'waking up once again inside this filthy cage he could never call home. '
+  - 
+  - He knew he could get out of his cage
+  - 'go through the maze of the tower and into the unknown beyond. '
+  - The real problem?
+  - Deceiving the cunning and evil wizard
+  - who kept him locked up as a guinea pig.
+  - 
+  - Cunning and evil he might be,
+  - ' but that day the wizard made the fatal mistake of leaving a book behind.'
+  - No ordinary book could help the bunny,
+  - but this particular one,
+  - a book of spells,
+  - 'was the perfect escape tool. '
+  - 
+  - All he needed to do now was find the spell fit to help him break free.
+  - And find it, he did.
+  - In a swirl of smoke and sparks, the spell broke the reality in 2,
+  - giving the bunny the scape route he so desperately had sought for so long.
+  - 
+  Frances_Subtitles:
+  - "Il faut que je sorte aujourd'hui, fut la pens\xE9e qui traversa l'esprit du
+    lapin quand il ouvrit les yeux,"
+  - "se r\xE9veillant une fois de plus dans cette sale cage qu'il ne pourrait jamais
+    appeler sa demeure."
+  - 
+  - Il savait qu'il pouvait sortir de la cage,
+  - "traverser le labyrinthe de la tour et p\xE9n\xE9trer dans l'inconnu au-del\xE0."
+  - "Le vrai probl\xE8me?"
+  - "Il fallait tromper le sorcier rus\xE9 et mal\xE9fique"
+  - "qui l'avait enferm\xE9 comme un cobaye."
+  - 
+  - "Rus\xE9 et mal\xE9fique, il l\u2019\xE9tait peut-\xEAtre,"
+  - "mais ce jour-l\xE0, le sorcier avait commis l'erreur fatale de laisser un livre
+    derri\xE8re lui."
+  - Aucun livre ordinaire ne pouvait aider le lapin,
+  - mais celui-ci,
+  - un livre de sorts,
+  - "\xE9tait l'outil d'\xE9vasion parfait."
+  - 
+  - "Il n\u2019avait plus qu\u2019\xE0 trouver le sort appropri\xE9 pour l'aider
+    \xE0 se lib\xE9rer."
+  - "Et voil\xE0 qu\u2019il l\u2019a trouv\xE9."
+  - "Dans un tourbillon de fum\xE9e et d'\xE9tincelles, le sort brisa la r\xE9alit\xE9
+    en 2,"
+  - "donnant au lapin le moyen d\u2019\xE9vasion qu'il cherchait d\xE9sesp\xE9r\xE9ment
+    depuis si longtemps."
   - 
 --- !u!1001 &2066399193
 PrefabInstance:
@@ -993,6 +1044,21 @@ PrefabInstance:
         type: 3}
       propertyPath: crystals
       value: 8000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: numOfHearts
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: SaveCurrentHearts
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: languageselected
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}

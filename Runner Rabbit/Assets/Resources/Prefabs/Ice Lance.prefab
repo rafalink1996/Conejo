@@ -141,11 +141,11 @@ GameObject:
   - component: {fileID: 5063263294165231900}
   - component: {fileID: 1207127536227250141}
   - component: {fileID: 6868973326787680999}
-  - component: {fileID: 9089455884586461158}
   - component: {fileID: 6250220900479668697}
   - component: {fileID: 7166377373617909471}
   - component: {fileID: 3391300054780400524}
   - component: {fileID: 5834151242176536563}
+  - component: {fileID: 3073928611904704663}
   m_Layer: 15
   m_Name: Lance Bottom
   m_TagString: Enemy proyectile
@@ -238,18 +238,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &9089455884586461158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6291642296576559284}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &6250220900479668697
 AudioSource:
   m_ObjectHideFlags: 0
@@ -386,6 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  reflected: 0
   sourceTransform: {fileID: 0}
 --- !u!50 &5834151242176536563
 Rigidbody2D:
@@ -408,6 +397,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3073928611904704663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6291642296576559284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyP: 1
+  Damage: 2
 --- !u!1 &7969874367523729101
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,11 +503,11 @@ GameObject:
   - component: {fileID: 9048140416860781144}
   - component: {fileID: 9048140416860781147}
   - component: {fileID: 9048140416860781146}
-  - component: {fileID: 3446236675109936537}
   - component: {fileID: 494671863083586299}
   - component: {fileID: 5796324383497901089}
   - component: {fileID: 3081664106123663494}
   - component: {fileID: 5517753497773030468}
+  - component: {fileID: 6972298465491444451}
   m_Layer: 15
   m_Name: Lance Top
   m_TagString: Enemy proyectile
@@ -596,18 +599,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3446236675109936537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9048140416860781149}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &494671863083586299
 AudioSource:
   m_ObjectHideFlags: 0
@@ -744,6 +735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  reflected: 0
   sourceTransform: {fileID: 0}
 --- !u!50 &5517753497773030468
 Rigidbody2D:
@@ -766,3 +758,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6972298465491444451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9048140416860781149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyP: 1
+  Damage: 2

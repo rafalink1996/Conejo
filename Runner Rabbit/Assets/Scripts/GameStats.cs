@@ -518,7 +518,7 @@ public class GameStats : MonoBehaviour
     {
        stats.LevelIndicator = 1;
        stats.LevelCount = 1;
-       stats.numOfHearts = 3;
+       stats.numOfHearts = 6;
        stats.ExtraHearts = false;
        stats.ManaJar = false;
        powerDark = originalDarkPower;

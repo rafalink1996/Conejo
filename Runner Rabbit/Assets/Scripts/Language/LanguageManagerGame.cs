@@ -27,6 +27,14 @@ public class LanguageManagerGame : MonoBehaviour
     string Español_SoundSubtitle = "Sonido";
     string Español_YouAreDeadTitel = "Estas Muerto";
 
+    //Frances
+    string Frances_SettingsTitle = "Opciones";
+    string Frances_ResumeButton = "Resumir";
+    string Frances_MainMenuButton = "Menú Principal";
+    string Frances_MusicSubtitle = "Música";
+    string Frances_SoundSubtitle = "Sonido";
+    string Frances_YouAreDeadTitel = "Estas Muerto";
+
     void Start()
     {
         SetLanguage(GameStats.stats.LanguageSelect);
@@ -53,6 +61,15 @@ public class LanguageManagerGame : MonoBehaviour
                 SoundSubtitle.text = Español_SoundSubtitle;
                 YouAreDeadtitle.text = Español_YouAreDeadTitel;
                 DeadMainMenuButton.text = Español_MainMenuButton;
+                break;
+            case 2: //Frances
+                SettingsTitle.text = Frances_SettingsTitle;
+                ResumeButton.text = Frances_ResumeButton;
+                MainMenúButton.text = Frances_MainMenuButton; MainMenúButton.fontSize = 18;
+                MusicSubtitle.text = Frances_MusicSubtitle;
+                SoundSubtitle.text = Frances_SoundSubtitle;
+                YouAreDeadtitle.text = Frances_YouAreDeadTitel;
+                DeadMainMenuButton.text = Frances_MainMenuButton;
                 break;
         }
     }

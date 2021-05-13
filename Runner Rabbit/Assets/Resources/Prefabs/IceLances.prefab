@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 7160445312804199052}
   - component: {fileID: 7160445312804199051}
   - component: {fileID: 7160445312804199050}
+  - component: {fileID: 6064884447423774026}
   m_Layer: 15
   m_Name: Lance (1)
   m_TagString: Enemy proyectile
@@ -250,6 +251,19 @@ MonoBehaviour:
   speed: 8
   reflected: 0
   sourceTransform: {fileID: 0}
+--- !u!114 &6064884447423774026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160445312804199048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &7160445313373233089
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +690,7 @@ GameObject:
   - component: {fileID: 7160445314122132135}
   - component: {fileID: 7160445314122132134}
   - component: {fileID: 7160445314122132133}
+  - component: {fileID: 6538005499812364801}
   m_Layer: 15
   m_Name: Lance
   m_TagString: Enemy proyectile
@@ -830,6 +845,19 @@ MonoBehaviour:
   speed: 8
   reflected: 0
   sourceTransform: {fileID: 0}
+--- !u!114 &6538005499812364801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160445314122132129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &7160445314183927278
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +872,7 @@ GameObject:
   - component: {fileID: 7160445314183927266}
   - component: {fileID: 7160445314183927265}
   - component: {fileID: 7160445314183927264}
+  - component: {fileID: 7943288151913648732}
   m_Layer: 15
   m_Name: Lance (2)
   m_TagString: Enemy proyectile
@@ -998,6 +1027,19 @@ MonoBehaviour:
   speed: 8
   reflected: 0
   sourceTransform: {fileID: 0}
+--- !u!114 &7943288151913648732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160445314183927278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &7160445314618367505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1054,7 @@ GameObject:
   - component: {fileID: 7160445314618367509}
   - component: {fileID: 7160445314618367508}
   - component: {fileID: 7160445314618367507}
+  - component: {fileID: 6784491104578437121}
   m_Layer: 15
   m_Name: Lance (3)
   m_TagString: Enemy proyectile
@@ -1166,3 +1209,16 @@ MonoBehaviour:
   speed: 8
   reflected: 0
   sourceTransform: {fileID: 0}
+--- !u!114 &6784491104578437121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160445314618367505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2

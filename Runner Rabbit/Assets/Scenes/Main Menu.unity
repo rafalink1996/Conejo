@@ -15301,6 +15301,16 @@ PrefabInstance:
       propertyPath: crystals
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: numOfHearts
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: SaveCurrentHearts
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -75256,6 +75266,8 @@ MonoBehaviour:
   FailedtoShowGameObject: {fileID: 1152437746}
   FailedAdDescriptionText: {fileID: 2034549617}
   probandoAdmob: 0
+  LoadRetryRewarded: 0
+  LoadRetryIntersticial: 0
   AdLoadedImage: {fileID: 0}
 --- !u!114 &1668025812
 MonoBehaviour:
@@ -75432,6 +75444,10 @@ MonoBehaviour:
     type: 3}
   "Espa\xF1ol_HowToPlayPowersSpirte": {fileID: 21300000, guid: 98242dd94892b4e7ea0aa0b077665de6,
     type: 3}
+  Frances_HowToPlayMovmentSprite: {fileID: 21300000, guid: 4fb8387acc2064c6ea32ead560b1e28f,
+    type: 3}
+  Frances_HowToPlayPowersSpirte: {fileID: 21300000, guid: 5e2dfef02be5f43e983c594deafece00,
+    type: 3}
   HowToPlayDisplayMovementImage: {fileID: 1503494916}
   HowToPlayDisplayPowersImage: {fileID: 347372423}
   NoAdsTitle: {fileID: 2010052746}
@@ -75465,6 +75481,18 @@ MonoBehaviour:
   "Espa\xF1ol_PhoenixFeatherDescription": Revive una vez por partida
   "Espa\xF1ol_ExtraHeartsDescription": Empieza la partida con 2 corazones extra
   "Espa\xF1ol_ManaJarDescription": Empieza la partida con 30 mana extra
+  Frances_ManaJarText: Mana Jar
+  Frances_CointX2TicketText: Coin x2 Ticket
+  Frances_ExtraHeartsText: Extra Hearts
+  Frances_PortalBoostText: Portal Boost
+  Frances_FenixFeatherText: phoenix Feather
+  Frances_CoinsX2Description: Every coin you collect counts as 2
+  Frances_PortalBoostDescription: Start each level at the halfway point, does not
+    count boss levels
+  Frances_PhoenixFeatherDescription: When you die heal to full once
+  Frances_ExtraHeartsDescription: Start the run with 2 extra hearts
+  Frances_ManaJarDescription: Start the run with 30 extra dark mana and 30 extra
+    light mana
 --- !u!114 &1668025814
 MonoBehaviour:
   m_ObjectHideFlags: 0

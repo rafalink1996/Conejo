@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4339148051861028403}
   - component: {fileID: 3833194723210339935}
   - component: {fileID: 4693017325191311802}
+  - component: {fileID: 1624941453159882460}
   m_Layer: 15
   m_Name: FireBall
   m_TagString: Enemy proyectile
@@ -154,6 +155,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1624941453159882460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833194723210339932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 2
 --- !u!1 &4082346471965690991
 GameObject:
   m_ObjectHideFlags: 0

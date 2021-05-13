@@ -240,7 +240,7 @@ public class character : MonoBehaviour
         if (GameStats.stats.ExtraHearts == true)
         {
             
-            GameStats.stats.numOfHearts += 2;
+            GameStats.stats.numOfHearts += 4;
             GameStats.stats.HealToFull();
             GameStats.stats.ExtraHearts = false;
             GameStats.stats.SaveStats();
@@ -374,11 +374,12 @@ public class character : MonoBehaviour
 
         if (Health <= 0 && GameStats.stats.fenixFeather == false)
         {
-            StartCoroutine(Death());
+            
             if (GameStats.stats.diedTimes < 50)
             {
                 GameStats.stats.diedTimes++;
             }
+            StartCoroutine(Death());
         }
 
         if (Health <= 0 && GameStats.stats.fenixFeather == true)
@@ -517,7 +518,19 @@ public class character : MonoBehaviour
                     }
                     else
                     {
-                        LoseHealth();
+                        int damage;
+                        Proyectile proyectile = collision.GetComponent<Proyectile>();
+                        if(proyectile != null)
+                        {
+                            damage = proyectile.Damage;
+                        }
+                        else
+                        {
+                            Debug.Log("No Poroyectile found");
+                            damage = 1;
+                        }
+                         
+                        LoseHealth(damage);
                     }
 
                 }
@@ -641,7 +654,7 @@ public class character : MonoBehaviour
             isUsingPower = true;
             animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerLight.id, GameStats.stats.powerLight.Damage) ;
-            mana.ReduceLightMana();
+            mana.ReduceDarkMana();
             
         }
 
@@ -663,7 +676,7 @@ public class character : MonoBehaviour
             HoldPower = true;
 
             UsedPower(GameStats.stats.powerLight.id, GameStats.stats.powerLight.Damage);
-            mana.ReduceLightManaHold();
+            mana.ReduceDarkMana();
             
             
 
@@ -725,7 +738,7 @@ public class character : MonoBehaviour
             animator.SetBool("Laser", true);
             //animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id, GameStats.stats.powerDark.Damage);
-            mana.ReduceDarkManaHold();
+            mana.ReduceLightMana();
 
 
            
@@ -778,7 +791,7 @@ public class character : MonoBehaviour
             isUsingPower = true;
             animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id, GameStats.stats.powerDark.Damage);
-            mana.ReduceDarkMana();
+            mana.ReduceLightMana();
 
         }
 
@@ -868,9 +881,9 @@ public class character : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
     }
-    public void LoseHealth()
+    public void LoseHealth(int damage = 1)
     {
-        Health -= 1;
+        Health -= damage;
         animator.SetTrigger("GotHit");
         StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
         StartCoroutine(GetInvulnerable());
