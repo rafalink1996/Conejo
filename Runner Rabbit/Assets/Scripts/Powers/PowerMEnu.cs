@@ -12,6 +12,7 @@ public class PowerMEnu : MonoBehaviour
     // transition to power menu
     public GameObject MainMenuHolder;
     public GameObject StoreHolder;
+    public GameObject SkinMenuHolder;
     public GameObject TowerDark;
     public GameObject TowerLight;
 
@@ -841,6 +842,7 @@ public class PowerMEnu : MonoBehaviour
     {
         LeanTween.moveLocalX(BGSpriteGoup, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
         LeanTween.moveLocalX(MainMenuHolder, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
+        LeanTween.moveLocalX(SkinMenuHolder, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
         LeanTween.moveLocalX(StoreHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
 
 
@@ -851,6 +853,7 @@ public class PowerMEnu : MonoBehaviour
     {
         LeanTween.moveLocalX(BGSpriteGoup, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
         LeanTween.moveLocalX(MainMenuHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
+        LeanTween.moveLocalX(SkinMenuHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
         LeanTween.moveLocalX(StoreHolder, 1920, TransTime).setEase(LeanTweenType.easeOutExpo);
 
 

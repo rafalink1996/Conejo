@@ -27,6 +27,14 @@ public class SkinMenuStore : MonoBehaviour
 
     public GameObject buybutton;
 
+
+    public GameObject normalstore;
+    public GameObject CrystalStore;
+    public GameObject BackToStoreButton;
+    public GameObject BackToSkinMenuButton;
+
+    public PowerMEnu myPowerMenu;
+
     
 
     
@@ -772,14 +780,31 @@ public class SkinMenuStore : MonoBehaviour
             }
         }
 
-        if (SelectedSkinID == 7)
+        if (SelectedSkinID == 7 || SelectedSkinID == 8 || SelectedSkinID == 9 || SelectedSkinID == 11 || SelectedSkinID == 12 || SelectedSkinID == 13 || SelectedSkinID == 14 || SelectedSkinID == 16)
         {
             // go to buy pack. Cuado pongamos lo de IN-APP purchases.
+            normalstore.SetActive(false);
+            CrystalStore.SetActive(true);
+            BackToSkinMenuButton.SetActive(true);
+            BackToStoreButton.SetActive(false);
+            myPowerMenu.PowerMenu();
+
         }
-        if (SelectedSkinID == 8)
-        {
-            // go to buy pack. Cuado pongamos lo de IN-APP purchases.
-        }
+       
+    }
+
+    public void BackFromSkinMenu()
+    {
+        myPowerMenu.PowerMenuBack();
+        Invoke("BackFromSkinMenuActives", 1);
+    }
+
+     void BackFromSkinMenuActives()
+    {
+        normalstore.SetActive(true);
+        CrystalStore.SetActive(false);
+        BackToSkinMenuButton.SetActive(false);
+        BackToStoreButton.SetActive(true);
     }
 
 

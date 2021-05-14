@@ -25,7 +25,7 @@ public class LanguageManagerGame : MonoBehaviour
     string Español_MainMenuButton = "Menú Principal";
     string Español_MusicSubtitle = "Música";
     string Español_SoundSubtitle = "Sonido";
-    string Español_YouAreDeadTitel = "Estas Muerto";
+    string Español_YouAreDeadTitel = "Estás Muerto";
 
     //Frances
     string Frances_SettingsTitle = "Opciones";
@@ -33,7 +33,7 @@ public class LanguageManagerGame : MonoBehaviour
     string Frances_MainMenuButton = "Menú Principal";
     string Frances_MusicSubtitle = "Música";
     string Frances_SoundSubtitle = "Sonido";
-    string Frances_YouAreDeadTitel = "Estas Muerto";
+    string Frances_YouAreDeadTitel = "Estás Muerto";
 
     void Start()
     {

@@ -49,6 +49,7 @@ public class LanguageManager : MonoBehaviour
     //Crystal Store
     public Text NoAdsTitle, RestorePurchaseTitle, CrystalBunch, CrystalPile, CryslatBag, CrystalChest, skinpacktitle;
     public TextMeshProUGUI NineSkinsDescription;
+    public TextMeshProUGUI BackToSkinStoreButton;
 
 
     //strings language
@@ -161,7 +162,7 @@ public class LanguageManager : MonoBehaviour
     string English_RuneDescription3 = "Coins are attracted to you";
     string English_RuneDescription4 = "Recharge mana faster";
     string English_RuneDescription5 = "Spells cost less mana";
-    string English_RuneDescription6 = "Grants you a shield that protects you from one hit each level";
+    string English_RuneDescription6 = "Grants you a shield that protects you from one hit in each level";
     string English_RuneDescription7 = "gives you more coins when you reach the store";
     string English_RuneDescription8 = "the first item in the coin shop is 50% off";
     string English_RuneDescription9 = "Enemies spawn with less health";
@@ -321,7 +322,7 @@ public class LanguageManager : MonoBehaviour
     string Español_RuneDescription3 = "Las monedas son atraidas a tí";
     string Español_RuneDescription4 = "Recarga maná Más rápido";
     string Español_RuneDescription5 = "los hechizos Cuestan Menos maná";
-    string Español_RuneDescription6 = "Te da un escudo que te protege de un golpe cada nivel";
+    string Español_RuneDescription6 = "Te da un escudo que te protege de un golpe en cada nivel";
     string Español_RuneDescription7 = "Te da mas monedas al llegar a la tienda";
     string Español_RuneDescription8 = "la primera compra en la tienda de monedas esta a mitad de precio";
     string Español_RuneDescription9 = "Los enemigos aparecen con menos vida";
@@ -762,6 +763,7 @@ public class LanguageManager : MonoBehaviour
 
                 skinpacktitle.text = English_SkinPack;
                 NineSkinsDescription.text = English_9Skins;
+                BackToSkinStoreButton.text = English_BackButton;
 
 
 
@@ -956,6 +958,7 @@ public class LanguageManager : MonoBehaviour
 
                 skinpacktitle.text = Español_SkinPack;
                 NineSkinsDescription.text = Español_9Skins;
+                BackToSkinStoreButton.text = Español_BackButton;
 
 
                 break;
@@ -1151,6 +1154,7 @@ public class LanguageManager : MonoBehaviour
 
                 skinpacktitle.text = Frances_SkinPack;
                 NineSkinsDescription.text = Frances_9Skins;
+                BackToSkinStoreButton.text = Frances_BackButton;
 
 
                 break;
