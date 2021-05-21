@@ -768,19 +768,19 @@ public class PowerMEnu : MonoBehaviour
 
         if (GameStats.stats.MagicLaserLevel == 0)
         {
-            MagicLaserCrystalCost = 50;
+            MagicLaserCrystalCost = 100;
         }
         else if (GameStats.stats.MagicLaserLevel == 1)
         {
-            MagicLaserCrystalCost = 75;
+            MagicLaserCrystalCost = 150;
         }
         else if (GameStats.stats.MagicLaserLevel == 2)
         {
-            MagicLaserCrystalCost = 100;
+            MagicLaserCrystalCost = 200;
         }
         else if (GameStats.stats.MagicLaserLevel == 3)
         {
-            MagicLaserCrystalCost = 150;
+            MagicLaserCrystalCost = 300;
         }
 
 

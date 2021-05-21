@@ -24,6 +24,13 @@ public class character : MonoBehaviour
     private float acceleration = 2f;
     public bool hit;
 
+    float Alpha;
+
+
+    //[SerializeField] SpriteRenderer mySpriteRenderer;
+
+    [SerializeField] LayerMask InvulnerableMask;
+
 
 
     // Coin Collecting
@@ -58,6 +65,7 @@ public class character : MonoBehaviour
     public GameObject DamageEffect;
     public GameObject BlockEffect;
     public GameObject riftEffect;
+    public GameObject HealEffect;
     public RipplePostProcessor CamRipple;
 
     // End Of Level
@@ -123,11 +131,13 @@ public class character : MonoBehaviour
 
 
 
+
+
     public bool HoldPower = false;
 
 
 
-    public int LaserlayerMask;
+    public int LaserlayerMask = 1 << 15;
 
 
     // FenixFeather Used
@@ -148,16 +158,24 @@ public class character : MonoBehaviour
     public bool HoldPowerIsOn;
 
 
-    [Header ("Caches")]
+    [Header("Caches")]
     [SerializeField] GameObject ButtonDark;
     [SerializeField] GameObject ButtonLight;
     Button DarkButtonComponent;
     Button LightButtonComponent;
 
 
+    // Invulnerabilities
+
+    bool invulnerableRiftActive = false;
+    bool InvulnerableHitActive = false;
+    bool InvulnerableEndLevelActive = false;
 
 
 
+    //Check
+
+    float LaserTimeCall;
 
     // debug images
 
@@ -236,15 +254,16 @@ public class character : MonoBehaviour
             RuneShield.SetActive(true);
         }
 
+        /*
+                if (GameStats.stats.ExtraHearts == true)
+                {
 
-        if (GameStats.stats.ExtraHearts == true)
-        {
-            
-            GameStats.stats.numOfHearts += 4;
-            GameStats.stats.HealToFull();
-            GameStats.stats.ExtraHearts = false;
-            GameStats.stats.SaveStats();
-        }
+                    GameStats.stats.numOfHearts += 4;
+                    GameStats.stats.HealToFull();
+                    GameStats.stats.ExtraHearts = false;
+                    GameStats.stats.SaveStats();
+                }
+        */
 
 
         NumOfHearts = GameStats.stats.numOfHearts;
@@ -270,8 +289,8 @@ public class character : MonoBehaviour
 
 
 
-       // DarkDebugImage.SetActive(false);
-       // LightDebugImage.SetActive(false);
+        // DarkDebugImage.SetActive(false);
+        // LightDebugImage.SetActive(false);
 
 
 
@@ -286,7 +305,8 @@ public class character : MonoBehaviour
         {
             LightSilenced = true;
             DarkSilecend = false;
-        } else if (!top)
+        }
+        else if (!top)
         {
 
             LightSilenced = false;
@@ -374,11 +394,12 @@ public class character : MonoBehaviour
 
         if (Health <= 0 && GameStats.stats.fenixFeather == false)
         {
-            
+
             if (GameStats.stats.diedTimes < 50)
             {
                 GameStats.stats.diedTimes++;
             }
+            mySpriteRenderer.color = Color.white;
             StartCoroutine(Death());
         }
 
@@ -447,11 +468,11 @@ public class character : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("RiftPass");
             CamRipple.RippleEffect();
             StartCoroutine(GetInvulnerableRift());
-            
-           // GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Dark");
-           // ButtonDark.SetActive(false);
-           // GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Light");
-           // ButtonLight.SetActive(false);
+
+            // GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Dark");
+            // ButtonDark.SetActive(false);
+            // GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Light");
+            // ButtonLight.SetActive(false);
 
             //DarkPowerHoldStop();
             //LightPowerHoldStop();
@@ -467,9 +488,9 @@ public class character : MonoBehaviour
                 LightButtonComponent.interactable = false;
             }
 
-            
-            
-            StartCoroutine(ResetHoldPower());            
+
+
+            StartCoroutine(ResetHoldPower());
 
         }
 
@@ -497,6 +518,9 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Heart")
         {
+            GameObject HealParticle = Instantiate(HealEffect, transform.position, Quaternion.identity);
+            HealParticle.transform.parent = this.transform;
+            HealParticle.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
             Health += 1;
         }
 
@@ -506,43 +530,46 @@ public class character : MonoBehaviour
 
         if (collision.tag == "Enemy proyectile" || collision.tag == "Enemy")
         {
-            if (!hit)
-            {
-                if (!shielded)
-                {
-                    if (RuneShielded)
-                    {
-                        RuneShielded = false;
-                        Animator RuneShieldAnimator = RuneShield.GetComponent<Animator>();
-                        RuneShieldAnimator.SetTrigger("Break");
-                    }
-                    else
-                    {
-                        int damage;
-                        Proyectile proyectile = collision.GetComponent<Proyectile>();
-                        if(proyectile != null)
-                        {
-                            damage = proyectile.Damage;
-                        }
-                        else
-                        {
-                            Debug.Log("No Poroyectile found");
-                            damage = 1;
-                        }
-                         
-                        LoseHealth(damage);
-                    }
 
+            if (!shielded)
+            {
+                if (RuneShielded)
+                {
+                    RuneShielded = false;
+                    Animator RuneShieldAnimator = RuneShield.GetComponent<Animator>();
+                    RuneShieldAnimator.SetTrigger("Break");
                 }
                 else
                 {
-                    Instantiate(BlockEffect, collision.transform.position, Quaternion.identity);
-                    if (ShieldHealthAbsorb == true)
+                    int damage;
+                    Proyectile proyectile = collision.GetComponent<Proyectile>();
+                    if (proyectile != null)
                     {
-                        Health += 1;
+                        damage = proyectile.Damage;
                     }
+                    else
+                    {
+                        Debug.Log("No Poroyectile found");
+                        damage = 1;
+                    }
+
+                    LoseHealth(damage);
+                }
+
+            }
+            else
+            {
+                Instantiate(BlockEffect, collision.transform.position, Quaternion.identity);
+                if (ShieldHealthAbsorb == true)
+                {
+
+                    GameObject HealParticle = Instantiate(HealEffect, transform.position, Quaternion.identity);
+                    HealParticle.transform.parent = this.transform;
+                    HealParticle.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+                    Health += 1;
                 }
             }
+
 
 
 
@@ -587,12 +614,13 @@ public class character : MonoBehaviour
             StartCoroutine(GetInvulnerableRift());
             MyUIManager.ChangeManaInUse();
 
-        silenced = false;
-          
+            silenced = false;
 
-        
-           
-            if (DarkButtonComponent != null){
+
+
+
+            if (DarkButtonComponent != null)
+            {
                 DarkButtonComponent.interactable = true;
             }
             if (LightButtonComponent != null)
@@ -600,7 +628,7 @@ public class character : MonoBehaviour
                 LightButtonComponent.interactable = true;
             }
 
-        
+
 
 
         }
@@ -608,11 +636,11 @@ public class character : MonoBehaviour
         {
             silenced = false;
 
-        }    
+        }
     }
-    
-        
-    
+
+
+
 
 
     void Rotation()
@@ -653,9 +681,9 @@ public class character : MonoBehaviour
         {
             isUsingPower = true;
             animator.SetBool("isUsingPower", true);
-            UsedPower(GameStats.stats.powerLight.id, GameStats.stats.powerLight.Damage) ;
+            UsedPower(GameStats.stats.powerLight.id, GameStats.stats.powerLight.Damage);
             mana.ReduceDarkMana();
-            
+
         }
 
 
@@ -665,7 +693,7 @@ public class character : MonoBehaviour
     public void LightPowerHold()
     {
         //mana.RequiredDarkMana(GameStats.stats.powerLight.mana) ;
-       
+
         if (mana.CurrentDarkMana >= 1 /*mana.DarkManaUsed*/ && !silenced && !LightSilenced)
         {
 
@@ -676,24 +704,24 @@ public class character : MonoBehaviour
             HoldPower = true;
 
             UsedPower(GameStats.stats.powerLight.id, GameStats.stats.powerLight.Damage);
-            mana.ReduceDarkMana();
-            
-            
+            mana.ReduceDarkManaHold();
 
 
-           
+
+
+
 
             LaserLight.enabled = true;
             StartVFXLight.SetActive(true);
             EndVFXLight.SetActive(true);
-           
+
 
 
         }
         else
         {
             LightPowerHoldStop();
-            
+
         }
 
 
@@ -711,14 +739,14 @@ public class character : MonoBehaviour
 
 
         animator.SetBool("Laser", false);
-        
+
         StartVFXLight.GetComponent<ParticleSystem>().Stop();
         EndVFXLight.GetComponent<ParticleSystem>().Stop();
-       
-       
 
 
-        GameObject ButtonLight = GameObject.Find("UI/HUD/Power/Power Light");
+
+
+        GameObject ButtonLight = GameObject.Find("UI/HUD/PowersHud/Power/Power Light");
         HoldButton HoldButtonLight = ButtonLight.GetComponent<HoldButton>();
         HoldButtonLight.Reset();
 
@@ -728,7 +756,7 @@ public class character : MonoBehaviour
     public void DarkPowerHold()
     {
         //mana.RequiredLightMana(GameStats.stats.powerDark.mana);
-        
+
         if (mana.CurrentLightMana >= 1 /*mana.LightManaUsed*/  && !silenced && !DarkSilecend)
         {
             LaserDark.enabled = true;
@@ -738,18 +766,13 @@ public class character : MonoBehaviour
             animator.SetBool("Laser", true);
             //animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id, GameStats.stats.powerDark.Damage);
-            mana.ReduceLightMana();
+            mana.ReduceLightManaHold();
 
 
-           
+
 
             StartVFXDark.SetActive(true);
             EndVFXDark.SetActive(true);
-           
-            
-
-
-
 
 
         }
@@ -773,7 +796,7 @@ public class character : MonoBehaviour
         EndVFXDark.GetComponent<ParticleSystem>().Stop();
         HoldPower = false;
 
-        GameObject ButtonDark = GameObject.Find("UI/HUD/Power/Power Dark");
+        GameObject ButtonDark = GameObject.Find("UI/HUD/PowersHud/Power/Power Dark");
         HoldButton HoldButtonDark = ButtonDark.GetComponent<HoldButton>();
         HoldButtonDark.Reset();
 
@@ -885,17 +908,38 @@ public class character : MonoBehaviour
     {
         Health -= damage;
         animator.SetTrigger("GotHit");
-        StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.7f, 0.7f, 1f), 0.2f, 0.2f));
+        // StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.5f, 0.5f, 1f), 1f, 2f));
         StartCoroutine(GetInvulnerable());
+        StartCoroutine(Flashing());
+
         gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.4f);
         Instantiate(DamageEffect, transform.position, Quaternion.identity);
+        FindObjectOfType<AudioManager>().Play("BunnyHit");
+
     }
 
-
+    IEnumerator Flashing()
+    {
+        while (true)
+        {
+            if (InvulnerableHitActive)
+            {
+                mySpriteRenderer.color = new Color(0.8f, 0.5f, 0.5f, 0);
+                yield return new WaitForSeconds(.1f);
+                mySpriteRenderer.color = new Color(0.8f, 0.5f, 0.5f, 1);
+                yield return new WaitForSeconds(.1f);
+            }
+            else
+            {
+                mySpriteRenderer.color = Color.white;
+                break;
+            }
+        }
+    }
     IEnumerator DamageEffectSequence(SpriteRenderer mySpriteRenderer, Color dmgColor, float duration, float delay)
     {
         // save origin color
-        Color originColor = mySpriteRenderer.color;
+        // Color originColor = mySpriteRenderer.color;
 
         // tint the sprite with damage color
         mySpriteRenderer.color = dmgColor;
@@ -906,41 +950,55 @@ public class character : MonoBehaviour
         // lerp animation with given duration in seconds
         for (float t = 0; t < 1.0f; t += Time.deltaTime / duration)
         {
-            mySpriteRenderer.color = Color.Lerp(dmgColor, originColor, t);
-
-
+            mySpriteRenderer.color = Color.Lerp(dmgColor, Color.white, t);
         }
 
         // restore origin color
-        mySpriteRenderer.color = originColor;
+        //mySpriteRenderer.color = Color.white;
     }
 
 
     IEnumerator GetInvulnerable()
     {
-        Physics2D.IgnoreLayerCollision(8, 9, true);
-        hit = true;
-        yield return new WaitForSeconds(2f);
-        Physics2D.IgnoreLayerCollision(8, 9, false);
-        hit = false;
+        if (!InvulnerableHitActive)
+        {
+            InvulnerableHitActive = true;
+            Physics2D.IgnoreLayerCollision(8, 9, true);
+            Physics2D.IgnoreLayerCollision(8, 15, true);
+
+            yield return new WaitForSeconds(2f);
+            Physics2D.IgnoreLayerCollision(8, 9, false);
+            Physics2D.IgnoreLayerCollision(8, 15, false);
+            InvulnerableHitActive = false;
+        }
+
 
 
     }
 
     IEnumerator GetInvulnerableRift()
     {
-        Physics2D.IgnoreLayerCollision(8, 9, true);
-        yield return new WaitForSeconds(1f);
-        Physics2D.IgnoreLayerCollision(8, 9, false);
-
-
+        if (!invulnerableRiftActive)
+        {
+            invulnerableRiftActive = true;
+            //StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(1f, 1f, 1f, 0.5f), 3f, 0.2f));
+            Physics2D.IgnoreLayerCollision(8, 9, true);
+            Physics2D.IgnoreLayerCollision(8, 15, true);
+            yield return new WaitForSeconds(1f);
+            Physics2D.IgnoreLayerCollision(8, 9, false);
+            Physics2D.IgnoreLayerCollision(8, 15, false);
+            yield return new WaitForSeconds(2f);
+            invulnerableRiftActive = false;
+        }
     }
 
     IEnumerator GetInvulnerableEndLevel()
     {
         Physics2D.IgnoreLayerCollision(8, 9, true);
+        Physics2D.IgnoreLayerCollision(8, 15, true);
         yield return new WaitForSeconds(20f);
         Physics2D.IgnoreLayerCollision(8, 9, false);
+        Physics2D.IgnoreLayerCollision(8, 15, false);
     }
 
 
@@ -957,8 +1015,8 @@ public class character : MonoBehaviour
     IEnumerator ResetHoldPower()
     {
         yield return new WaitForSeconds(0.5f);
-     
-        
+
+
 
     }
     IEnumerator Death()
@@ -968,7 +1026,7 @@ public class character : MonoBehaviour
         Time.timeScale = 0;
         animator.SetTrigger("Dead");
         animator.SetBool("Death", true);
-        
+
 
         yield return new WaitForSecondsRealtime(1f);
 
@@ -990,7 +1048,7 @@ public class character : MonoBehaviour
     }
 
 
-    public void UsedPower(int id, int damage)
+    public void UsedPower(int id, float damage)
     {
         switch (id)
         {
@@ -1229,12 +1287,12 @@ public class character : MonoBehaviour
 
                     if (isUsinglaserLight == true)
                     {
-                        
+
                         LaserLight.SetPosition(0, StartLaserPos.position);
                         LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
-                       // Debug.Log("using  hold power light");
+                        // Debug.Log("using  hold power light");
 
                         Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
                         RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
@@ -1244,16 +1302,18 @@ public class character : MonoBehaviour
 
                         if (hit.collider != null)
                         {
+
                             LaserLight.SetPosition(1, hit.point);
                             EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
-
-                            if (hit.transform.tag == "Enemy")
+                            if (Time.time - LaserTimeCall >= 0.1)
                             {
-                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerLight.Damage));
+                                if (hit.transform.tag == "Enemy")
+                                {
+                                    EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                    target.TakeDamage(GameStats.stats.powerLight.Damage);
+                                }
                             }
-
                         }
 
 
@@ -1261,12 +1321,12 @@ public class character : MonoBehaviour
                     }
                     else
                     {
-                        
+
                         LaserDark.SetPosition(0, StartLaserPos.position);
                         LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
-                       // Debug.Log("using  hold power dark");
+                        // Debug.Log("using  hold power dark");
 
                         Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
                         RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
@@ -1279,13 +1339,14 @@ public class character : MonoBehaviour
                             LaserDark.SetPosition(1, hit.point);
                             EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
-
-                            if (hit.transform.tag == "Enemy")
+                            if (Time.time - LaserTimeCall >= 0.1)
                             {
-                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerDark.Damage));
+                                if (hit.transform.tag == "Enemy")
+                                {
+                                    EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                    target.TakeDamage(GameStats.stats.powerDark.Damage);
+                                }
                             }
-
                         }
                     }
                 }
@@ -1320,7 +1381,7 @@ public class character : MonoBehaviour
                         LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
-                       // Debug.Log("using  hold power light");
+                        // Debug.Log("using  hold power light");
 
                         Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
                         RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
@@ -1333,13 +1394,14 @@ public class character : MonoBehaviour
                             LaserLight.SetPosition(1, hit.point);
                             EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
-
-                            if (hit.transform.tag == "Enemy")
+                            if (Time.time - LaserTimeCall >= 0.1)
                             {
-                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerLight.Damage));
+                                if (hit.transform.tag == "Enemy")
+                                {
+                                    EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                    target.TakeDamage(GameStats.stats.powerLight.Damage);
+                                }
                             }
-
                         }
 
 
@@ -1365,13 +1427,14 @@ public class character : MonoBehaviour
                             LaserDark.SetPosition(1, hit.point);
                             EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
-
-                            if (hit.transform.tag == "Enemy")
+                            if (Time.time - LaserTimeCall >= 0.1)
                             {
-                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerDark.Damage));
+                                if (hit.transform.tag == "Enemy")
+                                {
+                                    EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                    target.TakeDamage(GameStats.stats.powerDark.Damage);
+                                }
                             }
-
                         }
                     }
                 }
@@ -1383,9 +1446,9 @@ public class character : MonoBehaviour
                 if (HoldPower == true)
                 {
                     int layerMask1 = 1 << 9;
-                    int layerMask2 = 1 << 15;
+                    // int layerMask2 = 1 << 15;
 
-                    int CombiendLayerMask = layerMask1 | layerMask2;
+                    int CombiendLayerMask = layerMask1; //| layerMask2;
                     LaserlayerMask = CombiendLayerMask;
 
                     animator.SetBool("Laser", true);
@@ -1399,29 +1462,34 @@ public class character : MonoBehaviour
 
                         Debug.Log("using  hold power light");
 
-                        Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
-                        RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
-
                         StartVFXLight.GetComponent<ParticleSystem>().Play();
                         EndVFXLight.GetComponent<ParticleSystem>().Play();
 
+
+                        Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
+                        RaycastHit2D hit = Physics2D.Raycast((Vector2)StartLaserPos.position, direction.normalized, direction.magnitude, LaserlayerMask);
+
+
                         if (hit.collider != null)
                         {
-                            LaserLight.SetPosition(1, hit.point);
-                            EndVFXLight.transform.position = LaserLight.GetPosition(1);
-
-
-                            if (hit.transform.tag == "Enemy")
+                            if (hit.transform.tag != "EnemyProyectile")
                             {
-                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerLight.Damage));
+                                LaserLight.SetPosition(1, hit.point);
+                                EndVFXLight.transform.position = LaserLight.GetPosition(1);
                             }
 
+                            if (Time.time - LaserTimeCall >= 0.1)
+                            {
+                                if (hit.transform.tag == "Enemy")
+                                {
+                                    EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                    target.TakeDamage(GameStats.stats.powerLight.Damage);
+                                }
+                                LaserTimeCall = Time.time;
+                            }
                         }
-
-
-
                     }
+
                     else
                     {
 
@@ -1443,26 +1511,29 @@ public class character : MonoBehaviour
                             EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
 
-                            if (hit.transform.tag == "Enemy")
+                            if (Time.time - LaserTimeCall >= 0.1)
                             {
-                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerDark.Damage));
+                                if (hit.transform.tag == "Enemy")
+                                {
+                                    EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                    target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerDark.Damage));
+                                }
                             }
 
                         }
                     }
                 }
-                
-                
+
+
                 break;
             case 54:
 
                 if (HoldPower == true)
                 {
                     int layerMask1 = 1 << 9;
-                    int layerMask2 = 1 << 15;
+                    //int layerMask2 = 1 << 15;
 
-                    int CombiendLayerMask = layerMask1 | layerMask2;
+                    int CombiendLayerMask = layerMask1; //| layerMask2;
                     LaserlayerMask = CombiendLayerMask;
 
                     animator.SetBool("Laser", true);
@@ -1487,11 +1558,13 @@ public class character : MonoBehaviour
                             LaserLight.SetPosition(1, hit.point);
                             EndVFXLight.transform.position = LaserLight.GetPosition(1);
 
-
-                            if (hit.transform.tag == "Enemy")
+                            if (Time.time - LaserTimeCall >= 0.1)
                             {
-                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerLight.Damage));
+                                if (hit.transform.tag == "Enemy")
+                                {
+                                    EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                    target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerLight.Damage));
+                                }
                             }
                         }
                     }
@@ -1515,11 +1588,13 @@ public class character : MonoBehaviour
                             LaserDark.SetPosition(1, hit.point);
                             EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
-
-                            if (hit.transform.tag == "Enemy")
+                            if (Time.time - LaserTimeCall >= 0.1)
                             {
-                                EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
-                                target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerDark.Damage));
+                                if (hit.transform.tag == "Enemy")
+                                {
+                                    EnemyHealth target = hit.transform.gameObject.GetComponent<EnemyHealth>();
+                                    target.TakeDamage(Mathf.FloorToInt(GameStats.stats.powerDark.Damage));
+                                }
                             }
 
                         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8128828259596697572}
   - component: {fileID: 918924986278634395}
   - component: {fileID: 984920343657080923}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: EndParticlesDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4898,7 +4898,7 @@ GameObject:
   - component: {fileID: 5852715509423993176}
   - component: {fileID: 7990432666583759947}
   - component: {fileID: 5542540969732874065}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StartParticlesDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9941,11 +9941,23 @@ MonoBehaviour:
   top: 0
   RiftColition: 0
   hit: 0
+  InvulnerableMask:
+    serializedVersion: 2
+    m_Bits: 0
   CoinCounter: {fileID: 0}
   CrystalCounter: {fileID: 0}
-  Health: 4
-  NumOfHearts: 4
+  Health: 6
+  NumOfHearts: 6
   hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -9971,6 +9983,8 @@ MonoBehaviour:
     type: 3}
   riftEffect: {fileID: 3215132811604800250, guid: 1846832cf1d94476f8b6fa8420da6d83,
     type: 3}
+  HealEffect: {fileID: 5401746953413461242, guid: 7206f70c4b0714fbc9c598339e61374e,
+    type: 3}
   CamRipple: {fileID: 0}
   DeathScreen: {fileID: 0}
   outOfportalSpeed: 10
@@ -9985,10 +9999,15 @@ MonoBehaviour:
   StartVFXDark: {fileID: 1561242108868953948}
   EndVFXDark: {fileID: 444707486810626864}
   HoldPower: 0
-  LaserlayerMask: 0
+  LaserlayerMask:
+    serializedVersion: 2
+    m_Bits: 32768
   FenixFeatherAnim: {fileID: 3542273376043063330}
   RuneShield: {fileID: 585373838612835381}
   HoldPowerIsOn: 0
+  ButtonDark: {fileID: 0}
+  ButtonLight: {fileID: 0}
+  MyUIManager: {fileID: 0}
 --- !u!61 &3542273375926598917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10385,7 +10404,7 @@ GameObject:
   - component: {fileID: 3542273376187445308}
   - component: {fileID: 3542273376187445310}
   - component: {fileID: 3542273376187445309}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StartParticlesLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15230,7 +15249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3542273376215762908}
   - component: {fileID: 3542273376215762910}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: LaserLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15260,7 +15279,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3542273376215762907}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15294,7 +15313,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 44.3, y: 0, z: 1}
+  - {x: 40, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.73142475
@@ -15416,7 +15435,7 @@ GameObject:
   - component: {fileID: 3542273376818000954}
   - component: {fileID: 3542273376818000956}
   - component: {fileID: 3542273376818000955}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: EndParticlesLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20169,7 +20188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1482764631676686646}
   - component: {fileID: 3710152148847162657}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: LaserDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

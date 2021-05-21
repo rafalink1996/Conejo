@@ -61,6 +61,8 @@ public class AdManager : MonoBehaviour
     bool FailedToLoadRewarded = false;
     bool FailedToLoadIntersticial = false;
 
+    public GameObject LoadingAdObject;
+
 
     public int LoadRetryRewarded;
     public int LoadRetryIntersticial;
@@ -265,10 +267,9 @@ public class AdManager : MonoBehaviour
         {
             if (GameStats.stats.NoAdsBought == false)
             {
-                if (this.interstitial.IsLoaded())
-                {
-                    this.interstitial.Show();
-                }
+                LoadingAdObject.SetActive(true);
+                this.interstitial.Show();
+                
             }
             else
             {
@@ -278,6 +279,7 @@ public class AdManager : MonoBehaviour
         }
         else
         {
+           
             BackToMainMenuIntersticial();
         } 
     }
@@ -373,7 +375,7 @@ public class AdManager : MonoBehaviour
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
-        RequestRewardedVideoAd();
+        //RequestRewardedVideoAd();
         MainMixer.SetFloat("MasterVolume", 0);
     }
 
@@ -401,14 +403,7 @@ public class AdManager : MonoBehaviour
 
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        /*
-        Debug.Log("ad failed to load");
-       
-        BackToMainMenuIntersticial();
-        MonoBehaviour.print(
-            "HandleRewardedAdFailedToLoad event received with message: "
-                             + args.Message);*/
-
+     
         if(LoadRetryIntersticial > 2)
         {
             FailedToLoadIntersticial = true;
@@ -424,12 +419,14 @@ public class AdManager : MonoBehaviour
 
     public void HandleOnAdOpened(object sender, EventArgs args)
     {
+        LoadingAdObject.SetActive(false);
         MainMixer.SetFloat("MasterVolume", -80);
     }
 
     public void HandleOnAdClosed(object sender, EventArgs args)
     {
         MainMixer.SetFloat("MasterVolume", 0);
+
         BackToMainMenuIntersticial();
     }
 

@@ -36,15 +36,7 @@ public class ManaHandle : MonoBehaviour
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
 
 
-        if (GameStats.stats.ManaJar == true)
-        {
-            GameStats.stats.totalDarkMana += 30;
-            GameStats.stats.totalLightMana += 30;
-
-   
-            GameStats.stats.ManaJar = false;
-            GameStats.stats.SaveStats();
-        }
+       
 
         DarkMana = GameStats.stats.totalDarkMana;
         LightMana = GameStats.stats.totalLightMana;

@@ -16,14 +16,21 @@ public class ElectricBook : MonoBehaviour
     float attackTime;
     bool attack;
     EnemyHealth health;
-   
+    public int BookHealth = 6;
+    public int BookSelfDamage = 2;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        if(GameStats.stats.LevelIndicator > 1)
+        {
+            BookHealth = 18;
+            BookSelfDamage = 6;
+        }
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 30;
+        health.maxHealth = BookHealth;
         anim = GetComponent<Animator>();
         if (SceneManager.GetActiveScene().name != "Level 2 (dungeon)")
         {
@@ -86,7 +93,7 @@ public class ElectricBook : MonoBehaviour
     }
     void Attack()
     {
-        health.TakeDamage(10);
+        health.TakeDamage(BookSelfDamage);
     }
     void ElectricBall()
     {

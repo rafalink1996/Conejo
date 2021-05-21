@@ -15,6 +15,10 @@ public class PlayerData
     public bool ManaJarBought;
 
     public int level;
+    public bool LevelBought;
+    public int LevelBoughtCrystals;
+    public int LevelBoughtCoins;
+
     public int MaxLevelReached;
 
     public int TimeReward;
@@ -130,6 +134,9 @@ public class PlayerData
         ManaJarBought = gamestats.ManaJar;
 
         level = gamestats.leveBoughtID;
+        LevelBought = gamestats.LevelBought;
+        LevelBoughtCrystals = gamestats.LevelBoughtCrystals;
+        LevelBoughtCoins = gamestats.LevelBoughtCoins;
 
         SavedLevelIndicator = gamestats.SavedLevelIndicator;
         SavedLevelCount = gamestats.SavedLevelCount;

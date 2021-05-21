@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LevelSelect : MonoBehaviour
 {
@@ -12,9 +13,12 @@ public class LevelSelect : MonoBehaviour
     public GameObject PortalRoomLock;
 
 
+    [SerializeField] GameObject[] activatedLevels; 
+
+
     public Button LibraryButton, DungeonButton, FrozenRoomButton, JungleButton, PortalRoomButton;
 
-    public Animator notEnoughCrystals;
+    [SerializeField] PowerMEnu myPowerMenu = null;
     
     public GameObject RewriteLevelObject;
     private int RewriteLevelID;
@@ -22,10 +26,22 @@ public class LevelSelect : MonoBehaviour
     private int CrystalsSpent;
     private int CoinsGiven;
 
+    public TextMeshProUGUI RefundCrystals;
+
+    [SerializeField] GameObject[] LevelInfoPopUps = null;
+
+
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
+
+        CrystalsSpent = GameStats.stats.LevelBoughtCrystals;
+        CoinsGiven = GameStats.stats.LevelBoughtCoins;
+
+        myPowerMenu = gameObject.GetComponent<PowerMEnu>();
         if (GameStats.stats.LevelReached >= 1)
         {
             LibraryLock.SetActive(false);
@@ -76,17 +92,31 @@ public class LevelSelect : MonoBehaviour
             PortalRoomLock.SetActive(true);
             PortalRoomButton.interactable = false;
         }
+        RefundCrystals.text = CrystalsSpent.ToString();
+
+        for (int i = 0; i < activatedLevels.Length; i++)
+        {
+            activatedLevels[i].SetActive(false);
+        }
+        activatedLevels[GameStats.stats.leveBoughtID - 1].SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        RefundCrystals.text = CrystalsSpent.ToString();
+
+       
     }
 
 
     public void BuyLevel (int levelID)
     {
+        if (levelID == GameStats.stats.leveBoughtID)
+        {
+            return;
+        }
+
         if (GameStats.stats.LevelBought == false)
         {
             if (levelID == 1)
@@ -94,6 +124,7 @@ public class LevelSelect : MonoBehaviour
                 GameStats.stats.LevelBought = false;
                 GameStats.stats.leveBoughtID = levelID;
                 GameStats.stats.LevelIndicator = levelID;
+                
                 CrystalsSpent = 0;
                 CoinsGiven = 0;
 
@@ -107,12 +138,12 @@ public class LevelSelect : MonoBehaviour
                     GameStats.stats.LevelBought = true;
                     GameStats.stats.leveBoughtID = levelID;
 
-                    GameStats.stats.coins += 100;
+                    GameStats.stats.LevelBoughtCoins = 200;
                     GameStats.stats.crystals -= 20;
 
 
                     CrystalsSpent = 20;
-                    CoinsGiven = 100;
+                    CoinsGiven = 200;
 
                    
 
@@ -121,7 +152,7 @@ public class LevelSelect : MonoBehaviour
                 else
                 {
 
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    myPowerMenu.NotEnoughCrystals();
                 }
 
             }
@@ -135,18 +166,18 @@ public class LevelSelect : MonoBehaviour
                     GameStats.stats.LevelBought = true;
                     GameStats.stats.leveBoughtID = levelID;
 
-                    GameStats.stats.coins += 200;
+                    GameStats.stats.LevelBoughtCoins = 400;
                     GameStats.stats.crystals -= 40;
 
                     CrystalsSpent = 40;
-                    CoinsGiven = 200;
+                    CoinsGiven = 400;
 
                    
                 }
                 else
                 {
 
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    myPowerMenu.NotEnoughCrystals();
                 }
 
 
@@ -160,18 +191,18 @@ public class LevelSelect : MonoBehaviour
                     GameStats.stats.LevelBought = true;
                     GameStats.stats.leveBoughtID = levelID;
 
-                    GameStats.stats.coins += 350;
+                    GameStats.stats.LevelBoughtCoins = 800;
                     GameStats.stats.crystals -= 80;
 
                     CrystalsSpent = 80;
-                    CoinsGiven = 350;
+                    CoinsGiven = 800;
 
                    
                 }
                 else
                 {
-                    
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+
+                    myPowerMenu.NotEnoughCrystals();
                 }
 
 
@@ -186,23 +217,36 @@ public class LevelSelect : MonoBehaviour
                     GameStats.stats.LevelBought = true;
                     GameStats.stats.leveBoughtID = levelID;
 
-                    GameStats.stats.coins += 500;
+                    GameStats.stats.LevelBoughtCoins = 1000;
                     GameStats.stats.crystals -= 100;
 
 
                     CrystalsSpent = 100;
-                    CoinsGiven = 500;
+                    CoinsGiven = 1000;
 
                    
                 }
                 else
                 {
 
-                    notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                    myPowerMenu.NotEnoughCrystals();
                 }
 
 
             }
+
+            GameStats.stats.LevelBoughtCrystals = CrystalsSpent;
+            GameStats.stats.LevelBoughtCoins = CoinsGiven;
+
+
+            for (int i = 0; i < activatedLevels.Length; i++)
+            {
+                activatedLevels[i].SetActive(false);
+            }
+            activatedLevels[levelID - 1].SetActive(true);
+
+            GameStats.stats.SaveStats();
+            
         } else
         {
             RewriteLevelID = levelID;
@@ -214,10 +258,19 @@ public class LevelSelect : MonoBehaviour
         
     }
 
+    public void ShowLevelInfo(int LevelID)
+    {
+        if(LevelID == GameStats.stats.leveBoughtID)
+        {
+            return;
+        }
+        LevelInfoPopUps[LevelID - 2].SetActive(true);
+    }
+
     public void rewriteLevelFunction()
     {
         GameStats.stats.crystals += CrystalsSpent;
-        GameStats.stats.coins -= CoinsGiven;
+        GameStats.stats.LevelBoughtCoins = 0;
         GameStats.stats.LevelBought = false;
         BuyLevel(RewriteLevelID);
        

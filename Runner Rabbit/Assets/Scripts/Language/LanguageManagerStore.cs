@@ -12,6 +12,7 @@ public class LanguageManagerStore : MonoBehaviour
     public TextMeshProUGUI WatchAdText, WatchAdCoinsText, WatchAdBackButton, WatchAdWatchButton, CongratulationsText, RewardCoinText, CollectButton;
     public TextMeshProUGUI GobacktoMainMenuquestionText, gobacktomainmenubutton, mainmenuquestionBackbutton;
     public TextMeshProUGUI DamageTextStats;
+    public TextMeshProUGUI NotEnoughtCoins;
 
 
     //English************************
@@ -43,8 +44,17 @@ public class LanguageManagerStore : MonoBehaviour
 
     string English_GobackToMainMenuQuestion = "Go back to main menu?";
     string English_goBackToMainMenuButton = "Go Back to main menu";
-    
-    
+
+    string English_notEnoughCoins = "Not Enough Coins";
+
+
+    public string English_Library = "Library";
+    public string English_Dungeon = "Dungeon";
+    public string English_IceRoom = "Ice Room";
+    public string English_Jungle = "Jungle";
+    public string English_PortalRoom = "Portal Room";
+
+
 
 
     //Español***********************
@@ -76,6 +86,14 @@ public class LanguageManagerStore : MonoBehaviour
 
     string Español_GobackToMainMenuQuestion = "¿volver al menú principal?";
     string Español_goBackToMainMenuButton = "ir al menú principal";
+
+    string Español_notEnoughCoins = "No tienes suficientes Monedas";
+
+    public string Español_Library = "Biblioteca";
+    public string Español_Dungeon = "Calabozo";
+    public string Español_IceRoom = "Cuerto de hielo";
+    public string Español_Jungle = "Jungla";
+    public string Español_PortalRoom = "Cuarto de portales";
 
     // string English_PlusHealth = "+ Health";
 
@@ -109,6 +127,14 @@ public class LanguageManagerStore : MonoBehaviour
 
     string Frances_GobackToMainMenuQuestion = "Go back to main menu?";
     string Frances_goBackToMainMenuButton = "Go Back to main menu";
+
+    string Frances_notEnoughCoins = "Not Enough Coins";
+
+    public string Frances_Library = "Biblioteca";
+    public string Frances_Dungeon = "Calabozo";
+    public string Frances_IceRoom = "Cuerto de hielo";
+    public string Frances_Jungle = "Jungla";
+    public string Frances_PortalRoom = "Cuarto de portales";
 
 
 
@@ -158,6 +184,8 @@ public class LanguageManagerStore : MonoBehaviour
 
                 DamageTextStats.text = English_Damage;
 
+                NotEnoughtCoins.text = English_notEnoughCoins;
+
                 break;
 
             case 1:// Español
@@ -195,6 +223,8 @@ public class LanguageManagerStore : MonoBehaviour
                 gobacktomainmenubutton.text = Español_goBackToMainMenuButton;
 
                 DamageTextStats.text = Español_Damage;
+
+                NotEnoughtCoins.text = Español_notEnoughCoins;
 
                 break;
 
@@ -234,6 +264,8 @@ public class LanguageManagerStore : MonoBehaviour
                 gobacktomainmenubutton.text = Frances_goBackToMainMenuButton;
 
                 DamageTextStats.text = Frances_Damage;
+
+                NotEnoughtCoins.text = Frances_notEnoughCoins;
 
 
                 break;

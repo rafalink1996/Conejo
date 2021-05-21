@@ -37,6 +37,8 @@ public class GameStats : MonoBehaviour
     public bool ManaJar = false;
 
     public bool LevelBought = false;
+    public int LevelBoughtCrystals;
+    public int LevelBoughtCoins;
 
 
 
@@ -182,6 +184,11 @@ public class GameStats : MonoBehaviour
     public bool RunInProgressPortalBoost;
     // 1 = english
     // 2 = Español
+
+
+
+    public bool LoadingSavedLevel;
+    public int Levelstartcoins;
 
 
     
@@ -432,6 +439,11 @@ public class GameStats : MonoBehaviour
 
         crystals = data.Crystals;
         leveBoughtID = data.level;
+        LevelBought = data.LevelBought;
+        LevelBoughtCrystals = data.LevelBoughtCrystals;
+        LevelBoughtCoins = data.LevelBoughtCoins;
+
+
         coins = data.Coins;
 
         SavedLevelCount = data.SavedLevelCount;
@@ -519,8 +531,8 @@ public class GameStats : MonoBehaviour
        stats.LevelIndicator = 1;
        stats.LevelCount = 1;
        stats.numOfHearts = 6;
-       stats.ExtraHearts = false;
-       stats.ManaJar = false;
+       //stats.ExtraHearts = false;
+       //stats.ManaJar = false;
        powerDark = originalDarkPower;
        powerLight = originalLightPower;
        coins = 0;

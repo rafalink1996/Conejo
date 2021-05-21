@@ -9,9 +9,13 @@ public class EnemyHealth : MonoBehaviour
     public float health;
     public Slider healthSlider;
     public bool Hit;
+    public bool CanSpawnHeal;
     float hitTime;
     [SerializeField] float MaxHitTime = 6;
     public bool isBoss = false;
+
+    public bool MoneyBag = false;
+    [SerializeField] GameObject EnemyMoneyPrefab = null;
 
     
     void Start()
@@ -35,21 +39,41 @@ public class EnemyHealth : MonoBehaviour
     
     void Update()
     {
+        if (Hit)
+        {
+            if (MoneyBag)
+            {
+                SpawnCoins();
+            }
+           
+            CanSpawnHeal = true;
+            Hit = false;
+            hitTime = MaxHitTime;
+
+        }
         healthSlider.value = health;
 
-        if (Hit)
+        if (CanSpawnHeal)
         {
             hitTime -= Time.deltaTime;
         }
         if (hitTime <= 0 && Hit)
         {
-            Hit = false;
+            CanSpawnHeal = false;
             hitTime = MaxHitTime;
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
 
+    }
+
+    void SpawnCoins()
+    {
+        if(EnemyMoneyPrefab != null)
+        {
+            Instantiate(EnemyMoneyPrefab, transform.position, Quaternion.identity);
+        }
     }
 }

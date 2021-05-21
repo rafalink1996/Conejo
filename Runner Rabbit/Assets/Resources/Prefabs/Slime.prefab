@@ -406,6 +406,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 0}
+  slimeHealth: 6
+  slimeSelfDamage: 2
 --- !u!114 &-6729167726002455630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,11 +420,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ea4ba85c954d37ae30a2ae47bb9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
+  maxHealth: 6
+  health: 6
   healthSlider: {fileID: 0}
   Hit: 0
-  hitTime: 1
+  CanSpawnHeal: 0
+  MaxHitTime: 6
+  isBoss: 0
+  MoneyBag: 0
+  EnemyMoneyPrefab: {fileID: 0}
 --- !u!58 &3456106594303634381
 CircleCollider2D:
   m_ObjectHideFlags: 0

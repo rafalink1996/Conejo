@@ -15,12 +15,22 @@ public class IceBook : MonoBehaviour
     float attackTime;
     bool attack;
     EnemyHealth health;
+
+    public int BookHealth = 18;
+    public int BookSelfDamage = 6;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (GameStats.stats.LevelIndicator > 1)
+        {
+            BookHealth = 45;
+            BookSelfDamage = 15;
+        }
+
         anim = GetComponent<Animator>();
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 50;
+        health.maxHealth = BookHealth;
         if (transform.position.y > 0)
         {
             enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
@@ -78,7 +88,7 @@ public class IceBook : MonoBehaviour
     }
     void Attack()
     {
-        health.TakeDamage(10);
+        health.TakeDamage(BookSelfDamage);
     }
     void IceLance()
     {

@@ -15,12 +15,13 @@ public class Book : MonoBehaviour
     float attackTime;
     bool attack;
     EnemyHealth health;
+    public int BookHealth = 8;
 
     // Start is called before the first frame update
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 40;
+        health.maxHealth = BookHealth;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
@@ -82,7 +83,7 @@ public class Book : MonoBehaviour
     }
     void Attack()
     {
-        health.TakeDamage(10);
+        health.TakeDamage(2);
     }
     void FireBall()
     {

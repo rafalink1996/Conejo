@@ -37,6 +37,7 @@ public class LanguageManager : MonoBehaviour
     public TextMeshProUGUI RuneforgeTitle, RuneforgeBackButtonText, RuneName1, RuneName2, RuneName3, RuneName4, RuneName5, RuneName6, RuneName7, RuneName8, RuneName9, RuneName10, RuneDescription1, // RuneForge
                            RuneDescription2, RuneDescription3, RuneDescription4, RuneDescription5, RuneDescription6, RuneDescription7, RuneDescription8, RuneDescription9, RuneDescription10, EquipedRunes,
                            RuneSlot1Unequip, RuneSlot2Unequip, RuneSlot1Select, RuneSlot2Select;
+    public TextMeshProUGUI RuneStoreDescription;
     //texts Skin Menú
     public TextMeshProUGUI SkinTitle, DefaultSkinText, DragonFireSkinText, BoneSkinText, IceGolemSkinText, PlantSkinText, ClockWorkSkinText, ShadowWizardSkinText, TophatSkinText, AngelSkinText, ImpSkinText, SnowmanSkinText,
                            WizardSkinText, AstralTravelerSkinText, SlimeSkinText, AlienSkinText, AssasinBlackSkinText, AssasinWhiteSkinText, FoxSkinText, IceCreamSkinText, MechSkinText, BackButtonSkinMenu, buySkinButton, selectButton1Text, selectButton2Text;
@@ -50,6 +51,9 @@ public class LanguageManager : MonoBehaviour
     public Text NoAdsTitle, RestorePurchaseTitle, CrystalBunch, CrystalPile, CryslatBag, CrystalChest, skinpacktitle;
     public TextMeshProUGUI NineSkinsDescription;
     public TextMeshProUGUI BackToSkinStoreButton;
+
+
+    public TextMeshProUGUI NotEnoughCrystalsText;
 
 
     //strings language
@@ -114,28 +118,28 @@ public class LanguageManager : MonoBehaviour
 
     string English_DungeonStartText = "Dungeon Start";
     string English_DungeonStartDescriptionText = "Start in Dungeon Level With";
-    string English_DungeonStartCoins = "100 Coins";
+    string English_DungeonStartCoins = "200 Coins";
     string English_DungeonStartCrystals = "20 crystals";
    
 
     string English_IceCaveStartText = "Frozen Room Start";
     string English_IceCaveStartDescriptionText = "Start in Frozen Room Level With";
-    string English_IceCaveStartCoins = "200 Coins";
+    string English_IceCaveStartCoins = "400 Coins";
     string English_IceCaveStartCrystals = "40 crystals";
 
     string English_JungleStartText = "Jungle Start";
     string English_JungleStartDescriptionText = "Start in Jungle Level With";
-    string English_JungleStartCoins = "350 Coins";
+    string English_JungleStartCoins = "800 Coins";
     string English_JungleStartCrystals = "80 crystals";
 
     string English_PortalRoomStartText = "Portal Room Start";
     string English_PortalRoomStartDescriptionText = "Start in the portal room Level With";
-    string English_PortalRoomStartCoins = "500 Coins";
+    string English_PortalRoomStartCoins = "1000 Coins";
     string English_PortalRoomStartCrystals = "100 crystals";
 
 
     string English_RewriteLevelQuestion = "You already bought a level. are you sure you want to change the starting level?";
-    string English_RewriteLevelDescription = "previous coins will be removed and previous crystals will be refunded before making the new purchase";
+    string English_RewriteLevelDescription = "Will be refunded";
 
     // runeforge
     string English_RuneForgeTitle = "Rune Forge";
@@ -163,7 +167,7 @@ public class LanguageManager : MonoBehaviour
     string English_RuneDescription4 = "Recharge mana faster";
     string English_RuneDescription5 = "Spells cost less mana";
     string English_RuneDescription6 = "Grants you a shield that protects you from one hit in each level";
-    string English_RuneDescription7 = "gives you more coins when you reach the store";
+    string English_RuneDescription7 = "gives you 25% more coins when you reach the store";
     string English_RuneDescription8 = "the first item in the coin shop is 50% off";
     string English_RuneDescription9 = "Enemies spawn with less health";
     string English_RuneDescription10 = "gives you one random power up when starting a new run";
@@ -189,6 +193,9 @@ public class LanguageManager : MonoBehaviour
     string English_FoxSkin = "Fox";
     string English_IceCreamSkin = "Ice Cream";
     string English_MechSkin = "Mech";
+
+
+    string English_RuneStoreDescription = ""; // TODO
 
     // achievment menú
     string English_Achievments = "Achievements";
@@ -219,6 +226,8 @@ public class LanguageManager : MonoBehaviour
     public string English_ManaJarDescription = "Start the run with 30 extra dark mana and 30 extra light mana";
 
 
+    string English_NotEnoughCrystals = "Not Enough Crystals";
+
 
     //Español******************
 
@@ -248,7 +257,7 @@ public class LanguageManager : MonoBehaviour
     public string Español_CointX2TicketText = "Tiquete monedas x2";
     public string Español_ExtraHeartsText = "Corazones extra";
     public string Español_PortalBoostText = "Boost de portal";
-    public string Español_FenixFeatherText = "Pluma de fenix";
+    public string Español_FenixFeatherText = "Pluma de fénix";
     string Español_RuneButton = "Runas";
 
     string Español_CarrotPower = "Misil zanahoria";
@@ -278,8 +287,8 @@ public class LanguageManager : MonoBehaviour
     string Español_BuyButton = "Comprar";
     string Español_LevelSelectCostText = "Costo:";
 
-    string Español_DungeonStartText = "Comienzo Mazmorra";
-    string Español_DungeonStartDescriptionText = "Comienza en la mazmorra con";
+    string Español_DungeonStartText = "Comienzo Calabozo";
+    string Español_DungeonStartDescriptionText = "Comienza en el calabozo con";
     string Español_DungeonStartCoins = "100 monedas";
     string Español_DungeonStartCrystals = "20 cristales";
 
@@ -291,13 +300,16 @@ public class LanguageManager : MonoBehaviour
 
     string Español_JungleStartText = "comienzo jungla";
     string Español_JungleStartDescriptionText = "Empieza en la jungla con";
-    string Español_JungleStartCoins = "350 monedas";
+    string Español_JungleStartCoins = "400 monedas";
     string Español_JungleStartCrystals = "80 cristales";
 
     string Español_PortalRoomStartText = "comienzo Cuarto de portales";
     string Español_PortalRoomStartDescriptionText = "comienza en el cuarto de portales con";
     string Español_PortalRoomStartCoins = "500 Monedas";
     string Español_PortalRoomStartCrystals = "100 cristales";
+
+    string Español_RewriteLevelQuestion = "ya has comprado un nivel, ¿estás seguro que quieres cambiar el nivel de inicio? ";
+    string Español_RewriteLevelDescription = "serán reembolsados";
 
     // Forja de runas
     string Español_RuneForgeTitle = "Forja de Runas";
@@ -371,8 +383,7 @@ public class LanguageManager : MonoBehaviour
     string Español_SkinPack = "Paquete de Aspectos";
     string Español_9Skins = "9 Aspectos";
 
-    string Español_RewriteLevelQuestion = "ya haz comprado un nivel, ¿estás seguro que quieres cambiar el nivel de inicio? ";
-    string Español_RewriteLevelDescription = "Las monedas que se te habian dado se te quitarán y se devolveran los crystales gastados antes de hacer la nueva compra";
+   
 
 
     public string Español_CoinsX2Description = "Cada moneda que recoges cuenta por 2";
@@ -380,6 +391,8 @@ public class LanguageManager : MonoBehaviour
     public string Español_PhoenixFeatherDescription = "Si mueres, resusitarás con la vida completa una vez";
     public string Español_ExtraHeartsDescription = "Empieza la partida con 2 corazones extra";
     public string Español_ManaJarDescription = "Empieza la partida con 30 mana de luz y 30 mana de oscuridad extra";
+
+    string Español_NotEnoughCrystals = "No tienes suficientes cristales";
 
 
 
@@ -444,23 +457,23 @@ public class LanguageManager : MonoBehaviour
 
     string Frances_DungeonStartText = "Dungeon Start";
     string Frances_DungeonStartDescriptionText = "Start in Dungeon Level With";
-    string Frances_DungeonStartCoins = "100 Coins";
+    string Frances_DungeonStartCoins = "200 Coins";
     string Frances_DungeonStartCrystals = "20 crystals";
 
 
     string Frances_IceCaveStartText = "Frozen Room Start";
     string Frances_IceCaveStartDescriptionText = "Start in Frozen Room Level With";
-    string Frances_IceCaveStartCoins = "200 Coins";
+    string Frances_IceCaveStartCoins = "400 Coins";
     string Frances_IceCaveStartCrystals = "40 crystals";
 
     string Frances_JungleStartText = "Jungle Start";
     string Frances_JungleStartDescriptionText = "Start in Jungle Level With";
-    string Frances_JungleStartCoins = "350 Coins";
+    string Frances_JungleStartCoins = "800 Coins";
     string Frances_JungleStartCrystals = "80 crystals";
 
     string Frances_PortalRoomStartText = "Portal Room Start";
     string Frances_PortalRoomStartDescriptionText = "Start in the portal room Level With";
-    string Frances_PortalRoomStartCoins = "500 Coins";
+    string Frances_PortalRoomStartCoins = "1000 Coins";
     string Frances_PortalRoomStartCrystals = "100 crystals";
 
 
@@ -547,6 +560,8 @@ public class LanguageManager : MonoBehaviour
     public string Frances_PhoenixFeatherDescription = "When you die heal to full once";
     public string Frances_ExtraHeartsDescription = "Start the run with 2 extra hearts";
     public string Frances_ManaJarDescription = "Start the run with 30 extra dark mana and 30 extra light mana";
+
+    string Frances_NotEnoughCrystals = "No tienes suficientes cristales";
 
 
 
@@ -766,6 +781,9 @@ public class LanguageManager : MonoBehaviour
                 BackToSkinStoreButton.text = English_BackButton;
 
 
+                NotEnoughCrystalsText.text = English_NotEnoughCrystals;
+
+
 
 
 
@@ -959,6 +977,8 @@ public class LanguageManager : MonoBehaviour
                 skinpacktitle.text = Español_SkinPack;
                 NineSkinsDescription.text = Español_9Skins;
                 BackToSkinStoreButton.text = Español_BackButton;
+
+                NotEnoughCrystalsText.text = Español_NotEnoughCrystals;
 
 
                 break;
@@ -1155,6 +1175,8 @@ public class LanguageManager : MonoBehaviour
                 skinpacktitle.text = Frances_SkinPack;
                 NineSkinsDescription.text = Frances_9Skins;
                 BackToSkinStoreButton.text = Frances_BackButton;
+
+                NotEnoughCrystalsText.text = Frances_NotEnoughCrystals;
 
 
                 break;

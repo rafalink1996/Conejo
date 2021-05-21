@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     Image ManaTearLightImage;
     Image ManaTearDarkImage;
 
+    [SerializeField] CanvasGroup hudCanvasGroup;
+
     public character Cha;
 
 
@@ -23,6 +25,7 @@ public class UIManager : MonoBehaviour
     {
         ManaTearDarkImage = ManaTearDark.GetComponent<Image>();
         ManaTearLightImage = ManaTearLight.GetComponent<Image>();
+        hudCanvasGroup.alpha = 0;
 
         Cha = FindObjectOfType<character>();
         ChangeManaInUse();
@@ -38,6 +41,8 @@ public class UIManager : MonoBehaviour
             ManaDisplayLight();
 
         }
+
+        ShowHud();
     }
 
     void ManaDisplayDark()
@@ -63,5 +68,10 @@ public class UIManager : MonoBehaviour
         ManaTearLightImage.color = ColorLightUp;
     }
 
+
+    void ShowHud()
+    {
+        LeanTween.alphaCanvas(hudCanvasGroup, 1, 1).setDelay(0.4f);
+    }
 
 }

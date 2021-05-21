@@ -24,19 +24,23 @@ public class ElectricBall : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (transform.position.x > target.transform.position.x && !reflected)
+        if (target != null && !reflected)
         {
-            Vector2 direction = (Vector2)target.position - rb.position;
-            direction.Normalize();
-            float rotateAmount = Vector3.Cross(direction, transform.right).z;
-            rb.angularVelocity = rotateAmount * rotateSpeed;
-            rb.velocity = transform.right * -speed;
-            
+            if (transform.position.x > target.transform.position.x )
+            {
+                Vector2 direction = (Vector2)target.position - rb.position;
+                direction.Normalize();
+                float rotateAmount = Vector3.Cross(direction, transform.right).z;
+                rb.angularVelocity = rotateAmount * rotateSpeed;
+                rb.velocity = transform.right * -speed;
+
+            }
         }
         else if (reflected)
         {
             transform.Translate(10 * Time.deltaTime, 0, 0);
         }
+        
 
     }
     private void OnTriggerEnter2D(Collider2D collision)

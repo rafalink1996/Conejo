@@ -6,7 +6,7 @@ public class CarrotMissile : MonoBehaviour
 {
     public float speed;
     public bool Piercing;
-    public int damage;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +22,10 @@ public class CarrotMissile : MonoBehaviour
     {
         if (collision.collider.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-            collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
+            EnemyHealth CollisionEnemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+            CollisionEnemyHealth.TakeDamage(damage);
+            CollisionEnemyHealth.Hit = true;
+            
             print("hit " + collision.gameObject.name);
 
             if (Piercing == false)

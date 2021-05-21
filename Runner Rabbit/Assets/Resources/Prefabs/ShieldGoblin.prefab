@@ -506,6 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myHealth: 50
+  MyCircleCollider2D: {fileID: 2864314114735689684}
 --- !u!114 &2864314114735689685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +523,11 @@ MonoBehaviour:
   health: 0
   healthSlider: {fileID: 0}
   Hit: 0
+  CanSpawnHeal: 0
+  MaxHitTime: 6
+  isBoss: 0
+  MoneyBag: 0
+  EnemyMoneyPrefab: {fileID: 0}
 --- !u!114 &2864314114735689683
 MonoBehaviour:
   m_ObjectHideFlags: 0

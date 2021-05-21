@@ -8,13 +8,12 @@ public class SimpleEnemySpawner : MonoBehaviour
     public GameObject SimpleEnemyStatic;
     public float respawnTime = 1.0f;
     public float respawnTimeRandom = 4.0f;
-    public bool Spawn;
+   
 
 
 
 
-    public bool StaticSpawning;
-    public int SpawnWave;
+   
 
     public bool DarkSide = false;
     // Start is called before the first frame update

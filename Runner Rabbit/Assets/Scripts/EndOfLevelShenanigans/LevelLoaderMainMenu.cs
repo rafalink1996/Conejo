@@ -47,9 +47,33 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.SavedLevelIndicator = GameStats.stats.LevelIndicator;
             GameStats.stats.SavedLevelCount = GameStats.stats.LevelCount;
             GameStats.stats.LevelBought = false;
+            GameStats.stats.leveBoughtID = 1;
             GameStats.stats.RunInProgressPortalBoost = false;
             GameStats.stats.SavedLevelPercentage = 0;
             GameStats.stats.RunInProgress = false;
+
+            GameStats.stats.coins = GameStats.stats.LevelBoughtCoins;
+
+            if (GameStats.stats.ExtraHearts == true)
+            {
+
+                GameStats.stats.numOfHearts += 4;
+                GameStats.stats.HealToFull();
+                GameStats.stats.ExtraHearts = false;
+                
+            }
+
+            if (GameStats.stats.ManaJar == true)
+            {
+                GameStats.stats.totalDarkMana += 30;
+                GameStats.stats.totalLightMana += 30;
+
+
+                GameStats.stats.ManaJar = false;
+                
+            }
+
+            GameStats.stats.SaveStats();
          
             
            
@@ -67,6 +91,25 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.SavedLevelPercentage = 0;
             GameStats.stats.RunInProgress = false;
 
+            if (GameStats.stats.ExtraHearts == true)
+            {
+
+                GameStats.stats.numOfHearts += 4;
+                GameStats.stats.HealToFull();
+                GameStats.stats.ExtraHearts = false;
+               // GameStats.stats.SaveStats();
+            }
+
+            if (GameStats.stats.ManaJar == true)
+            {
+                GameStats.stats.totalDarkMana += 30;
+                GameStats.stats.totalLightMana += 30;
+
+
+                GameStats.stats.ManaJar = false;
+                //
+            }
+            GameStats.stats.SaveStats();
 
             //GameStats.stats.RunInProgress = true;
 
@@ -84,7 +127,9 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.CheckLevelIndicator();
             GameStats.stats.CheckSavedPowers();
             GameStats.stats.RunInProgressPortalBoost = true;
+            GameStats.stats.LoadingSavedLevel = true;
             StartCoroutine(loadAsync("Store"));
+
             
         }
         else
@@ -94,6 +139,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.CheckLevelIndicator();
             GameStats.stats.CheckSavedPowers();
             GameStats.stats.RunInProgressPortalBoost = true;
+            GameStats.stats.LoadingSavedLevel = true;
             string LevelToLoad = GameStats.stats.CheckLevel();
             StartCoroutine(loadAsync(LevelToLoad));
            

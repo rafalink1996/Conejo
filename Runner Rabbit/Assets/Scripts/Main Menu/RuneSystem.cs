@@ -36,7 +36,12 @@ public class RuneSystem : MonoBehaviour
     public string[] RuneNames;
     public string[] Español_RuneNames;
 
+    public GameObject[] RuneSelected;
+
     PowerMEnu myPowerShop;
+
+    public GameObject[] RuneLocked;
+
 
 
 
@@ -44,7 +49,16 @@ public class RuneSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myPowerShop = FindObjectOfType<PowerMEnu>();
+        // SetSelectedRunes
+        for (int i = 0; i < RuneSelected.Length; i++)
+        {
+            RuneSelected[i].SetActive(false);
+        }
+
+
+
+
+            myPowerShop = FindObjectOfType<PowerMEnu>();
         // See what runes are unlocked
         for (int i = 0; i < GameStats.stats.UnlockedRunes.Length; i++)
         {
@@ -67,6 +81,8 @@ public class RuneSystem : MonoBehaviour
                 GameObject CostCrystal = CostTexts[i].transform.GetChild(0).gameObject;
                 CostCrystal.SetActive(false);
 
+                RuneLocked[i].SetActive(false);
+
 
                 //CostTexts[i].SetActive(false);
             }
@@ -79,8 +95,8 @@ public class RuneSystem : MonoBehaviour
                     Buy_EquipButtonsText[i].text = "Comprar";
                 }
 
+                RuneLocked[i].SetActive(true);
 
-                
 
 
                 // CostTexts[i].SetActive(true);
@@ -108,7 +124,11 @@ public class RuneSystem : MonoBehaviour
                     RuneSlotName1.text = Español_RuneNames[GameStats.stats.Rune1ID]; //nombre Runa español
      
             }
-           
+
+            RuneSelected[PreviouslySelectedRune1].SetActive(true);
+            Image RuneSelectedImage = RuneSelected[PreviouslySelectedRune1].GetComponent<Image>();
+            RuneSelectedImage.color = new Color (0.5f, 0.95f, 0.95f, 1);
+
             Debug.Log("Rune1 has" + ((GameStats.Rune)PreviouslySelectedRune1 +1));
         }
         else
@@ -139,7 +159,10 @@ public class RuneSystem : MonoBehaviour
                 RuneSlotName2.text = Español_RuneNames[GameStats.stats.Rune2ID];
             }
 
-                Debug.Log("Rune2 has" + ((GameStats.Rune)PreviouslySelectedRune2 +1));
+            RuneSelected[PreviouslySelectedRune2].SetActive(true);
+            Image RuneSelectedImage = RuneSelected[PreviouslySelectedRune2 ].GetComponent<Image>();
+            RuneSelectedImage.color = new Color(1f, 0.77f, 0.2f, 1);
+            Debug.Log("Rune2 has" + ((GameStats.Rune)PreviouslySelectedRune2 +1));
         }
         else
         {
@@ -208,6 +231,9 @@ public class RuneSystem : MonoBehaviour
             ButtonSelcetRune2.SetActive(true);
             BGSelect.gameObject.SetActive(true);
             SelectedRuneID = (GameStats.Rune)runeID;
+            RuneSelected[runeID - 1].SetActive(true);
+            Image RuneSelectedImage = RuneSelected[runeID - 1].GetComponent<Image>();
+            RuneSelectedImage.color = Color.white;
         }
         else
         {
@@ -216,6 +242,7 @@ public class RuneSystem : MonoBehaviour
             {
                 GameStats.stats.crystals -= RuneCosts[runeID -1];
                 GameStats.stats.UnlockedRunes[runeID - 1] = true;
+                RuneLocked[runeID -1].SetActive(false);
             }
             else
             {
@@ -223,6 +250,8 @@ public class RuneSystem : MonoBehaviour
             }
             
         }
+
+
     }
 
     public void SelectRuneSlot(int RuneSlotID)
@@ -230,7 +259,11 @@ public class RuneSystem : MonoBehaviour
         if(RuneSlotID == 1)
         {
             //selected runeslot1
-
+            if(PreviouslySelectedRune1 != 0)
+            {
+                UnequipRuneSlot(1);
+            }
+            
             RuneSlot1Image.sprite = GameStats.stats.runeSprites[(int)SelectedRuneID -1];
             GameStats.stats.Rune1 = SelectedRuneID;
             GameStats.stats.Rune1ID = (int)SelectedRuneID;
@@ -249,10 +282,19 @@ public class RuneSystem : MonoBehaviour
             
             UnequipButtonRune1.SetActive(true);
             GameStats.stats.SaveStats();
+
+            RuneSelected[PreviouslySelectedRune1].SetActive(true);
+            Image RuneSelectedImage = RuneSelected[PreviouslySelectedRune1].GetComponent<Image>();
+            RuneSelectedImage.color = new Color(0.5f, 0.95f, 0.95f, 1);
         }
 
         if (RuneSlotID == 2)
         {
+            if(PreviouslySelectedRune2 != 0)
+            {
+                UnequipRuneSlot(2);
+            }
+            
             //selected runeslot2
             RuneSlot2Image.sprite = GameStats.stats.runeSprites[(int)SelectedRuneID - 1];
             GameStats.stats.Rune2 = SelectedRuneID;
@@ -272,6 +314,10 @@ public class RuneSystem : MonoBehaviour
                 
             UnequipButtonRune2.SetActive(true);
             GameStats.stats.SaveStats();
+
+            RuneSelected[PreviouslySelectedRune2].SetActive(true);
+            Image RuneSelectedImage = RuneSelected[PreviouslySelectedRune2].GetComponent<Image>();
+            RuneSelectedImage.color = new Color(1f, 0.77f, 0.2f, 1);
         }
     }
 
@@ -285,7 +331,11 @@ public class RuneSystem : MonoBehaviour
             GameStats.stats.Rune1ID = 0;
             BuyEquiButtons[PreviouslySelectedRune1].gameObject.SetActive(true);
             UnequipButtonRune1.SetActive(false);
-            
+
+            RuneSelected[PreviouslySelectedRune1].SetActive(false);
+            Image RuneSelectedImage = RuneSelected[PreviouslySelectedRune1].GetComponent<Image>();
+            RuneSelectedImage.color = Color.white;
+
 
             if (GameStats.stats.LanguageSelect == 0)
             {
@@ -308,6 +358,10 @@ public class RuneSystem : MonoBehaviour
             GameStats.stats.Rune2ID = 0;
             BuyEquiButtons[PreviouslySelectedRune2].gameObject.SetActive(true);
             UnequipButtonRune2.SetActive(false);
+
+            RuneSelected[PreviouslySelectedRune2].SetActive(false);
+            Image RuneSelectedImage = RuneSelected[PreviouslySelectedRune2].GetComponent<Image>();
+            RuneSelectedImage.color = Color.white;
 
             if (GameStats.stats.LanguageSelect == 0)
             {

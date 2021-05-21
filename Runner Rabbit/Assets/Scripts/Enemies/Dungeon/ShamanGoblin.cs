@@ -15,9 +15,12 @@ public class ShamanGoblin : MonoBehaviour
     public int myHealth;
     public Transform summonContainer;
     public EnemySpawner enemySpawner;
+
+    [SerializeField] GameObject MoneyBagObject = null;
     // Start is called before the first frame update
     void Start()
     {
+        MoneyBagObject.SetActive(false);
         health = GetComponent<EnemyHealth>();
         health.maxHealth = myHealth;
         spawnTime = Random.Range(0.5f, 2f);
@@ -45,6 +48,7 @@ public class ShamanGoblin : MonoBehaviour
             {
                 health.health = myHealth;
                 anim.SetTrigger("Spawn");
+                MoneyBagObject.SetActive(true);
                 isPresent = true;
             }
 
@@ -69,9 +73,10 @@ public class ShamanGoblin : MonoBehaviour
         {
             spawnTime = 8f;
             isPresent = false;
-            if (health.Hit)
+            if (health.CanSpawnHeal)
             {
                 anim.SetTrigger("Die");
+                Invoke("DisableMoneyBag", 1);
                 if (GameStats.stats.monstersKilled < 400)
                 {
                     GameStats.stats.monstersKilled++;
@@ -80,12 +85,14 @@ public class ShamanGoblin : MonoBehaviour
             else
             {
                 anim.SetTrigger("Despawn");
+                Invoke("DisableMoneyBag", 1);
             }
             
         }
         if (GameStats.stats.spawnHouse)
         {
             anim.SetTrigger("Despawn");
+            Invoke("DisableMoneyBag", 1);
         }
     }
 
@@ -113,5 +120,10 @@ public class ShamanGoblin : MonoBehaviour
         {
             Destroy(transform.parent.gameObject);
         }
+    }
+
+    void DisableMoneyBag()
+    {
+        MoneyBagObject.SetActive(false);
     }
 }

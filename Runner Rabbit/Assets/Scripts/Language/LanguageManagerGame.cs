@@ -9,6 +9,7 @@ public class LanguageManagerGame : MonoBehaviour
     //Setings
     public TextMeshProUGUI SettingsTitle, ResumeButton, MainMenúButton, MusicSubtitle, SoundSubtitle;
     public TextMeshProUGUI YouAreDeadtitle, DeadMainMenuButton;
+    public TextMeshProUGUI loadingAdText;
 
 
      // English
@@ -19,6 +20,8 @@ public class LanguageManagerGame : MonoBehaviour
     string English_SoundSubtitle = "Sound";
     string English_YouAreDeadTitel = "You are dead";
 
+    string English_LoadingAd = "Loading Ad ...";
+
     // Español
     string Español_SettingsTitle = "Opciones";
     string Español_ResumeButton = "Resumir";
@@ -27,6 +30,8 @@ public class LanguageManagerGame : MonoBehaviour
     string Español_SoundSubtitle = "Sonido";
     string Español_YouAreDeadTitel = "Estás Muerto";
 
+    string Español_LoadingAd = "Cargando Ad ...";
+
     //Frances
     string Frances_SettingsTitle = "Opciones";
     string Frances_ResumeButton = "Resumir";
@@ -34,6 +39,8 @@ public class LanguageManagerGame : MonoBehaviour
     string Frances_MusicSubtitle = "Música";
     string Frances_SoundSubtitle = "Sonido";
     string Frances_YouAreDeadTitel = "Estás Muerto";
+
+    string Frances_LoadingAd = "Loading Ad ...";
 
     void Start()
     {
@@ -52,6 +59,7 @@ public class LanguageManagerGame : MonoBehaviour
                 SoundSubtitle.text = English_SoundSubtitle;
                 YouAreDeadtitle.text = English_YouAreDeadTitel;
                 DeadMainMenuButton.text = English_MainMenuButton;
+                loadingAdText.text = English_LoadingAd;
                 break;
             case 1: //Español
                 SettingsTitle.text = Español_SettingsTitle;
@@ -61,6 +69,7 @@ public class LanguageManagerGame : MonoBehaviour
                 SoundSubtitle.text = Español_SoundSubtitle;
                 YouAreDeadtitle.text = Español_YouAreDeadTitel;
                 DeadMainMenuButton.text = Español_MainMenuButton;
+                loadingAdText.text = Español_LoadingAd;
                 break;
             case 2: //Frances
                 SettingsTitle.text = Frances_SettingsTitle;
@@ -70,6 +79,7 @@ public class LanguageManagerGame : MonoBehaviour
                 SoundSubtitle.text = Frances_SoundSubtitle;
                 YouAreDeadtitle.text = Frances_YouAreDeadTitel;
                 DeadMainMenuButton.text = Frances_MainMenuButton;
+                loadingAdText.text = Frances_LoadingAd;
                 break;
         }
     }

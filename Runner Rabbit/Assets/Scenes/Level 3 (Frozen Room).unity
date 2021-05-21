@@ -872,6 +872,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &314295304 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8931280834066359998, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2074967554}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &325042031
 GameObject:
   m_ObjectHideFlags: 0
@@ -6719,13 +6731,14 @@ MonoBehaviour:
   RewardDisplay1: {fileID: 0}
   RewardDisplay2: {fileID: 0}
   RewardDisplay3: {fileID: 0}
-  deathscreen: {fileID: 0}
+  deathscreen: {fileID: 2074967560}
   AdButton: {fileID: 0}
   ConfirmWatchAdObject: {fileID: 0}
   levelLoaderGame: {fileID: 1526805044}
-  FailedtoShowGameObject: {fileID: 0}
-  FailedAdDescriptionText: {fileID: 0}
+  FailedtoShowGameObject: {fileID: 1953237096}
+  FailedAdDescriptionText: {fileID: 314295304}
   probandoAdmob: 0
+  LoadingAdObject: {fileID: 1953237096}
   LoadRetryRewarded: 0
   LoadRetryIntersticial: 0
   AdLoadedImage: {fileID: 0}
@@ -7379,7 +7392,7 @@ GameObject:
   - component: {fileID: 877303313}
   - component: {fileID: 877303314}
   m_Layer: 0
-  m_Name: EnemyContainer
+  m_Name: EnemyContainer(up)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12792,7 +12805,7 @@ GameObject:
   - component: {fileID: 1025664772}
   - component: {fileID: 1025664773}
   m_Layer: 0
-  m_Name: EnemyContainer
+  m_Name: EnemyContainer (down)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13021,11 +13034,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIBottomIntroAnimation
       objectReference: {fileID: 0}
-    - target: {fileID: 2719699189873162468, guid: 6feaee262759f485185533cb9398f433,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2719699189873162472, guid: 6feaee262759f485185533cb9398f433,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13136,11 +13144,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 2719699190167840734, guid: 6feaee262759f485185533cb9398f433,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6feaee262759f485185533cb9398f433, type: 3}
 --- !u!1 &1291129981 stripped
@@ -23901,7 +23904,7 @@ GameObject:
   m_Layer: 0
   m_Name: Simple Enemy spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -23913,7 +23916,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926846916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.585148, y: -0.4747461, z: -1211.1321}
+  m_LocalPosition: {x: -34.67, y: -0.4747461, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 709639037}
@@ -23946,12 +23949,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e06c6850a284933ae536288988e6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SimpleEnemy: {fileID: 0}
+  SimpleEnemy: {fileID: 1757591637017132653, guid: 14d10c8df77ba42848a9f15ef2252f44,
+    type: 3}
   SimpleEnemyStatic: {fileID: 0}
-  respawnTime: 2
+  respawnTime: 6
   respawnTimeRandom: 4
-  Spawn: 0
   DarkSide: 0
+--- !u!1 &1953237096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7187427769500194163, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2074967554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972642279
 GameObject:
   m_ObjectHideFlags: 0
@@ -24956,6 +24965,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3265500893252011240, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3265500893303488221, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -25114,6 +25128,16 @@ PrefabInstance:
     - target: {fileID: 3265500893884053161, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: ResumeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265500893884053161, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 672799255}
+    - target: {fileID: 3265500893884053161, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ResumeButton
       objectReference: {fileID: 0}
     - target: {fileID: 3272115461447919559, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
@@ -25862,135 +25886,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.size
-      value: 53
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[49].name
-      value: YetiAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[49].audioOutputMixer
-      value: 
-      objectReference: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
-        type: 2}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[49].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: cbb981965c347424b8972ea1135a343d, type: 3}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[49].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[49].pitch
-      value: 1.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[49].priority
-      value: 84
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[50].name
-      value: YetiDeath
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[50].audioOutputMixer
-      value: 
-      objectReference: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
-        type: 2}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[50].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 97ca92af87b154701a839a3032c8afab, type: 3}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[50].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[50].pitch
-      value: 1.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[50].priority
-      value: 84
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[51].name
-      value: YetiPunch
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[51].audioOutputMixer
-      value: 
-      objectReference: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
-        type: 2}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[51].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: a5c107ad12e19431f9edfef8873ed866, type: 3}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[51].volume
-      value: 0.613
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[51].pitch
-      value: 1.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[51].priority
-      value: 84
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[52].name
-      value: YetiSpawn
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[52].audioOutputMixer
-      value: 
-      objectReference: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
-        type: 2}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[52].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 071a629dc91594ae4963799fbdca0b4a, type: 3}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[52].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[52].pitch
-      value: 1.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
-        type: 3}
-      propertyPath: sounds.Array.data[52].priority
-      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
         type: 3}

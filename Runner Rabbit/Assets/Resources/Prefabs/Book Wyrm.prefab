@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7646781832802891012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.257, y: 3.048, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.4}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 7646781834077143529}
   - {fileID: 7646781832936862749}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 1181842673
   m_SortingLayer: 6
   m_SortingOrder: 1
-  m_Sprite: {fileID: 5721156108630958637, guid: 289a82bbd415a4641a0a99833b549f80,
+  m_Sprite: {fileID: -255001451485353356, guid: 9dce0ec1d4c594ae990496f46d6aae56,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -251,11 +251,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
-  health: 0
+  health: 1000
   healthSlider: {fileID: 7646781834735630261}
   Hit: 0
+  CanSpawnHeal: 0
   MaxHitTime: 6
   isBoss: 1
+  MoneyBag: 0
+  EnemyMoneyPrefab: {fileID: 0}
 --- !u!58 &7646781832802891021
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1153,8 +1156,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7646781833778669424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.52, y: 0.4, z: 0}
-  m_LocalScale: {x: 9.224248, y: 15.710465, z: 3.8988576}
+  m_LocalPosition: {x: -26.3, y: 4.4, z: 0}
+  m_LocalScale: {x: 3.7416327, y: 4.76858, z: 3.2386189}
   m_Children:
   - {fileID: 7646781833789823809}
   m_Father: {fileID: 7646781833564133688}
@@ -1204,7 +1207,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.599999, y: 5.3999996}
+  m_Size: {x: 19.199999, y: 10.799999}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1409,7 +1412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyP: 0
-  Damage: 2
+  Damage: 1
 --- !u!1 &7646781833883624079
 GameObject:
   m_ObjectHideFlags: 0

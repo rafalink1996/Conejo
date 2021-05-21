@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class LevelLoaderStore : MonoBehaviour
 {
@@ -13,12 +13,99 @@ public class LevelLoaderStore : MonoBehaviour
     public Slider slider;
     public int SceneIndex;
 
+    [SerializeField] GameObject LevelCountNumber;
+    [SerializeField] GameObject BossLevelImage;
+    [SerializeField] LanguageManagerStore myLanguageManagerS;
+    [SerializeField] TextMeshProUGUI LevelName;
+
     private void Start()
     {
         GameStats.stats.isInStore = true;
         GameStats.stats.SaveCurrentHearts = GameStats.stats.numOfHearts;
         GameStats.stats.SaveStats();
-        
+
+        if(GameStats.stats.LanguageSelect == 1)
+        {
+            if (GameStats.stats.LevelIndicator == 1)
+            {
+                LevelName.text = myLanguageManagerS.English_Library;
+            }
+            if (GameStats.stats.LevelIndicator == 2)
+            {
+                LevelName.text = myLanguageManagerS.English_Dungeon;
+            }
+            if (GameStats.stats.LevelIndicator == 3)
+            {
+                LevelName.text = myLanguageManagerS.English_IceRoom;
+            }
+            if (GameStats.stats.LevelIndicator == 4)
+            {
+                LevelName.text = myLanguageManagerS.English_Jungle;
+            }
+            if (GameStats.stats.LevelIndicator == 5)
+            {
+                LevelName.text = myLanguageManagerS.English_PortalRoom;
+            }
+        }
+        if (GameStats.stats.LanguageSelect == 2)
+        {
+            if (GameStats.stats.LevelIndicator == 1)
+            {
+                LevelName.text = myLanguageManagerS.Español_Library;
+            }
+            if (GameStats.stats.LevelIndicator == 2)
+            {
+                LevelName.text = myLanguageManagerS.Español_Dungeon;
+            }
+            if (GameStats.stats.LevelIndicator == 3)
+            {
+                LevelName.text = myLanguageManagerS.Español_IceRoom;
+            }
+            if (GameStats.stats.LevelIndicator == 4)
+            {
+                LevelName.text = myLanguageManagerS.Español_Jungle;
+            }
+            if (GameStats.stats.LevelIndicator == 5)
+            {
+                LevelName.text = myLanguageManagerS.Español_PortalRoom;
+            }
+        }
+        if (GameStats.stats.LanguageSelect == 3)
+        {
+            if (GameStats.stats.LevelIndicator == 1)
+            {
+                LevelName.text = myLanguageManagerS.Frances_Library;
+            }
+            if (GameStats.stats.LevelIndicator == 2)
+            {
+                LevelName.text = myLanguageManagerS.Frances_Dungeon;
+            }
+            if (GameStats.stats.LevelIndicator == 3)
+            {
+                LevelName.text = myLanguageManagerS.Frances_IceRoom;
+            }
+            if (GameStats.stats.LevelIndicator == 4)
+            {
+                LevelName.text = myLanguageManagerS.Frances_Jungle;
+            }
+            if (GameStats.stats.LevelIndicator == 5)
+            {
+                LevelName.text = myLanguageManagerS.Frances_PortalRoom;
+            }
+        }
+
+        if(GameStats.stats.LevelCount < 2)
+        {
+            LevelCountNumber.SetActive(true);
+            BossLevelImage.SetActive(false);
+            TextMeshProUGUI Levelcounttext = LevelCountNumber.GetComponent<TextMeshProUGUI>();
+             Levelcounttext.text = (GameStats.stats.LevelCount + 1).ToString();
+        }
+        else
+        {
+            LevelCountNumber.SetActive(false);
+            BossLevelImage.SetActive(true);
+        }
 
     }
 

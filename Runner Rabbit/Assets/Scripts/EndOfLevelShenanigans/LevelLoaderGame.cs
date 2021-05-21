@@ -90,7 +90,7 @@ public class LevelLoaderGame : MonoBehaviour
         TimerSlider.maxValue = levelTime;
         GameStats.stats.spawnHouse = false;
 
-        
+      
 
 
     }
@@ -182,7 +182,7 @@ public class LevelLoaderGame : MonoBehaviour
 
 
 
-        Debug.Log("gameChangeInitiated");
+        //Debug.Log("gameChangeInitiated");
         yield return new WaitForSecondsRealtime(1);
         FindObjectOfType<AudioManager>().Play("EndOfLevelSound");
         yield return new WaitForSecondsRealtime(1);
@@ -206,7 +206,7 @@ public class LevelLoaderGame : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
             LoadingSlider.value = progress;
-            Debug.Log(progress);
+            //Debug.Log(progress);
 
             yield return null;
 
@@ -250,7 +250,7 @@ public class LevelLoaderGame : MonoBehaviour
 
     {
 
-        Debug.Log("gameChangeInitiated");
+        //Debug.Log("gameChangeInitiated");
         yield return new WaitForSecondsRealtime(1);
         // play animation
         transition.SetTrigger("Start");
@@ -279,7 +279,7 @@ public class LevelLoaderGame : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
             LoadingSlider.value = progress;
-            Debug.Log(progress);
+            
 
             yield return null;
 

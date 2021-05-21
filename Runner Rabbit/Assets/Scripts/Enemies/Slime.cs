@@ -16,11 +16,14 @@ public class Slime : MonoBehaviour
     bool attack;
     EnemyHealth health;
 
+    public int slimeHealth = 6;
+    public int slimeSelfDamage = 2;
+
     // Start is called before the first frame update
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 30;
+        health.maxHealth = slimeHealth;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
@@ -83,7 +86,7 @@ public class Slime : MonoBehaviour
     }
     void Attack()
     {
-        health.TakeDamage(10);
+        health.TakeDamage(slimeSelfDamage);
     }
     void SlimeBall()
     {

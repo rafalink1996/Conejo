@@ -119,7 +119,7 @@ MonoBehaviour:
   - name: music
     audioOutputMixer: {fileID: -3782309269719523556, guid: fc3f455b10db348d094da207e592d7c2,
       type: 2}
-    clip: {fileID: 8300000, guid: 4c9af888dcd0643af953fa7127fc76af, type: 3}
+    clip: {fileID: 8300000, guid: 6af60c483b4fb48bb957e1f202dae1d5, type: 3}
     volume: 0
     pitch: 1
     priority: 30
@@ -182,7 +182,7 @@ MonoBehaviour:
   - name: musica alternativa XD
     audioOutputMixer: {fileID: -3782309269719523556, guid: fc3f455b10db348d094da207e592d7c2,
       type: 2}
-    clip: {fileID: 8300000, guid: 4c9af888dcd0643af953fa7127fc76af, type: 3}
+    clip: {fileID: 8300000, guid: 6af60c483b4fb48bb957e1f202dae1d5, type: 3}
     volume: 1
     pitch: 1
     priority: 104
@@ -482,6 +482,69 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a2bbe7eb620ef470e9c28c7e8cd3df40, type: 3}
     volume: 1
     pitch: 1.84
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: Troll_Attack
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: bac30678b5b3f4f009f9320eb694e392, type: 3}
+    volume: 1
+    pitch: 1.84
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: Troll_Death
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 43594495703f64c74b08c0d0cd5ab046, type: 3}
+    volume: 1
+    pitch: 1.84
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: Troll_Spawn
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 052889f6cf4654b5f86eadd5274e81dc, type: 3}
+    volume: 1
+    pitch: 1.84
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: Troll_Swing
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: ce322852a5a1c4648b23664af6b8966b, type: 3}
+    volume: 1
+    pitch: 1
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: BunnyHit
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 9c1fb5a8d3a164a42b832cfe4dedb80a, type: 3}
+    volume: 0.8
+    pitch: 1
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: SnakeHiss
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: 4a49660e58102407c9cd0b89dbaecee8, type: 3}
+    volume: 0.8
+    pitch: 1
+    priority: 84
+    loop: 0
+    source: {fileID: 0}
+  - name: SnakeWarning
+    audioOutputMixer: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+      type: 2}
+    clip: {fileID: 8300000, guid: aada7a73ad02142a0a0bf9029774aed1, type: 3}
+    volume: 0.8
+    pitch: 1
     priority: 84
     loop: 0
     source: {fileID: 0}

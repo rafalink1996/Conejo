@@ -6,7 +6,7 @@ public class RadishMissile : MonoBehaviour
 {
     public float speed;
     public float RotateSpeed = 50;
-    public int damage;
+    public float damage;
     public Transform target = null;
     private Rigidbody2D rb;
 

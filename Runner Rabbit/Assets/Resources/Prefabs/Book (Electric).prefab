@@ -490,6 +490,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 0}
+  BookHealth: 6
+  BookSelfDamage: 2
 --- !u!114 &7677565213169846365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,12 +519,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ea4ba85c954d37ae30a2ae47bb9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
+  maxHealth: 6
+  health: 6
   healthSlider: {fileID: 0}
   Hit: 0
-  hitTime: 1
+  CanSpawnHeal: 0
+  MaxHitTime: 6
   isBoss: 0
+  MoneyBag: 0
+  EnemyMoneyPrefab: {fileID: 0}
 --- !u!61 &2034945063424860255
 BoxCollider2D:
   m_ObjectHideFlags: 0

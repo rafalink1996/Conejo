@@ -67,12 +67,15 @@ public class IceBat : MonoBehaviour
         {
             return;
         }
-
-        if (!attack && batTop == Cha.top && spawned)
+        if (Cha != null)
         {
-            attackTime -= Time.deltaTime;
-            
+            if (!attack && batTop == Cha.top && spawned)
+            {
+                attackTime -= Time.deltaTime;
+
+            }
         }
+        
         if (attackTime <= 0)
         {
             //anim.SetTrigger("Attack");
@@ -83,7 +86,11 @@ public class IceBat : MonoBehaviour
         }
         if (!attack && !GoBack)
         {
-            EndMarker.position = Cha.transform.position;
+            if(Cha != null)
+            {
+                EndMarker.position = Cha.transform.position;
+            }
+           
         }
 
         if (attack == true)

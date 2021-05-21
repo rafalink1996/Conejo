@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7092,9 +7092,6 @@ MonoBehaviour:
     type: 3}
   respawnTime: 2
   respawnTimeRandom: 4
-  Spawn: 0
-  StaticSpawning: 0
-  SpawnWave: 0
   DarkSide: 1
 --- !u!114 &534546712
 MonoBehaviour:
@@ -7372,6 +7369,7 @@ MonoBehaviour:
   FailedtoShowGameObject: {fileID: 0}
   FailedAdDescriptionText: {fileID: 0}
   probandoAdmob: 0
+  LoadingAdObject: {fileID: 1364760209}
   LoadRetryRewarded: 0
   LoadRetryIntersticial: 0
   AdLoadedImage: {fileID: 0}
@@ -14320,6 +14318,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: ResumeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3265500893884053161, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 672799255}
+    - target: {fileID: 3265500893884053161, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResumeButton
+      objectReference: {fileID: 0}
     - target: {fileID: 3272115461447919559, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
         type: 3}
       propertyPath: Cha
@@ -14837,6 +14845,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1364760173}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1364760209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7187427769500194163, guid: ecfc9b6ffe3364fe591cd5e7b508684a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1364760173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1403348041
 GameObject:
   m_ObjectHideFlags: 0
@@ -15094,9 +15108,6 @@ MonoBehaviour:
     type: 3}
   respawnTime: 2
   respawnTimeRandom: 4
-  Spawn: 0
-  StaticSpawning: 0
-  SpawnWave: 0
   DarkSide: 0
 --- !u!114 &1491312013
 MonoBehaviour:
@@ -20088,7 +20099,7 @@ GameObject:
   m_Layer: 0
   m_Name: Simple Enemy spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -20123,9 +20134,6 @@ MonoBehaviour:
   SimpleEnemyStatic: {fileID: 0}
   respawnTime: 2
   respawnTimeRandom: 4
-  Spawn: 0
-  StaticSpawning: 0
-  SpawnWave: 0
   DarkSide: 0
 --- !u!114 &1590223413
 MonoBehaviour:
@@ -26696,7 +26704,7 @@ PrefabInstance:
     - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 54
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
         type: 3}
@@ -26878,6 +26886,37 @@ PrefabInstance:
       propertyPath: sounds.Array.data[8].clip
       value: 
       objectReference: {fileID: 8300000, guid: b151369756bd74c51843d7ed80497353, type: 3}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[54].name
+      value: BunnyHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[54].audioOutputMixer
+      value: 
+      objectReference: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+        type: 2}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[54].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c1fb5a8d3a164a42b832cfe4dedb80a, type: 3}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[54].volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[54].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[54].priority
+      value: 84
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89343ff5d801f460daefffbbfb195a86, type: 3}
 --- !u!1001 &6534509361541004208
