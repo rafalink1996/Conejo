@@ -8,7 +8,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
 {
     public GameObject loadingScreen;
     public Slider slider;
-    public Animator transition;
+    public GameObject transition;
     public float transitiontime;
     public GameObject playbuttontransition;
 
@@ -28,8 +28,9 @@ public class LevelLoaderMainMenu : MonoBehaviour
             ContinueRunButton.SetActive(true);
         }
         GameStats.stats.SaveStats();
+        transition.SetActive(false);
 
-        
+
 
     }
 
@@ -157,7 +158,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
 
     {
         // play animation
-        transition.SetTrigger("Start");
+        transition.SetActive(true);
         FindObjectOfType<AudioManager>().Play("TransitionSound");
 
 

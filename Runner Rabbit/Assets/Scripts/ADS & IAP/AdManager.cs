@@ -70,7 +70,14 @@ public class AdManager : MonoBehaviour
 
 
     [SerializeField] Image AdLoadedImage = null;
-    
+
+
+
+    [SerializeField] GameObject store = null;
+    [SerializeField] GameObject MainMenu = null;
+
+    bool TimeForReward = false;
+
 
 
 
@@ -91,7 +98,7 @@ public class AdManager : MonoBehaviour
         adUnitId = "unexpected_platform";
 #endif
 
-        if(AdLoadedImage != null)
+        if (AdLoadedImage != null)
         {
             AdLoadedImage.color = Color.red;
         }
@@ -121,11 +128,11 @@ public class AdManager : MonoBehaviour
                 }
             }
         });
-  
 
 
-   // **************** Remove this code before build ************************ //
-    List<string> deviceIds = new List<string>();
+
+        // **************** Remove this code before build ************************ //
+        List<string> deviceIds = new List<string>();
         deviceIds.Add("14d1fff363b2cda9939aac6cb791aaef");
         RequestConfiguration requestConfiguration = new RequestConfiguration
             .Builder()
@@ -133,12 +140,12 @@ public class AdManager : MonoBehaviour
             .build();
 
         MobileAds.SetRequestConfiguration(requestConfiguration);
-   // **********************************************************************   //
+        // **********************************************************************   //
 
         Scene currentScene = SceneManager.GetActiveScene();
         string SceneName = currentScene.name;
-        
-       if(SceneName == "Store" || SceneName == "Main Menu")
+
+        if (SceneName == "Store" || SceneName == "Main Menu")
         {
             RequestRewardedVideoAd();
         }
@@ -182,8 +189,18 @@ public class AdManager : MonoBehaviour
 
         #endregion
 
+        TimeForReward = false;
 
 
+    }
+
+    private void Update()
+    {
+        if (TimeForReward == true)
+        {
+            StartCoroutine(WaitToShowReward());
+            TimeForReward = false;
+        }
     }
 
     public void RequestRewardedVideoAd()
@@ -225,7 +242,7 @@ public class AdManager : MonoBehaviour
             else
             {
                 // show ad loading
-            } 
+            }
         }
         else
         {
@@ -269,7 +286,7 @@ public class AdManager : MonoBehaviour
             {
                 LoadingAdObject.SetActive(true);
                 this.interstitial.Show();
-                
+
             }
             else
             {
@@ -279,9 +296,9 @@ public class AdManager : MonoBehaviour
         }
         else
         {
-           
+
             BackToMainMenuIntersticial();
-        } 
+        }
     }
 
     public void BackToMainMenuIntersticial()
@@ -327,7 +344,7 @@ public class AdManager : MonoBehaviour
 
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
-        if(AdLoadedImage != null)
+        if (AdLoadedImage != null)
         {
             AdLoadedImage.color = Color.green;
         }
@@ -341,7 +358,7 @@ public class AdManager : MonoBehaviour
                               + args.Message);
          Debug.Log("ad failed to load");*/
 
-        if(LoadRetryRewarded > 2)
+        if (LoadRetryRewarded > 2)
         {
             FailedToLoadRewarded = true;
             FailedTLoadText = "Faield due to: " + args.Message;
@@ -361,11 +378,19 @@ public class AdManager : MonoBehaviour
     public void HandleRewardedAdOpening(object sender, EventArgs args)
     {
         MainMixer.SetFloat("MasterVolume", -80);
+        if (store != null)
+        {
+            store.SetActive(false);
+        }
+        if (MainMenu != null)
+        {
+            MainMenu.SetActive(false);
+        }
     }
 
     public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
     {
-        if(FailedtoShowGameObject != null)
+        if (FailedtoShowGameObject != null)
         {
             FailedtoShowGameObject.SetActive(true);
             FailedAdDescriptionText.text = args.Message;
@@ -378,18 +403,12 @@ public class AdManager : MonoBehaviour
         //RequestRewardedVideoAd();
         MainMixer.SetFloat("MasterVolume", 0);
     }
-
+    
     public void HandleUserEarnedReward(object sender, Reward args)
     {
         MainMixer.SetFloat("MasterVolume", 0);
-        if (rewardColect != null)
-        {
-            rewardColect.SetActive(true);
-        }
-        if (AdLoadedImage != null)
-        {
-            AdLoadedImage.color = Color.red;
-        }
+
+        TimeForReward = true;
     }
 
 
@@ -398,13 +417,13 @@ public class AdManager : MonoBehaviour
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
         LoadRetryIntersticial = 0;
-        
+
     }
 
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-     
-        if(LoadRetryIntersticial > 2)
+
+        if (LoadRetryIntersticial > 2)
         {
             FailedToLoadIntersticial = true;
         }
@@ -413,13 +432,14 @@ public class AdManager : MonoBehaviour
             LoadRetryIntersticial += 1;
             RequestInterstitial();
         }
-        
+
 
     }
 
     public void HandleOnAdOpened(object sender, EventArgs args)
     {
         LoadingAdObject.SetActive(false);
+
         MainMixer.SetFloat("MasterVolume", -80);
     }
 
@@ -435,7 +455,28 @@ public class AdManager : MonoBehaviour
 
     }
 
-   
+    IEnumerator WaitToShowReward()
+    {
+        yield return new WaitForEndOfFrame();
+
+        if (store != null)
+        {
+            store.SetActive(true);
+        }
+        if (MainMenu != null)
+        {
+            MainMenu.SetActive(true);
+        }
+        if (rewardColect != null)
+        {
+            rewardColect.SetActive(true);
+        }
+        if (AdLoadedImage != null)
+        {
+            AdLoadedImage.color = Color.blue;
+        }
+
+    }
 
     public void RetryToLoadAD()
     {

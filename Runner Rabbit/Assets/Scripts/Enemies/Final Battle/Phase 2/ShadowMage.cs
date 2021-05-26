@@ -8,7 +8,9 @@ public class ShadowMage : MonoBehaviour
 {
 
     Animator ShadowMageAnimator;
-    Material ShadowMageMaterial;
+    [SerializeField] GameObject fadeToWhite;
+    bool isDying;
+    //Material ShadowMageMaterial;
 
     public float YPos;
     public float minYPos;
@@ -47,7 +49,7 @@ public class ShadowMage : MonoBehaviour
     void Start()
     {
         ShadowMageAnimator = GetComponent<Animator>();
-        ShadowMageMaterial = GetComponent<SpriteRenderer>().material;
+        //ShadowMageMaterial = GetComponent<SpriteRenderer>().material;
         ShadowMageHealth = GetComponent<EnemyHealth>();
         ShadowShieldCS = ShadowShield.GetComponent<ShadowShield>();
         
@@ -71,8 +73,15 @@ public class ShadowMage : MonoBehaviour
         {
             EnemySpawnerDown.SetActive(false);
             EnemySpawnerUp.SetActive(false);
-            StartCoroutine(Dissolve());
-            ShadowMageMaterial.SetFloat("_Fade", TransformDissolve);
+            ShadowMageAnimator.SetTrigger("Death");
+            if (!isDying)
+            {
+                StartCoroutine(BossDead());
+            }
+
+            //StartCoroutine(Dissolve());
+
+           // ShadowMageMaterial.SetFloat("_Fade", TransformDissolve);
         }
 
         // Shadow Shield Is Up
@@ -169,6 +178,16 @@ public class ShadowMage : MonoBehaviour
         
     }
 
+    IEnumerator BossDead()
+    {
+        float Delay = 1;
+
+        CanvasGroup fadeAlpha = fadeToWhite.GetComponent<CanvasGroup>();
+        LeanTween.alphaCanvas(fadeAlpha, 1, Delay);
+        yield return new WaitForSeconds(Delay);
+        gameObject.SetActive(false);
+        SceneManager.LoadSceneAsync(9);
+    }
  
     IEnumerator Dissolve()
     {

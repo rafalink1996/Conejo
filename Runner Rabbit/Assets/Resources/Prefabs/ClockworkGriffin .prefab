@@ -385,8 +385,11 @@ MonoBehaviour:
   health: 800
   healthSlider: {fileID: 0}
   Hit: 0
+  CanSpawnHeal: 0
   MaxHitTime: 6
   isBoss: 1
+  MoneyBag: 0
+  EnemyMoneyPrefab: {fileID: 0}
 --- !u!82 &4208062621358373625
 AudioSource:
   m_ObjectHideFlags: 0
@@ -735,7 +738,7 @@ GameObject:
   - component: {fileID: 4208062622230857831}
   - component: {fileID: 4208062622230857824}
   - component: {fileID: 4431448295377766059}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Clockwork griffin ray effect_0
   m_TagString: Enemy proyectile
   m_Icon: {fileID: 0}
@@ -876,6 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyP: 0
   Damage: 3
 --- !u!1 &4208062622256456057
 GameObject:

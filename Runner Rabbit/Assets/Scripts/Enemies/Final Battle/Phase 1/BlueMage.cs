@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class BlueMage : MonoBehaviour
 {
    
-    Material BlueMageMaterial;
+    //Material BlueMageMaterial;
+
+    public GameObject BlueMageMask;
     public float TransformDissolve;
     public float maxTransformDissolve = 7;
 
@@ -38,20 +40,18 @@ public class BlueMage : MonoBehaviour
     void Start()
     {
         BlueMageHealth = GetComponent<EnemyHealth>();
-        BlueMageMaterial = GetComponent<SpriteRenderer>().material;
+       
 
         
-        maxTransformDissolve = 7;
-        TransformDissolve = maxTransformDissolve;
+        maxTransformDissolve = 5;
+        TransformDissolve = 0;
 
-        
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = ShadowMage.transform.position;
+        //transform.position = ShadowMage.transform.position;
 
         health = BlueMageHealth.health;
         maxHealth = BlueMageHealth.maxHealth;
@@ -60,9 +60,11 @@ public class BlueMage : MonoBehaviour
         HealthPercetnage = Mathf.Round((health / maxHealth) * 100);
         
 
-        TransformDissolve = (HealthPercetnage / 100) * maxTransformDissolve;
+        TransformDissolve = 5 - ((HealthPercetnage / 100) * maxTransformDissolve);
+        BlueMageMask.transform.localPosition = new Vector3(5 - TransformDissolve, 0, 0);
 
-        BlueMageMaterial.SetFloat("_Dissolve", TransformDissolve -3);
+        //BlueMageMaterial.SetFloat("_Dissolve", TransformDissolve -3);
+
 
         if (HealthPercetnage <= 75 && HealthPercetnage > 50)
         {

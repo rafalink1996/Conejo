@@ -27,7 +27,7 @@ public class WyrmIceAttacks : MonoBehaviour
     }
     public void Deactivate()
     {
-        wyrm.iceTimer = Random.Range(20f, 30f);
+        wyrm.iceTimer = Random.Range(10f, 15f);
         gameObject.SetActive(false);
     }
 

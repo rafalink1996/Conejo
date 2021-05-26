@@ -26,7 +26,7 @@ public class BossWyrm : MonoBehaviour
         health.maxHealth = 150;
         anim = GetComponent<Animator>();
         timeToChange = Random.Range(15f, 25f);
-        iceTimer = Random.Range(20f, 30f);
+        iceTimer = Random.Range(10f, 15f);
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
         BossDead = false;
         GameStats.stats.bossDead = false;

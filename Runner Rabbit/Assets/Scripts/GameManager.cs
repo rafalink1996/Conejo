@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     public GameObject StartAnimationUi;
     public GameObject StartAnimation;
 
+    public bool FinalBoss;
+
 
 
 
@@ -65,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         audioMixer.SetFloat("SoundVolume", Mathf.Log10(GameStats.stats.AudioVolume) * 20);
         SoundSlider.value = GameStats.stats.AudioVolume;
-        if (GameStats.stats.LevelCount == 1)
+        if (GameStats.stats.LevelCount == 1 && !FinalBoss)
         {
             spawnerUp.SetActive(true);
             SpawnerDown.SetActive(true);
