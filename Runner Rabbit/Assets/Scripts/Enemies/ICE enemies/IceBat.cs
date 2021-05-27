@@ -161,6 +161,11 @@ public class IceBat : MonoBehaviour
         anim.SetTrigger("Die");
         FindObjectOfType<AudioManager>().Play("IceBatCrumble");
         yield return new WaitForSeconds(0.7f);
+        if (health.CanSpawnHeal)
+        {
+            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            healthHeal.transform.position = transform.position;
+        }
         Destroy(transform.parent.gameObject);
     }
 }

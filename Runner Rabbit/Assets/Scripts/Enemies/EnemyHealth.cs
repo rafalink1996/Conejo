@@ -45,23 +45,22 @@ public class EnemyHealth : MonoBehaviour
             {
                 SpawnCoins();
             }
-           
+            hitTime = MaxHitTime;
             CanSpawnHeal = true;
             Hit = false;
-            hitTime = MaxHitTime;
-
         }
-        healthSlider.value = health;
 
         if (CanSpawnHeal)
         {
             hitTime -= Time.deltaTime;
         }
-        if (hitTime <= 0 && Hit)
+        if (hitTime <= 0)
         {
-            CanSpawnHeal = false;
-            hitTime = MaxHitTime;
+            CanSpawnHeal = false;    
         }
+
+
+        healthSlider.value = health;
     }
     public void TakeDamage(float damage)
     {
