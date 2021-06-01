@@ -67,6 +67,19 @@ public class Shop : MonoBehaviour
     [SerializeField] List<Power> UnlockedTier4Spells = null;
 
 
+    List<Power> availableLightPowersTier1;
+    List<Power> availableLightPowersTier2;
+    List<Power> availableLightPowersTier3;
+    List<Power> availableLightPowersTier4;
+
+    List<Power> availableDarkPowersTier1;
+    List<Power> availableDarkPowersTier2;
+    List<Power> availableDarkPowersTier3;
+    List<Power> availableDarkPowersTier4;
+
+
+
+
     [SerializeField] List<TablesPerLevel> TablesPerLevelList = null;
 
     [System.Serializable]
@@ -133,8 +146,41 @@ public class Shop : MonoBehaviour
 
         }
 
+
+        //_____________________________________//
+        //|                                   |//
+        //|  Checking power duplicates and    |//
+        //|              Equiped              |//
+        //|                                   |//
+        //_____________________________________//
+
+
+        availableDarkPowersTier1 = new List<Power>(UnlockedTier1Spells);
+        availableDarkPowersTier2 = new List<Power>(UnlockedTier2Spells);
+        availableDarkPowersTier3 = new List<Power>(UnlockedTier3Spells);
+        availableDarkPowersTier4 = new List<Power>(UnlockedTier4Spells);
+
+        CheckPowerAvailability(GameStats.stats.powerDark.id, availableDarkPowersTier1);
+        CheckPowerAvailability(GameStats.stats.powerDark.id, availableDarkPowersTier2);
+        CheckPowerAvailability(GameStats.stats.powerDark.id, availableDarkPowersTier3);
+        CheckPowerAvailability(GameStats.stats.powerDark.id, availableDarkPowersTier4);
+
+
+        availableLightPowersTier1 = new List<Power>(UnlockedTier1Spells);
+        availableLightPowersTier2 = new List<Power>(UnlockedTier2Spells);
+        availableLightPowersTier3 = new List<Power>(UnlockedTier3Spells);
+        availableLightPowersTier4 = new List<Power>(UnlockedTier4Spells);
+
+        CheckPowerAvailability(GameStats.stats.powerLight.id, availableLightPowersTier1);
+        CheckPowerAvailability(GameStats.stats.powerLight.id, availableLightPowersTier2);
+        CheckPowerAvailability(GameStats.stats.powerLight.id, availableLightPowersTier3);
+        CheckPowerAvailability(GameStats.stats.powerLight.id, availableLightPowersTier4);
+
+
+
+
         TotalWeight = 0;
-        CalculateTables(GameStats.stats.LevelIndicator, GameStats.stats.LevelCount);
+        CalculateTables(GameStats.stats.LevelIndicator, GameStats.stats.LevelCount, false);
 
         
 
@@ -191,7 +237,7 @@ public class Shop : MonoBehaviour
             DarkManaCostText.text = darkManaCost.ToString();
             heartCostText.text = heartCost.ToString();
         }
-        if (GameStats.stats.numOfHearts == 9)
+        if (GameStats.stats.numOfHearts == 18)
         {
             heartCostText.text = "---";
         }
@@ -221,17 +267,18 @@ public class Shop : MonoBehaviour
 
     private void PopulateShop()
     {
-        foreach (var item in table)
-        {
-            TotalWeight += item;
-        }
-        
 
         for (int i = 0; i < 2; i++) /********** Light Powers *************/
         {
-
-            
+            TotalWeight = 0;
+            CalculateTables(GameStats.stats.LevelIndicator, GameStats.stats.LevelCount, false);
+            foreach (var item in table)
+            {
+                TotalWeight += item;
+            }
+            Debug.Log("Light wight: " + TotalWeight);
             int LootChance = Random.Range(0, TotalWeight);
+          
             //foreach (var weight in table)
             for (int weight = 0; weight < table.Length; weight++)
             {
@@ -240,8 +287,8 @@ public class Shop : MonoBehaviour
                     // instantiate power
                     if (weight == 0) //Tier 1
                     {
-                        int T1 = Random.Range(0, UnlockedTier1Spells.Count);
-                        Power PoT1 = UnlockedTier1Spells[T1];
+                        int T1 = Random.Range(0, availableLightPowersTier1.Count);
+                        Power PoT1 = availableLightPowersTier1[T1];
                         GameObject PoT1Object = Instantiate(ShopItemPrefab, shopcontainer);
                         PowersInStore.Add(PoT1Object);
                         PowersInStorePower.Add(PoT1);
@@ -251,6 +298,7 @@ public class Shop : MonoBehaviour
                         PoT1Object.transform.GetChild(2).GetComponent<Image>().sprite = PoT1.iconLight;
                         PoT1Object.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = PoT1.Cost.ToString();
                         PoT1Object.transform.GetChild(0).GetComponent<Image>().color = PoT1.rarityColor;
+                        CheckPowerAvailability(availableLightPowersTier1[T1].id, availableLightPowersTier1);
 
                        
 
@@ -260,8 +308,8 @@ public class Shop : MonoBehaviour
                     else if (weight == 1) //Tier 2
                     {
 
-                        int T2 = Random.Range(0, UnlockedTier2Spells.Count);
-                        Power PoT2 = UnlockedTier2Spells[T2];
+                        int T2 = Random.Range(0, availableLightPowersTier2.Count);
+                        Power PoT2 = availableLightPowersTier2[T2];
                         GameObject PoT2Object = Instantiate(ShopItemPrefab, shopcontainer);
                         PowersInStore.Add(PoT2Object);
                         PowersInStorePower.Add(PoT2);
@@ -271,13 +319,14 @@ public class Shop : MonoBehaviour
                         PoT2Object.transform.GetChild(2).GetComponent<Image>().sprite = PoT2.iconLight;
                         PoT2Object.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = PoT2.Cost.ToString();
                         PoT2Object.transform.GetChild(0).GetComponent<Image>().color = PoT2.rarityColor;
+                        CheckPowerAvailability(availableLightPowersTier2[T2].id, availableLightPowersTier2);
                         Debug.Log("awarded tier 2");
                         break;
                     }
                     else if (weight == 2) //Tier 3
                     {
-                        int T3 = Random.Range(0, UnlockedTier3Spells.Count);
-                        Power PoT3 = UnlockedTier3Spells[T3];
+                        int T3 = Random.Range(0, availableLightPowersTier3.Count);
+                        Power PoT3 = availableLightPowersTier3[T3];
                         GameObject PoT3Object = Instantiate(ShopItemPrefab, shopcontainer);
                         PowersInStore.Add(PoT3Object);
                         PowersInStorePower.Add(PoT3);
@@ -287,13 +336,14 @@ public class Shop : MonoBehaviour
                         PoT3Object.transform.GetChild(2).GetComponent<Image>().sprite = PoT3.iconLight;
                         PoT3Object.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = PoT3.Cost.ToString();
                         PoT3Object.transform.GetChild(0).GetComponent<Image>().color = PoT3.rarityColor;
+                        CheckPowerAvailability(availableLightPowersTier3[T3].id, availableLightPowersTier3);
                         Debug.Log("awarded tier 3");
                         break;
                     }
                     else if (weight == 3) //Tier 4
                     {
-                        int T4 = Random.Range(0, UnlockedTier4Spells.Count);
-                        Power PoT4 = UnlockedTier4Spells[T4];
+                        int T4 = Random.Range(0, availableLightPowersTier4.Count);
+                        Power PoT4 = availableLightPowersTier4[T4];
                         GameObject PoT4Object = Instantiate(ShopItemPrefab, shopcontainer);
                         PowersInStore.Add(PoT4Object);
                         PowersInStorePower.Add(PoT4);
@@ -303,6 +353,7 @@ public class Shop : MonoBehaviour
                         PoT4Object.transform.GetChild(2).GetComponent<Image>().sprite = PoT4.iconLight;
                         PoT4Object.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = PoT4.Cost.ToString();
                         PoT4Object.transform.GetChild(0).GetComponent<Image>().color = PoT4.rarityColor;
+                        CheckPowerAvailability(availableLightPowersTier4[T4].id, availableLightPowersTier4);
                         Debug.Log("awarded tier 4");
                         break;
                     }
@@ -311,6 +362,8 @@ public class Shop : MonoBehaviour
                     {
                         Debug.Log("Power loot table  Error");
                     }
+
+                    
 
                 }
                 else
@@ -321,9 +374,17 @@ public class Shop : MonoBehaviour
 
         }
 
+
+       
         for (int i = 0; i < 2; i++) /********** Dark Powers *************/
         {
-
+            TotalWeight = 0;
+            CalculateTables(GameStats.stats.LevelIndicator, GameStats.stats.LevelCount, true);
+            foreach (var item in table)
+            {
+                TotalWeight += item;
+            }
+            Debug.Log("Dark wight: " + TotalWeight);
             int LootChance = Random.Range(0, TotalWeight);
             //foreach (var weight in table)
             for (int weight = 0; weight < table.Length; weight++)
@@ -333,8 +394,8 @@ public class Shop : MonoBehaviour
                     // instantiate power
                     if (weight == 0) //Tier 1
                     {
-                        int T1 = Random.Range(0, UnlockedTier1Spells.Count);
-                        Power PoT1 = UnlockedTier1Spells[T1];
+                        int T1 = Random.Range(0, availableDarkPowersTier1.Count);
+                        Power PoT1 = availableDarkPowersTier1[T1];
                         GameObject PoT1Object = Instantiate(ShopItemPrefab, shopcontainer);
                         PowersInStore.Add(PoT1Object);
                         PowersInStorePower.Add(PoT1);
@@ -344,17 +405,15 @@ public class Shop : MonoBehaviour
                         PoT1Object.transform.GetChild(2).GetComponent<Image>().sprite = PoT1.iconDark;
                         PoT1Object.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = PoT1.Cost.ToString();
                         PoT1Object.transform.GetChild(0).GetComponent<Image>().color = PoT1.rarityColor;
-
-
-
+                        CheckPowerAvailability(availableDarkPowersTier1[T1].id, availableDarkPowersTier1);
                         Debug.Log("awarded tier 1");
                         break;
                     }
                     else if (weight == 1) //Tier 2
                     {
 
-                        int T2 = Random.Range(0, UnlockedTier2Spells.Count);
-                        Power PoT2 = UnlockedTier2Spells[T2];
+                        int T2 = Random.Range(0, (availableDarkPowersTier2.Count));
+                        Power PoT2 = (availableDarkPowersTier2[T2]);
                         GameObject PoT2Object = Instantiate(ShopItemPrefab, shopcontainer);
                         PowersInStore.Add(PoT2Object);
                         PowersInStorePower.Add(PoT2);
@@ -364,13 +423,14 @@ public class Shop : MonoBehaviour
                         PoT2Object.transform.GetChild(2).GetComponent<Image>().sprite = PoT2.iconDark;
                         PoT2Object.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = PoT2.Cost.ToString();
                         PoT2Object.transform.GetChild(0).GetComponent<Image>().color = PoT2.rarityColor;
+                        CheckPowerAvailability(availableDarkPowersTier2[T2].id, availableDarkPowersTier2);
                         Debug.Log("awarded tier 2");
                         break;
                     }
                     else if (weight == 2) //Tier 3
                     {
-                        int T3 = Random.Range(0, UnlockedTier3Spells.Count);
-                        Power PoT3 = UnlockedTier3Spells[T3];
+                        int T3 = Random.Range(0, availableDarkPowersTier3.Count);
+                        Power PoT3 = availableDarkPowersTier3[T3];
                         GameObject PoT3Object = Instantiate(ShopItemPrefab, shopcontainer);
                         PowersInStore.Add(PoT3Object);
                         PowersInStorePower.Add(PoT3);
@@ -380,13 +440,14 @@ public class Shop : MonoBehaviour
                         PoT3Object.transform.GetChild(2).GetComponent<Image>().sprite = PoT3.iconDark;
                         PoT3Object.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = PoT3.Cost.ToString();
                         PoT3Object.transform.GetChild(0).GetComponent<Image>().color = PoT3.rarityColor;
+                        CheckPowerAvailability(availableDarkPowersTier3[T3].id, availableDarkPowersTier3);
                         Debug.Log("awarded tier 3");
                         break;
                     }
                     else if (weight == 3) //Tier 4
                     {
-                        int T4 = Random.Range(0, UnlockedTier4Spells.Count);
-                        Power PoT4 = UnlockedTier4Spells[T4];
+                        int T4 = Random.Range(0, availableDarkPowersTier4.Count);
+                        Power PoT4 = availableDarkPowersTier4[T4];
                         GameObject PoT4Object = Instantiate(ShopItemPrefab, shopcontainer);
                         PowersInStore.Add(PoT4Object);
                         PowersInStorePower.Add(PoT4);
@@ -396,6 +457,7 @@ public class Shop : MonoBehaviour
                         PoT4Object.transform.GetChild(2).GetComponent<Image>().sprite = PoT4.iconDark;
                         PoT4Object.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = PoT4.Cost.ToString();
                         PoT4Object.transform.GetChild(0).GetComponent<Image>().color = PoT4.rarityColor;
+                        CheckPowerAvailability(availableDarkPowersTier4[T4].id, availableDarkPowersTier4);
                         Debug.Log("awarded tier 4");
                         break;
                     }
@@ -404,6 +466,8 @@ public class Shop : MonoBehaviour
                     {
                         Debug.Log("Power loot table  Error");
                     }
+
+                    
 
                 }
                 else
@@ -415,10 +479,10 @@ public class Shop : MonoBehaviour
         }
     }
 
-   
 
 
-    private void CalculateTables(int LevelIdicator = 1, int levelcount = 0)
+
+    private void CalculateTables(int LevelIdicator = 1, int levelcount = 0, bool dark = false)
     {
         for(int i = 0; i < TablesPerLevelList.Count; i++) //check Levels
         {
@@ -426,42 +490,93 @@ public class Shop : MonoBehaviour
             {
                 if(TablesPerLevelList[i].LevelCount == levelcount)
                 {
-                    if(UnlockedTier1Spells.Count != 0)
+                    if (dark)
                     {
-                        table[0] = TablesPerLevelList[i].TableValues[0];
+                        if (availableDarkPowersTier1.Count != 0)
+                        {
+                            table[0] = TablesPerLevelList[i].TableValues[0];
+                        }
+                        else
+                        {
+                            table[0] = 0;
+                        }
+                        if (availableDarkPowersTier2.Count != 0)
+                        {
+                            table[1] = TablesPerLevelList[i].TableValues[1];
+                        }
+                        else
+                        {
+                            table[1] = 0;
+                        }
+                        if (availableDarkPowersTier3.Count != 0)
+                        {
+                            table[2] = TablesPerLevelList[i].TableValues[2];
+                        }
+                        else
+                        {
+                            table[2] = 0;
+                        }
+                        if (availableDarkPowersTier4.Count != 0)
+                        {
+                            table[3] = TablesPerLevelList[i].TableValues[3];
+                        }
+                        else
+                        {
+                            table[3] = 0;
+                        }
                     }
                     else
                     {
-                        table[0] = 0;
-                    }
-                    if (UnlockedTier2Spells.Count != 0)
-                    {
-                        table[1] = TablesPerLevelList[i].TableValues[1];
-                    }
-                    else
-                    {
-                        table[1] = 0;
-                    }
-                    if (UnlockedTier3Spells.Count != 0)
-                    {
-                        table[2] = TablesPerLevelList[i].TableValues[2];
-                    }
-                    else
-                    {
-                        table[2] = 0;
-                    }
-                    if (UnlockedTier4Spells.Count != 0)
-                    {
-                        table[3] = TablesPerLevelList[i].TableValues[3];
-                    }
-                    else
-                    {
-                        table[3] = 0;
+                        if (availableLightPowersTier1.Count != 0)
+                        {
+                            table[0] = TablesPerLevelList[i].TableValues[0];
+                        }
+                        else
+                        {
+                            table[0] = 0;
+                        }
+                        if (availableLightPowersTier2.Count != 0)
+                        {
+                            table[1] = TablesPerLevelList[i].TableValues[1];
+                        }
+                        else
+                        {
+                            table[1] = 0;
+                        }
+                        if (availableLightPowersTier3.Count != 0)
+                        {
+                            table[2] = TablesPerLevelList[i].TableValues[2];
+                        }
+                        else
+                        {
+                            table[2] = 0;
+                        }
+                        if (availableLightPowersTier4.Count != 0)
+                        {
+                            table[3] = TablesPerLevelList[i].TableValues[3];
+                        }
+                        else
+                        {
+                            table[3] = 0;
+                        }
                     }
                 }
             }
         }
             
+    }
+
+
+    private void CheckPowerAvailability(int BlockPowerID, List<Power> AvailablePowerList)
+    {
+        for (int i = 0; i < AvailablePowerList.Count; i++)
+        {
+            if (AvailablePowerList[i].id == BlockPowerID)
+            {
+                AvailablePowerList.RemoveAt(i);
+            }
+        }
+
     }
     private void OnButtonClickLight(Power power, GameObject SoldOut, Button powerbutton)
     {

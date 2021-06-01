@@ -10,6 +10,7 @@ public class trollGoblin : MonoBehaviour
     public EnemyHealth health;
     public int myHealth = 100;
     public bool Agonize;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +37,7 @@ public class trollGoblin : MonoBehaviour
             anim.SetTrigger("Attack");
             attack = true;
         }
-        if (health.health <= 0 || GameStats.stats.spawnHouse)
+        if (health.health <= 0 || GameStats.stats.bossDead)
         {
             if (!Agonize)
             {
@@ -55,7 +56,7 @@ public class trollGoblin : MonoBehaviour
         proyectile.transform.position = transform.position + new Vector3(-3.359951f, 1.431809f, 0);
         attackTime = Random.Range(1.3f, 4f);
         attack = false;
-        health.TakeDamage(10);
+        health.TakeDamage(9);
     }
     void Die()
     {

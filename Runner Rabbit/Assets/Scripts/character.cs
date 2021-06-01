@@ -172,6 +172,18 @@ public class character : MonoBehaviour
     bool InvulnerableEndLevelActive = false;
 
 
+    //posion
+
+    public bool isPoisoned = false;
+    float poisonTime = 0;
+    [SerializeField] GameObject poisonImageUI;
+    [SerializeField] GameObject isPoisonedEffect;
+    [SerializeField] GameObject PoisonDamageeffect;
+    [SerializeField] Color PosionDamageColor;
+
+
+    
+
 
     //Check
 
@@ -413,6 +425,24 @@ public class character : MonoBehaviour
 
         }
 
+        if (isPoisoned)
+        {
+           
+            if (poisonTime > 0)
+            {
+                poisonTime -= Time.deltaTime;
+            }
+            else
+            {
+                isPoisoned = false;
+            }
+
+        }
+        else
+        {
+   
+            isPoisonedEffect.SetActive(false);
+        }
 
 
 
@@ -443,6 +473,11 @@ public class character : MonoBehaviour
         {
             StartCoroutine(GetInvulnerableEndLevel());
         }
+
+
+       
+            
+        
 
 
     }
@@ -543,8 +578,16 @@ public class character : MonoBehaviour
                 {
                     int damage;
                     Proyectile proyectile = collision.GetComponent<Proyectile>();
+                    
                     if (proyectile != null)
                     {
+                        if (proyectile.Poison == true)
+                        {
+                            poisonTime = proyectile.PoisonTime;
+                            isPoisonedEffect.SetActive(true);
+                            isPoisoned = true;
+
+                        }
                         damage = proyectile.Damage;
                     }
                     else
@@ -582,6 +625,7 @@ public class character : MonoBehaviour
         if (collision.name == "Silence")
         {
             silenced = true;
+            //MyUIManager.ToggleSilencedUI(true);
         }
 
         /*
@@ -614,7 +658,8 @@ public class character : MonoBehaviour
             StartCoroutine(GetInvulnerableRift());
             MyUIManager.ChangeManaInUse();
 
-            silenced = false;
+            //silenced = false;
+            //MyUIManager.ToggleSilencedUI(false);
 
 
 
@@ -635,6 +680,7 @@ public class character : MonoBehaviour
         if (collision.name == "Silence")
         {
             silenced = false;
+            //MyUIManager.ToggleSilencedUI(false);
 
         }
     }
@@ -673,9 +719,6 @@ public class character : MonoBehaviour
 
     public void LightPower()
     {
-
-
-
         //mana.RequiredDarkMana(GameStats.stats.powerLight.mana);
         if (mana.CurrentDarkMana >= mana.DarkManaUsed && !isUsingPower && !silenced)
         {
@@ -685,9 +728,20 @@ public class character : MonoBehaviour
             mana.ReduceDarkMana();
 
         }
-
-
-
+        if (isPoisoned)
+        {
+            if (ShieldHealthAbsorb)
+            {
+                isPoisoned = false;
+            }
+            else
+            {
+                LoseHealth(1, PosionDamageColor.r, PosionDamageColor.g, PosionDamageColor.b, PosionDamageColor.a);
+                isPoisoned = false;
+                //Instantiate(PoisonDamageeffect, transform.position, Quaternion.identity);
+            }
+            
+        }
     }
 
     public void LightPowerHold()
@@ -722,6 +776,13 @@ public class character : MonoBehaviour
         {
             LightPowerHoldStop();
 
+        }
+
+        if (isPoisoned)
+        {
+            LoseHealth(1, PosionDamageColor.r, PosionDamageColor.g, PosionDamageColor.b, PosionDamageColor.a);
+            isPoisoned = false;
+            Instantiate(PoisonDamageeffect, transform.position, Quaternion.identity);
         }
 
 
@@ -779,6 +840,14 @@ public class character : MonoBehaviour
         else
         {
             DarkPowerHoldStop();
+
+        }
+
+        if (isPoisoned)
+        {
+            LoseHealth(1, PosionDamageColor.r, PosionDamageColor.g, PosionDamageColor.b, PosionDamageColor.a);
+            isPoisoned = false;
+            Instantiate(PoisonDamageeffect, transform.position, Quaternion.identity);
         }
 
     }
@@ -816,6 +885,13 @@ public class character : MonoBehaviour
             UsedPower(GameStats.stats.powerDark.id, GameStats.stats.powerDark.Damage);
             mana.ReduceLightMana();
 
+        }
+
+        if (isPoisoned)
+        {
+            LoseHealth(1, PosionDamageColor.r, PosionDamageColor.g, PosionDamageColor.b, PosionDamageColor.a);
+            isPoisoned = false;
+            Instantiate(PoisonDamageeffect, transform.position, Quaternion.identity);
         }
 
 
@@ -904,7 +980,7 @@ public class character : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
     }
-    public void LoseHealth(int damage = 1)
+    public void LoseHealth(int damage = 1, float colorR = 1, float colorG = 1, float colorB = 1, float colorA = 1)
     {
         Health -= damage;
         animator.SetTrigger("GotHit");
@@ -913,7 +989,14 @@ public class character : MonoBehaviour
         StartCoroutine(Flashing());
 
         gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.4f);
-        Instantiate(DamageEffect, transform.position, Quaternion.identity);
+        GameObject myDamageEffect = Instantiate(DamageEffect, transform.position, Quaternion.identity);
+        ParticleSystem DamageParticle = myDamageEffect.GetComponent<ParticleSystem>();
+        var main = DamageParticle.main;
+       
+        main.startColor = new Color(colorR, colorG, colorB, colorA);
+       
+        
+
         FindObjectOfType<AudioManager>().Play("BunnyHit");
 
     }
@@ -966,7 +1049,7 @@ public class character : MonoBehaviour
             Physics2D.IgnoreLayerCollision(8, 9, true);
             Physics2D.IgnoreLayerCollision(8, 15, true);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             Physics2D.IgnoreLayerCollision(8, 9, false);
             Physics2D.IgnoreLayerCollision(8, 15, false);
             InvulnerableHitActive = false;
@@ -1120,8 +1203,8 @@ public class character : MonoBehaviour
                 // eardefence
 
                 animator.SetTrigger("Defence");
-                GameObject shieldT1 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
-                shieldT1.transform.position = transform.position;
+                //GameObject shieldT1 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                //shieldT1.transform.position = transform.position;
                 StartCoroutine(GetInvulnerablePower());
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
@@ -1130,8 +1213,8 @@ public class character : MonoBehaviour
                 // eardefence
 
                 animator.SetTrigger("Defence");
-                GameObject shieldT2 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
-                shieldT2.transform.position = transform.position;
+                //GameObject shieldT2 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                //shieldT2.transform.position = transform.position;
                 StartCoroutine(GetInvulnerablePower());
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
                 break;
@@ -1140,10 +1223,10 @@ public class character : MonoBehaviour
                 // eardefence
 
                 animator.SetTrigger("Defence");
-                GameObject shieldT3 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
-                shieldT3.transform.position = transform.position;
-                Shield ShieldT3stats = shieldT3.GetComponent<Shield>();
-                ShieldT3stats.HealthAbsorb = true;
+                // GameObject shieldT3 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                //shieldT3.transform.position = transform.position;
+                // Shield ShieldT3stats = shieldT3.GetComponent<Shield>();
+                // ShieldT3stats.HealthAbsorb = true;
                 ShieldHealthAbsorb = true;
                 StartCoroutine(GetInvulnerablePower());
                 FindObjectOfType<AudioManager>().Play("MagicDefence");
@@ -1153,10 +1236,10 @@ public class character : MonoBehaviour
                 // eardefence
 
                 animator.SetTrigger("Defence");
-                GameObject shieldT4 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
-                shieldT4.transform.position = transform.position;
-                Shield ShieldT4stats = shieldT4.GetComponent<Shield>();
-                ShieldT4stats.HealthAbsorb = true;
+                //GameObject shieldT4 = GameObject.Instantiate(Resources.Load("Prefabs/Shield") as GameObject);
+                //shieldT4.transform.position = transform.position;
+                //Shield ShieldT4stats = shieldT4.GetComponent<Shield>();
+                //ShieldT4stats.HealthAbsorb = true;
                 ShieldHealthAbsorb = true;
                 StartCoroutine(GetInvulnerablePower());
 

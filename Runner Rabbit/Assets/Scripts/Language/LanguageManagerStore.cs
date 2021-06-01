@@ -10,7 +10,7 @@ public class LanguageManagerStore : MonoBehaviour
     public TextMeshProUGUI SettingsTitle, MusicSubtitle, soundSubtitle, CloseButton, MainMenuButton;
     public TextMeshProUGUI DamagePowerDisplay, ManaPowerDisplay, BuyPowerDisplay, BackPowerDisplay;
     public TextMeshProUGUI WatchAdText, WatchAdCoinsText, WatchAdBackButton, WatchAdWatchButton, CongratulationsText, RewardCoinText, CollectButton;
-    public TextMeshProUGUI GobacktoMainMenuquestionText, gobacktomainmenubutton, mainmenuquestionBackbutton;
+    public TextMeshProUGUI GobacktoMainMenuquestionText, gobacktomainmenubutton, StayinStoreButton;
     public TextMeshProUGUI DamageTextStats;
     public TextMeshProUGUI NotEnoughtCoins;
 
@@ -43,7 +43,8 @@ public class LanguageManagerStore : MonoBehaviour
     string English_Collectbutton = "collect";
 
     string English_GobackToMainMenuQuestion = "Go back to main menu?";
-    string English_goBackToMainMenuButton = "Go Back to main menu";
+    string English_goBackToMainMenuButton = "yes";
+    string English_stayInStoreButton = "no";
 
     string English_notEnoughCoins = "Not Enough Coins";
 
@@ -85,7 +86,8 @@ public class LanguageManagerStore : MonoBehaviour
     string Español_Collectbutton = "Recoger";
 
     string Español_GobackToMainMenuQuestion = "¿volver al menú principal?";
-    string Español_goBackToMainMenuButton = "ir al menú principal";
+    string Español_goBackToMainMenuButton = "sí";
+    string Español_stayInStoreButton = "no";
 
     string Español_notEnoughCoins = "No tienes suficientes Monedas";
 
@@ -126,7 +128,8 @@ public class LanguageManagerStore : MonoBehaviour
     string Frances_Collectbutton = "collect";
 
     string Frances_GobackToMainMenuQuestion = "Go back to main menu?";
-    string Frances_goBackToMainMenuButton = "Go Back to main menu";
+    string Frances_goBackToMainMenuButton = "oui";
+    string Frances_stayInStoreButton = "non";
 
     string Frances_notEnoughCoins = "Not Enough Coins";
 
@@ -181,6 +184,8 @@ public class LanguageManagerStore : MonoBehaviour
 
                 GobacktoMainMenuquestionText.text = English_GobackToMainMenuQuestion;
                 gobacktomainmenubutton.text = English_goBackToMainMenuButton;
+                StayinStoreButton.text = English_stayInStoreButton;
+                
 
                 DamageTextStats.text = English_Damage;
 
@@ -221,6 +226,7 @@ public class LanguageManagerStore : MonoBehaviour
 
                 GobacktoMainMenuquestionText.text = Español_GobackToMainMenuQuestion;
                 gobacktomainmenubutton.text = Español_goBackToMainMenuButton;
+                StayinStoreButton.text = Español_stayInStoreButton;
 
                 DamageTextStats.text = Español_Damage;
 
@@ -262,6 +268,7 @@ public class LanguageManagerStore : MonoBehaviour
 
                 GobacktoMainMenuquestionText.text = Frances_GobackToMainMenuQuestion;
                 gobacktomainmenubutton.text = Frances_goBackToMainMenuButton;
+                StayinStoreButton.text = Frances_stayInStoreButton;
 
                 DamageTextStats.text = Frances_Damage;
 

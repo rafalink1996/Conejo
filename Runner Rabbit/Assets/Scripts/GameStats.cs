@@ -29,6 +29,9 @@ public class GameStats : MonoBehaviour
     public int totalDarkMana;
 
     // crystal store
+    [Space (15)]
+    [Header ("POWER UPS")]
+
 
     public bool CoinTicket = false;
     public bool PortalBoost = false;
@@ -36,27 +39,33 @@ public class GameStats : MonoBehaviour
     public bool ExtraHearts = false;
     public bool ManaJar = false;
 
+    [Space(5)]
+    [Header("LEVEL BOUGHT")]
+
     public bool LevelBought = false;
     public int LevelBoughtCrystals;
     public int LevelBoughtCoins;
-
-
-
     public int leveBoughtID;
+
+    [Space(5)]
+    [Header("TIMED REWARD")]
 
     public int timedReward;
     public long timedRewardLastDate;
 
 
+    [Space(5)]
+    [Header("POWER LEVELS")]
     public int CarrotMissleLevel;
     public int RadishMissleLevel;
     public int EarDefenceLevel;
     public int KickReflectLevel;
     public int MagicLaserLevel;
 
+
+
+    [Space(5)]
     
-
-
     public int LevelReached;
 
     public List<Power> UnlockedPowers = new List<Power>();
@@ -65,23 +74,28 @@ public class GameStats : MonoBehaviour
 
 
 
-
-
     // level indicator
-
+    [Space(5)]
+    [Header ("CURRENT LEVEL")]
     public int LevelCount;// level stage
     public int LevelIndicator;// Scene ID
 
+    [Space(5)]
+    [Header("END OF LEVEL CONDITIONS")]
+    public bool bossDead;
+    public bool spawnHouse;
+
+
+    [Space(15)]
+
     //skins
+    [Header("SKINS")]
     public int topSkinID;
     public int botSkinID;
 
 
-    //audio saved stats
-    public float MusicVolume;
-    public float AudioVolume;
-
-
+    [Space(5)]
+    [Header("UNLOCKED SKINS")]
     public bool[] skinConditions = new[]
     {
         false,// 0. tophat
@@ -93,8 +107,7 @@ public class GameStats : MonoBehaviour
        
 
     };
-    public bool bossDead;
-    public bool spawnHouse;
+
 
     // achievemnts
     public bool[] AchivementConditions =  new[ ]{
@@ -116,7 +129,13 @@ public class GameStats : MonoBehaviour
 
         };
 
-    public float monstersKilled, MoneySpent, diedTimes;
+    //audio saved stats
+    [Space(10)]
+    [Header("AUDIO SETTINGS")]
+    public float MusicVolume;
+    public float AudioVolume;
+
+    
 
     //passives - Runes
 
@@ -135,6 +154,9 @@ public class GameStats : MonoBehaviour
         AlternateWorldsRune// start the game with a random powerup you dont own
     };
 
+
+    [Space(10)]
+    [Header("RUNES")]
     public Rune Rune1;
     public Rune Rune2;
 
@@ -159,10 +181,13 @@ public class GameStats : MonoBehaviour
 
     public bool MerchantRune;
 
-    public String LevelName;
+   
 
     // save Progress
+    [Space(10)]
+    [Header ("SAVED PROGRESS")]
 
+    public String LevelName;
     public int SavedLevelIndicator;
     public int SavedLevelCount;
     public float SavedLevelPercentage;
@@ -173,22 +198,29 @@ public class GameStats : MonoBehaviour
     public bool isInStore;
     public int savedDarkPowerID;
     public int savedLightPowerID;
+    public bool RunInProgressPortalBoost;
+    public bool LoadingSavedLevel;
+    public int Levelstartcoins;
+    public bool BossRewardCollected;
 
+    public float monstersKilled, MoneySpent, diedTimes;
 
-
-
+    [Space(10)]
+    [Header("LANGUAGE")]
 
     public int LanguageSelect;
     public bool languageselected;
 
-    public bool RunInProgressPortalBoost;
+   
     // 1 = english
     // 2 = Español
 
 
 
-    public bool LoadingSavedLevel;
-    public int Levelstartcoins;
+   
+
+
+    
 
 
     
@@ -523,6 +555,8 @@ public class GameStats : MonoBehaviour
 
         LanguageSelect = data.LanguageSelect;
         languageselected = data.languageSelected;
+
+        BossRewardCollected = data.BossRewardCollected;
 
     }
 

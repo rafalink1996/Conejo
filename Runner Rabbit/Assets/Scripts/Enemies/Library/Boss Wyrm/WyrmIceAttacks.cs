@@ -18,7 +18,7 @@ public class WyrmIceAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (wyrm.iceTimer <= 0)
+        if (wyrm.iceTimer <= 0 || wyrm.BossDead)
         {
             anim.SetTrigger("Shatter");
             

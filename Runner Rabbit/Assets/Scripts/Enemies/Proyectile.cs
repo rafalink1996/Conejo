@@ -5,6 +5,8 @@ using UnityEngine;
 public class Proyectile : MonoBehaviour
 {
     public bool DestroyP;
+    public bool Poison = false;
+    public float PoisonTime = 0;
 
     public int Damage = 1;
 

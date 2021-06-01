@@ -31,9 +31,11 @@ public class LanguageManager : MonoBehaviour
     public TextMeshProUGUI JungleStartText, JungleStartDescriptionText, JungleStartCostText, JungleStartCrystals, JungleStartCoins, JungleStartBackButton, JungleStartBuyButton; // Jungle Start
     public TextMeshProUGUI PortalRoomStartText, PortalRoomStartDescriptionText, PortalRoomStartCostText, PortalRoomStartCrystals, PortalRoomStartCoins, PortalRoomStartBackButton, PortalRoomStartBuyButton; //Portal roomStart
     public TextMeshProUGUI RewriteLevelQuestion, RewriteLevelDescription, RewriteLevelButton, RewriteLevelBackButton; //Rewrite level
-   
 
+    [Space(15)]
+    [Header("RuneForge")]
     //Texts RuneForge
+    public TextMeshProUGUI toStoreFromRunesButton;
     public TextMeshProUGUI RuneforgeTitle, RuneforgeBackButtonText, RuneName1, RuneName2, RuneName3, RuneName4, RuneName5, RuneName6, RuneName7, RuneName8, RuneName9, RuneName10, RuneDescription1, // RuneForge
                            RuneDescription2, RuneDescription3, RuneDescription4, RuneDescription5, RuneDescription6, RuneDescription7, RuneDescription8, RuneDescription9, RuneDescription10, EquipedRunes,
                            RuneSlot1Unequip, RuneSlot2Unequip, RuneSlot1Select, RuneSlot2Select;
@@ -86,7 +88,7 @@ public class LanguageManager : MonoBehaviour
     public string English_ExtraHeartsText = "Extra Hearts";
     public string English_PortalBoostText = "Portal Boost";
     public string English_FenixFeatherText = "phoenix Feather";
-    string English_RuneButton = "Runes";
+    string English_RuneButton = "Rune Forge";
 
     string English_CarrotPower = "Carrot Missile";
     string English_EarShieldPower = "Ear Shield";
@@ -258,7 +260,7 @@ public class LanguageManager : MonoBehaviour
     public string Español_ExtraHeartsText = "Corazones extra";
     public string Español_PortalBoostText = "Boost de portal";
     public string Español_FenixFeatherText = "Pluma de fénix";
-    string Español_RuneButton = "Runas";
+    string Español_RuneButton = "Forja de Runas";
 
     string Español_CarrotPower = "Misil zanahoria";
     string Español_EarShieldPower = "Escudo Oreja";
@@ -690,6 +692,8 @@ public class LanguageManager : MonoBehaviour
                 RewriteLevelButton.text = English_BuyButton;
 
                 // rune Forge
+                toStoreFromRunesButton.text = English_StoreTitle;
+
                 RuneforgeTitle.text = English_RuneForgeTitle;
                 EquipedRunes.text = English_EquipedRunes;
 
@@ -893,6 +897,7 @@ public class LanguageManager : MonoBehaviour
                 RewriteLevelButton.text = Español_BuyButton;
 
                 // Forja de runas
+                toStoreFromRunesButton.text = Español_StoreTitle;
                 RuneforgeTitle.text = Español_RuneForgeTitle;
                 EquipedRunes.text = Español_EquipedRunes;
 
@@ -1086,6 +1091,7 @@ public class LanguageManager : MonoBehaviour
                 RewriteLevelButton.text = Frances_BuyButton;
 
                 // rune Forge
+                toStoreFromRunesButton.text = Frances_StoreTitle;
                 RuneforgeTitle.text = Frances_RuneForgeTitle;
                 EquipedRunes.text = Frances_EquipedRunes;
 

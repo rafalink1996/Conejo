@@ -25,7 +25,7 @@ public class ShamanGoblin : MonoBehaviour
         health.maxHealth = myHealth;
         spawnTime = Random.Range(0.5f, 2f);
         anim = GetComponent<Animator>();
-        summonTime = 3f;
+        summonTime = 1f;
         summonContainer = transform.Find("SummonContainer");
         if (transform.position.y > 0)
         {
@@ -102,7 +102,7 @@ public class ShamanGoblin : MonoBehaviour
         summon.transform.position = transform.position + new Vector3(0, 0, 0);
         summon.transform.SetParent(summonContainer);
         enemiespresent = true;
-        health.TakeDamage(10);
+        //health.TakeDamage(10);
     }
     void Over()
     {

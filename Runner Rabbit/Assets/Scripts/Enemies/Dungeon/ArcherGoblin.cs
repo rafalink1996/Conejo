@@ -22,7 +22,7 @@ public class ArcherGoblin : MonoBehaviour
     {
         
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 30;
+        health.maxHealth = 9;
         anim = GetComponent<Animator>();
        /* if (transform.position.y > 0)
         {
@@ -83,7 +83,7 @@ public class ArcherGoblin : MonoBehaviour
     }
     void Attack()
     {
-        health.TakeDamage(10);
+        health.TakeDamage(3);
     }
     void Arrow()
     {

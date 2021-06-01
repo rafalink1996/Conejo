@@ -76,6 +76,12 @@ public class PowerMEnu : MonoBehaviour
     public TextMeshProUGUI KickReflectCostText;
     public TextMeshProUGUI MagicLaserCostText;
 
+    bool isInRuneShop;
+    [SerializeField] Button RuneStoreButton = null;
+    [SerializeField] GameObject SeRunesTextHolder = null;
+    [SerializeField] GameObject seStoreTextHolder = null;
+
+
 
 
 
@@ -844,6 +850,7 @@ public class PowerMEnu : MonoBehaviour
         LeanTween.moveLocalX(MainMenuHolder, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
         LeanTween.moveLocalX(SkinMenuHolder, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
         LeanTween.moveLocalX(StoreHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
+       
 
 
         //StartCoroutine(GoToPowersMenu());
@@ -855,6 +862,7 @@ public class PowerMEnu : MonoBehaviour
         LeanTween.moveLocalX(MainMenuHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
         LeanTween.moveLocalX(SkinMenuHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
         LeanTween.moveLocalX(StoreHolder, 1920, TransTime).setEase(LeanTweenType.easeOutExpo);
+        
 
 
 
@@ -889,6 +897,42 @@ public class PowerMEnu : MonoBehaviour
         yield return null;
     }
     */
+
+    public void GoToRuneShop()
+    {
+        if (!isInRuneShop)
+        {
+            isInRuneShop = true;
+            StartCoroutine(DeactivateRuneButton());
+            //LeanTween.moveLocalX(BGSpriteGoup, -3640, TransTime).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocalX(MainMenuHolder, -3840, TransTime).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocalX(SkinMenuHolder, -3840, TransTime).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocalX(StoreHolder, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocalY(seStoreTextHolder, 138, TransTime).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocalY(SeRunesTextHolder, -88, TransTime).setEase(LeanTweenType.easeOutExpo);
+        }
+        else
+        {
+            isInRuneShop = false;
+            StartCoroutine(DeactivateRuneButton());
+           // LeanTween.moveLocalX(BGSpriteGoup, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocalX(MainMenuHolder, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocalX(SkinMenuHolder, -1920, TransTime).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocalX(StoreHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocalY(seStoreTextHolder, -88, TransTime).setEase(LeanTweenType.easeOutExpo);
+            LeanTween.moveLocalY(SeRunesTextHolder, 138, TransTime).setEase(LeanTweenType.easeOutExpo);
+
+        }
+
+    }
+
+    IEnumerator DeactivateRuneButton()
+    {
+        RuneStoreButton.interactable = false;
+        yield return new WaitForSeconds(TransTime);
+        RuneStoreButton.interactable = true;
+    }
+       
 
 
     public void BuyItem(float ItemID)

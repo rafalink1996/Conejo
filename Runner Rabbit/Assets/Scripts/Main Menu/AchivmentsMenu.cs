@@ -5,74 +5,22 @@ using UnityEngine;
 public class AchivmentsMenu : MonoBehaviour
 {
     public GameObject[] AchivmentsLocked;
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
 
-        if (GameStats.stats.AchivementConditions[0] == true)
+        for (int i = 0; i < GameStats.stats.AchivementConditions.Length; i++)
         {
-            AchivmentsLocked[0].SetActive(false);
+            if (GameStats.stats.AchivementConditions[i] == true)
+            {
+                AchivmentsLocked[i].SetActive(false);
+            }
+
         }
-        if (GameStats.stats.AchivementConditions[1] == true)
-        {
-            AchivmentsLocked[1].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[2] == true)
-        {
-            AchivmentsLocked[2].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[3] == true)
-        {
-            AchivmentsLocked[3].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[4] == true)
-        {
-            AchivmentsLocked[4].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[5] == true)
-        {
-            AchivmentsLocked[5].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[6] == true)
-        {
-            AchivmentsLocked[6].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[7] == true)
-        {
-            AchivmentsLocked[7].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[8] == true)
-        {
-            AchivmentsLocked[8].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[9] == true)
-        {
-            AchivmentsLocked[9].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[10] == true)
-        {
-            AchivmentsLocked[10].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[11] == true)
-        {
-            AchivmentsLocked[11].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[12] == true)
-        {
-            AchivmentsLocked[12].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[13] == true)
-        {
-            AchivmentsLocked[13].SetActive(false);
-        }
-        if (GameStats.stats.AchivementConditions[14] == true)
-        {
-            AchivmentsLocked[14].SetActive(false);
-        }
-    
-}
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -85,7 +33,7 @@ public class AchivmentsMenu : MonoBehaviour
             GameStats.stats.AchivementConditions[8] = true;
             GameStats.stats.SaveStats();
         }
-       
+
         if (GameStats.stats.crystals >= 500)
         {
             GameStats.stats.AchivementConditions[7] = true;
@@ -136,8 +84,30 @@ public class AchivmentsMenu : MonoBehaviour
 
         }
 
+        if (GameStats.stats.MoneySpent >= 1000)
+        {
+            GameStats.stats.AchivementConditions[12] = true;
+            GameStats.stats.SaveStats();
+
+        }
+
+        if(GameStats.stats.monstersKilled >= 400)
+        {
+            GameStats.stats.AchivementConditions[11] = true;
+        }
+
         // update achivements
 
+        for (int i = 0; i < GameStats.stats.AchivementConditions.Length; i++)
+        {
+            if (GameStats.stats.AchivementConditions[i] == true)
+            {
+                AchivmentsLocked[i].SetActive(false);
+            }
+
+        }
+
+        /*
         if (GameStats.stats.AchivementConditions[0]== true)
         {
             AchivmentsLocked[0].SetActive(false);
@@ -198,5 +168,6 @@ public class AchivmentsMenu : MonoBehaviour
         {
             AchivmentsLocked[14].SetActive(false);
         }
+        */
     }
 }

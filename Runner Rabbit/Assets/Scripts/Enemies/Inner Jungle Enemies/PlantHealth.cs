@@ -15,7 +15,7 @@ public class PlantHealth : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (healthTop.health < healthBot.health)
         {

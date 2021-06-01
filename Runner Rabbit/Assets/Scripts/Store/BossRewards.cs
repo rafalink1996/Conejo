@@ -45,9 +45,10 @@ public class BossRewards : MonoBehaviour
         }
 
         // display on
-        if (GameStats.stats.LevelCount == 3)
+        if (GameStats.stats.LevelCount == 3 && !GameStats.stats.BossRewardCollected)
         {
             BossRewardsObject.SetActive(true);
+            
         }
         else
         {
@@ -61,5 +62,7 @@ public class BossRewards : MonoBehaviour
     {
         GameStats.stats.coins += BossCoinReward;
         GameStats.stats.crystals += BossCrystalReward;
+        GameStats.stats.BossRewardCollected = true;
+        GameStats.stats.SaveStats();
     }
 }

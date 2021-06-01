@@ -94,7 +94,7 @@ public class MageGoblin : MonoBehaviour
         attack = false;
         invokeTime = Random.Range(8f, 15f);
         invoke = false;
-        health.TakeDamage(5);
+        health.TakeDamage(10);
         //anim.SetBool("hasAttackedOnce", true);
     }
     void DeactivateCollider()

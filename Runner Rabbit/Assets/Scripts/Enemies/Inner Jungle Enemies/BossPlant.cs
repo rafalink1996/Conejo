@@ -75,6 +75,11 @@ public class BossPlant : MonoBehaviour
         health.TakeDamage(5);
         //Invoke("DeactivateLeaves", 4f);
     }
+
+    void TakeDamageBite()
+    {
+        health.TakeDamage(5);
+    }
     void DeactivateLeaves()
     {
         //leafAttack.StopSpawning();

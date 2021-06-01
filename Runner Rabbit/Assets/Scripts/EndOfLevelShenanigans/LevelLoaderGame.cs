@@ -145,8 +145,10 @@ public class LevelLoaderGame : MonoBehaviour
                         GameStats.stats.AchivementConditions[14] = true;
                         
                     }
-                    
-                    
+
+                    GameStats.stats.BossRewardCollected = false;
+
+                    Debug.Log("loading Store");
                     StartCoroutine(loadAsyncGame("Store"));
                 }
 
@@ -161,9 +163,9 @@ public class LevelLoaderGame : MonoBehaviour
                     EndlessHosue.spawnhouse();
                     levelTime = 0;
                     GameStats.stats.PortalBoost = false;
-                    
-                    
-                    
+
+
+                    Debug.Log("loading Store");
                     StartCoroutine(loadAsyncGame("Store"));
                     
                 }

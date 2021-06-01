@@ -52,6 +52,7 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 3fad4b45d62c044acb8eb69634e82fe2, type: 3}
@@ -63,6 +64,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 9e08005dfce1340269897ffb887211bc, type: 3}
     totalSpriteSurfaceArea: 8190536
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 2982588892313937018, guid: 62149c310da6d43678e9e5f75fb83af9, type: 3}
@@ -328,5 +331,6 @@ SpriteAtlas:
   - CP_Idle_4
   - CP_Idle_5
   - RazorLeaf
+  m_RenderDataMap: {}
   m_Tag: CPAtlas
   m_IsVariant: 0

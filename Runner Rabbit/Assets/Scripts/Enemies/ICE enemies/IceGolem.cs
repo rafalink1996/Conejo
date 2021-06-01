@@ -24,7 +24,7 @@ public class IceGolem : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 80;
+        health.maxHealth = 60;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
@@ -73,21 +73,21 @@ public class IceGolem : MonoBehaviour
         if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
             anim.SetTrigger("Die");
-            Boulder3.BreakBoulder = true;
+            Boulder2.BreakBoulder = true;
             if (GameStats.stats.monstersKilled < 400 && health.Hit)
             {
                 GameStats.stats.monstersKilled++;
             }
         }
 
-        if (health.health <= health.health * 0.75f)
+        if (health.health <= (health.maxHealth * 2)/3)
         {
             Boulder1.BreakBoulder = true;
         }
 
-        if (health.health <= health.health * 0.50f)
+        if (health.health <= (health.maxHealth * 1)/3f)
         {
-            Boulder2.BreakBoulder = true;
+            Boulder3.BreakBoulder = true;
         }
     }
 

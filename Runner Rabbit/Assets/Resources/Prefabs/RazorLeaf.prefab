@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4868721154786733002}
   - component: {fileID: 4868721154786733003}
   - component: {fileID: 8740948335729241015}
-  - component: {fileID: 7257455997484081246}
+  - component: {fileID: 1347896063312342041}
   - component: {fileID: 546880837588055044}
+  - component: {fileID: 4156398043595548039}
   m_Layer: 15
   m_Name: RazorLeaf
   m_TagString: Enemy proyectile
@@ -49,6 +50,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -97,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.189408, y: -0.29463547}
+  m_Offset: {x: -0.12962234, y: -0.29463547}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,9 +110,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7691808, y: 1.4643608}
+  m_Size: {x: 3.6539938, y: 1.4643608}
   m_EdgeRadius: 0
---- !u!114 &7257455997484081246
+--- !u!114 &1347896063312342041
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,10 +121,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4868721154786733000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eebffe703510f4a63898aa91bd58257d, type: 3}
+  m_Script: {fileID: 11500000, guid: f47915549c8fe4bc6957dbd0446d8b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -4
+  speed: 10
+  sourceTransform: {fileID: 0}
 --- !u!114 &546880837588055044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,4 +138,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyP: 0
+  Poison: 0
+  PoisonTime: 0
   Damage: 1
+--- !u!50 &4156398043595548039
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4868721154786733000}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

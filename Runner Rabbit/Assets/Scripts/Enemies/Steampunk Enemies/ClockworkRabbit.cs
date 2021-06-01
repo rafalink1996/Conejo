@@ -13,6 +13,7 @@ public class ClockworkRabbit : MonoBehaviour
     bool attack;
     EnemyHealth health;
     public Transform ProyectileSpawner;
+    [SerializeField] GameObject ClockworkBunnyProyectile;
 
 
     // Start is called before the first frame update
@@ -84,8 +85,9 @@ public class ClockworkRabbit : MonoBehaviour
     }
     void EnergyBall()
     {
-        GameObject EnergyBall = GameObject.Instantiate(Resources.Load("Prefabs/BunnySteampunkProyectile") as GameObject);
-        EnergyBall.transform.position = transform.position + new Vector3(-2.25f, -0.35f, 0);
+        //GameObject EnergyBall = GameObject.Instantiate(Resources.Load("Prefabs/BunnySteampunkProyectile") as GameObject);
+        GameObject EnergyBall = GameObject.Instantiate(ClockworkBunnyProyectile) as GameObject;
+        EnergyBall.transform.position = ProyectileSpawner.position;
 
     }
     void Over()

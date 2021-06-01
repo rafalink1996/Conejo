@@ -31,7 +31,7 @@ public class SlimeBall : MonoBehaviour
         if (collision.name == "Kick")
         {
             reflected = true;
-            print("kick");
+            //print("kick");
             if (collision.GetComponent<Kick>().reflect == false)
             {
                 transform.rotation = Quaternion.AngleAxis(Random.Range(120, 240), Vector3.forward);

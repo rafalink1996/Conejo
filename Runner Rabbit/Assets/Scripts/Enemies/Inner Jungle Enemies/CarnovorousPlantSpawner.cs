@@ -11,6 +11,7 @@ public class CarnovorousPlantSpawner : MonoBehaviour
     public float SpawnTimer = 4f;
 
     public bool DarkSide = false;
+    [SerializeField] Transform sourceTransform;
 
     private IEnumerator Spawner;
 
@@ -59,6 +60,11 @@ public class CarnovorousPlantSpawner : MonoBehaviour
 
         GameObject SE = Instantiate(SimpleEnemy) as GameObject;
         SE.transform.position = new Vector2(transform.position.x, transform.position.y + Random.Range(-8, 8));
+        SharpLeafProyectile SES = SE.GetComponent<SharpLeafProyectile>();
+        if(SES != null)
+        {
+            SES.sourceTransform = sourceTransform;
+        }
 
     }
 

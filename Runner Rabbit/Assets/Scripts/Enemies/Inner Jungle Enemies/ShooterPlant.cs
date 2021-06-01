@@ -19,7 +19,7 @@ public class ShooterPlant : MonoBehaviour
     {
         target = GameObject.FindWithTag("Player").transform;
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 50;
+        health.maxHealth = 30;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {

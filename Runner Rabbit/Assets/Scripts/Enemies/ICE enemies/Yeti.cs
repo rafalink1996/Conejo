@@ -32,7 +32,7 @@ public class Yeti : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.parent.transform.position.y > 0)
+        if (transform.transform.position.y > 0)
         {
             bossTop = false;
         }

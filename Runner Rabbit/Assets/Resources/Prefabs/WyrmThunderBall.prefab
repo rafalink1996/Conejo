@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1020491644487376796}
   - component: {fileID: 1020491644487376787}
   - component: {fileID: 4305298283374571350}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: WyrmThunderBall
   m_TagString: Enemy proyectile
   m_Icon: {fileID: 0}
@@ -195,6 +195,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -312,4 +313,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyP: 0
   Damage: 1

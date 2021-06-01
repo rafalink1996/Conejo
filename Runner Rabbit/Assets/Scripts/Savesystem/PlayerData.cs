@@ -119,6 +119,8 @@ public class PlayerData
     public bool languageSelected;
 
 
+    public bool BossRewardCollected;
+
 
 
 
@@ -220,6 +222,8 @@ public class PlayerData
 
         LanguageSelect = gamestats.LanguageSelect;
         languageSelected = gamestats.languageselected;
+
+        BossRewardCollected = gamestats.BossRewardCollected;
 
     }
 }

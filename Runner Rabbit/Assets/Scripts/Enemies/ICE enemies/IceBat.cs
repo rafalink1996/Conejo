@@ -30,7 +30,7 @@ public class IceBat : MonoBehaviour
     {
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 30;
+        health.maxHealth = 9;
         //transform.position = StartPos.position;
         anim = GetComponent<Animator>();
         //anim.SetFloat("Type", Random.Range(0, 2));
@@ -44,7 +44,7 @@ public class IceBat : MonoBehaviour
             enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
         }*/
         spawnTime = Random.Range(0.1f, 2f);
-        attackTime = Random.Range(1.2f, 3.3f);
+        attackTime = Random.Range(1.2f, 2.3f);
         
     }
 
@@ -69,7 +69,7 @@ public class IceBat : MonoBehaviour
         }
         if (Cha != null)
         {
-            if (!attack && batTop == Cha.top && spawned)
+            if (!attack /*&& batTop == Cha.top*/ && spawned)
             {
                 attackTime -= Time.deltaTime;
 
@@ -80,15 +80,23 @@ public class IceBat : MonoBehaviour
         {
             //anim.SetTrigger("Attack");
 
-            attackTime = Random.Range(1.2f, 3.3f);
+            attackTime = Random.Range(1.2f, 2.3f);
            
             attack = true;
         }
         if (!attack && !GoBack)
         {
-            if(Cha != null)
+            if(Cha != null )
             {
-                EndMarker.position = Cha.transform.position;
+                if(batTop == Cha.top)
+                {
+                    EndMarker.position = Cha.transform.position;
+                }
+                else
+                {
+                    EndMarker.position =  new Vector3(Cha.transform.position.x, transform.position.y, 0);
+                }
+               
             }
            
         }
@@ -129,7 +137,7 @@ public class IceBat : MonoBehaviour
         {
             attack = false;
             GoBack = true;
-            health.TakeDamage(10);
+            health.TakeDamage(3);
         }
 
 
