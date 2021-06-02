@@ -27,6 +27,12 @@ public class LevelLoaderMainMenu : MonoBehaviour
             NewRunButton.SetActive(true);
             ContinueRunButton.SetActive(true);
         }
+        else
+        {
+            StartButton.SetActive(true);
+            NewRunButton.SetActive(false);
+            ContinueRunButton.SetActive(false);
+        }
         GameStats.stats.SaveStats();
         transition.SetActive(false);
 

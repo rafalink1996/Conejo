@@ -176,10 +176,13 @@ public class character : MonoBehaviour
 
     public bool isPoisoned = false;
     float poisonTime = 0;
-    [SerializeField] GameObject poisonImageUI;
+    //[SerializeField] GameObject poisonImageUI;
     [SerializeField] GameObject isPoisonedEffect;
     [SerializeField] GameObject PoisonDamageeffect;
     [SerializeField] Color PosionDamageColor;
+
+    //kickObject
+    [SerializeField] GameObject kickObject;
 
 
     
@@ -1109,9 +1112,12 @@ public class character : MonoBehaviour
         Time.timeScale = 0;
         animator.SetTrigger("Dead");
         animator.SetBool("Death", true);
+        GameStats.stats.RunInProgress = false;
+        GameStats.stats.SaveStats();
 
 
         yield return new WaitForSecondsRealtime(1f);
+
 
 
         DeathScreen.SetActive(true);
@@ -1318,43 +1324,52 @@ public class character : MonoBehaviour
                 // kick
 
                 animator.SetTrigger("Kick");
-                GameObject kickT1 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
-                kickT1.transform.position = transform.position;
-                kickT1.name = "Kick";
-                Kick kickT1Stats = kickT1.GetComponent<Kick>();
-                kickT1Stats.reflect = false;
+                kickObject.SetActive(true);
+                kickObject.GetComponent<Kick>().reflect = false;
+
+                //GameObject kickT1 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
+                //kickT1.transform.position = transform.position;
+                //kickT1.name = "Kick";
+                //Kick kickT1Stats = kickT1.GetComponent<Kick>();
+                //kickT1Stats.reflect = false;
                 break;
             case 32:
                 // kick
 
                 animator.SetTrigger("Kick");
-                GameObject kickT2 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
-                kickT2.transform.position = transform.position;
-                kickT2.name = "Kick";
-                Kick kickT2Stats = kickT2.GetComponent<Kick>();
-                kickT2Stats.reflect = false;
+                kickObject.SetActive(true);
+                kickObject.GetComponent<Kick>().reflect = false;
+                //GameObject kickT2 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
+                //kickT2.transform.position = transform.position;
+                //kickT2.name = "Kick";
+                //Kick kickT2Stats = kickT2.GetComponent<Kick>();
+                //kickT2Stats.reflect = false;
                 break;
             case 33:
                 // kick
 
                 animator.SetTrigger("Kick");
-                GameObject kickT3 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
-                kickT3.transform.position = transform.position;
-                kickT3.name = "Kick";
-                Kick kickT3Stats = kickT3.GetComponent<Kick>();
-                kickT3Stats.reflect = true;
+                kickObject.SetActive(true);
+                kickObject.GetComponent<Kick>().reflect = true;
+                //GameObject kickT3 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
+                //kickT3.transform.position = transform.position;
+                //kickT3.name = "Kick";
+                //Kick kickT3Stats = kickT3.GetComponent<Kick>();
+                //kickT3Stats.reflect = true;
                 break;
             case 34:
                 // kick
 
                 animator.SetTrigger("Kick");
-
-                GameObject kickT4 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
-                kickT4.transform.position = transform.position;
-                kickT4.name = "Kick";
-                Kick kickT4Stats = kickT4.GetComponent<Kick>();
-                kickT4Stats.reflect = true;
+                kickObject.SetActive(true);
+                kickObject.GetComponent<Kick>().reflect = true;
+                //GameObject kickT4 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
+                // kickT4.transform.position = transform.position;
+                // kickT4.name = "Kick";
+                // Kick kickT4Stats = kickT4.GetComponent<Kick>();
+                // kickT4Stats.reflect = true;
                 break;
+
             case 41:
 
                 break;

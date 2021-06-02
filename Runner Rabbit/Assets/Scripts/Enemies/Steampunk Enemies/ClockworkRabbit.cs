@@ -20,7 +20,7 @@ public class ClockworkRabbit : MonoBehaviour
     void Start()
     {
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 80;
+        health.maxHealth = 60;
         anim = GetComponent<Animator>();
         if (transform.position.y > 0)
         {
@@ -88,6 +88,7 @@ public class ClockworkRabbit : MonoBehaviour
         //GameObject EnergyBall = GameObject.Instantiate(Resources.Load("Prefabs/BunnySteampunkProyectile") as GameObject);
         GameObject EnergyBall = GameObject.Instantiate(ClockworkBunnyProyectile) as GameObject;
         EnergyBall.transform.position = ProyectileSpawner.position;
+        EnergyBall.GetComponentInChildren<ClockworkRabbitProyectile>().sourceTransform = gameObject.transform;
 
     }
     void Over()

@@ -49,7 +49,7 @@ public class SlimeBall : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
             print("hit " + collision.gameObject.name);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
 
 

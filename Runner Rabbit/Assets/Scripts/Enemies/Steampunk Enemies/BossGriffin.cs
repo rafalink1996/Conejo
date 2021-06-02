@@ -13,9 +13,13 @@ public class BossGriffin : MonoBehaviour
     public GameObject[] healthBar;
     public bool BossDead;
     Animator anim;
+
+    bool spawned;
+    [SerializeField] GameObject GriffinBalls;
     // Start is called before the first frame update
     void Start()
     {
+        GriffinBalls.SetActive(false);
         health = GetComponent<EnemyHealth>();
         health.maxHealth = 800;
         BossDead = false;
@@ -119,5 +123,11 @@ public class BossGriffin : MonoBehaviour
         {
             Destroy(transform.parent.gameObject);
         }
+    }
+
+    void Spawn()
+    {
+        spawned = true;
+        GriffinBalls.SetActive(true);
     }
 }

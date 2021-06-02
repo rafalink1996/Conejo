@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BasicEnemyProyectile : MonoBehaviour
 {
+
     public float speed = 20f;
     bool reflected;
     public bool piercing = false;

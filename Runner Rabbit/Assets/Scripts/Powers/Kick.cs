@@ -5,17 +5,17 @@ using UnityEngine;
 public class Kick : MonoBehaviour
 {
     public bool reflect;
-    GameObject cha;
+    //GameObject cha;
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 0.2f);//20.61
-        cha = GameObject.FindObjectOfType<character>().gameObject;
+        //Destroy(gameObject, 0.2f);//20.61
+        Invoke("Deactivate", 0.2f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Deactivate()
     {
-        transform.position = cha.transform.position; 
+        gameObject.SetActive(false);
     }
+   
 }

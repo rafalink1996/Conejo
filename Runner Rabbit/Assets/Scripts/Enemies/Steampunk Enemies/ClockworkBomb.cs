@@ -11,16 +11,16 @@ public class ClockworkBomb : MonoBehaviour
     
     public Animator animator;
     EnemyHealth health;
-    
-    public CircleCollider2D ExplotionCollider;
+
+    [SerializeField] CircleCollider2D myCollider;
     // Start is called before the first frame update
     void Start()
     {
-        
+        myCollider = gameObject.GetComponent<CircleCollider2D>();
         health = GetComponent<EnemyHealth>();
-        health.maxHealth = 10;
+        health.maxHealth = 1;
         StartCoroutine(ExplodeTimer());
-        ExplotionCollider.enabled = false;
+       
         
     }
 
@@ -34,26 +34,20 @@ public class ClockworkBomb : MonoBehaviour
         if (health.health <= 0 || GameStats.stats.spawnHouse)
         {
             animator.SetTrigger("Explode!");
-          
-
         }
-
     }
+
+    
 
     IEnumerator ExplodeTimer()
     {
         yield return new WaitForSeconds(timeToExplode);
-        ExplotionCollider.enabled = true;
+        
         FindObjectOfType<AudioManager>().Play("ClockworkBombExplode");
         animator.SetTrigger("Explode!");
-        if (ExplotionCollider.radius < 1.25f)
-        {
-            ExplotionCollider.radius += 0.2f;
-        }
+      
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
-
-
     }
 
     void Over()
