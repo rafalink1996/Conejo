@@ -8,13 +8,19 @@ public class BlueHandFollow : MonoBehaviour
     private Transform target;
     public float speed;
     private Animator animator;
-    public float TimeBetweenAttacks;
+
+    public float TimeBetweenAttacksMin;
+    public float TimeBetweenAttacksMax;
+
     public EnemyHealth BlueMageHealth;
-    public int AttackSelfDamage;
+    public float AttackSelfDamage;
     public float offset;
 
     SpriteRenderer HandSpriteR;
-   
+
+    [SerializeField] string missleTag = "MageMissle";
+    ObjectPooler myObjectPooler;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +29,10 @@ public class BlueHandFollow : MonoBehaviour
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
         StartCoroutine(Attack());
-        AttackSelfDamage = 3;
+
+        myObjectPooler = ObjectPooler.Instance;
+        missleTag = "MageMissle";
+       
     }
 
     // Update is called once per frame
@@ -36,15 +45,24 @@ public class BlueHandFollow : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(TimeBetweenAttacks);
+            yield return new WaitForSeconds(Random.Range(TimeBetweenAttacksMin, TimeBetweenAttacksMax));
             animator.SetTrigger("Attack");
             yield return new WaitForSeconds(0.5f);
-            GameObject MageMissle = GameObject.Instantiate(Resources.Load("Prefabs/MageMissle") as GameObject);
-            MageMissle.transform.position = transform.position;
-            Destroy(MageMissle, 2f);
+            //GameObject MageMissle = GameObject.Instantiate(Resources.Load("Prefabs/MageMissle") as GameObject);
+            //MageMissle.transform.position = transform.position;
+            //Destroy(MageMissle, 2f);
+
+            GameObject ShootMissle = myObjectPooler.SpwanFromPool(missleTag, transform.position, Quaternion.identity);
+            MageMissle myMageMissle = ShootMissle.GetComponent<MageMissle>();
+            if (myMageMissle != null && BlueMageHealth.gameObject.transform != null)
+            {
+                myMageMissle.sourceTransform = BlueMageHealth.gameObject.transform;
+            }
+
+
             BlueMageHealth.TakeDamage(AttackSelfDamage);
         }
-       
+
     }
 
     public void ActivateRenderer()
@@ -60,5 +78,5 @@ public class BlueHandFollow : MonoBehaviour
 
     }
 
-   
+
 }

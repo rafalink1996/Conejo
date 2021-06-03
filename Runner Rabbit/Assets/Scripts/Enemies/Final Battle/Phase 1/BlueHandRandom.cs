@@ -11,16 +11,20 @@ public class BlueHandRandom : MonoBehaviour
     public float minPosY;
     public float maxPosY;
 
-    public float TimeBetweenAttacks;
+    public float TimeBetweenAttacksMax;
+    public float TimeBetweenAttacksMin;
+
 
     public float YPos;
 
     public EnemyHealth BlueMageHealth;
-    public int AttackSelfDamage;
+    public float AttackSelfDamage;
 
     SpriteRenderer HandSpriteR;
- 
-    
+
+
+    [SerializeField] string missleTag = "MageMissle";
+    ObjectPooler myObjectPooler;
 
 
 
@@ -31,8 +35,11 @@ public class BlueHandRandom : MonoBehaviour
         animator = GetComponent<Animator>();
         YPos = Random.Range(minPosY, maxPosY);
         StartCoroutine(Attack());
-        AttackSelfDamage = 3;
-        
+
+        myObjectPooler = ObjectPooler.Instance;
+        missleTag = "MageMissle";
+        //AttackSelfDamage = 1;
+
 
 
     }
@@ -66,12 +73,16 @@ public class BlueHandRandom : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(TimeBetweenAttacks);
+            yield return new WaitForSeconds(Random.Range(TimeBetweenAttacksMin, TimeBetweenAttacksMax));
             animator.SetTrigger("Attack");
             yield return new WaitForSeconds(0.5f);
-            GameObject MageMissle = GameObject.Instantiate(Resources.Load("Prefabs/MageMissle") as GameObject);
-            MageMissle.transform.position = transform.position;
-            Destroy(MageMissle, 2f);
+            GameObject ShootMissle = myObjectPooler.SpwanFromPool(missleTag, transform.position, Quaternion.identity);
+            MageMissle myMageMissle = ShootMissle.GetComponent<MageMissle>();
+            if (myMageMissle != null && BlueMageHealth.gameObject.transform != null)
+            {
+                myMageMissle.sourceTransform = BlueMageHealth.gameObject.transform;
+            }
+
             BlueMageHealth.TakeDamage(AttackSelfDamage);
             
         }

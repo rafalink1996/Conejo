@@ -99,6 +99,11 @@ public class GameManager : MonoBehaviour
             boss.transform.localPosition = new Vector3(0, 0, 0);
 
         }
+
+        if (FinalBoss)
+        {
+            ProgressBar.SetActive(false);
+        }
     }
 
     // Update is called once per frame

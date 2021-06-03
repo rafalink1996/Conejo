@@ -20,7 +20,7 @@ public class ShadowMage : MonoBehaviour
 
     // dissolve parameteres
     public float TransformDissolve;
-    
+
 
     //LifeBarUpdate
 
@@ -43,7 +43,9 @@ public class ShadowMage : MonoBehaviour
     ShadowShield ShadowShieldCS;
     public bool ShieldIsUp;
     public GameObject ShieldTokenSpawner;
-   
+
+    bool bossCanDie;
+
 
 
     void Start()
@@ -52,7 +54,8 @@ public class ShadowMage : MonoBehaviour
         //ShadowMageMaterial = GetComponent<SpriteRenderer>().material;
         ShadowMageHealth = GetComponent<EnemyHealth>();
         ShadowShieldCS = ShadowShield.GetComponent<ShadowShield>();
-        
+        bossCanDie = false;
+
     }
 
     // Update is called once per frame
@@ -69,7 +72,7 @@ public class ShadowMage : MonoBehaviour
         }
 
 
-        if (ShadowMageHealth.health <= 0)
+        if (ShadowMageHealth.health <= 0 && bossCanDie)
         {
             EnemySpawnerDown.SetActive(false);
             EnemySpawnerUp.SetActive(false);
@@ -81,7 +84,7 @@ public class ShadowMage : MonoBehaviour
 
             //StartCoroutine(Dissolve());
 
-           // ShadowMageMaterial.SetFloat("_Fade", TransformDissolve);
+            // ShadowMageMaterial.SetFloat("_Fade", TransformDissolve);
         }
 
         // Shadow Shield Is Up
@@ -90,15 +93,16 @@ public class ShadowMage : MonoBehaviour
         {
             ShieldIsUp = true;
         }
-        else {
+        else
+        {
             ShieldIsUp = false;
 
         }
 
 
-       
 
-        
+
+
 
 
 
@@ -109,7 +113,7 @@ public class ShadowMage : MonoBehaviour
         StartCoroutine(ShadwMagePhaseStart());
     }
 
-   
+
 
     IEnumerator ShadwMagePhaseStart()
     {
@@ -138,6 +142,7 @@ public class ShadowMage : MonoBehaviour
             }
             else
             {
+                bossCanDie = true;
                 break;
             }
         }
@@ -160,7 +165,7 @@ public class ShadowMage : MonoBehaviour
                 {
                     ShadowMageHealth.TakeDamage(5);
                 }
-                
+
                 yield return new WaitForSeconds(1.5f);
                 ShadowLaser.SetActive(false);
             }
@@ -172,10 +177,10 @@ public class ShadowMage : MonoBehaviour
                 break;
             }
 
-            
+
 
         }
-        
+
     }
 
     IEnumerator BossDead()
@@ -188,7 +193,7 @@ public class ShadowMage : MonoBehaviour
         gameObject.SetActive(false);
         SceneManager.LoadSceneAsync(9);
     }
- 
+
     IEnumerator Dissolve()
     {
         while (true)
@@ -207,7 +212,7 @@ public class ShadowMage : MonoBehaviour
         }
     }
 
-   
 
-   
+
+
 }

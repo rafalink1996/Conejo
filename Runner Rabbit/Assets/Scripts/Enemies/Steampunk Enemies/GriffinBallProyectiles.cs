@@ -9,6 +9,7 @@ public class GriffinBallProyectiles : MonoBehaviour
     bool reflected;
     float angle;
     public Transform sourceTransform;
+    [SerializeField] float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class GriffinBallProyectiles : MonoBehaviour
     void Update()
     {
 
-        transform.Translate(-13 * Time.deltaTime, 0, 0);
+        transform.Translate(speed * Time.deltaTime, 0, 0);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

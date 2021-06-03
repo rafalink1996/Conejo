@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 894868461588723673}
   - component: {fileID: 3591132447759730554}
   - component: {fileID: 8982506219346447280}
+  - component: {fileID: 1567133178954980007}
   m_Layer: 15
   m_Name: Proyectile
   m_TagString: Enemy proyectile
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   sourceTransform: {fileID: 0}
+  speed: -7
 --- !u!212 &894868461588723673
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -136,6 +138,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1567133178954980007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545734750563654980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyP: 0
+  Poison: 0
+  PoisonTime: 0
+  Damage: 1
 --- !u!1 &6119774974670739415
 GameObject:
   m_ObjectHideFlags: 0

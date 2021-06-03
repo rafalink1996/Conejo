@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BlueMage : MonoBehaviour
 {
-   
+
     //Material BlueMageMaterial;
 
     public GameObject BlueMageMask;
@@ -15,21 +15,30 @@ public class BlueMage : MonoBehaviour
     EnemyHealth BlueMageHealth;
     public float maxHealth;
     public float health;
-    
 
-    public BlueHandFollow HandFollow;
-    public BlueHandRandom HandRandom;
 
-    public GameObject HandRandom75;
-    public GameObject HandRandom50;
-    public GameObject HandRandom25;
+    //public BlueHandFollow HandFollow;
+    //public BlueHandRandom HandRandom;
 
-    public GameObject HandFollow50;
-    public GameObject HandFollow25;
+    //public GameObject HandRandom75;
+    //public GameObject HandRandom50;
+    //public GameObject HandRandom25;
+
+    //public GameObject HandFollow50;
+    //public GameObject HandFollow25;
 
     public SpawnHand[] SpawnPortals;
 
     public GameObject ShadowMage;
+
+    [SerializeField] GameObject[] HandsRandoms;
+    [SerializeField] GameObject[] Handsfollows;
+
+    bool HandsActivated100;
+    bool HandsActivated75;
+    bool HandsActivated50;
+    bool HandsActivated25;
+
 
 
     public float HealthPercetnage;
@@ -40,9 +49,9 @@ public class BlueMage : MonoBehaviour
     void Start()
     {
         BlueMageHealth = GetComponent<EnemyHealth>();
-       
 
-        
+        HandsActivated75 = false;
+
         maxTransformDissolve = 5;
         TransformDissolve = 0;
 
@@ -55,10 +64,10 @@ public class BlueMage : MonoBehaviour
 
         health = BlueMageHealth.health;
         maxHealth = BlueMageHealth.maxHealth;
-        
+
 
         HealthPercetnage = Mathf.Round((health / maxHealth) * 100);
-        
+
 
         TransformDissolve = 5 - ((HealthPercetnage / 100) * maxTransformDissolve);
         BlueMageMask.transform.localPosition = new Vector3(5 - TransformDissolve, 0, 0);
@@ -66,39 +75,99 @@ public class BlueMage : MonoBehaviour
         //BlueMageMaterial.SetFloat("_Dissolve", TransformDissolve -3);
 
 
-        if (HealthPercetnage <= 75 && HealthPercetnage > 50)
+        if (HealthPercetnage <= 100 && HealthPercetnage > 75 && !HandsActivated100)
         {
-            HandFollow.speed = 8;
-            HandFollow.TimeBetweenAttacks = 3;
-            HandFollow.AttackSelfDamage = 2;
-            HandRandom.AttackSelfDamage = 2;
-            HandRandom.TimeBetweenAttacks = 3;
-            HandRandom75.SetActive(true);
+            for (int i = 0; i < 1; i++)
+            {
+                HandsRandoms[i].SetActive(true);
+                BlueHandRandom HandRandomCS = HandsRandoms[i].GetComponent<BlueHandRandom>();
+                HandRandomCS.AttackSelfDamage = 3;
+                HandRandomCS.TimeBetweenAttacksMin = 2;
+                HandRandomCS.TimeBetweenAttacksMax = 4;
+            }
+            for (int i = 0; i < 1; i++)
+            {
+
+                Handsfollows[i].SetActive(true);
+                BlueHandFollow handFollowsCS = Handsfollows[i].GetComponent<BlueHandFollow>();
+                handFollowsCS.AttackSelfDamage = 3;
+                handFollowsCS.TimeBetweenAttacksMin = 2;
+                handFollowsCS.TimeBetweenAttacksMax = 4;
+            }
+
+            Debug.Log("health in 100%");
+            HandsActivated100 = true;
+        }
+        if (HealthPercetnage <= 75 && HealthPercetnage > 50 && !HandsActivated75)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                HandsRandoms[i].SetActive(true);
+                BlueHandRandom HandRandomCS = HandsRandoms[i].GetComponent<BlueHandRandom>();
+                HandRandomCS.AttackSelfDamage = 2;
+                HandRandomCS.TimeBetweenAttacksMin = 3;
+                HandRandomCS.TimeBetweenAttacksMax = 4;
+            }
+            for (int i = 0; i < 1; i++)
+            {
+
+                Handsfollows[i].SetActive(true);
+                BlueHandFollow handFollowsCS = Handsfollows[i].GetComponent<BlueHandFollow>();
+                handFollowsCS.AttackSelfDamage = 2;
+                handFollowsCS.TimeBetweenAttacksMin = 3;
+                handFollowsCS.TimeBetweenAttacksMax = 4;
+            }
+
+            Debug.Log("health in 75%");
+            HandsActivated75 = true;
         }
 
-        if (HealthPercetnage <= 50 && HealthPercetnage > 25)
+        if (HealthPercetnage <= 50 && HealthPercetnage > 25 && !HandsActivated50)
         {
-            HandFollow.speed = 10;
-            HandFollow.TimeBetweenAttacks = 2;
-            HandRandom.TimeBetweenAttacks = 2;
+            for (int i = 0; i < 3; i++)
+            {
+                HandsRandoms[i].SetActive(true);
+                BlueHandRandom HandRandomCS = HandsRandoms[i].GetComponent<BlueHandRandom>();
+                HandRandomCS.AttackSelfDamage = 1;
+                HandRandomCS.TimeBetweenAttacksMin = 3;
+                HandRandomCS.TimeBetweenAttacksMax = 4;
+            }
+            for (int i = 0; i < 2; i++)
+            {
 
-            HandFollow.AttackSelfDamage = 2;
-            HandRandom.AttackSelfDamage = 2;
-
-            HandRandom50.SetActive(true);
-            HandFollow50.SetActive(true);
+                Handsfollows[i].SetActive(true);
+                BlueHandFollow handFollowsCS = Handsfollows[i].GetComponent<BlueHandFollow>();
+                handFollowsCS.AttackSelfDamage = 1;
+                handFollowsCS.TimeBetweenAttacksMin = 3;
+                handFollowsCS.TimeBetweenAttacksMax = 4;
+            }
+            Debug.Log("health in 50%");
+            HandsActivated50 = true;
         }
-        if (HealthPercetnage <= 25)
+        if (HealthPercetnage <= 25 && HealthPercetnage > 0 && !HandsActivated25)
         {
-            HandFollow.AttackSelfDamage = 1;
-            HandFollow.speed = 12;
-            HandFollow.TimeBetweenAttacks = 1;
+            for (int i = 0; i < 4; i++)
+            {
+                HandsRandoms[i].SetActive(true);
+                BlueHandRandom HandRandomCS = HandsRandoms[i].GetComponent<BlueHandRandom>();
+                HandRandomCS.AttackSelfDamage = 0.5f;
+                HandRandomCS.TimeBetweenAttacksMin = 2;
+                HandRandomCS.TimeBetweenAttacksMax = 3;
 
-            HandRandom.AttackSelfDamage = 1;
-            HandRandom.TimeBetweenAttacks = 1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
 
-            HandRandom25.SetActive(true);
-            HandFollow25.SetActive(true);
+                Handsfollows[i].SetActive(true);
+                BlueHandFollow handFollowsCS = Handsfollows[i].GetComponent<BlueHandFollow>();
+                handFollowsCS.AttackSelfDamage = 0.5f;
+                handFollowsCS.TimeBetweenAttacksMin = 2;
+                handFollowsCS.TimeBetweenAttacksMax = 3;
+            }
+
+            Debug.Log("health in 25%");
+
+            HandsActivated25 = true;
         }
 
         if (HealthPercetnage <= 0)
@@ -112,10 +181,10 @@ public class BlueMage : MonoBehaviour
             SpawnPortals[5].PortalAnimatorSetTrigger();
             SpawnPortals[6].PortalAnimatorSetTrigger();
 
-            
-            
 
-           
+
+
+
         }
     }
 
@@ -128,13 +197,23 @@ public class BlueMage : MonoBehaviour
     IEnumerator DeactivateHands()
     {
         yield return new WaitForSeconds(1.5f);
-        HandRandom25.SetActive(false);
-        HandRandom50.SetActive(false);
-        HandRandom75.SetActive(false);
-        HandFollow.gameObject.SetActive(false);
-        HandRandom.gameObject.SetActive(false);
-        HandFollow50.SetActive(false);
-        HandFollow25.SetActive(false);
+
+        for (int i = 0; i < Handsfollows.Length; i++)
+        {
+            Handsfollows[i].SetActive(false);
+        }
+        for (int i = 0; i < HandsRandoms.Length; i++)
+        {
+            HandsRandoms[i].SetActive(false);
+        }
+
+        //HandRandom25.SetActive(false);
+        //HandRandom50.SetActive(false);
+        //HandRandom75.SetActive(false);
+        //HandFollow.gameObject.SetActive(false);
+        //HandRandom.gameObject.SetActive(false);
+        //HandFollow50.SetActive(false);
+        //HandFollow25.SetActive(false);
 
         ShadowMage ShadowMageScript = ShadowMage.GetComponent<ShadowMage>();
         ShadowMageScript.ShadowMageStart();

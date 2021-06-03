@@ -50,7 +50,7 @@ public class BossGriffin : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("ClockworkGrififnLaser");
         rayAttack.SetActive(true);
         
-        health.TakeDamage(20);
+        health.TakeDamage(10);
     }
     void ShootOne()
     {
@@ -93,7 +93,7 @@ public class BossGriffin : MonoBehaviour
         }
         FindObjectOfType<AudioManager>().Play("ClockworkGrififnSilence");
         silence = true;
-        health.TakeDamage(1);
+        health.TakeDamage(10);
         Invoke("DeactivateSilence", 10f);
     }
     void DeactivateSilence()

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3443083604976709766}
   - component: {fileID: 3443083604976709765}
   - component: {fileID: 3443083604976709764}
-  - component: {fileID: 2125975607215305265}
   - component: {fileID: 3561351288088494243}
+  - component: {fileID: 3321455573086747664}
   m_Layer: 15
   m_Name: Missle
   m_TagString: Enemy proyectile
@@ -50,6 +50,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -121,21 +122,6 @@ CircleCollider2D:
   m_Offset: {x: -1.5325036, y: 0.062128067}
   serializedVersion: 2
   m_Radius: 0.5622206
---- !u!114 &2125975607215305265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3443083604976709763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e763d1fe480a457ba94860b9d2fdcfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  reflected: 0
-  sourceTransform: {fileID: 0}
 --- !u!114 &3561351288088494243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +134,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyP: 0
+  Poison: 0
+  PoisonTime: 0
   Damage: 1
+--- !u!114 &3321455573086747664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3443083604976709763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caead8e5e691f45e0914a861c50050cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  reflected: 0
+  sourceTransform: {fileID: 0}
 --- !u!1 &7178735532873273167
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7178735532873273167}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 

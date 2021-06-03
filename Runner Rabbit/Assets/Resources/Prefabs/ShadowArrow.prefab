@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -7954744396226365135}
   - component: {fileID: 8817576002808565418}
   - component: {fileID: -1960380802401548288}
+  - component: {fileID: 5070755552301464763}
   m_Layer: 0
   m_Name: ShadowArrow
   m_TagString: FinalBossToken
@@ -51,6 +52,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -75,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -625376875
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dcade575244744987b7883f4cfd8debe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 260aa310542374a8984245556f3ca4cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,7 +95,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192843034608492075}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 557bd61e1023b4f4287f7d550818dfae, type: 3}
   m_Name: 
@@ -102,7 +104,11 @@ MonoBehaviour:
   RotateSpeed: 500
   damage: 20
   target: {fileID: 0}
-  watchenemies: []
+  rb: {fileID: 0}
+  posibleEnemies: []
+  targetYPos: 0
+  startYPos: 0
+  startXpos: 0
 --- !u!96 &713451619409916405
 TrailRenderer:
   serializedVersion: 2
@@ -119,6 +125,7 @@ TrailRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -334,3 +341,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5070755552301464763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192843034608492075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76813e94717914e3e98dd0d2e41871b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  RotateSpeed: 500
+  damage: 20
+  target: {fileID: 0}
+  watchenemies: []
