@@ -7,11 +7,26 @@ public class MageMissle : MonoBehaviour, IPooledObject
     public float speed = 3f;
     public bool reflected;
     public Transform sourceTransform;
+    [SerializeField] Transform myParent;
 
-
-    public void OnObjectSpawn()
+    public void Start()
     {
-        Invoke("Deactivate", 5);
+        myParent = transform.parent;
+    }
+
+
+   public void  OnObjectSpawn()
+    {
+
+        //Debug.Log("On ObjectSpawn Missle");
+        if(myParent != null)
+        {
+            transform.localPosition = new Vector3(0, 0, 0);
+            transform.rotation = myParent.rotation;
+
+        }
+        
+        Invoke("Deactivate", 3);
     }
 
     void Update()
@@ -48,7 +63,15 @@ public class MageMissle : MonoBehaviour, IPooledObject
 
     void Deactivate()
     {
-        gameObject.SetActive(false);
+        if(myParent != null)
+        {
+            myParent.gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+        
     }
 
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClockworkRabbitProyectile : MonoBehaviour
+public class ClockworkRabbitProyectile : MonoBehaviour, IPooledObject
 {
 
     public float frequency = 4.0f; // Speed of sine movement
@@ -18,6 +18,10 @@ public class ClockworkRabbitProyectile : MonoBehaviour
     
     Vector3 pos;
     Vector3 axis;
+
+
+    Transform myParent;
+    [SerializeField] bool hasParent;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,29 @@ public class ClockworkRabbitProyectile : MonoBehaviour
         pos = transform.position;
         axis = transform.up;
 
+        if (hasParent)
+        {
+            myParent = transform.parent;
+        }
+
+    }
+
+    public void OnObjectSpawn()
+    {
+        if (myParent != null)
+        {
+        
+            transform.localPosition = new Vector3(0, 0, 0);
+            transform.rotation = myParent.rotation;
+
+        }
+        
+        localmagnitude = 0;
+        WaveTime = 0;
+        pos = transform.position;
+        axis = transform.up;
+
+        Invoke("Deactivate", 3);
     }
 
     // Update is called once per frame
@@ -77,8 +104,28 @@ public class ClockworkRabbitProyectile : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
             print("hit " + collision.gameObject.name);
-            Destroy(transform.parent.gameObject);
+            if (myParent != null)
+            {
+                myParent.gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
+    }
+
+    void Deactivate()
+    {
+        if (myParent != null)
+        {
+            myParent.gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 }
 

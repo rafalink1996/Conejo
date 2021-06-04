@@ -7,17 +7,23 @@ public class ObjectPooler : MonoBehaviour
     [System.Serializable]
     public class pool
     {
-        public GameObject Parent;
+
+        public bool Parent;
         public string tag;
         public GameObject prefab;
         public int size;
+        public bool Instantiate;
+
+        public int LevelID;
+        public bool allLevels;
     }
 
     //singelton Pattern
-   
+
 
     public List<pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
+
 
     #region singleton
     public static ObjectPooler Instance;
@@ -34,23 +40,40 @@ public class ObjectPooler : MonoBehaviour
 
         foreach (var pool in pools)
         {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
-            for (int i = 0;  i < pool.size; i++)
+            if (pool.Instantiate)
             {
-                GameObject obj = Instantiate(pool.prefab);
-                obj.SetActive(false);
-                if (pool.Parent != null)
+                GameObject myParent;
+                if (pool.Parent)
                 {
-                    obj.transform.parent = pool.Parent.transform;
+                    GameObject ParentObject = new GameObject();
+                    ParentObject.name = pool.tag + " Container";
+                    ParentObject.transform.parent = gameObject.transform;
+                    ParentObject.transform.localPosition = new Vector3(0, 0, 0);
+                    myParent = ParentObject;
                 }
-                objectPool.Enqueue(obj);
-               
+                else
+                {
+                    myParent = null;
+                }
+                Queue<GameObject> objectPool = new Queue<GameObject>();
+                for (int i = 0; i < pool.size; i++)
+                {
+                    GameObject obj = Instantiate(pool.prefab);
+                    obj.SetActive(false);
+                    if (myParent != null)
+                    {
+                        obj.transform.parent = myParent.transform;
+                    }
+                    objectPool.Enqueue(obj);
+
+                }
+                poolDictionary.Add(pool.tag, objectPool);
             }
-            poolDictionary.Add(pool.tag, objectPool);
+
         }
     }
 
-    public GameObject SpwanFromPool(string tag, Vector3 position, Quaternion rotation)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, bool Parent = false)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
@@ -62,11 +85,24 @@ public class ObjectPooler : MonoBehaviour
         ObjectToSpawn.transform.position = position;
         ObjectToSpawn.transform.rotation = rotation;
 
-        IPooledObject pooledObj = ObjectToSpawn.GetComponent<IPooledObject>();
-        if(pooledObj != null)
+        if (Parent)
         {
-            pooledObj.OnObjectSpawn();
+            IPooledObject pooledObj = ObjectToSpawn.GetComponentInChildren<IPooledObject>();
+            if (pooledObj != null)
+            {
+                pooledObj.OnObjectSpawn();
+            }
         }
+        else
+        {
+            IPooledObject pooledObj = ObjectToSpawn.GetComponent<IPooledObject>();
+            if (pooledObj != null)
+            {
+                pooledObj.OnObjectSpawn();
+            }
+
+        }
+
 
         poolDictionary[tag].Enqueue(ObjectToSpawn);
         return ObjectToSpawn;

@@ -176,6 +176,7 @@ MonoBehaviour:
   magnitude: 1.5
   speed: 0.2
   sourceTransform: {fileID: 0}
+  hasParent: 1
 --- !u!114 &8212749359529271753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyP: 1
+  DestroyP: 0
   Poison: 0
   PoisonTime: 0
   Damage: 2
@@ -216,7 +217,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5058350840981803750}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

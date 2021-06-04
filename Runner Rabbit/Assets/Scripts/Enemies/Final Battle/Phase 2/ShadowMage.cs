@@ -44,7 +44,10 @@ public class ShadowMage : MonoBehaviour
     public bool ShieldIsUp;
     public GameObject ShieldTokenSpawner;
 
+    
+
     bool bossCanDie;
+    bool healed;
 
 
 
@@ -55,6 +58,7 @@ public class ShadowMage : MonoBehaviour
         ShadowMageHealth = GetComponent<EnemyHealth>();
         ShadowShieldCS = ShadowShield.GetComponent<ShadowShield>();
         bossCanDie = false;
+        healed = false;
 
     }
 
@@ -66,7 +70,6 @@ public class ShadowMage : MonoBehaviour
             YPos = Random.Range(minYPos, maxYPos);
         }
         else
-
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, YPos, transform.position.z), Speed * Time.deltaTime);
         }
@@ -77,14 +80,7 @@ public class ShadowMage : MonoBehaviour
             EnemySpawnerDown.SetActive(false);
             EnemySpawnerUp.SetActive(false);
             ShadowMageAnimator.SetTrigger("Death");
-            if (!isDying)
-            {
-                StartCoroutine(BossDead());
-            }
-
-            //StartCoroutine(Dissolve());
-
-            // ShadowMageMaterial.SetFloat("_Fade", TransformDissolve);
+          
         }
 
         // Shadow Shield Is Up
@@ -99,12 +95,7 @@ public class ShadowMage : MonoBehaviour
 
         }
 
-
-
-
-
-
-
+        
 
     }
 
@@ -124,26 +115,29 @@ public class ShadowMage : MonoBehaviour
         ShadowMageHealth.health = 1;
         StartCoroutine(HealthHeal());
         yield return new WaitForSeconds(2);
-        EnemySpawnerUp.SetActive(true);
-        EnemySpawnerDown.SetActive(true);
-        ShadowShield.SetActive(true);
-        ShieldTokenSpawner.SetActive(true);
-        StartCoroutine(ShadowMagelaserAttack(Random.Range(3f, 5f)));
+
+        
     }
 
     IEnumerator HealthHeal()
     {
-        while (true)
+        while (!healed)
         {
             yield return new WaitForSeconds(0.01f);
             if (ShadowMageHealth.health < ShadowMageHealth.maxHealth)
             {
-                ShadowMageHealth.health += 2;
+                ShadowMageHealth.health += 4;
             }
             else
             {
+
+                EnemySpawnerUp.SetActive(true);
+                EnemySpawnerDown.SetActive(true);
+                ShadowShield.SetActive(true);
+                ShieldTokenSpawner.SetActive(true);
+                StartCoroutine(ShadowMagelaserAttack(Random.Range(3f, 5f)));
+                healed = true;
                 bossCanDie = true;
-                break;
             }
         }
     }
@@ -183,13 +177,19 @@ public class ShadowMage : MonoBehaviour
 
     }
 
+    void FadeToWhite()
+    {
+        StartCoroutine(BossDead());
+    }
+
     IEnumerator BossDead()
     {
         float Delay = 1;
 
         CanvasGroup fadeAlpha = fadeToWhite.GetComponent<CanvasGroup>();
         LeanTween.alphaCanvas(fadeAlpha, 1, Delay);
-        yield return new WaitForSeconds(Delay);
+        yield return new WaitForSeconds(Delay + 1);
+        GameStats.stats.bossDead = true;
         gameObject.SetActive(false);
         SceneManager.LoadSceneAsync(9);
     }

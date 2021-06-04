@@ -76,7 +76,7 @@ public class BlueHandRandom : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(TimeBetweenAttacksMin, TimeBetweenAttacksMax));
             animator.SetTrigger("Attack");
             yield return new WaitForSeconds(0.5f);
-            GameObject ShootMissle = myObjectPooler.SpwanFromPool(missleTag, transform.position, Quaternion.identity);
+            GameObject ShootMissle = myObjectPooler.SpawnFromPool(missleTag, transform.position, Quaternion.identity, true);
             MageMissle myMageMissle = ShootMissle.GetComponent<MageMissle>();
             if (myMageMissle != null && BlueMageHealth.gameObject.transform != null)
             {

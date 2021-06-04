@@ -52,7 +52,7 @@ public class BlueHandFollow : MonoBehaviour
             //MageMissle.transform.position = transform.position;
             //Destroy(MageMissle, 2f);
 
-            GameObject ShootMissle = myObjectPooler.SpwanFromPool(missleTag, transform.position, Quaternion.identity);
+            GameObject ShootMissle = myObjectPooler.SpawnFromPool(missleTag, transform.position, Quaternion.identity, true);
             MageMissle myMageMissle = ShootMissle.GetComponent<MageMissle>();
             if (myMageMissle != null && BlueMageHealth.gameObject.transform != null)
             {

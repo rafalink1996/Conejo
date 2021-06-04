@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldBreakPowerUp : MonoBehaviour
+public class ShieldBreakPowerUp : MonoBehaviour, IPooledObject
 {
     public float speed;
     public float RotateSpeed = 50;
@@ -12,21 +12,24 @@ public class ShieldBreakPowerUp : MonoBehaviour
 
     public GameObject[] watchenemies;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        Destroy(gameObject, 5f);
-        FindClosestEnemy();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-
-
-        //transform.Translate(speed * Time.deltaTime, 0, 0);
+        FindClosestEnemy();
     }
+
+    public void OnObjectSpawn()
+    {
+        Deactivate(5f);  
+    }
+
+
+
 
     private void FixedUpdate()
     {
@@ -44,21 +47,6 @@ public class ShieldBreakPowerUp : MonoBehaviour
             FindClosestEnemy();
             // Debug.Log("no target");
         }
-
-
-
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Enemy")
-        {
-            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-            collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
-            print("hit " + collision.gameObject.name);
-            Destroy(gameObject);
-
-
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -68,8 +56,8 @@ public class ShieldBreakPowerUp : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
             print("hit " + collision.gameObject.name);
-            Destroy(gameObject);
-
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
 
         }
     }
@@ -105,6 +93,16 @@ public class ShieldBreakPowerUp : MonoBehaviour
             // Debug.Log("no enemies");
         }
 
+    }
+
+    public void StartDeactivate(float time)
+    {
+        StartCoroutine(Deactivate(time));
+    }
+    IEnumerator Deactivate(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameObject.SetActive(false);
     }
 }
 

@@ -118,9 +118,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.100222826, y: 0}
+  m_Offset: {x: -0.100222826, y: -0.0835065}
   serializedVersion: 2
-  m_Radius: 1.8652562
+  m_Radius: 2.1285584
 --- !u!114 &545670760880188101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,3 +136,5 @@ MonoBehaviour:
   frequency: 2
   magnitude: 1
   speed: 1
+  TKSpawner: {fileID: 0}
+  tokenTag: ShadowTokenArrow

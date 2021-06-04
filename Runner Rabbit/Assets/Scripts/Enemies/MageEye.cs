@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MageEye : MonoBehaviour
+public class MageEye : MonoBehaviour, IPooledObject
 {
     private Transform target;
     public float speed;
@@ -11,20 +11,33 @@ public class MageEye : MonoBehaviour
     private bool AttackMode;
 
     public EnemySpawner enemySpawner;
+    [SerializeField] HandEyeSpawner mySpawner;
+    [SerializeField] GameObject Laser;
+    
 
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
-        StartCoroutine(Attack(Random.Range(2f, 4f)));
-        enemySpawner = GameObject.Find("Enemy Spawner (Hand)").GetComponent<EnemySpawner>();
+        mySpawner = FindObjectOfType<HandEyeSpawner>();
+    }
+
+    void Start()
+    {
+       
+        //StartCoroutine(Attack(Random.Range(2f, 4f)));
+        //enemySpawner = GameObject.Find("Enemy Spawner (Hand)").GetComponent<EnemySpawner>();
         AttackMode = false;
     }
 
-    // Update is called once per frame
+    public void OnObjectSpawn()
+    {
+        AttackMode = false;
+        StartCoroutine(Attack(Random.Range(2f, 4f)));
+    }
+
+    
     void Update()
     {
         if (AttackMode)
@@ -46,15 +59,16 @@ public class MageEye : MonoBehaviour
         yield return new WaitForSeconds(time);
         AttackMode = true;
         yield return new WaitForSeconds(1f);
-        GameObject MageMissle = GameObject.Instantiate(Resources.Load("Prefabs/MageLaser") as GameObject);
-        MageMissle.transform.position = new Vector2(transform.position.x-10, transform.position.y);
+        //GameObject MageMissle = GameObject.Instantiate(Resources.Load("Prefabs/MageLaser") as GameObject);
+        //MageMissle.transform.position = new Vector2(transform.position.x-10, transform.position.y);
+        Laser.SetActive(true);
         yield return new WaitForSeconds(3f);
         animator.SetTrigger("Despawn");
         yield return new WaitForSeconds(1f);
-
-        enemySpawner.OneDown();
-
-        Destroy(gameObject);
+        mySpawner.StartEnemyTimer();
+        gameObject.SetActive(false);
+        //enemySpawner.OneDown();
+        //Destroy(gameObject);
 
 
 

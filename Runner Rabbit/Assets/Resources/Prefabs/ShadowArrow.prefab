@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1192843034608492078}
   - component: {fileID: 1192843034608492077}
-  - component: {fileID: 1192843034608492076}
   - component: {fileID: 713451619409916405}
   - component: {fileID: -7954744396226365135}
   - component: {fileID: 8817576002808565418}
@@ -88,27 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1192843034608492076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192843034608492075}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 557bd61e1023b4f4287f7d550818dfae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  RotateSpeed: 500
-  damage: 20
-  target: {fileID: 0}
-  rb: {fileID: 0}
-  posibleEnemies: []
-  targetYPos: 0
-  startYPos: 0
-  startXpos: 0
 --- !u!96 &713451619409916405
 TrailRenderer:
   serializedVersion: 2
@@ -355,6 +333,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   RotateSpeed: 500
-  damage: 20
+  damage: 5
   target: {fileID: 0}
   watchenemies: []

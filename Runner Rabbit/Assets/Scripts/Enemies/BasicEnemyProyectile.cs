@@ -3,29 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BasicEnemyProyectile : MonoBehaviour
+public class BasicEnemyProyectile : MonoBehaviour, IPooledObject
 {
 
     public float speed = 20f;
     bool reflected;
     public bool piercing = false;
-    // Start is called before the first frame update
+
+    Transform myParent;
+    [SerializeField] bool hasParent;
+
+
     void Start()
     {
-
-
-        Destroy(transform.parent.gameObject, 7f);
-
-        // transform.position = GameObject.Find("Enemy Spawner").transform.position;
+        if (hasParent)
+        {
+            myParent = transform.parent;
+        }
+        //Destroy(transform.parent.gameObject, 7f);
     }
 
-    // Update is called once per frame
+    public void OnObjectSpawn()
+    {
+        if (myParent != null)
+        {
+            transform.localPosition = new Vector3(0, 0, 0);
+            transform.rotation = myParent.rotation;
+
+        }
+
+        Invoke("Deactivate", 3);
+    }
+
+
     void Update()
     {
         transform.Translate(-speed * Time.deltaTime, 0, 0);
-        /*Vector3 temp = transform.position;
-        temp.x -= speed * Time.deltaTime;
-        transform.position = temp;*/
+       
     }
     private void OnTriggerEnter2D(Collider2D collision)
 
@@ -47,26 +61,44 @@ public class BasicEnemyProyectile : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
-            print("hit " + collision.gameObject.name);
-            Destroy(transform.parent.gameObject);
-            //FindObjectOfType<AudioManager>().Play("FireExplotion");
-
-            //speed = 3f;
+            // Destroy(transform.parent.gameObject);
+            if (myParent != null)
+            {
+                myParent.gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
+
         if (collision.tag == "Player")
         {
             if (!piercing)
             {
-                Destroy(transform.parent.gameObject);
-            }
-            
-            
-            //FindObjectOfType<AudioManager>().Play("FireExplotion");
-
-            // speed = 3f;
+                //Destroy(transform.parent.gameObject);
+                if (myParent != null)
+                {
+                    myParent.gameObject.SetActive(false);
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
+            }    
         }
+    }
 
-
+    void Deactivate()
+    {
+        if (myParent != null)
+        {
+            myParent.gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
 
     }
 

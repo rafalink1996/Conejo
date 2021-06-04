@@ -44,14 +44,15 @@ public class ShadowShield : MonoBehaviour
         }
         if (collision.tag == "character proyectile")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
+            //Destroy(collision.gameObject);
         }
     }
 
     IEnumerator RestoreTime()
     {
         
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(Random.Range(15f, 17f));
         FindObjectOfType<AudioManager>().Play("MageShieldUp");
         Anim.SetTrigger("Restore");
         isShielded = true;

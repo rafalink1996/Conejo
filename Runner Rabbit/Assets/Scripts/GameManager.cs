@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class GameManager : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-    
+
     public GameObject spawnerUp;
     public GameObject SpawnerDown;
     public GameObject spawnerUpTwo;
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public Color darkcolor;
     public Color lightColor;
 
-    
+
     public Button ThePauseButton;
 
     public Slider MusicSlider;
@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     public bool FinalBoss;
 
+    [SerializeField] ObjectPooler myObjectPooler;
+
 
 
 
@@ -43,6 +45,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        myObjectPooler = FindObjectOfType<ObjectPooler>();
+        for (int i = 0; i < myObjectPooler.pools.Count; i++)
+        {
+            if (myObjectPooler.pools[i].allLevels == false && GameStats.stats.LevelCount != myObjectPooler.pools[i].LevelID)
+            {
+                myObjectPooler.pools[i].Instantiate = false;
+            }
+
+
+
+        }
+
         StartCoroutine(DestroyStartingAnimations());
         GameIsPaused = false;
         ThePauseButton.interactable = false;
@@ -109,21 +123,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
 
         if (cha.top)
         {
             PowerRarity.color = darkcolor;
-        } else
+        }
+        else
         {
             PowerRarity.color = lightColor;
-            
+
         }
         if (GameIsPaused)
         {
             Time.timeScale = 0;
         }
-        
+
     }
 
     IEnumerator DestroyStartingAnimations()
@@ -138,20 +153,20 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         GameIsPaused = true;
-        
+
     }
     public void ResumeButton()
     {
         Time.timeScale = 1;
         GameIsPaused = false;
-        
+
     }
 
     IEnumerator WaitForInteractable()
     {
         yield return new WaitForSecondsRealtime(5);
         ThePauseButton.interactable = true;
-        
+
 
 
     }

@@ -613,6 +613,7 @@ public class character : MonoBehaviour
                     HealParticle.transform.parent = this.transform;
                     HealParticle.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
                     Health += 1;
+                    ShieldHealthAbsorb = false;
                 }
             }
 

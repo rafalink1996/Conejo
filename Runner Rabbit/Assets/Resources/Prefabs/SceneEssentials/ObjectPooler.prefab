@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4111223972306565428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4111223972306565431}
+  - component: {fileID: 4111223972306565430}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4111223972306565431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4111223972306565428}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 125.2909, y: -3.989987, z: 0.91800314}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4111223972306565430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4111223972306565428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0691aa247ba004c11b206fb580d3b465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - Parent: 1
+    tag: MageMissle
+    prefab: {fileID: 7178735532873273167, guid: ab9b6982573fb4194a1fe6f42f34bec0,
+      type: 3}
+    size: 9
+    Instantiate: 1
+    LevelID: 2
+    allLevels: 0
+  - Parent: 1
+    tag: CarrotMissle
+    prefab: {fileID: 5209232845780531540, guid: 5c3c7ac1ad4f84b94a8ad2b108c3009f,
+      type: 3}
+    size: 6
+    Instantiate: 1
+    LevelID: 0
+    allLevels: 1
+  - Parent: 1
+    tag: RadishMissle
+    prefab: {fileID: 1156798044908045104, guid: 0a50cefa553e64a238e1b12e29c9ca0c,
+      type: 3}
+    size: 9
+    Instantiate: 1
+    LevelID: 0
+    allLevels: 1
+  - Parent: 1
+    tag: MageHand
+    prefab: {fileID: 4089244563645295108, guid: 4197889a95d45429283d6e46c037092e,
+      type: 3}
+    size: 1
+    Instantiate: 1
+    LevelID: 2
+    allLevels: 0
+  - Parent: 1
+    tag: MageEye
+    prefab: {fileID: 5291994652604271246, guid: 8316739a6f2ed48cc8692f252057bb78,
+      type: 3}
+    size: 1
+    Instantiate: 1
+    LevelID: 2
+    allLevels: 0
+  - Parent: 1
+    tag: SlimeBall
+    prefab: {fileID: 1188592540355672288, guid: 2cda6c8eb5aec4576bdb1d8bf65d8a90,
+      type: 3}
+    size: 9
+    Instantiate: 1
+    LevelID: 0
+    allLevels: 1

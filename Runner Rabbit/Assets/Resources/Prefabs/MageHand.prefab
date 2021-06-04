@@ -112,7 +112,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4089244563645295108}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d5c9b62d180c4622a8f8b80522a555d, type: 3}
   m_Name: 
@@ -134,4 +134,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   acceleration: 2
-  enemySpawner: {fileID: 0}
+  mySpawner: {fileID: 0}
+  missleTag: MageMissle

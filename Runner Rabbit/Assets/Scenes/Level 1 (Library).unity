@@ -727,6 +727,7 @@ GameObject:
   - component: {fileID: 253351652}
   - component: {fileID: 253351651}
   - component: {fileID: 253351650}
+  - component: {fileID: 253351653}
   m_Layer: 0
   m_Name: Enemy Spawner (Hand)
   m_TagString: Untagged
@@ -756,7 +757,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253351649}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b49c7d118a44249e19f16c821d76dafb, type: 3}
   m_Name: 
@@ -785,6 +786,24 @@ Transform:
   m_Father: {fileID: 1005817912}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &253351653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253351649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fe367960bec458b84e75eb342bd4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnTime: 0
+  enemy: 0
+  EnemyType: 1
+  EnemyCount: 0
+  HandEnemyTag: MageHand
+  EyeEnemyTag: MageEye
 --- !u!1 &262203788
 GameObject:
   m_ObjectHideFlags: 0
@@ -7356,6 +7375,7 @@ MonoBehaviour:
   StartAnimationUi: {fileID: 304781103}
   StartAnimation: {fileID: 2719699189922860787}
   FinalBoss: 0
+  myObjectPooler: {fileID: 0}
 --- !u!114 &672799256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12906,6 +12926,75 @@ MonoBehaviour:
   speed: 2
   maxspeed: 10
   acceleration: 2
+--- !u!1001 &958089956
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4111223972306565428, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_Name
+      value: ObjectPooler
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 125.2909
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.989987
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.91800314
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 69e619fc20a2544af9270bd995629f5e, type: 3}
 --- !u!1 &983806430
 GameObject:
   m_ObjectHideFlags: 0

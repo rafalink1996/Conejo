@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClockworkBomb : MonoBehaviour
+public class ClockworkBomb : MonoBehaviour, IPooledObject
 {
 
     
@@ -10,18 +10,32 @@ public class ClockworkBomb : MonoBehaviour
     public float speed = 5f;
     
     public Animator animator;
-    EnemyHealth health;
+    [SerializeField] EnemyHealth health;
 
     [SerializeField] CircleCollider2D myCollider;
+
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        //Debug.Log("bomb Instantiated");
+        myCollider = GetComponent<CircleCollider2D>();
+        health = GetComponent<EnemyHealth>();
+        
+        
+    }
+
     void Start()
     {
-        myCollider = gameObject.GetComponent<CircleCollider2D>();
-        health = GetComponent<EnemyHealth>();
         health.maxHealth = 1;
         StartCoroutine(ExplodeTimer());
-       
-        
+    }
+
+    public void OnObjectSpawn()
+    {
+        health.maxHealth = 1;
+        StartCoroutine(ExplodeTimer());
+        //Invoke("Deactivate", 3);
     }
 
     // Update is called once per frame
@@ -47,12 +61,14 @@ public class ClockworkBomb : MonoBehaviour
         animator.SetTrigger("Explode!");
       
         yield return new WaitForSeconds(1);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     void Over()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 

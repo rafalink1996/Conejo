@@ -16,9 +16,13 @@ public class BossGriffin : MonoBehaviour
 
     bool spawned;
     [SerializeField] GameObject GriffinBalls;
+
+    [SerializeField] string ProyectileTag = "EnergyBalls";
+    ObjectPooler myObjectPooler;
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
         GriffinBalls.SetActive(false);
         health = GetComponent<EnemyHealth>();
         health.maxHealth = 800;
@@ -54,31 +58,38 @@ public class BossGriffin : MonoBehaviour
     }
     void ShootOne()
     {
-        GameObject energyBall = Instantiate(Resources.Load("Prefabs/EnergyBall") as GameObject);
-        //energyBall.transform.SetParent(transform);
-        energyBall.transform.position = transform.position + new Vector3(-1.87f, -0.55f, 0);
-        //energyBall.transform.SetParent(null);
-        energyBall.transform.rotation = Quaternion.AngleAxis(12.46f, Vector3.forward);
-        
+        //GameObject energyBall = Instantiate(Resources.Load("Prefabs/EnergyBall") as GameObject);  
+        //energyBall.transform.position = transform.position + new Vector3(-1.87f, -0.55f, 0);
+        //energyBall.transform.rotation = Quaternion.AngleAxis(12.46f, Vector3.forward);
+
+        GameObject proyectile = myObjectPooler.SpawnFromPool(ProyectileTag, transform.position, Quaternion.identity, true);
+        proyectile.transform.position = transform.position + new Vector3(-1.87f, -0.55f, 0);
+        proyectile.transform.rotation = Quaternion.AngleAxis(12.46f, Vector3.forward);
+
         health.TakeDamage(5);
     }
     void ShootTwo()
     {
-        GameObject energyBall = Instantiate(Resources.Load("Prefabs/EnergyBall") as GameObject);
-        //energyBall.transform.SetParent(transform);
-        energyBall.transform.position = transform.position + new Vector3(-2.16f, 0.06f, 0);
-        //energyBall.transform.SetParent(null);
-        //energyBall.transform.GetChild(0).rotation = Quaternion.AngleAxis(12.46f, Vector3.forward);
+        //GameObject energyBall = Instantiate(Resources.Load("Prefabs/EnergyBall") as GameObject);
+        //energyBall.transform.position = transform.position + new Vector3(-2.16f, 0.06f, 0);
+        GameObject proyectile = myObjectPooler.SpawnFromPool(ProyectileTag, transform.position, Quaternion.identity, true);
+        proyectile.transform.position = transform.position + new Vector3(-2.16f, 0.06f, 0);
+
+
         health.TakeDamage(5);
 
     }
     void ShootThree()
     {
-        GameObject energyBall = Instantiate(Resources.Load("Prefabs/EnergyBall") as GameObject);
-        //energyBall.transform.SetParent(transform);
-        energyBall.transform.position = transform.position + new Vector3(-2.21f, 1.2f, 0);
-        //energyBall.transform.SetParent(null);
-        energyBall.transform.rotation = Quaternion.AngleAxis(-13.678f, Vector3.forward);
+        //GameObject energyBall = Instantiate(Resources.Load("Prefabs/EnergyBall") as GameObject);
+        //energyBall.transform.position = transform.position + new Vector3(-2.21f, 1.2f, 0);
+        //energyBall.transform.rotation = Quaternion.AngleAxis(-13.678f, Vector3.forward);
+
+        GameObject proyectile = myObjectPooler.SpawnFromPool(ProyectileTag, transform.position, Quaternion.identity, true);
+        proyectile.transform.position = transform.position + new Vector3(-2.21f, 1.2f, 0);
+        proyectile.transform.rotation = Quaternion.AngleAxis(-13.678f, Vector3.forward);
+
+
         health.TakeDamage(5);
     }
     void Silence()

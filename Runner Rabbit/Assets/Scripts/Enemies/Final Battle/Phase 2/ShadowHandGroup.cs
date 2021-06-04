@@ -42,33 +42,26 @@ public class ShadowHandGroup : MonoBehaviour
                 {
                     yield return new WaitForSeconds(0.5f);
                     Hands[i].StartAttacking();
-                    i++;
-                    
+
+                    if (ShadowMageCS.ShieldIsUp != true)
+                    {
+                        ShadowMageHealth.TakeDamage(2);
+                    }
+                    i++;  
                 }
                 else
-                {
-                    
+                {  
                     i = 0;
                     AttackTimes--;
                 }
             }
             else
             {
-                if (ShadowMageCS.ShieldIsUp != true)
-                {
-                    ShadowMageHealth.TakeDamage(2);
-                }
-                
                 yield return new WaitForSeconds(1.5f);
                 DespawnShadowHands();
                 break;
-            }
-            
-            
-            
+            } 
         }
-        
-        
     }
 
     void DespawnShadowHands()

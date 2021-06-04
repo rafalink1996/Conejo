@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class PowerUp : MonoBehaviour, IPooledObject
 {
     public float frequency = 10.0f; // Speed of sine movement
     public float magnitude = 1.0f; //  Size of sine movement, its the amplitude of the side curve
@@ -10,26 +10,45 @@ public class PowerUp : MonoBehaviour
     Animator anim;
     Vector3 pos;
     Vector3 axis;
-    TokenSpawner TKSpawner;
+    [SerializeField] TokenSpawnerShadow TKSpawner;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] string tokenTag = "ShadowTokenArrow";
+    ObjectPooler myObjectPooler;
+    bool canCollide = true;
+
+    private void Awake()
     {
         anim = GetComponent<Animator>();
+        //StartCoroutine(Destroy());
+        TKSpawner = FindObjectOfType<TokenSpawnerShadow>();
+       
+
+    }
+    private void Start()
+    {
+        
+        myObjectPooler = ObjectPooler.Instance;
+        tokenTag = "ShadowTokenArrow";
+    }
+    public void OnObjectSpawn()
+    {
+        canCollide = true;
+        speed = 1;
+        frequency = 1;
+        magnitude = 1;
         pos = transform.position;
         axis = transform.up;
-        StartCoroutine(Destroy());
-        TKSpawner  = GameObject.Find("Token Spawner").GetComponent<TokenSpawner>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && canCollide)
         {
             anim.SetTrigger("Activate!");
             StartCoroutine(SpawnShadowMissle());
             speed = -10;
             frequency = 0;
             magnitude = 0;
+            canCollide = false;
         }
     }
 
@@ -43,20 +62,29 @@ public class PowerUp : MonoBehaviour
     {
 
         yield return new WaitForSeconds(10f);
-        TKSpawner.OneDown();
-        Destroy(gameObject);
+        //TKSpawner.OneDown();
+        //Destroy(gameObject);
     }
 
     IEnumerator SpawnShadowMissle()
     {
 
         yield return new WaitForSeconds(0.2f);
-        GameObject shadowArrow = GameObject.Instantiate(Resources.Load("Prefabs/ShadowArrow") as GameObject);
-        shadowArrow.transform.position = transform.position;
-        Destroy(shadowArrow, 5f);
+        //GameObject shadowArrow = GameObject.Instantiate(Resources.Load("Prefabs/ShadowArrow") as GameObject);
+        //shadowArrow.transform.position = transform.position;
+        //Destroy(shadowArrow, 5f);
+        GameObject shadowArrow = myObjectPooler.SpawnFromPool(tokenTag, transform.position, Quaternion.identity, false);
+        ShieldBreakPowerUp shadowArrowCs = shadowArrow.GetComponent<ShieldBreakPowerUp>();
+        if(shadowArrowCs != null)
+        {
+            shadowArrowCs.StartDeactivate(5f);
+        }
+       
         yield return new WaitForSeconds(0.3f);
-        TKSpawner.OneDown();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+
+        //TKSpawner.OneDown();
+        //Destroy(gameObject);
 
     }
 

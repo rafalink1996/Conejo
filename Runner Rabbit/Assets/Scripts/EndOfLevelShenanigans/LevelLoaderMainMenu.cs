@@ -50,6 +50,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.ResetStats();
             GameStats.stats.SavedLevelPercentage = 0;
             GameStats.stats.LevelIndicator = GameStats.stats.leveBoughtID;
+            GameStats.stats.LevelCount = 0;
            // GameStats.stats.RunInProgress = true;
             GameStats.stats.SavedLevelIndicator = GameStats.stats.LevelIndicator;
             GameStats.stats.SavedLevelCount = GameStats.stats.LevelCount;
@@ -85,7 +86,8 @@ public class LevelLoaderMainMenu : MonoBehaviour
             
            
             string LeveleToLoadName = GameStats.stats.CheckLevel();
-            StartCoroutine(loadAsync(LeveleToLoadName));
+            //StartCoroutine(loadAsync(LeveleToLoadName));
+            StartCoroutine(loadAsync("store"));
 
         }
         else

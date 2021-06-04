@@ -81,7 +81,7 @@ public class BlueMage : MonoBehaviour
             {
                 HandsRandoms[i].SetActive(true);
                 BlueHandRandom HandRandomCS = HandsRandoms[i].GetComponent<BlueHandRandom>();
-                HandRandomCS.AttackSelfDamage = 3;
+                HandRandomCS.AttackSelfDamage = 6;
                 HandRandomCS.TimeBetweenAttacksMin = 2;
                 HandRandomCS.TimeBetweenAttacksMax = 4;
             }
@@ -90,7 +90,7 @@ public class BlueMage : MonoBehaviour
 
                 Handsfollows[i].SetActive(true);
                 BlueHandFollow handFollowsCS = Handsfollows[i].GetComponent<BlueHandFollow>();
-                handFollowsCS.AttackSelfDamage = 3;
+                handFollowsCS.AttackSelfDamage = 6;
                 handFollowsCS.TimeBetweenAttacksMin = 2;
                 handFollowsCS.TimeBetweenAttacksMax = 4;
             }
@@ -104,7 +104,7 @@ public class BlueMage : MonoBehaviour
             {
                 HandsRandoms[i].SetActive(true);
                 BlueHandRandom HandRandomCS = HandsRandoms[i].GetComponent<BlueHandRandom>();
-                HandRandomCS.AttackSelfDamage = 2;
+                HandRandomCS.AttackSelfDamage = 4;
                 HandRandomCS.TimeBetweenAttacksMin = 3;
                 HandRandomCS.TimeBetweenAttacksMax = 4;
             }
@@ -113,7 +113,7 @@ public class BlueMage : MonoBehaviour
 
                 Handsfollows[i].SetActive(true);
                 BlueHandFollow handFollowsCS = Handsfollows[i].GetComponent<BlueHandFollow>();
-                handFollowsCS.AttackSelfDamage = 2;
+                handFollowsCS.AttackSelfDamage = 4;
                 handFollowsCS.TimeBetweenAttacksMin = 3;
                 handFollowsCS.TimeBetweenAttacksMax = 4;
             }
@@ -128,7 +128,7 @@ public class BlueMage : MonoBehaviour
             {
                 HandsRandoms[i].SetActive(true);
                 BlueHandRandom HandRandomCS = HandsRandoms[i].GetComponent<BlueHandRandom>();
-                HandRandomCS.AttackSelfDamage = 1;
+                HandRandomCS.AttackSelfDamage = 2;
                 HandRandomCS.TimeBetweenAttacksMin = 3;
                 HandRandomCS.TimeBetweenAttacksMax = 4;
             }
@@ -137,7 +137,7 @@ public class BlueMage : MonoBehaviour
 
                 Handsfollows[i].SetActive(true);
                 BlueHandFollow handFollowsCS = Handsfollows[i].GetComponent<BlueHandFollow>();
-                handFollowsCS.AttackSelfDamage = 1;
+                handFollowsCS.AttackSelfDamage = 2;
                 handFollowsCS.TimeBetweenAttacksMin = 3;
                 handFollowsCS.TimeBetweenAttacksMax = 4;
             }
@@ -150,7 +150,7 @@ public class BlueMage : MonoBehaviour
             {
                 HandsRandoms[i].SetActive(true);
                 BlueHandRandom HandRandomCS = HandsRandoms[i].GetComponent<BlueHandRandom>();
-                HandRandomCS.AttackSelfDamage = 0.5f;
+                HandRandomCS.AttackSelfDamage = 1f;
                 HandRandomCS.TimeBetweenAttacksMin = 2;
                 HandRandomCS.TimeBetweenAttacksMax = 3;
 
@@ -160,7 +160,7 @@ public class BlueMage : MonoBehaviour
 
                 Handsfollows[i].SetActive(true);
                 BlueHandFollow handFollowsCS = Handsfollows[i].GetComponent<BlueHandFollow>();
-                handFollowsCS.AttackSelfDamage = 0.5f;
+                handFollowsCS.AttackSelfDamage = 1f;
                 handFollowsCS.TimeBetweenAttacksMin = 2;
                 handFollowsCS.TimeBetweenAttacksMax = 3;
             }
@@ -180,11 +180,6 @@ public class BlueMage : MonoBehaviour
             SpawnPortals[4].PortalAnimatorSetTrigger();
             SpawnPortals[5].PortalAnimatorSetTrigger();
             SpawnPortals[6].PortalAnimatorSetTrigger();
-
-
-
-
-
         }
     }
 

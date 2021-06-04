@@ -16,9 +16,15 @@ public class ClockworkRabbit : MonoBehaviour
     [SerializeField] GameObject ClockworkBunnyProyectile;
 
 
+    [SerializeField] string ProyectileTag = "ClockworkRabitProyectiles";
+    ObjectPooler myObjectPooler;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
+        ProyectileTag = "ClockworkRabitProyectiles";
         health = GetComponent<EnemyHealth>();
         health.maxHealth = 60;
         anim = GetComponent<Animator>();
@@ -85,10 +91,15 @@ public class ClockworkRabbit : MonoBehaviour
     }
     void EnergyBall()
     {
-        //GameObject EnergyBall = GameObject.Instantiate(Resources.Load("Prefabs/BunnySteampunkProyectile") as GameObject);
-        GameObject EnergyBall = GameObject.Instantiate(ClockworkBunnyProyectile) as GameObject;
-        EnergyBall.transform.position = ProyectileSpawner.position;
-        EnergyBall.GetComponentInChildren<ClockworkRabbitProyectile>().sourceTransform = gameObject.transform;
+
+        //GameObject EnergyBall = GameObject.Instantiate(ClockworkBunnyProyectile) as GameObject;
+        //EnergyBall.transform.position = ProyectileSpawner.position;
+        //EnergyBall.GetComponentInChildren<ClockworkRabbitProyectile>().sourceTransform = gameObject.transform;
+
+        GameObject proyectile = myObjectPooler.SpawnFromPool(ProyectileTag, transform.position, Quaternion.identity, true);
+        proyectile.transform.rotation = ProyectileSpawner.rotation;
+        proyectile.transform.position = ProyectileSpawner.position;
+        proyectile.GetComponentInChildren<ClockworkRabbitProyectile>().sourceTransform = gameObject.transform;
 
     }
     void Over()

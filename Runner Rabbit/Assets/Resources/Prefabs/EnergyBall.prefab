@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   piercing: 0
+  hasParent: 1
 --- !u!58 &3630204665408495403
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -279,6 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyP: 0
+  Poison: 0
+  PoisonTime: 0
   Damage: 2
 --- !u!1 &3630204665475381576
 GameObject:

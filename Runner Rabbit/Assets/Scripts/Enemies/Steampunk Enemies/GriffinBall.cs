@@ -9,10 +9,18 @@ public class GriffinBall : MonoBehaviour
     public bool isAttacking = false;
     [SerializeField] GriffinBallsMovement myMovement;
     [SerializeField] GameObject proyectilePrefab;
-    // Start is called before the first frame update
+
+
+    [SerializeField] string ProyectileTag = "GriffinBallsProyectiles";
+    ObjectPooler myObjectPooler;
+
+
+
     void Start()
     {
         canMove = false;
+        myObjectPooler = ObjectPooler.Instance;
+       
     }
 
     public void LookAtCharacter(Vector2 target)
@@ -39,14 +47,21 @@ public class GriffinBall : MonoBehaviour
     {
         for(int i = 0; i < numOfattacks; i++)
         {
-            Debug.Log("ball " + ballId + " attacked " + (i + 1) + " times");
+            //Debug.Log("ball " + ballId + " attacked " + (i + 1) + " times");
             // instantiate attack
-            GameObject ballProyectile = Instantiate(proyectilePrefab, transform.position, Quaternion.identity);
-            ballProyectile.transform.parent = gameObject.transform;
-            ballProyectile.transform.localPosition += new Vector3(-4, 0);
-            ballProyectile.transform.parent = null;
+            //GameObject ballProyectile = Instantiate(proyectilePrefab, transform.position, Quaternion.identity);
+            //ballProyectile.transform.parent = gameObject.transform;
+            //ballProyectile.transform.localPosition += new Vector3(-4, 0);
+            //ballProyectile.transform.parent = null;
+
+            GameObject proyectile = myObjectPooler.SpawnFromPool(ProyectileTag, transform.position, Quaternion.identity, true);
+            proyectile.transform.rotation = transform.rotation;
+            proyectile.transform.position = transform.position;
             
-            
+
+
+
+
             yield return new WaitForSeconds(0.5f);
         }
         canMove = true;

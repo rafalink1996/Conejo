@@ -25,8 +25,15 @@ public class LevelLoaderStore : MonoBehaviour
         GameStats.stats.SaveStats();
 
 
-
-        if (GameStats.stats.LevelCount == 1)
+        if (GameStats.stats.LevelCount == 0)
+        {
+            LevelCountNumber.SetActive(true);
+            BossLevelImage.SetActive(false);
+            TextMeshProUGUI Levelcounttext = LevelCountNumber.GetComponent<TextMeshProUGUI>();
+            Levelcounttext.text = (GameStats.stats.LevelCount + 1).ToString();
+            checkNextLevelName(GameStats.stats.LevelIndicator);
+        }
+         else if (GameStats.stats.LevelCount == 1)
         {
             LevelCountNumber.SetActive(true);
             BossLevelImage.SetActive(false);

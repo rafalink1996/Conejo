@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GriffinBallProyectiles : MonoBehaviour
+public class GriffinBallProyectiles : MonoBehaviour, IPooledObject
 {
     public Transform target;
     Collider2D myCollider2D;
@@ -10,19 +10,41 @@ public class GriffinBallProyectiles : MonoBehaviour
     float angle;
     public Transform sourceTransform;
     [SerializeField] float speed;
-    // Start is called before the first frame update
+
+
+    Transform myParent;
+    [SerializeField] bool hasParent;
+   
     void Start()
     {
         sourceTransform = FindObjectOfType<BossGriffin>().gameObject.transform;
         target = GameObject.FindWithTag("Player").transform;
-        //transform.LookAt(target, Vector3.up);
         Vector3 dir = target.position - transform.position;
         angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
         myCollider2D = GetComponent<Collider2D>();
-        Destroy(transform.parent.gameObject, 4f);
+
+        if (hasParent)
+        {
+            myParent = transform.parent;
+        }
+        
+        //Destroy(transform.parent.gameObject, 4f);
 
     }
+
+    public void OnObjectSpawn()
+    {
+        if (myParent != null)
+        {
+            transform.localPosition = new Vector3(0, 0, 0);
+            transform.rotation = myParent.rotation;
+
+        }
+
+        Invoke("Deactivate", 3);
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -54,7 +76,29 @@ public class GriffinBallProyectiles : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
             print("hit " + collision.gameObject.name);
-            Destroy(transform.parent.gameObject);
+            //Destroy(transform.parent.gameObject);
+            if(myParent != null)
+            {
+                myParent.gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
+           
         }
+    }
+
+    void Deactivate()
+    {
+        if (myParent != null)
+        {
+            myParent.gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 }

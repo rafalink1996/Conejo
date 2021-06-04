@@ -59,6 +59,11 @@ public class EnemyHealth : MonoBehaviour
             CanSpawnHeal = false;    
         }
 
+        if (health >= maxHealth)
+        {
+            health = maxHealth;
+        }
+
 
         healthSlider.value = health;
     }
