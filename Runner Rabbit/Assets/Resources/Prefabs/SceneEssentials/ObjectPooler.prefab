@@ -50,45 +50,87 @@ MonoBehaviour:
       type: 3}
     size: 9
     Instantiate: 1
-    LevelID: 2
+    PowerIds: 
+    Power: 0
     allLevels: 0
+    LevelID: 2
   - Parent: 1
     tag: CarrotMissle
     prefab: {fileID: 5209232845780531540, guid: 5c3c7ac1ad4f84b94a8ad2b108c3009f,
       type: 3}
     size: 6
     Instantiate: 1
-    LevelID: 0
+    PowerIds: 01000000020000000300000004000000
+    Power: 1
     allLevels: 1
+    LevelID: 0
   - Parent: 1
     tag: RadishMissle
     prefab: {fileID: 1156798044908045104, guid: 0a50cefa553e64a238e1b12e29c9ca0c,
       type: 3}
-    size: 9
+    size: 12
     Instantiate: 1
-    LevelID: 0
+    PowerIds: 15000000160000001700000018000000
+    Power: 1
     allLevels: 1
+    LevelID: 0
   - Parent: 1
     tag: MageHand
     prefab: {fileID: 4089244563645295108, guid: 4197889a95d45429283d6e46c037092e,
       type: 3}
     size: 1
     Instantiate: 1
-    LevelID: 2
+    PowerIds: 
+    Power: 0
     allLevels: 0
+    LevelID: 2
   - Parent: 1
     tag: MageEye
     prefab: {fileID: 5291994652604271246, guid: 8316739a6f2ed48cc8692f252057bb78,
       type: 3}
     size: 1
     Instantiate: 1
-    LevelID: 2
+    PowerIds: 
+    Power: 0
     allLevels: 0
+    LevelID: 2
   - Parent: 1
     tag: SlimeBall
     prefab: {fileID: 1188592540355672288, guid: 2cda6c8eb5aec4576bdb1d8bf65d8a90,
       type: 3}
     size: 9
     Instantiate: 1
-    LevelID: 0
+    PowerIds: 
+    Power: 0
     allLevels: 1
+    LevelID: 0
+  - Parent: 1
+    tag: FireBallBook
+    prefab: {fileID: 2303289852064260699, guid: 714ff4028cbbc463e9404136139af08e,
+      type: 3}
+    size: 8
+    Instantiate: 1
+    PowerIds: 
+    Power: 0
+    allLevels: 1
+    LevelID: 0
+  - Parent: 1
+    tag: ElectricBallBook
+    prefab: {fileID: 1457097437561965805, guid: 4e9d448b8ff4c4cae9a3566674195be3,
+      type: 3}
+    size: 8
+    Instantiate: 1
+    PowerIds: 
+    Power: 0
+    allLevels: 1
+    LevelID: 0
+  - Parent: 1
+    tag: IceLanceBook
+    prefab: {fileID: 2033483593175752790, guid: 1ccd09ab9a52749caba0267c7292cbb0,
+      type: 3}
+    size: 8
+    Instantiate: 1
+    PowerIds: 
+    Power: 0
+    allLevels: 1
+    LevelID: 0

@@ -7168,6 +7168,10 @@ MonoBehaviour:
     type: 3}
   respawnTime: 2
   respawnTimeRandom: 4
+  EnemyRandomTag: 
+  EnemyStaticTag: 
+  spawnSimpleEnemies: 0
+  spawnRandomEnemies: 0
   DarkSide: 1
 --- !u!114 &534546712
 MonoBehaviour:
@@ -7421,6 +7425,7 @@ MonoBehaviour:
   StartAnimationUi: {fileID: 1364760194}
   StartAnimation: {fileID: 393317634}
   FinalBoss: 0
+  myObjectPooler: {fileID: 0}
 --- !u!114 &672799256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15278,6 +15283,10 @@ MonoBehaviour:
     type: 3}
   respawnTime: 2
   respawnTimeRandom: 4
+  EnemyRandomTag: 
+  EnemyStaticTag: 
+  spawnSimpleEnemies: 0
+  spawnRandomEnemies: 0
   DarkSide: 0
 --- !u!114 &1491312013
 MonoBehaviour:
@@ -20368,6 +20377,10 @@ MonoBehaviour:
   SimpleEnemyStatic: {fileID: 0}
   respawnTime: 2
   respawnTimeRandom: 4
+  EnemyRandomTag: 
+  EnemyStaticTag: 
+  spawnSimpleEnemies: 0
+  spawnRandomEnemies: 0
   DarkSide: 0
 --- !u!114 &1590223413
 MonoBehaviour:
@@ -20466,6 +20479,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1618293710
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4111223972306565428, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_Name
+      value: ObjectPooler
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 125.2909
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.989987
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.91800314
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565431, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 69e619fc20a2544af9270bd995629f5e, type: 3}
 --- !u!114 &1643502920 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3542273375926598919, guid: 3e2965c6ceb114834b5b2a17c18421ce,

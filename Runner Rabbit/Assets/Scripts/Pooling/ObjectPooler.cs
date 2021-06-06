@@ -14,8 +14,18 @@ public class ObjectPooler : MonoBehaviour
         public int size;
         public bool Instantiate;
 
-        public int LevelID;
+
+
+        [Space(10)]
+        [Header("****INSTANTIATE PARAMETERS****")]
+
+        
+        public int [] PowerIds;
+        public bool Power;
         public bool allLevels;
+        public int LevelID;
+
+
     }
 
     //singelton Pattern
@@ -73,7 +83,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, bool Parent = false)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, bool Parent = false, bool MultipleChildern = false)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
@@ -87,14 +97,30 @@ public class ObjectPooler : MonoBehaviour
 
         if (Parent)
         {
-            IPooledObject pooledObj = ObjectToSpawn.GetComponentInChildren<IPooledObject>();
-            if (pooledObj != null)
+            if (MultipleChildern)
             {
-                pooledObj.OnObjectSpawn();
+                for (int i = 0; i < ObjectToSpawn.transform.childCount; i++)
+                {
+                    IPooledObject pooledObjChild = ObjectToSpawn.transform.GetChild(i).gameObject.GetComponent<IPooledObject>();
+                    if (pooledObjChild != null)
+                    {
+                        pooledObjChild.OnObjectSpawn();
+                    }
+                
+                }
             }
+            else
+            {
+                IPooledObject pooledObj = ObjectToSpawn.GetComponentInChildren<IPooledObject>();
+                if (pooledObj != null)
+                {
+                    pooledObj.OnObjectSpawn();
+                }
+            } 
         }
         else
         {
+            
             IPooledObject pooledObj = ObjectToSpawn.GetComponent<IPooledObject>();
             if (pooledObj != null)
             {

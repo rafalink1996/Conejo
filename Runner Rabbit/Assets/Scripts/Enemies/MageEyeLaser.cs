@@ -7,26 +7,48 @@ public class MageEyeLaser : MonoBehaviour
 
     private Animator animator;
     private BoxCollider2D LaserCollider;
+    public bool eyeIsFiring;
+    [SerializeField] MageEye myMageEye;
+    
+    [SerializeField] ParticleSystem LaserParticles;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        StartCoroutine(Laser());
         LaserCollider = gameObject.GetComponent<BoxCollider2D>();
-        LaserCollider.enabled = false;
+        LaserParticles.Stop();
+       
 
     }
+
+    public void Attack()
+    {
+        StartCoroutine(Laser());
+    }
+
+
 
   IEnumerator Laser()
     {
-       yield return new WaitForSeconds(0.5f);
-        LaserCollider.enabled = true;
-
-        yield return new WaitForSeconds(2.5f);
+        
+        eyeIsFiring = true;
+        float RandomTime = Random.Range(2f, 4f);
+        yield return new WaitForSeconds(RandomTime);
+        LaserParticles.Stop();
         animator.SetTrigger("Despawn");
         yield return new WaitForSeconds(1);
-        Destroy(gameObject);
-
+        eyeIsFiring = false;
+        gameObject.SetActive(false);
+        //Destroy(gameObject);
+        myMageEye.StartDespawn();
 
     }
+
+    void PlayParticles()
+    {
+        LaserParticles.Play();
+
+    }
+
+    
 }

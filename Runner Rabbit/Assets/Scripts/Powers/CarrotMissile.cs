@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarrotMissile : MonoBehaviour
+public class CarrotMissile : MonoBehaviour, IPooledObject
 {
     public float speed;
     public bool Piercing;
@@ -10,9 +10,12 @@ public class CarrotMissile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 5f);
+        //Destroy(gameObject, 5f);
     }
+    public void OnObjectSpawn()
+    {
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -26,15 +29,15 @@ public class CarrotMissile : MonoBehaviour
             CollisionEnemyHealth.TakeDamage(damage);
             CollisionEnemyHealth.Hit = true;
             
-            print("hit " + collision.gameObject.name);
+            //print("hit " + collision.gameObject.name);
 
             if (Piercing == false)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
+                //Destroy(gameObject);
             } 
                
         }
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -42,10 +45,11 @@ public class CarrotMissile : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
-            print("hit " + collision.gameObject.name);
+            //print("hit " + collision.gameObject.name);
             if (Piercing == false)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
+               // Destroy(gameObject);
             }
 
         }

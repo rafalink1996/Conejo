@@ -17,9 +17,14 @@ public class Book : MonoBehaviour
     EnemyHealth health;
     public int BookHealth = 8;
 
+    ObjectPooler myObjectPooler;
+    string fireBallTag = "FireBallBook";
+
     // Start is called before the first frame update
     void Start()
     {
+        fireBallTag = "FireBallBook";
+        myObjectPooler = ObjectPooler.Instance;
         health = GetComponent<EnemyHealth>();
         health.maxHealth = BookHealth;
         anim = GetComponent<Animator>();
@@ -87,8 +92,9 @@ public class Book : MonoBehaviour
     }
     void FireBall()
     {
-        GameObject fireBall = GameObject.Instantiate(Resources.Load("Prefabs/Fireball") as GameObject);
-        fireBall.transform.position = transform.position;
+        //GameObject fireBall = GameObject.Instantiate(Resources.Load("Prefabs/Fireball") as GameObject);
+        //fireBall.transform.position = transform.position;
+        myObjectPooler.SpawnFromPool(fireBallTag, transform.position, Quaternion.identity, true);
 
     }
     void Over()

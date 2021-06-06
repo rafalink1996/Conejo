@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeBall : MonoBehaviour
+public class SlimeBall : MonoBehaviour, IPooledObject
 {
     public float speed = 10f;
     bool reflected;
     public Transform sourceTransform;
-    // Start is called before the first frame update
+
+   
     void Start()
     {
 
-        sourceTransform = transform.parent.transform;
-        Destroy(transform.parent.gameObject, 4f);
+    }
 
-        // transform.position = GameObject.Find("Enemy Spawner").transform.position;
+    public void OnObjectSpawn()
+    {
+        transform.position = transform.parent.transform.position + new Vector3(-1.58f, -0.51f,0);
+        sourceTransform = transform.parent.transform;
     }
 
     // Update is called once per frame
@@ -48,8 +51,9 @@ public class SlimeBall : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
-            print("hit " + collision.gameObject.name);
-            Destroy(transform.parent.gameObject);
+            //print("hit " + collision.gameObject.name);
+            //Destroy(transform.parent.gameObject);
+            gameObject.SetActive(false);
         }
 
 

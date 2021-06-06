@@ -19,9 +19,15 @@ public class IceBook : MonoBehaviour
     public int BookHealth = 18;
     public int BookSelfDamage = 6;
 
+    ObjectPooler myObjectPooler;
+    string iceLanceTag = "IceLanceBook";
+
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
+        iceLanceTag = "IceLanceBook";
+
         if (GameStats.stats.LevelIndicator > 1)
         {
             BookHealth = 45;
@@ -92,13 +98,33 @@ public class IceBook : MonoBehaviour
     }
     void IceLance()
     {
-        GameObject iceLance = GameObject.Instantiate(Resources.Load("Prefabs/Ice Lance") as GameObject);
-        iceLance.transform.position = transform.position;
+        //GameObject iceLance = GameObject.Instantiate(Resources.Load("Prefabs/Ice Lance") as GameObject);
+        //iceLance.transform.position = transform.position;
+        GameObject iceLance = myObjectPooler.SpawnFromPool(iceLanceTag, transform.position, Quaternion.identity, true, true);
+        for(int i = 0; i < iceLance.transform.childCount; i++)
+        {
+            GameObject iceLanceChild = iceLance.transform.GetChild(i).gameObject;
+            if(iceLanceChild != null)
+            {
+                iceLance.SetActive(true);
+                IceLance iceLanceChildCS = iceLanceChild.GetComponent<IceLance>();
+                if (iceLanceChildCS != null)
+                {
+                    iceLanceChildCS.sourceTransform = gameObject.transform;
+                }
+            }
+
+           
+            
+        }
+        
+
         //iceLance.GetComponent<IceLance>().sourceTransform = gameObject.transform;
     }
     void Over()
     {
         enemySpawner.OneDown();
+
         Destroy(gameObject);
         if (health.CanSpawnHeal == true)
         {

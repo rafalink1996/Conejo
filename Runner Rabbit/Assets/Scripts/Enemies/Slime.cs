@@ -19,9 +19,13 @@ public class Slime : MonoBehaviour
     public int slimeHealth = 6;
     public int slimeSelfDamage = 2;
 
+    ObjectPooler myObjectPooler;
+    string slimeBallTag = "SlimeBall";
+
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
         health = GetComponent<EnemyHealth>();
         health.maxHealth = slimeHealth;
         anim = GetComponent<Animator>();
@@ -90,19 +94,19 @@ public class Slime : MonoBehaviour
     }
     void SlimeBall()
     {
-        GameObject smileBall = GameObject.Instantiate(Resources.Load("Prefabs/Slime Ball") as GameObject);
-        smileBall.transform.position = transform.position;
+        myObjectPooler.SpawnFromPool(slimeBallTag, transform.position, Quaternion.identity, true);
+        //GameObject smileBall = GameObject.Instantiate(Resources.Load("Prefabs/Slime Ball") as GameObject);
+        //smileBall.transform.position = transform.position;
     }
     void Over()
     {
         enemySpawner.OneDown();
-        
-        Destroy(gameObject);
         if (health.CanSpawnHeal == true)
         {
             GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
             healthHeal.transform.position = transform.position;
         }
+        Destroy(gameObject);
 
 
     }

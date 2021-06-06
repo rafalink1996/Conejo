@@ -183,9 +183,12 @@ public class character : MonoBehaviour
 
     //kickObject
     [SerializeField] GameObject kickObject;
+    ObjectPooler myObjectPooler;
+
+    string radishMissleTag = "RadishMissle";
+    string carrotMissleTag = "CarrotMissle";
 
 
-    
 
 
     //Check
@@ -199,9 +202,14 @@ public class character : MonoBehaviour
 
     [SerializeField] UIManager MyUIManager;
 
+
+    [SerializeField] bool IsInmortal;
+
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
+        radishMissleTag = "RadishMissle";
         GameObject ButtonDark = GameObject.FindObjectOfType<Darkpower>().gameObject;
         ButtonDark.SetActive(true);
         GameObject ButtonLight = GameObject.FindObjectOfType<Lightpower>().gameObject;
@@ -407,7 +415,7 @@ public class character : MonoBehaviour
 
         // Death
 
-        if (Health <= 0 && GameStats.stats.fenixFeather == false)
+        if (Health <= 0 && GameStats.stats.fenixFeather == false && !IsInmortal)
         {
 
             if (GameStats.stats.diedTimes < 50)
@@ -1147,11 +1155,16 @@ public class character : MonoBehaviour
                 // carrot missle
 
                 animator.SetTrigger("Missile");
-                GameObject carrotT1 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-                carrotT1.transform.position = transform.position + new Vector3(1, 0, 0);
+                //GameObject carrotT1 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                //carrotT1.transform.position = transform.position + new Vector3(1, 0, 0);
+                //CarrotMissile CarrotT1Stats = carrotT1.GetComponent<CarrotMissile>();
+                //CarrotT1Stats.Piercing = false;
+                //CarrotT1Stats.damage = damage;
+                GameObject carrotT1 = myObjectPooler.SpawnFromPool(carrotMissleTag, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
                 CarrotMissile CarrotT1Stats = carrotT1.GetComponent<CarrotMissile>();
                 CarrotT1Stats.Piercing = false;
                 CarrotT1Stats.damage = damage;
+
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
 
@@ -1160,8 +1173,9 @@ public class character : MonoBehaviour
                 // carrot missle
 
                 animator.SetTrigger("Missile");
-                GameObject carrotT2 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-                carrotT2.transform.position = transform.position + new Vector3(1, 0, 0);
+                //GameObject carrotT2 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                //carrotT2.transform.position = transform.position + new Vector3(1, 0, 0);
+                GameObject carrotT2 = myObjectPooler.SpawnFromPool(carrotMissleTag, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
                 CarrotMissile CarrotT2Stats = carrotT2.GetComponent<CarrotMissile>();
                 CarrotT2Stats.Piercing = false;
                 CarrotT2Stats.damage = damage;
@@ -1173,11 +1187,13 @@ public class character : MonoBehaviour
                 // carrot missle
 
                 animator.SetTrigger("Missile");
-                GameObject carrotT3 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                //GameObject carrotT3 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                //carrotT3.transform.position = transform.position + new Vector3(1, 0, 0);
+                GameObject carrotT3 = myObjectPooler.SpawnFromPool(carrotMissleTag, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
                 CarrotMissile CarrotT3Stats = carrotT3.GetComponent<CarrotMissile>();
                 CarrotT3Stats.Piercing = true;
                 CarrotT3Stats.damage = damage;
-                carrotT3.transform.position = transform.position + new Vector3(1, 0, 0);
+                
 
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
@@ -1187,16 +1203,32 @@ public class character : MonoBehaviour
                 // carrot missle
 
                 animator.SetTrigger("Missile");
-                GameObject carrotT4 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-                carrotT4.transform.position = transform.position + new Vector3(1, 0.5f, 0);
-                GameObject carrotT4Clone = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
-                CarrotMissile CarrotT4Stats = carrotT4.GetComponent<CarrotMissile>();
-                CarrotT4Stats.Piercing = true;
-                CarrotT4Stats.damage = damage;
-                CarrotMissile CarrotT4CloneStats = carrotT4Clone.GetComponent<CarrotMissile>();
-                CarrotT4CloneStats.Piercing = true;
-                CarrotT4CloneStats.damage = damage;
-                carrotT4Clone.transform.position = transform.position + new Vector3(1, -0.5f, 0);
+                for (int i = 0; i < 2; i++)
+                {
+                    Vector3 Offset;
+                    if (i == 0)
+                    {
+                        Offset = new Vector3(1, 0.5f, 0);
+                    }
+                    else
+                    {
+                        Offset = new Vector3(1, -0.5f, 0);
+                    }
+                    GameObject carrotT4 = myObjectPooler.SpawnFromPool(carrotMissleTag, transform.position + Offset, Quaternion.identity);
+                    CarrotMissile CarrotT4Stats = carrotT4.GetComponent<CarrotMissile>();
+                    CarrotT4Stats.Piercing = true;
+                    CarrotT4Stats.damage = damage;
+                }
+                //GameObject carrotT4 = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                //carrotT4.transform.position = transform.position + new Vector3(1, 0.5f, 0);
+                //GameObject carrotT4Clone = GameObject.Instantiate(Resources.Load("Prefabs/Carrot Missile") as GameObject);
+                //CarrotMissile CarrotT4Stats = carrotT4.GetComponent<CarrotMissile>();
+                //CarrotT4Stats.Piercing = true;
+                //CarrotT4Stats.damage = damage;
+                //CarrotMissile CarrotT4CloneStats = carrotT4Clone.GetComponent<CarrotMissile>();
+                //CarrotT4CloneStats.Piercing = true;
+                //CarrotT4CloneStats.damage = damage;
+                //carrotT4Clone.transform.position = transform.position + new Vector3(1, -0.5f, 0);
 
 
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
@@ -1260,8 +1292,12 @@ public class character : MonoBehaviour
                 // radish missile
 
                 animator.SetTrigger("Missile");
-                GameObject radishT1 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
-                radishT1.transform.position = transform.position + new Vector3(1, 0, 0);
+                //GameObject radishT1 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                //radishT1.transform.position = transform.position + new Vector3(1, 0, 0);
+                //RadishMissile RadishT1stats = radishT1.GetComponent<RadishMissile>();
+                //RadishT1stats.damage = damage;
+
+                GameObject radishT1 = myObjectPooler.SpawnFromPool(radishMissleTag, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
                 RadishMissile RadishT1stats = radishT1.GetComponent<RadishMissile>();
                 RadishT1stats.damage = damage;
                 FindObjectOfType<AudioManager>().Play("RadishMissle");
@@ -1271,14 +1307,34 @@ public class character : MonoBehaviour
                 // radish missile
 
                 animator.SetTrigger("Missile");
-                GameObject radishT2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
-                radishT2.transform.position = transform.position + new Vector3(1, 0.3f, 0);
-                RadishMissile RadishT2stats = radishT2.GetComponent<RadishMissile>();
-                RadishT2stats.damage = damage;
-                GameObject radishT2clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
-                radishT2clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
-                RadishMissile RadishT2statsclone = radishT2clone.GetComponent<RadishMissile>();
-                RadishT2statsclone.damage = damage;
+                //GameObject radishT2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                //radishT2.transform.position = transform.position + new Vector3(1, 0.3f, 0);
+                //RadishMissile RadishT2stats = radishT2.GetComponent<RadishMissile>();
+                //RadishT2stats.damage = damage;
+                //GameObject radishT2clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                //radishT2clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
+                //RadishMissile RadishT2statsclone = radishT2clone.GetComponent<RadishMissile>();
+                //RadishT2statsclone.damage = damage;
+
+                for (int i = 0; i < 2; i++)
+                {
+                    Vector3 offset;
+                    if (i == 0)
+                    {
+                        offset = new Vector3(1, 0.3f, 0);
+                    }
+                    else if(i == 1)
+                    {
+                        offset = new Vector3(1, -0.3f, 0);
+                    }
+                    else
+                    {
+                        offset = Vector3.zero;
+                    }
+                    GameObject radishT2 = myObjectPooler.SpawnFromPool(radishMissleTag, transform.position + offset, Quaternion.identity);
+                    RadishMissile RadishT2stats = radishT2.GetComponent<RadishMissile>();
+                    RadishT2stats.damage = damage;
+                }
                 FindObjectOfType<AudioManager>().Play("RadishMissle");
 
                 break;
@@ -1286,18 +1342,41 @@ public class character : MonoBehaviour
                 // radish missile
 
                 animator.SetTrigger("Missile");
-                GameObject radishT3 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
-                radishT3.transform.position = transform.position + new Vector3(1, 0.3f, 0);
-                RadishMissile RadishT3stats = radishT3.GetComponent<RadishMissile>();
-                RadishT3stats.damage = damage;
-                GameObject radishT3clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
-                radishT3clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
-                RadishMissile RadishT3statsclone = radishT3clone.GetComponent<RadishMissile>();
-                RadishT3statsclone.damage = damage;
-                GameObject radishT3clone2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
-                radishT3clone2.transform.position = transform.position + new Vector3(2, 0, 0);
-                RadishMissile RadishT3statsclone2 = radishT3clone2.GetComponent<RadishMissile>();
-                RadishT3statsclone2.damage = damage;
+                //GameObject radishT3 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                //radishT3.transform.position = transform.position + new Vector3(1, 0.3f, 0);
+                //RadishMissile RadishT3stats = radishT3.GetComponent<RadishMissile>();
+                //RadishT3stats.damage = damage;
+                //GameObject radishT3clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                //radishT3clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
+                //RadishMissile RadishT3statsclone = radishT3clone.GetComponent<RadishMissile>();
+                //RadishT3statsclone.damage = damage;
+                //GameObject radishT3clone2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                //radishT3clone2.transform.position = transform.position + new Vector3(2, 0, 0);
+                //RadishMissile RadishT3statsclone2 = radishT3clone2.GetComponent<RadishMissile>();
+                //RadishT3statsclone2.damage = damage;
+                for (int i = 0; i < 3; i++)
+                {
+                    Vector3 offset;
+                    if (i == 0)
+                    {
+                        offset = new Vector3(1, 0.3f, 0);
+                    }
+                    else if (i == 1)
+                    {
+                        offset = new Vector3(1, -0.3f, 0);
+                    }
+                    else if (i == 2)
+                    {
+                        offset = new Vector3(2, 0, 0);
+                    }
+                    else
+                    {
+                        offset = Vector3.zero;
+                    }
+                    GameObject radishT3 = myObjectPooler.SpawnFromPool(radishMissleTag, transform.position + offset, Quaternion.identity);
+                    RadishMissile RadishT3stats = radishT3.GetComponent<RadishMissile>();
+                    RadishT3stats.damage = damage;
+                }
                 FindObjectOfType<AudioManager>().Play("RadishMissle");
 
                 break;
@@ -1305,18 +1384,41 @@ public class character : MonoBehaviour
                 // radish missile
 
                 animator.SetTrigger("Missile");
-                GameObject radishT4 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
-                radishT4.transform.position = transform.position + new Vector3(1, 0.3f, 0);
-                RadishMissile RadishT4stats = radishT4.GetComponent<RadishMissile>();
-                RadishT4stats.damage = damage;
-                GameObject radishT4clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
-                radishT4clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
-                RadishMissile RadishT4statsclone = radishT4clone.GetComponent<RadishMissile>();
-                RadishT4statsclone.damage = damage;
-                GameObject radishT4clone2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
-                radishT4clone2.transform.position = transform.position + new Vector3(2, 0, 0);
-                RadishMissile RadishT4statsclone2 = radishT4clone2.GetComponent<RadishMissile>();
-                RadishT4statsclone2.damage = damage;
+                //GameObject radishT4 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                //radishT4.transform.position = transform.position + new Vector3(1, 0.3f, 0);
+                //RadishMissile RadishT4stats = radishT4.GetComponent<RadishMissile>();
+                //RadishT4stats.damage = damage;
+                //GameObject radishT4clone = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                //radishT4clone.transform.position = transform.position + new Vector3(1, -0.3f, 0);
+                //RadishMissile RadishT4statsclone = radishT4clone.GetComponent<RadishMissile>();
+                //RadishT4statsclone.damage = damage;
+                //GameObject radishT4clone2 = GameObject.Instantiate(Resources.Load("Prefabs/Radish Missile") as GameObject);
+                //radishT4clone2.transform.position = transform.position + new Vector3(2, 0, 0);
+                //RadishMissile RadishT4statsclone2 = radishT4clone2.GetComponent<RadishMissile>();
+                //RadishT4statsclone2.damage = damage;
+                for (int i = 0; i < 3; i++)
+                {
+                    Vector3 offset;
+                    if (i == 0)
+                    {
+                        offset = new Vector3(1, 0.3f, 0);
+                    }
+                    else if (i == 1)
+                    {
+                        offset = new Vector3(1, -0.3f, 0);
+                    }
+                    else if (i == 2)
+                    {
+                        offset = new Vector3(2, 0, 0);
+                    }
+                    else
+                    {
+                        offset = Vector3.zero;
+                    }
+                    GameObject radishT4 = myObjectPooler.SpawnFromPool(radishMissleTag, transform.position + offset, Quaternion.identity);
+                    RadishMissile RadishT4stats = radishT4.GetComponent<RadishMissile>();
+                    RadishT4stats.damage = damage;
+                }
                 FindObjectOfType<AudioManager>().Play("RadishMissle");
 
 

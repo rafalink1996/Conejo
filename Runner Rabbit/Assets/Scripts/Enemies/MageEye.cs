@@ -12,20 +12,20 @@ public class MageEye : MonoBehaviour, IPooledObject
 
     public EnemySpawner enemySpawner;
     [SerializeField] HandEyeSpawner mySpawner;
-    [SerializeField] GameObject Laser;
+    [SerializeField] GameObject EyeLaser;
     
 
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        target = GameObject.FindWithTag("Player").transform;
-        mySpawner = FindObjectOfType<HandEyeSpawner>();
+        
     }
 
     void Start()
     {
-       
+        animator = GetComponent<Animator>();
+        target = GameObject.FindWithTag("Player").transform;
+        mySpawner = FindObjectOfType<HandEyeSpawner>();
         //StartCoroutine(Attack(Random.Range(2f, 4f)));
         //enemySpawner = GameObject.Find("Enemy Spawner (Hand)").GetComponent<EnemySpawner>();
         AttackMode = false;
@@ -38,7 +38,7 @@ public class MageEye : MonoBehaviour, IPooledObject
     }
 
     
-    void Update()
+    void LateUpdate()
     {
         if (AttackMode)
         {
@@ -61,16 +61,21 @@ public class MageEye : MonoBehaviour, IPooledObject
         yield return new WaitForSeconds(1f);
         //GameObject MageMissle = GameObject.Instantiate(Resources.Load("Prefabs/MageLaser") as GameObject);
         //MageMissle.transform.position = new Vector2(transform.position.x-10, transform.position.y);
-        Laser.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        EyeLaser.SetActive(true);
+        EyeLaser.GetComponent<MageEyeLaser>().Attack();
+    }
+
+    public void StartDespawn()
+    {
+        StartCoroutine(Despawn());
+    }
+
+    IEnumerator Despawn()
+    {
+        yield return new WaitForSeconds(0.5f);
         animator.SetTrigger("Despawn");
         yield return new WaitForSeconds(1f);
         mySpawner.StartEnemyTimer();
         gameObject.SetActive(false);
-        //enemySpawner.OneDown();
-        //Destroy(gameObject);
-
-
-
     }
 }

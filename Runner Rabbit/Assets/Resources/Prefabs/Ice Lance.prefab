@@ -94,6 +94,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -183,6 +184,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -227,7 +229,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6291642296576559284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e058da14b33ca42398ef658116b8a40f, type: 2}
   m_CullingMode: 0
@@ -376,6 +378,7 @@ MonoBehaviour:
   speed: 10
   reflected: 0
   sourceTransform: {fileID: 0}
+  ID: 2
 --- !u!50 &5834151242176536563
 Rigidbody2D:
   serializedVersion: 4
@@ -409,7 +412,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyP: 1
+  DestroyP: 0
+  Poison: 0
+  PoisonTime: 0
   Damage: 2
 --- !u!1 &7969874367523729101
 GameObject:
@@ -457,6 +462,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -545,6 +551,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -588,7 +595,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9048140416860781149}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2bb533c5e4ec04eb1bdf9d71fc0d449a, type: 2}
   m_CullingMode: 0
@@ -737,6 +744,7 @@ MonoBehaviour:
   speed: 10
   reflected: 0
   sourceTransform: {fileID: 0}
+  ID: 1
 --- !u!50 &5517753497773030468
 Rigidbody2D:
   serializedVersion: 4
@@ -770,5 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyP: 1
+  DestroyP: 0
+  Poison: 0
+  PoisonTime: 0
   Damage: 2

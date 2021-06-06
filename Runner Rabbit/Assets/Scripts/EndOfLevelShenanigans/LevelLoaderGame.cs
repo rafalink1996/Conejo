@@ -34,11 +34,12 @@ public class LevelLoaderGame : MonoBehaviour
     bool timeOver = false;
 
     public backgroundLoop backgroundLoopScript;
+    bool StopSpawning;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        StopSpawning = false;
         Resources.UnloadUnusedAssets();
 
         GameStats.stats.isInStore = false;
@@ -110,6 +111,11 @@ public class LevelLoaderGame : MonoBehaviour
             EnemySpawner2.SetActive(false);
             EnemySpawner3.SetActive(false);
             EnemySpawner4.SetActive(false);
+            if (!StopSpawning)
+            {
+                EnemySpawnerHand.GetComponent<HandEyeSpawner>().StopAllCoroutines();
+                StopSpawning = true;
+            }
             EnemySpawnerHand.SetActive(false);
             cha.endlevel = true;
             
@@ -121,6 +127,8 @@ public class LevelLoaderGame : MonoBehaviour
             GameStats.stats.SaveCurrentHearts = cha.Health;
             GameStats.stats.SaveStats();
             GameStats.stats.RunInProgress = true;
+
+            
         }
 
         

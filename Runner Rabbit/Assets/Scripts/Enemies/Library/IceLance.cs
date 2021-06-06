@@ -2,29 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceLance : MonoBehaviour
+public class IceLance : MonoBehaviour, IPooledObject
 {
     public float speed = 3f;
     public bool reflected;
     public Transform sourceTransform;
+    Animator myAnimator;
+    [SerializeField] int ID;
+    float finalPos;
+    bool separate;
+    float separationSpeed = 2;
     // Start is called before the first frame update
     void Start()
     {
-
-        sourceTransform = transform.parent.transform;
-        Destroy(transform.parent.gameObject, 10f);
-
-        // transform.position = GameObject.Find("Enemy Spawner").transform.position;
+        if (ID == 1)
+        {
+            finalPos = 1.0f;
+        }
+        else if (ID == 2)
+        {
+            finalPos = -1.0f;
+        }
     }
 
-    // Update is called once per frame
+    public void OnObjectSpawn()
+    {
+        transform.localPosition =  new Vector3(-0.8f, 0, 0);
+        separate = false;
+
+    }
+
+
     void Update()
     {
         transform.Translate(-speed * Time.deltaTime, 0, 0);
-        /*Vector3 temp = transform.position;
-        temp.x -= speed * Time.deltaTime;
-        transform.position = temp;*/
+        if (separate == false)
+        {
+            if(ID == 1)
+            {
+                if (!(transform.localPosition.y >= finalPos))
+                {
+                    
+                        transform.localPosition += new Vector3(0, separationSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    separate = true;
+                }
+            }else if(ID == 2)
+            {
+                if (!(transform.localPosition.y <= finalPos))
+                {
+
+                    transform.localPosition -= new Vector3(0, separationSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    separate = true;
+                }
+            }
+            
+        }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
 
     {
@@ -38,7 +78,7 @@ public class IceLance : MonoBehaviour
             }
             else
             {
-                
+
                 Vector3 dir = sourceTransform.position - transform.position;
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
@@ -48,10 +88,10 @@ public class IceLance : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
-            print("hit " + collision.gameObject.name);
-            Destroy(gameObject);
+            //print("hit " + collision.gameObject.name);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
-
 
     }
 

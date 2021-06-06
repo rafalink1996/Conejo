@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElectricBall : MonoBehaviour
+public class ElectricBall : MonoBehaviour, IPooledObject
 {
     Transform target;
     public Transform sourceTransform;
@@ -11,17 +11,23 @@ public class ElectricBall : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     bool reflected;
+    
     // Start is called before the first frame update
     void Start()
     {
-        sourceTransform = transform.parent.transform;
+        
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>();
-        Invoke("Hit", 2.5f);
     }
 
-    // Update is called once per frame
+    public void OnObjectSpawn()
+    {
+        transform.position = transform.parent.transform.position;
+        transform.rotation = transform.parent.transform.rotation;
+    }
+
+    
     void FixedUpdate()
     {
         if (target != null && !reflected)
@@ -48,7 +54,7 @@ public class ElectricBall : MonoBehaviour
     {
         if (collision.name == "Kick")
         {
-            print("reflected");
+            //print("reflected");
             reflected = true;
             rb.angularVelocity = 0;
             rb.velocity = Vector3.zero;
@@ -70,7 +76,7 @@ public class ElectricBall : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
-            print("hit " + collision.gameObject.name);
+            //print("hit " + collision.gameObject.name);
             Hit();
         }
         if (collision.tag == "Player" || collision.tag == "Rift")
@@ -87,6 +93,7 @@ public class ElectricBall : MonoBehaviour
     }
     public void Destroyed()
     {
-        Destroy(transform.parent.gameObject);
+        transform.parent.gameObject.SetActive(false);
+       // Destroy(transform.parent.gameObject);
     }
 }

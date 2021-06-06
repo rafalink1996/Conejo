@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RadishMissile : MonoBehaviour
+public class RadishMissile : MonoBehaviour, IPooledObject
 {
     public float speed;
     public float RotateSpeed = 50;
@@ -19,26 +19,24 @@ public class RadishMissile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 5f);
+        //Destroy(gameObject, 5f);
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void OnObjectSpawn()
+    {
+        //Invoke("Deactivate", 5);
+        posibleEnemies.Clear();
         startYPos = transform.position.y;
         startXpos = transform.position.x;
-
         target = FindClosestEnemy();
-        if(target != null)
+        if (target != null)
         {
             // its ok bud
             targetYPos = target.position.y;
         }
-        
-        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        //transform.Translate(speed * Time.deltaTime, 0, 0);
-    }
 
     private void FixedUpdate()
     {
@@ -62,18 +60,18 @@ public class RadishMissile : MonoBehaviour
 
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Enemy")
-        {
-            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-            collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
-            //print("hit " + collision.gameObject.name);
-            Destroy(gameObject);
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.collider.tag == "Enemy")
+    //    {
+    //        collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+    //        collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
+    //        //print("hit " + collision.gameObject.name);
+    //        Destroy(gameObject);
 
 
-        }
-    }
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -82,7 +80,9 @@ public class RadishMissile : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
             //print("hit " + collision.gameObject.name);
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            target = null;
+            Deactivate();
 
 
         }
@@ -102,7 +102,7 @@ public class RadishMissile : MonoBehaviour
             {
                 for (int i = 0; i < allEnemies.Length; i++)
                 { 
-                    if (allEnemies[i].transform.position.y >= 0 && allEnemies[i].transform.position.x > startXpos)
+                    if (allEnemies[i].transform.position.y >= 0 && allEnemies[i].transform.position.x > startXpos && allEnemies[i].activeSelf)
                     {
                         posibleEnemies.Add(allEnemies[i]);
                     }
@@ -112,7 +112,7 @@ public class RadishMissile : MonoBehaviour
             {
                 for (int i = 0; i < allEnemies.Length; i++)
                 {
-                    if (allEnemies[i].transform.position.y < 0 && allEnemies[i].transform.position.x > startXpos)
+                    if (allEnemies[i].transform.position.y < 0 && allEnemies[i].transform.position.x > startXpos && allEnemies[i].activeSelf)
                     {
                         posibleEnemies.Add(allEnemies[i]);
                     }
@@ -135,17 +135,23 @@ public class RadishMissile : MonoBehaviour
 
         if (posibleEnemies.Count != 0)
         {
-
             //Debug.Log("locatingEnemy");
             foreach (GameObject currentEnemy in posibleEnemies)
             {
-
-                float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
-                if (distanceToEnemy < distanceToClosestEnemy)
+                if(currentEnemy != null)
                 {
-                    distanceToClosestEnemy = distanceToEnemy;
-                    ClosestEnemy = currentEnemy;
+                    float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
+                    if (distanceToEnemy < distanceToClosestEnemy)
+                    {
+                        distanceToClosestEnemy = distanceToEnemy;
+                        ClosestEnemy = currentEnemy;
+                    }
                 }
+                else
+                {
+                    return null;
+                }
+                
             }
 
             //target = ClosestEnemy.transform;
@@ -159,5 +165,12 @@ public class RadishMissile : MonoBehaviour
             return null;
         }
 
+    }
+
+
+    void Deactivate()
+    {
+        target = null;
+        gameObject.SetActive(false);
     }
 }

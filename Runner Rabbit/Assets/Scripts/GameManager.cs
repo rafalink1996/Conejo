@@ -48,13 +48,24 @@ public class GameManager : MonoBehaviour
         myObjectPooler = FindObjectOfType<ObjectPooler>();
         for (int i = 0; i < myObjectPooler.pools.Count; i++)
         {
-            if (myObjectPooler.pools[i].allLevels == false && GameStats.stats.LevelCount != myObjectPooler.pools[i].LevelID)
+            if (!myObjectPooler.pools[i].allLevels && GameStats.stats.LevelCount != myObjectPooler.pools[i].LevelID)
             {
                 myObjectPooler.pools[i].Instantiate = false;
             }
 
+            if(myObjectPooler.pools[i].Power == true)
+            {
+                myObjectPooler.pools[i].Instantiate = false;
+                for (int ID = 0; ID < myObjectPooler.pools[i].PowerIds.Length; ID++)
+                {
+                    if (myObjectPooler.pools[i].PowerIds[ID] == GameStats.stats.powerLight.id || myObjectPooler.pools[i].PowerIds[ID] == GameStats.stats.powerDark.id)
+                    {
 
+                        myObjectPooler.pools[i].Instantiate = true;
+                    }
+                }
 
+            }
         }
 
         StartCoroutine(DestroyStartingAnimations());

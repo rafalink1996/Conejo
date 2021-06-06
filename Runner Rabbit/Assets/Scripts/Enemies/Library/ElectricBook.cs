@@ -19,12 +19,17 @@ public class ElectricBook : MonoBehaviour
     public int BookHealth = 6;
     public int BookSelfDamage = 2;
 
+    ObjectPooler myObjectPooler;
+    string electricBallTag = "ElectricBallBook";
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        if(GameStats.stats.LevelIndicator > 1)
+        myObjectPooler = ObjectPooler.Instance;
+        electricBallTag = "ElectricBallBook";
+        if (GameStats.stats.LevelIndicator > 1)
         {
             BookHealth = 18;
             BookSelfDamage = 6;
@@ -97,10 +102,12 @@ public class ElectricBook : MonoBehaviour
     }
     void ElectricBall()
     {
-        GameObject electricBall = GameObject.Instantiate(Resources.Load("Prefabs/Electric ball") as GameObject);
-        //electricBall.GetComponent<ElectricBall>().sourceTransform = this.transform;
-        //electricBall.transform.SetParent(transform, false);
-        electricBall.transform.position = transform.position;
+        //GameObject electricBall = GameObject.Instantiate(Resources.Load("Prefabs/Electric ball") as GameObject);
+        //electricBall.transform.position = transform.position;
+
+        GameObject electricBall = myObjectPooler.SpawnFromPool(electricBallTag, transform.position, Quaternion.identity, true);
+        ElectricBall myElectriBall = electricBall.GetComponentInChildren<ElectricBall>();
+        myElectriBall.sourceTransform = gameObject.transform;
         
     }
     void Over()

@@ -2,29 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball : MonoBehaviour, IPooledObject
 {
     public float speed = 20f;
     public Animator fireballAnimator;
     bool reflected;
-    // Start is called before the first frame update
+  
     void Start()
     {
-
-     fireballAnimator = GetComponent<Animator>();
-        
-        Destroy(transform.parent.gameObject, 4f);
-      
-       // transform.position = GameObject.Find("Enemy Spawner").transform.position;
+        fireballAnimator = GetComponent<Animator>();
+    }
+    public void OnObjectSpawn()
+    {
+        transform.position = transform.parent.transform.position + new Vector3(-0.99f, 0.21f, 0);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         transform.Translate(-speed * Time.deltaTime, 0, 0);
-        /*Vector3 temp = transform.position;
-        temp.x -= speed * Time.deltaTime;
-        transform.position = temp;*/
     }
     private void OnTriggerEnter2D(Collider2D collision)
 
@@ -32,7 +28,7 @@ public class Fireball : MonoBehaviour
         if (collision.name == "Kick")
         {
             reflected = true;
-            print("kick");
+            //print("kick");
             if (collision.GetComponent<Kick>().reflect == false)
             {
                 transform.rotation = Quaternion.AngleAxis(Random.Range(120, 240), Vector3.forward);
@@ -47,7 +43,7 @@ public class Fireball : MonoBehaviour
 
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(20);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
-            print("hit " + collision.gameObject.name);
+            //print("hit " + collision.gameObject.name);
             fireballAnimator.SetTrigger("hit");
             FindObjectOfType<AudioManager>().Play("FireExplotion");
 
@@ -67,8 +63,8 @@ public class Fireball : MonoBehaviour
     
     public void HitEnd ()
     {
-        
-        Destroy(transform.parent.gameObject);
+        gameObject.SetActive(false);
+        //Destroy(transform.parent.gameObject);
     }
     
     

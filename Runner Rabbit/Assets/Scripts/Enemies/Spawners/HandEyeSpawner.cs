@@ -18,11 +18,19 @@ public class HandEyeSpawner : MonoBehaviour
         EyeEnemyTag = "MageEye";
         myObjectPooler = ObjectPooler.Instance;
 
-        SpawnMagePart();
-        
+        StartCoroutine(SpawnTimer(4));
+
     }
 
-    
+    private void Update()
+    {
+        if (GameStats.stats.spawnHouse)
+        {
+            StopAllCoroutines();
+        }
+    }
+
+
     IEnumerator SpawnTimer(float Time)
     {
         yield return new WaitForSeconds(Time);
