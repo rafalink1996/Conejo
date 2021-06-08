@@ -18,8 +18,12 @@ public class ShamanGoblin : MonoBehaviour
 
     [SerializeField] GameObject MoneyBagObject = null;
     // Start is called before the first frame update
+
+    ObjectPooler myObjectPooler;
+    string HealTag = "Heal";
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
         MoneyBagObject.SetActive(false);
         health = GetComponent<EnemyHealth>();
         health.maxHealth = myHealth;
@@ -110,8 +114,9 @@ public class ShamanGoblin : MonoBehaviour
         //Destroy(gameObject);
         if (health.CanSpawnHeal == true)
         {
-            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
-            healthHeal.transform.position = transform.position;
+            //GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            //healthHeal.transform.position = transform.position;
+            myObjectPooler.SpawnFromPool(HealTag, transform.position, Quaternion.identity);
         }
     }
     void LevelOver()

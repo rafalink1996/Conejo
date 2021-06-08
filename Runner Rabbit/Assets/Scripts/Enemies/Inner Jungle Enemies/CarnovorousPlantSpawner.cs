@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarnovorousPlantSpawner : MonoBehaviour
 {
     public GameObject SimpleEnemy;
-    
+
     public float respawnTime = 1.0f;
     public float respawnTimeRandom = 4.0f;
     public float SpawnTimer = 4f;
@@ -13,8 +13,17 @@ public class CarnovorousPlantSpawner : MonoBehaviour
     public bool DarkSide = false;
     [SerializeField] Transform sourceTransform;
 
+    ObjectPooler myObjectPooler;
+    string sharpLeafTag = "SharpLeaf";
+
     private IEnumerator Spawner;
 
+
+    private void Start()
+    {
+        myObjectPooler = ObjectPooler.Instance;
+        sharpLeafTag = "SharpLeaf";
+    }
     public void StartSpawning()
     {
         /*
@@ -28,10 +37,10 @@ public class CarnovorousPlantSpawner : MonoBehaviour
         StartCoroutine(SimpleEnemyWave());
 
 
-        
+
     }
 
- 
+
 
 
     // Update is called once per frame
@@ -44,7 +53,7 @@ public class CarnovorousPlantSpawner : MonoBehaviour
 
             spawnEnemyRandom();
 
-            if (Time.time-StartTime > SpawnTimer)
+            if (Time.time - StartTime > SpawnTimer)
             {
                 break;
             }
@@ -52,22 +61,23 @@ public class CarnovorousPlantSpawner : MonoBehaviour
         }
     }
 
-  
+
 
 
     private void spawnEnemyRandom()
     {
 
-        GameObject SE = Instantiate(SimpleEnemy) as GameObject;
-        SE.transform.position = new Vector2(transform.position.x, transform.position.y + Random.Range(-8, 8));
+        //GameObject SE = Instantiate(SimpleEnemy) as GameObject;
+        //SE.transform.position = new Vector2(transform.position.x, transform.position.y + Random.Range(-8, 8));
+        GameObject SE = myObjectPooler.SpawnFromPool(sharpLeafTag, new Vector2(transform.position.x, transform.position.y + Random.Range(-8, 8)), Quaternion.identity);
         SharpLeafProyectile SES = SE.GetComponent<SharpLeafProyectile>();
-        if(SES != null)
+        if (SES != null)
         {
             SES.sourceTransform = sourceTransform;
         }
 
     }
 
-    
+
 }
 

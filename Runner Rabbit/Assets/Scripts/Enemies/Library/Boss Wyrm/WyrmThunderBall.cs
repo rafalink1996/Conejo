@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WyrmThunderBall : MonoBehaviour
+public class WyrmThunderBall : MonoBehaviour, IPooledObject
 {
+    Transform BunnyTarget;
     Transform target;
     public Transform sourceTransform;
     float speed = 7f;
@@ -12,15 +13,27 @@ public class WyrmThunderBall : MonoBehaviour
     Animator anim;
     bool reflected = false;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        BunnyTarget = GameObject.FindWithTag("Player").transform;
+        anim = GetComponent<Animator>();
+    }
     void Start()
     {
         //sourceTransform = GameObject.Find("Book Wyrm").transform;
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindWithTag("Player").transform;
+        BunnyTarget = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>();
-        Invoke("Hit", 4f);
+        //Invoke("Hit", 4f);
     }
-
+    public void OnObjectSpawn()
+    {
+        target = BunnyTarget;
+        transform.position = transform.parent.transform.position;
+        transform.rotation = transform.parent.transform.rotation;
+        reflected = false;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -92,6 +105,7 @@ public class WyrmThunderBall : MonoBehaviour
     }
     public void Destroyed()
     {
-        Destroy(transform.parent.gameObject);
+        transform.parent.gameObject.SetActive(false);
+        //Destroy(transform.parent.gameObject);
     }
 }

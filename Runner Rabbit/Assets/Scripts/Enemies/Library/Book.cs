@@ -19,6 +19,7 @@ public class Book : MonoBehaviour
 
     ObjectPooler myObjectPooler;
     string fireBallTag = "FireBallBook";
+    string HealTokenTag = "Heal";
 
     // Start is called before the first frame update
     void Start()
@@ -103,8 +104,9 @@ public class Book : MonoBehaviour
         Destroy(gameObject);
         if (health.CanSpawnHeal == true)
         {
-            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
-            healthHeal.transform.position = transform.position;
+            //GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            //healthHeal.transform.position = transform.position;
+            myObjectPooler.SpawnFromPool(HealTokenTag, transform.position, Quaternion.identity);
         }
     }
 

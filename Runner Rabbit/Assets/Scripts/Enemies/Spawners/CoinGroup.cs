@@ -7,9 +7,10 @@ public class CoinGroup : MonoBehaviour, IPooledObject
     [System.Serializable]
     public class TokenPosition
     {
+        public string Name;
         public Vector3[] coinPositions;
         public Vector3[] crystalPositions;
-        int ID;
+        public int ID;
     }
 
     public List<TokenPosition> tokenPositions;
@@ -30,35 +31,35 @@ public class CoinGroup : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
-        if(myObjectPooler != null)
-        {
-            myObjectPooler = ObjectPooler.Instance;
-        }
-        for(int i = 0; i < tokenPositions.Count; i++)
-        {
-            for (int coin = 0; coin < tokenPositions[i].coinPositions.Length; coin++)
-            {
-                GameObject myCoin = myObjectPooler.SpawnFromPool(coinTag, transform.position, Quaternion.identity);
-                myCoin.transform.parent = gameObject.transform;
-                myCoin.transform.localPosition += tokenPositions[i].coinPositions[coin];
-                myCoin.SetActive(true);
-            }
+      
+        int i = Random.Range(0, tokenPositions.Count);
 
-            if(tokenPositions[i].crystalPositions.Length != 0)
-            {
-                for (int k = 0; k < tokenPositions[i].crystalPositions.Length; k++)
-                {
-                    GameObject myCrystal = myObjectPooler.SpawnFromPool(crystalTip, tokenPositions[i].crystalPositions[k], Quaternion.identity);
-                    myCrystal.SetActive(true);
-                }
-            }
-            
+        for (int coin = 0; coin < tokenPositions[i].coinPositions.Length; coin++)
+        {
+            GameObject myCoin = myObjectPooler.SpawnFromPool(coinTag, transform.position, Quaternion.identity);
+            myCoin.transform.parent = gameObject.transform;
+            myCoin.transform.localPosition += tokenPositions[i].coinPositions[coin];
+            myCoin.SetActive(true);
         }
+
+        if (tokenPositions[i].crystalPositions.Length != 0)
+        {
+            for (int k = 0; k < tokenPositions[i].crystalPositions.Length; k++)
+            {
+                GameObject myCrystal = myObjectPooler.SpawnFromPool(crystalTip, transform.position, Quaternion.identity);
+                myCrystal.transform.parent = gameObject.transform;
+                myCrystal.transform.localPosition += tokenPositions[i].crystalPositions[k];
+
+                myCrystal.SetActive(true);
+            }
+        }
+
+
     }
 
     private void Update()
     {
-        
+
     }
 
 

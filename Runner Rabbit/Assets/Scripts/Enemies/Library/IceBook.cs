@@ -21,6 +21,7 @@ public class IceBook : MonoBehaviour
 
     ObjectPooler myObjectPooler;
     string iceLanceTag = "IceLanceBook";
+    string HealTokenTag = "Heal";
 
     // Start is called before the first frame update
     void Start()
@@ -106,16 +107,19 @@ public class IceBook : MonoBehaviour
             GameObject iceLanceChild = iceLance.transform.GetChild(i).gameObject;
             if(iceLanceChild != null)
             {
-                iceLance.SetActive(true);
+                iceLanceChild.SetActive(true);
                 IceLance iceLanceChildCS = iceLanceChild.GetComponent<IceLance>();
                 if (iceLanceChildCS != null)
                 {
+                    iceLanceChildCS.OnObjectSpawn();
                     iceLanceChildCS.sourceTransform = gameObject.transform;
                 }
             }
-
-           
-            
+            else
+            {
+                Debug.Log("no Child ice lance");
+            }
+ 
         }
         
 
@@ -128,8 +132,9 @@ public class IceBook : MonoBehaviour
         Destroy(gameObject);
         if (health.CanSpawnHeal == true)
         {
-            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
-            healthHeal.transform.position = transform.position;
+            //GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            //healthHeal.transform.position = transform.position;
+            myObjectPooler.SpawnFromPool(HealTokenTag, transform.position, Quaternion.identity);
         }
     }
 

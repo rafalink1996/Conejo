@@ -2,19 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeWarning : MonoBehaviour
+public class SnakeWarning : MonoBehaviour, IPooledObject
 {
     [SerializeField] SpriteRenderer mySpriteRenderer = null;
     [SerializeField] SpriteRenderer ArrowSpriteRenderer = null;
     [SerializeField] GameObject SnakePrefab = null;
-    
+
+    ObjectPooler myObjectPooler;
+    string SnakeTag = "Snake";
     // Start is called before the first frame update
+    private void Awake()
+    {
+        myObjectPooler = ObjectPooler.Instance;
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+    }
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        //ArrowSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
+    }
 
-
+    public void OnObjectSpawn()
+    {
         StartCoroutine(Flashing());
     }
 
@@ -40,7 +50,10 @@ public class SnakeWarning : MonoBehaviour
 
         }
 
-        Instantiate(SnakePrefab, transform.position + new Vector3(30, 0, 0), Quaternion.identity);
-        Destroy(gameObject);
+        //Instantiate(SnakePrefab, transform.position + new Vector3(30, 0, 0), Quaternion.identity);
+       GameObject snake = myObjectPooler.SpawnFromPool(SnakeTag, transform.position + new Vector3(30, 0, 0), Quaternion.identity);
+       
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

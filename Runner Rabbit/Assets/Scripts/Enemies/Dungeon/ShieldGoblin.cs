@@ -10,9 +10,13 @@ public class ShieldGoblin : MonoBehaviour
     float spawnTime;
     bool spawned;
     [SerializeField] CircleCollider2D MyCircleCollider2D = null;
+
+    ObjectPooler myObjectPooler;
+    string HealTag = "Heal";
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
         anim = GetComponent<Animator>();
         health = GetComponent<EnemyHealth>();
         health.maxHealth = myHealth;
@@ -65,8 +69,9 @@ public class ShieldGoblin : MonoBehaviour
         Destroy(gameObject);
         if (health.CanSpawnHeal == true)
         {
-            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
-            healthHeal.transform.position = transform.position;
+            //GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            //healthHeal.transform.position = transform.position;
+            myObjectPooler.SpawnFromPool(HealTag, transform.position, Quaternion.identity);
         }
     }
     void Despawned()

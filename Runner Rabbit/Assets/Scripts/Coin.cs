@@ -8,6 +8,7 @@ public class Coin : MonoBehaviour
     public float speed = 5f;
     public int myTokenCount;
     public Transform PlayerTarget;
+    
    
 
     void Start()

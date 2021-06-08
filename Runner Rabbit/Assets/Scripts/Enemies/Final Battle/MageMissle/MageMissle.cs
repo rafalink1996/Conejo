@@ -25,7 +25,12 @@ public class MageMissle : MonoBehaviour, IPooledObject
             transform.rotation = myParent.rotation;
 
         }
+        else
+        {
+            transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+        }
         
+
         Invoke("Deactivate", 3);
     }
 

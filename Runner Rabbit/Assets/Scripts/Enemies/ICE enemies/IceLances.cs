@@ -2,16 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceLances : MonoBehaviour
+public class IceLances : MonoBehaviour, IPooledObject
 {
     public Transform[] lance;
     int lanceAmount;
     float divideTime = 0.2f;
     bool reflected;
+    AudioSource SFX;
+    Transform SourceTransform;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        SourceTransform = FindObjectOfType<Yeti>().gameObject.transform;
+        SFX = GetComponent<AudioSource>();
+    }
     void Start()
     {
+        SourceTransform = FindObjectOfType<Yeti>().gameObject.transform;
+        SFX = GetComponent<AudioSource>();
+        //lanceAmount = Random.Range(1, 5);
+    }
+
+    public void OnObjectSpawn()
+    {
+        SFX.Play();
+        reflected = false;
+        divideTime = 0.2f;
         lanceAmount = Random.Range(1, 5);
+        for (int i = 0; i < lance.Length; i++)
+        {
+            lance[i].gameObject.SetActive(true);
+            IceLance myIceLance = lance[i].GetComponent<IceLance>();
+            myIceLance.OnObjectSpawn();
+            myIceLance.sourceTransform = SourceTransform;
+        }
     }
 
     // Update is called once per frame

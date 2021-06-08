@@ -21,6 +21,7 @@ public class Slime : MonoBehaviour
 
     ObjectPooler myObjectPooler;
     string slimeBallTag = "SlimeBall";
+    string HealTokenTag = "Heal";
 
     // Start is called before the first frame update
     void Start()
@@ -103,8 +104,9 @@ public class Slime : MonoBehaviour
         enemySpawner.OneDown();
         if (health.CanSpawnHeal == true)
         {
-            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
-            healthHeal.transform.position = transform.position;
+            myObjectPooler.SpawnFromPool(HealTokenTag, transform.position, Quaternion.identity);
+            //GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            //healthHeal.transform.position = transform.position;
         }
         Destroy(gameObject);
 

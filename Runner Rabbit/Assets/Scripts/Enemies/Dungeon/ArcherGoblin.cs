@@ -17,25 +17,18 @@ public class ArcherGoblin : MonoBehaviour
     public EnemyHealth health;
     public int myHealth;
 
+    ObjectPooler myObjectPooler;
+    string arrowTag = "arrow";
+    string HealTag = "Heal";
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        myObjectPooler = ObjectPooler.Instance;
         health = GetComponent<EnemyHealth>();
         health.maxHealth = 9;
         anim = GetComponent<Animator>();
-       /* if (transform.position.y > 0)
-        {
-            enemySpawner = GameObject.Find("Enemy Spawner (Up)").GetComponent<EnemySpawner>();
-        }
-        if (transform.position.y < 0)
-        {
-            enemySpawner = GameObject.Find("Enemy Spawner (Down)").GetComponent<EnemySpawner>();
-        }*/
-        //enemySpawner = FindObjectOfType<EnemySpawner>();
-        //healthSlider = GetComponentInChildren<Slider>();
-        //health = maxHealth;
-        //healthSlider.maxValue = maxHealth;
+      
         spawnTime = Random.Range(0.1f, 1f);
         attackTime = Random.Range(0.2f, 1.3f);
     }
@@ -87,8 +80,11 @@ public class ArcherGoblin : MonoBehaviour
     }
     void Arrow()
     {
-        GameObject arrow = GameObject.Instantiate(Resources.Load("Prefabs/Arrow") as GameObject);
-        arrow.transform.position = transform.position;
+        //GameObject arrow = GameObject.Instantiate(Resources.Load("Prefabs/Arrow") as GameObject);
+        //arrow.transform.position = transform.position;
+        GameObject arrow = myObjectPooler.SpawnFromPool(arrowTag, transform.position + new Vector3(-1.2f,-0.2f), Quaternion.identity, true);
+        
+
         FindObjectOfType<AudioManager>().Play("Goblin Hit");
 
     }
@@ -98,8 +94,9 @@ public class ArcherGoblin : MonoBehaviour
         Destroy(gameObject);
         if (health.CanSpawnHeal == true)
         {
-            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
-            healthHeal.transform.position = transform.position;
+            // GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            //healthHeal.transform.position = transform.position;
+            myObjectPooler.SpawnFromPool(HealTag, transform.position, Quaternion.identity);
         }
     }
 

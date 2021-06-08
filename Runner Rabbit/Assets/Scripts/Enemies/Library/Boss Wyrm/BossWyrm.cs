@@ -19,9 +19,14 @@ public class BossWyrm : MonoBehaviour
     EnemyHealth health;
     public GameObject[] healthBar;
     public bool BossDead;
+
+    [SerializeField] ObjectPooler myObjectPooler;
+    string fireBallTag = "BossFireBall";
+    string electricBallTag = "BossElectricBall";
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
         health = GetComponent<EnemyHealth>();
         health.maxHealth = 150;
         anim = GetComponent<Animator>();
@@ -141,16 +146,28 @@ public class BossWyrm : MonoBehaviour
     {
         if (element == 1)
         {
-            GameObject fireBall = Instantiate(Resources.Load("Prefabs/WyrmFireBall") as GameObject);
+            //GameObject fireBall = Instantiate(Resources.Load("Prefabs/WyrmFireBall") as GameObject);
+            //fireBall.transform.localPosition = transform.position + new Vector3(-3.479728f, -0.07675886f, 0);
+
+            GameObject fireBall = myObjectPooler.SpawnFromPool(fireBallTag, transform.position + new Vector3(-3,0,0), Quaternion.identity, true);
+            //fireBall.transform.localPosition = transform.position + new Vector3(-3.479728f, -0.07675886f, 0);
+            WyrmFireBall myFireBall = fireBall.GetComponentInChildren<WyrmFireBall>();
+            if(myFireBall != null)
+            {
+                myFireBall.sourceTransform = this.transform;
+            }
+            else
+            {
+                Debug.Log("no fireball cs");
+            }
+            
+
             health.TakeDamage(3);
-
-            fireBall.transform.localPosition = transform.position + new Vector3(-3.479728f, -0.07675886f, 0);
-            fireBall.GetComponentInChildren<WyrmFireBall>().sourceTransform = this.transform;
-
         }
         if (element == 3)
         {
-            GameObject thunderBall = Instantiate(Resources.Load("Prefabs/WyrmThunderBall") as GameObject);
+            //GameObject thunderBall = Instantiate(Resources.Load("Prefabs/WyrmThunderBall") as GameObject);
+            GameObject thunderBall = myObjectPooler.SpawnFromPool(electricBallTag, transform.position, Quaternion.identity, true);
             thunderBall.transform.position = transform.position + new Vector3(-3.479728f, -0.07675886f, 0);
             thunderBall.GetComponentInChildren<WyrmThunderBall>().sourceTransform = this.transform;
             health.TakeDamage(3);

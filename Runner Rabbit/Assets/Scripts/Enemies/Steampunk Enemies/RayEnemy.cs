@@ -10,6 +10,7 @@ public class RayEnemy : MonoBehaviour
     [SerializeField] ParticleSystem SparkparticleSystem;
     [SerializeField] Slider ChargeSlider;
     Animator RayAnimator;
+    AudioManager myAudiomanager;
 
 
     float laserCharge = 0;
@@ -21,6 +22,7 @@ public class RayEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myAudiomanager = FindObjectOfType<AudioManager>();
         numOfSparks = 0;
         laserCharge = 0;
         ChargeSlider.value = laserCharge;
@@ -48,6 +50,7 @@ public class RayEnemy : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             numOfSparks++;
+            myAudiomanager.Play("SparkSFX");
             LaserParticleSparks();
         }
         FireLaser();
@@ -55,39 +58,47 @@ public class RayEnemy : MonoBehaviour
 
     IEnumerator ChargeLaserOverTime()
     {
+        StartCoroutine(ChargeLaserSFXDelay());
         while (!laserCharged)
         {
             yield return new WaitForSeconds(0.1f);
             laserCharge += chargeRate;
+           
             if (laserCharge >= ChargeSlider.maxValue)
             {
                 laserCharged = true;
-                Debug.Log("laserCharged");
+                //Debug.Log("laserCharged");
             }
 
         }
 
         StartCoroutine(LaserSparks());
-        
-
     }
 
+
+    IEnumerator ChargeLaserSFXDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        myAudiomanager.Play("ChargeSFX");
+
+    }
     void FireLaser()
     {
         Ray.SetActive(true);
-        StartCoroutine(LaserTimer(Random.Range(6, 10)));
+        StartCoroutine(LaserTimer(7));
 
     }
 
     IEnumerator LaserTimer(float time)
     {
+        myAudiomanager.Play("LaserStartSFX");
+        myAudiomanager.Play("LaserLoopSFX");
         yield return new WaitForSeconds(time);
         RayAnimator.SetTrigger("StopRay");
+        myAudiomanager.Stop("LaserLoopSFX");
         yield return new WaitForSeconds(0.6f);
         Ray.SetActive(false);
         StartCoroutine(DechargeLaser());
-        
-
 
     }
 
@@ -107,7 +118,7 @@ public class RayEnemy : MonoBehaviour
         laserCharge = 0;
         numOfSparks = 0;
 
-        StartCoroutine(TimeBetweenFires(Random.Range(2, 4)));
+        StartCoroutine(TimeBetweenFires(3));
 
     }
 

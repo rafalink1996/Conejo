@@ -183,10 +183,15 @@ public class character : MonoBehaviour
 
     //kickObject
     [SerializeField] GameObject kickObject;
+    float KickObjectTime = 1;
+    float maxKickObjectTime = 1;
+
+
     ObjectPooler myObjectPooler;
 
     string radishMissleTag = "RadishMissle";
     string carrotMissleTag = "CarrotMissle";
+    string kickReflectTag = "KickReflect";
 
 
 
@@ -438,7 +443,7 @@ public class character : MonoBehaviour
 
         if (isPoisoned)
         {
-           
+
             if (poisonTime > 0)
             {
                 poisonTime -= Time.deltaTime;
@@ -451,7 +456,7 @@ public class character : MonoBehaviour
         }
         else
         {
-   
+
             isPoisonedEffect.SetActive(false);
         }
 
@@ -486,9 +491,16 @@ public class character : MonoBehaviour
         }
 
 
-       
-            
-        
+
+        if (kickObject.activeSelf == true && KickObjectTime < 0)
+        {
+            kickObject.SetActive(false);
+        }
+        else
+        {
+            KickObjectTime -= Time.deltaTime;
+        }
+
 
 
     }
@@ -589,7 +601,7 @@ public class character : MonoBehaviour
                 {
                     int damage;
                     Proyectile proyectile = collision.GetComponent<Proyectile>();
-                    
+
                     if (proyectile != null)
                     {
                         if (proyectile.Poison == true)
@@ -752,7 +764,7 @@ public class character : MonoBehaviour
                 isPoisoned = false;
                 //Instantiate(PoisonDamageeffect, transform.position, Quaternion.identity);
             }
-            
+
         }
     }
 
@@ -1004,10 +1016,10 @@ public class character : MonoBehaviour
         GameObject myDamageEffect = Instantiate(DamageEffect, transform.position, Quaternion.identity);
         ParticleSystem DamageParticle = myDamageEffect.GetComponent<ParticleSystem>();
         var main = DamageParticle.main;
-       
+
         main.startColor = new Color(colorR, colorG, colorB, colorA);
-       
-        
+
+
 
         FindObjectOfType<AudioManager>().Play("BunnyHit");
 
@@ -1193,7 +1205,7 @@ public class character : MonoBehaviour
                 CarrotMissile CarrotT3Stats = carrotT3.GetComponent<CarrotMissile>();
                 CarrotT3Stats.Piercing = true;
                 CarrotT3Stats.damage = damage;
-                
+
 
                 FindObjectOfType<AudioManager>().Play("MagicMissle");
                 break;
@@ -1323,7 +1335,7 @@ public class character : MonoBehaviour
                     {
                         offset = new Vector3(1, 0.3f, 0);
                     }
-                    else if(i == 1)
+                    else if (i == 1)
                     {
                         offset = new Vector3(1, -0.3f, 0);
                     }
@@ -1426,9 +1438,19 @@ public class character : MonoBehaviour
             case 31:
                 // kick
 
+
+                KickObjectTime = maxKickObjectTime;
                 animator.SetTrigger("Kick");
-                kickObject.SetActive(true);
-                kickObject.GetComponent<Kick>().reflect = false;
+                //kickObject.SetActive(true);
+                //kickObject.GetComponent<Kick>().reflect = false;
+
+                GameObject kick = myObjectPooler.SpawnFromPool(kickReflectTag, transform.position, Quaternion.identity);
+                Kick kickCs = kick.GetComponent<Kick>();
+                if(kickCs != null)
+                {
+                    kickCs.reflect = false;
+                    kickCs.deactivateTime = kickCs.deactivateMaxTime;
+                }
 
                 //GameObject kickT1 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 //kickT1.transform.position = transform.position;
@@ -1439,9 +1461,18 @@ public class character : MonoBehaviour
             case 32:
                 // kick
 
+                KickObjectTime = maxKickObjectTime;
                 animator.SetTrigger("Kick");
-                kickObject.SetActive(true);
-                kickObject.GetComponent<Kick>().reflect = false;
+                //kickObject.SetActive(true);
+                //kickObject.GetComponent<Kick>().reflect = false;
+                GameObject kickT2 = myObjectPooler.SpawnFromPool(kickReflectTag, transform.position, Quaternion.identity);
+                Kick kickCsT2 = kickT2.GetComponent<Kick>();
+                if (kickCsT2 != null)
+                {
+
+                    kickCsT2.reflect = false;
+                    kickCsT2.deactivateTime = kickCsT2.deactivateMaxTime;
+                }
                 //GameObject kickT2 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 //kickT2.transform.position = transform.position;
                 //kickT2.name = "Kick";
@@ -1451,9 +1482,17 @@ public class character : MonoBehaviour
             case 33:
                 // kick
 
+                KickObjectTime = maxKickObjectTime;
                 animator.SetTrigger("Kick");
-                kickObject.SetActive(true);
-                kickObject.GetComponent<Kick>().reflect = true;
+                //kickObject.SetActive(true);
+                //kickObject.GetComponent<Kick>().reflect = true;
+                GameObject kickT3 = myObjectPooler.SpawnFromPool(kickReflectTag, transform.position, Quaternion.identity);
+                Kick kickCsT3 = kickT3.GetComponent<Kick>();
+                if (kickCsT3 != null)
+                {
+                    kickCsT3.reflect = true;
+                    kickCsT3.deactivateTime = kickCsT3.deactivateMaxTime;
+                }
                 //GameObject kickT3 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 //kickT3.transform.position = transform.position;
                 //kickT3.name = "Kick";
@@ -1462,10 +1501,17 @@ public class character : MonoBehaviour
                 break;
             case 34:
                 // kick
-
+                KickObjectTime = maxKickObjectTime;
                 animator.SetTrigger("Kick");
-                kickObject.SetActive(true);
-                kickObject.GetComponent<Kick>().reflect = true;
+                //kickObject.SetActive(true);
+                //kickObject.GetComponent<Kick>().reflect = true;
+                GameObject kickT4 = myObjectPooler.SpawnFromPool(kickReflectTag, transform.position, Quaternion.identity);
+                Kick kickCsT4 = kickT4.GetComponent<Kick>();
+                if (kickCsT4 != null)
+                {
+                    kickCsT4.reflect = true;
+                    kickCsT4.deactivateTime = kickCsT4.deactivateMaxTime;
+                }
                 //GameObject kickT4 = GameObject.Instantiate(Resources.Load("Prefabs/Kick") as GameObject);
                 // kickT4.transform.position = transform.position;
                 // kickT4.name = "Kick";

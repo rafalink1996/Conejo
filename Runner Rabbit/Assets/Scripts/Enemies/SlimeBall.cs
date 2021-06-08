@@ -16,8 +16,11 @@ public class SlimeBall : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
+        reflected = false;
         transform.position = transform.parent.transform.position + new Vector3(-1.58f, -0.51f,0);
+        transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
         sourceTransform = transform.parent.transform;
+       
     }
 
     // Update is called once per frame
@@ -31,7 +34,7 @@ public class SlimeBall : MonoBehaviour, IPooledObject
     private void OnTriggerEnter2D(Collider2D collision)
 
     {
-        if (collision.name == "Kick")
+        if (collision.tag == "Kick")
         {
             reflected = true;
             //print("kick");
@@ -53,7 +56,8 @@ public class SlimeBall : MonoBehaviour, IPooledObject
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
             //print("hit " + collision.gameObject.name);
             //Destroy(transform.parent.gameObject);
-            gameObject.SetActive(false);
+            transform.parent.gameObject.SetActive(false);
+            reflected = false;
         }
 
 

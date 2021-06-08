@@ -2,25 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SharpLeafProyectile : MonoBehaviour
+public class SharpLeafProyectile : MonoBehaviour, IPooledObject
 {
     public float speed = 10f;
     bool reflected;
     public Transform sourceTransform;
+
+    float deactivateTime;
+    float MaxDeactivateTime = 4;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        MaxDeactivateTime = 4;
+    }
     void Start()
     {
-
+        MaxDeactivateTime = 4;
         //sourceTransform = transform.parent.transform;
-        Destroy(gameObject, 4f);
+        //Destroy(gameObject, 4f);
     }
     // Update is called once per frame
     void Update()
     {
+
         transform.Translate(-speed * Time.deltaTime, 0, 0);
         /*Vector3 temp = transform.position;
         temp.x -= speed * Time.deltaTime;
         transform.position = temp;*/
+        TimedDeactivate();
+    }
+    public void OnObjectSpawn()
+    {
+        reflected = false;
+        transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+        deactivateTime = MaxDeactivateTime;
     }
     private void OnTriggerEnter2D(Collider2D collision)
 
@@ -46,11 +61,31 @@ public class SharpLeafProyectile : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(10);
             collision.gameObject.GetComponent<EnemyHealth>().Hit = true;
-            print("hit " + collision.gameObject.name);
-            Destroy(gameObject);
+            Deactivate();
+            //print("hit " + collision.gameObject.name);
+            //Destroy(gameObject);
         }
 
 
     }
+
+    void TimedDeactivate()
+    {
+        if(deactivateTime < 0)
+        {
+            Deactivate();
+        }
+        else
+        {
+            deactivateTime -= Time.deltaTime;
+        }
+
+    }
+
+    void Deactivate()
+    {
+        gameObject.SetActive(false);
+    }
+
 
 }

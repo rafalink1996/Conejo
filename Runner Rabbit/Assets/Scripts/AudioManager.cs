@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
             s.source.outputAudioMixerGroup = s.audioOutputMixer;
 
 
-        }
+        } 
     }
 
     private void Start()

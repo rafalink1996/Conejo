@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShooterPlant : MonoBehaviour
 {
-
+    [SerializeField] Transform ShootingPoint;
     private Transform target;
     Animator anim;
     public EnemySpawner enemySpawner;
@@ -14,9 +14,17 @@ public class ShooterPlant : MonoBehaviour
     bool attack;
     EnemyHealth health;
 
+
+    ObjectPooler myObjectPooler;
+    string PoisonProyectileTag = "Poison";
+    string HealTokenTag = "Heal";
+
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
+        PoisonProyectileTag = "Poison";
+
         target = GameObject.FindWithTag("Player").transform;
         health = GetComponent<EnemyHealth>();
         health.maxHealth = 30;
@@ -95,22 +103,28 @@ public class ShooterPlant : MonoBehaviour
     }
     void Peashooter()
     {
-        GameObject peashooter = GameObject.Instantiate(Resources.Load("Prefabs/Peashooter") as GameObject);
-        peashooter.transform.SetParent(transform);
-        peashooter.transform.localPosition = new Vector3 (-2.07f, -0.79f, 0);
-        peashooter.transform.SetParent(null);
+        //GameObject peashooter = GameObject.Instantiate(Resources.Load("Prefabs/Peashooter") as GameObject);
+        //peashooter.transform.SetParent(transform);
+        //peashooter.transform.localPosition = new Vector3 (-2.07f, -0.79f, 0);
+        //peashooter.transform.SetParent(null);
+        GameObject peashooterObj = myObjectPooler.SpawnFromPool(PoisonProyectileTag, ShootingPoint.position, Quaternion.identity, true);
+        peashooter peashooterCs = peashooterObj.GetComponentInChildren<peashooter>();
+        if(peashooterCs != null)
+        peashooterCs.sourceTransform = this.transform;
         FindObjectOfType<AudioManager>().Play("PlantShoot");
 
 
     }
     void Over()
     {
+
         enemySpawner.OneDown();
         Destroy(gameObject);
         if (health.CanSpawnHeal == true)
         {
-            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
-            healthHeal.transform.position = transform.position;
+            //GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            //healthHeal.transform.position = transform.position;
+            myObjectPooler.SpawnFromPool(HealTokenTag, transform.position, Quaternion.identity);
         }
     }
 

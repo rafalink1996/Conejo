@@ -12,6 +12,7 @@ public class ClockworkRabbitProyectile : MonoBehaviour, IPooledObject
     float timerTilWave = 0;
     float WaveTime;
     bool reflected;
+    AudioSource myAudioSource;
 
     [HideInInspector] public Transform sourceTransform;
     
@@ -22,7 +23,16 @@ public class ClockworkRabbitProyectile : MonoBehaviour, IPooledObject
 
     Transform myParent;
     [SerializeField] bool hasParent;
+
+    float maxDeactivateTime = 4f;
+    float deactivateTime;
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
+
     void Start()
     {
         localmagnitude = 0;
@@ -40,6 +50,8 @@ public class ClockworkRabbitProyectile : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
+        myAudioSource.Play();
+        deactivateTime = maxDeactivateTime;
         if (myParent != null)
         {
         
@@ -53,7 +65,7 @@ public class ClockworkRabbitProyectile : MonoBehaviour, IPooledObject
         pos = transform.position;
         axis = transform.up;
 
-        Invoke("Deactivate", 3);
+       // Invoke("Deactivate", 3);
     }
 
     // Update is called once per frame
@@ -112,6 +124,18 @@ public class ClockworkRabbitProyectile : MonoBehaviour, IPooledObject
             {
                 gameObject.SetActive(false);
             }
+        }
+    }
+
+    private void TimedDeactivation()
+    {
+        if(deactivateTime < 0)
+        {
+            Deactivate();
+        }
+        else
+        {
+            deactivateTime -= Time.deltaTime;
         }
     }
 

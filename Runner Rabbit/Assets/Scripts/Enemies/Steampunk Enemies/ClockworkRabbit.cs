@@ -14,6 +14,7 @@ public class ClockworkRabbit : MonoBehaviour
     EnemyHealth health;
     public Transform ProyectileSpawner;
     [SerializeField] GameObject ClockworkBunnyProyectile;
+    AudioSource myAudioSource;
 
 
     [SerializeField] string ProyectileTag = "ClockworkRabitProyectiles";
@@ -23,6 +24,7 @@ public class ClockworkRabbit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         myObjectPooler = ObjectPooler.Instance;
         ProyectileTag = "ClockworkRabitProyectiles";
         health = GetComponent<EnemyHealth>();
@@ -50,9 +52,10 @@ public class ClockworkRabbit : MonoBehaviour
         spawnTime -= Time.deltaTime;
         if (spawnTime <= 0 && spawned == false)
         {
+            myAudioSource.Play();
             anim.SetTrigger("Spawn");
             GetComponent<SpriteRenderer>().enabled = true;
-            FindObjectOfType<AudioManager>().Play("BookSpawn");
+           // FindObjectOfType<AudioManager>().Play("RabitSpawn");
             spawned = true;
 
         }
@@ -95,7 +98,7 @@ public class ClockworkRabbit : MonoBehaviour
         //GameObject EnergyBall = GameObject.Instantiate(ClockworkBunnyProyectile) as GameObject;
         //EnergyBall.transform.position = ProyectileSpawner.position;
         //EnergyBall.GetComponentInChildren<ClockworkRabbitProyectile>().sourceTransform = gameObject.transform;
-
+        
         GameObject proyectile = myObjectPooler.SpawnFromPool(ProyectileTag, transform.position, Quaternion.identity, true);
         proyectile.transform.rotation = ProyectileSpawner.rotation;
         proyectile.transform.position = ProyectileSpawner.position;

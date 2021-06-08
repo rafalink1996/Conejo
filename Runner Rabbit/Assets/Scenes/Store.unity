@@ -1423,6 +1423,7 @@ GameObject:
   - component: {fileID: 128267954}
   - component: {fileID: 128267953}
   - component: {fileID: 128267952}
+  - component: {fileID: 128267956}
   m_Layer: 5
   m_Name: IntroAnimation
   m_TagString: Untagged
@@ -1460,8 +1461,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: b576d6d8046684260a2cb288b71bbe79, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 139cc54f2ba884a25a1f9d567bf0750f, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1579,7 +1580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1604,6 +1605,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128267950}
   m_CullTransparentMesh: 0
+--- !u!114 &128267956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128267950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a70ffad89614d29a5ee81c720a6502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myImage: {fileID: 0}
 --- !u!1 &135779064
 GameObject:
   m_ObjectHideFlags: 0
@@ -30245,6 +30259,7 @@ GameObject:
   - component: {fileID: 1775303626}
   - component: {fileID: 1775303625}
   - component: {fileID: 1775303624}
+  - component: {fileID: 1775303628}
   m_Layer: 5
   m_Name: outroAnimation
   m_TagString: Untagged
@@ -30301,8 +30316,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1564a8517a26d4ca5963d0193ac636e8, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 4755c67f3a1394a68bf6bc544ab72bd1, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -30426,6 +30441,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775303622}
   m_CullTransparentMesh: 0
+--- !u!114 &1775303628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775303622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a70ffad89614d29a5ee81c720a6502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myImage: {fileID: 0}
 --- !u!1 &1779781131
 GameObject:
   m_ObjectHideFlags: 0
@@ -30570,6 +30598,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
         type: 3}
+      propertyPath: sounds.Array.size
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
       propertyPath: sounds.Array.data[8].clip
       value: 
       objectReference: {fileID: 8300000, guid: 96a67e42b77d144798972d51b23f79b3, type: 3}
@@ -30578,6 +30611,37 @@ PrefabInstance:
       propertyPath: sounds.Array.data[15].clip
       value: 
       objectReference: {fileID: 8300000, guid: 96a67e42b77d144798972d51b23f79b3, type: 3}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[57].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a5c107ad12e19431f9edfef8873ed866, type: 3}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[57].name
+      value: YetiPunch
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[57].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[57].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[57].priority
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253304540743859037, guid: 89343ff5d801f460daefffbbfb195a86,
+        type: 3}
+      propertyPath: sounds.Array.data[57].audioOutputMixer
+      value: 
+      objectReference: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89343ff5d801f460daefffbbfb195a86, type: 3}
 --- !u!1 &1787396612
@@ -30591,6 +30655,7 @@ GameObject:
   - component: {fileID: 1787396613}
   - component: {fileID: 1787396614}
   - component: {fileID: 1787396615}
+  - component: {fileID: 1787396616}
   m_Layer: 0
   m_Name: GameManagerStore
   m_TagString: Untagged
@@ -30684,6 +30749,19 @@ MonoBehaviour:
   Frances_IceRoom: Cuerto de hielo
   Frances_Jungle: Jungla
   Frances_PortalRoom: Cuarto de portales
+--- !u!114 &1787396616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787396612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52c4ca913f2743aaa7932a7b5492705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ContinueButton: {fileID: 0}
 --- !u!1 &1795260076
 GameObject:
   m_ObjectHideFlags: 0
@@ -32259,13 +32337,13 @@ PrefabInstance:
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: LevelCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: powerLight
       value: 
-      objectReference: {fileID: 11400000, guid: 985118124a7664d0897e1fc20a1d2a01,
+      objectReference: {fileID: 11400000, guid: 9728db631a7cf4e5fb69010309dc4d94,
         type: 2}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
@@ -32295,7 +32373,7 @@ PrefabInstance:
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: LevelIndicator
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}

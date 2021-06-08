@@ -27,7 +27,9 @@ public class IceLance : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
+        reflected = false;
         transform.localPosition =  new Vector3(-0.8f, 0, 0);
+        transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
         separate = false;
 
     }
@@ -68,7 +70,7 @@ public class IceLance : MonoBehaviour, IPooledObject
     private void OnTriggerEnter2D(Collider2D collision)
 
     {
-        if (collision.name == "Kick")
+        if (collision.tag == "Kick")
         {
             reflected = true;
             print("kick");

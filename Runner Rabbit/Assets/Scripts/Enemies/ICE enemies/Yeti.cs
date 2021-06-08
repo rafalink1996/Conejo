@@ -16,9 +16,14 @@ public class Yeti : MonoBehaviour
     bool bat;
     public GameObject[] bats;
     public GameObject[] healthBar;
+
+    ObjectPooler myObjectPooler;
+    string IcePunchTag = "IcePunch";
+    string IceLanceTag = "IceLanceYeti";
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
         FindObjectOfType<AudioManager>().Play("YetiSpawn");
         health = GetComponent<EnemyHealth>();
         health.maxHealth = myHealth;
@@ -59,8 +64,8 @@ public class Yeti : MonoBehaviour
         }
         if (punch)
         {
-
-            GameObject icePunch = GameObject.Instantiate(Resources.Load("Prefabs/IcePunch") as GameObject);
+            //GameObject icePunch = GameObject.Instantiate(Resources.Load("Prefabs/IcePunch") as GameObject);
+            myObjectPooler.SpawnFromPool(IcePunchTag, transform.position, Quaternion.identity);
             health.TakeDamage(5);
             punch = false;
             punchTime = Random.Range(5f, 7f);
@@ -107,7 +112,9 @@ public class Yeti : MonoBehaviour
     }
     public void Attack()
     {
-        GameObject iceLances = GameObject.Instantiate(Resources.Load("Prefabs/IceLances") as GameObject);
+        //GameObject iceLances = GameObject.Instantiate(Resources.Load("Prefabs/IceLances") as GameObject);
+        GameObject iceLances = myObjectPooler.SpawnFromPool(IceLanceTag, transform.position, Quaternion.identity);
+       
         iceLances.transform.position = transform.position + new Vector3(-1.57f, 0.27f, 0);
         attackTime = Random.Range(2f, 3f);
         attack = false;

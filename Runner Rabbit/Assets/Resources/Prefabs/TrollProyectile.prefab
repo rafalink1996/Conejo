@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6423942129464161289}
   - component: {fileID: 52972527769947077}
   - component: {fileID: 6247510616714165229}
+  - component: {fileID: 4484816963493868178}
   m_Layer: 15
   m_Name: Proyectile
   m_TagString: Enemy proyectile
@@ -49,6 +50,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -96,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc6fa001b50142b19f0c622ef5091f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
   piercing: 1
+  hasParent: 1
 --- !u!61 &52972527769947077
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,6 +148,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4484816963493868178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6228525392094906744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyP: 0
+  Poison: 0
+  PoisonTime: 0
+  Damage: 2
 --- !u!1 &8988787854941332622
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +175,6 @@ GameObject:
   - component: {fileID: 6026388483667058814}
   - component: {fileID: 539031738321664311}
   - component: {fileID: 8749372131973716539}
-  - component: {fileID: -3161591896505872116}
   m_Layer: 0
   m_Name: TrollProyectile
   m_TagString: Untagged
@@ -291,16 +309,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-3161591896505872116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8988787854941332622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 2

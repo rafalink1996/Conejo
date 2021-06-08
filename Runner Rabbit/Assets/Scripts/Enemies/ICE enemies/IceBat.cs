@@ -25,9 +25,13 @@ public class IceBat : MonoBehaviour
   
 
     [SerializeField] private float lerpPct = 0f;
+
+    ObjectPooler myObjectPooler;
+    string HealTokenTag = "Heal";
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
         Cha = GameObject.FindGameObjectWithTag("Player").GetComponent<character>();
         health = GetComponent<EnemyHealth>();
         health.maxHealth = 9;
@@ -171,8 +175,9 @@ public class IceBat : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         if (health.CanSpawnHeal)
         {
-            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
-            healthHeal.transform.position = transform.position;
+            //GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            //healthHeal.transform.position = transform.position;
+            myObjectPooler.SpawnFromPool(HealTokenTag, transform.position, Quaternion.identity);
         }
         Destroy(transform.parent.gameObject);
     }

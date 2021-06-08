@@ -7,14 +7,25 @@ public class Fireball : MonoBehaviour, IPooledObject
     public float speed = 20f;
     public Animator fireballAnimator;
     bool reflected;
-  
+    private void Awake()
+    {
+        fireballAnimator = GetComponent<Animator>();
+    }
     void Start()
     {
         fireballAnimator = GetComponent<Animator>();
     }
     public void OnObjectSpawn()
     {
+        reflected = false;
+        speed = 20;
+        if(fireballAnimator == null)
+        {
+            fireballAnimator = GetComponent<Animator>();
+        }
         transform.position = transform.parent.transform.position + new Vector3(-0.99f, 0.21f, 0);
+        transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+        fireballAnimator.Play("Fireball");
     }
 
 
@@ -25,7 +36,7 @@ public class Fireball : MonoBehaviour, IPooledObject
     private void OnTriggerEnter2D(Collider2D collision)
 
     {
-        if (collision.name == "Kick")
+        if (collision.tag == "Kick")
         {
             reflected = true;
             //print("kick");
@@ -63,7 +74,7 @@ public class Fireball : MonoBehaviour, IPooledObject
     
     public void HitEnd ()
     {
-        gameObject.SetActive(false);
+       transform.parent.gameObject.SetActive(false);
         //Destroy(transform.parent.gameObject);
     }
     

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GyratoryPlant : MonoBehaviour
+public class GyratoryPlant : MonoBehaviour, IPooledObject
 {
     public float speed = 3f;
     [SerializeField] EnemyHealth myEnemyHealth;
@@ -10,15 +10,31 @@ public class GyratoryPlant : MonoBehaviour
     [SerializeField] BoxCollider2D myBoxCollider2D;
     public float shineTime;
 
+    float deactivateTime;
+    float MaxDeactivateTime = 4;
 
+
+    private void Awake()
+    {
+        myAnimator = GetComponent<Animator>();
+        myBoxCollider2D = GetComponent<BoxCollider2D>();
+        myEnemyHealth = GetComponent<EnemyHealth>();
+        MaxDeactivateTime = 4;
+    }
     // Start is called before the first frame update
     void Start()
     {
         myAnimator = GetComponent<Animator>();
         myBoxCollider2D = GetComponent<BoxCollider2D>();
         myEnemyHealth = GetComponent<EnemyHealth>();
-        Destroy(gameObject, 4f);
+        MaxDeactivateTime = 4;
+        //Destroy(gameObject, 4f);
 
+    }
+
+    public void OnObjectSpawn()
+    {
+        deactivateTime = MaxDeactivateTime;
     }
 
     // Update is called once per frame
@@ -44,12 +60,24 @@ public class GyratoryPlant : MonoBehaviour
             }
         }
 
-
+        DeactivateTime();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+    }
+
+    void DeactivateTime()
+    {
+        if(deactivateTime < 0)
+        {
+            Shine();
+        }
+        else
+        {
+            deactivateTime -= Time.deltaTime;
+        }
     }
 
 
@@ -61,7 +89,8 @@ public class GyratoryPlant : MonoBehaviour
     void Shine()
     {
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
 
 }

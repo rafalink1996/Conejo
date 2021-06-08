@@ -21,6 +21,7 @@ public class ElectricBook : MonoBehaviour
 
     ObjectPooler myObjectPooler;
     string electricBallTag = "ElectricBallBook";
+    string HealTokenTag = "Heal";
 
 
 
@@ -119,8 +120,9 @@ public class ElectricBook : MonoBehaviour
         Destroy(gameObject);
         if (health.CanSpawnHeal == true)
         {
-            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
-            healthHeal.transform.position = transform.position;
+            //GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            //healthHeal.transform.position = transform.position;
+            myObjectPooler.SpawnFromPool(HealTokenTag, transform.position, Quaternion.identity);
         }
     }
 

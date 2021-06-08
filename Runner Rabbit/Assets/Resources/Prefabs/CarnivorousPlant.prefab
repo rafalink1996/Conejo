@@ -5976,7 +5976,7 @@ GameObject:
   m_Layer: 0
   m_Name: Attack 3spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5988,7 +5988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6494181949069720876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.0184877, y: -2.1368833, z: 15.791992}
+  m_LocalPosition: {x: 3, y: -0.44, z: 15.791992}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.5}
   m_Children: []
   m_Father: {fileID: 6494181949596301864}
@@ -6011,6 +6011,10 @@ MonoBehaviour:
   SimpleEnemyStatic: {fileID: 0}
   respawnTime: 0.5
   respawnTimeRandom: 2
+  EnemyRandomTag: 
+  EnemyStaticTag: 
+  spawnSimpleEnemies: 0
+  spawnRandomEnemies: 0
   DarkSide: 0
 --- !u!114 &6494181949069720882
 MonoBehaviour:
@@ -6144,7 +6148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6494181949596301867}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0.88, z: 0}
+  m_LocalPosition: {x: 0.3, y: 0.88, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2}
   m_Children:
   - {fileID: 6494181949235692127}
@@ -11541,7 +11545,7 @@ GameObject:
   m_Layer: 0
   m_Name: Attack 3spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -11553,7 +11557,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6494181949898193502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.0184877, y: -2.1768832, z: 15.791992}
+  m_LocalPosition: {x: 3, y: -0.48, z: 15.791992}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.5}
   m_Children: []
   m_Father: {fileID: 6494181948794644901}
@@ -11576,6 +11580,10 @@ MonoBehaviour:
   SimpleEnemyStatic: {fileID: 0}
   respawnTime: 0.5
   respawnTimeRandom: 2
+  EnemyRandomTag: 
+  EnemyStaticTag: 
+  spawnSimpleEnemies: 0
+  spawnRandomEnemies: 0
   DarkSide: 0
 --- !u!114 &6494181949898193500
 MonoBehaviour:

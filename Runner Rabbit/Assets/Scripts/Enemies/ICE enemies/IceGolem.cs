@@ -19,10 +19,14 @@ public class IceGolem : MonoBehaviour
     public IceGolemBoulder Boulder2;
     public IceGolemBoulder Boulder3;
 
+    ObjectPooler myObjectPooler;
+    string HealTokenTag = "Heal";
+
 
     // Start is called before the first frame update
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
         health = GetComponent<EnemyHealth>();
         health.maxHealth = 60;
         anim = GetComponent<Animator>();
@@ -121,8 +125,9 @@ public class IceGolem : MonoBehaviour
         Destroy(gameObject.transform.parent.gameObject);
         if (health.CanSpawnHeal == true)
         {
-            GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
-            healthHeal.transform.position = transform.position;
+            //GameObject healthHeal = GameObject.Instantiate(Resources.Load("prefabs/HeartHeal") as GameObject);
+            //healthHeal.transform.position = transform.position;
+            myObjectPooler.SpawnFromPool(HealTokenTag, transform.position, Quaternion.identity);
         }
     }
 
