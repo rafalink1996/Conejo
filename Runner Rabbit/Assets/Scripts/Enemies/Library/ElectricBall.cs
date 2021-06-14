@@ -14,10 +14,11 @@ public class ElectricBall : MonoBehaviour, IPooledObject
     bool reflected;
     [SerializeField] CircleCollider2D myCircleCollider2D;
     bool ObjectHit = false;
-    
+    AudioSource myAudioSource;
 
     private void Awake()
     {
+        myAudioSource = GetComponent<AudioSource>();
         myCircleCollider2D = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         Bunnytarget = GameObject.FindWithTag("Player").transform;
@@ -25,6 +26,7 @@ public class ElectricBall : MonoBehaviour, IPooledObject
     }
     void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         //myCircleCollider2D = GetComponent<CircleCollider2D>();
         //rb = GetComponent<Rigidbody2D>();
         //target = GameObject.FindWithTag("Player").transform;
@@ -33,6 +35,7 @@ public class ElectricBall : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
+        myAudioSource.Play();
         target = Bunnytarget;
         reflected = false;
         ObjectHit = false;

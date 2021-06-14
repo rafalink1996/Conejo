@@ -12,15 +12,18 @@ public class WyrmThunderBall : MonoBehaviour, IPooledObject
     Rigidbody2D rb;
     Animator anim;
     bool reflected = false;
+    [SerializeField] AudioSource myAudioSource;
     // Start is called before the first frame update
     private void Awake()
     {
+        myAudioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         BunnyTarget = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>();
     }
     void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         //sourceTransform = GameObject.Find("Book Wyrm").transform;
         rb = GetComponent<Rigidbody2D>();
         BunnyTarget = GameObject.FindWithTag("Player").transform;
@@ -29,6 +32,7 @@ public class WyrmThunderBall : MonoBehaviour, IPooledObject
     }
     public void OnObjectSpawn()
     {
+        myAudioSource.Play();
         target = BunnyTarget;
         transform.position = transform.parent.transform.position;
         transform.rotation = transform.parent.transform.rotation;

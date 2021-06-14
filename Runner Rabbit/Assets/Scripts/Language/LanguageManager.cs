@@ -40,6 +40,8 @@ public class LanguageManager : MonoBehaviour
                            RuneDescription2, RuneDescription3, RuneDescription4, RuneDescription5, RuneDescription6, RuneDescription7, RuneDescription8, RuneDescription9, RuneDescription10, EquipedRunes,
                            RuneSlot1Unequip, RuneSlot2Unequip, RuneSlot1Select, RuneSlot2Select;
     public TextMeshProUGUI RuneStoreDescription;
+    public TextMeshProUGUI RuneStoreDescription2;
+
     //texts Skin Menú
     public TextMeshProUGUI SkinTitle, DefaultSkinText, DragonFireSkinText, BoneSkinText, IceGolemSkinText, PlantSkinText, ClockWorkSkinText, ShadowWizardSkinText, TophatSkinText, AngelSkinText, ImpSkinText, SnowmanSkinText,
                            WizardSkinText, AstralTravelerSkinText, SlimeSkinText, AlienSkinText, AssasinBlackSkinText, AssasinWhiteSkinText, FoxSkinText, IceCreamSkinText, MechSkinText, BackButtonSkinMenu, buySkinButton, selectButton1Text, selectButton2Text;
@@ -173,6 +175,9 @@ public class LanguageManager : MonoBehaviour
     string English_RuneDescription8 = "the first item in the coin shop is 50% off";
     string English_RuneDescription9 = "Enemies spawn with less health";
     string English_RuneDescription10 = "gives you one random power up when starting a new run";
+
+    string English_RuneShopDescription = "Unlock passive abilities";
+    string English_RuneShopDescription2 = "Equip up to two runes that will help you in your escape";
 
 
     string English_DefaultSkin = "Default";
@@ -341,6 +346,9 @@ public class LanguageManager : MonoBehaviour
     string Español_RuneDescription8 = "la primera compra en la tienda de monedas esta a mitad de precio";
     string Español_RuneDescription9 = "Los enemigos aparecen con menos vida";
     string Español_RuneDescription10 = "te da un power up al azar cuendo empiezas un juego";
+
+    string Español_RuneShopDescription = "Desbloquea habilidiades pasivas";
+    string Español_RuneShopDescription2 = "Equipa hasta dos runas que te ayudarán en tu escape.";
 
     string Español_DefaultSkin = "Normal";
     string Español_DragonFireSkin = "Fuego de dragón";
@@ -512,6 +520,9 @@ public class LanguageManager : MonoBehaviour
     string Frances_RuneDescription8 = "the first item in the coin shop is 50% off";
     string Frances_RuneDescription9 = "Enemies spawn with less health";
     string Frances_RuneDescription10 = "gives you one random power up when starting a new run";
+
+    string Frances_RuneShopDescription = "Desbloquea habilidiades pasivas";
+    string Frances_RuneShopDescription2 = "Équipez jusqu'à deux runes qui vous aideront dans votre évasion";
 
 
     string Frances_DefaultSkin = "Default";
@@ -727,6 +738,9 @@ public class LanguageManager : MonoBehaviour
                 RuneDescription9.text = English_RuneDescription9;
                 RuneDescription10.text = English_RuneDescription10;
 
+                RuneStoreDescription.text = English_RuneShopDescription;
+                RuneStoreDescription2.text = English_RuneShopDescription2;
+
                 // Skin menu
 
                 SkinTitle.text = English_SkinsButton;
@@ -931,6 +945,9 @@ public class LanguageManager : MonoBehaviour
                 RuneDescription9.text = Español_RuneDescription9;
                 RuneDescription10.text = Español_RuneDescription10;
 
+                RuneStoreDescription.text = Español_RuneShopDescription;
+                RuneStoreDescription2.text = Español_RuneShopDescription2;
+
                 SkinTitle.text = Español_SkinsButton;
                 BackButtonSkinMenu.text = Español_BackButton;
                 buySkinButton.text = Español_BuyButton;
@@ -1124,6 +1141,9 @@ public class LanguageManager : MonoBehaviour
                 RuneDescription8.text = Frances_RuneDescription8;
                 RuneDescription9.text = Frances_RuneDescription9;
                 RuneDescription10.text = Frances_RuneDescription10;
+
+                RuneStoreDescription.text = Frances_RuneShopDescription;
+                RuneStoreDescription2.text = Frances_RuneShopDescription2;
 
                 // Skin menu
 

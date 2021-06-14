@@ -13,12 +13,13 @@ public class MageEye : MonoBehaviour, IPooledObject
     public EnemySpawner enemySpawner;
     [SerializeField] HandEyeSpawner mySpawner;
     [SerializeField] GameObject EyeLaser;
+    [SerializeField] AudioSource laserAudioSource;
     
 
 
     private void Awake()
     {
-        
+        laserAudioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -61,6 +62,7 @@ public class MageEye : MonoBehaviour, IPooledObject
         yield return new WaitForSeconds(1f);
         //GameObject MageMissle = GameObject.Instantiate(Resources.Load("Prefabs/MageLaser") as GameObject);
         //MageMissle.transform.position = new Vector2(transform.position.x-10, transform.position.y);
+        laserAudioSource.Play();
         EyeLaser.SetActive(true);
         EyeLaser.GetComponent<MageEyeLaser>().Attack();
     }

@@ -6,17 +6,22 @@ public class Fireball : MonoBehaviour, IPooledObject
 {
     public float speed = 20f;
     public Animator fireballAnimator;
+    AudioSource myAudioSource;
+
     bool reflected;
     private void Awake()
     {
+        myAudioSource = GetComponent<AudioSource>();
         fireballAnimator = GetComponent<Animator>();
     }
     void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         fireballAnimator = GetComponent<Animator>();
     }
     public void OnObjectSpawn()
     {
+        myAudioSource.Play();
         reflected = false;
         speed = 20;
         if(fireballAnimator == null)

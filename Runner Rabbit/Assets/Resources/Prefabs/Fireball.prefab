@@ -53,6 +53,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -149,7 +150,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: fee0a48160cd54389841150e0552c3d3, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1.47
   Loop: 0
@@ -267,7 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageLevel1: 1
+  DestroyP: 0
+  Poison: 0
+  PoisonTime: 0
   Damage: 2
 --- !u!1 &505650725643665252
 GameObject:
@@ -315,6 +318,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

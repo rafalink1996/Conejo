@@ -13,6 +13,8 @@ public class LanguageManagerStore : MonoBehaviour
     public TextMeshProUGUI GobacktoMainMenuquestionText, gobacktomainmenubutton, StayinStoreButton;
     public TextMeshProUGUI DamageTextStats;
     public TextMeshProUGUI NotEnoughtCoins;
+    [SerializeField] TextMeshProUGUI RarityText;
+
 
 
     //English************************
@@ -54,6 +56,8 @@ public class LanguageManagerStore : MonoBehaviour
     public string English_IceRoom = "Ice Room";
     public string English_Jungle = "Jungle";
     public string English_PortalRoom = "Portal Room";
+
+    string English_Rarity = "Rarity";
 
 
 
@@ -97,6 +101,8 @@ public class LanguageManagerStore : MonoBehaviour
     public string Español_Jungle = "Jungla";
     public string Español_PortalRoom = "Cuarto de portales";
 
+    string Español_Rarity = "Rareza";
+
     // string English_PlusHealth = "+ Health";
 
 
@@ -138,6 +144,8 @@ public class LanguageManagerStore : MonoBehaviour
     public string Frances_IceRoom = "Cuerto de hielo";
     public string Frances_Jungle = "Jungla";
     public string Frances_PortalRoom = "Cuarto de portales";
+
+    string Frances_Rarity = "Rareza";
 
 
 
@@ -191,6 +199,8 @@ public class LanguageManagerStore : MonoBehaviour
 
                 NotEnoughtCoins.text = English_notEnoughCoins;
 
+                RarityText.text = English_Rarity;
+
                 break;
 
             case 1:// Español
@@ -231,6 +241,7 @@ public class LanguageManagerStore : MonoBehaviour
                 DamageTextStats.text = Español_Damage;
 
                 NotEnoughtCoins.text = Español_notEnoughCoins;
+                RarityText.text = Español_Rarity;
 
                 break;
 
@@ -273,6 +284,7 @@ public class LanguageManagerStore : MonoBehaviour
                 DamageTextStats.text = Frances_Damage;
 
                 NotEnoughtCoins.text = Frances_notEnoughCoins;
+                RarityText.text = Frances_Rarity;
 
 
                 break;

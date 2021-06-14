@@ -77,6 +77,9 @@ public class Shop : MonoBehaviour
     List<Power> availableDarkPowersTier3;
     List<Power> availableDarkPowersTier4;
 
+    [SerializeField] GameObject LightManaTear;
+    [SerializeField] GameObject DarkManaTear;
+
 
 
 
@@ -891,6 +894,10 @@ public class Shop : MonoBehaviour
                 {
                     GameStats.stats.MoneySpent += lightManaCost / 2;
                 }
+                LeanTween.cancel(LightManaTear);
+                LeanTween.scale(LightManaTear, new Vector3(1.5f, 1.5f), 0.5f).setEase(LeanTweenType.easeOutExpo);
+                LeanTween.scale(LightManaTear, new Vector3(1f, 1f), 0.5f).setEase(LeanTweenType.easeOutExpo).setDelay(0.5f);
+
                 //print("Bought Light Mana");
             }
             else
@@ -911,7 +918,12 @@ public class Shop : MonoBehaviour
                 {
                     GameStats.stats.MoneySpent += lightManaCost;
                 }
+                LeanTween.cancel(LightManaTear);
+                LeanTween.scale(LightManaTear, new Vector3(1.5f, 1.5f), 0.5f).setEase(LeanTweenType.easeOutExpo);
+                LeanTween.scale(LightManaTear, new Vector3(1f, 1f), 0.5f).setEase(LeanTweenType.easeOutExpo).setDelay(0.5f);
                 // print("Bought Light Mana");
+
+               
             }
             else
             {
@@ -937,6 +949,10 @@ public class Shop : MonoBehaviour
                 {
                     GameStats.stats.MoneySpent += darkManaCost / 2;
                 }
+
+                LeanTween.cancel(DarkManaTear);
+                LeanTween.scale(DarkManaTear, new Vector3(1.5f, 1.5f), 0.5f).setEase(LeanTweenType.easeOutExpo);
+                LeanTween.scale(DarkManaTear, new Vector3(1f, 1f), 0.5f).setEase(LeanTweenType.easeOutExpo).setDelay(0.5f);
                 // print("Bought Dark Mana");
             }
             else
@@ -946,6 +962,8 @@ public class Shop : MonoBehaviour
                 //print("You don't have enough coins!!!");
                 //Play sound
             }
+
+            
         }
         else
         {
@@ -957,6 +975,9 @@ public class Shop : MonoBehaviour
                 {
                     GameStats.stats.MoneySpent += darkManaCost;
                 }
+                LeanTween.cancel(DarkManaTear);
+                LeanTween.scale(DarkManaTear, new Vector3(1.5f, 1.5f), 0.5f).setEase(LeanTweenType.easeOutExpo);
+                LeanTween.scale(DarkManaTear, new Vector3(1f, 1f), 0.5f).setEase(LeanTweenType.easeOutExpo).setDelay(0.5f);
                 //print("Bought Dark Mana");
             }
             else

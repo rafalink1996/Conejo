@@ -22,6 +22,7 @@ public class Slime : MonoBehaviour
     ObjectPooler myObjectPooler;
     string slimeBallTag = "SlimeBall";
     string HealTokenTag = "Heal";
+    
 
     // Start is called before the first frame update
     void Start()

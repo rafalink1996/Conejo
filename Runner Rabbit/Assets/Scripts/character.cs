@@ -206,10 +206,14 @@ public class character : MonoBehaviour
     // public GameObject DarkDebugImage;
 
     [SerializeField] UIManager MyUIManager;
+    [SerializeField] AudioSource shieldBreakAudio;
+    [SerializeField] AudioSource LaserSFX;
+    bool LaserSFXPlaying;
 
 
     [SerializeField] bool IsInmortal;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -596,6 +600,8 @@ public class character : MonoBehaviour
                     RuneShielded = false;
                     Animator RuneShieldAnimator = RuneShield.GetComponent<Animator>();
                     RuneShieldAnimator.SetTrigger("Break");
+                    LoseHealth(0, 0.3f, 0.7f, 1, 1, false);
+                    shieldBreakAudio.Play();
                 }
                 else
                 {
@@ -834,6 +840,8 @@ public class character : MonoBehaviour
         GameObject ButtonLight = GameObject.Find("UI/HUD/PowersHud/Power/Power Light");
         HoldButton HoldButtonLight = ButtonLight.GetComponent<HoldButton>();
         HoldButtonLight.Reset();
+        LaserSFX.Stop();
+        LaserSFXPlaying = false;
 
 
     }
@@ -892,6 +900,8 @@ public class character : MonoBehaviour
         GameObject ButtonDark = GameObject.Find("UI/HUD/PowersHud/Power/Power Dark");
         HoldButton HoldButtonDark = ButtonDark.GetComponent<HoldButton>();
         HoldButtonDark.Reset();
+        LaserSFX.Stop();
+        LaserSFXPlaying = false;
 
 
     }
@@ -1004,24 +1014,32 @@ public class character : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
     }
-    public void LoseHealth(int damage = 1, float colorR = 1, float colorG = 1, float colorB = 1, float colorA = 1)
+    public void LoseHealth(int damage = 1, float colorR = 1, float colorG = 1, float colorB = 1, float colorA = 1, bool hit = true, float minSize = 1, float maxSize = 3)
     {
-        Health -= damage;
-        animator.SetTrigger("GotHit");
-        // StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.5f, 0.5f, 1f), 1f, 2f));
-        StartCoroutine(GetInvulnerable());
-        StartCoroutine(Flashing());
+        if (hit)
+        {
+            Health -= damage;
+            animator.SetTrigger("GotHit");
+            // StartCoroutine(DamageEffectSequence(mySpriteRenderer, new Color(0.8f, 0.5f, 0.5f, 1f), 1f, 2f));
+            StartCoroutine(GetInvulnerable());
+            StartCoroutine(Flashing());
+            gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.4f);
+            FindObjectOfType<AudioManager>().Play("BunnyHit");
+        }
+        
 
-        gameObject.GetComponent<DamageTime>().TimeDamageStop(0.05f, 10, 0.4f);
+       
         GameObject myDamageEffect = Instantiate(DamageEffect, transform.position, Quaternion.identity);
         ParticleSystem DamageParticle = myDamageEffect.GetComponent<ParticleSystem>();
+        
         var main = DamageParticle.main;
 
         main.startColor = new Color(colorR, colorG, colorB, colorA);
+        
 
 
 
-        FindObjectOfType<AudioManager>().Play("BunnyHit");
+       
 
     }
 
@@ -1527,6 +1545,12 @@ public class character : MonoBehaviour
 
                 if (HoldPower == true)
                 {
+                    if (!LaserSFXPlaying)
+                    {
+                        LaserSFX.Play();
+                        LaserSFXPlaying = true;
+                    }
+                    
                     int layerMask = 1 << 9;
                     LaserlayerMask = layerMask;
 
@@ -1573,6 +1597,7 @@ public class character : MonoBehaviour
                         LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXDark.transform.position = LaserDark.GetPosition(1);
 
+                        
                         // Debug.Log("using  hold power dark");
 
                         Vector2 direction = StartLaserPos.position + new Vector3(15, 0, 0) - StartLaserPos.position;
@@ -1597,6 +1622,7 @@ public class character : MonoBehaviour
                         }
                     }
                 }
+                
                 /*else if (HoldPower == false)
                 {
                     animator.SetBool("Laser", false);
@@ -1616,6 +1642,11 @@ public class character : MonoBehaviour
 
                 if (HoldPower == true)
                 {
+                    if (!LaserSFXPlaying)
+                    {
+                        LaserSFX.Play();
+                        LaserSFXPlaying = true;
+                    }
                     int layerMask = 1 << 9;
                     LaserlayerMask = layerMask;
 
@@ -1692,6 +1723,11 @@ public class character : MonoBehaviour
 
                 if (HoldPower == true)
                 {
+                    if (!LaserSFXPlaying)
+                    {
+                        LaserSFX.Play();
+                        LaserSFXPlaying = true;
+                    }
                     int layerMask1 = 1 << 9;
                     // int layerMask2 = 1 << 15;
 
@@ -1777,6 +1813,11 @@ public class character : MonoBehaviour
 
                 if (HoldPower == true)
                 {
+                    if (!LaserSFXPlaying)
+                    {
+                        LaserSFX.Play();
+                        LaserSFXPlaying = true;
+                    }
                     int layerMask1 = 1 << 9;
                     //int layerMask2 = 1 << 15;
 

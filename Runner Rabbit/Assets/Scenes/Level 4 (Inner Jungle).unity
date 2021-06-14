@@ -897,6 +897,7 @@ GameObject:
   - component: {fileID: 253351652}
   - component: {fileID: 253351651}
   - component: {fileID: 253351650}
+  - component: {fileID: 253351653}
   m_Layer: 0
   m_Name: Enemy Spawner (Hand)
   m_TagString: Untagged
@@ -926,7 +927,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253351649}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b49c7d118a44249e19f16c821d76dafb, type: 3}
   m_Name: 
@@ -955,6 +956,21 @@ Transform:
   m_Father: {fileID: 187042950}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &253351653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253351649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fe367960bec458b84e75eb342bd4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnTime: 0
+  HandEnemyTag: MageHand
+  EyeEnemyTag: MageEye
 --- !u!1 &256023543
 GameObject:
   m_ObjectHideFlags: 0
@@ -13246,7 +13262,7 @@ PrefabInstance:
     - target: {fileID: 3542273375926598919, guid: 3e2965c6ceb114834b5b2a17c18421ce,
         type: 3}
       propertyPath: IsInmortal
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3542273375926598919, guid: 3e2965c6ceb114834b5b2a17c18421ce,
         type: 3}
@@ -13695,6 +13711,7 @@ GameObject:
   - component: {fileID: 1319522166}
   - component: {fileID: 1319522165}
   - component: {fileID: 1319522164}
+  - component: {fileID: 1319522167}
   m_Layer: 0
   m_Name: Token Spawner
   m_TagString: Untagged
@@ -13709,7 +13726,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319522163}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c96ed3a0f3fe44aa86a61728bb1d8f9, type: 3}
   m_Name: 
@@ -13747,12 +13764,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319522163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.43, y: 5.48, z: 0}
+  m_LocalPosition: {x: 17, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1319522167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319522163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93a8705e12fa471ab207c1606fe1124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1364760173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20499,7 +20528,7 @@ PrefabInstance:
     - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
         type: 3}
       propertyPath: pools.Array.size
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
         type: 3}
@@ -20523,6 +20552,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
         type: 3}
+      propertyPath: pools.Array.data[18].tag
+      value: CollisionParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
       propertyPath: pools.Array.data[14].size
       value: 9
       objectReference: {fileID: 0}
@@ -20540,6 +20574,11 @@ PrefabInstance:
         type: 3}
       propertyPath: pools.Array.data[17].size
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: pools.Array.data[18].size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
         type: 3}
@@ -20592,6 +20631,17 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
         type: 3}
+      propertyPath: pools.Array.data[18].Parent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: pools.Array.data[18].prefab
+      value: 
+      objectReference: {fileID: 3380969534440469187, guid: 9ae23c7d9858242bcb737d975b3f57ab,
+        type: 3}
+    - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
       propertyPath: pools.Array.data[14].allLevels
       value: 1
       objectReference: {fileID: 0}
@@ -20612,6 +20662,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
         type: 3}
+      propertyPath: pools.Array.data[18].allLevels
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
       propertyPath: pools.Array.data[14].Instantiate
       value: 1
       objectReference: {fileID: 0}
@@ -20628,6 +20683,11 @@ PrefabInstance:
     - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
         type: 3}
       propertyPath: pools.Array.data[17].Instantiate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
+        type: 3}
+      propertyPath: pools.Array.data[18].Instantiate
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4111223972306565430, guid: 69e619fc20a2544af9270bd995629f5e,
@@ -21490,7 +21550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1859497430
 MonoBehaviour:
   m_ObjectHideFlags: 0

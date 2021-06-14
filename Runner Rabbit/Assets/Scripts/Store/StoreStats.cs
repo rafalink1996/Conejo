@@ -37,6 +37,7 @@ public class StoreStats : MonoBehaviour
     public TextMeshProUGUI PowerDamage;
     public TextMeshProUGUI powerDescription;
     public Image RarityColor;
+    [SerializeField] TextMeshProUGUI RarityLevel;
         
 
 
@@ -112,12 +113,16 @@ public class StoreStats : MonoBehaviour
         {
             PowerName.text = GameStats.stats.powerDark.name;
             powerDescription.text = GameStats.stats.powerDark.description;
+            RarityLevel.text = (GameStats.stats.powerDark.Rarity).ToString();
         }
         else if (GameStats.stats.LanguageSelect == 1)
         {
             PowerName.text = GameStats.stats.powerDark.Español_Name;
             powerDescription.text = GameStats.stats.powerDark.Español_Description;
+            RarityLevel.text = (GameStats.stats.powerDark.Rarity).ToString();
         }
+
+       
         RarityColor.color = GameStats.stats.powerDark.rarityColor;
     }
 
@@ -131,10 +136,12 @@ public class StoreStats : MonoBehaviour
         {
             PowerName.text = GameStats.stats.powerLight.name;
             powerDescription.text = GameStats.stats.powerLight.description;
+            RarityLevel.text = (GameStats.stats.powerLight.Rarity).ToString();
         } else if(GameStats.stats.LanguageSelect == 1)
         {
             PowerName.text = GameStats.stats.powerLight.Español_Name;
             powerDescription.text = GameStats.stats.powerLight.Español_Description;
+            RarityLevel.text = (GameStats.stats.powerLight.Rarity).ToString();
         }
        
         RarityColor.color = GameStats.stats.powerLight.rarityColor;

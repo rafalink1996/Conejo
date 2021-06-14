@@ -7,15 +7,20 @@ public class SlimeBall : MonoBehaviour, IPooledObject
     public float speed = 10f;
     bool reflected;
     public Transform sourceTransform;
+    AudioSource myAudioSource;
 
-   
+    private void Awake()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
     void Start()
     {
-
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     public void OnObjectSpawn()
     {
+        myAudioSource.Play();
         reflected = false;
         transform.position = transform.parent.transform.position + new Vector3(-1.58f, -0.51f,0);
         transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);

@@ -39,6 +39,7 @@ public class peashooter : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
+        myCollider2D.enabled = true;
         target = BunnyTarget;
         myAnimator.Play("seed idle");
         reflected = false;

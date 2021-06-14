@@ -9,6 +9,9 @@ public class StoreTabChange : MonoBehaviour
     public GameObject Powers;
     private Animator animator;
     private bool powers = false;
+    [SerializeField] GameObject PowerArrow;
+    [SerializeField] GameObject UpgradesArrow;
+    bool isInPowerShop = false;
 
     private void Start()
     {
@@ -22,9 +25,16 @@ public class StoreTabChange : MonoBehaviour
         if (powers == false)
         {
             animator.SetTrigger("DisplayChange");
+            LeanTween.cancel(PowerArrow);
+            LeanTween.moveLocalY(PowerArrow, -36, 0.5f).setEase(LeanTweenType.easeInOutExpo);
+            LeanTween.cancel(UpgradesArrow);
+            LeanTween.moveLocalY(UpgradesArrow, -2f, 0.5f).setEase(LeanTweenType.easeInOutExpo);
             StartCoroutine(WaitForPowerChange());
             powers = true;
         }
+        
+
+
 
     }
 
@@ -35,9 +45,14 @@ public class StoreTabChange : MonoBehaviour
         if (powers == true)
         {
             animator.SetTrigger("DisplayChange");
+            LeanTween.cancel(PowerArrow);
+            LeanTween.moveLocalY(PowerArrow, -2f, 0.5f).setEase(LeanTweenType.easeInOutExpo);
+            LeanTween.cancel(UpgradesArrow);
+            LeanTween.moveLocalY(UpgradesArrow, -36f, 0.5f).setEase(LeanTweenType.easeInOutExpo);
             StartCoroutine(WaitForUpgradeChange());
             powers = false;
         }
+        
 
 
     }

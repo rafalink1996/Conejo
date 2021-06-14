@@ -10,8 +10,13 @@ public class HandEyeSpawner : MonoBehaviour
     [SerializeField] string EyeEnemyTag;
 
     ObjectPooler myObjectPooler;
-    
 
+    private void Awake()
+    {
+        HandEnemyTag = "MageHand";
+        EyeEnemyTag = "MageEye";
+        myObjectPooler = ObjectPooler.Instance;
+    }
     void Start()
     {
         HandEnemyTag = "MageHand";

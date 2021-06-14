@@ -21,9 +21,12 @@ public class Book : MonoBehaviour
     string fireBallTag = "FireBallBook";
     string HealTokenTag = "Heal";
 
+   
+
     // Start is called before the first frame update
     void Start()
     {
+       
         fireBallTag = "FireBallBook";
         myObjectPooler = ObjectPooler.Instance;
         health = GetComponent<EnemyHealth>();

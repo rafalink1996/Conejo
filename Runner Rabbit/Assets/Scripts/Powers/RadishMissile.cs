@@ -10,15 +10,26 @@ public class RadishMissile : MonoBehaviour, IPooledObject
     public Transform target = null;
     [SerializeField] Rigidbody2D rb = null;
     [SerializeField] List<GameObject> posibleEnemies = null;
+    [SerializeField] ParticleSystem CollisionParticle;
 
     //public GameObject[] watchenemies;
     [SerializeField] float targetYPos;
    [SerializeField] float startYPos;
     [SerializeField] float startXpos;
 
+    ObjectPooler myObjectPooler;
+    string ColParticlesTag = "CollisionParticles";
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        myObjectPooler = ObjectPooler.Instance;
+        ColParticlesTag = "CollisionParticles";
+    }
     void Start()
     {
+        myObjectPooler = ObjectPooler.Instance;
+        ColParticlesTag = "CollisionParticles";
         //Destroy(gameObject, 5f);
         rb = GetComponent<Rigidbody2D>();
     }
@@ -83,6 +94,16 @@ public class RadishMissile : MonoBehaviour, IPooledObject
             //Destroy(gameObject);
             target = null;
             Deactivate();
+           
+            if(myObjectPooler != null)
+            {
+              myObjectPooler.SpawnFromPool(ColParticlesTag, transform.position, Quaternion.identity);
+
+            }
+            else
+            {
+                Debug.Log("no objectPooler");
+            }
 
 
         }

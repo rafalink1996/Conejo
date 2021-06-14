@@ -8,15 +8,23 @@ public class MageMissle : MonoBehaviour, IPooledObject
     public bool reflected;
     public Transform sourceTransform;
     [SerializeField] Transform myParent;
+    AudioSource myAudioSource;
 
+    private void Awake()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+        myParent = transform.parent;
+    }
     public void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
         myParent = transform.parent;
     }
 
 
    public void  OnObjectSpawn()
     {
+        myAudioSource.Play();
 
         //Debug.Log("On ObjectSpawn Missle");
         if(myParent != null)

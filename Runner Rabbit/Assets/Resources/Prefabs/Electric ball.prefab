@@ -52,6 +52,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -120,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceTransform: {fileID: 0}
+  myCircleCollider2D: {fileID: 0}
 --- !u!50 &7579993953669882396
 Rigidbody2D:
   serializedVersion: 4
@@ -153,7 +155,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 844854257549621081, guid: fc3f455b10db348d094da207e592d7c2,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: aa207bac7c9ef49b9ac966bebf3bb47f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 0.8
   Loop: 0
@@ -266,6 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2be7f96da34a24aaac4427fd3485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyP: 0
+  Poison: 0
+  PoisonTime: 0
   Damage: 1
 --- !u!1 &1457097437561965805
 GameObject:
