@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public class GameStats : MonoBehaviour
 {
+    [Header("JsonSaveSystem")]
+    [SerializeField] DataManager myDataManager;
+    private bool isSavedOnBinary;
+    public string debugLoad = "";
+
+    [Space(15)]
     public Power powerLight;
     public Power powerDark;
 
@@ -29,8 +36,8 @@ public class GameStats : MonoBehaviour
     public int totalDarkMana;
 
     // crystal store
-    [Space (15)]
-    [Header ("POWER UPS")]
+    [Space(15)]
+    [Header("POWER UPS")]
 
 
     public bool CoinTicket = false;
@@ -65,18 +72,20 @@ public class GameStats : MonoBehaviour
 
 
     [Space(5)]
-    
+
     public int LevelReached;
 
     public List<Power> UnlockedPowers = new List<Power>();
 
     public bool NoAdsBought = false;
+    public bool NoAdsBoughtBackup = false;
+    public bool SkinPackBought = false;
 
 
 
     // level indicator
     [Space(5)]
-    [Header ("CURRENT LEVEL")]
+    [Header("CURRENT LEVEL")]
     public int LevelCount;// level stage
     public int LevelIndicator;// Scene ID
 
@@ -110,7 +119,7 @@ public class GameStats : MonoBehaviour
 
 
     // achievemnts
-    public bool[] AchivementConditions =  new[ ]{
+    public bool[] AchivementConditions = new[]{
         false, // 0.Wyrm Defeated
         false, // 1.MageGoblin Defeated
         false, // 2.Yeti Defeated
@@ -135,7 +144,7 @@ public class GameStats : MonoBehaviour
     public float MusicVolume;
     public float AudioVolume;
 
-    
+
 
     //passives - Runes
 
@@ -181,19 +190,19 @@ public class GameStats : MonoBehaviour
 
     public bool MerchantRune;
 
-   
+
 
     // save Progress
     [Space(10)]
-    [Header ("SAVED PROGRESS")]
+    [Header("SAVED PROGRESS")]
 
     public String LevelName;
     public int SavedLevelIndicator;
     public int SavedLevelCount;
     public float SavedLevelPercentage;
     public bool RunInProgress;
-    
-    
+
+
     public int SaveCurrentHearts;
     public bool isInStore;
     public int savedDarkPowerID;
@@ -211,19 +220,19 @@ public class GameStats : MonoBehaviour
     public int LanguageSelect;
     public bool languageselected;
 
-   
+
     // 1 = english
     // 2 = Español
 
 
 
-   
 
 
-    
 
 
-    
+
+
+
 
 
 
@@ -241,15 +250,16 @@ public class GameStats : MonoBehaviour
         }
 
         LoadPlayer();
+        //Debug.Log(SaveCurrentHearts);
 
 
     }
 
 
-        void Start()
+    void Start()
     {
 
-        
+
 
         lightPowerName = powerLight.name;
         lightPowerSprite = powerLight.iconLight;
@@ -267,7 +277,7 @@ public class GameStats : MonoBehaviour
         Rune1 = (Rune)Rune1ID;
         Rune2 = (Rune)Rune2ID;
 
-        
+
 
 
     }
@@ -337,12 +347,12 @@ public class GameStats : MonoBehaviour
             AchivementConditions[9] = true;
         }
 
-        if ((powerDark.id == 4 || powerDark.id == 14 || powerDark.id == 24 || powerDark.id == 34 || powerDark.id == 54)&&(powerLight.id == 4 || powerLight.id == 14 || powerLight.id == 24 || powerLight.id == 34 || powerLight.id == 54))
+        if ((powerDark.id == 4 || powerDark.id == 14 || powerDark.id == 24 || powerDark.id == 34 || powerDark.id == 54) && (powerLight.id == 4 || powerLight.id == 14 || powerLight.id == 24 || powerLight.id == 34 || powerLight.id == 54))
         {
             AchivementConditions[10] = true;
         }
 
-       
+
 
 
     }
@@ -364,32 +374,32 @@ public class GameStats : MonoBehaviour
     {
         if (LevelIndicator == 1)
         {
-            
+
             LevelName = "Level 1 (Library)";
         }
         if (LevelIndicator == 2)
         {
-           
+
             LevelName = "Level 2 (dungeon)";
         }
         if (LevelIndicator == 3)
         {
-           
+
             LevelName = "Level 3 (Frozen Room)";
         }
         if (LevelIndicator == 4)
         {
-           
+
             LevelName = "Level 4 (Inner Jungle)";
         }
         if (LevelIndicator == 5)
         {
-           
+
             LevelName = "Level 5 (SteampunkPortalRoom)";
         }
         if (LevelIndicator == 6)
         {
-            
+
             LevelName = "Level 6 (FinalBattle)";
         }
 
@@ -403,11 +413,11 @@ public class GameStats : MonoBehaviour
         RunInProgress = true;
         SaveStats();
     }
-    
+
     public void CheckSavedPowers()
     {
-        
-    for (int i = 0; i < UnlockedPowers.Count; i++)
+
+        for (int i = 0; i < UnlockedPowers.Count; i++)
         {
             if (UnlockedPowers[i].id == savedDarkPowerID)
             {
@@ -418,7 +428,7 @@ public class GameStats : MonoBehaviour
             {
                 powerLight = UnlockedPowers[i];
             }
-            
+
         }
 
     }
@@ -431,6 +441,10 @@ public class GameStats : MonoBehaviour
 
     public void CheckAchievements()
     {
+        if(LevelReached > 1)
+        {
+            AchivementConditions[0] = true;
+        }
         if (LevelReached >= 2)
         {
             AchivementConditions[1] = true;
@@ -456,12 +470,152 @@ public class GameStats : MonoBehaviour
     public void SaveStats()
     {
         SaveSystem.SavePlayer(this);
-       // Debug.Log("game saved");
+        myDataManager.SaveJson();
+        // Debug.Log("game saved");
     }
 
-    public void LoadPlayer ()
+    public void LoadPlayer()
     {
-        PlayerData data = SaveSystem.loadPlayer();
+        if (myDataManager.IsFilePresent() == true)
+        {
+            myDataManager.LoadJson();
+            UpdateLoadStats(myDataManager);
+            Debug.Log("loaded from Json");
+            debugLoad = "Loaded from Json";
+        }
+        else
+        {
+            Debug.Log("loaded binary");
+            debugLoad = "Loaded from binary";
+
+            PlayerData data = SaveSystem.loadPlayer();
+
+            CoinTicket = data.CoinTicketBought;
+            PortalBoost = data.PortalBoostBought;
+            fenixFeather = data.fenixfetherBought;
+            ExtraHearts = data.ExtraHeartsBought;
+            ManaJar = data.ManaJarBought;
+
+            crystals = data.Crystals;
+            leveBoughtID = data.level;
+            LevelBought = data.LevelBought;
+            LevelBoughtCrystals = data.LevelBoughtCrystals;
+            LevelBoughtCoins = data.LevelBoughtCoins;
+
+
+            coins = data.Coins;
+
+            SavedLevelCount = data.SavedLevelCount;
+            SavedLevelIndicator = data.SavedLevelIndicator;
+            RunInProgress = data.RunInProgress;
+            SavedLevelPercentage = data.savedLevelPercentage;
+            numOfHearts = data.MaxHearts;
+            SaveCurrentHearts = data.CurrentHearts;
+            isInStore = data.IsInStore;
+
+            savedDarkPowerID = data.SavedDarkPowerID;
+            savedLightPowerID = data.SavedLightPowerID;
+
+            totalDarkMana = data.ManaDark;
+            totalLightMana = data.Manalight;
+
+
+            LevelReached = data.levelReached;
+            botSkinID = data.BotSkin;
+            topSkinID = data.TopSkin;
+
+            timedReward = data.TimeReward;
+            timedRewardLastDate = data.TimedRewardLastDate;
+
+            skinConditions[0] = data.skinConditions[0];
+            skinConditions[1] = data.skinConditions[1];
+            skinConditions[2] = data.skinConditions[2];
+            skinConditions[3] = data.skinConditions[3];
+            skinConditions[4] = data.skinConditions[4];
+            skinConditions[5] = data.skinConditions[5];
+
+
+            CarrotMissleLevel = data.CarrotMissleLevel;
+            EarDefenceLevel = data.EarDefenceLevel;
+            RadishMissleLevel = data.RadishMissleLevel;
+            KickReflectLevel = data.KickReflectLevel;
+            MagicLaserLevel = data.MagicLaserLevel;
+
+            AudioVolume = data.AudioVolume;
+            MusicVolume = data.MusicVolume;
+
+            AchivementConditions[0] = data.AchivementConditions[0];
+            AchivementConditions[1] = data.AchivementConditions[1];
+            AchivementConditions[2] = data.AchivementConditions[2];
+            AchivementConditions[3] = data.AchivementConditions[3];
+            AchivementConditions[4] = data.AchivementConditions[4];
+            AchivementConditions[5] = data.AchivementConditions[5];
+            AchivementConditions[6] = data.AchivementConditions[6];
+            AchivementConditions[7] = data.AchivementConditions[7];
+            AchivementConditions[8] = data.AchivementConditions[8];
+            AchivementConditions[9] = data.AchivementConditions[9];
+            AchivementConditions[10] = data.AchivementConditions[10];
+            AchivementConditions[11] = data.AchivementConditions[11];
+            AchivementConditions[12] = data.AchivementConditions[12];
+            AchivementConditions[13] = data.AchivementConditions[13];
+
+
+            MoneySpent = data.GoldSpent;
+            monstersKilled = data.monstersKilled;
+            diedTimes = data.diedTimes;
+
+            Rune1ID = data.Rune1Id;
+            Rune2ID = data.Rune2Id;
+
+            UnlockedRunes[0] = data.unlockedRunes[0];
+            UnlockedRunes[1] = data.unlockedRunes[1];
+            UnlockedRunes[2] = data.unlockedRunes[2];
+            UnlockedRunes[3] = data.unlockedRunes[3];
+            UnlockedRunes[4] = data.unlockedRunes[4];
+            UnlockedRunes[5] = data.unlockedRunes[5];
+            UnlockedRunes[6] = data.unlockedRunes[6];
+            UnlockedRunes[7] = data.unlockedRunes[7];
+            UnlockedRunes[8] = data.unlockedRunes[8];
+            UnlockedRunes[9] = data.unlockedRunes[9];
+
+            NoAdsBought = data.NoAdsBought;
+            SkinPackBought = data.SkinPackBought;
+            NoAdsBoughtBackup = data.NoAdsBoughtBackUp;
+
+            LanguageSelect = data.LanguageSelect;
+            languageselected = data.languageSelected;
+
+            BossRewardCollected = data.BossRewardCollected;
+        }
+    }
+
+    public void ResetStats()
+    {
+        stats.LevelIndicator = 1;
+        stats.LevelCount = 1;
+        stats.numOfHearts = 6;
+        //stats.ExtraHearts = false;
+        //stats.ManaJar = false;
+        powerDark = originalDarkPower;
+        powerLight = originalLightPower;
+        coins = 0;
+        stats.SavedLevelPercentage = 0;
+        stats.SaveCurrentHearts = 3;
+        savedDarkPowerID = originalDarkPower.id;
+        savedLightPowerID = originalLightPower.id;
+        totalLightMana = 30;
+        totalDarkMana = 30;
+
+
+
+        SaveStats();
+
+
+    }
+
+    void UpdateLoadStats(DataManager dataMagaer)
+    {
+        var data = dataMagaer.data;
 
         CoinTicket = data.CoinTicketBought;
         PortalBoost = data.PortalBoostBought;
@@ -531,7 +685,7 @@ public class GameStats : MonoBehaviour
         AchivementConditions[11] = data.AchivementConditions[11];
         AchivementConditions[12] = data.AchivementConditions[12];
         AchivementConditions[13] = data.AchivementConditions[13];
-       
+
 
         MoneySpent = data.GoldSpent;
         monstersKilled = data.monstersKilled;
@@ -552,39 +706,16 @@ public class GameStats : MonoBehaviour
         UnlockedRunes[9] = data.unlockedRunes[9];
 
         NoAdsBought = data.NoAdsBought;
+        SkinPackBought = data.SkinPackBought;
+        NoAdsBoughtBackup = data.NoAdsBoughtBackUp;
 
         LanguageSelect = data.LanguageSelect;
         languageselected = data.languageSelected;
 
         BossRewardCollected = data.BossRewardCollected;
-
     }
 
-    public void ResetStats()
-    {
-       stats.LevelIndicator = 1;
-       stats.LevelCount = 1;
-       stats.numOfHearts = 6;
-       //stats.ExtraHearts = false;
-       //stats.ManaJar = false;
-       powerDark = originalDarkPower;
-       powerLight = originalLightPower;
-       coins = 0;
-       stats.SavedLevelPercentage = 0;
-       stats.SaveCurrentHearts = 3;
-       savedDarkPowerID = originalDarkPower.id;
-       savedLightPowerID = originalLightPower.id;
-       totalLightMana = 30;
-       totalDarkMana = 30;
-       
 
-
-        SaveStats();
-
-
-    }
-
-    
 
 
 

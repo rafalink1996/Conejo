@@ -24,26 +24,17 @@ public class OfflineTimer : MonoBehaviour
     {
         if (isGamePause)
         {
-           
-            
             // pauseText.text = "Paused : " + pauseCounter;
             GoToMinimize();
-            
-                
-
             Debug.Log("minimized");
         }
 
         if (!isGamePause)
         {
-           
-
             
             //resumeText.text = "Focused : " + focusCounter;
             GoToMaximize(1);
-            GameStats.stats.SaveStats();
-
-            
+            GameStats.stats.SaveStats(); 
         }
     }
 /*

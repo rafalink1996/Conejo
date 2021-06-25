@@ -65,7 +65,7 @@ public class ManaHandle : MonoBehaviour
         DarkManaBar.value = CurrentDarkMana;
         LightManaBar.value = CurrentLightMana;
 
-        if (CurrentDarkMana < DarkMana && Cha.top == true && Cha.HoldPower == false)
+        if (CurrentDarkMana < DarkMana && Cha.top == true && Cha.holdPowerLight == false)
         {
             if (GameStats.stats.Rune1 == GameStats.Rune.ManaRune || GameStats.stats.Rune2 == GameStats.Rune.ManaRune)
             {
@@ -84,7 +84,7 @@ public class ManaHandle : MonoBehaviour
             CurrentDarkMana = 0;
         }
 
-        if (CurrentLightMana < LightMana && Cha.top == false && Cha.HoldPower == false)
+        if (CurrentLightMana < LightMana && Cha.top == false && Cha.holdPowerDark == false)
         {
             if (GameStats.stats.Rune1 == GameStats.Rune.ManaRune || GameStats.stats.Rune2 == GameStats.Rune.ManaRune)
             {

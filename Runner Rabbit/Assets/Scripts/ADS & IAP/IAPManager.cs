@@ -56,12 +56,14 @@ public class IAPManager : MonoBehaviour
         {
             // unlock premium skins
             GameStats.stats.skinConditions[1] = true;
+            GameStats.stats.SkinPackBought = true;
             GameStats.stats.SaveStats();
         }
         else if (product.definition.id == RemoveAds)
         {
             // remove all ads
             GameStats.stats.NoAdsBought = true;
+            GameStats.stats.NoAdsBoughtBackup = true;
             GameStats.stats.SaveStats();
         }
     }

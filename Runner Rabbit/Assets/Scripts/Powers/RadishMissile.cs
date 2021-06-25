@@ -20,14 +20,20 @@ public class RadishMissile : MonoBehaviour, IPooledObject
     ObjectPooler myObjectPooler;
     string ColParticlesTag = "CollisionParticles";
 
+    float deactivateTime;
+    float DeactivateMaxTime = 4;
+
+
     // Start is called before the first frame update
     private void Awake()
     {
+        DeactivateMaxTime = 4;
         myObjectPooler = ObjectPooler.Instance;
         ColParticlesTag = "CollisionParticles";
     }
     void Start()
     {
+        DeactivateMaxTime = 4;
         myObjectPooler = ObjectPooler.Instance;
         ColParticlesTag = "CollisionParticles";
         //Destroy(gameObject, 5f);
@@ -37,6 +43,7 @@ public class RadishMissile : MonoBehaviour, IPooledObject
     public void OnObjectSpawn()
     {
         //Invoke("Deactivate", 5);
+        deactivateTime = DeactivateMaxTime;
         posibleEnemies.Clear();
         startYPos = transform.position.y;
         startXpos = transform.position.x;
@@ -67,9 +74,27 @@ public class RadishMissile : MonoBehaviour, IPooledObject
             // Debug.Log("no target");
         }
 
+    }
 
-
-
+    private void Update()
+    {
+        if(deactivateTime <= 0)
+        {
+            Deactivate();
+        }
+        else
+        {
+            deactivateTime -= Time.deltaTime;
+        }
+        if(target != null)
+        {
+            if (!target.gameObject.activeSelf)
+            {
+                FindClosestEnemy();
+                target = null;
+            }
+        }
+        
     }
     //private void OnCollisionEnter2D(Collision2D collision)
     //{

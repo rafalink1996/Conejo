@@ -113,6 +113,7 @@ public class character : MonoBehaviour
     public PauseStart pausestart;
 
     public bool endlevel = false;
+    public bool EndLevelCoroutine = false;
 
     //laser
 
@@ -134,6 +135,8 @@ public class character : MonoBehaviour
 
 
     public bool HoldPower = false;
+    public bool holdPowerDark = false;
+    public bool holdPowerLight = false;
 
 
 
@@ -207,8 +210,11 @@ public class character : MonoBehaviour
 
     [SerializeField] UIManager MyUIManager;
     [SerializeField] AudioSource shieldBreakAudio;
-    [SerializeField] AudioSource LaserSFX;
-    bool LaserSFXPlaying;
+    [SerializeField] AudioSource LaserSFXDark;
+    [SerializeField] AudioSource LaserSFXLight;
+
+    bool LaserSFXPlayingLight;
+    bool LaserSFXPlayingDark;
 
 
     [SerializeField] bool IsInmortal;
@@ -301,6 +307,7 @@ public class character : MonoBehaviour
         NumOfHearts = GameStats.stats.numOfHearts;
         Health = NumOfHearts;
         endlevel = false;
+        EndLevelCoroutine = false;
 
         //LightLaser
         StartVFXLight.GetComponent<ParticleSystem>().Stop();
@@ -489,9 +496,10 @@ public class character : MonoBehaviour
         GameStats.stats.coins = coins;//updates stored coin value;
         GameStats.stats.crystals = crystal;//updates stored crystal value;
 
-        if (endlevel == true)
+        if (endlevel == true && EndLevelCoroutine == true)
         {
             StartCoroutine(GetInvulnerableEndLevel());
+            EndLevelCoroutine = false;
         }
 
 
@@ -786,12 +794,13 @@ public class character : MonoBehaviour
             //animator.SetBool("isUsingPower", true);
             isUsinglaserLight = true;
             HoldPower = true;
+            holdPowerLight = true;
 
             UsedPower(GameStats.stats.powerLight.id, GameStats.stats.powerLight.Damage);
             mana.ReduceDarkManaHold();
 
 
-
+           
 
 
 
@@ -826,9 +835,11 @@ public class character : MonoBehaviour
         LaserLight.enabled = false;
         HoldPower = false;
 
+        holdPowerLight = false;
+
         isUsinglaserLight = false;
 
-
+        Debug.Log("Stop Using Power Light");
         animator.SetBool("Laser", false);
 
         StartVFXLight.GetComponent<ParticleSystem>().Stop();
@@ -840,8 +851,8 @@ public class character : MonoBehaviour
         GameObject ButtonLight = GameObject.Find("UI/HUD/PowersHud/Power/Power Light");
         HoldButton HoldButtonLight = ButtonLight.GetComponent<HoldButton>();
         HoldButtonLight.Reset();
-        LaserSFX.Stop();
-        LaserSFXPlaying = false;
+        LaserSFXLight.Stop();
+        LaserSFXPlayingLight = false;
 
 
     }
@@ -855,14 +866,14 @@ public class character : MonoBehaviour
             LaserDark.enabled = true;
             isUsinglaserLight = false;
             HoldPower = true;
-
+            holdPowerDark = true;
             animator.SetBool("Laser", true);
             //animator.SetBool("isUsingPower", true);
             UsedPower(GameStats.stats.powerDark.id, GameStats.stats.powerDark.Damage);
             mana.ReduceLightManaHold();
 
 
-
+            Debug.Log("usingPowerDark");
 
             StartVFXDark.SetActive(true);
             EndVFXDark.SetActive(true);
@@ -896,12 +907,13 @@ public class character : MonoBehaviour
         StartVFXDark.GetComponent<ParticleSystem>().Stop();
         EndVFXDark.GetComponent<ParticleSystem>().Stop();
         HoldPower = false;
+        holdPowerDark = false;
 
         GameObject ButtonDark = GameObject.Find("UI/HUD/PowersHud/Power/Power Dark");
         HoldButton HoldButtonDark = ButtonDark.GetComponent<HoldButton>();
         HoldButtonDark.Reset();
-        LaserSFX.Stop();
-        LaserSFXPlaying = false;
+        LaserSFXDark.Stop();
+        LaserSFXPlayingDark = false;
 
 
     }
@@ -1545,11 +1557,7 @@ public class character : MonoBehaviour
 
                 if (HoldPower == true)
                 {
-                    if (!LaserSFXPlaying)
-                    {
-                        LaserSFX.Play();
-                        LaserSFXPlaying = true;
-                    }
+                    
                     
                     int layerMask = 1 << 9;
                     LaserlayerMask = layerMask;
@@ -1558,7 +1566,11 @@ public class character : MonoBehaviour
 
                     if (isUsinglaserLight == true)
                     {
-
+                        if (!LaserSFXPlayingLight)
+                        {
+                            LaserSFXLight.Play();
+                            LaserSFXPlayingLight = true;
+                        }
                         LaserLight.SetPosition(0, StartLaserPos.position);
                         LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXLight.transform.position = LaserLight.GetPosition(1);
@@ -1592,7 +1604,11 @@ public class character : MonoBehaviour
                     }
                     else
                     {
-
+                        if (!LaserSFXPlayingDark)
+                        {
+                            LaserSFXDark.Play();
+                            LaserSFXPlayingDark = true;
+                        }
                         LaserDark.SetPosition(0, StartLaserPos.position);
                         LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXDark.transform.position = LaserDark.GetPosition(1);
@@ -1642,11 +1658,7 @@ public class character : MonoBehaviour
 
                 if (HoldPower == true)
                 {
-                    if (!LaserSFXPlaying)
-                    {
-                        LaserSFX.Play();
-                        LaserSFXPlaying = true;
-                    }
+                    
                     int layerMask = 1 << 9;
                     LaserlayerMask = layerMask;
 
@@ -1654,6 +1666,11 @@ public class character : MonoBehaviour
 
                     if (isUsinglaserLight == true)
                     {
+                        if (!LaserSFXPlayingLight)
+                        {
+                            LaserSFXLight.Play();
+                            LaserSFXPlayingLight = true;
+                        }
 
                         LaserLight.SetPosition(0, StartLaserPos.position);
                         LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
@@ -1687,7 +1704,11 @@ public class character : MonoBehaviour
                     }
                     else
                     {
-
+                        if (!LaserSFXPlayingDark)
+                        { 
+                            LaserSFXDark.Play();
+                            LaserSFXPlayingDark = true;
+                        }
                         LaserDark.SetPosition(0, StartLaserPos.position);
                         LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXDark.transform.position = LaserDark.GetPosition(1);
@@ -1723,11 +1744,7 @@ public class character : MonoBehaviour
 
                 if (HoldPower == true)
                 {
-                    if (!LaserSFXPlaying)
-                    {
-                        LaserSFX.Play();
-                        LaserSFXPlaying = true;
-                    }
+                    
                     int layerMask1 = 1 << 9;
                     // int layerMask2 = 1 << 15;
 
@@ -1738,6 +1755,12 @@ public class character : MonoBehaviour
 
                     if (isUsinglaserLight == true)
                     {
+                        if (!LaserSFXPlayingLight)
+                        {
+     
+                            LaserSFXLight.Play();
+                            LaserSFXPlayingLight = true;
+                        }
 
                         LaserLight.SetPosition(0, StartLaserPos.position);
                         LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
@@ -1775,7 +1798,12 @@ public class character : MonoBehaviour
 
                     else
                     {
-
+                        if (!LaserSFXPlayingDark)
+                        {
+                            Debug.Log("playingLaserSFX");
+                            LaserSFXDark.Play();
+                            LaserSFXPlayingDark = true;
+                        }
                         LaserDark.SetPosition(0, StartLaserPos.position);
                         LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXDark.transform.position = LaserDark.GetPosition(1);
@@ -1813,11 +1841,7 @@ public class character : MonoBehaviour
 
                 if (HoldPower == true)
                 {
-                    if (!LaserSFXPlaying)
-                    {
-                        LaserSFX.Play();
-                        LaserSFXPlaying = true;
-                    }
+                    
                     int layerMask1 = 1 << 9;
                     //int layerMask2 = 1 << 15;
 
@@ -1828,6 +1852,11 @@ public class character : MonoBehaviour
 
                     if (isUsinglaserLight == true)
                     {
+                        if (!LaserSFXPlayingLight)
+                        {
+                            LaserSFXLight.Play();
+                            LaserSFXPlayingLight = true;
+                        }
 
                         LaserLight.SetPosition(0, StartLaserPos.position);
                         LaserLight.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
@@ -1858,7 +1887,11 @@ public class character : MonoBehaviour
                     }
                     else
                     {
-
+                        if (!LaserSFXPlayingDark)
+                        {
+                            LaserSFXDark.Play();
+                            LaserSFXPlayingDark = true;
+                        }
                         LaserDark.SetPosition(0, StartLaserPos.position);
                         LaserDark.SetPosition(1, StartLaserPos.position + new Vector3(15, 0, 0));
                         EndVFXDark.transform.position = LaserDark.GetPosition(1);

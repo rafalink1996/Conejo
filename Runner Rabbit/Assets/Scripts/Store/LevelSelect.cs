@@ -30,6 +30,8 @@ public class LevelSelect : MonoBehaviour
 
     [SerializeField] GameObject[] LevelInfoPopUps = null;
 
+    [SerializeField] GameObject[] LevelSelectPrices;
+
 
     
 
@@ -98,7 +100,13 @@ public class LevelSelect : MonoBehaviour
         {
             activatedLevels[i].SetActive(false);
         }
-        activatedLevels[GameStats.stats.leveBoughtID - 1].SetActive(true);
+        if(GameStats.stats.leveBoughtID != 0)
+        {
+            activatedLevels[GameStats.stats.leveBoughtID - 1].SetActive(true);
+        }
+        
+
+        checkLevelPricesDisplays();
     }
 
     // Update is called once per frame
@@ -106,7 +114,44 @@ public class LevelSelect : MonoBehaviour
     {
         RefundCrystals.text = CrystalsSpent.ToString();
 
+        checkLevelPricesDisplays();
        
+    }
+
+    void checkLevelPricesDisplays()
+    {
+        if (GameStats.stats.leveBoughtID == 2)
+        {
+            LevelSelectPrices[0].SetActive(false);
+        }
+        else
+        {
+            LevelSelectPrices[0].SetActive(true);
+        }
+        if (GameStats.stats.leveBoughtID == 3)
+        {
+            LevelSelectPrices[1].SetActive(false);
+        }
+        else
+        {
+            LevelSelectPrices[1].SetActive(true);
+        }
+        if (GameStats.stats.leveBoughtID == 4)
+        {
+            LevelSelectPrices[2].SetActive(false);
+        }
+        else
+        {
+            LevelSelectPrices[2].SetActive(true);
+        }
+        if (GameStats.stats.leveBoughtID == 5)
+        {
+            LevelSelectPrices[3].SetActive(false);
+        }
+        else
+        {
+            LevelSelectPrices[3].SetActive(true);
+        }
     }
 
 

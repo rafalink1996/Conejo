@@ -82,7 +82,7 @@ public class LanguageManagerStore : MonoBehaviour
     string Español_BuyPowerDisplay = "Comprar";
     string Español_BackButton = "Cerrar";
 
-    string Español_WhatchAdText = "Ver Ad Para conesguir";
+    string Español_WhatchAdText = "Ver Ad Para conseguir";
     string Español_WatchAdCoinText = "Monedas";
     string Español_WhatchAdBackButton = "Cerrar";
     string Español_WatchAdWatchButton = "Ver";

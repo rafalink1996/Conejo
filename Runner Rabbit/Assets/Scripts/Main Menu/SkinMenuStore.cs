@@ -13,6 +13,7 @@ public class SkinMenuStore : MonoBehaviour
 
     public Sprite[] SkinIcons;
     public Image[] LockedSkins;
+    [SerializeField] GameObject[] prices;
 
     public int SelectedSkinID;
 
@@ -32,6 +33,7 @@ public class SkinMenuStore : MonoBehaviour
     public GameObject CrystalStore;
     public GameObject BackToStoreButton;
     public GameObject BackToSkinMenuButton;
+    public GameObject runeForgeButton;
 
     public PowerMEnu myPowerMenu;
 
@@ -46,8 +48,11 @@ public class SkinMenuStore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-        
+
+        if (GameStats.stats.SkinPackBought)
+        {
+            GameStats.stats.skinConditions[1] = true;
+        }
         selectdisplayimage.sprite = SkinIcons[SelectedSkinID];
 
         SkinTopPreview.sprite = SkinIcons[GameStats.stats.topSkinID];
@@ -57,60 +62,7 @@ public class SkinMenuStore : MonoBehaviour
 
         #region UnlockDisplayStart
         //
-        if (GameStats.stats.skinConditions[1] == true)
-        {
-            LockedSkins[6].enabled = false;
-            LockedSkins[7].enabled = false;
-            LockedSkins[8].enabled = false;
-            LockedSkins[10].enabled = false;
-            LockedSkins[11].enabled = false;
-            LockedSkins[12].enabled = false;
-            LockedSkins[13].enabled = false;
-            LockedSkins[15].enabled = false;
-
-        }
-
-        if (GameStats.stats.skinConditions[0] == true)
-        {
-            LockedSkins[0].enabled = false;
-        }
-
-        if (GameStats.stats.skinConditions[2] == true)
-        {
-            LockedSkins[9].enabled = false;
-        }
-        if (GameStats.stats.skinConditions[3] == true)
-        {
-            LockedSkins[14].enabled = false;
-        }
-        if (GameStats.stats.skinConditions[4] == true)
-        {
-            LockedSkins[17].enabled = false;
-        }
-        if (GameStats.stats.skinConditions[5] == true)
-        {
-            LockedSkins[18].enabled = false;
-        }
-        if (GameStats.stats.LevelReached >= 2)
-        {
-            LockedSkins[1].enabled = false;
-        }
-        if (GameStats.stats.LevelReached >= 3)
-        {
-            LockedSkins[2].enabled = false;
-        }
-        if (GameStats.stats.LevelReached >= 4)
-        {
-            LockedSkins[3].enabled = false;
-        }
-        if (GameStats.stats.LevelReached >= 5)
-        {
-            LockedSkins[4].enabled = false;
-        }
-        if (GameStats.stats.LevelReached >= 6)
-        {
-            LockedSkins[5].enabled = false;
-        }
+        CheckLocked();
 
         #endregion 
     }
@@ -127,6 +79,14 @@ public class SkinMenuStore : MonoBehaviour
 
         #region UnlockDisplayUpdate
         //
+        CheckLocked();
+
+        #endregion
+
+    }
+
+    void CheckLocked()
+    {
         if (GameStats.stats.skinConditions[1] == true)
         {
             LockedSkins[6].enabled = false;
@@ -139,6 +99,7 @@ public class SkinMenuStore : MonoBehaviour
             LockedSkins[15].enabled = false;
 
         }
+        
 
         if (GameStats.stats.skinConditions[0] == true)
         {
@@ -148,44 +109,49 @@ public class SkinMenuStore : MonoBehaviour
         if (GameStats.stats.skinConditions[2] == true)
         {
             LockedSkins[9].enabled = false;
+            prices[1].SetActive(false);
         }
         if (GameStats.stats.skinConditions[3] == true)
         {
             LockedSkins[14].enabled = false;
+            prices[2].SetActive(false);
         }
         if (GameStats.stats.skinConditions[4] == true)
         {
             LockedSkins[17].enabled = false;
+            prices[3].SetActive(false);
         }
-        if (GameStats.stats.skinConditions[4] == true)
+        if (GameStats.stats.skinConditions[5] == true)
         {
             LockedSkins[18].enabled = false;
+            prices[4].SetActive(false);
         }
-        if (GameStats.stats.LevelReached >= 2)
+        if (GameStats.stats.AchivementConditions[0])
         {
             LockedSkins[1].enabled = false;
+            prices[0].SetActive(false);
         }
-        if (GameStats.stats.LevelReached >= 3)
+        if (GameStats.stats.AchivementConditions[1])
         {
             LockedSkins[2].enabled = false;
         }
-        if (GameStats.stats.LevelReached >= 4)
+        if (GameStats.stats.AchivementConditions[2])
         {
             LockedSkins[3].enabled = false;
         }
-        if (GameStats.stats.LevelReached >= 5)
+        if (GameStats.stats.AchivementConditions[3])
         {
             LockedSkins[4].enabled = false;
         }
-        if (GameStats.stats.LevelReached >= 6)
+        if (GameStats.stats.AchivementConditions[4])
         {
             LockedSkins[5].enabled = false;
         }
-
-        #endregion
-
     }
 
+   
+
+    #region Select Skin
     public void SelectSkin (int SkinID)
 	{
         SelectedSkinID = SkinID;
@@ -728,6 +694,8 @@ public class SkinMenuStore : MonoBehaviour
 
     }
 
+    #endregion
+
 
     public void confirmSkinTop ()
     {
@@ -777,6 +745,8 @@ public class SkinMenuStore : MonoBehaviour
                 buttonTop.SetActive(true);
                 unlockedText.text = "Unlocked";
                 UnlockDescription.text = "select skin position";
+                GameStats.stats.SaveStats();
+                CheckLocked();
             }
         }
 
@@ -787,6 +757,7 @@ public class SkinMenuStore : MonoBehaviour
             CrystalStore.SetActive(true);
             BackToSkinMenuButton.SetActive(true);
             BackToStoreButton.SetActive(false);
+            runeForgeButton.SetActive(false);
             myPowerMenu.PowerMenu();
 
         }
@@ -805,6 +776,7 @@ public class SkinMenuStore : MonoBehaviour
         CrystalStore.SetActive(false);
         BackToSkinMenuButton.SetActive(false);
         BackToStoreButton.SetActive(true);
+        runeForgeButton.SetActive(true);
     }
 
 

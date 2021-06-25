@@ -124,6 +124,8 @@ public class LevelLoaderMainMenu : MonoBehaviour
 
             StartCoroutine(loadAsync("Level 1 (Library)"));
         }
+
+
         
     }
 
@@ -136,6 +138,7 @@ public class LevelLoaderMainMenu : MonoBehaviour
             GameStats.stats.CheckLevelIndicator();
             GameStats.stats.CheckSavedPowers();
             GameStats.stats.RunInProgressPortalBoost = true;
+            
             GameStats.stats.LoadingSavedLevel = true;
             StartCoroutine(loadAsync("Store"));
 

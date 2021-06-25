@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6534509362020856587}
   - component: {fileID: 6534509362020856586}
+  - component: {fileID: 7476667002309962791}
   m_Layer: 0
   m_Name: GameStats
   m_TagString: Untagged
@@ -43,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964f1cc41f90a451e80ccf0474862b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myDataManager: {fileID: 7476667002309962791}
   powerLight: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   powerDark: {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907, type: 2}
   originalLightPower: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
@@ -66,6 +68,8 @@ MonoBehaviour:
   ExtraHearts: 0
   ManaJar: 0
   LevelBought: 0
+  LevelBoughtCrystals: 0
+  LevelBoughtCoins: 0
   leveBoughtID: 0
   timedReward: 0
   timedRewardLastDate: 0
@@ -81,19 +85,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   - {fileID: 11400000, guid: 00ed85c9e9d684421bba7cea8d9aa2bd, type: 2}
   NoAdsBought: 0
+  NoAdsBoughtBackup: 0
+  SkinPackBought: 0
   LevelCount: 1
   LevelIndicator: 1
-  topSkinID: 0
-  botSkinID: 0
-  MusicVolume: 2
-  AudioVolume: 1
-  skinConditions: 000000000000
   bossDead: 0
   spawnHouse: 0
+  topSkinID: 0
+  botSkinID: 0
+  skinConditions: 000000000000
   AchivementConditions: 000000000000000000000000000000
-  monstersKilled: 0
-  MoneySpent: 0
-  diedTimes: 0
+  MusicVolume: 2
+  AudioVolume: 1
   Rune1: 0
   Rune2: 0
   Rune1ID: 0
@@ -120,5 +123,24 @@ MonoBehaviour:
   isInStore: 0
   savedDarkPowerID: 0
   savedLightPowerID: 0
+  RunInProgressPortalBoost: 0
+  LoadingSavedLevel: 0
+  Levelstartcoins: 0
+  BossRewardCollected: 0
+  monstersKilled: 0
+  MoneySpent: 0
+  diedTimes: 0
   LanguageSelect: 0
   languageselected: 0
+--- !u!114 &7476667002309962791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6534509362020856585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb068ebefa7048dda68334b291fa634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

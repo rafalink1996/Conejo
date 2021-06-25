@@ -55,6 +55,7 @@ public class LanguageManager : MonoBehaviour
     public Text NoAdsTitle, RestorePurchaseTitle, CrystalBunch, CrystalPile, CryslatBag, CrystalChest, skinpacktitle;
     public TextMeshProUGUI NineSkinsDescription;
     public TextMeshProUGUI BackToSkinStoreButton;
+    public TextMeshProUGUI backToNormalStoreButton;
 
 
     public TextMeshProUGUI NotEnoughCrystalsText;
@@ -797,6 +798,7 @@ public class LanguageManager : MonoBehaviour
                 skinpacktitle.text = English_SkinPack;
                 NineSkinsDescription.text = English_9Skins;
                 BackToSkinStoreButton.text = English_BackButton;
+                backToNormalStoreButton.text = English_BackButton;
 
 
                 NotEnoughCrystalsText.text = English_NotEnoughCrystals;
@@ -999,6 +1001,7 @@ public class LanguageManager : MonoBehaviour
                 skinpacktitle.text = Español_SkinPack;
                 NineSkinsDescription.text = Español_9Skins;
                 BackToSkinStoreButton.text = Español_BackButton;
+                backToNormalStoreButton.text = Español_BackButton;
 
                 NotEnoughCrystalsText.text = Español_NotEnoughCrystals;
 
@@ -1201,6 +1204,7 @@ public class LanguageManager : MonoBehaviour
                 skinpacktitle.text = Frances_SkinPack;
                 NineSkinsDescription.text = Frances_9Skins;
                 BackToSkinStoreButton.text = Frances_BackButton;
+                backToNormalStoreButton.text = Frances_BackButton;
 
                 NotEnoughCrystalsText.text = Frances_NotEnoughCrystals;
 

@@ -114,6 +114,8 @@ public class PlayerData
 
 
     public bool NoAdsBought;
+    public bool NoAdsBoughtBackUp;
+    public bool SkinPackBought;
 
     public int LanguageSelect;
     public bool languageSelected;
@@ -153,7 +155,7 @@ public class PlayerData
         ManaDark = gamestats.totalDarkMana;
         Manalight = gamestats.totalLightMana;
 
-        
+        CurrentHearts = gamestats.SaveCurrentHearts;
 
         levelReached = gamestats.LevelReached;
 
@@ -163,6 +165,9 @@ public class PlayerData
         AudioVolume = gamestats.AudioVolume;
         MusicVolume = gamestats.MusicVolume;
         NoAdsBought = gamestats.NoAdsBought;
+        NoAdsBoughtBackUp = gamestats.NoAdsBoughtBackup;
+        SkinPackBought = gamestats.SkinPackBought;
+
 
 
         TimeReward = gamestats.timedReward;
@@ -171,6 +176,9 @@ public class PlayerData
         skinConditions[0] = gamestats.skinConditions[0];
         skinConditions[1] = gamestats.skinConditions[1];
         skinConditions[2] = gamestats.skinConditions[2];
+        skinConditions[3] = gamestats.skinConditions[3];
+        skinConditions[4] = gamestats.skinConditions[4];
+        skinConditions[5] = gamestats.skinConditions[5];
 
 
 

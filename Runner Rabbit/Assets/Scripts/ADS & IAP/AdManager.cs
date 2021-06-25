@@ -35,6 +35,7 @@ public class AdManager : MonoBehaviour
     public GameObject deathscreen;
 
     public Button AdButton;
+
     public GameObject ConfirmWatchAdObject;
 
     public LevelLoaderGame levelLoaderGame;
@@ -45,13 +46,17 @@ public class AdManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI FailedAdDescriptionText = null;
     string FailedTLoadText;
 
+    bool intersticialAdLoaded;
+
+
+
 
     // Google admob
 
     private string adUnitId;
 
-    string IntersticialAD_ID = "ca-app-pub-3940256099942544/4411468910"; // IOS = ca-app-pub-4145591567952062/3601130590 ***// *** Android = ca-app-pub-4145591567952062/9052767822
-    string RewardedAD_ID = "ca-app-pub-3940256099942544/1712485313"; //IOS = ca-app-pub-4145591567952062/2259633924 ***//*** Android = ca-app-pub-4145591567952062/5433140916
+    string IntersticialAD_ID = "ca-app-pub-4145591567952062/3601130590"; // IOS = ca-app-pub-4145591567952062/3601130590 *** // *** Android = ca-app-pub-4145591567952062/9052767822 *** // *** Test =ca-app-pub-3940256099942544/4411468910
+    string RewardedAD_ID = "ca-app-pub-4145591567952062/2259633924"; //IOS = ca-app-pub-4145591567952062/2259633924 ***//*** Android = ca-app-pub-4145591567952062/5433140916 *** //*** Test = ca-app-pub-3940256099942544/1712485313
 
     private RewardedAd rewardedAd;
     private InterstitialAd interstitial;
@@ -77,6 +82,9 @@ public class AdManager : MonoBehaviour
     [SerializeField] GameObject MainMenu = null;
 
     bool TimeForReward = false;
+    bool adClosed = false;
+
+    bool adIsLoaded = false;
 
 
 
@@ -129,17 +137,17 @@ public class AdManager : MonoBehaviour
             }
         });
 
-
+        
 
         // **************** Remove this code before build ************************ //
-        List<string> deviceIds = new List<string>();
-        deviceIds.Add("14d1fff363b2cda9939aac6cb791aaef");
-        RequestConfiguration requestConfiguration = new RequestConfiguration
-            .Builder()
-            .SetTestDeviceIds(deviceIds)
-            .build();
+        //List<string> deviceIds = new List<string>();
+        //deviceIds.Add("14d1fff363b2cda9939aac6cb791aaef");
+        //RequestConfiguration requestConfiguration = new RequestConfiguration
+        //    .Builder()
+        //    .SetTestDeviceIds(deviceIds)
+        //    .build();
 
-        MobileAds.SetRequestConfiguration(requestConfiguration);
+        //MobileAds.SetRequestConfiguration(requestConfiguration);
         // **********************************************************************   //
 
         Scene currentScene = SceneManager.GetActiveScene();
@@ -160,8 +168,10 @@ public class AdManager : MonoBehaviour
 
         if (GameStats.stats.NoAdsBought == false)
         {
+
             if (AdButton != null)
             {
+                AdButton.interactable = false;
                 AdButton.onClick.AddListener(ShowConfirmationScreen);
             }
             RewardCoins = 100 + (25 * GameStats.stats.LevelIndicator);
@@ -190,16 +200,38 @@ public class AdManager : MonoBehaviour
         #endregion
 
         TimeForReward = false;
+        adClosed = false;
 
 
     }
 
     private void Update()
     {
+        if (adClosed == true)
+        {
+            StartCoroutine(ActivateUIAfterAdClosed());
+            adClosed = false;
+        }
         if (TimeForReward == true)
         {
             StartCoroutine(WaitToShowReward());
             TimeForReward = false;
+        }
+       
+
+        if (adIsLoaded)
+        {
+            if(AdButton != null)
+            {
+                AdButton.interactable = true;
+            } 
+        }
+        else
+        {
+            if (AdButton != null)
+            {
+                AdButton.interactable = false;
+            }
         }
     }
 
@@ -285,7 +317,16 @@ public class AdManager : MonoBehaviour
             if (GameStats.stats.NoAdsBought == false)
             {
                 LoadingAdObject.SetActive(true);
-                this.interstitial.Show();
+                if (intersticialAdLoaded)
+                {
+                    
+                    this.interstitial.Show();
+                }
+                else
+                {
+                  Invoke("PlayInterstitialAD()", 1);
+                }
+                
 
             }
             else
@@ -349,6 +390,7 @@ public class AdManager : MonoBehaviour
             AdLoadedImage.color = Color.green;
         }
         LoadRetryRewarded = 0;
+        adIsLoaded = true;
     }
 
     public void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
@@ -402,12 +444,14 @@ public class AdManager : MonoBehaviour
     {
         //RequestRewardedVideoAd();
         MainMixer.SetFloat("MasterVolume", 0);
+        adClosed = true;
+        
     }
     
     public void HandleUserEarnedReward(object sender, Reward args)
     {
         MainMixer.SetFloat("MasterVolume", 0);
-
+       
         TimeForReward = true;
     }
 
@@ -416,6 +460,8 @@ public class AdManager : MonoBehaviour
 
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
+        //adIsLoaded = true;
+        intersticialAdLoaded = true;
         LoadRetryIntersticial = 0;
 
     }
@@ -458,7 +504,7 @@ public class AdManager : MonoBehaviour
     IEnumerator WaitToShowReward()
     {
         yield return new WaitForEndOfFrame();
-
+        adIsLoaded = false;
         if (store != null)
         {
             store.SetActive(true);
@@ -475,8 +521,32 @@ public class AdManager : MonoBehaviour
         {
             AdLoadedImage.color = Color.blue;
         }
+        if(AdButton!= null)
+        {
+            AdButton.interactable = false;
+        }
 
     }
+
+    IEnumerator ActivateUIAfterAdClosed()
+    {
+        yield return new WaitForEndOfFrame();
+
+        if (store != null)
+        {
+            store.SetActive(true);
+        }
+        if (MainMenu != null)
+        {
+            MainMenu.SetActive(true);
+        }
+        if (AdLoadedImage != null)
+        {
+            AdLoadedImage.color = Color.red;
+        }
+    }
+
+    
 
     public void RetryToLoadAD()
     {

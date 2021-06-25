@@ -69,7 +69,12 @@ public class LevelLoaderGame : MonoBehaviour
             levelcountdown = GameStats.stats.SavedLevelPercentage;
             cha.SetSavedStats();
         }
-
+        else
+        {
+            GameStats.stats.HealToFull();
+            GameStats.stats.SaveStats()
+;
+        }
         if (GameStats.stats.RunInProgressPortalBoost == false)
         {
             if (GameStats.stats.PortalBoost == false)
@@ -118,13 +123,16 @@ public class LevelLoaderGame : MonoBehaviour
             }
             EnemySpawnerHand.SetActive(false);
             cha.endlevel = true;
+            cha.EndLevelCoroutine = true;
             
         }
         int levelPercentage = Mathf.FloorToInt((levelcountdown / levelTime) * 100);
-        if (levelPercentage == 1 || levelPercentage == 25 || levelPercentage == 50 || levelPercentage == 75)
+        if (levelPercentage == 0 || levelPercentage == 1 || levelPercentage == 25 || levelPercentage == 50 || levelPercentage == 75)
         {
             GameStats.stats.SavedLevelPercentage = levelcountdown;
             GameStats.stats.SaveCurrentHearts = cha.Health;
+            //Debug.Log("character health = " + cha.Health);
+            //Debug.Log("savedHearts= " + GameStats.stats.SaveCurrentHearts);
             GameStats.stats.SaveStats();
             GameStats.stats.RunInProgress = true;
 
