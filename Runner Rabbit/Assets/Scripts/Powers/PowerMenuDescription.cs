@@ -47,7 +47,7 @@ public class PowerMenuDescription : MonoBehaviour
 
     //cost
     public TextMeshProUGUI Cost;
-    float CrystalCost;
+    [SerializeField] float CrystalCost;
 
     //id
     public int selectedPowerID;
@@ -58,6 +58,8 @@ public class PowerMenuDescription : MonoBehaviour
     public Image buttonCrystalImage;
     public TextMeshProUGUI MaxLevelText;
     public TextMeshProUGUI UpgradeText;
+
+    public int CurrentID;
 
     private void Start()
     {
@@ -146,6 +148,8 @@ public class PowerMenuDescription : MonoBehaviour
 
         }
 
+        CurrentID = PowerID;
+
         UpdateCrystalCost(PowerID);
 
 
@@ -188,7 +192,7 @@ public class PowerMenuDescription : MonoBehaviour
         
     }
 
-    void UpdateCrystalCost(int SelectedPowerID)
+    public void UpdateCrystalCost(int SelectedPowerID)
     {
         if (SelectedPowerID == 1)
         {
@@ -306,7 +310,7 @@ public class PowerMenuDescription : MonoBehaviour
             }
         }
 
-        Debug.Log("upgradeButtonPressed");
+       // Debug.Log("upgradeButtonPressed");
 
         
     }
@@ -315,16 +319,53 @@ public class PowerMenuDescription : MonoBehaviour
     public void BuyPowerUpgrade()
     {
         PowerMenu.BuyPowerUpgrade(selectedPowerID);
+        //CheckCrystalCost();
         UpdateCrystalCost(selectedPowerID);
         UpdateLockedUi(selectedPowerID);
 
+    }
+
+    public void CheckCrystalCost()
+    {
+        if (CurrentID == 1)
+        {
+            CrystalCost = PowerMenu.CarrotMissleCrystalCost;
+            //Debug.Log("crystal cost Carrot = " + PowerMenu.CarrotMissleCrystalCost);
+        }
+        if (CurrentID == 2)
+        {
+            CrystalCost = PowerMenu.EarShieldCrystalCost;
+            //Debug.Log("crystal cost Shield = " + PowerMenu.EarShieldCrystalCost);
+        }
+        if (CurrentID == 3)
+        {
+            CrystalCost = PowerMenu.KickReflectCrystalCost;
+            //Debug.Log("crystal cost kick = " + PowerMenu.KickReflectCrystalCost);
+        }
+        if (CurrentID == 4)
+        {
+            CrystalCost = PowerMenu.RadishtMissleCrystalCost;
+            //Debug.Log("crystal cost radish = " + PowerMenu.RadishtMissleCrystalCost);
+        }
+        if (CurrentID == 5)
+        {
+            CrystalCost = PowerMenu.MagicLaserCrystalCost;
+            //Debug.Log("crystal cost laser = " + PowerMenu.MagicLaserCrystalCost);
+        }
     }
     void UpdateLockedUi(int selectedID)
     {
         //Carrot Missle
         if (selectedID == 1)
         {
-            if (GameStats.stats.CarrotMissleLevel == 1)
+            if (GameStats.stats.CarrotMissleLevel == 0)
+            {
+                LockedTier1.enabled = true;
+                LockedTier2.enabled = true;
+                LockedTier3.enabled = true;
+                LockedTier4.enabled = true;
+            }
+            else if (GameStats.stats.CarrotMissleLevel == 1)
             {
                 LockedTier1.enabled = false;
                 LockedTier2.enabled = true;
@@ -356,7 +397,14 @@ public class PowerMenuDescription : MonoBehaviour
         //ear Shield
         if (selectedID == 2)
         {
-            if (GameStats.stats.EarDefenceLevel == 1)
+            if (GameStats.stats.EarDefenceLevel == 0)
+            {
+                LockedTier1.enabled = true;
+                LockedTier2.enabled = true;
+                LockedTier3.enabled = true;
+                LockedTier4.enabled = true;
+            }
+            else if (GameStats.stats.EarDefenceLevel == 1)
             {
                 LockedTier1.enabled = false;
                 LockedTier2.enabled = true;
@@ -388,7 +436,15 @@ public class PowerMenuDescription : MonoBehaviour
         // Kick Reflect
         if (selectedID == 3)
         {
-            if (GameStats.stats.KickReflectLevel == 1)
+
+            if (GameStats.stats.KickReflectLevel == 0)
+            {
+                LockedTier1.enabled = false;
+                LockedTier2.enabled = true;
+                LockedTier3.enabled = true;
+                LockedTier4.enabled = true;
+            }
+            else if (GameStats.stats.KickReflectLevel == 1)
             {
                 LockedTier1.enabled = false;
                 LockedTier2.enabled = true;
@@ -420,7 +476,14 @@ public class PowerMenuDescription : MonoBehaviour
         // Radish Missle
         if (selectedID == 4)
         {
-            if (GameStats.stats.RadishMissleLevel == 1)
+            if (GameStats.stats.RadishMissleLevel == 0)
+            {
+                LockedTier1.enabled = true;
+                LockedTier2.enabled = true;
+                LockedTier3.enabled = true;
+                LockedTier4.enabled = true;
+            }
+            else if (GameStats.stats.RadishMissleLevel == 1)
             {
                 LockedTier1.enabled = false;
                 LockedTier2.enabled = true;
@@ -453,7 +516,14 @@ public class PowerMenuDescription : MonoBehaviour
 
         if (selectedID == 5)
         {
-            if (GameStats.stats.MagicLaserLevel == 1)
+            if (GameStats.stats.MagicLaserLevel == 0)
+            {
+                LockedTier1.enabled = true;
+                LockedTier2.enabled = true;
+                LockedTier3.enabled = true;
+                LockedTier4.enabled = true;
+            }
+            else if (GameStats.stats.MagicLaserLevel == 1)
             {
                 LockedTier1.enabled = false;
                 LockedTier2.enabled = true;

@@ -80,32 +80,7 @@ public class character : MonoBehaviour
 
 
 
-    /* 
-   public Transform EndlessHouseTarget1;
-   public Transform EndlessHouseTarget2;
-
-
-   public float pulledspeed = 2f;
-   private float pulledmaxspeed = 40f;
-   public float pulledAcceleration = 0f;
-   public LevelLoader levelLoader;
-
-
-   [SerializeField]
-   [Range(0f, 1f)]
-   private float lerpPct = 0f;
-   */
-
-    //start level
-    /*
-        public Transform startMarker;
-        public Transform endMarker;
-        public float outOfportalSpeed;
-        public float startTime;
-        public float journeyLength;
-        public bool gamestart;
-        public PauseStart pausestart;
-    */
+  
 
     private float deceleration;
     public float outOfportalSpeed;
@@ -195,6 +170,8 @@ public class character : MonoBehaviour
     string radishMissleTag = "RadishMissle";
     string carrotMissleTag = "CarrotMissle";
     string kickReflectTag = "KickReflect";
+
+    
 
 
 
@@ -766,6 +743,10 @@ public class character : MonoBehaviour
             mana.ReduceDarkMana();
 
         }
+        else
+        {
+            mana.notenoughMana(false);
+        }
         if (isPoisoned)
         {
             if (ShieldHealthAbsorb)
@@ -813,6 +794,7 @@ public class character : MonoBehaviour
         }
         else
         {
+            mana.notenoughMana(false);
             LightPowerHoldStop();
 
         }
@@ -882,6 +864,7 @@ public class character : MonoBehaviour
         }
         else
         {
+            mana.notenoughMana(true);
             DarkPowerHoldStop();
 
         }
@@ -931,6 +914,10 @@ public class character : MonoBehaviour
             UsedPower(GameStats.stats.powerDark.id, GameStats.stats.powerDark.Damage);
             mana.ReduceLightMana();
 
+        }
+        else
+        {
+            mana.notenoughMana(true);
         }
 
         if (isPoisoned)
@@ -1134,6 +1121,19 @@ public class character : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 9, true);
         Physics2D.IgnoreLayerCollision(8, 15, true);
         yield return new WaitForSeconds(20f);
+        Physics2D.IgnoreLayerCollision(8, 9, false);
+        Physics2D.IgnoreLayerCollision(8, 15, false);
+    }
+
+    public void StartLevelInvulnerability()
+    {
+        StartCoroutine(GetInvulnerableStartLevel());
+    }
+   IEnumerator GetInvulnerableStartLevel()
+    {
+        Physics2D.IgnoreLayerCollision(8, 9, true);
+        Physics2D.IgnoreLayerCollision(8, 15, true);
+        yield return new WaitForSeconds(0.5f);
         Physics2D.IgnoreLayerCollision(8, 9, false);
         Physics2D.IgnoreLayerCollision(8, 15, false);
     }

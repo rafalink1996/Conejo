@@ -97,7 +97,7 @@ public class LanguageManagerStore : MonoBehaviour
 
     public string Español_Library = "Biblioteca";
     public string Español_Dungeon = "Calabozo";
-    public string Español_IceRoom = "Cuerto de hielo";
+    public string Español_IceRoom = "Cuarto de hielo";
     public string Español_Jungle = "Jungla";
     public string Español_PortalRoom = "Cuarto de portales";
 

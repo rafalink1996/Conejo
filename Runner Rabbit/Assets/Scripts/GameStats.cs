@@ -174,16 +174,16 @@ public class GameStats : MonoBehaviour
 
     public bool[] UnlockedRunes = new[]{
 
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        false, // 0.float
+        false, // 1.fall
+        false, // 2.magnet
+        false, // 3.mana
+        false, // 4.spell
+        false, // 5.shield
+        false, // 6.greed
+        false, // 7.merchant
+        false, // 8.destruction
+        false  // 9.unknown
     };
 
     public Sprite[] runeSprites;
@@ -367,7 +367,17 @@ public class GameStats : MonoBehaviour
         }
     }
 
-
+    public void CloudAchievements()
+    {
+        for (int i = 0; i < AchivementConditions.Length; i++)
+        {
+            if(AchivementConditions[i] == true)
+            {
+                ServicesManager.instance.CloudAchievements(i);
+            }
+           
+        }
+    }
 
 
     public string CheckLevel()
@@ -441,7 +451,7 @@ public class GameStats : MonoBehaviour
 
     public void CheckAchievements()
     {
-        if(LevelReached > 1)
+        if (LevelReached > 1)
         {
             AchivementConditions[0] = true;
         }
@@ -471,7 +481,12 @@ public class GameStats : MonoBehaviour
     {
         SaveSystem.SavePlayer(this);
         myDataManager.SaveJson();
+        saveServices();
         // Debug.Log("game saved");
+    }
+    public void UploadStats()
+    {
+        ServicesManager.instance.StoreCloudData();
     }
 
     public void LoadPlayer()
@@ -483,7 +498,7 @@ public class GameStats : MonoBehaviour
             Debug.Log("loaded from Json");
             debugLoad = "Loaded from Json";
         }
-        else
+        else if (SaveSystem.IsBinaryFilePresent())
         {
             Debug.Log("loaded binary");
             debugLoad = "Loaded from binary";
@@ -586,6 +601,10 @@ public class GameStats : MonoBehaviour
             languageselected = data.languageSelected;
 
             BossRewardCollected = data.BossRewardCollected;
+        }
+        else
+        {
+            ServicesManager.instance.LoadCloudSaveData();
         }
     }
 
@@ -713,6 +732,14 @@ public class GameStats : MonoBehaviour
         languageselected = data.languageSelected;
 
         BossRewardCollected = data.BossRewardCollected;
+
+    }
+
+
+
+    void saveServices()
+    {
+        ServicesManager.instance.SubmitScoreToLeaderBoard(LevelReached);
     }
 
 

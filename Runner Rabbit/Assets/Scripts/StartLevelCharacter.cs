@@ -32,9 +32,12 @@ public class StartLevelCharacter : MonoBehaviour
     public Animator animator;
 
     private StartLevelCharacter levelecaracterscript;
+    public character myCha;
+    
 
     private void Start()
     {
+        IsLerping = true;
         StartCoroutine(WaitForintro());
 
     }
@@ -60,6 +63,7 @@ public class StartLevelCharacter : MonoBehaviour
                 IsLerping = false;
                 animator.SetBool("start", false);
                 animator.SetTrigger("Start");
+                myCha.StartLevelInvulnerability();
                 //levelecaracterscript.enabled = false;
 
             }

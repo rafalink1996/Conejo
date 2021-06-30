@@ -23,6 +23,7 @@ public class LevelLoaderStore : MonoBehaviour
         GameStats.stats.isInStore = true;
         GameStats.stats.SaveCurrentHearts = GameStats.stats.numOfHearts;
         GameStats.stats.SaveStats();
+        GameStats.stats.UploadStats();
 
 
         if (GameStats.stats.LevelCount == 0)
@@ -56,6 +57,11 @@ public class LevelLoaderStore : MonoBehaviour
             checkNextLevelName(GameStats.stats.LevelIndicator);
         }
 
+        GameStats.stats.CloudAchievements();
+        ServicesManager.instance.SumbitMonstersDefeatedScore(Mathf.FloorToInt(GameStats.stats.monstersKilled));
+        GameStats.stats.SaveStats();
+        GameStats.stats.UploadStats();
+
     }
 
 
@@ -76,6 +82,9 @@ public class LevelLoaderStore : MonoBehaviour
         {
             GameStats.stats.LevelReached = GameStats.stats.LevelIndicator;
         }
+
+        ServicesManager.instance.SubmitScoreToLeaderBoard(GameStats.stats.LevelIndicator);
+        ServicesManager.instance.StoreCloudData();
 
 
 

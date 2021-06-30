@@ -41,6 +41,7 @@ public class LanguageManager : MonoBehaviour
                            RuneSlot1Unequip, RuneSlot2Unequip, RuneSlot1Select, RuneSlot2Select;
     public TextMeshProUGUI RuneStoreDescription;
     public TextMeshProUGUI RuneStoreDescription2;
+    public TextMeshProUGUI NotEnoughCrystalsRune;
 
     //texts Skin Menú
     public TextMeshProUGUI SkinTitle, DefaultSkinText, DragonFireSkinText, BoneSkinText, IceGolemSkinText, PlantSkinText, ClockWorkSkinText, ShadowWizardSkinText, TophatSkinText, AngelSkinText, ImpSkinText, SnowmanSkinText,
@@ -179,6 +180,8 @@ public class LanguageManager : MonoBehaviour
 
     string English_RuneShopDescription = "Unlock passive abilities";
     string English_RuneShopDescription2 = "Equip up to two runes that will help you in your escape";
+
+    
 
 
     string English_DefaultSkin = "Default";
@@ -742,6 +745,8 @@ public class LanguageManager : MonoBehaviour
                 RuneStoreDescription.text = English_RuneShopDescription;
                 RuneStoreDescription2.text = English_RuneShopDescription2;
 
+                NotEnoughCrystalsRune.text = English_NotEnoughCrystals;
+
                 // Skin menu
 
                 SkinTitle.text = English_SkinsButton;
@@ -950,6 +955,10 @@ public class LanguageManager : MonoBehaviour
                 RuneStoreDescription.text = Español_RuneShopDescription;
                 RuneStoreDescription2.text = Español_RuneShopDescription2;
 
+                NotEnoughCrystalsRune.text = Español_NotEnoughCrystals;
+
+
+                //skins
                 SkinTitle.text = Español_SkinsButton;
                 BackButtonSkinMenu.text = Español_BackButton;
                 buySkinButton.text = Español_BuyButton;
@@ -1147,6 +1156,8 @@ public class LanguageManager : MonoBehaviour
 
                 RuneStoreDescription.text = Frances_RuneShopDescription;
                 RuneStoreDescription2.text = Frances_RuneShopDescription2;
+
+                NotEnoughCrystalsText.text = Frances_NotEnoughCrystals;
 
                 // Skin menu
 

@@ -243,6 +243,8 @@ public class RuneSystem : MonoBehaviour
                 GameStats.stats.crystals -= RuneCosts[runeID -1];
                 GameStats.stats.UnlockedRunes[runeID - 1] = true;
                 RuneLocked[runeID -1].SetActive(false);
+                GameStats.stats.SaveStats();
+                GameStats.stats.UploadStats();
             }
             else
             {

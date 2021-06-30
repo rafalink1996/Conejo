@@ -7,7 +7,9 @@ public class MenuGameManager : MonoBehaviour
 {
 
     public TextMeshProUGUI Crystalcounter;
+    public TextMeshProUGUI CrystalcounterRune;
     public float Crystals;
+    
     public GameObject InitialSelectLanguage;
 
     // Start is called before the first frame update
@@ -28,7 +30,8 @@ public class MenuGameManager : MonoBehaviour
     void Update()
     {
         Crystals = GameStats.stats.crystals;
-        Crystalcounter.text = Crystals.ToString(); 
+        Crystalcounter.text = Crystals.ToString();
+        CrystalcounterRune.text = Crystals.ToString();
     }
 
     public void closelanguageSelect()

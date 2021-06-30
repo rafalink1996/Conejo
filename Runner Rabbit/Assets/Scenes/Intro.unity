@@ -286,6 +286,75 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &327702633
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 473.55136
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 204.46199
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8935.633
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430803, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195500186348430814, guid: 604716ee26b804875bb154a30ef81c69,
+        type: 3}
+      propertyPath: m_Name
+      value: ServicesManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 604716ee26b804875bb154a30ef81c69, type: 3}
 --- !u!1 &365941423
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1282550277}
   - component: {fileID: 1282550276}
+  - component: {fileID: 1282550278}
   m_Layer: 0
   m_Name: AdmobController
   m_TagString: Untagged
@@ -935,6 +1005,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282550278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282550275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182f41a75ffc642009d12a539811f551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMixer: {fileID: 0}
+  RewardCoins: 0
+  RewardCrystals: 0
+  rewardColect: {fileID: 0}
+  RewardDisplay1: {fileID: 0}
+  RewardDisplay2: {fileID: 0}
+  RewardDisplay3: {fileID: 0}
+  deathscreen: {fileID: 0}
+  AdButton: {fileID: 0}
+  ConfirmWatchAdObject: {fileID: 0}
+  levelLoaderGame: {fileID: 0}
+  FailedtoShowGameObject: {fileID: 0}
+  FailedAdDescriptionText: {fileID: 0}
+  probandoAdmob: 0
+  LoadingAdObject: {fileID: 0}
+  LoadRetryRewarded: 0
+  LoadRetryIntersticial: 0
+  AdLoadedImage: {fileID: 0}
+  store: {fileID: 0}
+  MainMenu: {fileID: 0}
 --- !u!1 &1350938250
 GameObject:
   m_ObjectHideFlags: 0

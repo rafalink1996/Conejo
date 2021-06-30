@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject ManaTearLight, ManaTearDark;
+    [SerializeField] CanvasGroup noManaLight, noManaDark;
+    
     [SerializeField] TextMeshProUGUI CrystalText, CoinsText;
 
     [SerializeField] Color ColorLightUp, ColorLightDown;
@@ -77,6 +79,27 @@ public class UIManager : MonoBehaviour
         }
 
         ShowHud();
+    }
+
+    public void noManaWarning(bool light)
+    {
+        if (light)
+        {
+            LeanTween.cancel(noManaLight.gameObject);
+            LeanTween.alphaCanvas(noManaLight, 1, 0.5f);
+            LeanTween.alphaCanvas(noManaLight, 0, 0.5f).setDelay(0.5f);
+            LeanTween.alphaCanvas(noManaLight, 1, 0.5f).setDelay(1f);
+            LeanTween.alphaCanvas(noManaLight, 0, 0.5f).setDelay(1.5f);
+        }
+        else
+        {
+            LeanTween.cancel(noManaLight.gameObject);
+            LeanTween.alphaCanvas(noManaDark, 1, 0.5f);
+            LeanTween.alphaCanvas(noManaDark, 0, 0.5f).setDelay(0.5f);
+            LeanTween.alphaCanvas(noManaDark, 1, 0.5f).setDelay(1f);
+            LeanTween.alphaCanvas(noManaDark, 0, 0.5f).setDelay(1.5f);
+        }
+        
     }
 
     void ManaDisplayDark()

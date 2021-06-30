@@ -32,6 +32,7 @@ public class IAPManager : MonoBehaviour
             // give the player 80 crystals
             GameStats.stats.crystals += 80;
             GameStats.stats.SaveStats();
+            GameStats.stats.UploadStats();
         }
 
        else  if (product.definition.id == Crystal500)
@@ -39,18 +40,21 @@ public class IAPManager : MonoBehaviour
             // give the player 500 crystals
             GameStats.stats.crystals += 500;
             GameStats.stats.SaveStats();
+            GameStats.stats.UploadStats();
         }
        else if (product.definition.id == Crystal1200)
         {
             // give the player 1200 crystals
             GameStats.stats.crystals += 1200;
             GameStats.stats.SaveStats();
+            GameStats.stats.UploadStats();
         }
         else if (product.definition.id == Crystal3000)
         {
             // give the player 3000 crystals
             GameStats.stats.crystals += 3000;
             GameStats.stats.SaveStats();
+            GameStats.stats.UploadStats();
         }
         else if (product.definition.id == SkinPack)
         {
@@ -58,6 +62,7 @@ public class IAPManager : MonoBehaviour
             GameStats.stats.skinConditions[1] = true;
             GameStats.stats.SkinPackBought = true;
             GameStats.stats.SaveStats();
+            GameStats.stats.UploadStats();
         }
         else if (product.definition.id == RemoveAds)
         {
@@ -65,6 +70,7 @@ public class IAPManager : MonoBehaviour
             GameStats.stats.NoAdsBought = true;
             GameStats.stats.NoAdsBoughtBackup = true;
             GameStats.stats.SaveStats();
+            GameStats.stats.UploadStats();
         }
     }
 

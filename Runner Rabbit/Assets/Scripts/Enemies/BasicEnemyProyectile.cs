@@ -13,9 +13,16 @@ public class BasicEnemyProyectile : MonoBehaviour, IPooledObject
     Transform myParent;
     [SerializeField] bool hasParent;
 
+    float deactivateTime;
+    float MaxDeactivateTime = 3;
 
+    private void Awake()
+    {
+        MaxDeactivateTime = 3;
+    }
     void Start()
     {
+        MaxDeactivateTime = 3;
         if (hasParent)
         {
             myParent = transform.parent;
@@ -36,13 +43,15 @@ public class BasicEnemyProyectile : MonoBehaviour, IPooledObject
             transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
         }
 
-        Invoke("Deactivate", 3);
+        //Invoke("Deactivate", 3);
+        deactivateTime = MaxDeactivateTime;
     }
 
 
     void Update()
     {
         transform.Translate(-speed * Time.deltaTime, 0, 0);
+        DeactivateTime();
        
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -92,7 +101,17 @@ public class BasicEnemyProyectile : MonoBehaviour, IPooledObject
             }    
         }
     }
-
+    void DeactivateTime()
+    {
+        if(deactivateTime < 0)
+        {
+            Deactivate();
+        }
+        else
+        {
+            deactivateTime -= Time.deltaTime;
+        }
+    }
     void Deactivate()
     {
         if (myParent != null)

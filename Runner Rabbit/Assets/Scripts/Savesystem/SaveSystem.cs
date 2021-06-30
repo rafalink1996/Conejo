@@ -38,6 +38,19 @@ public class SaveSystem
         }
     }
 
+    public static bool IsBinaryFilePresent()
+    {
+        string path = Application.persistentDataPath + "/stats.Magicbound";
+        if (File.Exists(path))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }
 
 

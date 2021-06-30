@@ -36,6 +36,10 @@ public class LevelLoaderMainMenu : MonoBehaviour
         GameStats.stats.SaveStats();
         transition.SetActive(false);
 
+        GameStats.stats.CloudAchievements();
+        ServicesManager.instance.SumbitMonstersDefeatedScore(Mathf.FloorToInt(GameStats.stats.monstersKilled));
+        GameStats.stats.SaveStats();
+        GameStats.stats.UploadStats();
 
 
     }

@@ -27,6 +27,8 @@ public class ManaHandle : MonoBehaviour
     public TextMeshProUGUI LightManaQuantityDisplay;
     public TextMeshProUGUI DarkManaQuantityDisplay;
 
+    [SerializeField] UIManager myUiManager;
+
 
 
 
@@ -130,6 +132,11 @@ public class ManaHandle : MonoBehaviour
      
 
 
+    }
+
+    public void notenoughMana(bool light)
+    {
+        myUiManager.noManaWarning(light);
     }
 
     public void ReduceDarkManaHold()

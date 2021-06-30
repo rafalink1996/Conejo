@@ -46,6 +46,8 @@ public class PowerMEnu : MonoBehaviour
 
     public GameObject notEnoughCrystals;
     CanvasGroup NoCrystalsCanvasG;
+    public GameObject notEnoughCrystalsRune;
+    CanvasGroup NoCrystalsCanvasRuneG;
 
     public Power[] CarrotMissleTiers;
     public Power[] EarShieldTiers;
@@ -81,6 +83,10 @@ public class PowerMEnu : MonoBehaviour
     [SerializeField] GameObject SeRunesTextHolder = null;
     [SerializeField] GameObject seStoreTextHolder = null;
 
+    [SerializeField] PowerMenuDescription myPowerMenuDescription;
+    [SerializeField] AudioSource BuySFX;
+    [SerializeField] AudioSource NotEnough;
+
 
 
 
@@ -97,6 +103,9 @@ public class PowerMEnu : MonoBehaviour
         ManaJar.text = ManaJarCost.ToString();
 
         NoCrystalsCanvasG = notEnoughCrystals.GetComponent<CanvasGroup>();
+        NoCrystalsCanvasRuneG = notEnoughCrystalsRune.GetComponent<CanvasGroup>();
+
+        myPowerMenuDescription = GetComponent<PowerMenuDescription>();
         /*
         CarrotMissleTierID = GameStats.stats.CarrotMissleLevel;
         EarShieldTierID = GameStats.stats.EarDefenceLevel;
@@ -403,7 +412,7 @@ public class PowerMEnu : MonoBehaviour
         }
         #endregion
 
-
+        PowerUpgradeCostUpdate();
     }
 
 
@@ -692,152 +701,13 @@ public class PowerMEnu : MonoBehaviour
         // set Crystal Cost for powers
         // CarrotMissle Crystal Cost
 
-        if (GameStats.stats.CarrotMissleLevel == 0)
-        {
-            CarrotMissleCrystalCost = 10;
-        }
-        else if (GameStats.stats.CarrotMissleLevel == 1)
-        {
-            CarrotMissleCrystalCost = 25;
-        }
-        else if (GameStats.stats.CarrotMissleLevel == 2)
-        {
-            CarrotMissleCrystalCost = 40;
-        }
-        else if (GameStats.stats.CarrotMissleLevel == 3)
-        {
-            CarrotMissleCrystalCost = 80;
-        }
-       
-
-        // EarDefence Crystal Cost
-
-        if (GameStats.stats.EarDefenceLevel == 0)
-        {
-            EarShieldCrystalCost = 10;
-        }
-        else if (GameStats.stats.EarDefenceLevel == 1)
-        {
-            EarShieldCrystalCost = 25;
-        }
-        else if (GameStats.stats.EarDefenceLevel == 2)
-        {
-            EarShieldCrystalCost = 40;
-        }
-        else if (GameStats.stats.EarDefenceLevel == 3)
-        {
-            EarShieldCrystalCost = 80;
-        }
-        
-
-
-        // radish Missle crystal cost
-
-        if (GameStats.stats.RadishMissleLevel == 0)
-        {
-            RadishtMissleCrystalCost = 15;
-        }
-        else if (GameStats.stats.RadishMissleLevel == 1)
-        {
-            RadishtMissleCrystalCost = 30;
-        }
-        else if (GameStats.stats.RadishMissleLevel == 2)
-        {
-            RadishtMissleCrystalCost = 50;
-        }
-        else if (GameStats.stats.RadishMissleLevel == 3)
-        {
-            RadishtMissleCrystalCost = 100;
-        }
-       
-
-        // KickReflect Crystal Cost
-
-        if (GameStats.stats.KickReflectLevel == 0)
-        {
-            KickReflectCrystalCost = 15;
-        }
-        else if (GameStats.stats.KickReflectLevel == 1)
-        {
-            KickReflectCrystalCost = 30;
-        }
-        else if (GameStats.stats.KickReflectLevel == 2)
-        {
-            KickReflectCrystalCost = 50;
-        }
-        else if (GameStats.stats.KickReflectLevel == 3)
-        {
-            KickReflectCrystalCost = 100;
-        }
-
-        // MagicLaser Crystal Cost
-
-        if (GameStats.stats.MagicLaserLevel == 0)
-        {
-            MagicLaserCrystalCost = 100;
-        }
-        else if (GameStats.stats.MagicLaserLevel == 1)
-        {
-            MagicLaserCrystalCost = 150;
-        }
-        else if (GameStats.stats.MagicLaserLevel == 2)
-        {
-            MagicLaserCrystalCost = 200;
-        }
-        else if (GameStats.stats.MagicLaserLevel == 3)
-        {
-            MagicLaserCrystalCost = 300;
-        }
+        PowerUpgradeCostUpdate();
 
 
         #endregion
 
-        // power Cost to text in UI
-        if (GameStats.stats.CarrotMissleLevel < 4)
-        {
-            CarrotMissleCostText.text = CarrotMissleCrystalCost.ToString();
-        } else
-        {
-            CarrotMissleCostText.text = "Max";
-        }
 
-        if (GameStats.stats.EarDefenceLevel < 4)
-        {
-            EarShieldCostText.text = EarShieldCrystalCost.ToString();
-        }
-        else
-        {
-            EarShieldCostText.text = "Max";
-        }
-
-        if (GameStats.stats.KickReflectLevel < 4)
-        {
-            KickReflectCostText.text = KickReflectCrystalCost.ToString();
-        }
-        else
-        {
-            KickReflectCostText.text = "Max";
-        }
-
-        if (GameStats.stats.RadishMissleLevel < 4)
-        {
-            RadishMissleCostText.text = RadishtMissleCrystalCost.ToString();
-        }
-        else
-        {
-            RadishMissleCostText.text = "Max";
-        }
-
-        if (GameStats.stats.MagicLaserLevel < 4)
-        {
-            MagicLaserCostText.text = MagicLaserCrystalCost.ToString();
-        }
-        else
-        {
-            MagicLaserCostText.text = "Max";
-        }
-
-
+        PowerCostsDisplayUpdate();
 
 
     }
@@ -943,7 +813,10 @@ public class PowerMEnu : MonoBehaviour
             {
                 GameStats.stats.crystals -= CoinTicketCost;
                 GameStats.stats.CoinTicket = true;
+
+                BuySFX.Play();
                 GameStats.stats.SaveStats();
+                GameStats.stats.UploadStats();
 
             }
             else
@@ -970,6 +843,8 @@ public class PowerMEnu : MonoBehaviour
                 GameStats.stats.crystals -= PortalBoostCost;
                 GameStats.stats.PortalBoost = true;
                 GameStats.stats.SaveStats();
+                GameStats.stats.UploadStats();
+                BuySFX.Play();
 
             }
             else
@@ -994,7 +869,8 @@ public class PowerMEnu : MonoBehaviour
                 GameStats.stats.crystals -= FenixFeatherCost;
                 GameStats.stats.fenixFeather = true;
                 GameStats.stats.SaveStats();
-
+                GameStats.stats.UploadStats();
+                BuySFX.Play();
             }
             else
             {
@@ -1018,6 +894,8 @@ public class PowerMEnu : MonoBehaviour
                 GameStats.stats.crystals -= ExtraHeartsCost;
                 GameStats.stats.ExtraHearts = true;
                 GameStats.stats.SaveStats();
+                GameStats.stats.UploadStats();
+                BuySFX.Play();
 
             }
             else
@@ -1041,6 +919,8 @@ public class PowerMEnu : MonoBehaviour
                 GameStats.stats.crystals -= ManaJarCost;
                 GameStats.stats.ManaJar = true;
                 GameStats.stats.SaveStats();
+                GameStats.stats.UploadStats();
+                BuySFX.Play();
 
             }
             else
@@ -1089,6 +969,10 @@ public class PowerMEnu : MonoBehaviour
                     GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[3]);
                     GameStats.stats.crystals -= CarrotMissleCrystalCost;
                 }
+                BuySFX.Play();
+
+                GameStats.stats.SaveStats();
+                GameStats.stats.UploadStats();
 
             }
             else
@@ -1124,6 +1008,10 @@ public class PowerMEnu : MonoBehaviour
                     GameStats.stats.UnlockedPowers.Add(EarShieldTiers[3]);
                     GameStats.stats.crystals -= EarShieldCrystalCost;
                 }
+                BuySFX.Play();
+
+                GameStats.stats.SaveStats();
+                GameStats.stats.UploadStats();
             }
 
             else
@@ -1163,6 +1051,10 @@ public class PowerMEnu : MonoBehaviour
                     GameStats.stats.crystals -= KickReflectCrystalCost;
                 }
 
+                BuySFX.Play();
+                GameStats.stats.SaveStats();
+                GameStats.stats.UploadStats();
+
             }
 
            else
@@ -1180,33 +1072,38 @@ public class PowerMEnu : MonoBehaviour
                 if (GameStats.stats.crystals >= RadishtMissleCrystalCost)
                 {
                   GameStats.stats.RadishMissleLevel += 1;
-                  if (GameStats.stats.RadishMissleLevel == 1)
+                  if (GameStats.stats.RadishMissleLevel == 0)
                   {
                     GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[0]);
                     GameStats.stats.crystals -= RadishtMissleCrystalCost;
                   }
-                  else if (GameStats.stats.RadishMissleLevel == 2)
+                  else if (GameStats.stats.RadishMissleLevel == 1)
                   {
                     GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
                     GameStats.stats.crystals -= RadishtMissleCrystalCost;
                   }
 
-                  else if (GameStats.stats.RadishMissleLevel == 3)
+                  else if (GameStats.stats.RadishMissleLevel == 2)
                   {
                     GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[2]);
                     GameStats.stats.crystals -= RadishtMissleCrystalCost;
                   }
-                  else if (GameStats.stats.RadishMissleLevel == 4)
+                  else if (GameStats.stats.RadishMissleLevel == 3)
                   {
                     GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[3]);
                     GameStats.stats.crystals -= RadishtMissleCrystalCost;
                   }
+
+                BuySFX.Play();
+                GameStats.stats.SaveStats();
+                GameStats.stats.UploadStats();
 
             }
                 else
                 {
                 //Debug.Log("not enough crystals");
                 //notEnoughCrystals.SetTrigger("NotEnoughCrystals");
+                
                 NotEnoughCrystals();
             }
             }
@@ -1217,27 +1114,32 @@ public class PowerMEnu : MonoBehaviour
             if (GameStats.stats.crystals >= MagicLaserCrystalCost)
             {
                 GameStats.stats.MagicLaserLevel += 1;
-                if (GameStats.stats.MagicLaserLevel == 1)
+                if (GameStats.stats.MagicLaserLevel == 0)
                 {
                     GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[0]);
                     GameStats.stats.crystals -= MagicLaserCrystalCost;
+
                 }
-                else if (GameStats.stats.MagicLaserLevel == 2)
+                else if (GameStats.stats.MagicLaserLevel == 1)
                 {
                     GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[1]);
                     GameStats.stats.crystals -= MagicLaserCrystalCost;
                 }
 
-                else if (GameStats.stats.MagicLaserLevel == 3)
+                else if (GameStats.stats.MagicLaserLevel == 2)
                 {
                     GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[2]);
                     GameStats.stats.crystals -= MagicLaserCrystalCost;
                 }
-                else if (GameStats.stats.MagicLaserLevel == 4)
+                else if (GameStats.stats.MagicLaserLevel == 3)
                 {
                     GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[3]);
                     GameStats.stats.crystals -= MagicLaserCrystalCost;
                 }
+
+                BuySFX.Play();
+                GameStats.stats.SaveStats();
+                GameStats.stats.UploadStats();
 
             }
             else
@@ -1247,6 +1149,10 @@ public class PowerMEnu : MonoBehaviour
                 NotEnoughCrystals();
             }
         }
+        PowerCostsDisplayUpdate();
+        PowerUpgradeCostUpdate();
+        myPowerMenuDescription.CheckCrystalCost();
+        myPowerMenuDescription.UpdateCrystalCost(myPowerMenuDescription.CurrentID);
     }
 
 
@@ -1255,6 +1161,163 @@ public class PowerMEnu : MonoBehaviour
         LeanTween.cancel(notEnoughCrystals);
         LeanTween.alphaCanvas(NoCrystalsCanvasG, 1, 0.5f);
         LeanTween.alphaCanvas(NoCrystalsCanvasG, 0, 0.5f).setDelay(1);
+
+        LeanTween.cancel(notEnoughCrystalsRune);
+        LeanTween.alphaCanvas(NoCrystalsCanvasRuneG, 1, 0.5f);
+        LeanTween.alphaCanvas(NoCrystalsCanvasRuneG, 0, 0.5f).setDelay(1);
+
+        NotEnough.Play();
+    }
+
+
+     void PowerCostsDisplayUpdate()
+    {
+        // power Cost to text in UI
+        if (GameStats.stats.CarrotMissleLevel < 4)
+        {
+            CarrotMissleCostText.text = CarrotMissleCrystalCost.ToString();
+        }
+        else
+        {
+            CarrotMissleCostText.text = "Max";
+        }
+
+        if (GameStats.stats.EarDefenceLevel < 4)
+        {
+            EarShieldCostText.text = EarShieldCrystalCost.ToString();
+        }
+        else
+        {
+            EarShieldCostText.text = "Max";
+        }
+
+        if (GameStats.stats.KickReflectLevel < 4)
+        {
+            KickReflectCostText.text = KickReflectCrystalCost.ToString();
+        }
+        else
+        {
+            KickReflectCostText.text = "Max";
+        }
+
+        if (GameStats.stats.RadishMissleLevel < 4)
+        {
+            RadishMissleCostText.text = RadishtMissleCrystalCost.ToString();
+        }
+        else
+        {
+            RadishMissleCostText.text = "Max";
+        }
+
+        if (GameStats.stats.MagicLaserLevel < 4)
+        {
+            MagicLaserCostText.text = MagicLaserCrystalCost.ToString();
+        }
+        else
+        {
+            MagicLaserCostText.text = "Max";
+        }
+
+    }
+
+    void PowerUpgradeCostUpdate()
+    {
+        if (GameStats.stats.CarrotMissleLevel == 0)
+        {
+            CarrotMissleCrystalCost = 10;
+        }
+        else if (GameStats.stats.CarrotMissleLevel == 1)
+        {
+            CarrotMissleCrystalCost = 25;
+        }
+        else if (GameStats.stats.CarrotMissleLevel == 2)
+        {
+            CarrotMissleCrystalCost = 40;
+        }
+        else if (GameStats.stats.CarrotMissleLevel == 3)
+        {
+            CarrotMissleCrystalCost = 80;
+        }
+
+
+        // EarDefence Crystal Cost
+
+        if (GameStats.stats.EarDefenceLevel == 0)
+        {
+            EarShieldCrystalCost = 10;
+        }
+        else if (GameStats.stats.EarDefenceLevel == 1)
+        {
+            EarShieldCrystalCost = 25;
+        }
+        else if (GameStats.stats.EarDefenceLevel == 2)
+        {
+            EarShieldCrystalCost = 40;
+        }
+        else if (GameStats.stats.EarDefenceLevel == 3)
+        {
+            EarShieldCrystalCost = 80;
+        }
+
+
+
+        // radish Missle crystal cost
+
+        if (GameStats.stats.RadishMissleLevel == 0)
+        {
+            RadishtMissleCrystalCost = 15;
+        }
+        else if (GameStats.stats.RadishMissleLevel == 1)
+        {
+            RadishtMissleCrystalCost = 30;
+        }
+        else if (GameStats.stats.RadishMissleLevel == 2)
+        {
+            RadishtMissleCrystalCost = 50;
+        }
+        else if (GameStats.stats.RadishMissleLevel == 3)
+        {
+            RadishtMissleCrystalCost = 100;
+        }
+
+
+        // KickReflect Crystal Cost
+
+        if (GameStats.stats.KickReflectLevel == 0)
+        {
+            KickReflectCrystalCost = 15;
+        }
+        else if (GameStats.stats.KickReflectLevel == 1)
+        {
+            KickReflectCrystalCost = 30;
+        }
+        else if (GameStats.stats.KickReflectLevel == 2)
+        {
+            KickReflectCrystalCost = 50;
+        }
+        else if (GameStats.stats.KickReflectLevel == 3)
+        {
+            KickReflectCrystalCost = 100;
+        }
+
+        // MagicLaser Crystal Cost
+
+        if (GameStats.stats.MagicLaserLevel == 0)
+        {
+            MagicLaserCrystalCost = 100;
+        }
+        else if (GameStats.stats.MagicLaserLevel == 1)
+        {
+            MagicLaserCrystalCost = 150;
+        }
+        else if (GameStats.stats.MagicLaserLevel == 2)
+        {
+            MagicLaserCrystalCost = 200;
+        }
+        else if (GameStats.stats.MagicLaserLevel == 3)
+        {
+            MagicLaserCrystalCost = 300;
+        }
     }
 
 }

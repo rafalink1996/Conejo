@@ -210,11 +210,13 @@ public class AdManager : MonoBehaviour
         if (adClosed == true)
         {
             StartCoroutine(ActivateUIAfterAdClosed());
+            GameStats.stats.UploadStats();
             adClosed = false;
         }
         if (TimeForReward == true)
         {
             StartCoroutine(WaitToShowReward());
+            GameStats.stats.UploadStats();
             TimeForReward = false;
         }
        

@@ -80,6 +80,8 @@ public class Shop : MonoBehaviour
     [SerializeField] GameObject LightManaTear;
     [SerializeField] GameObject DarkManaTear;
 
+    [SerializeField] AudioSource BuySFX, NotEnoughSFX;
+
 
 
 
@@ -107,6 +109,9 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
+        lightManaCost = calculateManaCost(true);
+        darkManaCost = calculateManaCost(false);
+
         NoCoinsCanvasG = noCoinsPopUp.GetComponent<CanvasGroup>();
 
         if (GameStats.stats.LoadingSavedLevel == false)
@@ -227,6 +232,8 @@ public class Shop : MonoBehaviour
         //heartCost = GameStats.stats.numOfHearts * 25;
 
         //GameStats.stats.coins = coins;
+        lightManaCost = calculateManaCost(true);
+        darkManaCost = calculateManaCost(false);
         if (GameStats.stats.MerchantRune == true)
         {
             LightManaCostText.text = (lightManaCost / 2).ToString();
@@ -698,6 +705,7 @@ public class Shop : MonoBehaviour
                 powerbutton.interactable = false;
                 BuyButton.onClick.RemoveAllListeners();
                 Display.SetActive(false);
+                BuySFX.Play();
 
             }
             else
@@ -729,6 +737,7 @@ public class Shop : MonoBehaviour
                 powerbutton.interactable = false;
                 BuyButton.onClick.RemoveAllListeners();
                 Display.SetActive(false);
+                BuySFX.Play();
 
             }
             else
@@ -771,6 +780,7 @@ public class Shop : MonoBehaviour
                 powerbutton.interactable = false;
                 BuyButton.onClick.RemoveAllListeners();
                 Display.SetActive(false);
+                BuySFX.Play();
             }
             else
             {
@@ -802,6 +812,7 @@ public class Shop : MonoBehaviour
                 powerbutton.interactable = false;
                 BuyButton.onClick.RemoveAllListeners();
                 Display.SetActive(false);
+                BuySFX.Play();
             }
             else
             {
@@ -840,6 +851,7 @@ public class Shop : MonoBehaviour
                     {
                         GameStats.stats.MoneySpent += heartCost / 2;
                     }
+                    BuySFX.Play();
                     //print("Bought heart");
                 }
                 else
@@ -862,6 +874,7 @@ public class Shop : MonoBehaviour
                     {
                         GameStats.stats.MoneySpent += heartCost;
                     }
+                    BuySFX.Play();
                     //print("Bought heart");
                 }
                 else
@@ -897,7 +910,8 @@ public class Shop : MonoBehaviour
                 LeanTween.cancel(LightManaTear);
                 LeanTween.scale(LightManaTear, new Vector3(1.5f, 1.5f), 0.5f).setEase(LeanTweenType.easeOutExpo);
                 LeanTween.scale(LightManaTear, new Vector3(1f, 1f), 0.5f).setEase(LeanTweenType.easeOutExpo).setDelay(0.5f);
-
+                lightManaCost = calculateManaCost(true);
+                BuySFX.Play();
                 //print("Bought Light Mana");
             }
             else
@@ -922,8 +936,10 @@ public class Shop : MonoBehaviour
                 LeanTween.scale(LightManaTear, new Vector3(1.5f, 1.5f), 0.5f).setEase(LeanTweenType.easeOutExpo);
                 LeanTween.scale(LightManaTear, new Vector3(1f, 1f), 0.5f).setEase(LeanTweenType.easeOutExpo).setDelay(0.5f);
                 // print("Bought Light Mana");
+                lightManaCost = calculateManaCost(true);
+                BuySFX.Play();
 
-               
+
             }
             else
             {
@@ -954,6 +970,8 @@ public class Shop : MonoBehaviour
                 LeanTween.scale(DarkManaTear, new Vector3(1.5f, 1.5f), 0.5f).setEase(LeanTweenType.easeOutExpo);
                 LeanTween.scale(DarkManaTear, new Vector3(1f, 1f), 0.5f).setEase(LeanTweenType.easeOutExpo).setDelay(0.5f);
                 // print("Bought Dark Mana");
+                darkManaCost = calculateManaCost(false);
+                BuySFX.Play();
             }
             else
             {
@@ -979,6 +997,8 @@ public class Shop : MonoBehaviour
                 LeanTween.scale(DarkManaTear, new Vector3(1.5f, 1.5f), 0.5f).setEase(LeanTweenType.easeOutExpo);
                 LeanTween.scale(DarkManaTear, new Vector3(1f, 1f), 0.5f).setEase(LeanTweenType.easeOutExpo).setDelay(0.5f);
                 //print("Bought Dark Mana");
+                darkManaCost = calculateManaCost(false);
+                BuySFX.Play();
             }
             else
             {
@@ -988,6 +1008,8 @@ public class Shop : MonoBehaviour
                 //Play sound
             }
         }
+
+
 
     }
 
@@ -1000,6 +1022,59 @@ public class Shop : MonoBehaviour
         LeanTween.alphaCanvas(NoCoinsCanvasG, 1, 0.5f);
         LeanTween.alphaCanvas(NoCoinsCanvasG, 0, 0.5f).setDelay(1);
 
+        NotEnoughSFX.Play();
+
+    }
+
+    int calculateManaCost(bool light)
+    {
+        int Cost;
+        if (light)
+        {
+            if(GameStats.stats.totalLightMana <= 60)
+            {
+                Cost = 50;
+            }
+            else if(GameStats.stats.totalLightMana > 60 && GameStats.stats.totalLightMana <= 100)
+            {
+                Cost = 100;
+            }
+            else if(GameStats.stats.totalLightMana > 100 && GameStats.stats.totalLightMana <= 150)
+            {
+                Cost = 150;
+            }
+            else if(GameStats.stats.totalLightMana > 150 && GameStats.stats.totalLightMana <= 200)
+            {
+                Cost = 200;
+            }else 
+            {
+                Cost = 250;
+            }
+        }
+        else
+        {
+            if (GameStats.stats.totalDarkMana <= 60)
+            {
+                Cost = 50;
+            }
+            else if (GameStats.stats.totalDarkMana > 60 && GameStats.stats.totalDarkMana <= 100)
+            {
+                Cost = 100;
+            }
+            else if(GameStats.stats.totalDarkMana > 100 && GameStats.stats.totalDarkMana <= 150)
+            {
+                Cost = 150;
+            }
+            else if(GameStats.stats.totalDarkMana > 150 && GameStats.stats.totalDarkMana <= 200)
+            {
+                Cost = 200;
+            }else 
+            {
+                Cost = 250;
+            }
+        }
+
+        return Cost;
     }
 
     /*
