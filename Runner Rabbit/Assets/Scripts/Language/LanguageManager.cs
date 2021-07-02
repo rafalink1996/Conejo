@@ -62,6 +62,7 @@ public class LanguageManager : MonoBehaviour
     public TextMeshProUGUI NotEnoughCrystalsText;
 
 
+    [SerializeField] LanguageManagerLogin myLanguageManagerLogin;
     //strings language
     //English **********************
 
@@ -601,6 +602,7 @@ public class LanguageManager : MonoBehaviour
 
     public void SetLanguage(int Language)
     {
+        myLanguageManagerLogin.UpdateLanguage(Language);
         switch (Language)
         {
             case 0:// English

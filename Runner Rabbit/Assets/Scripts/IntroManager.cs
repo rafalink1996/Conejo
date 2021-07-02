@@ -38,6 +38,10 @@ public class IntroManager : MonoBehaviour
         video1.loopPointReached += EndReached;
     }
 
+    public void StartVideo()
+    {
+        myVideoPlayer.Play();
+    }
     // Update is called once per frame
     void Update()
     {
