@@ -64,6 +64,8 @@ public class LanguageManager : MonoBehaviour
 
     [SerializeField] LanguageManagerLogin myLanguageManagerLogin;
     //strings language
+    #region Language Strings
+    #region English Strings
     //English **********************
 
     string English_InitialSelectLanguage = "Select Language";
@@ -240,7 +242,8 @@ public class LanguageManager : MonoBehaviour
 
     string English_NotEnoughCrystals = "Not Enough Crystals";
 
-
+    #endregion English Strings
+    #region Spanish Strings
     //Español******************
 
     string Español_InitialSelectLanguage = "Escoger Idioma";
@@ -409,7 +412,8 @@ public class LanguageManager : MonoBehaviour
 
     string Español_NotEnoughCrystals = "No tienes suficientes cristales";
 
-
+    #endregion Spanish Strings
+    #region French Strings
 
     // Frances******************
 
@@ -581,9 +585,9 @@ public class LanguageManager : MonoBehaviour
 
     string Frances_NotEnoughCrystals = "No tienes suficientes cristales";
 
+    #endregion French Strings
 
-
-
+#endregion Language Strings
 
 
 
@@ -597,6 +601,20 @@ public class LanguageManager : MonoBehaviour
             InitialSelectLanguageTitle.text = Español_InitialSelectLanguage;
         }
             SetLanguage(GameStats.stats.LanguageSelect);
+        LanguageDropdownSettings.value = GameStats.stats.LanguageSelect;
+    }
+
+    public void DelayedStart()
+    {
+        if (Application.systemLanguage == SystemLanguage.English)
+        {
+            InitialSelectLanguageTitle.text = English_InitialSelectLanguage;
+        }
+        else if (Application.systemLanguage == SystemLanguage.Spanish)
+        {
+            InitialSelectLanguageTitle.text = Español_InitialSelectLanguage;
+        }
+        SetLanguage(GameStats.stats.LanguageSelect);
         LanguageDropdownSettings.value = GameStats.stats.LanguageSelect;
     }
 
@@ -1233,7 +1251,7 @@ public class LanguageManager : MonoBehaviour
         if (GameStats.stats.languageselected == false)
         {
             GameStats.stats.languageselected = true;
-            GameStats.stats.LanguageSelect = 0;
+            //GameStats.stats.LanguageSelect = 0;
             GameStats.stats.SaveStats();
         }
     }

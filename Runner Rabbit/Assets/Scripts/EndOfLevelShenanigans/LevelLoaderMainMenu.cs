@@ -20,7 +20,6 @@ public class LevelLoaderMainMenu : MonoBehaviour
 
     private void Start()
     {
-
         if (GameStats.stats.RunInProgress == true)
         {
             StartButton.SetActive(false);
@@ -39,13 +38,9 @@ public class LevelLoaderMainMenu : MonoBehaviour
         GameStats.stats.CloudAchievements();
         ServicesManager.instance.SumbitMonstersDefeatedScore(Mathf.FloorToInt(GameStats.stats.monstersKilled));
         GameStats.stats.SaveStats();
-        GameStats.stats.UploadStats();
-
-
     }
 
     public void LoadLevel()
-
     {
 
         if (GameStats.stats.LevelBought == true)

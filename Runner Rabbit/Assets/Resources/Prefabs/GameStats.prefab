@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDataManager: {fileID: 7476667002309962791}
+  debugLoad: 
   powerLight: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
   powerDark: {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907, type: 2}
   originalLightPower: {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
@@ -58,8 +59,8 @@ MonoBehaviour:
   DarkpowerID: 0
   darkMana: 0
   coins: 0
-  crystals: 1000000
-  numOfHearts: 3
+  crystals: 5000
+  numOfHearts: 6
   totalLightMana: 30
   totalDarkMana: 30
   CoinTicket: 0
@@ -78,12 +79,10 @@ MonoBehaviour:
   EarDefenceLevel: 1
   KickReflectLevel: 1
   MagicLaserLevel: 0
-  LevelReached: 1
+  LevelReached: 6
   UnlockedPowers:
   - {fileID: 11400000, guid: e38c5c4cec84243c399b86296bb0f907, type: 2}
-  - {fileID: 11400000, guid: 9900566cfd48c4a819c81884e0f51405, type: 2}
   - {fileID: 11400000, guid: d198372eb45f140d7a2ff091efffe020, type: 2}
-  - {fileID: 11400000, guid: 00ed85c9e9d684421bba7cea8d9aa2bd, type: 2}
   NoAdsBought: 0
   NoAdsBoughtBackup: 0
   SkinPackBought: 0
@@ -119,7 +118,7 @@ MonoBehaviour:
   SavedLevelCount: 0
   SavedLevelPercentage: 0
   RunInProgress: 0
-  SaveCurrentHearts: 3
+  SaveCurrentHearts: 6
   isInStore: 0
   savedDarkPowerID: 0
   savedLightPowerID: 0
@@ -144,3 +143,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb068ebefa7048dda68334b291fa634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    Crystals: 0
+    Coins: 0
+    fenixfetherBought: 0
+    PortalBoostBought: 0
+    CoinTicketBought: 0
+    ExtraHeartsBought: 0
+    ManaJarBought: 0
+    level: 0
+    LevelBought: 0
+    LevelBoughtCrystals: 0
+    LevelBoughtCoins: 0
+    MaxLevelReached: 0
+    TimeReward: 0
+    TimedRewardLastDate: 0
+    CarrotMissleLevel: 0
+    EarDefenceLevel: 0
+    RadishMissleLevel: 0
+    KickReflectLevel: 0
+    MagicLaserLevel: 0
+    levelReached: 0
+    BotSkin: 0
+    TopSkin: 0
+    AudioVolume: 0
+    MusicVolume: 0
+    SavedLevelIndicator: 0
+    SavedLevelCount: 0
+    RunInProgress: 0
+    savedLevelPercentage: 0
+    MaxHearts: 0
+    CurrentHearts: 0
+    IsInStore: 0
+    Manalight: 0
+    ManaDark: 0
+    skinConditions: 000000000000
+    AchivementConditions: 0000000000000000000000000000000000
+    GoldSpent: 0
+    monstersKilled: 0
+    diedTimes: 0
+    Rune1Id: 0
+    Rune2Id: 0
+    unlockedRunes: 00000000000000000000
+    SavedDarkPowerID: 0
+    SavedLightPowerID: 0
+    NoAdsBought: 0
+    NoAdsBoughtBackUp: 0
+    SkinPackBought: 0
+    LanguageSelect: 0
+    languageSelected: 0
+    BossRewardCollected: 0

@@ -12,6 +12,9 @@ public class MenuGameManager : MonoBehaviour
     
     public GameObject InitialSelectLanguage;
 
+    [SerializeField] LanguageManager myLanguageManager;
+    [SerializeField] PowerMEnu myPowerMenuStore;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,5 +40,20 @@ public class MenuGameManager : MonoBehaviour
     public void closelanguageSelect()
     {
         InitialSelectLanguage.SetActive(false);
+    }
+
+    public void StartDataRelatedScripts()
+    {
+        Debug.Log("this should be triggering");
+        if (GameStats.stats.languageselected)
+        {
+            InitialSelectLanguage.SetActive(false);
+        }
+        else
+        {
+            InitialSelectLanguage.SetActive(true);
+        }
+        myLanguageManager.DelayedStart();
+        myPowerMenuStore.DelayedStart();
     }
 }

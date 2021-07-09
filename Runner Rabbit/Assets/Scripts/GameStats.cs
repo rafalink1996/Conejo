@@ -8,7 +8,6 @@ public class GameStats : MonoBehaviour
 {
     [Header("JsonSaveSystem")]
     [SerializeField] DataManager myDataManager;
-    private bool isSavedOnBinary;
     public string debugLoad = "";
 
     [Space(15)]
@@ -214,6 +213,11 @@ public class GameStats : MonoBehaviour
 
     public float monstersKilled, MoneySpent, diedTimes;
 
+
+    //Save state Check Bools
+    public bool noLocalSaveFileDetected;
+    public bool DataLoaded;
+
     [Space(10)]
     [Header("LANGUAGE")]
 
@@ -250,7 +254,7 @@ public class GameStats : MonoBehaviour
         }
 
         LoadPlayer();
-        //Debug.Log(SaveCurrentHearts);
+       
 
 
     }
@@ -315,16 +319,6 @@ public class GameStats : MonoBehaviour
             LevelReached = 5;
         }
 
-
-
-
-        /*
-         if (LevelCount == 4)
-        {
-            LevelIndicator += 1;
-            LevelCount -= 3;
-        }
-        */
 
         lightPowerName = powerLight.name;
         lightPowerSprite = powerLight.iconLight;
@@ -479,14 +473,14 @@ public class GameStats : MonoBehaviour
 
     public void SaveStats()
     {
-        SaveSystem.SavePlayer(this);
+        //SaveSystem.SavePlayer(this); Old Binary Safe System
         myDataManager.SaveJson();
         saveServices();
         // Debug.Log("game saved");
     }
     public void UploadStats()
     {
-        ServicesManager.instance.StoreCloudData();
+        PlayFabData.PFD.SaveStats();
     }
 
     public void LoadPlayer()
@@ -494,9 +488,10 @@ public class GameStats : MonoBehaviour
         if (myDataManager.IsFilePresent() == true)
         {
             myDataManager.LoadJson();
-            UpdateLoadStats(myDataManager);
+            SetJsonDataStats(myDataManager);
             Debug.Log("loaded from Json");
             debugLoad = "Loaded from Json";
+            DataLoaded = true;
         }
         else if (SaveSystem.IsBinaryFilePresent())
         {
@@ -601,12 +596,27 @@ public class GameStats : MonoBehaviour
             languageselected = data.languageSelected;
 
             BossRewardCollected = data.BossRewardCollected;
+
+            DataLoaded = true;
         }
         else
         {
-            ServicesManager.instance.LoadCloudSaveData();
+            noLocalSaveFileDetected = true;  
         }
+        
+
+
     }
+
+    public void LoadCloudSaveData()
+    {
+        if (PlayFabData.PFD.HasSavedData)
+        {
+            PlayFabData.PFD.LoadStats();
+        }       
+    }
+
+
 
     public void ResetStats()
     {
@@ -632,7 +642,7 @@ public class GameStats : MonoBehaviour
 
     }
 
-    void UpdateLoadStats(DataManager dataMagaer)
+    void SetJsonDataStats(DataManager dataMagaer)
     {
         var data = dataMagaer.data;
 
@@ -740,6 +750,8 @@ public class GameStats : MonoBehaviour
     void saveServices()
     {
         ServicesManager.instance.SubmitScoreToLeaderBoard(LevelReached);
+        ServicesManager.instance.SumbitMonstersDefeatedScore(Mathf.FloorToInt(monstersKilled));
+
     }
 
 

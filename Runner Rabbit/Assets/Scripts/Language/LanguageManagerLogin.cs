@@ -17,7 +17,8 @@ public class LanguageManagerLogin : MonoBehaviour
     [Space(10)]
     [Header("Register Texts")]
     public TextMeshProUGUI RegisterTitle;
-    public TextMeshProUGUI RegisterUsername, RegisterEmail, RegisterPassword;
+    public TextMeshProUGUI RegisterUsername, RegisterEmail, RegisterPassword, RegisterConfirmPassword;
+    public TextMeshProUGUI ShowPasswordToggle;
     public TextMeshProUGUI RegisterLoginButton;
     public TextMeshProUGUI alreadyHaveAnAccountText;
     public TextMeshProUGUI SignInButton;
@@ -81,6 +82,18 @@ public class LanguageManagerLogin : MonoBehaviour
         "Contraseña",
         "frances"// Todo
    };
+    string[] Language_ConfirmPassword = new string[]
+{
+        "Confirm Password",
+        "Confirmar Contraseña",
+        "frances"// Todo
+};
+    string[] Language_ShowPassword = new string[]
+{
+        "Show Password",
+        "Mostrar Contraseña",
+        "frances"// Todo
+};
     string[] Language_Login = new string[]
    {
         "Login",
@@ -123,6 +136,13 @@ public class LanguageManagerLogin : MonoBehaviour
         "Nombre de usario no disponible",
         "frances"// Todo
 };
+    string[] Language_PasswordUnmatchError = new string[]
+{
+        "Passwords don't match",
+        "Las contraseñas no coinciden",
+        "frances"// Todo
+};
+
     // Start is called before the first frame update
     void Start()
     {
@@ -149,6 +169,8 @@ public class LanguageManagerLogin : MonoBehaviour
         RegisterUsername.text = Language_Username[languageID];
         RegisterEmail.text = Language_Email[languageID];
         RegisterPassword.text = Language_Password[languageID];
+        RegisterConfirmPassword.text = Language_ConfirmPassword[languageID];
+        ShowPasswordToggle.text = Language_ShowPassword[languageID];
         RegisterLoginButton.text = Language_Login[languageID];
         alreadyHaveAnAccountText.text = Language_AlreadyHaveAnAccount[languageID];
         SignInButton.text = Language_SignIn[languageID];
@@ -165,7 +187,8 @@ public class LanguageManagerLogin : MonoBehaviour
     {
         InvalidUser,
         EmailTaken,
-        UsernameTaken
+        UsernameTaken,
+        PasswordUnmatch
     };
 
     public string GetErrorMessageTrnalation(int LanguageID, ErrorType errorType)
@@ -182,6 +205,9 @@ public class LanguageManagerLogin : MonoBehaviour
         else if (errorType == ErrorType.UsernameTaken)
         {
             ErrorTranslation = Language_UsernameTakenError[LanguageID];
+        }else if(errorType == ErrorType.PasswordUnmatch)
+        {
+            ErrorTranslation = Language_PasswordUnmatchError[LanguageID];
         }
         else
         {

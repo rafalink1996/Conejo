@@ -5,44 +5,49 @@ using TMPro;
 
 public class PlayFabLogin : MonoBehaviour
 {
-    private string UserEmail;
-    private string UserPassword;
-    private string username;
-    bool MobileIDLogin = false;
-
-    public GameObject loginPanel;
-
-
-    [SerializeField] LanguageManagerLogin myLanguageManagerLogin;
-    [SerializeField] bool RememberMe;
+    [Header("User Info")]
+    [SerializeField] private string UserEmail;
+    [SerializeField] private string UserPassword;
+    [SerializeField] private string UserConfirmPassword;
+    [SerializeField] private string username;
 
     [Space(10)]
-    [Header("Error Strings")]
+    [Header("Status Bools")]
+    bool MobileIDLogin = false;
+    [SerializeField] bool ChangeAccount = false;
+    [SerializeField] bool RememberMe;
+    
 
-    public GameObject registerErrorObject;
-    TextMeshProUGUI registerErrorTM;
-    string registerErrorText;
-    [Space(5)]
-    public GameObject SigninErrorObject;
-    TextMeshProUGUI SigninErrorTM;
-    string SigninErrorText;
 
+    [Space(10)]
+    [Header("Support Scripts References")]
+    [SerializeField] LanguageManagerLogin myLanguageManagerLogin;
+    [SerializeField] PlayfabLoginUI myPlayfabLoginUI;
+   
+
+
+    [Space(10)]
     [Header("Debug errors")]
-    [SerializeField] TextMeshProUGUI DebugMobileLogin;
-    [SerializeField] TextMeshProUGUI DebugLinkMobileLogin;
-    [SerializeField] TextMeshProUGUI DebugRegister;
-    [SerializeField] TextMeshProUGUI DebugSignIn;
-
-    string DebugMobileText;
-    string DebugLinkMobileText;
-    string DebugRegisterText;
-    string debugSignInText;
+    [SerializeField] TextMeshProUGUI SignInStatus;
+    [SerializeField] TextMeshProUGUI EmailRetrieved;
+    [SerializeField] TextMeshProUGUI DataRetrievalStatus;
+    [SerializeField] TextMeshProUGUI ErrorReport;
+    [SerializeField] TextMeshProUGUI DeviceIdentifier;
 
 
 
+    #region Login
+    
     public void Start()
     {
+        InitializePlayfab();
+
+    }
+
+    private void InitializePlayfab()
+    {
         MobileIDLogin = false;
+        
         if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
         {
             /*
@@ -51,11 +56,9 @@ public class PlayFabLogin : MonoBehaviour
             */
             PlayFabSettings.staticSettings.TitleId = "BD954";
         }
-        //var request = new LoginWithCustomIDRequest { CustomId = "GettingStartedGuide", CreateAccount = true };
-        //PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
-    
         if (PlayerPrefs.HasKey("EMAIL"))
         {
+            Debug.Log("User has stored email");
             UserEmail = PlayerPrefs.GetString("EMAIL");
             UserPassword = PlayerPrefs.GetString("PASSWORD");
             var request = new LoginWithEmailAddressRequest { Email = UserEmail, Password = UserPassword };
@@ -63,7 +66,6 @@ public class PlayFabLogin : MonoBehaviour
         }
         else
         {
-
             if (Application.platform == RuntimePlatform.Android)
             {
                 var requestAndroid = new LoginWithAndroidDeviceIDRequest { AndroidDeviceId = ReturnMobileID(), CreateAccount = false };
@@ -74,57 +76,51 @@ public class PlayFabLogin : MonoBehaviour
             {
                 var requestIOS = new LoginWithIOSDeviceIDRequest { DeviceId = ReturnMobileID(), CreateAccount = false };
                 PlayFabClientAPI.LoginWithIOSDeviceID(requestIOS, OnLoginMobileSuccess, OnLoginMobileFailure);
-
             }
+#endif
+#if UNITY_EDITOR
+            else
+            {
+                var requestEditor = new LoginWithIOSDeviceIDRequest { DeviceId = ReturnMobileID(), CreateAccount = false };
+                PlayFabClientAPI.LoginWithIOSDeviceID(requestEditor, OnLoginMobileSuccess, OnLoginMobileFailure);
+            }   
 #endif
         }
 
-        // get dependencies
-        registerErrorTM = registerErrorObject.GetComponent<TextMeshProUGUI>();
-        SigninErrorTM = SigninErrorObject.GetComponent<TextMeshProUGUI>();
-        registerErrorObject.SetActive(false);
-        SigninErrorObject.SetActive(false);
 
+        //Debugs
+        DeviceIdentifier.text = ReturnMobileID();
     }
 
-    private void Update()
-    {
-        if(DebugMobileLogin != null)
-        {
-            DebugMobileLogin.text = DebugMobileText;
-        }
-       if(DebugLinkMobileLogin != null)
-        {
-            DebugLinkMobileLogin.text = DebugLinkMobileText;
-        }
-       if(DebugRegister != null)
-        {
-            DebugRegister.text = DebugRegisterText;
-        }
-       if(DebugSignIn != null)
-        {
-            DebugSignIn.text = debugSignInText;
-        }
-
-    }
-
+    #region SuccessMethods
     private void OnLoginSuccess(LoginResult result)
     {
-        Debug.Log("Congratulations, you made your first successful API call!");
+
         if (RememberMe)
         {
             PlayerPrefs.SetString("EMAIL", UserEmail);
             PlayerPrefs.SetString("PASSWORD", UserPassword);
         }
+        else
+        {
+            PlayerPrefs.SetString("PASSWORD", UserPassword);
+        }
 
-
-        loginPanel.SetActive(false);
+        LinkMobileID();
+        Debug.Log("Login success");
+        DisableLoginPanel();
     }
 
     private void OnLoginMobileSuccess(LoginResult result)
     {
-        Debug.Log("Congratulations, you made your first successful Mobile API call!");
+        SignInStatus.text = "success";
+        //Debug.Log("Congratulations, you made your first successful Mobile API call!");
         MobileIDLogin = true;
+
+        string LoginPlayfabID = result.PlayFabId;
+        var GetAccountInfoRequest = new GetAccountInfoRequest { PlayFabId = LoginPlayfabID };
+        PlayFabClientAPI.GetAccountInfo(GetAccountInfoRequest, OnGetInfoSuccess, OnGetUserInfoFailure);
+
     }
 
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
@@ -134,12 +130,84 @@ public class PlayFabLogin : MonoBehaviour
             PlayerPrefs.SetString("EMAIL", UserEmail);
             PlayerPrefs.SetString("PASSWORD", UserPassword);
         }
+        else
+        {
+            PlayerPrefs.SetString("PASSWORD", UserPassword);
+        }
         LinkMobileID();
 
 
         Debug.Log("Congratulations, you made your first successful API call!");
-        loginPanel.SetActive(false);
+        DisableLoginPanel();
     }
+    private void OnAddRegisterSuccess(AddUsernamePasswordResult result)
+    {
+        if (RememberMe)
+        {
+            PlayerPrefs.SetString("EMAIL", UserEmail);
+            PlayerPrefs.SetString("PASSWORD", UserPassword);
+        }
+        else
+        {
+            PlayerPrefs.SetString("PASSWORD", UserPassword);
+        }
+
+        Debug.Log("Congratulations, you made your first successful API call!");
+        DisableLoginPanel();
+    }
+    private void OnChangeAccountRegisterSuccess(RegisterPlayFabUserResult result)
+    {
+        if (RememberMe)
+        {
+            PlayerPrefs.SetString("EMAIL", UserEmail);
+            PlayerPrefs.SetString("PASSWORD", UserPassword);
+        }
+        else
+        {
+            PlayerPrefs.SetString("PASSWORD", UserPassword);
+        }
+        UnlinkMobileID();
+        LinkMobileID();
+
+
+        Debug.Log("Created new account and relinked Device");
+        DisableLoginPanel();
+    }
+
+
+    private void OnGetInfoSuccess(GetAccountInfoResult result)
+    {
+        DataRetrievalStatus.text = "success";
+        string email = result.AccountInfo.PrivateInfo.Email;
+        string StoredUsername = result.AccountInfo.Username;
+
+
+
+        if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(StoredUsername))
+        {
+            //DeviceAccountWithEmail
+       
+            EmailRetrieved.text = "Email: " + email;
+            username = StoredUsername;
+            UserEmail = email;
+
+            AsignUsername(username);
+            ShowContinueAsPanel();
+            DisableRecoverableDataAskPanel();
+
+        }
+        else
+        {
+            //DeviceAccountWithNoEmail
+            EmailRetrieved.text = "No Email";
+        }
+
+    }
+
+
+    #endregion SuccessMethods
+
+    #region Failure Methods
     private void OnLoginFailure(PlayFabError error)
     {
         switch (error.Error)
@@ -147,24 +215,20 @@ public class PlayFabLogin : MonoBehaviour
             case PlayFabErrorCode.InvalidEmailAddress:
             case PlayFabErrorCode.InvalidPassword:
             case PlayFabErrorCode.InvalidEmailOrPassword:
-                SigninErrorText = myLanguageManagerLogin.GetErrorMessageTrnalation(GameStats.stats.LanguageSelect, LanguageManagerLogin.ErrorType.InvalidUser);
-                SigninErrorTM.text = SigninErrorText;
-                SigninErrorObject.SetActive(true);
+                DisplaySigninError(myLanguageManagerLogin.GetErrorMessageTrnalation(GameStats.stats.LanguageSelect, LanguageManagerLogin.ErrorType.InvalidUser));
                 break;
             default:
-                registerErrorText = error.GenerateErrorReport();
-                registerErrorTM.text = registerErrorText;
-                registerErrorObject.SetActive(true);
+                DisplaySigninError(error.GenerateErrorReport());
                 break;
         }
-
-        debugSignInText = error.GenerateErrorReport();
-        //Debug.LogWarning("Something went wrong with your first API call.  :(");
-        //Debug.LogError("Here's some debug information:");
-        //Debug.LogError(error.GenerateErrorReport());  
+        Debug.LogWarning("Something went wrong the login");      
     }
     private void OnLoginMobileFailure(PlayFabError error)
     {
+        SignInStatus.text = "Falure";
+        ErrorReport.text = error.GenerateErrorReport();
+
+
         Debug.LogWarning(error.GenerateErrorReport());
         //Debug.LogError("Here's some debug information:");
         //Debug.LogError(error.GenerateErrorReport());
@@ -177,34 +241,34 @@ public class PlayFabLogin : MonoBehaviour
         switch (error.Error)
         {
             case PlayFabErrorCode.EmailAddressNotAvailable:
-                registerErrorText = myLanguageManagerLogin.GetErrorMessageTrnalation(GameStats.stats.LanguageSelect, LanguageManagerLogin.ErrorType.EmailTaken);
-                registerErrorTM.text = registerErrorText;
-                registerErrorObject.SetActive(true);
+                DisplayRegisterError(myLanguageManagerLogin.GetErrorMessageTrnalation(GameStats.stats.LanguageSelect, LanguageManagerLogin.ErrorType.EmailTaken));
                 break;
             case PlayFabErrorCode.UsernameNotAvailable:
-                registerErrorText = myLanguageManagerLogin.GetErrorMessageTrnalation(GameStats.stats.LanguageSelect, LanguageManagerLogin.ErrorType.UsernameTaken);
-                registerErrorTM.text = registerErrorText;
-                registerErrorObject.SetActive(true);
+                DisplayRegisterError(myLanguageManagerLogin.GetErrorMessageTrnalation(GameStats.stats.LanguageSelect, LanguageManagerLogin.ErrorType.UsernameTaken));
+
                 break;
             case PlayFabErrorCode.InvalidEmailAddress:
             case PlayFabErrorCode.InvalidPassword:
             case PlayFabErrorCode.InvalidEmailOrPassword:
-           
-                registerErrorText = myLanguageManagerLogin.GetErrorMessageTrnalation(GameStats.stats.LanguageSelect, LanguageManagerLogin.ErrorType.InvalidUser);
-                registerErrorTM.text = registerErrorText;
-                registerErrorObject.SetActive(true);
+                DisplayRegisterError(myLanguageManagerLogin.GetErrorMessageTrnalation(GameStats.stats.LanguageSelect, LanguageManagerLogin.ErrorType.InvalidUser));
                 break;
             default:
-                registerErrorText = error.GenerateErrorReport();
-                registerErrorTM.text = registerErrorText;
-                registerErrorObject.SetActive(true);
+                DisplayRegisterError(error.GenerateErrorReport());
                 break;
         }
 
-        DebugRegisterText = error.GenerateErrorReport();
+
     }
 
+    private void OnGetUserInfoFailure(PlayFabError error)
+    {
+        DataRetrievalStatus.text = "Failure";
+        EmailRetrieved.text = "Get User info Failed";
+    }
 
+    #endregion Failure Methods
+
+    #region GetMethods
     public void GetUserEmail(string emailIn)
     {
         UserEmail = emailIn;
@@ -213,59 +277,121 @@ public class PlayFabLogin : MonoBehaviour
     {
         UserPassword = passwordIn;
     }
+    public void GetUserConfirmPassword(string ConfirmpasswordIn)
+    {
+        UserConfirmPassword = ConfirmpasswordIn;
+    }
 
     public void GetUsername(string usernameIn)
     {
         username = usernameIn;
     }
 
-    public void ToogleRememberMe(bool rememberMe)
-    {
-        RememberMe = rememberMe;
-    }
+    #endregion GetMethods
 
+    #region OnClick Methods
     public void OnClickSignIn()
     {
-
-        var request = new LoginWithEmailAddressRequest { Email = UserEmail, Password = UserPassword };
-        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
-
+        if (ChangeAccount)
+        {
+            UnlinkMobileID();
+            PlayFabClientAPI.ForgetAllCredentials();
+            var loginWithPlayfabRequest = new LoginWithPlayFabRequest { Username = username, Password = UserPassword };
+            PlayFabClientAPI.LoginWithPlayFab(loginWithPlayfabRequest, OnLoginSuccess, OnLoginFailure);
+        }
+        else
+        {
+            if (MobileIDLogin)
+            {
+                UnlinkMobileID();
+                PlayFabClientAPI.ForgetAllCredentials();
+                var loginWithPlayfabRequest = new LoginWithPlayFabRequest { Username = username, Password = UserPassword };
+                PlayFabClientAPI.LoginWithPlayFab(loginWithPlayfabRequest, OnLoginSuccess, OnLoginFailure);
+            }
+            else
+            {
+                var loginWithPlayfabRequest = new LoginWithPlayFabRequest { Username = username, Password = UserPassword };
+                PlayFabClientAPI.LoginWithPlayFab(loginWithPlayfabRequest, OnLoginSuccess, OnLoginFailure);
+            }
+        }
     }
 
     public void OnClickRegister()
     {
-        //var registerRequest = new RegisterPlayFabUserRequest { Email = UserEmail, Password = UserPassword, Username = username };
-        //PlayFabClientAPI.RegisterPlayFabUser(registerRequest, OnRegisterSuccess, OnRegisterFailure);
-
-        if (MobileIDLogin)
+        if (ChangeAccount)
         {
-            var registerAddRequest = new AddUsernamePasswordRequest { Email = UserEmail, Password = UserPassword, Username = username };
-            PlayFabClientAPI.AddUsernamePassword(registerAddRequest, OnAddRegisterSuccess, OnRegisterFailure);
+            if (UserPassword == UserConfirmPassword)
+            {
+                UnlinkMobileID();
+                PlayFabClientAPI.ForgetAllCredentials();
+                var registerRequest = new RegisterPlayFabUserRequest { Email = UserEmail, Password = UserPassword, Username = username };
+                PlayFabClientAPI.RegisterPlayFabUser(registerRequest, OnChangeAccountRegisterSuccess, OnRegisterFailure);
+                LinkMobileID();
+            }
+            else
+            {
+                DisplayRegisterError(myLanguageManagerLogin.GetErrorMessageTrnalation(GameStats.stats.LanguageSelect, LanguageManagerLogin.ErrorType.PasswordUnmatch));
+            }
         }
         else
         {
-            var registerRequest = new RegisterPlayFabUserRequest { Email = UserEmail, Password = UserPassword, Username = username };
-            PlayFabClientAPI.RegisterPlayFabUser(registerRequest, OnRegisterSuccess, OnRegisterFailure);
+            if (UserPassword == UserConfirmPassword)
+            {
+                if (MobileIDLogin)
+                {
+                    var registerAddRequest = new AddUsernamePasswordRequest { Email = UserEmail, Password = UserPassword, Username = username };
+                    PlayFabClientAPI.AddUsernamePassword(registerAddRequest, OnAddRegisterSuccess, OnRegisterFailure);
+                }
+                else
+                {
+                    var registerRequest = new RegisterPlayFabUserRequest { Email = UserEmail, Password = UserPassword, Username = username };
+                    PlayFabClientAPI.RegisterPlayFabUser(registerRequest, OnRegisterSuccess, OnRegisterFailure);
+                }
+            }
+            else
+            {
+                DisplayRegisterError(myLanguageManagerLogin.GetErrorMessageTrnalation(GameStats.stats.LanguageSelect, LanguageManagerLogin.ErrorType.PasswordUnmatch));
+            }
         }
-
     }
-
-    private void OnAddRegisterSuccess(AddUsernamePasswordResult result)
+    public void OnClickPlay()
     {
-        if (RememberMe)
+        Debug.Log("Login Skipped");
+
+        if (MobileIDLogin)
         {
-            PlayerPrefs.SetString("EMAIL", UserEmail);
-            PlayerPrefs.SetString("PASSWORD", UserPassword);
+            if (RememberMe)
+            {
+                PlayerPrefs.SetString("EMAIL", UserEmail);
+            }
+            DisableLoginPanel();
         }
-        Debug.Log("Congratulations, you made your first successful API call!");
-        loginPanel.SetActive(false);
+        else
+        {
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                var requestAndroid = new LoginWithAndroidDeviceIDRequest { AndroidDeviceId = ReturnMobileID(), CreateAccount = true };
+                PlayFabClientAPI.LoginWithAndroidDeviceID(requestAndroid, OnLoginMobileSuccess, OnLoginMobileFailure);
+            }
+#if UNITY_IOS
+            else if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                var requestIOS = new LoginWithIOSDeviceIDRequest { DeviceId = ReturnMobileID(), CreateAccount = true };
+                PlayFabClientAPI.LoginWithIOSDeviceID(requestIOS, OnLoginMobileSuccess, OnLoginMobileFailure);
+
+            }
+#endif
+#if UNITY_EDITOR
+            var requestEditor = new LoginWithIOSDeviceIDRequest { DeviceId = ReturnMobileID(), CreateAccount = true };
+            PlayFabClientAPI.LoginWithIOSDeviceID(requestEditor, OnLoginMobileSuccess, OnLoginMobileFailure);
+#endif
+
+        }
+
+
     }
 
-    public static string ReturnMobileID()
-    {
-        string DeviceID = SystemInfo.deviceUniqueIdentifier;
-        return DeviceID;
-    }
+    #endregion OnClick Methods
 
     #region Unlink Device ID
     private void UnlinkMobileID()
@@ -280,22 +406,30 @@ public class PlayFabLogin : MonoBehaviour
             var unlinkAndroidRequest = new UnlinkAndroidDeviceIDRequest { AndroidDeviceId = ReturnMobileID() };
             PlayFabClientAPI.UnlinkAndroidDeviceID(unlinkAndroidRequest, OnAndroidUnlinkSuccess, OnMobileUnlinkError);
         }
+        else
+        {
+            var unlinkIOSRequest = new UnlinkIOSDeviceIDRequest { DeviceId = ReturnMobileID() };
+            PlayFabClientAPI.UnlinkIOSDeviceID(unlinkIOSRequest, OnIOSUnlinkSuccess, OnMobileUnlinkError);
+        }
 
     }
     private void OnAndroidUnlinkSuccess(UnlinkAndroidDeviceIDResult result)
     {
-
+        Debug.Log("Android Unlinked");
     }
     private void OnIOSUnlinkSuccess(UnlinkIOSDeviceIDResult result)
     {
-
+        Debug.Log("IOS Unlinked");
     }
 
     private void OnMobileUnlinkError(PlayFabError error)
     {
-        
+
+        Debug.Log("Unlinked Error");
+        Debug.Log("Error: " + error.GenerateErrorReport());
     }
     #endregion
+
     #region Link Device ID
     private void LinkMobileID()
     {
@@ -309,6 +443,11 @@ public class PlayFabLogin : MonoBehaviour
             var linkAndroidRequest = new LinkAndroidDeviceIDRequest { AndroidDeviceId = ReturnMobileID() };
             PlayFabClientAPI.LinkAndroidDeviceID(linkAndroidRequest, OnLinkAndroidDeviceSuccess, OnMobileLinkError);
         }
+        else
+        {
+            var linkIOSRequest = new LinkIOSDeviceIDRequest { DeviceId = ReturnMobileID() };
+            PlayFabClientAPI.LinkIOSDeviceID(linkIOSRequest, OnLinkIOSDeviceSuccess, OnMobileLinkError);
+        }
     }
 
     private void OnLinkIOSDeviceSuccess(LinkIOSDeviceIDResult result)
@@ -321,30 +460,105 @@ public class PlayFabLogin : MonoBehaviour
     }
     private void OnMobileLinkError(PlayFabError error)
     {
-        DebugLinkMobileText = error.GenerateErrorReport();
+
     }
 
     #endregion
 
-
-    public void OnCLickPlay()
+    public void ToogleRememberMe(bool rememberMe)
     {
-
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            var requestAndroid = new LoginWithAndroidDeviceIDRequest { AndroidDeviceId = ReturnMobileID(), CreateAccount = true };
-            PlayFabClientAPI.LoginWithAndroidDeviceID(requestAndroid, OnLoginMobileSuccess, OnLoginMobileFailure);
-        }
-#if UNITY_IOS
-        else if (Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            var requestIOS = new LoginWithIOSDeviceIDRequest { DeviceId = ReturnMobileID(), CreateAccount = true };
-            PlayFabClientAPI.LoginWithIOSDeviceID(requestIOS, OnLoginMobileSuccess, OnLoginMobileFailure);
-
-        }
-#endif
-
+        RememberMe = rememberMe;
     }
+
+    public static string ReturnMobileID()
+    {
+        string DeviceID = SystemInfo.deviceUniqueIdentifier;
+
+        return DeviceID;
+    }
+
+    public void SetChangeAccount()
+    {
+        ChangeAccount = true;
+        username = null;
+        UserEmail = null;
+        UserPassword = null;
+        UserConfirmPassword = null;
+    }
+
+    public void ClearInfo()
+    {
+        username = null;
+        UserEmail = null;
+        UserPassword = null;
+        UserConfirmPassword = null;
+    }
+
+    
+
+    #endregion Login
+
+    #region UIActions
+
+    // Display Panels
+    private void DisableLoginPanel()
+    {
+        if (myPlayfabLoginUI != null)
+        {
+            myPlayfabLoginUI.UIAction(PlayfabLoginUI.UiActions.DisableLoginPanel);
+            InitializeStats();
+        }
+    }
+    private void ShowContinueAsPanel()
+    {
+        if (myPlayfabLoginUI != null)
+        {
+            myPlayfabLoginUI.UIAction(PlayfabLoginUI.UiActions.ShowContinueAsPanel);
+        }
+    }
+    private void DisableRecoverableDataAskPanel()
+    {
+        if (myPlayfabLoginUI != null)
+        {
+            myPlayfabLoginUI.UIAction(PlayfabLoginUI.UiActions.DisableRecoverableDataAskPanel);
+        }
+    }
+    private void AsignUsername(string usernameToAsign)
+    {
+        if (myPlayfabLoginUI != null)
+        {
+            myPlayfabLoginUI.UIAction(PlayfabLoginUI.UiActions.AsignContinueAsUsername, usernameToAsign);
+        }
+    }
+
+    // Display Error
+
+    private void DisplayRegisterError(string errorToDisplay)
+    {
+        if (myPlayfabLoginUI != null)
+        {
+            myPlayfabLoginUI.DisplayError(PlayfabLoginUI.DisplayErrors.RegisterError, errorToDisplay);
+        }
+    }
+
+    private void DisplaySigninError(string errorToDisplay)
+    {
+        if (myPlayfabLoginUI != null)
+        {
+            myPlayfabLoginUI.DisplayError(PlayfabLoginUI.DisplayErrors.SignInError, errorToDisplay);
+        }
+    }
+
+    #endregion UIActions
+
+    public void InitializeStats()
+    {
+        if (GameStats.stats.noLocalSaveFileDetected)
+        {
+            GameStats.stats.LoadCloudSaveData();
+        }      
+    }
+
 
 
 }

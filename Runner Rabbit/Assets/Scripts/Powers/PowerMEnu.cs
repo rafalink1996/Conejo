@@ -415,22 +415,320 @@ public class PowerMEnu : MonoBehaviour
         PowerUpgradeCostUpdate();
     }
 
+    public void DelayedStart()
+    {
+        FenixFeather.text = FenixFeatherCost.ToString();
+        PortalBoost.text = PortalBoostCost.ToString();
+        CoinTicket.text = CoinTicketCost.ToString();
+        ExtraHearts.text = ExtraHeartsCost.ToString();
+        ManaJar.text = ManaJarCost.ToString();
 
+        #region saved powers
+        // Saved data loder
+        // Save Data Carrot Missle
+        if (GameStats.stats.CarrotMissleLevel == 2)
+        {
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[1]);
+        }
+        else if (GameStats.stats.CarrotMissleLevel == 3)
+        {
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[2]);
+        }
+        else if (GameStats.stats.CarrotMissleLevel == 4)
+        {
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[2]);
+            GameStats.stats.UnlockedPowers.Add(CarrotMissleTiers[3]);
+        }
+
+        // Save data ear shield
+        if (GameStats.stats.EarDefenceLevel == 2)
+        {
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[1]);
+        }
+        else if (GameStats.stats.EarDefenceLevel == 3)
+        {
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[2]);
+        }
+        else if (GameStats.stats.EarDefenceLevel == 4)
+        {
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[2]);
+            GameStats.stats.UnlockedPowers.Add(EarShieldTiers[3]);
+        }
+
+        // Save Data radish missle
+        if (GameStats.stats.RadishMissleLevel == 1)
+        {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[0]);
+        }
+        if (GameStats.stats.RadishMissleLevel == 2)
+        {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
+        }
+        else if (GameStats.stats.RadishMissleLevel == 3)
+        {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[2]);
+        }
+        else if (GameStats.stats.RadishMissleLevel == 4)
+        {
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[2]);
+            GameStats.stats.UnlockedPowers.Add(RadishMissleTiers[3]);
+        }
+
+        // save data KickReflect
+        if (GameStats.stats.KickReflectLevel == 1)
+        {
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[0]);
+        }
+        else if (GameStats.stats.KickReflectLevel == 2)
+        {
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[0]);
+        }
+        else if (GameStats.stats.KickReflectLevel == 3)
+        {
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[2]);
+        }
+        else if (GameStats.stats.KickReflectLevel == 4)
+        {
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[2]);
+            GameStats.stats.UnlockedPowers.Add(KickReflectTiers[3]);
+        }
+
+        // save data laser 
+        if (GameStats.stats.MagicLaserLevel == 1)
+        {
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[0]);
+
+        }
+        else if (GameStats.stats.MagicLaserLevel == 2)
+        {
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[1]);
+        }
+        else if (GameStats.stats.MagicLaserLevel == 3)
+        {
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[2]);
+        }
+        else if (GameStats.stats.MagicLaserLevel == 4)
+        {
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[0]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[1]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[2]);
+            GameStats.stats.UnlockedPowers.Add(MagicLaserTiers[3]);
+        }
+
+
+        #endregion
+
+        #region SetPowerUI
+        // set power upgrade tier in UI
+        //CarrotMissle UI
+        if (GameStats.stats.CarrotMissleLevel == 0)
+        {
+            CarrotMissleTierUI[0].SetActive(false);
+            CarrotMissleTierUI[1].SetActive(false);
+            CarrotMissleTierUI[2].SetActive(false);
+            CarrotMissleTierUI[3].SetActive(false);
+        }
+        if (GameStats.stats.CarrotMissleLevel == 1)
+        {
+            CarrotMissleTierUI[0].SetActive(true);
+            CarrotMissleTierUI[1].SetActive(false);
+            CarrotMissleTierUI[2].SetActive(false);
+            CarrotMissleTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.CarrotMissleLevel == 2)
+        {
+            CarrotMissleTierUI[0].SetActive(true);
+            CarrotMissleTierUI[1].SetActive(true);
+            CarrotMissleTierUI[2].SetActive(false);
+            CarrotMissleTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.CarrotMissleLevel == 3)
+        {
+            CarrotMissleTierUI[0].SetActive(true);
+            CarrotMissleTierUI[1].SetActive(true);
+            CarrotMissleTierUI[2].SetActive(true);
+            CarrotMissleTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.CarrotMissleLevel == 4)
+        {
+            CarrotMissleTierUI[0].SetActive(true);
+            CarrotMissleTierUI[1].SetActive(true);
+            CarrotMissleTierUI[2].SetActive(true);
+            CarrotMissleTierUI[3].SetActive(true);
+        }
+        //EarShieldUI
+
+        if (GameStats.stats.EarDefenceLevel == 0)
+        {
+            EarShieldTierUI[0].SetActive(false);
+            EarShieldTierUI[1].SetActive(false);
+            EarShieldTierUI[2].SetActive(false);
+            EarShieldTierUI[3].SetActive(false);
+        }
+        if (GameStats.stats.EarDefenceLevel == 1)
+        {
+            EarShieldTierUI[0].SetActive(true);
+            EarShieldTierUI[1].SetActive(false);
+            EarShieldTierUI[2].SetActive(false);
+            EarShieldTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.EarDefenceLevel == 2)
+        {
+            EarShieldTierUI[0].SetActive(true);
+            EarShieldTierUI[1].SetActive(true);
+            EarShieldTierUI[2].SetActive(false);
+            EarShieldTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.EarDefenceLevel == 3)
+        {
+            EarShieldTierUI[0].SetActive(true);
+            EarShieldTierUI[1].SetActive(true);
+            EarShieldTierUI[2].SetActive(true);
+            EarShieldTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.EarDefenceLevel == 4)
+        {
+            EarShieldTierUI[0].SetActive(true);
+            EarShieldTierUI[1].SetActive(true);
+            EarShieldTierUI[2].SetActive(true);
+            EarShieldTierUI[3].SetActive(true);
+        }
+
+        // RadishMissle UI
+
+        if (GameStats.stats.RadishMissleLevel == 0)
+        {
+            RadishMissleTierUI[0].SetActive(false);
+            RadishMissleTierUI[1].SetActive(false);
+            RadishMissleTierUI[2].SetActive(false);
+            RadishMissleTierUI[3].SetActive(false);
+        }
+        if (GameStats.stats.RadishMissleLevel == 1)
+        {
+            RadishMissleTierUI[0].SetActive(true);
+            RadishMissleTierUI[1].SetActive(false);
+            RadishMissleTierUI[2].SetActive(false);
+            RadishMissleTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.RadishMissleLevel == 2)
+        {
+            RadishMissleTierUI[0].SetActive(true);
+            RadishMissleTierUI[1].SetActive(true);
+            RadishMissleTierUI[2].SetActive(false);
+            RadishMissleTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.RadishMissleLevel == 3)
+        {
+            RadishMissleTierUI[0].SetActive(true);
+            RadishMissleTierUI[1].SetActive(true);
+            RadishMissleTierUI[2].SetActive(true);
+            RadishMissleTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.RadishMissleLevel == 4)
+        {
+            RadishMissleTierUI[0].SetActive(true);
+            RadishMissleTierUI[1].SetActive(true);
+            RadishMissleTierUI[2].SetActive(true);
+            RadishMissleTierUI[3].SetActive(true);
+        }
+
+        // kickReflect Ui
+        if (GameStats.stats.KickReflectLevel == 0)
+        {
+            KickReflectTierUI[0].SetActive(false);
+            KickReflectTierUI[1].SetActive(false);
+            KickReflectTierUI[2].SetActive(false);
+            KickReflectTierUI[3].SetActive(false);
+        }
+        if (GameStats.stats.KickReflectLevel == 1)
+        {
+            KickReflectTierUI[0].SetActive(true);
+            KickReflectTierUI[1].SetActive(false);
+            KickReflectTierUI[2].SetActive(false);
+            KickReflectTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.KickReflectLevel == 2)
+        {
+            KickReflectTierUI[0].SetActive(true);
+            KickReflectTierUI[1].SetActive(true);
+            KickReflectTierUI[2].SetActive(false);
+            KickReflectTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.KickReflectLevel == 3)
+        {
+            KickReflectTierUI[0].SetActive(true);
+            KickReflectTierUI[1].SetActive(true);
+            KickReflectTierUI[2].SetActive(true);
+            KickReflectTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.KickReflectLevel == 4)
+        {
+            KickReflectTierUI[0].SetActive(true);
+            KickReflectTierUI[1].SetActive(true);
+            KickReflectTierUI[2].SetActive(true);
+            KickReflectTierUI[3].SetActive(true);
+        }
+
+        // Magic Laser UI
+        if (GameStats.stats.MagicLaserLevel == 0)
+        {
+            MagicLaserTierUI[0].SetActive(false);
+            MagicLaserTierUI[1].SetActive(false);
+            MagicLaserTierUI[2].SetActive(false);
+            MagicLaserTierUI[3].SetActive(false);
+        }
+        if (GameStats.stats.MagicLaserLevel == 1)
+        {
+            MagicLaserTierUI[0].SetActive(true);
+            MagicLaserTierUI[1].SetActive(false);
+            MagicLaserTierUI[2].SetActive(false);
+            MagicLaserTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.MagicLaserLevel == 2)
+        {
+            MagicLaserTierUI[0].SetActive(true);
+            MagicLaserTierUI[1].SetActive(true);
+            MagicLaserTierUI[2].SetActive(false);
+            MagicLaserTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.MagicLaserLevel == 3)
+        {
+            MagicLaserTierUI[0].SetActive(true);
+            MagicLaserTierUI[1].SetActive(true);
+            MagicLaserTierUI[2].SetActive(true);
+            MagicLaserTierUI[3].SetActive(false);
+        }
+        else if (GameStats.stats.MagicLaserLevel == 4)
+        {
+            MagicLaserTierUI[0].SetActive(true);
+            MagicLaserTierUI[1].SetActive(true);
+            MagicLaserTierUI[2].SetActive(true);
+            MagicLaserTierUI[3].SetActive(true);
+        }
+        #endregion
+
+        PowerUpgradeCostUpdate();
+    }
 
     private void Update()
     {
-
-
-        // Update GameStats
-
-        /*
-        GameStats.stats.CarrotMissleLevel = CarrotMissleTierID;
-        GameStats.stats.EarDefenceLevel = EarShieldTierID;
-        GameStats.stats.RadishMissleLevel = RadishMissleTierID;
-        GameStats.stats.KickReflectLevel = KickReflectTierID;
-        */
-
-
         if (GameStats.stats.CarrotMissleLevel >= 4)
         {
             GameStats.stats.CarrotMissleLevel = 4;
@@ -732,41 +1030,10 @@ public class PowerMEnu : MonoBehaviour
         LeanTween.moveLocalX(MainMenuHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
         LeanTween.moveLocalX(SkinMenuHolder, 0, TransTime).setEase(LeanTweenType.easeOutExpo);
         LeanTween.moveLocalX(StoreHolder, 1920, TransTime).setEase(LeanTweenType.easeOutExpo);
-        
-
-
-
         //StartCoroutine(backfromPowersMenu());
     }
 
-    /*
-    IEnumerator GoToPowersMenu()
-    {
-
-        yield return new WaitForSeconds(TransTime);
-
-
-        StoreHolder.SetActive(true);
-        TowerDark.SetActive(false);
-        TowerDark.SetActive(false);
-
-        Debug.Log("powermenu!");
-
-        yield return null;
-    }
-
-    IEnumerator backfromPowersMenu()
-    {
-
-        yield return new WaitForSeconds(transitionTimeout);
-
-        MainMenuHolder.SetActive(true);
-        TowerDark.SetActive(true);
-        TowerDark.SetActive(true);
-
-        yield return null;
-    }
-    */
+ 
 
     public void GoToRuneShop()
     {
@@ -793,7 +1060,6 @@ public class PowerMEnu : MonoBehaviour
             LeanTween.moveLocalY(SeRunesTextHolder, 138, TransTime).setEase(LeanTweenType.easeOutExpo);
 
         }
-
     }
 
     IEnumerator DeactivateRuneButton()
@@ -1321,6 +1587,8 @@ public class PowerMEnu : MonoBehaviour
     }
 
 }
+
+
 
 /*
  ********* Power UI Tier old Update Method **************
