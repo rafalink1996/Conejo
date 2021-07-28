@@ -55,9 +55,6 @@ public class RuneSystem : MonoBehaviour
             RuneSelected[i].SetActive(false);
         }
 
-
-
-
             myPowerShop = FindObjectOfType<PowerMEnu>();
         // See what runes are unlocked
         for (int i = 0; i < GameStats.stats.UnlockedRunes.Length; i++)
@@ -163,6 +160,131 @@ public class RuneSystem : MonoBehaviour
             Image RuneSelectedImage = RuneSelected[PreviouslySelectedRune2 ].GetComponent<Image>();
             RuneSelectedImage.color = new Color(1f, 0.77f, 0.2f, 1);
             Debug.Log("Rune2 has" + ((GameStats.Rune)PreviouslySelectedRune2 +1));
+        }
+        else
+        {
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                RuneSlotName2.text = RuneNames[0];
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                RuneSlotName2.text = Español_RuneNames[0];
+            }
+        }
+    }
+
+
+    public void DelayedStart()
+    {
+        for (int i = 0; i < GameStats.stats.UnlockedRunes.Length; i++)
+        {
+            if (GameStats.stats.UnlockedRunes[i] == true)
+            {
+
+
+                TextMeshProUGUI CostTextTMP = CostTexts[i].GetComponent<TextMeshProUGUI>();
+
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    Buy_EquipButtonsText[i].text = "Equip";
+                    CostTextTMP.text = "owned";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    Buy_EquipButtonsText[i].text = "Equipar";
+                    CostTextTMP.text = "Comprado";
+                }
+
+                GameObject CostCrystal = CostTexts[i].transform.GetChild(0).gameObject;
+                CostCrystal.SetActive(false);
+
+                RuneLocked[i].SetActive(false);
+
+
+                //CostTexts[i].SetActive(false);
+            }
+            else
+            {
+                if (GameStats.stats.LanguageSelect == 0)
+                {
+                    Buy_EquipButtonsText[i].text = "Buy";
+                }
+                else if (GameStats.stats.LanguageSelect == 1)
+                {
+                    Buy_EquipButtonsText[i].text = "Comprar";
+                }
+
+                RuneLocked[i].SetActive(true);
+
+
+
+                // CostTexts[i].SetActive(true);
+            }
+        }
+
+        // Equip Saved Runes
+
+        if (GameStats.stats.Rune1ID != 0)
+        {
+
+            RuneSlot1Image.sprite = GameStats.stats.runeSprites[(int)GameStats.stats.Rune1 - 1];
+            UnequipButtonRune1.SetActive(true);
+            PreviouslySelectedRune1 = GameStats.stats.Rune1ID - 1;
+            BuyEquiButtons[GameStats.stats.Rune1ID - 1].gameObject.SetActive(false);
+
+            if (GameStats.stats.LanguageSelect == 0) //ingles seleccionado
+            {
+
+                RuneSlotName1.text = RuneNames[GameStats.stats.Rune1ID]; // rune Name
+
+            }
+            else if (GameStats.stats.LanguageSelect == 1) //español seleccionado
+            {
+
+                RuneSlotName1.text = Español_RuneNames[GameStats.stats.Rune1ID]; //nombre Runa español
+
+            }
+
+            RuneSelected[PreviouslySelectedRune1].SetActive(true);
+            Image RuneSelectedImage = RuneSelected[PreviouslySelectedRune1].GetComponent<Image>();
+            RuneSelectedImage.color = new Color(0.5f, 0.95f, 0.95f, 1);
+
+            Debug.Log("Rune1 has" + ((GameStats.Rune)PreviouslySelectedRune1 + 1));
+        }
+        else
+        {
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                RuneSlotName1.text = RuneNames[0];
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                RuneSlotName1.text = Español_RuneNames[0];
+            }
+
+        }
+        if (GameStats.stats.Rune2ID != 0)
+        {
+
+            RuneSlot2Image.sprite = GameStats.stats.runeSprites[(int)GameStats.stats.Rune2 - 1];
+            UnequipButtonRune2.SetActive(true);
+            PreviouslySelectedRune2 = GameStats.stats.Rune2ID - 1;
+            BuyEquiButtons[GameStats.stats.Rune2ID - 1].gameObject.SetActive(false);
+
+            if (GameStats.stats.LanguageSelect == 0)
+            {
+                RuneSlotName2.text = RuneNames[GameStats.stats.Rune2ID];
+            }
+            else if (GameStats.stats.LanguageSelect == 1)
+            {
+                RuneSlotName2.text = Español_RuneNames[GameStats.stats.Rune2ID];
+            }
+
+            RuneSelected[PreviouslySelectedRune2].SetActive(true);
+            Image RuneSelectedImage = RuneSelected[PreviouslySelectedRune2].GetComponent<Image>();
+            RuneSelectedImage.color = new Color(1f, 0.77f, 0.2f, 1);
+            Debug.Log("Rune2 has" + ((GameStats.Rune)PreviouslySelectedRune2 + 1));
         }
         else
         {

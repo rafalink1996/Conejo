@@ -14,6 +14,9 @@ public class MenuGameManager : MonoBehaviour
 
     [SerializeField] LanguageManager myLanguageManager;
     [SerializeField] PowerMEnu myPowerMenuStore;
+    [SerializeField] RuneSystem myRuneSystem;
+    [SerializeField] AchivmentsMenu myAchivmentsMenu;
+    [SerializeField] SkinMenuStore mySkinMenuStore;
 
     // Start is called before the first frame update
     void Start()
@@ -55,5 +58,8 @@ public class MenuGameManager : MonoBehaviour
         }
         myLanguageManager.DelayedStart();
         myPowerMenuStore.DelayedStart();
+        myRuneSystem.DelayedStart();
+        myAchivmentsMenu.DelayedStart();
+        mySkinMenuStore.DelayedStart();
     }
 }

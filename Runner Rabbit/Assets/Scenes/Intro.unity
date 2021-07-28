@@ -2009,6 +2009,11 @@ PrefabInstance:
       propertyPath: SaveCurrentHearts
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6534509362020856586, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: myGamestatsSaveManager
+      value: 
+      objectReference: {fileID: 2066399194}
     - target: {fileID: 6534509362020856587, guid: 36fa0ff1090cf4e8898203c0e79a8056,
         type: 3}
       propertyPath: m_RootOrder
@@ -2064,5 +2069,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8123833547902955573, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+        type: 3}
+      propertyPath: myDataManager
+      value: 
+      objectReference: {fileID: 2066399195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36fa0ff1090cf4e8898203c0e79a8056, type: 3}
+--- !u!114 &2066399194 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8123833547902955573, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+    type: 3}
+  m_PrefabInstance: {fileID: 2066399193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075464b47ddf44e5b90e4685d2828340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2066399195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7476667002309962791, guid: 36fa0ff1090cf4e8898203c0e79a8056,
+    type: 3}
+  m_PrefabInstance: {fileID: 2066399193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb068ebefa7048dda68334b291fa634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

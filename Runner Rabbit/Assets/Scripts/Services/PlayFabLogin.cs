@@ -16,6 +16,8 @@ public class PlayFabLogin : MonoBehaviour
     bool MobileIDLogin = false;
     [SerializeField] bool ChangeAccount = false;
     [SerializeField] bool RememberMe;
+    bool CompleatlyLoggedIn;
+    bool SkippedLoggin;
     
 
 
@@ -228,6 +230,10 @@ public class PlayFabLogin : MonoBehaviour
         SignInStatus.text = "Falure";
         ErrorReport.text = error.GenerateErrorReport();
 
+        if (SkippedLoggin)
+        {
+            DisableLoginPanel();
+        }
 
         Debug.LogWarning(error.GenerateErrorReport());
         //Debug.LogError("Here's some debug information:");
@@ -357,7 +363,7 @@ public class PlayFabLogin : MonoBehaviour
     public void OnClickPlay()
     {
         Debug.Log("Login Skipped");
-
+        SkippedLoggin = true;
         if (MobileIDLogin)
         {
             if (RememberMe)
@@ -506,8 +512,12 @@ public class PlayFabLogin : MonoBehaviour
         if (myPlayfabLoginUI != null)
         {
             myPlayfabLoginUI.UIAction(PlayfabLoginUI.UiActions.DisableLoginPanel);
+           
+            
             InitializeStats();
+              
         }
+     
     }
     private void ShowContinueAsPanel()
     {
@@ -551,12 +561,12 @@ public class PlayFabLogin : MonoBehaviour
 
     #endregion UIActions
 
+
     public void InitializeStats()
     {
-        if (GameStats.stats.noLocalSaveFileDetected)
-        {
-            GameStats.stats.LoadCloudSaveData();
-        }      
+      
+       GameStats.stats.LoadCloudSaveData();
+            
     }
 
 

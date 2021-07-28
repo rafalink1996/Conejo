@@ -6,8 +6,9 @@ using System;
 
 public class GameStats : MonoBehaviour
 {
+    #region Variables
     [Header("JsonSaveSystem")]
-    [SerializeField] DataManager myDataManager;
+   // [SerializeField] DataManager myDataManager;
     public string debugLoad = "";
 
     [Space(15)]
@@ -214,10 +215,6 @@ public class GameStats : MonoBehaviour
     public float monstersKilled, MoneySpent, diedTimes;
 
 
-    //Save state Check Bools
-    public bool noLocalSaveFileDetected;
-    public bool DataLoaded;
-
     [Space(10)]
     [Header("LANGUAGE")]
 
@@ -229,18 +226,15 @@ public class GameStats : MonoBehaviour
     // 2 = Español
 
 
+    [Space(10)]
+    [Header("DEPENDENCIES")]
+    public GamestatsSaveManager myGamestatsSaveManager;
 
 
 
+    #endregion Variables
 
-
-
-
-
-
-
-
-    // Start is called before the first frame update
+   
     void Awake()
     {
         if (stats == null)
@@ -254,17 +248,11 @@ public class GameStats : MonoBehaviour
         }
 
         LoadPlayer();
-       
-
-
     }
 
 
     void Start()
     {
-
-
-
         lightPowerName = powerLight.name;
         lightPowerSprite = powerLight.iconLight;
         lightpowerID = powerLight.id;
@@ -280,10 +268,6 @@ public class GameStats : MonoBehaviour
 
         Rune1 = (Rune)Rune1ID;
         Rune2 = (Rune)Rune2ID;
-
-
-
-
     }
 
     private void Update()
@@ -471,150 +455,35 @@ public class GameStats : MonoBehaviour
         }
     }
 
+    #region SAVE STATS METHODS
+    #region local Save Methods
     public void SaveStats()
     {
-        //SaveSystem.SavePlayer(this); Old Binary Safe System
-        myDataManager.SaveJson();
-        saveServices();
-        // Debug.Log("game saved");
-    }
-    public void UploadStats()
-    {
-        PlayFabData.PFD.SaveStats();
+
+        myGamestatsSaveManager.SaveGamestats();
+        
     }
 
     public void LoadPlayer()
     {
-        if (myDataManager.IsFilePresent() == true)
-        {
-            myDataManager.LoadJson();
-            SetJsonDataStats(myDataManager);
-            Debug.Log("loaded from Json");
-            debugLoad = "Loaded from Json";
-            DataLoaded = true;
-        }
-        else if (SaveSystem.IsBinaryFilePresent())
-        {
-            Debug.Log("loaded binary");
-            debugLoad = "Loaded from binary";
+        myGamestatsSaveManager.LoadGamestats();
+    }
 
-            PlayerData data = SaveSystem.loadPlayer();
-
-            CoinTicket = data.CoinTicketBought;
-            PortalBoost = data.PortalBoostBought;
-            fenixFeather = data.fenixfetherBought;
-            ExtraHearts = data.ExtraHeartsBought;
-            ManaJar = data.ManaJarBought;
-
-            crystals = data.Crystals;
-            leveBoughtID = data.level;
-            LevelBought = data.LevelBought;
-            LevelBoughtCrystals = data.LevelBoughtCrystals;
-            LevelBoughtCoins = data.LevelBoughtCoins;
-
-
-            coins = data.Coins;
-
-            SavedLevelCount = data.SavedLevelCount;
-            SavedLevelIndicator = data.SavedLevelIndicator;
-            RunInProgress = data.RunInProgress;
-            SavedLevelPercentage = data.savedLevelPercentage;
-            numOfHearts = data.MaxHearts;
-            SaveCurrentHearts = data.CurrentHearts;
-            isInStore = data.IsInStore;
-
-            savedDarkPowerID = data.SavedDarkPowerID;
-            savedLightPowerID = data.SavedLightPowerID;
-
-            totalDarkMana = data.ManaDark;
-            totalLightMana = data.Manalight;
-
-
-            LevelReached = data.levelReached;
-            botSkinID = data.BotSkin;
-            topSkinID = data.TopSkin;
-
-            timedReward = data.TimeReward;
-            timedRewardLastDate = data.TimedRewardLastDate;
-
-            skinConditions[0] = data.skinConditions[0];
-            skinConditions[1] = data.skinConditions[1];
-            skinConditions[2] = data.skinConditions[2];
-            skinConditions[3] = data.skinConditions[3];
-            skinConditions[4] = data.skinConditions[4];
-            skinConditions[5] = data.skinConditions[5];
-
-
-            CarrotMissleLevel = data.CarrotMissleLevel;
-            EarDefenceLevel = data.EarDefenceLevel;
-            RadishMissleLevel = data.RadishMissleLevel;
-            KickReflectLevel = data.KickReflectLevel;
-            MagicLaserLevel = data.MagicLaserLevel;
-
-            AudioVolume = data.AudioVolume;
-            MusicVolume = data.MusicVolume;
-
-            AchivementConditions[0] = data.AchivementConditions[0];
-            AchivementConditions[1] = data.AchivementConditions[1];
-            AchivementConditions[2] = data.AchivementConditions[2];
-            AchivementConditions[3] = data.AchivementConditions[3];
-            AchivementConditions[4] = data.AchivementConditions[4];
-            AchivementConditions[5] = data.AchivementConditions[5];
-            AchivementConditions[6] = data.AchivementConditions[6];
-            AchivementConditions[7] = data.AchivementConditions[7];
-            AchivementConditions[8] = data.AchivementConditions[8];
-            AchivementConditions[9] = data.AchivementConditions[9];
-            AchivementConditions[10] = data.AchivementConditions[10];
-            AchivementConditions[11] = data.AchivementConditions[11];
-            AchivementConditions[12] = data.AchivementConditions[12];
-            AchivementConditions[13] = data.AchivementConditions[13];
-
-
-            MoneySpent = data.GoldSpent;
-            monstersKilled = data.monstersKilled;
-            diedTimes = data.diedTimes;
-
-            Rune1ID = data.Rune1Id;
-            Rune2ID = data.Rune2Id;
-
-            UnlockedRunes[0] = data.unlockedRunes[0];
-            UnlockedRunes[1] = data.unlockedRunes[1];
-            UnlockedRunes[2] = data.unlockedRunes[2];
-            UnlockedRunes[3] = data.unlockedRunes[3];
-            UnlockedRunes[4] = data.unlockedRunes[4];
-            UnlockedRunes[5] = data.unlockedRunes[5];
-            UnlockedRunes[6] = data.unlockedRunes[6];
-            UnlockedRunes[7] = data.unlockedRunes[7];
-            UnlockedRunes[8] = data.unlockedRunes[8];
-            UnlockedRunes[9] = data.unlockedRunes[9];
-
-            NoAdsBought = data.NoAdsBought;
-            SkinPackBought = data.SkinPackBought;
-            NoAdsBoughtBackup = data.NoAdsBoughtBackUp;
-
-            LanguageSelect = data.LanguageSelect;
-            languageselected = data.languageSelected;
-
-            BossRewardCollected = data.BossRewardCollected;
-
-            DataLoaded = true;
-        }
-        else
-        {
-            noLocalSaveFileDetected = true;  
-        }
-        
-
-
+    #endregion local Save Methods
+    #region Cloud Save Methods
+    public void UploadStats()
+    {
+        PlayFabData.PFD.SaveStats();
+        saveServices();
     }
 
     public void LoadCloudSaveData()
-    {
-        if (PlayFabData.PFD.HasSavedData)
-        {
-            PlayFabData.PFD.LoadStats();
-        }       
+    {  
+      PlayFabData.PFD.LoadStats();
+
     }
+    #endregion Cloud Save Methods
+    #endregion SAVE STATS METHODS
 
 
 
@@ -642,116 +511,12 @@ public class GameStats : MonoBehaviour
 
     }
 
-    void SetJsonDataStats(DataManager dataMagaer)
-    {
-        var data = dataMagaer.data;
-
-        CoinTicket = data.CoinTicketBought;
-        PortalBoost = data.PortalBoostBought;
-        fenixFeather = data.fenixfetherBought;
-        ExtraHearts = data.ExtraHeartsBought;
-        ManaJar = data.ManaJarBought;
-
-        crystals = data.Crystals;
-        leveBoughtID = data.level;
-        LevelBought = data.LevelBought;
-        LevelBoughtCrystals = data.LevelBoughtCrystals;
-        LevelBoughtCoins = data.LevelBoughtCoins;
-
-
-        coins = data.Coins;
-
-        SavedLevelCount = data.SavedLevelCount;
-        SavedLevelIndicator = data.SavedLevelIndicator;
-        RunInProgress = data.RunInProgress;
-        SavedLevelPercentage = data.savedLevelPercentage;
-        numOfHearts = data.MaxHearts;
-        SaveCurrentHearts = data.CurrentHearts;
-        isInStore = data.IsInStore;
-
-        savedDarkPowerID = data.SavedDarkPowerID;
-        savedLightPowerID = data.SavedLightPowerID;
-
-        totalDarkMana = data.ManaDark;
-        totalLightMana = data.Manalight;
-
-
-        LevelReached = data.levelReached;
-        botSkinID = data.BotSkin;
-        topSkinID = data.TopSkin;
-
-        timedReward = data.TimeReward;
-        timedRewardLastDate = data.TimedRewardLastDate;
-
-        skinConditions[0] = data.skinConditions[0];
-        skinConditions[1] = data.skinConditions[1];
-        skinConditions[2] = data.skinConditions[2];
-        skinConditions[3] = data.skinConditions[3];
-        skinConditions[4] = data.skinConditions[4];
-        skinConditions[5] = data.skinConditions[5];
-
-
-        CarrotMissleLevel = data.CarrotMissleLevel;
-        EarDefenceLevel = data.EarDefenceLevel;
-        RadishMissleLevel = data.RadishMissleLevel;
-        KickReflectLevel = data.KickReflectLevel;
-        MagicLaserLevel = data.MagicLaserLevel;
-
-        AudioVolume = data.AudioVolume;
-        MusicVolume = data.MusicVolume;
-
-        AchivementConditions[0] = data.AchivementConditions[0];
-        AchivementConditions[1] = data.AchivementConditions[1];
-        AchivementConditions[2] = data.AchivementConditions[2];
-        AchivementConditions[3] = data.AchivementConditions[3];
-        AchivementConditions[4] = data.AchivementConditions[4];
-        AchivementConditions[5] = data.AchivementConditions[5];
-        AchivementConditions[6] = data.AchivementConditions[6];
-        AchivementConditions[7] = data.AchivementConditions[7];
-        AchivementConditions[8] = data.AchivementConditions[8];
-        AchivementConditions[9] = data.AchivementConditions[9];
-        AchivementConditions[10] = data.AchivementConditions[10];
-        AchivementConditions[11] = data.AchivementConditions[11];
-        AchivementConditions[12] = data.AchivementConditions[12];
-        AchivementConditions[13] = data.AchivementConditions[13];
-
-
-        MoneySpent = data.GoldSpent;
-        monstersKilled = data.monstersKilled;
-        diedTimes = data.diedTimes;
-
-        Rune1ID = data.Rune1Id;
-        Rune2ID = data.Rune2Id;
-
-        UnlockedRunes[0] = data.unlockedRunes[0];
-        UnlockedRunes[1] = data.unlockedRunes[1];
-        UnlockedRunes[2] = data.unlockedRunes[2];
-        UnlockedRunes[3] = data.unlockedRunes[3];
-        UnlockedRunes[4] = data.unlockedRunes[4];
-        UnlockedRunes[5] = data.unlockedRunes[5];
-        UnlockedRunes[6] = data.unlockedRunes[6];
-        UnlockedRunes[7] = data.unlockedRunes[7];
-        UnlockedRunes[8] = data.unlockedRunes[8];
-        UnlockedRunes[9] = data.unlockedRunes[9];
-
-        NoAdsBought = data.NoAdsBought;
-        SkinPackBought = data.SkinPackBought;
-        NoAdsBoughtBackup = data.NoAdsBoughtBackUp;
-
-        LanguageSelect = data.LanguageSelect;
-        languageselected = data.languageSelected;
-
-        BossRewardCollected = data.BossRewardCollected;
-
-    }
-
-
 
     void saveServices()
     {
         ServicesManager.instance.SubmitScoreToLeaderBoard(LevelReached);
         ServicesManager.instance.SumbitMonstersDefeatedScore(Mathf.FloorToInt(monstersKilled));
-
+        
     }
 
 

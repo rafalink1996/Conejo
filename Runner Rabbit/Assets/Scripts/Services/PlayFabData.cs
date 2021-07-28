@@ -30,9 +30,14 @@ public class PlayFabData : MonoBehaviour
     public int magicLaserLevel;
     
 
-    private string myPlayfabID;
+    public string myPlayfabID;
     public bool HasSavedData;
-    
+    public bool CantAccessData;
+
+    [Space(10)]
+    [Header("Data to save")]
+    public bool errorRetrievingData;
+    private int getUserDataRetry;
 
 
     private void Awake()
@@ -86,6 +91,7 @@ public class PlayFabData : MonoBehaviour
 
     private void AsignLoadedStats()
     {
+        
         GameStats.stats.crystals = crystals;
         GameStats.stats.LevelReached = levelReached;
         GameStats.stats.NoAdsBought = noAdsBought;
@@ -100,11 +106,8 @@ public class PlayFabData : MonoBehaviour
         GameStats.stats.MagicLaserLevel = magicLaserLevel;
 
         Debug.Log("Data asigned To game stats");
-        GameStats.stats.DataLoaded = true;
+        GameStats.stats.myGamestatsSaveManager.DataLoaded = true;
         StartDataDependentScripts();
-
-
-
     }
 
 
@@ -138,29 +141,35 @@ public class PlayFabData : MonoBehaviour
                 { "Runes Unlocked", BoolArrayDataToString(unlockedRunes) },
             }
         };
-        PlayFabClientAPI.UpdateUserData(UpdateDataRequest, OnDataSend, OnDataError);
+        PlayFabClientAPI.UpdateUserData(UpdateDataRequest, OnDataSend, OnDataSendError);
     }
 
     void OnDataSend(UpdateUserDataResult result)
     {
         Debug.Log("succsesfully user data send!");
     }
-    void OnDataError(PlayFabError error)
+    void OnDataSendError(PlayFabError error)
     {
         Debug.Log("Failed user Data send");
         Debug.Log("Error: " + error.GenerateErrorReport());
     }
+   
+
+    
 
     #endregion Send Data to Playfab
     #region Recieve data from Playfab
+
     private void PlayfabGetUserData()
     {
+        
         PlayFabClientAPI.GetUserData(new GetUserDataRequest()
         {
+           
             PlayFabId = myPlayfabID,
             Keys = null
 
-        }, OnDataRetrieved, OnDataError);
+        }, OnDataRetrieved, OnDataRecieveError);
     }
 
     void OnDataRetrieved(GetUserDataResult result)
@@ -231,13 +240,42 @@ public class PlayFabData : MonoBehaviour
             {
                unlockedRunes = BoolArrayFromString(result.Data["Runes Unlocked"].Value);
             }
+
+            if (GameStats.stats.myGamestatsSaveManager.NoLocalSaveDetected)
+            {
+                AsignLoadedStats();
+            }
         }
         else
         {
             Debug.Log("user data is null");
+        }   
+       
+    }
+
+    void OnDataRecieveError(PlayFabError error)
+    {
+        Debug.Log("Failed user Data send");
+        Debug.Log("Error: " + error.GenerateErrorReport());
+
+        switch (error.Error)
+        {
+            case PlayFabErrorCode.ConnectionError:
+                // Tell player there is a conecction issue
+                break;
         }
 
-        AsignLoadedStats();
+        if(getUserDataRetry < 3)
+        {
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest()
+            {
+
+                PlayFabId = myPlayfabID,
+                Keys = null
+
+            }, OnDataRetrieved, OnDataRecieveError);
+        }
+        errorRetrievingData = true;
     }
 
 

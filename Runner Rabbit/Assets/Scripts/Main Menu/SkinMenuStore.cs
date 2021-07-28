@@ -67,6 +67,26 @@ public class SkinMenuStore : MonoBehaviour
         #endregion 
     }
 
+    public void DelayedStart()
+    {
+        if (GameStats.stats.SkinPackBought)
+        {
+            GameStats.stats.skinConditions[1] = true;
+        }
+        selectdisplayimage.sprite = SkinIcons[SelectedSkinID];
+
+        SkinTopPreview.sprite = SkinIcons[GameStats.stats.topSkinID];
+        SkinBotPreview.sprite = SkinIcons[GameStats.stats.botSkinID];
+
+        CrystalCounter.text = GameStats.stats.crystals.ToString();
+
+        #region UnlockDisplayStart
+        //
+        CheckLocked();
+
+        #endregion 
+    }
+
     // Update is called once per frame
     void Update()
     {

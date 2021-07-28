@@ -22,6 +22,18 @@ public class AchivmentsMenu : MonoBehaviour
 
     }
 
+    public void DelayedStart()
+    {
+        for (int i = 0; i < GameStats.stats.AchivementConditions.Length; i++)
+        {
+            if (GameStats.stats.AchivementConditions[i] == true)
+            {
+                AchivmentsLocked[i].SetActive(false);
+            }
+
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
