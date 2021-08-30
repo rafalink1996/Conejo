@@ -63,6 +63,7 @@ public class LanguageManager : MonoBehaviour
 
 
     [SerializeField] LanguageManagerLogin myLanguageManagerLogin;
+    [SerializeField] PlayfabLoginUI myplayfabLoginUi;
     //strings language
     #region Language Strings
     #region English Strings
@@ -621,6 +622,8 @@ public class LanguageManager : MonoBehaviour
     public void SetLanguage(int Language)
     {
         myLanguageManagerLogin.UpdateLanguage(Language);
+        myplayfabLoginUi.checkDataAndUpdateLanguage(myLanguageManagerLogin, Language);
+
         switch (Language)
         {
             case 0:// English

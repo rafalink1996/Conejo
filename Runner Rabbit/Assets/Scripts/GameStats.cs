@@ -224,6 +224,9 @@ public class GameStats : MonoBehaviour
 
     // 1 = english
     // 2 = Español
+    [Space(10)]
+    [Header("PLAYFAB")]
+    public bool loginFinalized;
 
 
     [Space(10)]

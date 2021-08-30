@@ -27,35 +27,48 @@ public class PlayfabLoginUI : MonoBehaviour
 
     public GameObject registerErrorObject;
     TextMeshProUGUI registerErrorTM;
-   
+
     [Space(5)]
     public GameObject SigninErrorObject;
     TextMeshProUGUI SigninErrorTM;
-    
+
+
+    //[Space(10)]
+    //[Header("Debug errors")]
+    //[SerializeField] TextMeshProUGUI SignInStatus;
+    //[SerializeField] TextMeshProUGUI EmailRetrieved;
+    //[SerializeField] TextMeshProUGUI DataRetrievalStatus;
+    //[SerializeField] TextMeshProUGUI ErrorReport;
+    //[SerializeField] TextMeshProUGUI DeviceIdentifier;
 
     [Space(10)]
-    [Header("Debug errors")]
-    [SerializeField] TextMeshProUGUI SignInStatus;
-    [SerializeField] TextMeshProUGUI EmailRetrieved;
-    [SerializeField] TextMeshProUGUI DataRetrievalStatus;
-    [SerializeField] TextMeshProUGUI ErrorReport;
-    [SerializeField] TextMeshProUGUI DeviceIdentifier;
+    [Header("Data saving disclaimer")]
+    [SerializeField] GameObject disclaimerObject;
+
+    [Space(10)]
+    [Header("Options is ther data check")]
+    public TextMeshProUGUI DataCheck;
+
+    [Space(10)]
+    [Header("Dependencies")]
+    [SerializeField] PlayFabLogin myplayfablogin;
+    
 
 
     private void Awake()
     {
-        if(registerErrorObject != null)
+        if (registerErrorObject != null)
         {
             registerErrorTM = registerErrorObject.GetComponent<TextMeshProUGUI>();
             registerErrorObject.SetActive(false);
         }
-        if(registerErrorObject != null)
+        if (registerErrorObject != null)
         {
             SigninErrorTM = SigninErrorObject.GetComponent<TextMeshProUGUI>();
             SigninErrorObject.SetActive(false);
         }
-        
-        
+
+
     }
 
     #region Toogle Passwords
@@ -101,24 +114,25 @@ public class PlayfabLoginUI : MonoBehaviour
         ShowContinueAsPanel,
         AsignContinueAsUsername,
         ShowRegisterError,
-        ShowSignInError
+        ShowSignInError,
+        ShowDisclaimer
     }
     public void UIAction(UiActions action, string username = null)
     {
         switch (action)
         {
             case UiActions.DisableLoginPanel:
-                if(loginPanel != null)
+                if (loginPanel != null)
                 {
                     loginPanel.SetActive(false);
                 }
                 break;
 
             case UiActions.DisableRecoverableDataAskPanel:
-                if(recoverableDataAskObject != null)
+                if (recoverableDataAskObject != null)
                 {
                     recoverableDataAskObject.SetActive(false);
-                }    
+                }
                 break;
 
             case UiActions.ShowContinueAsPanel:
@@ -129,23 +143,32 @@ public class PlayfabLoginUI : MonoBehaviour
                 break;
 
             case UiActions.AsignContinueAsUsername:
-               
-                if(username != null && ContinueUsername != null)
+
+                if (username != null && ContinueUsername != null)
                 {
                     ContinueUsername.text = username;
                 }
                 break;
 
             case UiActions.ShowRegisterError:
-                if(registerErrorObject != null)
+                if (registerErrorObject != null)
                 {
                     registerErrorObject.SetActive(true);
                 }
                 break;
             case UiActions.ShowSignInError:
-                if(SigninErrorObject != null)
+                if (SigninErrorObject != null)
                 {
                     SigninErrorObject.SetActive(true);
+                }
+                break;
+            case UiActions.ShowDisclaimer:
+                if (disclaimerObject != null)
+                {
+                    if (disclaimerObject != null)
+                    {
+                        disclaimerObject.SetActive(true);
+                    }
                 }
                 break;
         }
@@ -162,14 +185,14 @@ public class PlayfabLoginUI : MonoBehaviour
         switch (error)
         {
             case DisplayErrors.RegisterError:
-                if(registerErrorTM != null)
+                if (registerErrorTM != null)
                 {
                     registerErrorTM.text = ErrorText;
                 }
                 UIAction(UiActions.ShowRegisterError);
                 break;
             case DisplayErrors.SignInError:
-                if(SigninErrorTM != null)
+                if (SigninErrorTM != null)
                 {
                     SigninErrorTM.text = ErrorText;
                 }
@@ -177,5 +200,18 @@ public class PlayfabLoginUI : MonoBehaviour
                 break;
         }
     }
-        #endregion UIFunctions
+
+    public void checkDataAndUpdateLanguage(LanguageManagerLogin languageManagerLogin, int languageID)
+    {
+        if (PlayerPrefs.HasKey("EMAIL"))
+        {
+            DataCheck.text = languageManagerLogin.GetAccountDataCheck(true, languageID) + myplayfablogin.CheckUSername();
+        }   
+        else
+        {
+            DataCheck.text = languageManagerLogin.GetAccountDataCheck(false, languageID);
+        }
     }
+
+    #endregion UIFunctions
+}

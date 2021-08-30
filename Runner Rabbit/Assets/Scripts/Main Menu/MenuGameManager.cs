@@ -18,6 +18,10 @@ public class MenuGameManager : MonoBehaviour
     [SerializeField] AchivmentsMenu myAchivmentsMenu;
     [SerializeField] SkinMenuStore mySkinMenuStore;
 
+
+
+    [SerializeField] GameObject myPlayfabMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,21 @@ public class MenuGameManager : MonoBehaviour
         } else
         {
             InitialSelectLanguage.SetActive(true);
+        }
+
+        if(GameStats.stats.loginFinalized != true)
+        {
+            if(myPlayfabMenu != null)
+            {
+                myPlayfabMenu.SetActive(true);
+            }
+        }
+        else
+        {
+            if (myPlayfabMenu != null)
+            {
+                myPlayfabMenu.SetActive(false);
+            }
         }
         
     }

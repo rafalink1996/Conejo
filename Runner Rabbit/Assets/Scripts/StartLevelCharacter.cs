@@ -37,7 +37,7 @@ public class StartLevelCharacter : MonoBehaviour
 
     private void Start()
     {
-        IsLerping = true;
+        IsLerping = false;
         StartCoroutine(WaitForintro());
 
     }
@@ -80,7 +80,7 @@ public class StartLevelCharacter : MonoBehaviour
     IEnumerator WaitForintro ()
     {
 
-        yield return new WaitForSecondsRealtime (1.5f);
+        yield return new WaitForSecondsRealtime (1.5f); //1.5f
 
         IsLerping = true;
 

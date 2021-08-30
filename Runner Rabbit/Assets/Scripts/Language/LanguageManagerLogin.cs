@@ -31,6 +31,24 @@ public class LanguageManagerLogin : MonoBehaviour
     public TextMeshProUGUI dontHaveAnAccountText;
     public TextMeshProUGUI RegisterButton;
 
+    [Space(10)]
+    [Header("Continue As")]
+    public TextMeshProUGUI ContinueAsTitle;
+    public TextMeshProUGUI ContinueButton;
+    public TextMeshProUGUI LoginWithDifferentAccountButton;
+    public TextMeshProUGUI ContinueAsRememberMe;
+
+    [Space(10)]
+    [Header("No Sign In Disclaimer")]
+    public TextMeshProUGUI DisclaimerTitle;
+    public TextMeshProUGUI DisclaimerDescription, disclaimerplaybutton, disclaimerBackButton;
+
+    [Space(10)]
+    [Header("Options forget login data")]
+    public TextMeshProUGUI forgetTitle;
+    public TextMeshProUGUI forgetdescription, forgetButton, keepButton, ForgetInitialButton;
+
+
 
     // language variables
 
@@ -142,6 +160,104 @@ public class LanguageManagerLogin : MonoBehaviour
         "Las contraseñas no coinciden",
         "frances"// Todo
 };
+    string[] Language_dataNotSaved = new string[]
+{
+        "data will not be saved in the cloud. if you uninstall de game,progress will be lost",
+        "los datos no se guardarán en la nube. si desinstalas el juego, se perderá el progreso. ",
+        "frances"// Todo
+};
+    string[] Language_SureToContinue = new string[]
+{
+        "Are you sure you want to continue?",
+        "¿Seguro que quieres continuar? ",
+        "frances"// Todo
+};
+    string[] Language_BackToSignIn = new string[]
+{
+        "Back To Sign In",
+        "Volver a iniciar sesión",
+        "frances"// Todo
+};
+    string[] Language_ForgetTitle = new string[]
+{
+        "Forget account details",
+        "Olvidar detalles de cuenta",
+        "frances"// Todo
+};
+    string[] Language_ForgetDescription = new string[]
+{
+        "This will forget locally saved account data. you will have to manually login next time you open the game.",
+        "Esto olvidará la informacion guardada de la cuenta. Tendrás que iniciar sesion manualmente la siguiente vez que abras el juego. ",
+        "frances"// Todo
+};
+    string[] Language_ForgetButton = new string[]
+{
+        "Forget",
+        "Olvidar",
+        "frances"// Todo
+};
+    string[] Language_KeepButton = new string[]
+{
+        "Keep",
+        "Mantener",
+        "frances"// Todo
+};
+    string[] Language_ForgetInitialButton = new string[]
+{
+        "Forget account data",
+        "Olvidar datos de cuenta",
+        "frances"// Todo
+};
+    string[] Language_CheckAccountData_no = new string[]
+{
+        "No Data",
+        "No hay datos",
+        "frances"// Todo
+};
+    string[] Language_CheckAccountData_yes = new string[]
+{
+        "Saved data as: ",
+        "Guardados detas como: ",
+        "frances"// Todo
+};
+    string[] Language_ContinueAsTitle = new string[]
+    {
+        "Continue As",
+        "Continuar Como",
+        "Frances" // Todo
+    };
+    string[] Language_ContinueButton = new string[]
+   {
+        "Continue",
+        "Continuar",
+        "Frances" // Todo
+   };
+       string[] Language_LoginWithdiffernetAccount = new string[]
+   {
+        "Login with diferent account",
+        "Iniciar sesion con una cuenta diferente",
+        "Frances" // Todo
+   };
+    string[] Language_AccountNotFound = new string[]
+  {
+        "Account not Found",
+        "Cuenta no encontrada",
+        "Frances" // Todo
+  };
+    string[] Language_SignInError = new string[]
+  {
+        "Sign in Error",
+        "Error de inicio se sesión",
+        "Frances" // Todo
+  };
+    string[] Language_RegisterError = new string[]
+  {
+        "Register Error",
+        "Error de registro",
+        "Frances" // Todo
+  };
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -181,6 +297,26 @@ public class LanguageManagerLogin : MonoBehaviour
         SignInLoginButton.text = Language_Login[languageID];
         dontHaveAnAccountText.text = Language_DontHaveAnAccount[languageID];
         RegisterButton.text = Language_Register[languageID];
+
+
+        ContinueAsTitle.text = Language_ContinueAsTitle[languageID];
+        ContinueButton.text = Language_ContinueButton[languageID];
+        LoginWithDifferentAccountButton.text = Language_LoginWithdiffernetAccount[languageID];
+        ContinueAsRememberMe.text = Language_RememberMe[languageID];
+        
+
+        DisclaimerTitle.text = Language_dataNotSaved[languageID];
+        DisclaimerDescription.text = Language_SureToContinue[languageID];
+        disclaimerplaybutton.text = Language_play[languageID];
+        disclaimerBackButton.text = Language_BackToSignIn[languageID];
+
+
+        forgetTitle.text = Language_ForgetTitle[languageID];
+        forgetdescription.text = Language_ForgetDescription[languageID];
+        forgetButton.text = Language_ForgetButton[languageID];
+        keepButton.text = Language_KeepButton[languageID];
+        ForgetInitialButton.text = Language_ForgetInitialButton[languageID];
+
     }
 
     public enum ErrorType
@@ -188,7 +324,12 @@ public class LanguageManagerLogin : MonoBehaviour
         InvalidUser,
         EmailTaken,
         UsernameTaken,
-        PasswordUnmatch
+        PasswordUnmatch,
+        AccountNotFound,
+        LoginError,
+        RegisterError
+
+
     };
 
     public string GetErrorMessageTrnalation(int LanguageID, ErrorType errorType)
@@ -209,10 +350,36 @@ public class LanguageManagerLogin : MonoBehaviour
         {
             ErrorTranslation = Language_PasswordUnmatchError[LanguageID];
         }
+        else if (errorType == ErrorType.AccountNotFound)
+        {
+            ErrorTranslation = Language_AccountNotFound[LanguageID];
+        }
+        else if (errorType == ErrorType.LoginError)
+        {
+            ErrorTranslation = Language_SignInError[LanguageID];
+        }
+        else if (errorType == ErrorType.RegisterError)
+        {
+            ErrorTranslation = Language_RegisterError[LanguageID];
+        }
         else
         {
             ErrorTranslation = "";
         }
         return ErrorTranslation;
+    }
+
+    public string GetAccountDataCheck(bool savedData, int languageID)
+    {
+        string ReturnString;
+        if (savedData)
+        {
+            ReturnString = Language_CheckAccountData_yes[languageID];
+        }
+        else
+        {
+            ReturnString = Language_CheckAccountData_no[languageID];
+        }
+        return ReturnString;
     }
 }
